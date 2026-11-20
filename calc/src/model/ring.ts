@@ -108,6 +108,16 @@ export function ring(r: Registry) {
     () => v("ice-mass") * v("ring-catch-energy-per-kg"),
   );
   r.q(
+    "ring-loss-energy",
+    {
+      label: "Heat the Ring sheds braking all the ice",
+      unit: "J",
+      formula: "E_caught − E_recovered",
+      basis: "physics",
+    },
+    () => v("ring-catch-energy") - v("ring-recovered-energy"),
+  );
+  r.q(
     "ring-power",
     { label: "Ring power at the full catch rate", unit: "W", formula: "ṁ × e", basis: "invented" },
     () => v("ice-throughput") * v("ring-recovered-per-kg"),
@@ -178,6 +188,29 @@ export function ring(r: Registry) {
     () => v("ice-throughput") * (v("ring-arrival-speed") - v("ring-orbital-speed")),
   );
   r.q(
+    "ring-approach-eccentricity",
+    {
+      label: "Eccentricity of a Brick's path past Venus at Ring height",
+      unit: "1",
+      sig: 3,
+      formula: "1 + r v∞² / (G M_V)",
+      basis: "physics",
+    },
+    () => 1 + (v("ring-radius") * v("ice-vinf") ** 2) / v("venus-gm"),
+  );
+  r.q(
+    "ring-net-braking-force",
+    {
+      label: "Net braking force on the Ring, east and west catches together",
+      unit: "N",
+      sig: 2,
+      formula: "F √(1 − 1/e²)",
+      basis: "physics",
+      note: "Every Brick arrives from the same direction. The eastbound and westbound streams graze the Ring at mirror-image points, each turned half the path's bend, asin(1/e), from that direction. Their sideways pushes cancel; their forward pushes add.",
+    },
+    () => v("ring-braking-force") * Math.sqrt(1 - 1 / v("ring-approach-eccentricity") ** 2),
+  );
+  r.q(
     "ring-track-length",
     {
       label: "Catcher track length",
@@ -216,6 +249,17 @@ export function ring(r: Registry) {
     () =>
       v("ring-rotor-mass") * (v("ring-rotor-speed") ** 2 / v("ring-radius") - v("ring-gravity")) -
       v("ring-stator-mass") * v("ring-gravity"),
+  );
+  r.q(
+    "ring-net-overload",
+    {
+      label: "Net braking force over the Ring's spare lift",
+      unit: "1",
+      sig: 2,
+      formula: "F_net / F_lift",
+      basis: "physics",
+    },
+    () => v("ring-net-braking-force") / v("ring-lift"),
   );
   r.q(
     "ring-hang-capacity",
@@ -344,6 +388,18 @@ export function ring(r: Registry) {
     () => ({
       pass: v("ring-power") >= v("railhead-power"),
       detail: `Ring ${v("ring-power").toExponential(2)} W recovered against ${v("railhead-power").toExponential(2)} W drawn by the Railheads.`,
+    }),
+  );
+  r.c(
+    "ring-net-force",
+    {
+      label: "The Ring can pass the catch's net braking force to Venus",
+      kind: "force",
+      issue: "ring-net-force",
+    },
+    () => ({
+      pass: v("ring-net-braking-force") <= v("ring-lift"),
+      detail: `Catching half the Bricks eastbound and half westbound cancels the twist, not the force: ${v("ring-net-braking-force").toExponential(1)} N remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; its spare lift is ${v("ring-lift").toExponential(1)} N, ${Math.round(v("ring-net-overload"))} times too little.`,
     }),
   );
   r.c(

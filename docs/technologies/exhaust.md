@@ -9,6 +9,7 @@ Exhaust throws out [5.0 × 10¹⁹ W](../numbers.md#exhaust-peak); over the camp
 [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy) of beamed electricity doing it.
 
 <!-- figure:heat-path -->
+![Venus's heat path, in cross-section](../../figures/svg/heat-path.svg)
 <!-- /figure -->
 
 ## Principle
@@ -111,6 +112,7 @@ becomes Earth-like months after the deadline. With [5.0 × 10¹⁹ W](../numbers
 Exhaust buys nothing: the finish then waits on the Forges' oxygen, and the extra pumping overdraws the Lattice.
 
 <!-- figure:trajectory -->
+![The simulated atmosphere, 2033 to 2036](../../figures/svg/trajectory.svg)
 <!-- /figure -->
 
 **What the simulation pumps.** The simulation spends [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy) of pump work, more
@@ -129,6 +131,7 @@ tiles on surface towers held at [133 K](../numbers.md#frost-tower-temp) freeze i
 and is done by [9 May 2036](../numbers.md?date=day#traj-scavenged).
 
 <!-- figure:co2-phase -->
+![CO₂ phase diagram with Venus's simulated cooling path](../../figures/svg/co2-phase.svg)
 <!-- /figure -->
 
 ## Specifications

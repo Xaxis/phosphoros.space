@@ -9,6 +9,8 @@
 #   precedent: what does, with its source
 #   modules: the calc/src/model files that compute its numbers
 #   figures: the figures that show it
+#   machines: for a self-copying factory, its machine types in loop order: name, makes (a short
+#     label for the figure), does (the full description for the table) and feeds
 
 - id: ouroboros
   name: Ouroboros Foundry
@@ -42,6 +44,57 @@
   experiments: [ouroboros-0]
   figures: [foundry-growth, foundry-loop]
   modules: [foundry.ts]
+  # In loop order: each feeds the next, except that the mass drivers' parts leave for orbit, and
+  # the Assemblers close the loop by building every type.
+  machines:
+    - name: Diggers
+      makes: Sorted regolith
+      does: "Mine and sort regolith"
+      feeds: Smelters
+    - name: Smelters
+      makes: Metals and oxygen
+      does: "Solar furnaces and molten-regolith electrolysis, splitting rock into oxygen, iron, silicon, aluminum, titanium and magnesium"
+      feeds: Every other line
+    - name: Glass furnaces
+      makes: Glass and optics
+      does: "Glass, fiber and optics"
+      feeds: "Film lines, Lithocells, laser emitters"
+    - name: Film lines
+      makes: Solar film
+      does: "Thin solar film at {helios-areal-density}, the Foundry's own power and the stuff of the Lattice and the Veil"
+      feeds: "Power for the loop; Petals and slats"
+    - name: Lithocells
+      makes: Chips
+      does: "Chip fabs that write circuits directly with electron beams"
+      feeds: Every machine's controller
+    - name: Choir nodes
+      makes: Compute and links
+      does: "Compute and communications for the Choir control system"
+      feeds: "Coordination, the Mass Ledger"
+    - name: Coil lines
+      makes: Motors
+      does: "Aluminum wire and iron cores for induction and reluctance motors, with no rare earths"
+      feeds: Everything that moves
+    - name: Rolling mills
+      makes: "Sheet, beam and rail"
+      does: "Sheet, beam and rail"
+      feeds: "Assemblers, mass drivers, Petal and slat frames"
+    - name: Mass drivers
+      makes: Parts to orbit
+      does: "Throw finished parts to orbit"
+      feeds: "The Lattice, the Veil, the Ring"
+    - name: Haulers
+      makes: Site transport
+      does: "Move ore, parts and products across the site"
+      feeds: The whole loop
+    - name: Printers
+      makes: Complex metal parts
+      does: "Electron-beam additive manufacturing in vacuum, for complex metal parts"
+      feeds: "Assemblers, bearings, housings"
+    - name: Assemblers
+      makes: Every machine type
+      does: "Robot arms that build every machine type, including Assemblers"
+      feeds: The whole loop
 
 - id: helios
   name: Helios Lattice
@@ -278,7 +331,7 @@
     - { label: Brick arrival, value: "{ring-arrival-speed}" }
     - { label: Energy recovered, value: "{ring-catch-energy-per-kg} of motion, {ring-recovered-per-kg} as electricity" }
     - { label: Recovered power, value: "{ring-power} at full rate" }
-    - { label: Braking force, value: "{ring-braking-force}, cancelled by catching half the Bricks eastbound and half westbound" }
+    - { label: Braking force, value: "{ring-braking-force}; east and west catches cancel the twist, not the force" }
     - { label: Without the Ring, value: "Ice would hit at {ring-free-fall-speed} and dump {ring-free-fall-impact} of heat, {ring-free-fall-vs-atmosphere} times the air's" }
     - { label: Tether lifts, value: "{ring-tether-lifts}, each lowering a Brick every {tether-interval}" }
   invented:
@@ -288,7 +341,7 @@
   experiments: []
   figures: [braking-ring, energy-sankey]
   modules: [ring.ts]
-  open: ring-lowering
+  open: [ring-lowering, ring-net-force]
 
 - id: acid
   name: Acid Sweep

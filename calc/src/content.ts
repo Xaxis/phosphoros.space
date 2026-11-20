@@ -24,9 +24,12 @@ export interface Technology {
   figures: string[];
   modules: string[];
   correction?: string;
-  open?: string;
+  /** Open problems in the corrections log, by id. */
+  open?: string[];
   groups?: { group: string; from: string; traits: string; job: string }[];
   tiers?: { tier: string; scope: string; decides: string; reacts: string }[];
+  /** The machine types of a self-copying factory, in the order the loop is drawn. */
+  machines?: { name: string; makes: string; does: string; feeds: string }[];
 }
 
 export interface TimelineRow {
@@ -39,6 +42,8 @@ export interface TimelineRow {
   tech?: string;
   link?: string;
   accent?: boolean;
+  /** On the critical path: a slip here moves the end of the plan. */
+  critical?: boolean;
 }
 
 export interface Timeline {
@@ -53,6 +58,8 @@ export interface Experiment {
   where: string;
   tech?: string;
   gate?: boolean;
+  /** A line with no substitute: if it fails, the plan falls back to the multi-century route. */
+  fallback?: boolean;
   proves: string;
   pass: string;
   kill: string;
@@ -202,6 +209,9 @@ export function checkContent(r: Registry, c: Content): string[] {
       if (!experiments.has(e)) problems.push(`technologies.yaml: ${t.id}: unknown experiment ${e}`);
     if (t.correction && !corrections.has(t.correction))
       problems.push(`technologies.yaml: ${t.id}: unknown correction ${t.correction}`);
+    for (const o of t.open ?? [])
+      if (!corrections.has(o))
+        problems.push(`technologies.yaml: ${t.id}: unknown open problem ${o}`);
   }
   for (const row of c.timeline.rows) {
     for (const d of [row.start, row.end])

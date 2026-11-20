@@ -7,7 +7,7 @@ import { DocPage } from "../../../components/DocPage";
 import { Num } from "../../../components/Num";
 import { hasDoc } from "../../../lib/docs";
 import { model, quantity } from "../../../lib/model";
-import { repoUrl } from "../../../lib/site";
+import { REPO, repoUrl } from "../../../lib/site";
 
 export const dynamicParams = false;
 
@@ -50,7 +50,7 @@ function Glance({ t }: { t: Technology }) {
   const correction = t.correction
     ? content.corrections.find((c) => c.id === t.correction)
     : undefined;
-  const open = t.open ? content.corrections.find((c) => c.id === t.open) : undefined;
+  const open = content.corrections.filter((c) => t.open?.includes(c.id));
   return (
     <div className="glance">
       <dl>
@@ -95,12 +95,18 @@ function Glance({ t }: { t: Technology }) {
             </dd>
           </div>
         )}
-        {open && (
+        {open.length > 0 && (
           <div>
-            <dt>Open problem</dt>
-            <dd>
-              <a href="/about#corrections">{open.title.replace(/^Open problem: /, "")}</a>
-            </dd>
+            <dt>{open.length > 1 ? "Open problems" : "Open problem"}</dt>
+            {open.map((o) => (
+              <dd key={o.id}>
+                {o.issue ? (
+                  <a href={`${REPO}/issues/${o.issue}`}>{o.title}</a>
+                ) : (
+                  <a href="/about#corrections">{o.title}</a>
+                )}
+              </dd>
+            ))}
           </div>
         )}
         <div>

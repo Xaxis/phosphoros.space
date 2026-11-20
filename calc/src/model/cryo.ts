@@ -1,5 +1,5 @@
 /** Cryo-continents: all of Venus's CO₂, frozen into plateaus and sealed under insulating caps. */
-import { conductedFlux } from "../physics.ts";
+import { co2MeltingTemp, conductedFlux } from "../physics.ts";
 import type { Registry } from "../registry.ts";
 import { YEAR_S } from "../time.ts";
 
@@ -179,5 +179,34 @@ export function cryo(r: Registry) {
       basis: "design",
     },
     () => v("cryo-cell-area") * v("cryo-thickness") * v("dry-ice-density"),
+  );
+  r.q(
+    "cryo-base-pressure",
+    {
+      label: "Pressure at the base of the dry ice, from its own weight",
+      unit: "Pa",
+      show: "bar",
+      sig: 2,
+      formula: "ρ_ice g × thickness",
+      basis: "physics",
+    },
+    () => v("dry-ice-density") * v("venus-gravity") * v("cryo-thickness"),
+  );
+  r.q(
+    "cryo-base-melt-temp",
+    {
+      label: "Temperature at which the base of the dry ice would melt",
+      unit: "K",
+      sig: 3,
+      formula: "root of p_t (1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)²) = p_base",
+      basis: "physics",
+    },
+    () =>
+      co2MeltingTemp(
+        v("cryo-base-pressure"),
+        { T: v("co2-triple-temp"), P: v("co2-triple-pressure") },
+        v("co2-melting-a1"),
+        v("co2-melting-a2"),
+      ),
   );
 }

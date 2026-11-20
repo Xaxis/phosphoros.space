@@ -7,6 +7,7 @@ deliver [7.0 × 10¹⁹ W](../numbers.md#helios-power) from [June 2033](../numbe
 [98%](../numbers.md#budget-launch-share) of it.
 
 <!-- figure:energy-sankey -->
+![Energy flows of the Phosphoros campaign, to the deadline](../../figures/svg/energy-sankey.svg)
 <!-- /figure -->
 
 ## Principle
@@ -92,6 +93,7 @@ recovered energy, which pays for most of the launches, the spare is
 line.
 
 <!-- figure:lattice-budget -->
+![Energy the Helios Lattice must deliver, against its supply](../../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
 ## Specifications

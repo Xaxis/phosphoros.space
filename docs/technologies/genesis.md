@@ -6,6 +6,7 @@ end of the year. They start a food web, draw nutrients from the nitrogen sky and
 and cap graphite into soil. Trees, crops and animals come later, after 2040.
 
 <!-- figure:venus-compare -->
+![Venus today, Venus in 2036, and Earth](../../figures/svg/venus-compare.svg)
 <!-- /figure -->
 
 ## Principle

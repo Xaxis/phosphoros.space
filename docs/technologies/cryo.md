@@ -7,6 +7,7 @@ temperatures while the ice below stays at [180 K](../numbers.md#cryo-ice-temp). 
 floors need refrigerating for centuries.
 
 <!-- figure:co2-phase -->
+![CO₂ phase diagram with Venus's simulated cooling path](../../figures/svg/co2-phase.svg)
 <!-- /figure -->
 
 ## Principle
@@ -59,6 +60,7 @@ as one temperature. Real basins will run ahead of or behind these dates by place
    [30 September 2036](../numbers.md?date=day#traj-earth-like), when the oxygen is complete.
 
 <!-- figure:trajectory -->
+![The simulated atmosphere, 2033 to 2036](../../figures/svg/trajectory.svg)
 <!-- /figure -->
 
 ### The plateaus

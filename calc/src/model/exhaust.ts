@@ -17,7 +17,12 @@ export function chimneys(r: Registry) {
   );
   r.q(
     "chimney-mass-flow",
-    { label: "Gas flow up one chimney", unit: "kg/s", formula: "ρ v A", basis: "invented" },
+    {
+      label: "Hot air drawn through one chimney's exchangers",
+      unit: "kg/s",
+      formula: "ρ v A",
+      basis: "invented",
+    },
     () => v("venus-surface-density") * v("chimney-flow-speed") * v("chimney-flow-area"),
   );
   r.q(

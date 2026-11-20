@@ -7,7 +7,7 @@ import { Header } from "../../components/Header";
 import { LedgerFilter } from "../../components/LedgerFilter";
 import { basisOf } from "../../components/Num";
 import { definedAt, model } from "../../lib/model";
-import { repoUrl } from "../../lib/site";
+import { REPO, repoUrl } from "../../lib/site";
 
 export const metadata: Metadata = {
   title: "Every number",
@@ -105,7 +105,7 @@ function Group({ title, file, list }: { title: string; file: string; list: Quant
 }
 
 export default function NumbersPage() {
-  const { r } = model();
+  const { r, content } = model();
   const inputs = [...r.inputs.values()].map((q) => ({ ...q, kind: "input" as const }));
   const derived = [...r.derived.values()].map((q) => ({ ...q, kind: "derived" as const }));
   const modules = [...new Set(derived.map((d) => d.module))];
@@ -136,7 +136,18 @@ export default function NumbersPage() {
                 <span className="check-mark">{c.pass ? "Pass" : c.issue ? "Open" : "Fail"}</span>
                 <div>
                   <p className="check-label">{c.label}</p>
-                  <p className="check-detail">{c.detail}</p>
+                  <p className="check-detail">
+                    {c.detail}
+                    {(() => {
+                      const n = content.corrections.find((x) => x.id === c.issue)?.issue;
+                      return n ? (
+                        <>
+                          {" "}
+                          <a href={`${REPO}/issues/${n}`}>Issue #{n}</a>
+                        </>
+                      ) : null;
+                    })()}
+                  </p>
                 </div>
               </li>
             ))}

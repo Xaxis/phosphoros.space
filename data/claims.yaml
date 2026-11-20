@@ -229,4 +229,4 @@
     note: "Version 3 counts the pump work the day-by-day simulation actually spends, including heat from the crust, the Forges and the falling ice, so the demand rises from 7.0 to 7.7 × 10²⁷ J." }
 - { model: traj-pump-energy, brief: 2.84e27, where: "2.8", correction: exhaust-capacity }
 - { model: budget-spare, brief: 0.09, tol: 0.5, where: "2.8", correction: exhaust-capacity }
-- { model: budget-launch-share, brief: 0.9, where: "2.8" }
+- { model: budget-launch-share, brief: 0.9, tol: 0.03, where: "2.8", correction: exhaust-capacity }

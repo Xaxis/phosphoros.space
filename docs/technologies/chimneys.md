@@ -7,6 +7,7 @@ the hot air through heat exchangers; sealed liquid loops lift the heat; the cool
 They work from [January 2033](../numbers.md?date=month#cooling-start) until the CO₂ is down.
 
 <!-- figure:heat-path -->
+![Venus's heat path, in cross-section](../../figures/svg/heat-path.svg)
 <!-- /figure -->
 
 ## Principle

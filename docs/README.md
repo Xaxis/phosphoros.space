@@ -12,6 +12,7 @@ one.
 ## Venus today, and Venus in 2036
 
 <!-- figure:venus-compare -->
+![Venus today, Venus in 2036, and Earth](../figures/svg/venus-compare.svg)
 <!-- /figure -->
 
 Today the surface sits at [737 K](numbers.md#venus-surface-temp) under [92 bar](numbers.md#venus-surface-pressure)
@@ -87,6 +88,7 @@ deadline.
 ## The energy budget closes
 
 <!-- figure:lattice-budget -->
+![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
 The plan must bring [7.7 × 10²⁷ J](numbers.md#budget-demand) to Venus from outside. The Lattice supplies

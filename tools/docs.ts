@@ -126,6 +126,14 @@ const BLOCKS: Record<string, Block> = {
       (t?.groups ?? []).map((g) => [g.group, g.from, g.traits, g.job]),
     );
   },
+  machines(arg, p) {
+    const t = content.technologies.find((x) => x.id === arg);
+    if (!t?.machines) throw new Error(`table:machines ${arg}: no machines`);
+    return table(
+      ["Machine", "What it does", "What it feeds"],
+      t.machines.map((m) => [m.name, md(m.does, p), m.feeds]),
+    );
+  },
   tiers(arg, _p) {
     const t = content.technologies.find((x) => x.id === arg);
     return table(
@@ -256,10 +264,11 @@ const BLOCKS: Record<string, Block> = {
           rename: "Renamed",
           open: "Open problem",
         }[c.kind];
+        const issue = c.issue ? ` ([issue #${c.issue}](${REPO}/issues/${c.issue}))` : "";
         const head =
           c.kind === "version"
             ? `### Version ${c.version}: ${c.title}`
-            : `- **${tag} (v${c.version}): ${c.title}.** ${c.text.trim()}`;
+            : `- **${tag} (v${c.version}): ${c.title}.** ${c.text.trim()}${issue}`;
         return c.kind === "version" ? `${head}\n\n${c.text.trim()}\n` : head;
       })
       .join("\n");
@@ -462,7 +471,6 @@ function walk(dir: string): string[] {
   );
 }
 
-/** Figure titles, for alt text in docs. Kept here until the figures package exports its registry. */
 // A block's body never crosses another block's opener, so an empty block ("opener" then "closer" on
 // the next line) can never swallow the text up to a later block's closer.
 const FIGURE_BLOCK =
@@ -473,6 +481,18 @@ const SOURCE_LINK = /\]\(((?:\.\.\/)*)sources\.md#([a-z0-9-]+)\)/g;
 const DOC_LINK = /\]\((?!https?:|#|mailto:)([^)#?\s]+\.md)(?:[?#][^)]*)?\)/g;
 const FIGURE = /!\[[^\]]*\]\(((?:\.\.\/)*)figures\/svg\/([a-z0-9-]+)\.svg\)/g;
 const sourceIds = new Set(content.sources.map((s) => s.id));
+
+const ENTITY: Record<string, string> = {
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  "#x27": "'",
+  "#39": "'",
+};
+function unescapeHtml(s: string): string {
+  return s.replace(/&(amp|lt|gt|quot|#x27|#39);/g, (_m, e: string) => ENTITY[e] ?? _m);
+}
 
 function sync(file: string): void {
   const rel = path.relative(ROOT, file);
@@ -493,7 +513,10 @@ function sync(file: string): void {
   text = text.replace(FIGURE_BLOCK, (_m, open: string, id: string, _old, close: string) => {
     const svg = path.join(ROOT, "figures", "svg", `${id}.svg`);
     if (!existsSync(svg)) return `${open}\n${close}`;
-    const title = /<title[^>]*>([^<]*)<\/title>/.exec(readFileSync(svg, "utf8"))?.[1] ?? id;
+    // The SVG's title is HTML-escaped; alt text in Markdown is plain.
+    const title = unescapeHtml(
+      /<title[^>]*>([^<]*)<\/title>/.exec(readFileSync(svg, "utf8"))?.[1] ?? id,
+    );
     return `${open}\n![${title}](${prefix}../figures/svg/${id}.svg)\n${close}`;
   });
   text = text.replace(

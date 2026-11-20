@@ -7,6 +7,7 @@
 becomes the caps that seal the cryo-continents, and the day the Forges finish is the day Venus becomes Earth-like.
 
 <!-- figure:lattice-budget -->
+![Energy the Helios Lattice must deliver, against its supply](../../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
 ## Principle

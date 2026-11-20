@@ -49,6 +49,17 @@ export function outcome(r: Registry) {
     () => v("frost-co2-pressure") / v("final-pressure"),
   );
   r.q(
+    "final-co2-vs-earth",
+    {
+      label: "CO₂ share of the 2036 air as a multiple of Earth's today",
+      unit: "1",
+      sig: 2,
+      formula: "x_CO₂,2036 / x_CO₂,Earth",
+      basis: "physics",
+    },
+    () => v("final-co2-ppm") / v("earth-co2-fraction"),
+  );
+  r.q(
     "final-o2-share",
     {
       label: "Oxygen share of the 2036 air",

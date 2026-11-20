@@ -1,11 +1,13 @@
-# The nine proof experiments. All start in 2027 and run in parallel; each must pass by the end of
-# 2028 or the plan falls back to the multi-century route. A kill signal stops the line it tests.
+# The nine proof experiments. All start in 2027 and run in parallel, and each must pass by the end
+# of 2028. A kill signal stops the line it tests. fallback: true marks a line with no substitute: if
+# it fails, the whole plan falls back to the multi-century route. The others can be replaced.
 
 experiments:
   - id: ouroboros-0
     name: Ouroboros-0
     where: Earth
     tech: ouroboros
+    fallback: true
     proves: A factory that builds itself from simulated Mercury regolith
     pass: 95% mass closure, doubling in under 120 days
     kill: Under 70% closure
@@ -13,6 +15,7 @@ experiments:
     name: Exhaust-1
     where: Laboratory
     tech: exhaust
+    fallback: true
     proves: Electroluminescent cooling at useful power
     pass: 10 kW/m² of net cooling, within 50% of the Carnot limit
     kill: No net cooling above 100 W/m²

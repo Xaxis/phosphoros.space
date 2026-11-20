@@ -13,6 +13,7 @@ worlds. The Foundry builds the [Helios Lattice](helios.md), the Lattice's beamed
 everything else, and the [Choir](choir.md) keeps the whole system inside hard limits.
 
 <!-- figure:tech-stack -->
+![The Phosphoros technology stack](../../figures/svg/tech-stack.svg)
 <!-- /figure -->
 
 <!-- table:techs -->

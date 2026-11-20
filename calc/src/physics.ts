@@ -90,6 +90,28 @@ export function co2SolidPressure(
   return ref.P * Math.exp(-(enthalpy / R) * (1 / T - 1 / ref.T));
 }
 
+/** Melting pressure of CO₂, Span and Wagner's correlation: p/p_t = 1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)². */
+export function co2MeltingPressure(
+  T: number,
+  triple: { T: number; P: number },
+  a1: number,
+  a2: number,
+) {
+  const u = T / triple.T - 1;
+  return triple.P * (1 + a1 * u + a2 * u * u);
+}
+
+/** The temperature at which CO₂ melts under pressure P: the root of co2MeltingPressure. */
+export function co2MeltingTemp(
+  P: number,
+  triple: { T: number; P: number },
+  a1: number,
+  a2: number,
+) {
+  const u = (-a1 + Math.sqrt(a1 * a1 + 4 * a2 * (P / triple.P - 1))) / (2 * a2);
+  return triple.T * (1 + u);
+}
+
 /**
  * Work a heat pump needs to lift heat out of matter cooling from T1 to T2 (T1 > T2) at constant
  * heat capacity C (J/K), rejecting at Th: ∫ C (Th/T − 1) dT.

@@ -27,9 +27,10 @@ description: Verify Phosphoros (the model in calc/, the docs sync, the figures a
 | typecheck:figures | `cd figures && pnpm typecheck` | figure types | passes |
 | typecheck:web | `cd web && pnpm typecheck` | site types and route types | passes |
 
-Known pre-existing failures: none in the checks. Two physics checks fail on purpose and are
+Known pre-existing failures: none in the checks. Three physics checks fail on purpose and are
 reported, not hidden: `veil-v2-hovers` (version 2's statite cannot hover) and
-`ring-lowering-load` (an open problem). `pnpm calc` lists them; they do not fail a command.
+`ring-lowering-load` and `ring-net-force` (open problems). `pnpm calc` lists them; they do not fail a
+command.
 
 ## Launch
 

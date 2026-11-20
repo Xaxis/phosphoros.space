@@ -73,11 +73,11 @@ export function budget(r: Registry) {
   r.q(
     "ice-solar-gain",
     {
-      label: "Energy the Sun's gravity adds to the ice on its fall to Venus",
+      label: "Energy gravity adds to the ice between launch and catch",
       unit: "J",
       formula: "caught motion energy − launch motion energy",
       basis: "physics",
-      note: "The ice falls from 2.77 AU to 0.72 AU, deep into the Sun's gravity well. That is why the Ring recovers more than the Railheads spend.",
+      note: "The ice falls from 2.77 AU to 0.72 AU, deep into the Sun's gravity well, and then into Venus's own well down to the Ring. That is why the Ring recovers more than the Railheads spend.",
     },
     () => v("ring-catch-energy") - v("ice-launch-energy") * v("railhead-efficiency"),
   );
@@ -122,6 +122,36 @@ export function budget(r: Registry) {
       basis: "invented",
     },
     () => 1 - v("budget-demand-with-ring") / v("helios-supply"),
+  );
+  r.q(
+    "budget-lattice-spare",
+    {
+      label: "Lattice energy left over once the Ring powers the Railheads",
+      unit: "J",
+      formula: "E_Lattice − demand_with_Ring",
+      basis: "invented",
+    },
+    () => v("helios-supply") - v("budget-demand-with-ring"),
+  );
+  r.q(
+    "budget-ring-launch",
+    {
+      label: "Launch energy the Ring pays once it powers the Railheads",
+      unit: "J",
+      formula: "E_launch − Lattice-paid launch energy",
+      basis: "invented",
+    },
+    () => v("ice-launch-energy") - v("budget-lattice-launch"),
+  );
+  r.q(
+    "budget-ring-surplus",
+    {
+      label: "Ring energy left over after powering the Railheads",
+      unit: "J",
+      formula: "E_Ring − Ring-paid launch energy",
+      basis: "invented",
+    },
+    () => v("ring-recovered-energy") - v("budget-ring-launch"),
   );
   r.q(
     "venus-heat-out",

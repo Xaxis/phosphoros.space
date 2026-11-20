@@ -49,22 +49,25 @@ The seed is twelve machine types that, together, make all twelve. The loop close
 every part out) and on energy (film made by the loop powers the loop).
 
 <!-- figure:foundry-loop -->
+![The Ouroboros Foundry machine loop](../../figures/svg/foundry-loop.svg)
 <!-- /figure -->
 
+<!-- table:machines ouroboros -->
 | Machine | What it does | What it feeds |
 | --- | --- | --- |
 | Diggers | Mine and sort regolith | Smelters |
 | Smelters | Solar furnaces and molten-regolith electrolysis, splitting rock into oxygen, iron, silicon, aluminum, titanium and magnesium | Every other line |
-| Rolling mills | Sheet, beam and rail | Assemblers, mass drivers, Petal and slat frames |
-| Coil lines | Aluminum wire and iron cores for induction and reluctance motors, with no rare earths | Everything that moves |
-| Printers | Electron-beam additive manufacturing in vacuum, for complex metal parts | Assemblers, bearings, housings |
 | Glass furnaces | Glass, fiber and optics | Film lines, Lithocells, laser emitters |
 | Film lines | Thin solar film at [1 g/m²](../numbers.md#helios-areal-density), the Foundry's own power and the stuff of the Lattice and the Veil | Power for the loop; Petals and slats |
 | Lithocells | Chip fabs that write circuits directly with electron beams | Every machine's controller |
-| Assemblers | Robot arms that build every machine type, including Assemblers | The whole loop |
-| Haulers | Move ore, parts and products across the site | The whole loop |
+| Choir nodes | Compute and communications for the Choir control system | Coordination, the Mass Ledger |
+| Coil lines | Aluminum wire and iron cores for induction and reluctance motors, with no rare earths | Everything that moves |
+| Rolling mills | Sheet, beam and rail | Assemblers, mass drivers, Petal and slat frames |
 | Mass drivers | Throw finished parts to orbit | The Lattice, the Veil, the Ring |
-| Choir nodes | Compute and communications for the [Choir](choir.md) control system | Coordination, the Mass Ledger |
+| Haulers | Move ore, parts and products across the site | The whole loop |
+| Printers | Electron-beam additive manufacturing in vacuum, for complex metal parts | Assemblers, bearings, housings |
+| Assemblers | Robot arms that build every machine type, including Assemblers | The whole loop |
+<!-- /table -->
 
 **Simple mass, fast copies.** A loop doubles only as fast as its slowest line. Ouroboros keeps the slow lines
 small: about [2%](../numbers.md#foundry-complex-share) of each copy's mass is complex parts (chips, bearings,

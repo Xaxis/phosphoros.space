@@ -22,6 +22,7 @@ gives each one's formula and inputs.
 <!-- /table -->
 
 <!-- figure:lattice-budget -->
+![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
 The plan must deliver [7.7 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Helios
@@ -37,6 +38,7 @@ Lattice's growing output from [January 2033](numbers.md?date=month#cooling-start
 work done with that early power but does not credit the power itself.
 
 <!-- figure:energy-sankey -->
+![Energy flows of the Phosphoros campaign, to the deadline](../figures/svg/energy-sankey.svg)
 <!-- /figure -->
 
 ## Calculation walkthrough
@@ -114,8 +116,9 @@ or [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) for all the ice. That is
 
 > **Physics:** This is not free energy. The ice falls from Ceres's orbit at
 > [2.77 AU](numbers.md#ceres-orbit) to Venus's at [0.723 AU](numbers.md#venus-orbit), deep into the Sun's
-> gravity well, and the Sun's gravity adds [4.6 × 10²⁷ J](numbers.md#ice-solar-gain) to its motion on the
-> way. The Ring harvests energy the Sun gave the ice.
+> gravity well, then into Venus's own well down to the Ring. Gravity adds
+> [4.6 × 10²⁷ J](numbers.md#ice-solar-gain) to its motion between launch and catch. The Ring harvests
+> energy gravity gave the ice.
 
 The budget counts it like this. Until the first Brick is caught on
 [17 August 2034](numbers.md?date=day#ring-pays-from), the Lattice powers the Railheads, which costs it
@@ -173,6 +176,7 @@ Every run of the model tests these. A check is a law of physics or a requirement
 | [The Forges make the cap graphite before sealing ends](numbers.md#check-graphite-for-caps) | Pass | 4.17e+17 kg of graphite by the end of sealing; the caps need 3.00e+17 kg. |
 | [The last Brick arrives before the deadline](numbers.md#check-ice-arrives) | Pass | Last launch 2035.80, transfer 1.15 yr, last arrival 2036.95. |
 | [The Ring recovers more power than the Railheads draw](numbers.md#check-ring-energy-loop) | Pass | Ring 7.22e+19 W recovered against 5.57e+19 W drawn by the Railheads. |
+| [The Ring can pass the catch's net braking force to Venus](numbers.md#check-ring-net-force) | **Fails (open issue)** | Catching half the Bricks eastbound and half westbound cancels the twist, not the force: 8.1e+15 N remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; its spare lift is 3.0e+13 N, 266 times too little. |
 | [The Ring can carry the force of lowering the ice on tethers](numbers.md#check-ring-lowering-load) | **Fails (open issue)** | Lowering 2.17e+12 kg/s needs at least 4.7e+15 N; the rotor's spare lift is 3.0e+13 N, 154 times too little. |
 | [The Foundry can afford the Veil by the date it must close](numbers.md#check-foundry-affords-veil) | Pass | Foundry machinery at the Veil's close date: 2.17e+12 kg; Veil: 5.41e+11 kg. |
 | [The Foundry can afford the Helios Lattice by the date it reaches full power](numbers.md#check-foundry-affords-lattice) | Pass | Foundry at full power date: 1.34e+14 kg; Lattice: 5.14e+13 kg. |
@@ -239,8 +243,8 @@ its basis says whether it is a design choice, an invention or a demonstrated pre
 | Slat edge | [1.2 km](numbers.md#veil-slat-side) | Design choice |  | [data/assumptions.yaml:255](../data/assumptions.yaml#L255) |
 | Number of chimneys (one per canopy) | [10,000](numbers.md#chimney-count) | Design choice |  | [data/assumptions.yaml:274](../data/assumptions.yaml#L274) |
 | Chimney diameter | [2 km](numbers.md#chimney-diameter) | Design choice |  | [data/assumptions.yaml:279](../data/assumptions.yaml#L279) |
-| Gas speed up a chimney | [20 m/s](numbers.md#chimney-flow-speed) | Design choice |  | [data/assumptions.yaml:285](../data/assumptions.yaml#L285) |
-| How much the chimney gas cools at the canopy | [300 K](numbers.md#chimney-gas-cooling) | Design choice |  | [data/assumptions.yaml:290](../data/assumptions.yaml#L290) |
+| Air speed through a chimney's intake exchangers | [20 m/s](numbers.md#chimney-flow-speed) | Design choice |  | [data/assumptions.yaml:285](../data/assumptions.yaml#L285) |
+| How much the air cools passing a chimney's intake exchangers | [300 K](numbers.md#chimney-gas-cooling) | Design choice |  | [data/assumptions.yaml:290](../data/assumptions.yaml#L290) |
 | Chimney base height | [1 km](numbers.md#chimney-base) | Design choice |  | [data/assumptions.yaml:295](../data/assumptions.yaml#L295) |
 | Chimney top height | [65 km](numbers.md#chimney-top) | Design choice |  | [data/assumptions.yaml:301](../data/assumptions.yaml#L301) |
 | Peak heat flow from the deep atmosphere | [6.0 × 10¹⁸ W](numbers.md#deep-heat-peak) | Design choice |  | [data/assumptions.yaml:307](../data/assumptions.yaml#L307) |

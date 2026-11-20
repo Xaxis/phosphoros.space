@@ -45,6 +45,7 @@ could not hover: light pressure and Venus's gravity both push it toward Venus. V
 L1 and the coil with it ([corrections](../about.md#corrections)).
 
 <!-- figure:veil-geometry -->
+![Hesperus Veil geometry](../../figures/svg/veil-geometry.svg)
 <!-- /figure -->
 
 The wind also pushes on the bubble as it would on a sail. Like the light pressure on the Veil, that push

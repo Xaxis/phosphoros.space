@@ -6,6 +6,7 @@ by [31 December 2028](numbers.md?date=day#experiments-end). Each has a pass crit
 in advance. A kill signal stops the line it tests; one of them stops everything.
 
 <!-- figure:research-gates -->
+![The proof experiments and their gates, 2027 and 2028](../figures/svg/research-gates.svg)
 <!-- /figure -->
 
 <!-- table:experiments -->

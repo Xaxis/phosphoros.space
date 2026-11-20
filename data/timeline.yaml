@@ -4,6 +4,7 @@
 #
 #   lane: science | mercury | space | ceres | venus
 #   tech: the technology page the row belongs to
+#   critical: on the critical path (see critical_path below)
 
 lanes:
   - { id: science, label: Science and proof }
@@ -37,18 +38,21 @@ rows:
     kind: milestone
     start: foundry-seed-launch
     tech: ouroboros
+    critical: true
   - id: foundry-growth
     label: Ouroboros growth
     lane: mercury
     start: foundry-landing
     end: foundry-full-scale
     tech: ouroboros
+    critical: true
   - id: helios-build
     label: Helios Lattice built
     lane: mercury
     start: helios-first-petals
     end: helios-full-power
     tech: helios
+    critical: true
   - id: veil-build
     label: Hesperus Veil built
     lane: space
@@ -73,6 +77,7 @@ rows:
     start: ice-launch-start
     end: ice-launch-end
     tech: ice-train
+    critical: true
   - id: ring-pays
     label: The Ring powers the Railheads
     lane: ceres
@@ -103,6 +108,7 @@ rows:
     start: first-catch
     end: last-arrival
     tech: ring
+    critical: true
   - id: ice-lowering
     label: Ice lowered, oceans fill
     lane: venus

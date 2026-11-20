@@ -286,6 +286,13 @@ earth-day:
   basis: physics
   source: [nasa-earth-factsheet]
   sig: 3
+earth-solar-day:
+  value: 24.0
+  unit: h
+  label: Earth solar day (noon to noon)
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 2
 earth-n2-fraction:
   value: 0.7808
   unit: "1"
@@ -300,6 +307,14 @@ earth-o2-fraction:
   show: "%"
   sig: 2
   label: Oxygen share of Earth's air, by volume
+  basis: physics
+  source: [nasa-earth-factsheet]
+earth-co2-fraction:
+  value: 4.2e-4
+  unit: "1"
+  show: ppm
+  sig: 2
+  label: CO₂ share of Earth's air, by volume
   basis: physics
   source: [nasa-earth-factsheet]
 earth-atmosphere-mass:
@@ -559,6 +574,21 @@ co2-triple-pressure:
   basis: physics
   source: [nist-co2]
   sig: 2
+co2-melting-a1:
+  value: 1955.5390
+  unit: "1"
+  label: CO₂ melting curve, linear coefficient (p/p_t = 1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)²)
+  basis: physics
+  source: [span-wagner-1996]
+  sig: 8
+  note: Span and Wagner's Eq. 3.10, good to 1.5% from the triple point to 225 K and to 800 MPa.
+co2-melting-a2:
+  value: 2055.4593
+  unit: "1"
+  label: CO₂ melting curve, quadratic coefficient
+  basis: physics
+  source: [span-wagner-1996]
+  sig: 8
 dry-ice-density:
   value: 1562
   unit: kg/m3

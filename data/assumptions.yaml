@@ -285,12 +285,12 @@ chimney-diameter:
 chimney-flow-speed:
   value: 20
   unit: m/s
-  label: Gas speed up a chimney
+  label: Air speed through a chimney's intake exchangers
   basis: design
 chimney-gas-cooling:
   value: 300
   unit: K
-  label: How much the chimney gas cools at the canopy
+  label: How much the air cools passing a chimney's intake exchangers
   basis: design
 chimney-base:
   value: 1000

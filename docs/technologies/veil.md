@@ -8,6 +8,7 @@ on [30 June 2032](../numbers.md?date=day#veil-close). Once Venus is cool it beco
 and day clock.
 
 <!-- figure:veil-geometry -->
+![Hesperus Veil geometry](../../figures/svg/veil-geometry.svg)
 <!-- /figure -->
 
 ## Principle

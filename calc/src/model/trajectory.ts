@@ -296,6 +296,27 @@ export function trajectory(r: Registry) {
     () => total((t) => t.heatIn),
   );
   r.q(
+    "traj-heat-lifted",
+    {
+      label: "Heat the Exhaust lifts out of the air, day by day, Frost Towers included",
+      unit: "J",
+      formula: "Σ heat leaving the air × 1 day, to the deadline",
+      basis: "physics",
+      note: "Venus's own heat plus the heat that enters the air during the campaign.",
+    },
+    () => total((t) => t.heatOut),
+  );
+  r.q(
+    "traj-exhaust-light",
+    {
+      label: "Light the Exhaust throws into space: the heat it lifts plus the work that lifts it",
+      unit: "J",
+      formula: "Σ (heat out + pump work) × 1 day, to the deadline",
+      basis: "physics",
+    },
+    () => total((t) => t.heatOut + t.pumpPower),
+  );
+  r.q(
     "traj-warm-energy",
     {
       label: "Beamed power spent warming the air and melting the cold ice after sealing",

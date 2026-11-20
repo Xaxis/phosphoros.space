@@ -9,6 +9,7 @@ to the surface on tethers, as designed, does not yet: it is the plan's
 [open problem](../risks.md#the-ring-cannot-yet-lower-the-ice).
 
 <!-- figure:braking-ring -->
+![Braking Ring: catching the Ice Train](../../figures/svg/braking-ring.svg)
 <!-- /figure -->
 
 ## Principle
@@ -40,16 +41,23 @@ Every Brick arrives from the same direction, overtaking Venus from behind along 
 skims the Ring's height going one way round or the other. A sled on a catcher track about
 [140 km](../numbers.md#ring-track-length) long takes it at [13.5 km/s](../numbers.md#ring-arrival-speed),
 brakes it at [50 g](../numbers.md#ring-catch-accel) to orbital speed and releases it into a parking belt
-beside the Ring. The sled's linear motor runs as a generator, so the braking makes electricity.
+beside the Ring. The belt has two lanes, because eastbound and westbound Bricks end up orbiting in
+opposite directions and must never share one. The sled's linear motor runs as a generator, so the braking makes electricity.
 
 Each kilogram gives up [66.4 MJ/kg](../numbers.md#ring-catch-energy-per-kg) of motion. At
 [80%](../numbers.md#ring-recovery-efficiency) the Ring recovers [53 MJ/kg](../numbers.md#ring-recovered-per-kg)
 as electricity. The rest heats the tracks and is radiated to space from above the air, never into it.
 
 Braking pushes on the tracks along the Ring with [8.8 × 10¹⁵ N](../numbers.md#ring-braking-force) at the
-full rate, far more than the rotor's [3.0 × 10¹³ N](../numbers.md#ring-lift) of lift. That push is
-sideways, though, and sideways pushes can cancel. Half the Bricks are caught eastbound and half westbound,
-so the two pulls balance, Brick for Brick.
+full rate, far more than the rotor's [3.0 × 10¹³ N](../numbers.md#ring-lift) of lift. Version 2 caught
+half the Bricks eastbound and half westbound so the two pushes would cancel. They cancel the twist on the
+Ring, not the force. Every Brick arrives from the same direction, and the two streams graze the Ring at
+mirror-image points, each turned half its path's bend away from that direction (the path's eccentricity
+is [2.64](../numbers.md#ring-approach-eccentricity)). Their sideways pushes cancel; their forward pushes
+add, to [8.1 × 10¹⁵ N](../numbers.md#ring-net-braking-force) along Venus's orbital motion,
+[270](../numbers.md#ring-net-overload) times the rotor's lift. An orbital ring has no stiff way to hand
+an in-plane force to the planet, so the model's `ring-net-force` check fails until a design does
+([issue #3](https://github.com/Xaxis/phosphoros.space/issues/3)).
 
 ### The energy loop
 
@@ -61,6 +69,7 @@ is not free: it is gravity's work on the falling ice,
 [the Ice Train](ice-train.md#why-the-ring-gets-back-more-than-the-railheads-spend).
 
 <!-- figure:energy-sankey -->
+![Energy flows of the Phosphoros campaign, to the deadline](../../figures/svg/energy-sankey.svg)
 <!-- /figure -->
 
 The loop closes by swapping customers, not by a second beam. Beaming the Ring's electricity to Ceres
@@ -134,9 +143,9 @@ that is a force of at least [4.7 × 10¹⁵ N](../numbers.md#lowering-support). 
 [3.0 × 10¹³ N](../numbers.md#ring-lift) to spare: [150](../numbers.md#lowering-overload) times too
 little. The model's `ring-lowering-load` check fails, on purpose, until this is solved.
 
-> **Physics:** Catching is a sideways force along the Ring, and eastbound and westbound catches cancel.
-> Lowering is a vertical force, and nothing cancels weight. Every newton of it must come from the rotor's
-> lift.
+> **Physics:** Catching pushes the Ring along its own track, and no arrangement of catches makes the push
+> vanish, because the ice's momentum has to end up somewhere. Lowering is a vertical force, and nothing
+> cancels weight either. Every newton of both must reach Venus through the rotor.
 
 Three options are under study, and none is free.
 
@@ -171,7 +180,7 @@ the tethers work: the heat it counts from the falling ice is the fall from
 | Brick arrival | [13.5 km/s](../numbers.md#ring-arrival-speed) |
 | Energy recovered | [66.4 MJ/kg](../numbers.md#ring-catch-energy-per-kg) of motion, [53 MJ/kg](../numbers.md#ring-recovered-per-kg) as electricity |
 | Recovered power | [7.2 × 10¹⁹ W](../numbers.md#ring-power) at full rate |
-| Braking force | [8.8 × 10¹⁵ N](../numbers.md#ring-braking-force), cancelled by catching half the Bricks eastbound and half westbound |
+| Braking force | [8.8 × 10¹⁵ N](../numbers.md#ring-braking-force); east and west catches cancel the twist, not the force |
 | Without the Ring | Ice would hit at [13.8 km/s](../numbers.md#ring-free-fall-speed) and dump [9.5 × 10²⁷ J](../numbers.md#ring-free-fall-impact) of heat, [18](../numbers.md#ring-free-fall-vs-atmosphere) times the air's |
 | Tether lifts | [3,000](../numbers.md#ring-tether-lifts), each lowering a Brick every [1.4 s](../numbers.md#tether-interval) |
 <!-- /table -->
@@ -211,10 +220,12 @@ the tethers work: the heat it counts from the falling ice is the fall from
 - **A Brick misses its track.** Every approach skims the Ring's height, above the air, so a missed Brick
   swings past Venus and back into solar orbit, where Lattice lasers can steer it for a later return.
 - **The catch falls out of balance.** If eastbound catching stops, westbound catching stops with it. The
-  two directions are scheduled together so the sideways forces always cancel.
+  two directions are scheduled together so the twist on the Ring always cancels. The forward push does
+  not, which is the open problem above.
 - **The rotor fails.** Controlled breakpoints shed one segment rather than the loop.
 - **A crowded parking belt.** Every parked Brick carries a retroreflector and is tracked; nudges keep the
-  belt clear of the Ring.
+  belt clear of the Ring and the two opposite-running lanes clear of each other, where a collision would
+  come at twice orbital speed.
 - **Lowering stays unsolved.** The ice stays parked while the options are worked. Dropping it from the
   Ring remains possible, at the cost in heat and time described above.
 - **Beams and weapons.** Receivers take power only through a live, signed handshake with each beam; the

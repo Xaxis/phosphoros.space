@@ -10,6 +10,7 @@ from [June 2033](../numbers.md?date=month#ice-launch-start) to
 [October 2035](../numbers.md?date=month#ice-launch-end).
 
 <!-- figure:ice-orbits -->
+![Ceres Ice Train orbits, to scale](../../figures/svg/ice-orbits.svg)
 <!-- /figure -->
 
 ## Principle

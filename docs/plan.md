@@ -68,6 +68,7 @@ before active cooling begins in [January 2033](numbers.md?date=month#cooling-sta
 [Aegis Shield](technologies/aegis.md)'s coil sits beside it.
 
 <!-- figure:veil-geometry -->
+![Hesperus Veil geometry](../figures/svg/veil-geometry.svg)
 <!-- /figure -->
 
 > **Precedent:** Angel's design for cooling Earth used thin refracting flyers near L1 that light pressure
@@ -125,9 +126,11 @@ basalt. The [Cryo-continents](technologies/cryo.md) are [2 km](numbers.md#cryo-t
 [12 PW](numbers.md#cryo-floor-load) at first, carried away by heat pipes drilled into the basin floors.
 
 <!-- figure:heat-path -->
+![Venus's heat path, in cross-section](../figures/svg/heat-path.svg)
 <!-- /figure -->
 
 <!-- figure:co2-phase -->
+![CO₂ phase diagram with Venus's simulated cooling path](../figures/svg/co2-phase.svg)
 <!-- /figure -->
 
 ### 4. Bring the water
@@ -142,6 +145,7 @@ Each falls sunward for [1.15 yr](numbers.md#ice-transfer-years). In all they car
 Ceres's water, and the recoil changes Ceres's orbit for good ([Risks](risks.md#ceres)).
 
 <!-- figure:ice-orbits -->
+![Ceres Ice Train orbits, to scale](../figures/svg/ice-orbits.svg)
 <!-- /figure -->
 
 Ice falling freely onto Venus would hit at [13.8 km/s](numbers.md#ring-free-fall-speed) and dump
@@ -158,6 +162,7 @@ gravity adds it as the ice falls from Ceres's orbit to Venus's
 ([budget](budget.md#ring-recovery-and-the-suns-gravity)).
 
 <!-- figure:braking-ring -->
+![Braking Ring: catching the Ice Train](../figures/svg/braking-ring.svg)
 <!-- /figure -->
 
 **Open problem.** Catching works. Lowering does not, yet. Bringing the parked ice down on tethers needs
@@ -220,6 +225,7 @@ Thirteen inventions, on four worlds and the space between them. Only the seed fo
 factories leave Earth; every other kilogram is made where it is needed.
 
 <!-- figure:tech-stack -->
+![The Phosphoros technology stack](../figures/svg/tech-stack.svg)
 <!-- /figure -->
 
 <!-- table:techs -->
@@ -243,6 +249,7 @@ factories leave Earth; every other kilogram is made where it is needed.
 ## The decade in brief
 
 <!-- figure:gantt -->
+![The Phosphoros decade, 2027 to 2036](../figures/svg/gantt.svg)
 <!-- /figure -->
 
 The years [2027](numbers.md?date=year#program-start) and [2028](numbers.md?date=year#experiments-end) are for
@@ -254,6 +261,7 @@ Foundry grows on Mercury while the Veil, the Lattice and the Ring are built from
 ## The simulated atmosphere
 
 <!-- figure:trajectory -->
+![The simulated atmosphere, 2033 to 2036](../figures/svg/trajectory.svg)
 <!-- /figure -->
 
 The dates on which Venus's air changes are not chosen. They come from a day-by-day simulation of the

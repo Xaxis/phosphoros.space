@@ -165,6 +165,26 @@ export function helios(r: Registry) {
     () => v("helios-power") * v("helios-supply-years") * DAY_S,
   );
   r.q(
+    "helios-sunlight-energy",
+    {
+      label: "Sunlight the Lattice's film collects from full power to the deadline",
+      unit: "J",
+      formula: "E_Lattice / η",
+      basis: "invented",
+    },
+    () => v("helios-supply") / v("helios-efficiency"),
+  );
+  r.q(
+    "helios-loss-energy",
+    {
+      label: "Heat the film, lasers and receivers shed in that time",
+      unit: "J",
+      formula: "E_sunlight − E_Lattice",
+      basis: "physics",
+    },
+    () => v("helios-sunlight-energy") - v("helios-supply"),
+  );
+  r.q(
     "helios-receiver-incident",
     {
       label: "Beam power arriving at the receivers",

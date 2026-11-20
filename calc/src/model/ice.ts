@@ -215,6 +215,26 @@ export function iceTrain(r: Registry) {
     () => v("ice-mass") * v("launch-energy-per-kg"),
   );
   r.q(
+    "ice-launch-motion",
+    {
+      label: "Motion energy the Railheads give all the ice",
+      unit: "J",
+      formula: "E_launch × η",
+      basis: "physics",
+    },
+    () => v("ice-launch-energy") * v("railhead-efficiency"),
+  );
+  r.q(
+    "railhead-loss-energy",
+    {
+      label: "Heat the Railheads shed at Ceres launching all the ice",
+      unit: "J",
+      formula: "E_launch − E_motion",
+      basis: "physics",
+    },
+    () => v("ice-launch-energy") - v("ice-launch-motion"),
+  );
+  r.q(
     "railhead-power",
     { label: "Power all Railheads draw", unit: "W", formula: "ṁ × e", basis: "invented" },
     () => v("ice-throughput") * v("launch-energy-per-kg"),

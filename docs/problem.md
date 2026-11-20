@@ -16,7 +16,7 @@ holds far more heat than it can shed on its own, and the heat has nowhere quick 
 | Surface pressure | [92 bar](numbers.md#venus-surface-pressure) | [1.01 bar](numbers.md#earth-sea-level-pressure) |
 | Composition | [96.5%](numbers.md#venus-co2-fraction) CO₂, [3.5%](numbers.md#venus-n2-fraction) N₂, [150 ppm](numbers.md?show=ppm#venus-so2-fraction) SO₂, traces | [78%](numbers.md#earth-n2-fraction) N₂, [21%](numbers.md#earth-o2-fraction) O₂ |
 | Mean surface temperature | [737 K](numbers.md#venus-surface-temp) ([464 °C](numbers.md?show=°C#venus-surface-temp)) | [288 K](numbers.md#earth-surface-temp) |
-| Rotation | [243 d](numbers.md#venus-sidereal-day), retrograde; a solar day lasts [117 d](numbers.md#venus-solar-day) | [23.9 h](numbers.md#earth-day) |
+| Rotation | [243 d](numbers.md#venus-sidereal-day), retrograde; a solar day lasts [117 d](numbers.md#venus-solar-day) | [23.9 h](numbers.md#earth-day); a solar day lasts [24 h](numbers.md#earth-solar-day) |
 | Sunlight at the top of the atmosphere | [2,601 W/m²](numbers.md#venus-sunlight) | [1,361 W/m²](numbers.md#solar-constant-earth) |
 | Water | Nearly none, with an extreme deuterium to hydrogen ratio | [1.4 × 10²¹ kg](numbers.md#earth-water-mass) |
 | Magnetic field | None of its own | Dipole of [8 × 10²² A·m²](numbers.md#earth-dipole) |
@@ -39,6 +39,7 @@ Every conventional route to an Earth-like Venus fails the same test: it needs mo
 receives from the Sun, or more mass than Earth can launch, or more time than a decade.
 
 <!-- figure:power-scale -->
+![Power needs against supply, 10-year tasks, log scale](../figures/svg/power-scale.svg)
 <!-- /figure -->
 
 ### The atmosphere's heat

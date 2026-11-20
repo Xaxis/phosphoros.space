@@ -13,7 +13,7 @@ baseline:
   - { property: Mean surface temperature, venus: "{venus-surface-temp} ({venus-surface-temp|show=°C})", earth: "{earth-surface-temp}" }
   - property: Rotation
     venus: "{venus-sidereal-day}, retrograde; a solar day lasts {venus-solar-day}"
-    earth: "{earth-day}"
+    earth: "{earth-day}; a solar day lasts {earth-solar-day}"
   - { property: Sunlight at the top of the atmosphere, venus: "{venus-sunlight}", earth: "{solar-constant-earth}" }
   - { property: Water, venus: "Nearly none, with an extreme deuterium to hydrogen ratio", earth: "{earth-water-mass}" }
   - { property: Magnetic field, venus: None of its own, earth: "Dipole of {earth-dipole}" }

@@ -297,13 +297,21 @@
       "basis": "physics",
       "source": "data/constants.yaml#L282"
     },
+    "earth-solar-day": {
+      "value": 24,
+      "unit": "h",
+      "shown": "24 h",
+      "label": "Earth solar day (noon to noon)",
+      "basis": "physics",
+      "source": "data/constants.yaml#L289"
+    },
     "earth-n2-fraction": {
       "value": 0.7808,
       "unit": "1",
       "shown": "78%",
       "label": "Nitrogen share of Earth's air, by volume",
       "basis": "physics",
-      "source": "data/constants.yaml#L289"
+      "source": "data/constants.yaml#L296"
     },
     "earth-o2-fraction": {
       "value": 0.2095,
@@ -311,7 +319,15 @@
       "shown": "21%",
       "label": "Oxygen share of Earth's air, by volume",
       "basis": "physics",
-      "source": "data/constants.yaml#L297"
+      "source": "data/constants.yaml#L304"
+    },
+    "earth-co2-fraction": {
+      "value": 0.00042,
+      "unit": "1",
+      "shown": "420 ppm",
+      "label": "CO₂ share of Earth's air, by volume",
+      "basis": "physics",
+      "source": "data/constants.yaml#L312"
     },
     "earth-atmosphere-mass": {
       "value": 5150000000000000000,
@@ -319,7 +335,7 @@
       "shown": "5.2 × 10¹⁸ kg",
       "label": "Mass of Earth's atmosphere",
       "basis": "physics",
-      "source": "data/constants.yaml#L305"
+      "source": "data/constants.yaml#L320"
     },
     "earth-n2-mass": {
       "value": 3870000000000000000,
@@ -327,7 +343,7 @@
       "shown": "3.9 × 10¹⁸ kg",
       "label": "Mass of Earth's atmospheric nitrogen",
       "basis": "physics",
-      "source": "data/constants.yaml#L312"
+      "source": "data/constants.yaml#L327"
     },
     "earth-water-mass": {
       "value": 1.4e+21,
@@ -335,7 +351,7 @@
       "shown": "1.4 × 10²¹ kg",
       "label": "Earth's water",
       "basis": "physics",
-      "source": "data/constants.yaml#L319"
+      "source": "data/constants.yaml#L334"
     },
     "earth-surface-temp": {
       "value": 288,
@@ -343,7 +359,7 @@
       "shown": "288 K",
       "label": "Earth's mean surface temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L326"
+      "source": "data/constants.yaml#L341"
     },
     "earth-sea-level-pressure": {
       "value": 101325,
@@ -351,7 +367,7 @@
       "shown": "1.01 bar",
       "label": "Earth's sea-level pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L333"
+      "source": "data/constants.yaml#L348"
     },
     "earth-o2-pressure": {
       "value": 21228,
@@ -359,7 +375,7 @@
       "shown": "0.21 bar",
       "label": "Oxygen pressure at Earth's sea level",
       "basis": "physics",
-      "source": "data/constants.yaml#L341"
+      "source": "data/constants.yaml#L356"
     },
     "earth-dipole": {
       "value": 8e+22,
@@ -367,7 +383,7 @@
       "shown": "8 × 10²² A·m²",
       "label": "Earth's magnetic dipole moment",
       "basis": "physics",
-      "source": "data/constants.yaml#L350"
+      "source": "data/constants.yaml#L365"
     },
     "seawater-density": {
       "value": 1025,
@@ -375,7 +391,7 @@
       "shown": "1,030 kg/m³",
       "label": "Seawater density",
       "basis": "physics",
-      "source": "data/constants.yaml#L357"
+      "source": "data/constants.yaml#L372"
     },
     "humanity-power": {
       "value": 19000000000000,
@@ -383,7 +399,7 @@
       "shown": "19 TW",
       "label": "Humanity's primary power use",
       "basis": "physics",
-      "source": "data/constants.yaml#L363"
+      "source": "data/constants.yaml#L378"
     },
     "mercury-mass": {
       "value": 3.3011e+23,
@@ -391,7 +407,7 @@
       "shown": "3.3 × 10²³ kg",
       "label": "Mercury mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L374"
+      "source": "data/constants.yaml#L389"
     },
     "mercury-orbit": {
       "value": 57909000000,
@@ -399,7 +415,7 @@
       "shown": "0.387 AU",
       "label": "Mercury orbital radius (semi-major axis)",
       "basis": "physics",
-      "source": "data/constants.yaml#L381"
+      "source": "data/constants.yaml#L396"
     },
     "mercury-escape": {
       "value": 4250,
@@ -407,7 +423,7 @@
       "shown": "4.25 km/s",
       "label": "Mercury escape speed",
       "basis": "physics",
-      "source": "data/constants.yaml#L389"
+      "source": "data/constants.yaml#L404"
     },
     "ceres-mass": {
       "value": 938400000000000000000,
@@ -415,7 +431,7 @@
       "shown": "9.38 × 10²⁰ kg",
       "label": "Ceres mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L397"
+      "source": "data/constants.yaml#L412"
     },
     "ceres-radius": {
       "value": 469700,
@@ -423,7 +439,7 @@
       "shown": "470 km",
       "label": "Ceres mean radius",
       "basis": "physics",
-      "source": "data/constants.yaml#L404"
+      "source": "data/constants.yaml#L419"
     },
     "ceres-orbit": {
       "value": 413940000000,
@@ -431,7 +447,7 @@
       "shown": "2.77 AU",
       "label": "Ceres orbital radius (semi-major axis, 2.77 AU)",
       "basis": "physics",
-      "source": "data/constants.yaml#L412"
+      "source": "data/constants.yaml#L427"
     },
     "ceres-aphelion": {
       "value": 445830000000,
@@ -439,7 +455,7 @@
       "shown": "2.98 AU",
       "label": "Ceres aphelion",
       "basis": "physics",
-      "source": "data/constants.yaml#L420"
+      "source": "data/constants.yaml#L435"
     },
     "ceres-water-fraction": {
       "value": 0.27,
@@ -447,7 +463,7 @@
       "shown": "27%",
       "label": "Water share of Ceres's mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L428"
+      "source": "data/constants.yaml#L443"
     },
     "co2-molar-mass": {
       "value": 0.04401,
@@ -455,7 +471,7 @@
       "shown": "0.04401 kg/mol",
       "label": "Molar mass of CO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L440"
+      "source": "data/constants.yaml#L455"
     },
     "n2-molar-mass": {
       "value": 0.028013,
@@ -463,7 +479,7 @@
       "shown": "0.02801 kg/mol",
       "label": "Molar mass of N₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L446"
+      "source": "data/constants.yaml#L461"
     },
     "o2-molar-mass": {
       "value": 0.031998,
@@ -471,7 +487,7 @@
       "shown": "0.032 kg/mol",
       "label": "Molar mass of O₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L452"
+      "source": "data/constants.yaml#L467"
     },
     "so2-molar-mass": {
       "value": 0.064066,
@@ -479,7 +495,7 @@
       "shown": "0.06407 kg/mol",
       "label": "Molar mass of SO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L458"
+      "source": "data/constants.yaml#L473"
     },
     "cao-molar-mass": {
       "value": 0.056077,
@@ -487,7 +503,7 @@
       "shown": "0.05608 kg/mol",
       "label": "Molar mass of CaO",
       "basis": "physics",
-      "source": "data/constants.yaml#L464"
+      "source": "data/constants.yaml#L479"
     },
     "h2-molar-mass": {
       "value": 0.002016,
@@ -495,7 +511,7 @@
       "shown": "0.002016 kg/mol",
       "label": "Molar mass of H₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L470"
+      "source": "data/constants.yaml#L485"
     },
     "h2o-molar-mass": {
       "value": 0.018015,
@@ -503,7 +519,7 @@
       "shown": "0.01802 kg/mol",
       "label": "Molar mass of H₂O",
       "basis": "physics",
-      "source": "data/constants.yaml#L476"
+      "source": "data/constants.yaml#L491"
     },
     "c-molar-mass": {
       "value": 0.012011,
@@ -511,7 +527,7 @@
       "shown": "0.01201 kg/mol",
       "label": "Molar mass of carbon",
       "basis": "physics",
-      "source": "data/constants.yaml#L482"
+      "source": "data/constants.yaml#L497"
     },
     "co2-cp": {
       "value": 1000,
@@ -519,7 +535,7 @@
       "shown": "1,000 J/(kg·K)",
       "label": "Heat capacity of Venus's air (CO₂), averaged over the cooling",
       "basis": "physics",
-      "source": "data/constants.yaml#L488"
+      "source": "data/constants.yaml#L503"
     },
     "air-cp": {
       "value": 1040,
@@ -527,7 +543,7 @@
       "shown": "1,040 J/(kg·K)",
       "label": "Heat capacity of nitrogen-oxygen air",
       "basis": "physics",
-      "source": "data/constants.yaml#L496"
+      "source": "data/constants.yaml#L511"
     },
     "co2-deposition-heat": {
       "value": 571000,
@@ -535,7 +551,7 @@
       "shown": "571 kJ/kg",
       "label": "Heat CO₂ releases freezing straight from gas (deposition)",
       "basis": "physics",
-      "source": "data/constants.yaml#L502"
+      "source": "data/constants.yaml#L517"
     },
     "co2-sublimation-enthalpy": {
       "value": 25200,
@@ -543,7 +559,7 @@
       "shown": "25.2 kJ/mol",
       "label": "Sublimation enthalpy of CO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L510"
+      "source": "data/constants.yaml#L525"
     },
     "co2-sublimation-ref-temp": {
       "value": 194.7,
@@ -551,7 +567,7 @@
       "shown": "194.7 K",
       "label": "CO₂ frost point at one atmosphere",
       "basis": "physics",
-      "source": "data/constants.yaml#L518"
+      "source": "data/constants.yaml#L533"
     },
     "co2-sublimation-ref-pressure": {
       "value": 101325,
@@ -559,7 +575,7 @@
       "shown": "1.013 bar",
       "label": "One atmosphere, the pressure of that frost point",
       "basis": "physics",
-      "source": "data/constants.yaml#L525"
+      "source": "data/constants.yaml#L540"
     },
     "co2-critical-temp": {
       "value": 304.13,
@@ -567,7 +583,7 @@
       "shown": "304.1 K",
       "label": "CO₂ critical temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L532"
+      "source": "data/constants.yaml#L547"
     },
     "co2-critical-pressure": {
       "value": 7377300,
@@ -575,7 +591,7 @@
       "shown": "73.8 bar",
       "label": "CO₂ critical pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L539"
+      "source": "data/constants.yaml#L554"
     },
     "co2-triple-temp": {
       "value": 216.59,
@@ -583,7 +599,7 @@
       "shown": "216.6 K",
       "label": "CO₂ triple-point temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L547"
+      "source": "data/constants.yaml#L562"
     },
     "co2-triple-pressure": {
       "value": 518500,
@@ -591,7 +607,23 @@
       "shown": "5.2 bar",
       "label": "CO₂ triple-point pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L554"
+      "source": "data/constants.yaml#L569"
+    },
+    "co2-melting-a1": {
+      "value": 1955.54,
+      "unit": "1",
+      "shown": "1,955.539",
+      "label": "CO₂ melting curve, linear coefficient (p/p_t = 1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)²)",
+      "basis": "physics",
+      "source": "data/constants.yaml#L577"
+    },
+    "co2-melting-a2": {
+      "value": 2055.46,
+      "unit": "1",
+      "shown": "2,055.4593",
+      "label": "CO₂ melting curve, quadratic coefficient",
+      "basis": "physics",
+      "source": "data/constants.yaml#L585"
     },
     "dry-ice-density": {
       "value": 1562,
@@ -599,7 +631,7 @@
       "shown": "1,562 kg/m³",
       "label": "Density of dry ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L562"
+      "source": "data/constants.yaml#L592"
     },
     "co2-split-enthalpy": {
       "value": 393500,
@@ -607,7 +639,7 @@
       "shown": "394 kJ/mol",
       "label": "Least energy to split CO₂ into carbon and oxygen",
       "basis": "physics",
-      "source": "data/constants.yaml#L568"
+      "source": "data/constants.yaml#L598"
     },
     "bosch-reaction-heat": {
       "value": 90100,
@@ -615,7 +647,7 @@
       "shown": "90.1 kJ/mol",
       "label": "Heat the Bosch reaction releases per mole of CO₂ (water as vapour)",
       "basis": "physics",
-      "source": "data/constants.yaml#L576"
+      "source": "data/constants.yaml#L606"
     },
     "ice-density": {
       "value": 917,
@@ -623,7 +655,7 @@
       "shown": "917 kg/m³",
       "label": "Density of water ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L584"
+      "source": "data/constants.yaml#L614"
     },
     "water-density": {
       "value": 1000,
@@ -631,7 +663,7 @@
       "shown": "1,000 kg/m³",
       "label": "Density of water",
       "basis": "physics",
-      "source": "data/constants.yaml#L590"
+      "source": "data/constants.yaml#L620"
     },
     "ice-melt-heat": {
       "value": 334000,
@@ -639,7 +671,7 @@
       "shown": "334 kJ/kg",
       "label": "Heat to melt ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L596"
+      "source": "data/constants.yaml#L626"
     },
     "ice-cp": {
       "value": 1750,
@@ -647,7 +679,7 @@
       "shown": "1,800 J/(kg·K)",
       "label": "Heat capacity of cold ice (average from 150 K to 273 K)",
       "basis": "physics",
-      "source": "data/constants.yaml#L603"
+      "source": "data/constants.yaml#L633"
     },
     "water-cp": {
       "value": 4184,
@@ -655,7 +687,7 @@
       "shown": "4,180 J/(kg·K)",
       "label": "Heat capacity of water",
       "basis": "physics",
-      "source": "data/constants.yaml#L609"
+      "source": "data/constants.yaml#L639"
     },
     "graphite-density": {
       "value": 2200,
@@ -663,7 +695,7 @@
       "shown": "2,200 kg/m³",
       "label": "Density of graphite",
       "basis": "physics",
-      "source": "data/constants.yaml#L615"
+      "source": "data/constants.yaml#L645"
     },
     "rock-conductivity": {
       "value": 2.5,
@@ -671,7 +703,7 @@
       "shown": "2.5 W/(m·K)",
       "label": "Thermal conductivity of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L623"
+      "source": "data/constants.yaml#L653"
     },
     "rock-diffusivity": {
       "value": 0.000001,
@@ -679,7 +711,7 @@
       "shown": "1.0 × 10⁻⁶ m²/s",
       "label": "Thermal diffusivity of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L630"
+      "source": "data/constants.yaml#L660"
     },
     "rock-density": {
       "value": 3000,
@@ -687,7 +719,7 @@
       "shown": "3,000 kg/m³",
       "label": "Density of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L637"
+      "source": "data/constants.yaml#L667"
     },
     "basalt-cao-fraction": {
       "value": 0.1,
@@ -695,7 +727,7 @@
       "shown": "10%",
       "label": "Lime (CaO) share of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L644"
+      "source": "data/constants.yaml#L674"
     },
     "led-2012-power-in": {
       "value": 3e-11,
@@ -703,7 +735,7 @@
       "shown": "3.0 × 10⁻¹¹ W",
       "label": "Electricity the MIT LED drew while emitting more light than that (2012)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L653"
+      "source": "data/constants.yaml#L683"
     },
     "led-2012-light-out": {
       "value": 6.9e-11,
@@ -711,7 +743,7 @@
       "shown": "6.9 × 10⁻¹¹ W",
       "label": "Light the MIT LED emitted from that electricity, the rest drawn from heat (2012)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L660"
+      "source": "data/constants.yaml#L690"
     },
     "lunar-factory-seed-mass": {
       "value": 100000,
@@ -719,7 +751,7 @@
       "shown": "100 t",
       "label": "Seed mass of the 1980 NASA self-replicating lunar factory (a design study)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L667"
+      "source": "data/constants.yaml#L697"
     },
     "lunar-factory-replication-time": {
       "value": 365.25,
@@ -727,7 +759,7 @@
       "shown": "1 yr",
       "label": "Time the 1980 NASA lunar factory was designed to take to copy itself",
       "basis": "precedent",
-      "source": "data/constants.yaml#L675"
+      "source": "data/constants.yaml#L705"
     },
     "program-start": {
       "value": "2027-01-01",
@@ -1085,7 +1117,7 @@
       "value": 20,
       "unit": "m/s",
       "shown": "20 m/s",
-      "label": "Gas speed up a chimney",
+      "label": "Air speed through a chimney's intake exchangers",
       "basis": "design",
       "source": "data/assumptions.yaml#L285"
     },
@@ -1093,7 +1125,7 @@
       "value": 300,
       "unit": "K",
       "shown": "300 K",
-      "label": "How much the chimney gas cools at the canopy",
+      "label": "How much the air cools passing a chimney's intake exchangers",
       "basis": "design",
       "source": "data/assumptions.yaml#L290"
     },
@@ -2624,13 +2656,39 @@
         "helios-supply-years"
       ]
     },
+    "helios-sunlight-energy": {
+      "value": 5.19322e+28,
+      "unit": "J",
+      "shown": "5.2 × 10²⁸ J",
+      "label": "Sunlight the Lattice's film collects from full power to the deadline",
+      "basis": "invented",
+      "source": "calc/src/model/helios.ts#L168",
+      "formula": "E_Lattice / η",
+      "inputs": [
+        "helios-supply",
+        "helios-efficiency"
+      ]
+    },
+    "helios-loss-energy": {
+      "value": 4.41423e+28,
+      "unit": "J",
+      "shown": "4.4 × 10²⁸ J",
+      "label": "Heat the film, lasers and receivers shed in that time",
+      "basis": "physics",
+      "source": "calc/src/model/helios.ts#L178",
+      "formula": "E_sunlight − E_Lattice",
+      "inputs": [
+        "helios-sunlight-energy",
+        "helios-supply"
+      ]
+    },
     "helios-receiver-incident": {
       "value": 93333300000000000000,
       "unit": "W",
       "shown": "9.3 × 10¹⁹ W",
       "label": "Beam power arriving at the receivers",
       "basis": "invented",
-      "source": "calc/src/model/helios.ts#L168",
+      "source": "calc/src/model/helios.ts#L188",
       "formula": "P / η_receiver",
       "inputs": [
         "helios-power",
@@ -2643,7 +2701,7 @@
       "shown": "9.3 × 10¹² m²",
       "label": "Receiver area at 10 MW/m²",
       "basis": "invented",
-      "source": "calc/src/model/helios.ts#L178",
+      "source": "calc/src/model/helios.ts#L198",
       "formula": "P_in / I",
       "inputs": [
         "helios-receiver-incident",
@@ -2656,7 +2714,7 @@
       "shown": "2.3 × 10¹⁹ W",
       "label": "Heat the receivers shed",
       "basis": "physics",
-      "source": "calc/src/model/helios.ts#L188",
+      "source": "calc/src/model/helios.ts#L208",
       "formula": "P_in − P",
       "inputs": [
         "helios-receiver-incident",
@@ -2669,7 +2727,7 @@
       "shown": "4.1 × 10¹³ m²",
       "label": "Radiator fin area to shed that heat at 1,500 K (both faces)",
       "basis": "physics",
-      "source": "calc/src/model/helios.ts#L198",
+      "source": "calc/src/model/helios.ts#L218",
       "formula": "P_loss / (2 σ T⁴)",
       "inputs": [
         "helios-receiver-loss",
@@ -3035,7 +3093,7 @@
       "value": 4098800000,
       "unit": "kg/s",
       "shown": "4.1 × 10⁹ kg/s",
-      "label": "Gas flow up one chimney",
+      "label": "Hot air drawn through one chimney's exchangers",
       "basis": "invented",
       "source": "calc/src/model/exhaust.ts#L19",
       "formula": "ρ v A",
@@ -3051,7 +3109,7 @@
       "shown": "1.2 × 10¹⁵ W",
       "label": "Heat one chimney delivers",
       "basis": "invented",
-      "source": "calc/src/model/exhaust.ts#L24",
+      "source": "calc/src/model/exhaust.ts#L29",
       "formula": "ṁ c_p ΔT",
       "inputs": [
         "chimney-mass-flow",
@@ -3065,7 +3123,7 @@
       "shown": "1.2 × 10¹⁹ W",
       "label": "Heat all chimneys can deliver",
       "basis": "invented",
-      "source": "calc/src/model/exhaust.ts#L29",
+      "source": "calc/src/model/exhaust.ts#L34",
       "formula": "N × Q",
       "inputs": [
         "chimney-count",
@@ -3078,7 +3136,7 @@
       "shown": "2",
       "label": "Chimney capacity over the peak deep heat flow",
       "basis": "design",
-      "source": "calc/src/model/exhaust.ts#L34",
+      "source": "calc/src/model/exhaust.ts#L39",
       "formula": "N Q / P_peak",
       "inputs": [
         "chimney-capacity",
@@ -3091,7 +3149,7 @@
       "shown": "215 km",
       "label": "Chimney grid spacing",
       "basis": "design",
-      "source": "calc/src/model/exhaust.ts#L45",
+      "source": "calc/src/model/exhaust.ts#L50",
       "formula": "√(A / N)",
       "inputs": [
         "venus-area",
@@ -3104,7 +3162,7 @@
       "shown": "64 km",
       "label": "Chimney height",
       "basis": "design",
-      "source": "calc/src/model/exhaust.ts#L57",
+      "source": "calc/src/model/exhaust.ts#L62",
       "formula": "top − base",
       "inputs": [
         "chimney-top",
@@ -3117,7 +3175,7 @@
       "shown": "2.3 µm",
       "label": "Exhaust emission wavelength (from the tile's 0.54 eV bandgap)",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L94",
+      "source": "calc/src/model/exhaust.ts#L99",
       "formula": "h c / E_gap",
       "inputs": [
         "planck-constant",
@@ -3132,7 +3190,7 @@
       "shown": "0.91 MW/m²",
       "label": "Emitter brightness, as bright as a 2,000 K body",
       "basis": "invented",
-      "source": "calc/src/model/exhaust.ts#L107",
+      "source": "calc/src/model/exhaust.ts#L112",
       "formula": "σ T_h⁴",
       "inputs": [
         "stefan-boltzmann",
@@ -3145,7 +3203,7 @@
       "shown": "1.0 × 10²⁷ J",
       "label": "Heat-pump work for the sensible cooling",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L119",
+      "source": "calc/src/model/exhaust.ts#L124",
       "formula": "∫ M c_p (T_h / T − 1) dT, from 737 K to 195 K",
       "inputs": [
         "exhaust-effective-temp",
@@ -3164,7 +3222,7 @@
       "shown": "1.8 × 10²⁷ J",
       "label": "Heat-pump work to freeze the CO₂",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L129",
+      "source": "calc/src/model/exhaust.ts#L134",
       "formula": "Q_L [T_h ln(T_c / T_t) / (T_c − T_t) − 1]",
       "inputs": [
         "exhaust-effective-temp",
@@ -3183,7 +3241,7 @@
       "shown": "2.83 × 10²⁷ J",
       "label": "Heat-pump work to cool Venus",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L119",
+      "source": "calc/src/model/exhaust.ts#L124",
       "formula": "W_sensible + W_latent",
       "inputs": [
         "exhaust-work-sensible",
@@ -3196,7 +3254,7 @@
       "shown": "5.4",
       "label": "Work per joule of heat moved",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L151",
+      "source": "calc/src/model/exhaust.ts#L156",
       "formula": "W / Q",
       "inputs": [
         "exhaust-work",
@@ -3209,7 +3267,7 @@
       "shown": "3.4 × 10²⁷ J",
       "label": "Total energy the Exhaust throws into space",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L162",
+      "source": "calc/src/model/exhaust.ts#L167",
       "formula": "Q + W",
       "inputs": [
         "atmosphere-heat",
@@ -3222,7 +3280,7 @@
       "shown": "3.5 yr",
       "label": "Length of the active-cooling campaign",
       "basis": "design",
-      "source": "calc/src/model/exhaust.ts#L172",
+      "source": "calc/src/model/exhaust.ts#L177",
       "formula": "end − start",
       "inputs": [
         "cooling-end",
@@ -3235,7 +3293,7 @@
       "shown": "4.8 × 10¹⁸ W",
       "label": "Average heat removed from Venus",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L184",
+      "source": "calc/src/model/exhaust.ts#L189",
       "formula": "E / campaign",
       "inputs": [
         "atmosphere-heat",
@@ -3248,7 +3306,7 @@
       "shown": "2.6 × 10¹⁹ W",
       "label": "Average electrical input",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L185",
+      "source": "calc/src/model/exhaust.ts#L190",
       "formula": "E / campaign",
       "inputs": [
         "exhaust-work",
@@ -3261,7 +3319,7 @@
       "shown": "3.0 × 10¹⁹ W",
       "label": "Average power thrown into space",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L186",
+      "source": "calc/src/model/exhaust.ts#L191",
       "formula": "E / campaign",
       "inputs": [
         "exhaust-rejected",
@@ -3274,7 +3332,7 @@
       "shown": "5.5 × 10¹³ m²",
       "label": "Emitter area installed (sized for the peak)",
       "basis": "invented",
-      "source": "calc/src/model/exhaust.ts#L195",
+      "source": "calc/src/model/exhaust.ts#L200",
       "formula": "P_peak / (σ T_h⁴)",
       "inputs": [
         "exhaust-peak",
@@ -3287,7 +3345,7 @@
       "shown": "3.4 × 10¹³ m²",
       "label": "Emitter area working on average",
       "basis": "invented",
-      "source": "calc/src/model/exhaust.ts#L205",
+      "source": "calc/src/model/exhaust.ts#L210",
       "formula": "P_avg / (σ T_h⁴)",
       "inputs": [
         "exhaust-rejected-avg",
@@ -3300,7 +3358,7 @@
       "shown": "12%",
       "label": "Installed emitter area as a share of Venus",
       "basis": "invented",
-      "source": "calc/src/model/exhaust.ts#L215",
+      "source": "calc/src/model/exhaust.ts#L220",
       "formula": "A_installed / A_V",
       "inputs": [
         "exhaust-area-installed",
@@ -3313,7 +3371,7 @@
       "shown": "5.5 × 10⁹ m²",
       "label": "Area of one canopy",
       "basis": "design",
-      "source": "calc/src/model/exhaust.ts#L227",
+      "source": "calc/src/model/exhaust.ts#L232",
       "formula": "A_installed / N",
       "inputs": [
         "exhaust-area-installed",
@@ -3326,7 +3384,7 @@
       "shown": "80 km",
       "label": "Canopy width (hexagon, flat to flat)",
       "basis": "design",
-      "source": "calc/src/model/exhaust.ts#L232",
+      "source": "calc/src/model/exhaust.ts#L237",
       "formula": "√(2 A / √3)",
       "inputs": [
         "canopy-area"
@@ -3338,7 +3396,7 @@
       "shown": "2.6 × 10¹⁵ W",
       "label": "Electrical power into one canopy",
       "basis": "invented",
-      "source": "calc/src/model/exhaust.ts#L244",
+      "source": "calc/src/model/exhaust.ts#L249",
       "formula": "W_avg / N",
       "inputs": [
         "exhaust-work-avg",
@@ -3351,7 +3409,7 @@
       "shown": "3.0 × 10¹⁵ W",
       "label": "Power one canopy throws into space",
       "basis": "invented",
-      "source": "calc/src/model/exhaust.ts#L254",
+      "source": "calc/src/model/exhaust.ts#L259",
       "formula": "P_avg / N",
       "inputs": [
         "exhaust-rejected-avg",
@@ -3364,7 +3422,7 @@
       "shown": "66",
       "label": "Exhaust heat removal compared with a shaded Venus radiating alone",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L264",
+      "source": "calc/src/model/exhaust.ts#L269",
       "formula": "Q_avg / σ (230 K)⁴ A",
       "inputs": [
         "exhaust-heat-avg",
@@ -3377,7 +3435,7 @@
       "shown": "420",
       "label": "Exhaust light output compared with a shaded Venus radiating alone",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L275",
+      "source": "calc/src/model/exhaust.ts#L280",
       "formula": "P_avg / σ (230 K)⁴ A",
       "inputs": [
         "exhaust-rejected-avg",
@@ -3390,7 +3448,7 @@
       "shown": "58%",
       "label": "Working emitter area as a share of Venus at an effective 1,000 K",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L215",
+      "source": "calc/src/model/exhaust.ts#L220",
       "formula": "(Q + W(T_h)) / campaign / (σ T_h⁴ A_V)",
       "inputs": [
         "venus-atmosphere-mass",
@@ -3412,7 +3470,7 @@
       "shown": "17%",
       "label": "Working emitter area as a share of Venus at an effective 1,500 K",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L215",
+      "source": "calc/src/model/exhaust.ts#L220",
       "formula": "(Q + W(T_h)) / campaign / (σ T_h⁴ A_V)",
       "inputs": [
         "venus-atmosphere-mass",
@@ -3434,7 +3492,7 @@
       "shown": "3.7%",
       "label": "Working emitter area as a share of Venus at an effective 2,500 K",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L215",
+      "source": "calc/src/model/exhaust.ts#L220",
       "formula": "(Q + W(T_h)) / campaign / (σ T_h⁴ A_V)",
       "inputs": [
         "venus-atmosphere-mass",
@@ -3456,7 +3514,7 @@
       "shown": "1 bar",
       "label": "CO₂ left in the air at 195 K (its vapour pressure)",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L346",
+      "source": "calc/src/model/exhaust.ts#L351",
       "formula": "Clausius-Clapeyron from 1 atm at 194.7 K",
       "inputs": [
         "freeze-target-temp",
@@ -3472,7 +3530,7 @@
       "shown": "5.4 × 10¹⁸ kg",
       "label": "Mass of CO₂ still in the air at 195 K",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L358",
+      "source": "calc/src/model/exhaust.ts#L363",
       "formula": "P_CO₂ A / g",
       "inputs": [
         "co2-pressure-at-freeze",
@@ -3486,7 +3544,7 @@
       "shown": "74 Pa",
       "label": "CO₂ pressure Frost Towers leave, cold-trapping at 133 K",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L368",
+      "source": "calc/src/model/exhaust.ts#L373",
       "formula": "P_ref exp[−(ΔH/R)(1/T − 1/T_ref)]",
       "inputs": [
         "frost-tower-temp",
@@ -3502,7 +3560,7 @@
       "shown": "3.8 × 10¹⁵ kg",
       "label": "CO₂ left airborne once the Frost Towers finish",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L379",
+      "source": "calc/src/model/exhaust.ts#L384",
       "formula": "P_CO₂(133 K) A / g",
       "inputs": [
         "frost-co2-pressure",
@@ -3516,7 +3574,7 @@
       "shown": "4.3 × 10²⁵ J",
       "label": "Heat-pump work for the Frost Towers",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L389",
+      "source": "calc/src/model/exhaust.ts#L394",
       "formula": "M_residual L (T_h / 133 K − 1)",
       "inputs": [
         "frost-residual-co2",
@@ -3769,6 +3827,36 @@
         "cryo-cell-area",
         "cryo-thickness",
         "dry-ice-density"
+      ]
+    },
+    "cryo-base-pressure": {
+      "value": 27709900,
+      "unit": "Pa",
+      "shown": "280 bar",
+      "label": "Pressure at the base of the dry ice, from its own weight",
+      "basis": "physics",
+      "source": "calc/src/model/cryo.ts#L184",
+      "formula": "ρ_ice g × thickness",
+      "inputs": [
+        "dry-ice-density",
+        "venus-gravity",
+        "cryo-thickness"
+      ]
+    },
+    "cryo-base-melt-temp": {
+      "value": 222.243,
+      "unit": "K",
+      "shown": "222 K",
+      "label": "Temperature at which the base of the dry ice would melt",
+      "basis": "physics",
+      "source": "calc/src/model/cryo.ts#L196",
+      "formula": "root of p_t (1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)²) = p_base",
+      "inputs": [
+        "cryo-base-pressure",
+        "co2-triple-temp",
+        "co2-triple-pressure",
+        "co2-melting-a1",
+        "co2-melting-a2"
       ]
     },
     "o2-mass": {
@@ -4237,13 +4325,39 @@
         "launch-energy-per-kg"
       ]
     },
+    "ice-launch-motion": {
+      "value": 2.04724e+27,
+      "unit": "J",
+      "shown": "2.0 × 10²⁷ J",
+      "label": "Motion energy the Railheads give all the ice",
+      "basis": "physics",
+      "source": "calc/src/model/ice.ts#L218",
+      "formula": "E_launch × η",
+      "inputs": [
+        "ice-launch-energy",
+        "railhead-efficiency"
+      ]
+    },
+    "railhead-loss-energy": {
+      "value": 2.04724e+27,
+      "unit": "J",
+      "shown": "2.0 × 10²⁷ J",
+      "label": "Heat the Railheads shed at Ceres launching all the ice",
+      "basis": "physics",
+      "source": "calc/src/model/ice.ts#L228",
+      "formula": "E_launch − E_motion",
+      "inputs": [
+        "ice-launch-energy",
+        "ice-launch-motion"
+      ]
+    },
     "railhead-power": {
       "value": 55690300000000000000,
       "unit": "W",
       "shown": "5.6 × 10¹⁹ W",
       "label": "Power all Railheads draw",
       "basis": "invented",
-      "source": "calc/src/model/ice.ts#L218",
+      "source": "calc/src/model/ice.ts#L238",
       "formula": "ṁ × e",
       "inputs": [
         "ice-throughput",
@@ -4256,7 +4370,7 @@
       "shown": "5.6 × 10¹⁵ W",
       "label": "Power one Railhead draws",
       "basis": "invented",
-      "source": "calc/src/model/ice.ts#L223",
+      "source": "calc/src/model/ice.ts#L243",
       "formula": "P / N",
       "inputs": [
         "railhead-power",
@@ -4269,7 +4383,7 @@
       "shown": "190 MPa",
       "label": "Stress at the back of a Brick under launch acceleration",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L228",
+      "source": "calc/src/model/ice.ts#L248",
       "formula": "ρ_ice a L",
       "inputs": [
         "ice-density",
@@ -4284,7 +4398,7 @@
       "shown": "2.5 × 10²⁰ kg",
       "label": "Water in Ceres",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L241",
+      "source": "calc/src/model/ice.ts#L261",
       "formula": "f_water M_C",
       "inputs": [
         "ceres-water-fraction",
@@ -4297,7 +4411,7 @@
       "shown": "39%",
       "label": "Share of Ceres's water shipped",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L246",
+      "source": "calc/src/model/ice.ts#L266",
       "formula": "M_ice / M_water",
       "inputs": [
         "ice-mass",
@@ -4310,7 +4424,7 @@
       "shown": "11%",
       "label": "Share of Ceres's mass shipped",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L258",
+      "source": "calc/src/model/ice.ts#L278",
       "formula": "M_ice / M_C",
       "inputs": [
         "ice-mass",
@@ -4323,7 +4437,7 @@
       "shown": "0.76 km/s",
       "label": "Speed Ceres gains from throwing the ice",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L270",
+      "source": "calc/src/model/ice.ts#L290",
       "formula": "M_ice v / (M_C − M_ice)",
       "inputs": [
         "ice-mass",
@@ -4337,7 +4451,7 @@
       "shown": "3.29 AU",
       "label": "Ceres's new aphelion",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L283",
+      "source": "calc/src/model/ice.ts#L303",
       "formula": "2a − r, a from vis-viva with v_C + Δv",
       "inputs": [
         "ceres-orbit",
@@ -4351,7 +4465,7 @@
       "shown": "8.5 months",
       "label": "Time between the cheapest launch windows (Venus-Ceres synodic period)",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L300",
+      "source": "calc/src/model/ice.ts#L320",
       "formula": "1 / (1/P_V − 1/P_C)",
       "inputs": [
         "sun-mu",
@@ -4365,7 +4479,7 @@
       "shown": "3.3",
       "label": "Cheap launch windows in the campaign",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L316",
+      "source": "calc/src/model/ice.ts#L336",
       "formula": "campaign / synodic period",
       "inputs": [
         "ice-campaign",
@@ -4378,7 +4492,7 @@
       "shown": "217 m",
       "label": "Global-average ocean depth",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L327",
+      "source": "calc/src/model/ice.ts#L347",
       "formula": "M_ice / (ρ_water A)",
       "inputs": [
         "ice-mass",
@@ -4392,7 +4506,7 @@
       "shown": "7.1%",
       "label": "Water delivered compared with Earth's",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L338",
+      "source": "calc/src/model/ice.ts#L358",
       "formula": "M_ice / M_water,⊕",
       "inputs": [
         "ice-mass",
@@ -4405,7 +4519,7 @@
       "shown": "17 August 2034",
       "label": "First Bricks reach Venus",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L350",
+      "source": "calc/src/model/ice.ts#L370",
       "formula": "first launch + transfer",
       "inputs": [
         "ice-launch-start",
@@ -4418,7 +4532,7 @@
       "shown": "15 December 2036",
       "label": "Last Bricks reach Venus",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L360",
+      "source": "calc/src/model/ice.ts#L380",
       "formula": "last launch + transfer",
       "inputs": [
         "ice-launch-end",
@@ -4431,7 +4545,7 @@
       "shown": "1.15 yr",
       "label": "Transfer time in years",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L370",
+      "source": "calc/src/model/ice.ts#L390",
       "formula": "days × 86,400 s",
       "inputs": [
         "ice-transfer-days"
@@ -4567,13 +4681,26 @@
         "ring-catch-energy-per-kg"
       ]
     },
+    "ring-loss-energy": {
+      "value": 1.32733e+27,
+      "unit": "J",
+      "shown": "1.3 × 10²⁷ J",
+      "label": "Heat the Ring sheds braking all the ice",
+      "basis": "physics",
+      "source": "calc/src/model/ring.ts#L111",
+      "formula": "E_caught − E_recovered",
+      "inputs": [
+        "ring-catch-energy",
+        "ring-recovered-energy"
+      ]
+    },
     "ring-power": {
       "value": 72213600000000000000,
       "unit": "W",
       "shown": "7.2 × 10¹⁹ W",
       "label": "Ring power at the full catch rate",
       "basis": "invented",
-      "source": "calc/src/model/ring.ts#L111",
+      "source": "calc/src/model/ring.ts#L121",
       "formula": "ṁ × e",
       "inputs": [
         "ice-throughput",
@@ -4586,7 +4713,7 @@
       "shown": "1.3",
       "label": "Electricity recovered per kilogram over electricity spent to launch it",
       "basis": "invented",
-      "source": "calc/src/model/ring.ts#L116",
+      "source": "calc/src/model/ring.ts#L126",
       "formula": "e_recovered / e_launch",
       "inputs": [
         "ring-recovered-per-kg",
@@ -4599,7 +4726,7 @@
       "shown": "2.0 × 10²⁷ J",
       "label": "Electricity recovered slowing parked ice to rest",
       "basis": "invented",
-      "source": "calc/src/model/ring.ts#L127",
+      "source": "calc/src/model/ring.ts#L137",
       "formula": "η M_ice ½ v_orbit²",
       "inputs": [
         "ring-recovery-efficiency",
@@ -4613,7 +4740,7 @@
       "shown": "9.5 × 10²⁷ J",
       "label": "Heat ice from Ceres would bring, falling freely onto Venus",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L137",
+      "source": "calc/src/model/ring.ts#L147",
       "formula": "M_ice ½ (v∞² + v_esc²)",
       "inputs": [
         "ice-mass",
@@ -4627,7 +4754,7 @@
       "shown": "13.8 km/s",
       "label": "Speed of ice falling freely onto Venus",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L147",
+      "source": "calc/src/model/ring.ts#L157",
       "formula": "√(v∞² + v_esc²)",
       "inputs": [
         "ice-vinf",
@@ -4640,7 +4767,7 @@
       "shown": "18",
       "label": "Free-fall heat compared with the atmosphere's heat",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L159",
+      "source": "calc/src/model/ring.ts#L169",
       "formula": "E_impact / E_atm",
       "inputs": [
         "ring-free-fall-impact",
@@ -4653,12 +4780,39 @@
       "shown": "8.8 × 10¹⁵ N",
       "label": "Braking force on the Ring at the full catch rate",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L170",
+      "source": "calc/src/model/ring.ts#L180",
       "formula": "ṁ (v_arrive − v_orbit)",
       "inputs": [
         "ice-throughput",
         "ring-arrival-speed",
         "ring-orbital-speed"
+      ]
+    },
+    "ring-approach-eccentricity": {
+      "value": 2.63613,
+      "unit": "1",
+      "shown": "2.64",
+      "label": "Eccentricity of a Brick's path past Venus at Ring height",
+      "basis": "physics",
+      "source": "calc/src/model/ring.ts#L191",
+      "formula": "1 + r v∞² / (G M_V)",
+      "inputs": [
+        "ring-radius",
+        "ice-vinf",
+        "venus-gm"
+      ]
+    },
+    "ring-net-braking-force": {
+      "value": 8098220000000000,
+      "unit": "N",
+      "shown": "8.1 × 10¹⁵ N",
+      "label": "Net braking force on the Ring, east and west catches together",
+      "basis": "physics",
+      "source": "calc/src/model/ring.ts#L202",
+      "formula": "F √(1 − 1/e²)",
+      "inputs": [
+        "ring-braking-force",
+        "ring-approach-eccentricity"
       ]
     },
     "ring-track-length": {
@@ -4667,7 +4821,7 @@
       "shown": "140 km",
       "label": "Catcher track length",
       "basis": "invented",
-      "source": "calc/src/model/ring.ts#L181",
+      "source": "calc/src/model/ring.ts#L214",
       "formula": "(v_arrive² − v_orbit²) / (2a)",
       "inputs": [
         "ring-arrival-speed",
@@ -4682,7 +4836,7 @@
       "shown": "46 MPa",
       "label": "Stress in a Brick braked at 50 g",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L195",
+      "source": "calc/src/model/ring.ts#L228",
       "formula": "ρ_ice a L",
       "inputs": [
         "ice-density",
@@ -4697,7 +4851,7 @@
       "shown": "3.0 × 10¹³ N",
       "label": "Spare lift the rotor gives after carrying the stator",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L208",
+      "source": "calc/src/model/ring.ts#L241",
       "formula": "M_rotor (v_rotor² / r − g) − M_stator g",
       "inputs": [
         "ring-rotor-mass",
@@ -4707,13 +4861,26 @@
         "ring-stator-mass"
       ]
     },
+    "ring-net-overload": {
+      "value": 265.915,
+      "unit": "1",
+      "shown": "270",
+      "label": "Net braking force over the Ring's spare lift",
+      "basis": "physics",
+      "source": "calc/src/model/ring.ts#L254",
+      "formula": "F_net / F_lift",
+      "inputs": [
+        "ring-net-braking-force",
+        "ring-lift"
+      ]
+    },
     "ring-hang-capacity": {
       "value": 3902250000000,
       "unit": "kg",
       "shown": "3.9 × 10¹² kg",
       "label": "Mass the Ring can hold hanging at rest",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L221",
+      "source": "calc/src/model/ring.ts#L265",
       "formula": "F_lift / g",
       "inputs": [
         "ring-lift",
@@ -4726,7 +4893,7 @@
       "shown": "18 months",
       "label": "Lowering campaign",
       "basis": "design",
-      "source": "calc/src/model/ring.ts#L232",
+      "source": "calc/src/model/ring.ts#L276",
       "formula": "end − start",
       "inputs": [
         "lowering-end",
@@ -4739,7 +4906,7 @@
       "shown": "2.2 × 10¹² kg/s",
       "label": "Ice lowered per second",
       "basis": "design",
-      "source": "calc/src/model/ring.ts#L244",
+      "source": "calc/src/model/ring.ts#L288",
       "formula": "M_ice / campaign",
       "inputs": [
         "ice-mass",
@@ -4752,7 +4919,7 @@
       "shown": "1.4 s",
       "label": "Seconds between Bricks on each tether lift",
       "basis": "design",
-      "source": "calc/src/model/ring.ts#L255",
+      "source": "calc/src/model/ring.ts#L299",
       "formula": "N_lifts M_brick / ṁ",
       "inputs": [
         "ring-tether-lifts",
@@ -4766,7 +4933,7 @@
       "shown": "4.7 × 10¹⁵ N",
       "label": "Least force needed to lower the ice from the Ring to 100 km",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L266",
+      "source": "calc/src/model/ring.ts#L310",
       "formula": "ṁ √(2 g Δh)",
       "inputs": [
         "lowering-rate",
@@ -4781,7 +4948,7 @@
       "shown": "150",
       "label": "Lowering force over the Ring's spare lift",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L280",
+      "source": "calc/src/model/ring.ts#L324",
       "formula": "F_lowering / F_lift",
       "inputs": [
         "lowering-support",
@@ -4794,7 +4961,7 @@
       "shown": "0.87 MJ/kg",
       "label": "Energy a Brick gains falling from 100 km to the surface",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L291",
+      "source": "calc/src/model/ring.ts#L335",
       "formula": "G M_V (1/R_V − 1/(R_V + 100 km))",
       "inputs": [
         "venus-gm",
@@ -4808,7 +4975,7 @@
       "shown": "0.61 MJ/kg",
       "label": "Energy to melt a kilogram of Brick ice and warm it to 288 K",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L305",
+      "source": "calc/src/model/ring.ts#L349",
       "formula": "c_ice (273 − T_brick) + L_melt + c_water (288 − 273)",
       "inputs": [
         "ice-cp",
@@ -4824,7 +4991,7 @@
       "shown": "3.3 MJ/kg",
       "label": "Energy a Brick gains falling from rest at the Ring to the surface",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L320",
+      "source": "calc/src/model/ring.ts#L364",
       "formula": "G M_V (1/R_V − 1/(R_V + h))",
       "inputs": [
         "venus-gm",
@@ -4838,7 +5005,7 @@
       "shown": "2.5 × 10²⁶ J",
       "label": "Extra heat if the ice is dropped from the Ring instead of lowered",
       "basis": "physics",
-      "source": "calc/src/model/ring.ts#L332",
+      "source": "calc/src/model/ring.ts#L376",
       "formula": "M_ice (e_drop − e_fall)",
       "inputs": [
         "ice-mass",
@@ -5128,13 +5295,26 @@
         "final-pressure"
       ]
     },
+    "final-co2-vs-earth": {
+      "value": 0.749781,
+      "unit": "1",
+      "shown": "0.75",
+      "label": "CO₂ share of the 2036 air as a multiple of Earth's today",
+      "basis": "physics",
+      "source": "calc/src/model/outcome.ts#L52",
+      "formula": "x_CO₂,2036 / x_CO₂,Earth",
+      "inputs": [
+        "final-co2-ppm",
+        "earth-co2-fraction"
+      ]
+    },
     "final-o2-share": {
       "value": 0.106344,
       "unit": "1",
       "shown": "11%",
       "label": "Oxygen share of the 2036 air",
       "basis": "physics",
-      "source": "calc/src/model/outcome.ts#L52",
+      "source": "calc/src/model/outcome.ts#L63",
       "formula": "P_O₂ / P_total",
       "inputs": [
         "o2-target-pressure",
@@ -5147,7 +5327,7 @@
       "shown": "13 m",
       "label": "Sea depth on Earth with the same total pressure",
       "basis": "physics",
-      "source": "calc/src/model/outcome.ts#L64",
+      "source": "calc/src/model/outcome.ts#L75",
       "formula": "(P − 1 atm) / (ρ_sea g_⊕)",
       "inputs": [
         "final-pressure",
@@ -5162,7 +5342,7 @@
       "shown": "39",
       "label": "Surface pressure falls by a factor of",
       "basis": "physics",
-      "source": "calc/src/model/outcome.ts#L77",
+      "source": "calc/src/model/outcome.ts#L88",
       "formula": "P_today / P_2036",
       "inputs": [
         "venus-surface-pressure",
@@ -5175,7 +5355,7 @@
       "shown": "2.8 min",
       "label": "Light delay, Mercury to Venus, closest",
       "basis": "physics",
-      "source": "calc/src/model/outcome.ts#L90",
+      "source": "calc/src/model/outcome.ts#L101",
       "formula": "distance / c",
       "inputs": [
         "venus-orbit",
@@ -5189,7 +5369,7 @@
       "shown": "9.2 min",
       "label": "Light delay, Mercury to Venus, farthest",
       "basis": "physics",
-      "source": "calc/src/model/outcome.ts#L95",
+      "source": "calc/src/model/outcome.ts#L106",
       "formula": "distance / c",
       "inputs": [
         "venus-orbit",
@@ -5203,7 +5383,7 @@
       "shown": "17 min",
       "label": "Light delay, Venus to Ceres, closest",
       "basis": "physics",
-      "source": "calc/src/model/outcome.ts#L100",
+      "source": "calc/src/model/outcome.ts#L111",
       "formula": "distance / c",
       "inputs": [
         "ceres-orbit",
@@ -5217,7 +5397,7 @@
       "shown": "29 min",
       "label": "Light delay, Venus to Ceres, farthest",
       "basis": "physics",
-      "source": "calc/src/model/outcome.ts#L105",
+      "source": "calc/src/model/outcome.ts#L116",
       "formula": "distance / c",
       "inputs": [
         "ceres-orbit",
@@ -5231,7 +5411,7 @@
       "shown": "33 min",
       "label": "Light delay, Earth to Ceres, farthest",
       "basis": "physics",
-      "source": "calc/src/model/outcome.ts#L110",
+      "source": "calc/src/model/outcome.ts#L121",
       "formula": "distance / c",
       "inputs": [
         "ceres-aphelion",
@@ -5245,7 +5425,7 @@
       "shown": "19 January 2034",
       "label": "The Clear Rain begins: near-surface air below 304 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L277",
+      "source": "calc/src/model/trajectory.ts#L278",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": [
         "venus-atmosphere-mass",
@@ -5323,7 +5503,7 @@
       "shown": "14 March 2036",
       "label": "CO₂ seas start to freeze: air below 216.6 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L277",
+      "source": "calc/src/model/trajectory.ts#L278",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
@@ -5333,7 +5513,7 @@
       "shown": "20 April 2036",
       "label": "All the CO₂ is down: air at 195 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L277",
+      "source": "calc/src/model/trajectory.ts#L278",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
@@ -5343,7 +5523,7 @@
       "shown": "9 May 2036",
       "label": "Frost Towers bring CO₂ down to the target",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L277",
+      "source": "calc/src/model/trajectory.ts#L278",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
@@ -5353,7 +5533,7 @@
       "shown": "30 June 2036",
       "label": "Caps sealed; the Veil opens and the air warms",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L277",
+      "source": "calc/src/model/trajectory.ts#L278",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
@@ -5363,7 +5543,7 @@
       "shown": "4 July 2036",
       "label": "Air reaches 285 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L298",
+      "source": "calc/src/model/trajectory.ts#L320",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
@@ -5373,7 +5553,7 @@
       "shown": "30 September 2036",
       "label": "Earth-like: warm, 0.25 bar of oxygen, CO₂ under 600 ppm",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L277",
+      "source": "calc/src/model/trajectory.ts#L278",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
@@ -5383,7 +5563,7 @@
       "shown": "3.5 × 10²⁷ J",
       "label": "Heat-pump work to cool Venus, day by day, Frost Towers included",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L277",
+      "source": "calc/src/model/trajectory.ts#L278",
       "formula": "Σ pump power × 1 day, to the deadline",
       "inputs": [
         "deadline"
@@ -5395,8 +5575,32 @@
       "shown": "7.5 × 10²⁵ J",
       "label": "Heat that enters the air during the campaign from other sources",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L288",
+      "source": "calc/src/model/trajectory.ts#L289",
       "formula": "Σ (crust + Forges + falling ice + residual sunlight) × 1 day",
+      "inputs": [
+        "deadline"
+      ]
+    },
+    "traj-heat-lifted": {
+      "value": 6.04433e+26,
+      "unit": "J",
+      "shown": "6.0 × 10²⁶ J",
+      "label": "Heat the Exhaust lifts out of the air, day by day, Frost Towers included",
+      "basis": "physics",
+      "source": "calc/src/model/trajectory.ts#L299",
+      "formula": "Σ heat leaving the air × 1 day, to the deadline",
+      "inputs": [
+        "deadline"
+      ]
+    },
+    "traj-exhaust-light": {
+      "value": 4.10624e+27,
+      "unit": "J",
+      "shown": "4.1 × 10²⁷ J",
+      "label": "Light the Exhaust throws into space: the heat it lifts plus the work that lifts it",
+      "basis": "physics",
+      "source": "calc/src/model/trajectory.ts#L310",
+      "formula": "Σ (heat out + pump work) × 1 day, to the deadline",
       "inputs": [
         "deadline"
       ]
@@ -5407,7 +5611,7 @@
       "shown": "3.8 × 10²⁵ J",
       "label": "Beamed power spent warming the air and melting the cold ice after sealing",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L298",
+      "source": "calc/src/model/trajectory.ts#L320",
       "formula": "Σ warming power × 1 day",
       "inputs": [
         "deadline"
@@ -5419,7 +5623,7 @@
       "shown": "92 d",
       "label": "Days to spare between Earth-like conditions and the deadline",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L308",
+      "source": "calc/src/model/trajectory.ts#L330",
       "formula": "deadline − Earth-like date",
       "inputs": [
         "deadline"
@@ -5498,7 +5702,7 @@
       "value": 4.58941e+27,
       "unit": "J",
       "shown": "4.6 × 10²⁷ J",
-      "label": "Energy the Sun's gravity adds to the ice on its fall to Venus",
+      "label": "Energy gravity adds to the ice between launch and catch",
       "basis": "physics",
       "source": "calc/src/model/budget.ts#L74",
       "formula": "caught motion energy − launch motion energy",
@@ -5561,13 +5765,52 @@
         "helios-supply"
       ]
     },
+    "budget-lattice-spare": {
+      "value": 2.19801e+27,
+      "unit": "J",
+      "shown": "2.2 × 10²⁷ J",
+      "label": "Lattice energy left over once the Ring powers the Railheads",
+      "basis": "invented",
+      "source": "calc/src/model/budget.ts#L127",
+      "formula": "E_Lattice − demand_with_Ring",
+      "inputs": [
+        "helios-supply",
+        "budget-demand-with-ring"
+      ]
+    },
+    "budget-ring-launch": {
+      "value": 2.06857e+27,
+      "unit": "J",
+      "shown": "2.1 × 10²⁷ J",
+      "label": "Launch energy the Ring pays once it powers the Railheads",
+      "basis": "invented",
+      "source": "calc/src/model/budget.ts#L137",
+      "formula": "E_launch − Lattice-paid launch energy",
+      "inputs": [
+        "ice-launch-energy",
+        "budget-lattice-launch"
+      ]
+    },
+    "budget-ring-surplus": {
+      "value": 3.24075e+27,
+      "unit": "J",
+      "shown": "3.2 × 10²⁷ J",
+      "label": "Ring energy left over after powering the Railheads",
+      "basis": "invented",
+      "source": "calc/src/model/budget.ts#L147",
+      "formula": "E_Ring − Ring-paid launch energy",
+      "inputs": [
+        "ring-recovered-energy",
+        "budget-ring-launch"
+      ]
+    },
     "venus-heat-out": {
       "value": 5.28055e+26,
       "unit": "J",
       "shown": "5.3 × 10²⁶ J",
       "label": "Heat that leaves Venus itself as light",
       "basis": "physics",
-      "source": "calc/src/model/budget.ts#L127",
+      "source": "calc/src/model/budget.ts#L157",
       "formula": "E_atm",
       "inputs": [
         "atmosphere-heat"
@@ -5598,6 +5841,10 @@
     "ring-energy-loop": {
       "pass": true,
       "detail": "Ring 7.22e+19 W recovered against 5.57e+19 W drawn by the Railheads."
+    },
+    "ring-net-force": {
+      "pass": false,
+      "detail": "Catching half the Bricks eastbound and half westbound cancels the twist, not the force: 8.1e+15 N remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; its spare lift is 3.0e+13 N, 266 times too little."
     },
     "ring-lowering-load": {
       "pass": false,

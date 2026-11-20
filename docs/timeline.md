@@ -6,6 +6,7 @@ derives from those choices. Move an assumption in the [Explorer](https://phospho
 chart moves with it.
 
 <!-- figure:gantt -->
+![The Phosphoros decade, 2027 to 2036](../figures/svg/gantt.svg)
 <!-- /figure -->
 
 <!-- table:timeline -->

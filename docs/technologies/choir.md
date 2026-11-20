@@ -7,6 +7,7 @@ build orders, a kill code, a dead-man switch and a formally verified replication
 when the seed foundry lands on Mercury on [14 January 2029](../numbers.md?date=day#foundry-landing).
 
 <!-- figure:tech-stack -->
+![The Phosphoros technology stack](../../figures/svg/tech-stack.svg)
 <!-- /figure -->
 
 ## Principle
