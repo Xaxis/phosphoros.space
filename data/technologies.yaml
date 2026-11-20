@@ -358,12 +358,13 @@
     - { label: Neutralizer, value: "{acid-cao} of CaO, in {acid-basalt} of crushed basalt" }
     - { label: Basalt layer, value: "{acid-basalt-layer} over the basins, {acid-crust-share} of the crust available" }
     - { label: Product, value: "Gypsum and anhydrite, with traces of chloride and fluoride salts" }
+    - { label: Ocean buffer, value: "Shore basalt holds pH {genesis-ph-min} to {acid-ocean-ph-max}; no life until it holds above {genesis-ph-min} for {genesis-ph-days}" }
   invented: []
   precedent:
     - text: Calcium and magnesium minerals react with acid gases; the same chemistry, at far smaller scale, cleans power-plant flue gas.
       source: bullock-grinspoon-1996
   experiments: []
-  figures: []
+  figures: [acid-sweep]
   modules: [shield.ts]
 
 - id: aegis
@@ -390,7 +391,7 @@
     - text: NASA's 2017 study placed a magnetic dipole at Mars's L1 point to shield the planet.
       source: nasa-mars-magnetic-2017
   experiments: [mini-aegis]
-  figures: []
+  figures: [aegis-shield]
   modules: [shield.ts]
 
 - id: genesis

@@ -7,6 +7,10 @@ A superconducting coil [10 km](../numbers.md#aegis-coil-radius) in radius, hold
 bubble, and Venus lies in the sheltered region behind it, so the wind cannot strip away the new air and
 water. It switches on [15 June 2034](../numbers.md?date=day#aegis-online), before the first ice arrives.
 
+<!-- figure:aegis-shield -->
+![Aegis Shield: a magnetic bubble against the solar wind](../../figures/svg/aegis-shield.svg)
+<!-- /figure -->
+
 ## Principle
 
 ### Why Venus needs a shield

@@ -218,15 +218,16 @@ Basis: **Physics** is measurement or established physics. **Precedent** is shown
 | <a id="genesis-end"></a>**Genesis seeding complete**<br>`genesis-end` | 15 December 2036 |  | Design choice | [data/assumptions.yaml:602](../data/assumptions.yaml#L602) |
 | <a id="genesis-ph-min"></a>**Ocean pH that must hold before any life is released**<br>`genesis-ph-min` | 7.5 |  | Design choice | [data/assumptions.yaml:607](../data/assumptions.yaml#L607) |
 | <a id="genesis-ph-days"></a>**Days the ocean pH must hold before any life is released**<br>`genesis-ph-days` | 90 d |  | Design choice | [data/assumptions.yaml:613](../data/assumptions.yaml#L613) |
-| <a id="genesis-doubling-days"></a>**Doubling time of the seeded ocean cyanobacteria in sunlit water**<br>`genesis-doubling-days` | 1 d |  | Invented | [data/assumptions.yaml:618](../data/assumptions.yaml#L618) |
-| <a id="genesis-soil-min"></a>**Thinnest black-loam soil laid on caps and shores**<br>`genesis-soil-min` | 10 cm |  | Design choice | [data/assumptions.yaml:624](../data/assumptions.yaml#L624) |
-| <a id="genesis-soil-max"></a>**Thickest black-loam soil laid on caps and shores**<br>`genesis-soil-max` | 30 cm |  | Design choice | [data/assumptions.yaml:630](../data/assumptions.yaml#L630) |
-| <a id="day-length"></a>**Length of the day the Veil and Lanterns set**<br>`day-length` | 24 h |  | Design choice | [data/assumptions.yaml:636](../data/assumptions.yaml#L636) |
-| <a id="final-humidity"></a>**Relative humidity over the new oceans**<br>`final-humidity` | 75% |  | Design choice | [data/assumptions.yaml:643](../data/assumptions.yaml#L643) |
-| <a id="final-albedo"></a>**Albedo of the finished, Earth-like Venus**<br>`final-albedo` | 30% |  | Design choice | [data/assumptions.yaml:649](../data/assumptions.yaml#L649) |
-| <a id="earth-like-temp"></a>**Coldest mean temperature that counts as Earth-like**<br>`earth-like-temp` | 285 K |  | Design choice | [data/assumptions.yaml:655](../data/assumptions.yaml#L655) |
-| <a id="earth-like-co2"></a>**Most CO₂ that counts as Earth-like**<br>`earth-like-co2` | 600 ppm |  | Design choice | [data/assumptions.yaml:661](../data/assumptions.yaml#L661) |
-| <a id="choir-deadman-days"></a>**Days a replicator keeps building without a Mass Ledger heartbeat**<br>`choir-deadman-days` | 7 d |  | Design choice | [data/assumptions.yaml:669](../data/assumptions.yaml#L669) |
+| <a id="acid-ocean-ph-max"></a>**Top of the ocean pH the shore basalt is laid to hold**<br>`acid-ocean-ph-max` | 8 |  | Design choice | [data/assumptions.yaml:618](../data/assumptions.yaml#L618) |
+| <a id="genesis-doubling-days"></a>**Doubling time of the seeded ocean cyanobacteria in sunlit water**<br>`genesis-doubling-days` | 1 d |  | Invented | [data/assumptions.yaml:625](../data/assumptions.yaml#L625) |
+| <a id="genesis-soil-min"></a>**Thinnest black-loam soil laid on caps and shores**<br>`genesis-soil-min` | 10 cm |  | Design choice | [data/assumptions.yaml:631](../data/assumptions.yaml#L631) |
+| <a id="genesis-soil-max"></a>**Thickest black-loam soil laid on caps and shores**<br>`genesis-soil-max` | 30 cm |  | Design choice | [data/assumptions.yaml:637](../data/assumptions.yaml#L637) |
+| <a id="day-length"></a>**Length of the day the Veil and Lanterns set**<br>`day-length` | 24 h |  | Design choice | [data/assumptions.yaml:643](../data/assumptions.yaml#L643) |
+| <a id="final-humidity"></a>**Relative humidity over the new oceans**<br>`final-humidity` | 75% |  | Design choice | [data/assumptions.yaml:650](../data/assumptions.yaml#L650) |
+| <a id="final-albedo"></a>**Albedo of the finished, Earth-like Venus**<br>`final-albedo` | 30% |  | Design choice | [data/assumptions.yaml:656](../data/assumptions.yaml#L656) |
+| <a id="earth-like-temp"></a>**Coldest mean temperature that counts as Earth-like**<br>`earth-like-temp` | 285 K |  | Design choice | [data/assumptions.yaml:662](../data/assumptions.yaml#L662) |
+| <a id="earth-like-co2"></a>**Most CO₂ that counts as Earth-like**<br>`earth-like-co2` | 600 ppm |  | Design choice | [data/assumptions.yaml:668](../data/assumptions.yaml#L668) |
+| <a id="choir-deadman-days"></a>**Days a replicator keeps building without a Mass Ledger heartbeat**<br>`choir-deadman-days` | 7 d |  | Design choice | [data/assumptions.yaml:676](../data/assumptions.yaml#L676) |
 
 ## Derived
 

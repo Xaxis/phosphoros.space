@@ -1577,13 +1577,21 @@
       "basis": "design",
       "source": "data/assumptions.yaml#L613"
     },
+    "acid-ocean-ph-max": {
+      "value": 8,
+      "unit": "1",
+      "shown": "8",
+      "label": "Top of the ocean pH the shore basalt is laid to hold",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L618"
+    },
     "genesis-doubling-days": {
       "value": 1,
       "unit": "d",
       "shown": "1 d",
       "label": "Doubling time of the seeded ocean cyanobacteria in sunlit water",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L618"
+      "source": "data/assumptions.yaml#L625"
     },
     "genesis-soil-min": {
       "value": 0.1,
@@ -1591,7 +1599,7 @@
       "shown": "10 cm",
       "label": "Thinnest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L624"
+      "source": "data/assumptions.yaml#L631"
     },
     "genesis-soil-max": {
       "value": 0.3,
@@ -1599,7 +1607,7 @@
       "shown": "30 cm",
       "label": "Thickest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L630"
+      "source": "data/assumptions.yaml#L637"
     },
     "day-length": {
       "value": 86400,
@@ -1607,7 +1615,7 @@
       "shown": "24 h",
       "label": "Length of the day the Veil and Lanterns set",
       "basis": "design",
-      "source": "data/assumptions.yaml#L636"
+      "source": "data/assumptions.yaml#L643"
     },
     "final-humidity": {
       "value": 0.75,
@@ -1615,7 +1623,7 @@
       "shown": "75%",
       "label": "Relative humidity over the new oceans",
       "basis": "design",
-      "source": "data/assumptions.yaml#L643"
+      "source": "data/assumptions.yaml#L650"
     },
     "final-albedo": {
       "value": 0.3,
@@ -1623,7 +1631,7 @@
       "shown": "30%",
       "label": "Albedo of the finished, Earth-like Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L649"
+      "source": "data/assumptions.yaml#L656"
     },
     "earth-like-temp": {
       "value": 285,
@@ -1631,7 +1639,7 @@
       "shown": "285 K",
       "label": "Coldest mean temperature that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L655"
+      "source": "data/assumptions.yaml#L662"
     },
     "earth-like-co2": {
       "value": 0.0006,
@@ -1639,7 +1647,7 @@
       "shown": "600 ppm",
       "label": "Most CO₂ that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L661"
+      "source": "data/assumptions.yaml#L668"
     },
     "choir-deadman-days": {
       "value": 7,
@@ -1647,7 +1655,7 @@
       "shown": "7 d",
       "label": "Days a replicator keeps building without a Mass Ledger heartbeat",
       "basis": "design",
-      "source": "data/assumptions.yaml#L669"
+      "source": "data/assumptions.yaml#L676"
     },
     "venus-area": {
       "value": 460234000000000,

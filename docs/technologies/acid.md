@@ -7,6 +7,10 @@ meets it with [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of crushed basalt,
 [9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of lime, so the oceans fill with fresh water rather than acid. It
 needs no breakthrough, only scale.
 
+<!-- figure:acid-sweep -->
+![Acid Sweep: the sulfur's path out of the air and the oceans](../../figures/svg/acid-sweep.svg)
+<!-- /figure -->
+
 ## Principle
 
 ### Where the sulfur is
@@ -61,8 +65,9 @@ sulfur-laden liquid CO₂ then land on fresh lime rather than bare rock.
 
 When the ice melts and the oceans form, after the caps are sealed and the Veil opens on
 [30 June 2036](../numbers.md?date=day#traj-warming), crushed basalt on the shores and the sea floor keeps
-the water slightly alkaline: above pH [7.5](../numbers.md#genesis-ph-min), which [Genesis](genesis.md)
-needs to hold for [90 d](../numbers.md#genesis-ph-days) before any life is released.
+the water slightly alkaline, between pH [7.5](../numbers.md#genesis-ph-min) and
+[8](../numbers.md#acid-ocean-ph-max). [Genesis](genesis.md) needs it above pH
+[7.5](../numbers.md#genesis-ph-min) for [90 d](../numbers.md#genesis-ph-days) before any life is released.
 
 ### What is not yet known
 
@@ -80,6 +85,7 @@ the oceans melt, where the same reaction is fast.
 | Neutralizer | [9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of CaO, in [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of crushed basalt |
 | Basalt layer | [2.1 m](../numbers.md#acid-basalt-layer) over the basins, [0.07%](../numbers.md#acid-crust-share) of the crust available |
 | Product | Gypsum and anhydrite, with traces of chloride and fluoride salts |
+| Ocean buffer | Shore basalt holds pH [7.5](../numbers.md#genesis-ph-min) to [8](../numbers.md#acid-ocean-ph-max); no life until it holds above [7.5](../numbers.md#genesis-ph-min) for [90 d](../numbers.md#genesis-ph-days) |
 <!-- /table -->
 
 ## What is invented
