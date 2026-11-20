@@ -120,7 +120,12 @@ const live = (page: Page) =>
       }, day);
       await read(page);
       const box = await page.locator(".hero").boundingBox();
-      await page.screenshot({ path: `${shots}/hero-${iso}.png`, clip: box ?? undefined });
+      // A busy machine starves SwiftShader, and the screenshot's font wait with it.
+      await page.screenshot({
+        path: `${shots}/hero-${iso}.png`,
+        clip: box ?? undefined,
+        timeout: 180_000,
+      });
     }
     console.log(`     shots in ${shots}`);
   }
