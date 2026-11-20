@@ -239,6 +239,43 @@ and the Lattice is sized for it: [8.5 × 10¹⁹ W](numbers.md#helios-power),
 with [9.3%](numbers.md#budget-spare) to spare and [34%](numbers.md#budget-spare-with-ring) once the Ring powers
 the Railheads ([check](numbers.md#check-energy-closes-with-ring)).
 
+## How much room the plan has
+
+Each row moves one assumption alone, across the range the [Explorer](/explore) lets a reader try, with
+everything else as planned, and finds where a check that passes today first fails. Most of the plan's
+schedule hangs on one date: the Frost Towers must have the CO₂ down before the last caps are sealed on
+[1 September 2036](numbers.md?date=day#sealing-end), and they finish only
+[10 d](numbers.md#frost-sealing-slack) before it.
+
+<!-- table:margins -->
+| Assumption | Plan | The plan holds from | to | What breaks first |
+| --- | --- | --- | --- | --- |
+| Water share of Ceres's mass | [27%](numbers.md?sig=3#ceres-water-fraction) | 17% or less | 35% or more | Nothing, across the whole range |
+| Seed foundry mass | [1,000 t](numbers.md?sig=3#foundry-seed-mass) | 937 t | 1,560 t | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing). Higher: [The Foundry stops growing at the size that finishes the Lattice and the Ring soonest](numbers.md#check-foundry-size) |
+| Foundry doubling time | [60 d](numbers.md?sig=3#foundry-doubling-days) | 30 d or less | 60.1 d | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Energy to make a kilogram of machinery from regolith | [100 MJ/kg](numbers.md?sig=3#foundry-energy-per-kg) | 30 MJ/kg or less | 300 MJ/kg or more | Nothing, across the whole range |
+| Power the Helios Lattice delivers | [8.50 × 10¹⁹ W](numbers.md?sig=3#helios-power) | 8.41 × 10¹⁹ W | 1.00 × 10²⁰ W or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Hot-film solar cell efficiency at about 460 K | [40%](numbers.md?sig=3#helios-film-efficiency) | 36.9% | 50% or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Electricity-to-laser efficiency | [50%](numbers.md?sig=3#helios-laser-efficiency) | 46.3% | 70% or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Share of sunlight's momentum the light-bending film takes up | [0.01](numbers.md?sig=3#veil-momentum-fraction) | 0.002 or less | 0.0349 | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Effective temperature the emitters shine at | [2,000 K](numbers.md?sig=3#exhaust-effective-temp) | 1,000 K or less | 2,020 K | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Peak power the Exhaust can throw into space | [5.00 × 10¹⁹ W](numbers.md?sig=3#exhaust-peak) | 4.95 × 10¹⁹ W | 6.53 × 10¹⁹ W | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing). Higher: [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) |
+| Water shipped to Venus | [1.00 × 10²⁰ kg](numbers.md?sig=3#ice-mass) | 3.00 × 10¹⁹ kg or less | 1.01 × 10²⁰ kg | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+<!-- /table -->
+
+Some changes are not on a slider. The seed launches before its own proof experiment, Ouroboros-0, must
+pass ([Research](research.md)): it is in flight when the result comes. Waiting for the result costs more
+than the slack:
+
+<!-- table:scenarios -->
+| What if | Simulated Earth-like | Against the deadline | Newly failing checks |
+| --- | --- | --- | --- |
+| The plan | 30 September 2036 | 92 d early | None |
+| The seed waits for every proof experiment to pass before it launches | 14 April 2037 | 104 d late | [The Ring's mass reaches Venus before the Ring must be complete](numbers.md#check-foundry-builds-ring); [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing); [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline); [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline); [The ozone shields the land before the deadline](numbers.md#check-ozone-shield-in-time) |
+<!-- /table -->
+
+`tools/margins.ts` computes both tables by running the whole model a few hundred times.
+
 ## Every assumption
 
 These are the plan's choices and the breakthroughs it assumes. Each links to the line that defines it, and

@@ -1,0 +1,163 @@
+{
+  "hash": "3cc8afcc98541230",
+  "inputs": [
+    {
+      "id": "ceres-water-fraction",
+      "plan": 0.27,
+      "below": null,
+      "above": null
+    },
+    {
+      "id": "foundry-seed-mass",
+      "plan": 1000000,
+      "below": {
+        "holds": 936870.7660220854,
+        "breaks": 935818.0255823539,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      },
+      "above": {
+        "holds": 1555587.8100299574,
+        "breaks": 1557337.7551586085,
+        "fails": [
+          "foundry-size"
+        ]
+      }
+    },
+    {
+      "id": "foundry-doubling-days",
+      "plan": 60,
+      "below": null,
+      "above": {
+        "holds": 60.1318359375,
+        "breaks": 60.15380859375,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      }
+    },
+    {
+      "id": "foundry-energy-per-kg",
+      "plan": 100000000,
+      "below": null,
+      "above": null
+    },
+    {
+      "id": "helios-power",
+      "plan": 85000000000000000000,
+      "below": {
+        "holds": 84135742187500010000,
+        "breaks": 84121093750000000000,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      },
+      "above": null
+    },
+    {
+      "id": "helios-film-efficiency",
+      "plan": 0.4,
+      "below": {
+        "holds": 0.368994140625,
+        "breaks": 0.36893310546875,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      },
+      "above": null
+    },
+    {
+      "id": "helios-laser-efficiency",
+      "plan": 0.5,
+      "below": {
+        "holds": 0.46279296875000003,
+        "breaks": 0.4626953125,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      },
+      "above": null
+    },
+    {
+      "id": "veil-momentum-fraction",
+      "plan": 0.01,
+      "below": null,
+      "above": {
+        "holds": 0.03491057216487856,
+        "breaks": 0.0349439306122814,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      }
+    },
+    {
+      "id": "exhaust-effective-temp",
+      "plan": 2000,
+      "below": null,
+      "above": {
+        "holds": 2016.11328125,
+        "breaks": 2016.6015625,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      }
+    },
+    {
+      "id": "exhaust-peak",
+      "plan": 50000000000000000000,
+      "below": {
+        "holds": 49472656250000000000,
+        "breaks": 49462890625000000000,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      },
+      "above": {
+        "holds": 65341796875000005000,
+        "breaks": 65351562500000000000,
+        "fails": [
+          "energy-closes"
+        ]
+      }
+    },
+    {
+      "id": "ice-mass",
+      "plan": 100000000000000000000,
+      "below": null,
+      "above": {
+        "holds": 100977390083678110000,
+        "breaks": 101024170014072260000,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "plan",
+      "label": "The plan",
+      "set": {},
+      "earthLike": 3559.7581405283004,
+      "slack": 92.24185947169963,
+      "fails": []
+    },
+    {
+      "id": "seed-waits",
+      "label": "The seed waits for every proof experiment to pass before it launches",
+      "set": {
+        "foundry-seed-launch": 730
+      },
+      "earthLike": 3756.25911939883,
+      "slack": -104.25911939883008,
+      "fails": [
+        "foundry-builds-ring",
+        "frost-before-sealing",
+        "genesis-by-deadline",
+        "earth-like-by-deadline",
+        "ozone-shield-in-time"
+      ]
+    }
+  ]
+}

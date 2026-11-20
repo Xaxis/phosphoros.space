@@ -28,6 +28,15 @@ import {
   type RefOptions,
 } from "../calc/src/template.ts";
 import { isoOf } from "../calc/src/time.ts";
+import {
+  computeMargins,
+  type Edge,
+  MARGINS_FILE,
+  type Margins,
+  marginsHash,
+  readMargins,
+  writeMargins,
+} from "./margins.ts";
 
 const CHECK = process.argv.includes("--check");
 /** Documents named on the command line; with none, every document. Lets writers sync only their own. */
@@ -43,6 +52,16 @@ const content = loadContent();
 const where = sourceLines(r);
 const problems: string[] = checkContent(r, content);
 const stale: string[] = [];
+
+// How far each assumption can move: a few hundred model runs, so cached under a hash of the model.
+let margins: Margins | undefined = readMargins();
+if (margins?.hash !== marginsHash()) {
+  if (CHECK) stale.push(MARGINS_FILE);
+  else {
+    margins = computeMargins();
+    writeMargins(margins);
+  }
+}
 
 function write(rel: string, text: string) {
   const file = path.join(ROOT, rel);
@@ -269,6 +288,56 @@ const BLOCKS: Record<string, Block> = {
         c.pass ? "Pass" : c.issue ? "**Fails (open issue)**" : "**Fails**",
         c.detail,
       ]),
+    );
+  },
+  margins(_arg, p) {
+    const value = (id: string, v: number) => formatQuantity({ ...r.get(id), value: v }, { sig: 3 });
+    const check = (id: string) => {
+      const c = r.checks.get(id);
+      return c ? `[${c.label}](${p}numbers.md#check-${id})` : id;
+    };
+    const end = (id: string, e: Edge | null, side: 0 | 1) => {
+      const range = r.get(id).range as [number, number];
+      return e ? value(id, e.holds) : `${value(id, range[side])} or ${side ? "more" : "less"}`;
+    };
+    const fails = (e: Edge | null, side: string) =>
+      e ? `${side}: ${e.error ? "the model cannot run" : e.fails.map(check).join("; ")}` : "";
+    return table(
+      ["Assumption", "Plan", "The plan holds from", "to", "What breaks first"],
+      (margins?.inputs ?? []).map((m) => [
+        r.get(m.id).label,
+        `[${value(m.id, m.plan)}](${p}numbers.md?sig=3#${m.id})`,
+        end(m.id, m.below, 0),
+        end(m.id, m.above, 1),
+        [fails(m.below, "Lower"), fails(m.above, "Higher")].filter(Boolean).join(". ") ||
+          "Nothing, across the whole range",
+      ]),
+    );
+  },
+  scenarios(_arg, p) {
+    const deadline = r.get("deadline").value;
+    return table(
+      ["What if", "Simulated Earth-like", "Against the deadline", "Newly failing checks"],
+      (margins?.scenarios ?? []).map((s) => {
+        const date =
+          s.earthLike === undefined
+            ? "The model cannot run"
+            : formatQuantity({ ...r.get("traj-earth-like"), value: s.earthLike }, { date: "day" });
+        const days = s.earthLike === undefined ? 0 : Math.round(deadline - s.earthLike);
+        const slack =
+          s.earthLike === undefined ? "" : `${Math.abs(days)} d ${days >= 0 ? "early" : "late"}`;
+        return [
+          s.label,
+          date,
+          slack,
+          s.fails
+            .map((id) => {
+              const c = r.checks.get(id);
+              return c ? `[${c.label}](${p}numbers.md#check-${id})` : id;
+            })
+            .join("; ") || "None",
+        ];
+      }),
     );
   },
   corrections(_arg, p) {

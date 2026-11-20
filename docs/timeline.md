@@ -130,7 +130,8 @@ does not move is the deadline, and with it the last useful ice launch. The slip 
 - **The energy.** The Lattice has fewer full-power years before the deadline. Every day of slip comes out of
   the [9.3%](numbers.md#budget-spare) it has to spare on its own, then out of the
   [34%](numbers.md#budget-spare-with-ring) spare the Ring's recovered energy adds.
-- **The schedule.** There is almost no slack. Half a day more per doubling, under two weeks in all, and the
+- **The schedule.** There is almost no slack. A fraction of a day more per doubling (the
+  [Budget](budget.md#how-much-room-the-plan-has) finds the edge for this and every other assumption), and the
   Frost Towers finish after the caps are due to be sealed, the oceans melt later, and the seeded life no
   longer greens them by the deadline. Two days more per doubling and the air itself is Earth-like only in
   2037. A much slower Foundry cannot build the Veil in time either.

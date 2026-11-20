@@ -29,6 +29,16 @@ export interface Outcome {
 
 const STEPS = 400;
 
+/**
+ * Where the plan holds as one input moves alone (tools/margins.ts): the last passing value on each
+ * side, or null where it holds to the end of the range.
+ */
+export interface SliderMargin {
+  id: string;
+  low: number | null;
+  high: number | null;
+}
+
 function toSlider(q: Input, value: number): number {
   const [lo, hi] = q.range as [number, number];
   const log = hi / lo > 4;
@@ -76,14 +86,17 @@ export function Explorer({
   groups,
   outcomes,
   timeline,
+  margins,
 }: {
   inputs: Input[];
   groups: ExplorerGroup[];
   outcomes: Outcome[];
+  margins: SliderMargin[];
   /** The Gantt's rows; every date in them is a model id, so the variant moves them. */
   timeline: Content["timeline"];
 }) {
   const byId = useMemo(() => new Map(inputs.map((q) => [q.id, q])), [inputs]);
+  const marginOf = useMemo(() => new Map(margins.map((m) => [m.id, m])), [margins]);
   const [overrides, setOverrides] = useState<Record<string, number>>({});
   const deferred = useDeferredValue(overrides);
   const base = useMemo(() => run(inputs, {}), [inputs]);
@@ -153,6 +166,7 @@ export function Explorer({
                     }}
                     aria-valuetext={formatQuantity({ ...q, value }, { sig: 3 })}
                   />
+                  <MarginBand q={q} m={marginOf.get(qid)} />
                   <div className="explorer-input-foot">
                     <span>{formatQuantity({ ...q, value: q.range[0] }, { sig: 2 })}</span>
                     <span>
@@ -175,6 +189,7 @@ export function Explorer({
                     </span>
                     <span>{formatQuantity({ ...q, value: q.range[1] }, { sig: 2 })}</span>
                   </div>
+                  <MarginText q={q} m={marginOf.get(qid)} />
                 </div>
               );
             })}
@@ -358,5 +373,40 @@ function VariantFigures({
         );
       })}
     </>
+  );
+}
+
+/** Where the plan holds on a slider's scale, with everything else as planned. */
+function MarginBand({ q, m }: { q: Input; m?: SliderMargin }) {
+  if (!m || !q.range) return null;
+  const at = (v: number | null, end: number) => (v === null ? end : (toSlider(q, v) / STEPS) * 100);
+  const a = at(m.low, 0);
+  const b = at(m.high, 100);
+  return (
+    <div className="explorer-band" aria-hidden="true">
+      <span style={{ left: `${a}%`, width: `${Math.max(0.5, b - a)}%` }} />
+    </div>
+  );
+}
+
+/** The same, in words. */
+function MarginText({ q, m }: { q: Input; m?: SliderMargin }) {
+  if (!m) return null;
+  const show = (v: number) => formatQuantity({ ...q, value: v }, { sig: 3 });
+  const text =
+    m.low !== null && m.high !== null
+      ? `between ${show(m.low)} and ${show(m.high)}`
+      : m.low !== null
+        ? `down to ${show(m.low)}`
+        : m.high !== null
+          ? `up to ${show(m.high)}`
+          : "across the whole range";
+  return (
+    <p className="explorer-margin">
+      Moved alone, the plan holds {text}.{" "}
+      {(m.low !== null || m.high !== null) && (
+        <a href="/budget#how-much-room-the-plan-has">What breaks</a>
+      )}
+    </p>
   );
 }

@@ -110,6 +110,8 @@ for (const width of [320, 390]) {
         sliders: document.querySelectorAll('.explorer-controls input[type="range"]').length,
         gantt: text(figs[0]?.querySelector("svg")),
         when: text(document.querySelector(".explorer-verdict strong")),
+        bands: document.querySelectorAll(".explorer-controls .explorer-band > span").length,
+        margin: text(document.querySelector("#x-foundry-doubling-days ~ .explorer-margin")),
       };
     });
   };
@@ -121,8 +123,10 @@ for (const width of [320, 390]) {
       plan.sliders > 0 &&
       plan.gantt.includes(plan.when) &&
       slow.when !== plan.when &&
-      slow.gantt.includes(slow.when),
-    "explorer marks basis in words and redraws the Gantt for a variant",
+      slow.gantt.includes(slow.when) &&
+      plan.bands === plan.sliders &&
+      /holds (up to|between)/.test(plan.margin),
+    "explorer marks basis in words, shows each slider's margin and redraws the Gantt for a variant",
     JSON.stringify({ ...plan, gantt: plan.gantt.length, slowWhen: slow.when }),
   );
   await ctx.close();

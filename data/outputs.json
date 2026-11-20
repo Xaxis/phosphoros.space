@@ -8154,13 +8154,26 @@
         "atmosphere-heat"
       ]
     },
+    "frost-sealing-slack": {
+      "value": 10.2419,
+      "unit": "d",
+      "shown": "10 d",
+      "label": "Days between the Frost Towers finishing and the last caps being sealed",
+      "basis": "physics",
+      "source": "calc/src/model/summary.ts#L8",
+      "formula": "last caps sealed − Frost Towers finish",
+      "inputs": [
+        "sealing-end",
+        "traj-scavenged"
+      ]
+    },
     "checks-total": {
       "value": 22,
       "unit": "count",
       "shown": "22",
       "label": "Physics checks the model runs",
       "basis": "physics",
-      "source": "calc/src/model/summary.ts#L8",
+      "source": "calc/src/model/summary.ts#L20",
       "formula": "count",
       "inputs": []
     },
@@ -8170,7 +8183,7 @@
       "shown": "4",
       "label": "Physics checks that fail, each shown with its open problem",
       "basis": "physics",
-      "source": "calc/src/model/summary.ts#L13",
+      "source": "calc/src/model/summary.ts#L25",
       "formula": "count of failing checks",
       "inputs": []
     },
@@ -8180,7 +8193,7 @@
       "shown": "18",
       "label": "Physics checks that pass",
       "basis": "physics",
-      "source": "calc/src/model/summary.ts#L23",
+      "source": "calc/src/model/summary.ts#L35",
       "formula": "count",
       "inputs": []
     }

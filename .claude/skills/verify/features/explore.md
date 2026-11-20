@@ -7,6 +7,7 @@ Change the plan's key assumptions in the browser and watch every consequence and
 ## Sub-features
 
 - sliders: one per ranged input (`range:` in `data/assumptions.yaml` or `data/constants.yaml`), log-scaled when the range spans more than a factor of four. Each carries its basis as a text badge (`BasisTag`), under the site's basis legend.
+- margins: under each slider, a band and a sentence ("Moved alone, the plan holds between ... and ...") from `data/margins.json`, which `tools/margins.ts` computes and `pnpm docs` refreshes when the model changes. The Budget page's "How much room the plan has" tables come from the same file.
 - verdict: whether the simulated Earth-like date beats the deadline, and how many checks pass.
 - consequences: a table of plan value against this variant, good and bad changes marked.
 - checks: every physics check, with "now passes" or "now fails" against the plan.
@@ -36,11 +37,12 @@ const { chromium } = require("playwright-core");
 })();'
 ```
 
-Proves it when: with a 63-day doubling the verdict reads "Venus misses the deadline"; without `?set` it reads "Venus is Earth-like in time". `node tools/layout-check.ts http://localhost:$PORT` prints `ok explorer marks basis in words and redraws the Gantt for a variant`: three figures, a badge per slider, and the Gantt showing the variant's own Earth-like date.
+Proves it when: with a 63-day doubling the verdict reads "Venus misses the deadline"; without `?set` it reads "Venus is Earth-like in time". `node tools/layout-check.ts http://localhost:$PORT` prints `ok explorer marks basis in words, shows each slider's margin and redraws the Gantt for a variant`: three figures, a badge and a margin band per slider, the doubling time's margin sentence ("holds up to ..."), and the Gantt showing the variant's own Earth-like date.
 
 ## Gotchas
 
 - The model runs in the browser, so `@phosphoros/calc` (index) must stay free of Node imports; file access lives in `@phosphoros/calc/load`.
-- A run takes 30 to 160 ms; slider changes are deferred with `useDeferredValue`.
+- A run takes 30 to 160 ms; slider changes are deferred with `useDeferredValue`. The ozone model is most of it.
+- The margin bands are for one input moved alone from the plan; they do not move with the other sliders.
 - A variant the model cannot compute shows "The model cannot run with these assumptions" and the model's reason, e.g. `?set=foundry-doubling-days:120` (the Lattice finishes after the deadline). The model throws rather than report a meaningless budget share.
 - Screen readers hear only the verdict sentence, half a second after the last slider move (`role="status"`); the results panel is not a live region, or every step would read the whole table.

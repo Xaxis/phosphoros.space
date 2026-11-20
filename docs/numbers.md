@@ -730,9 +730,10 @@ Basis: **Physics** is measurement or established physics. **Precedent** is shown
 
 | Quantity | Value | How | Basis | Source |
 | --- | --- | --- | --- | --- |
-| <a id="checks-total"></a>**Physics checks the model runs**<br>`checks-total` | 22 | count<br>from  | Physics | [model/summary.ts:8](../calc/src/model/summary.ts#L8) |
-| <a id="checks-failing"></a>**Physics checks that fail, each shown with its open problem**<br>`checks-failing` | 4 | count of failing checks<br>from  | Physics | [model/summary.ts:13](../calc/src/model/summary.ts#L13) |
-| <a id="checks-passing"></a>**Physics checks that pass**<br>`checks-passing` | 18 | count<br>from  | Physics | [model/summary.ts:23](../calc/src/model/summary.ts#L23) |
+| <a id="frost-sealing-slack"></a>**Days between the Frost Towers finishing and the last caps being sealed**<br>`frost-sealing-slack` | 10 d | last caps sealed − Frost Towers finish<br>from [sealing-end](#sealing-end), [traj-scavenged](#traj-scavenged) | Physics | [model/summary.ts:8](../calc/src/model/summary.ts#L8) |
+| <a id="checks-total"></a>**Physics checks the model runs**<br>`checks-total` | 22 | count<br>from  | Physics | [model/summary.ts:20](../calc/src/model/summary.ts#L20) |
+| <a id="checks-failing"></a>**Physics checks that fail, each shown with its open problem**<br>`checks-failing` | 4 | count of failing checks<br>from  | Physics | [model/summary.ts:25](../calc/src/model/summary.ts#L25) |
+| <a id="checks-passing"></a>**Physics checks that pass**<br>`checks-passing` | 18 | count<br>from  | Physics | [model/summary.ts:35](../calc/src/model/summary.ts#L35) |
 
 ## Checks
 

@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Explorer, type ExplorerGroup, type Outcome } from "../../components/Explorer";
+import {
+  Explorer,
+  type ExplorerGroup,
+  type Outcome,
+  type SliderMargin,
+} from "../../components/Explorer";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { pageMeta } from "../../lib/meta";
-import { model } from "../../lib/model";
+import { model, readRepoFile } from "../../lib/model";
 import { EXPLORE, REPO } from "../../lib/site";
 
 export const metadata: Metadata = pageMeta(EXPLORE);
@@ -43,6 +48,12 @@ const OUTCOMES: Outcome[] = [
 export default function ExplorePage() {
   const { r, content } = model();
   const inputs = [...r.inputs.values()];
+  // How far each input can move alone, from tools/margins.ts (cached by pnpm docs).
+  const margins: SliderMargin[] = (
+    JSON.parse(readRepoFile("data/margins.json")) as {
+      inputs: { id: string; below: { holds: number } | null; above: { holds: number } | null }[];
+    }
+  ).inputs.map((m) => ({ id: m.id, low: m.below?.holds ?? null, high: m.above?.holds ?? null }));
   return (
     <>
       <Header current="/explore" />
@@ -61,7 +72,13 @@ export default function ExplorePage() {
             </p>
           </div>
         </div>
-        <Explorer inputs={inputs} groups={GROUPS} outcomes={OUTCOMES} timeline={content.timeline} />
+        <Explorer
+          inputs={inputs}
+          groups={GROUPS}
+          outcomes={OUTCOMES}
+          timeline={content.timeline}
+          margins={margins}
+        />
       </main>
       <Footer doc="calc/src/model/index.ts" />
     </>

@@ -10,7 +10,8 @@ The seed foundry cannot wait for all of them: to land on Mercury in
 [1 October 2028](numbers.md?date=day#foundry-seed-launch), three months before the other gates close. So
 [Ouroboros-0](#ouroboros-0) must show its closure before that launch, and the rest, the cloud-life survey
 included, are decided while the seed is in flight. A gate that fails then halts the seed on arrival: it lands, and
-does not start to copy itself.
+does not start to copy itself. Holding the seed until every result is in would cost more than the plan's
+slack: the [Budget](budget.md#how-much-room-the-plan-has) shows what that delay does.
 
 <!-- figure:research-gates -->
 ![The proof experiments and their gates, 2027 and 2028](../figures/svg/research-gates.svg)
