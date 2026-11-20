@@ -64,7 +64,9 @@ function Card({ id }: { id: string }) {
                 const d = r.get(i);
                 return (
                   <li key={i}>
-                    <BasisGlyph basis={basisOf(d)} />
+                    <span className={`basis-${basisOf(d)}`}>
+                      <BasisGlyph basis={basisOf(d)} />
+                    </span>
                     <a href={`/numbers#${i}`}>{d.label}</a>
                     <span className="card-input-value">{formatQuantity(d, { date: "day" })}</span>
                   </li>
