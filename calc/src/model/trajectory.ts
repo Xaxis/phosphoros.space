@@ -253,9 +253,19 @@ export function simulate(v: (id: string) => number): {
 
 export function trajectory(r: Registry) {
   const { v } = r.in("model/trajectory.ts");
+  // The simulation runs once. Every quantity that uses it replays the inputs it read, so each one,
+  // not just the first, lists them in the ledger.
   let sim: ReturnType<typeof simulate> | undefined;
+  const simReads = new Set<string>();
   const run = () => {
-    sim = simulate(v);
+    if (sim) {
+      for (const id of simReads) v(id);
+      return sim;
+    }
+    sim = simulate((id) => {
+      simReads.add(id);
+      return v(id);
+    });
     return sim;
   };
 
@@ -277,14 +287,11 @@ export function trajectory(r: Registry) {
         formula: "day-by-day simulation (model/trajectory.ts)",
         basis: "physics",
       },
-      () => (sim ?? run()).events[k] as number,
+      () => run().events[k] as number,
     );
   }
   const total = (pick: (t: TrajectoryDay) => number) =>
-    (sim ?? run()).days.reduce(
-      (sum, t) => (t.day <= v("deadline") ? sum + pick(t) * DAY_S : sum),
-      0,
-    );
+    run().days.reduce((sum, t) => (t.day <= v("deadline") ? sum + pick(t) * DAY_S : sum), 0);
   r.q(
     "traj-pump-energy",
     {
@@ -356,7 +363,7 @@ export function trajectory(r: Registry) {
       formula: "days the simulation caps heat removal at the chimneys' capacity",
       basis: "physics",
     },
-    () => (sim ?? run()).chimneyDays,
+    () => run().chimneyDays,
   );
   r.q(
     "traj-heat-peak",
@@ -366,7 +373,7 @@ export function trajectory(r: Registry) {
       formula: "max over days of heat leaving the air",
       basis: "physics",
     },
-    () => Math.max(...(sim ?? run()).days.map((t) => t.heatOut)),
+    () => Math.max(...run().days.map((t) => t.heatOut)),
   );
   r.q(
     "traj-slack-days",
@@ -377,11 +384,11 @@ export function trajectory(r: Registry) {
       formula: "deadline − Earth-like date",
       basis: "physics",
     },
-    () => v("deadline") - ((sim ?? run()).events["earth-like"] as number),
+    () => v("deadline") - (run().events["earth-like"] as number),
   );
   const weekly = (pick: (t: TrajectoryDay) => number): Point[] => {
     const out: Point[] = [];
-    const days = (sim ?? run()).days;
+    const days = run().days;
     for (let i = 0; i < days.length; i += 7) {
       const t = days[i] as TrajectoryDay;
       out.push({ x: t.day, y: pick(t) });
@@ -471,7 +478,7 @@ export function trajectory(r: Registry) {
     "earth-like-by-deadline",
     { label: "The simulated atmosphere is Earth-like by the deadline", kind: "schedule" },
     () => {
-      const d = (sim ?? run()).events["earth-like"] as number;
+      const d = run().events["earth-like"] as number;
       return {
         pass: d <= v("deadline"),
         detail: `The day-by-day simulation reaches Earth-like conditions on ${fmt(r, "traj-earth-like", { date: "day" })}, ${fmt(r, "traj-slack-days")} before the ${fmt(r, "deadline", { date: "day" })} deadline. The chimneys, not the power, set the pace on ${fmt(r, "traj-chimney-days")}.`,
