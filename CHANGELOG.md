@@ -19,14 +19,19 @@ corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the 
 - Corrections: the Veil returns to L1 as a light-bending film, because a version 2 statite cannot
   hover; the Exhaust is sized for the simulated peak; oxygen is a little above Earth's, not a match;
   seeding life waits for the oxygen and for the oceans' pH; launches fired between windows are
-  charged, so cooling and sealing end later; the precursor mission dates were checked again.
+  charged, so cooling and sealing end later, and the Lattice grows so the energy budget still
+  closes without the Ring ([#12](https://github.com/Xaxis/phosphoros.space/issues/12)); the
+  precursor mission dates were checked again. The Lattice's orbits are set, so its longest beam and
+  widest spot grow; the Exhaust's dark strip and far field are sized from its cone; the Veil blocks
+  every colour and the Exhaust aims its cones around it; the Veil's spare slats are not claimed; the
+  Choir's machine count is the model's; the cryo caps use measured aerogel; and Mercury's surface is
+  poor in iron, as MESSENGER found.
 - Open problems: the Braking Ring cannot lower the caught ice on tethers as version 2 describes
   ([#2](https://github.com/Xaxis/phosphoros.space/issues/2)), and catching half the ice eastbound
   and half westbound cancels the twist on the Ring, not its braking force
-  ([#3](https://github.com/Xaxis/phosphoros.space/issues/3)). Once launches between windows are
-  charged, the Lattice alone no longer covers the energy demand, and the plan closes only with the
-  Ring's recovered energy ([#12](https://github.com/Xaxis/phosphoros.space/issues/12)). Each is carried as a failing check
-  until a design closes it. Other gaps found while rebuilding the numbers are open as
+  ([#3](https://github.com/Xaxis/phosphoros.space/issues/3)). The Exhaust's narrow beams cost far
+  more pump work than the model charges ([#4](https://github.com/Xaxis/phosphoros.space/issues/4)).
+  Each is carried as a failing check until a design closes it. Other gaps found while rebuilding the numbers are open as
   [issues](https://github.com/Xaxis/phosphoros.space/issues).
 - The site, phosphoros.space, renders every page from the docs in this repository, and the
   Explorer runs the model in the browser so anyone can change an assumption and see what follows.

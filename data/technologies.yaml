@@ -445,7 +445,7 @@
   precedent: []
   experiments: [cloud-life]
   figures: []
-  modules: []
+  modules: [trajectory.ts]
   corrections: [genesis-gate, genesis-ph]
 
 - id: choir
