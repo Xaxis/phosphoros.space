@@ -242,6 +242,42 @@
   url: https://astrobiology.nasa.gov/news/how-to-give-mars-an-atmosphere-maybe/
   checked: 2026-11-20
 
+- id: atkinson-2004
+  kind: paper
+  title: "Evaluated kinetic and photochemical data for atmospheric chemistry: Volume I, gas phase reactions of Ox, HOx, NOx and SOx species"
+  authors: Atkinson, R., Baulch, D. L., Cox, R. A., Crowley, J. N., et al. (IUPAC Subcommittee)
+  year: 2004
+  venue: Atmospheric Chemistry and Physics 4, 1461 to 1738
+  url: https://doi.org/10.5194/acp-4-1461-2004
+  checked: 2026-11-20
+  note: "Recommended rates for O + O₂ + M → O₃ + M and O + O₃ → 2 O₂, the two reactions of the Chapman cycle the ozone model uses."
+- id: cooke-2022
+  kind: paper
+  title: "A revised lower estimate of ozone columns during Earth's oxygenated history"
+  authors: Cooke, G. J., Marsh, D. R., Walsh, C., Black, B., and Lamarque, J.-F.
+  year: 2022
+  venue: Royal Society Open Science 9, 211165
+  url: https://doi.org/10.1098/rsos.211165
+  also: https://arxiv.org/abs/2102.11675
+  checked: 2026-11-20
+  note: Ozone columns from a three-dimensional model at oxygen levels from 0.1% to 150% of today's. Gives 279 DU for the pre-industrial Earth, and the 120 to 185 DU range earlier studies took as a full ultraviolet shield.
+- id: us-standard-atmosphere
+  kind: report
+  title: U.S. Standard Atmosphere, 1976
+  authors: NOAA, NASA and U.S. Air Force
+  year: 1976
+  venue: NOAA-S/T 76-1562
+  url: https://ntrs.nasa.gov/citations/19770009539
+  checked: 2026-11-20
+  note: Air cooling at 6.5 K per km to 11 km, then holding at 216.65 K to 20 km.
+- id: tuv-x-spectra
+  kind: data
+  title: "TUV-x photolysis model, input data: O₃ and O₂ cross-sections and extraterrestrial solar spectra"
+  authors: NCAR Atmospheric Chemistry Observations and Modeling
+  year: 2024
+  url: https://github.com/NCAR/TUV-x/tree/main/test/data/old_tuv/DATAE1
+  checked: 2026-11-20
+  note: "The files in data/spectra/: O₃ cross-sections from JPL Publication 06-2 (Sander et al. 2006); O₂'s Herzberg continuum from Yoshino et al. (1988), Planetary and Space Science 36, 1469; sunlight from ATLAS-3 SUSIM (1994) below 400 nm and from Neckel and Labs (1984), Solar Physics 90, 205, above."
 # --- Sunshades and statites -------------------------------------------------------------------------
 - id: angel-2006
   kind: paper

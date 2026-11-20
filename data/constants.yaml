@@ -376,6 +376,31 @@ earth-o2-pressure:
   source: [nasa-earth-factsheet]
   sig: 2
   note: 20.95% of one standard atmosphere.
+earth-strat-temp:
+  value: 216.65
+  unit: K
+  label: Temperature of Earth's lower stratosphere
+  basis: physics
+  source: [us-standard-atmosphere]
+  sig: 5
+  note: The U.S. Standard Atmosphere holds it constant from 11 to 20 km.
+earth-lapse-rate:
+  value: 0.0065
+  unit: K/m
+  show: K/km
+  label: How fast Earth's air cools with height, in the lowest 11 km
+  basis: physics
+  source: [us-standard-atmosphere]
+  sig: 2
+earth-ozone-column:
+  value: 7.497e22
+  unit: 1/m2
+  show: DU
+  label: Earth's global mean ozone column before industry
+  basis: physics
+  source: [cooke-2022]
+  sig: 3
+  note: From a three-dimensional chemistry-climate model (WACCM6) that recovers the measured pre-industrial column.
 earth-dipole:
   value: 8.0e22
   unit: A m2
@@ -514,6 +539,45 @@ c-molar-mass:
   label: Molar mass of carbon
   basis: physics
   sig: 4
+# --- Ozone chemistry -------------------------------------------------------------------------------
+o-o2-rate-o2:
+  value: 6.0e-46
+  unit: m6/s
+  show: cm6/s
+  label: "Rate of O + O₂ + M → O₃ + M at 300 K, with O₂ as M"
+  basis: physics
+  source: [atkinson-2004]
+  sig: 2
+o-o2-rate-n2:
+  value: 5.6e-46
+  unit: m6/s
+  show: cm6/s
+  label: "Rate of O + O₂ + M → O₃ + M at 300 K, with N₂ as M"
+  basis: physics
+  source: [atkinson-2004]
+  sig: 2
+o-o2-rate-exponent:
+  value: 2.6
+  unit: "1"
+  label: How that rate rises as the air cools, as a power of 300 K over the temperature
+  basis: physics
+  source: [atkinson-2004]
+  sig: 2
+o-o3-rate:
+  value: 8.0e-18
+  unit: m3/s
+  show: cm3/s
+  label: "Rate of O + O₃ → 2 O₂, before its temperature factor"
+  basis: physics
+  source: [atkinson-2004]
+  sig: 2
+o-o3-activation-temp:
+  value: 2060
+  unit: K
+  label: "Activation temperature of O + O₃ → 2 O₂"
+  basis: physics
+  source: [atkinson-2004]
+  sig: 3
 co2-cp:
   value: 1000
   unit: J/kg/K

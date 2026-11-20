@@ -393,13 +393,37 @@
       "basis": "physics",
       "source": "data/constants.yaml#L370"
     },
+    "earth-strat-temp": {
+      "value": 216.65,
+      "unit": "K",
+      "shown": "216.65 K",
+      "label": "Temperature of Earth's lower stratosphere",
+      "basis": "physics",
+      "source": "data/constants.yaml#L379"
+    },
+    "earth-lapse-rate": {
+      "value": 0.0065,
+      "unit": "K/m",
+      "shown": "6.5 K/km",
+      "label": "How fast Earth's air cools with height, in the lowest 11 km",
+      "basis": "physics",
+      "source": "data/constants.yaml#L387"
+    },
+    "earth-ozone-column": {
+      "value": 7.497e+22,
+      "unit": "1/m2",
+      "shown": "279 DU",
+      "label": "Earth's global mean ozone column before industry",
+      "basis": "physics",
+      "source": "data/constants.yaml#L395"
+    },
     "earth-dipole": {
       "value": 8e+22,
       "unit": "A m2",
       "shown": "8 × 10²² A·m²",
       "label": "Earth's magnetic dipole moment",
       "basis": "physics",
-      "source": "data/constants.yaml#L379"
+      "source": "data/constants.yaml#L404"
     },
     "seawater-density": {
       "value": 1025,
@@ -407,7 +431,7 @@
       "shown": "1,030 kg/m³",
       "label": "Seawater density",
       "basis": "physics",
-      "source": "data/constants.yaml#L386"
+      "source": "data/constants.yaml#L411"
     },
     "humanity-power": {
       "value": 19000000000000,
@@ -415,7 +439,7 @@
       "shown": "19 TW",
       "label": "Humanity's primary power use",
       "basis": "physics",
-      "source": "data/constants.yaml#L392"
+      "source": "data/constants.yaml#L417"
     },
     "mercury-mass": {
       "value": 3.3011e+23,
@@ -423,7 +447,7 @@
       "shown": "3.3 × 10²³ kg",
       "label": "Mercury mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L403"
+      "source": "data/constants.yaml#L428"
     },
     "mercury-orbit": {
       "value": 57909000000,
@@ -431,7 +455,7 @@
       "shown": "0.387 AU",
       "label": "Mercury orbital radius (semi-major axis)",
       "basis": "physics",
-      "source": "data/constants.yaml#L410"
+      "source": "data/constants.yaml#L435"
     },
     "mercury-escape": {
       "value": 4250,
@@ -439,7 +463,7 @@
       "shown": "4.25 km/s",
       "label": "Mercury escape speed",
       "basis": "physics",
-      "source": "data/constants.yaml#L418"
+      "source": "data/constants.yaml#L443"
     },
     "ceres-mass": {
       "value": 938400000000000000000,
@@ -447,7 +471,7 @@
       "shown": "9.38 × 10²⁰ kg",
       "label": "Ceres mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L426"
+      "source": "data/constants.yaml#L451"
     },
     "ceres-radius": {
       "value": 469700,
@@ -455,7 +479,7 @@
       "shown": "470 km",
       "label": "Ceres mean radius",
       "basis": "physics",
-      "source": "data/constants.yaml#L433"
+      "source": "data/constants.yaml#L458"
     },
     "ceres-orbit": {
       "value": 413940000000,
@@ -463,7 +487,7 @@
       "shown": "2.77 AU",
       "label": "Ceres orbital radius (semi-major axis, 2.77 AU)",
       "basis": "physics",
-      "source": "data/constants.yaml#L441"
+      "source": "data/constants.yaml#L466"
     },
     "ceres-aphelion": {
       "value": 445830000000,
@@ -471,7 +495,7 @@
       "shown": "2.98 AU",
       "label": "Ceres aphelion",
       "basis": "physics",
-      "source": "data/constants.yaml#L449"
+      "source": "data/constants.yaml#L474"
     },
     "ceres-water-fraction": {
       "value": 0.27,
@@ -479,7 +503,7 @@
       "shown": "27%",
       "label": "Water share of Ceres's mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L457"
+      "source": "data/constants.yaml#L482"
     },
     "co2-molar-mass": {
       "value": 0.04401,
@@ -487,7 +511,7 @@
       "shown": "0.04401 kg/mol",
       "label": "Molar mass of CO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L469"
+      "source": "data/constants.yaml#L494"
     },
     "n2-molar-mass": {
       "value": 0.028013,
@@ -495,7 +519,7 @@
       "shown": "0.02801 kg/mol",
       "label": "Molar mass of N₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L475"
+      "source": "data/constants.yaml#L500"
     },
     "o2-molar-mass": {
       "value": 0.031998,
@@ -503,7 +527,7 @@
       "shown": "0.032 kg/mol",
       "label": "Molar mass of O₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L481"
+      "source": "data/constants.yaml#L506"
     },
     "so2-molar-mass": {
       "value": 0.064066,
@@ -511,7 +535,7 @@
       "shown": "0.06407 kg/mol",
       "label": "Molar mass of SO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L487"
+      "source": "data/constants.yaml#L512"
     },
     "cao-molar-mass": {
       "value": 0.056077,
@@ -519,7 +543,7 @@
       "shown": "0.05608 kg/mol",
       "label": "Molar mass of CaO",
       "basis": "physics",
-      "source": "data/constants.yaml#L493"
+      "source": "data/constants.yaml#L518"
     },
     "h2-molar-mass": {
       "value": 0.002016,
@@ -527,7 +551,7 @@
       "shown": "0.002016 kg/mol",
       "label": "Molar mass of H₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L499"
+      "source": "data/constants.yaml#L524"
     },
     "h2o-molar-mass": {
       "value": 0.018015,
@@ -535,7 +559,7 @@
       "shown": "0.01802 kg/mol",
       "label": "Molar mass of H₂O",
       "basis": "physics",
-      "source": "data/constants.yaml#L505"
+      "source": "data/constants.yaml#L530"
     },
     "c-molar-mass": {
       "value": 0.012011,
@@ -543,7 +567,47 @@
       "shown": "0.01201 kg/mol",
       "label": "Molar mass of carbon",
       "basis": "physics",
-      "source": "data/constants.yaml#L511"
+      "source": "data/constants.yaml#L536"
+    },
+    "o-o2-rate-o2": {
+      "value": 6e-46,
+      "unit": "m6/s",
+      "shown": "6.0 × 10⁻³⁴ cm⁶/s",
+      "label": "Rate of O + O₂ + M → O₃ + M at 300 K, with O₂ as M",
+      "basis": "physics",
+      "source": "data/constants.yaml#L543"
+    },
+    "o-o2-rate-n2": {
+      "value": 5.6e-46,
+      "unit": "m6/s",
+      "shown": "5.6 × 10⁻³⁴ cm⁶/s",
+      "label": "Rate of O + O₂ + M → O₃ + M at 300 K, with N₂ as M",
+      "basis": "physics",
+      "source": "data/constants.yaml#L551"
+    },
+    "o-o2-rate-exponent": {
+      "value": 2.6,
+      "unit": "1",
+      "shown": "2.6",
+      "label": "How that rate rises as the air cools, as a power of 300 K over the temperature",
+      "basis": "physics",
+      "source": "data/constants.yaml#L559"
+    },
+    "o-o3-rate": {
+      "value": 8e-18,
+      "unit": "m3/s",
+      "shown": "8.0 × 10⁻¹² cm³/s",
+      "label": "Rate of O + O₃ → 2 O₂, before its temperature factor",
+      "basis": "physics",
+      "source": "data/constants.yaml#L566"
+    },
+    "o-o3-activation-temp": {
+      "value": 2060,
+      "unit": "K",
+      "shown": "2,060 K",
+      "label": "Activation temperature of O + O₃ → 2 O₂",
+      "basis": "physics",
+      "source": "data/constants.yaml#L574"
     },
     "co2-cp": {
       "value": 1000,
@@ -551,7 +615,7 @@
       "shown": "1,000 J/(kg·K)",
       "label": "Heat capacity of Venus's air (CO₂), averaged over the cooling",
       "basis": "physics",
-      "source": "data/constants.yaml#L517"
+      "source": "data/constants.yaml#L581"
     },
     "air-cp": {
       "value": 1040,
@@ -559,7 +623,7 @@
       "shown": "1,040 J/(kg·K)",
       "label": "Heat capacity of nitrogen-oxygen air",
       "basis": "physics",
-      "source": "data/constants.yaml#L525"
+      "source": "data/constants.yaml#L589"
     },
     "co2-deposition-heat": {
       "value": 571000,
@@ -567,7 +631,7 @@
       "shown": "571 kJ/kg",
       "label": "Heat CO₂ releases freezing straight from gas (deposition)",
       "basis": "physics",
-      "source": "data/constants.yaml#L531"
+      "source": "data/constants.yaml#L595"
     },
     "co2-sublimation-enthalpy": {
       "value": 25200,
@@ -575,7 +639,7 @@
       "shown": "25.2 kJ/mol",
       "label": "Sublimation enthalpy of CO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L539"
+      "source": "data/constants.yaml#L603"
     },
     "co2-sublimation-ref-temp": {
       "value": 194.7,
@@ -583,7 +647,7 @@
       "shown": "194.7 K",
       "label": "CO₂ frost point at one atmosphere",
       "basis": "physics",
-      "source": "data/constants.yaml#L547"
+      "source": "data/constants.yaml#L611"
     },
     "co2-sublimation-ref-pressure": {
       "value": 101325,
@@ -591,7 +655,7 @@
       "shown": "1.013 bar",
       "label": "One atmosphere, the pressure of that frost point",
       "basis": "physics",
-      "source": "data/constants.yaml#L554"
+      "source": "data/constants.yaml#L618"
     },
     "co2-critical-temp": {
       "value": 304.13,
@@ -599,7 +663,7 @@
       "shown": "304.1 K",
       "label": "CO₂ critical temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L561"
+      "source": "data/constants.yaml#L625"
     },
     "co2-critical-pressure": {
       "value": 7377300,
@@ -607,7 +671,7 @@
       "shown": "73.8 bar",
       "label": "CO₂ critical pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L568"
+      "source": "data/constants.yaml#L632"
     },
     "co2-triple-temp": {
       "value": 216.59,
@@ -615,7 +679,7 @@
       "shown": "216.6 K",
       "label": "CO₂ triple-point temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L576"
+      "source": "data/constants.yaml#L640"
     },
     "co2-triple-pressure": {
       "value": 518500,
@@ -623,7 +687,7 @@
       "shown": "5.2 bar",
       "label": "CO₂ triple-point pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L583"
+      "source": "data/constants.yaml#L647"
     },
     "co2-melting-a1": {
       "value": 1955.54,
@@ -631,7 +695,7 @@
       "shown": "1,955.539",
       "label": "CO₂ melting curve, linear coefficient (p/p_t = 1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)²)",
       "basis": "physics",
-      "source": "data/constants.yaml#L591"
+      "source": "data/constants.yaml#L655"
     },
     "co2-melting-a2": {
       "value": 2055.46,
@@ -639,7 +703,7 @@
       "shown": "2,055.4593",
       "label": "CO₂ melting curve, quadratic coefficient",
       "basis": "physics",
-      "source": "data/constants.yaml#L599"
+      "source": "data/constants.yaml#L663"
     },
     "dry-ice-density": {
       "value": 1562,
@@ -647,7 +711,7 @@
       "shown": "1,562 kg/m³",
       "label": "Density of dry ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L606"
+      "source": "data/constants.yaml#L670"
     },
     "co2-split-enthalpy": {
       "value": 393500,
@@ -655,7 +719,7 @@
       "shown": "394 kJ/mol",
       "label": "Least energy to split CO₂ into carbon and oxygen",
       "basis": "physics",
-      "source": "data/constants.yaml#L612"
+      "source": "data/constants.yaml#L676"
     },
     "bosch-reaction-heat": {
       "value": 90100,
@@ -663,7 +727,7 @@
       "shown": "90.1 kJ/mol",
       "label": "Heat the Bosch reaction releases per mole of CO₂ (water as vapour)",
       "basis": "physics",
-      "source": "data/constants.yaml#L620"
+      "source": "data/constants.yaml#L684"
     },
     "ice-density": {
       "value": 917,
@@ -671,7 +735,7 @@
       "shown": "917 kg/m³",
       "label": "Density of water ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L628"
+      "source": "data/constants.yaml#L692"
     },
     "water-density": {
       "value": 1000,
@@ -679,7 +743,7 @@
       "shown": "1,000 kg/m³",
       "label": "Density of water",
       "basis": "physics",
-      "source": "data/constants.yaml#L634"
+      "source": "data/constants.yaml#L698"
     },
     "ice-melt-heat": {
       "value": 334000,
@@ -687,7 +751,7 @@
       "shown": "334 kJ/kg",
       "label": "Heat to melt ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L640"
+      "source": "data/constants.yaml#L704"
     },
     "ice-cp": {
       "value": 1750,
@@ -695,7 +759,7 @@
       "shown": "1,800 J/(kg·K)",
       "label": "Heat capacity of cold ice (average from 150 K to 273 K)",
       "basis": "physics",
-      "source": "data/constants.yaml#L647"
+      "source": "data/constants.yaml#L711"
     },
     "water-cp": {
       "value": 4184,
@@ -703,7 +767,7 @@
       "shown": "4,180 J/(kg·K)",
       "label": "Heat capacity of water",
       "basis": "physics",
-      "source": "data/constants.yaml#L653"
+      "source": "data/constants.yaml#L717"
     },
     "graphite-density": {
       "value": 2200,
@@ -711,7 +775,7 @@
       "shown": "2,200 kg/m³",
       "label": "Density of graphite",
       "basis": "physics",
-      "source": "data/constants.yaml#L659"
+      "source": "data/constants.yaml#L723"
     },
     "rock-conductivity": {
       "value": 2.5,
@@ -719,7 +783,7 @@
       "shown": "2.5 W/(m·K)",
       "label": "Thermal conductivity of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L667"
+      "source": "data/constants.yaml#L731"
     },
     "rock-diffusivity": {
       "value": 0.000001,
@@ -727,7 +791,7 @@
       "shown": "1.0 × 10⁻⁶ m²/s",
       "label": "Thermal diffusivity of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L674"
+      "source": "data/constants.yaml#L738"
     },
     "rock-density": {
       "value": 3000,
@@ -735,7 +799,7 @@
       "shown": "3,000 kg/m³",
       "label": "Density of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L681"
+      "source": "data/constants.yaml#L745"
     },
     "basalt-cao-fraction": {
       "value": 0.1,
@@ -743,7 +807,7 @@
       "shown": "10%",
       "label": "Lime (CaO) share of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L688"
+      "source": "data/constants.yaml#L752"
     },
     "led-2012-power-in": {
       "value": 3e-11,
@@ -751,7 +815,7 @@
       "shown": "3.0 × 10⁻¹¹ W",
       "label": "Electricity the MIT LED drew while emitting more light than that (2012)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L697"
+      "source": "data/constants.yaml#L761"
     },
     "led-2012-light-out": {
       "value": 6.9e-11,
@@ -759,7 +823,7 @@
       "shown": "6.9 × 10⁻¹¹ W",
       "label": "Light the MIT LED emitted from that electricity, the rest drawn from heat (2012)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L704"
+      "source": "data/constants.yaml#L768"
     },
     "carbon-fibre-strength": {
       "value": 7000000000,
@@ -767,7 +831,7 @@
       "shown": "7 GPa",
       "label": "Tensile strength of Toray T1100G, the strongest carbon fibre on general sale",
       "basis": "precedent",
-      "source": "data/constants.yaml#L711"
+      "source": "data/constants.yaml#L775"
     },
     "carbon-fibre-density": {
       "value": 1790,
@@ -775,7 +839,7 @@
       "shown": "1,790 kg/m³",
       "label": "Density of Toray T1100G carbon fibre",
       "basis": "precedent",
-      "source": "data/constants.yaml#L719"
+      "source": "data/constants.yaml#L783"
     },
     "lunar-factory-seed-mass": {
       "value": 100000,
@@ -783,7 +847,7 @@
       "shown": "100 t",
       "label": "Seed mass of the 1980 NASA self-replicating lunar factory (a design study)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L726"
+      "source": "data/constants.yaml#L790"
     },
     "lunar-factory-replication-time": {
       "value": 365.25,
@@ -791,7 +855,7 @@
       "shown": "1 yr",
       "label": "Time the 1980 NASA lunar factory was designed to take to copy itself",
       "basis": "precedent",
-      "source": "data/constants.yaml#L734"
+      "source": "data/constants.yaml#L798"
     },
     "howe-tiles": {
       "value": 72000000000,
@@ -799,7 +863,7 @@
       "shown": "7.2 × 10¹⁰",
       "label": "Floating tiles, 100 m across, that Cloud Continents needs to cover Venus at 50 km",
       "basis": "precedent",
-      "source": "data/constants.yaml#L742"
+      "source": "data/constants.yaml#L806"
     },
     "howe-water-mass": {
       "value": 230000000000000000,
@@ -807,7 +871,7 @@
       "shown": "2.3 × 10¹⁷ kg",
       "label": "Water Cloud Continents imports, enough for arable soil over the whole planet",
       "basis": "precedent",
-      "source": "data/constants.yaml#L748"
+      "source": "data/constants.yaml#L812"
     },
     "mercury-surface-fe-max": {
       "value": 0.04,
@@ -815,7 +879,7 @@
       "shown": "4%",
       "label": "Most iron in Mercury's surface rock, by mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L755"
+      "source": "data/constants.yaml#L819"
     },
     "program-start": {
       "value": "2027-01-01",
@@ -1705,13 +1769,21 @@
       "basis": "design",
       "source": "data/assumptions.yaml#L687"
     },
+    "ozone-shield-column": {
+      "value": 4.971e+22,
+      "unit": "1/m2",
+      "shown": "185 DU",
+      "label": "Ozone column that must stand before any life is released",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L692"
+    },
     "acid-ocean-ph-max": {
       "value": 8,
       "unit": "1",
       "shown": "8",
       "label": "Top of the ocean pH the shore basalt is laid to hold",
       "basis": "design",
-      "source": "data/assumptions.yaml#L692"
+      "source": "data/assumptions.yaml#L701"
     },
     "genesis-seed-density": {
       "value": 100000000,
@@ -1719,7 +1791,7 @@
       "shown": "100 per cm³",
       "label": "Density the drones seed cyanobacteria at in sunlit water",
       "basis": "design",
-      "source": "data/assumptions.yaml#L699"
+      "source": "data/assumptions.yaml#L708"
     },
     "genesis-bloom-density": {
       "value": 200000000000,
@@ -1727,7 +1799,7 @@
       "shown": "200,000 per cm³",
       "label": "Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L706"
+      "source": "data/assumptions.yaml#L715"
     },
     "genesis-doubling-days": {
       "value": 1,
@@ -1735,7 +1807,7 @@
       "shown": "1 d",
       "label": "Doubling time of the seeded ocean cyanobacteria in sunlit water",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L714"
+      "source": "data/assumptions.yaml#L723"
     },
     "genesis-soil-min": {
       "value": 0.1,
@@ -1743,7 +1815,7 @@
       "shown": "10 cm",
       "label": "Thinnest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L720"
+      "source": "data/assumptions.yaml#L729"
     },
     "genesis-soil-max": {
       "value": 0.3,
@@ -1751,7 +1823,7 @@
       "shown": "30 cm",
       "label": "Thickest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L726"
+      "source": "data/assumptions.yaml#L735"
     },
     "day-length": {
       "value": 86400,
@@ -1759,7 +1831,7 @@
       "shown": "24 h",
       "label": "Length of the day the Veil and Lanterns set",
       "basis": "design",
-      "source": "data/assumptions.yaml#L732"
+      "source": "data/assumptions.yaml#L741"
     },
     "final-humidity": {
       "value": 0.75,
@@ -1767,7 +1839,7 @@
       "shown": "75%",
       "label": "Relative humidity over the new oceans",
       "basis": "design",
-      "source": "data/assumptions.yaml#L739"
+      "source": "data/assumptions.yaml#L748"
     },
     "final-albedo": {
       "value": 0.3,
@@ -1775,7 +1847,7 @@
       "shown": "30%",
       "label": "Albedo of the finished, Earth-like Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L745"
+      "source": "data/assumptions.yaml#L754"
     },
     "earth-like-temp": {
       "value": 285,
@@ -1783,7 +1855,7 @@
       "shown": "285 K",
       "label": "Coldest mean temperature that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L751"
+      "source": "data/assumptions.yaml#L760"
     },
     "earth-like-co2": {
       "value": 0.0006,
@@ -1791,7 +1863,7 @@
       "shown": "600 ppm",
       "label": "Most CO₂ that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L757"
+      "source": "data/assumptions.yaml#L766"
     },
     "choir-deadman-days": {
       "value": 7,
@@ -1799,7 +1871,7 @@
       "shown": "7 d",
       "label": "Days a replicator keeps building without a Mass Ledger heartbeat",
       "basis": "design",
-      "source": "data/assumptions.yaml#L765"
+      "source": "data/assumptions.yaml#L774"
     },
     "ouroboros-0-closure": {
       "value": 0.95,
@@ -1807,7 +1879,7 @@
       "shown": "95%",
       "label": "Ouroboros-0 passes at this share of its own mass made from simulated regolith",
       "basis": "design",
-      "source": "data/assumptions.yaml#L773"
+      "source": "data/assumptions.yaml#L782"
     },
     "ouroboros-0-doubling": {
       "value": 120,
@@ -1815,7 +1887,7 @@
       "shown": "120 d",
       "label": "Ouroboros-0 passes if it doubles in less than this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L779"
+      "source": "data/assumptions.yaml#L788"
     },
     "ouroboros-0-kill-closure": {
       "value": 0.7,
@@ -1823,7 +1895,7 @@
       "shown": "70%",
       "label": "Ouroboros-0 is killed below this mass closure",
       "basis": "design",
-      "source": "data/assumptions.yaml#L784"
+      "source": "data/assumptions.yaml#L793"
     },
     "exhaust-1-cooling": {
       "value": 10000,
@@ -1831,7 +1903,7 @@
       "shown": "10 kW/m²",
       "label": "Exhaust-1 passes at this much net cooling",
       "basis": "design",
-      "source": "data/assumptions.yaml#L790"
+      "source": "data/assumptions.yaml#L799"
     },
     "exhaust-1-carnot": {
       "value": 0.5,
@@ -1839,7 +1911,7 @@
       "shown": "50%",
       "label": "Exhaust-1 must come within this share of the Carnot limit",
       "basis": "design",
-      "source": "data/assumptions.yaml#L796"
+      "source": "data/assumptions.yaml#L805"
     },
     "exhaust-1-kill-cooling": {
       "value": 100,
@@ -1847,7 +1919,7 @@
       "shown": "100 W/m²",
       "label": "Exhaust-1 is killed if it shows no net cooling above this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L802"
+      "source": "data/assumptions.yaml#L811"
     },
     "exhaust-production-tile": {
       "value": "2031-12-31",
@@ -1855,7 +1927,7 @@
       "shown": "31 December 2031",
       "label": "Production Exhaust tiles shine at full brightness by",
       "basis": "design",
-      "source": "data/assumptions.yaml#L807"
+      "source": "data/assumptions.yaml#L816"
     },
     "lightpipe-power": {
       "value": 1000000,
@@ -1863,7 +1935,7 @@
       "shown": "1 MW",
       "label": "Power the Lightpipe test beams between satellites",
       "basis": "design",
-      "source": "data/assumptions.yaml#L812"
+      "source": "data/assumptions.yaml#L821"
     },
     "lightpipe-range": {
       "value": 1000000,
@@ -1871,7 +1943,7 @@
       "shown": "1,000 km",
       "label": "Distance the Lightpipe test beams over",
       "basis": "design",
-      "source": "data/assumptions.yaml#L818"
+      "source": "data/assumptions.yaml#L827"
     },
     "lightpipe-efficiency": {
       "value": 0.3,
@@ -1879,7 +1951,7 @@
       "shown": "30%",
       "label": "Lightpipe passes at this end-to-end efficiency",
       "basis": "design",
-      "source": "data/assumptions.yaml#L824"
+      "source": "data/assumptions.yaml#L833"
     },
     "lightpipe-kill-emitters": {
       "value": 100,
@@ -1887,7 +1959,7 @@
       "shown": "100",
       "label": "Lightpipe is killed if phase lock fails beyond this many emitters",
       "basis": "design",
-      "source": "data/assumptions.yaml#L830"
+      "source": "data/assumptions.yaml#L839"
     },
     "veil-1-area": {
       "value": 1000000,
@@ -1895,7 +1967,7 @@
       "shown": "1 km²",
       "label": "Area of the Veil-1 test slat",
       "basis": "design",
-      "source": "data/assumptions.yaml#L835"
+      "source": "data/assumptions.yaml#L844"
     },
     "veil-1-dim": {
       "value": 0.99,
@@ -1903,7 +1975,7 @@
       "shown": "99%",
       "label": "Veil-1 must dim to block this share of sunlight",
       "basis": "design",
-      "source": "data/assumptions.yaml#L841"
+      "source": "data/assumptions.yaml#L850"
     },
     "veil-1-kill-life": {
       "value": 182.625,
@@ -1911,7 +1983,7 @@
       "shown": "6 months",
       "label": "Veil-1 is killed if its film degrades within this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L847"
+      "source": "data/assumptions.yaml#L856"
     },
     "railhead-test-mass": {
       "value": 1000,
@@ -1919,7 +1991,7 @@
       "shown": "1 t",
       "label": "Ice block the Railhead test throws",
       "basis": "design",
-      "source": "data/assumptions.yaml#L853"
+      "source": "data/assumptions.yaml#L862"
     },
     "railhead-test-speed": {
       "value": 3000,
@@ -1927,7 +1999,7 @@
       "shown": "3 km/s",
       "label": "Railhead test passes at this muzzle speed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L859"
+      "source": "data/assumptions.yaml#L868"
     },
     "railhead-test-rate": {
       "value": 10,
@@ -1935,7 +2007,7 @@
       "shown": "10",
       "label": "Railhead test passes at this many shots an hour",
       "basis": "design",
-      "source": "data/assumptions.yaml#L865"
+      "source": "data/assumptions.yaml#L874"
     },
     "railhead-kill-speed": {
       "value": 1000,
@@ -1943,7 +2015,7 @@
       "shown": "1 km/s",
       "label": "Railhead test is killed below this muzzle speed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L870"
+      "source": "data/assumptions.yaml#L879"
     },
     "railhead-kill-rate": {
       "value": 1,
@@ -1951,7 +2023,7 @@
       "shown": "1",
       "label": "Railhead test is killed below this many shots an hour",
       "basis": "design",
-      "source": "data/assumptions.yaml#L876"
+      "source": "data/assumptions.yaml#L885"
     },
     "cryo-seal-months": {
       "value": 365.25,
@@ -1959,7 +2031,7 @@
       "shown": "12 months",
       "label": "How long Cryo-seal must hold its leak",
       "basis": "design",
-      "source": "data/assumptions.yaml#L881"
+      "source": "data/assumptions.yaml#L890"
     },
     "mini-aegis-coil": {
       "value": 10,
@@ -1967,7 +2039,7 @@
       "shown": "10 m",
       "label": "Size of the Mini-Aegis test coil",
       "basis": "design",
-      "source": "data/assumptions.yaml#L887"
+      "source": "data/assumptions.yaml#L896"
     },
     "choir-sim-robots": {
       "value": 10000,
@@ -1975,7 +2047,7 @@
       "shown": "10,000",
       "label": "Robots in the Choir-sim test factory",
       "basis": "design",
-      "source": "data/assumptions.yaml#L892"
+      "source": "data/assumptions.yaml#L901"
     },
     "choir-sim-days": {
       "value": 90,
@@ -1983,7 +2055,7 @@
       "shown": "90 d",
       "label": "How long Choir-sim must run unattended",
       "basis": "design",
-      "source": "data/assumptions.yaml#L897"
+      "source": "data/assumptions.yaml#L906"
     },
     "choir-sim-kill-interventions": {
       "value": 1,
@@ -1991,7 +2063,7 @@
       "shown": "1",
       "label": "Choir-sim is killed above this many human interventions a day",
       "basis": "design",
-      "source": "data/assumptions.yaml#L902"
+      "source": "data/assumptions.yaml#L911"
     },
     "foundry-closure-seed": {
       "value": 0.9999,
@@ -1999,7 +2071,7 @@
       "shown": "99.99%",
       "label": "Share of each copy's mass the seed Foundry makes from Mercury rock",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L908"
+      "source": "data/assumptions.yaml#L917"
     },
     "foundry-trace-refining": {
       "value": "2030-01-01",
@@ -2007,7 +2079,7 @@
       "shown": "1 January 2030",
       "label": "Trace-element refining runs, closing the Foundry's loop completely",
       "basis": "design",
-      "source": "data/assumptions.yaml#L916"
+      "source": "data/assumptions.yaml#L925"
     },
     "venus-area": {
       "value": 460234000000000,
@@ -7731,6 +7803,169 @@
         "genesis-start"
       ]
     },
+    "ozone-sunlight": {
+      "value": 1,
+      "unit": "1",
+      "shown": "1",
+      "label": "Sunlight under the open Veil, as a multiple of Earth's",
+      "basis": "physics",
+      "source": "calc/src/model/ozone.ts#L245",
+      "formula": "T_day × (1 AU / a_Venus)²",
+      "inputs": [
+        "veil-day-transmission",
+        "au",
+        "venus-orbit"
+      ]
+    },
+    "ozone-model-earth": {
+      "value": 7.52985e+22,
+      "unit": "1/m2",
+      "shown": "280 DU",
+      "label": "Earth's ozone column, as this model computes it",
+      "basis": "physics",
+      "source": "calc/src/model/ozone.ts#L13",
+      "formula": "steady-state Chapman column, Earth's air, nothing fitted",
+      "inputs": [
+        "earth-sea-level-pressure",
+        "earth-o2-fraction",
+        "standard-gravity",
+        "earth-surface-temp",
+        "earth-strat-temp",
+        "earth-lapse-rate",
+        "gas-constant",
+        "boltzmann-constant",
+        "o-o2-rate-o2",
+        "o-o2-rate-n2",
+        "o-o2-rate-exponent",
+        "o-o3-rate",
+        "o-o3-activation-temp",
+        "o2-molar-mass",
+        "n2-molar-mass"
+      ]
+    },
+    "ozone-steady": {
+      "value": 8.09772e+22,
+      "unit": "1/m2",
+      "shown": "301 DU",
+      "label": "Venus's ozone column once it settles",
+      "basis": "physics",
+      "source": "calc/src/model/ozone.ts#L269",
+      "formula": "steady-state Chapman column, the 2036 air, under the open Veil",
+      "inputs": [
+        "final-pressure",
+        "o2-target-pressure",
+        "venus-gravity",
+        "genesis-air-temp",
+        "earth-strat-temp",
+        "earth-lapse-rate",
+        "ozone-sunlight",
+        "gas-constant",
+        "boltzmann-constant",
+        "o-o2-rate-o2",
+        "o-o2-rate-n2",
+        "o-o2-rate-exponent",
+        "o-o3-rate",
+        "o-o3-activation-temp",
+        "o2-molar-mass",
+        "n2-molar-mass"
+      ]
+    },
+    "ozone-o2-at-opening": {
+      "value": 23893.3,
+      "unit": "Pa",
+      "shown": "0.24 bar",
+      "label": "Oxygen in the air when the Veil opens",
+      "basis": "physics",
+      "source": "calc/src/model/ozone.ts#L282",
+      "formula": "simulated O₂ pressure on the day the air starts to warm",
+      "inputs": [
+        "traj-warming"
+      ]
+    },
+    "ozone-first-day": {
+      "value": 1.34008e+22,
+      "unit": "1/m2",
+      "shown": "49.9 DU",
+      "label": "Ozone column one day after the Veil opens",
+      "basis": "physics",
+      "source": "calc/src/model/ozone.ts#L313",
+      "formula": "Chapman column grown from none, one day of sunlight",
+      "inputs": [
+        "ozone-o2-at-opening",
+        "genesis-start",
+        "ozone-shield-column",
+        "traj-warming",
+        "venus-gravity",
+        "genesis-air-temp",
+        "earth-strat-temp",
+        "earth-lapse-rate",
+        "ozone-sunlight",
+        "gas-constant",
+        "boltzmann-constant",
+        "o-o2-rate-o2",
+        "o-o2-rate-n2",
+        "o-o2-rate-exponent",
+        "o-o3-rate",
+        "o-o3-activation-temp",
+        "o2-molar-mass",
+        "n2-molar-mass"
+      ]
+    },
+    "ozone-shield-days": {
+      "value": 91,
+      "unit": "d",
+      "shown": "91 d",
+      "label": "Days of sunlight until the ozone shields the land",
+      "basis": "physics",
+      "source": "calc/src/model/ozone.ts#L325",
+      "formula": "first day the grown column reaches the shield column",
+      "inputs": [
+        "ozone-o2-at-opening",
+        "genesis-start",
+        "ozone-shield-column"
+      ]
+    },
+    "ozone-shield-date": {
+      "value": "2036-12-02",
+      "unit": "date",
+      "shown": "2 December 2036",
+      "label": "The ozone shields the land",
+      "basis": "physics",
+      "source": "calc/src/model/ozone.ts#L340",
+      "formula": "Veil opens + days to the shield column",
+      "inputs": [
+        "traj-warming",
+        "ozone-shield-days"
+      ]
+    },
+    "ozone-at-seeding": {
+      "value": 4.96762e+22,
+      "unit": "1/m2",
+      "shown": "185 DU",
+      "label": "Ozone column when seeding begins",
+      "basis": "physics",
+      "source": "calc/src/model/ozone.ts#L350",
+      "formula": "Chapman column grown from none, from the Veil opening to seeding",
+      "inputs": [
+        "ozone-o2-at-opening",
+        "genesis-start",
+        "ozone-shield-column",
+        "traj-warming"
+      ]
+    },
+    "genesis-land-start": {
+      "value": "2036-12-02",
+      "unit": "date",
+      "shown": "2 December 2036",
+      "label": "Land seeding begins: the later of the ocean seeding and the ozone shield",
+      "basis": "design",
+      "source": "calc/src/model/ozone.ts#L380",
+      "formula": "max(seeding begins, ozone shields the land)",
+      "inputs": [
+        "genesis-start",
+        "ozone-shield-date"
+      ]
+    },
     "budget-demand": {
       "value": 8.37552e+27,
       "unit": "J",
@@ -7920,9 +8155,9 @@
       ]
     },
     "checks-total": {
-      "value": 20,
+      "value": 22,
       "unit": "count",
-      "shown": "20",
+      "shown": "22",
       "label": "Physics checks the model runs",
       "basis": "physics",
       "source": "calc/src/model/summary.ts#L8",
@@ -7940,9 +8175,9 @@
       "inputs": []
     },
     "checks-passing": {
-      "value": 16,
+      "value": 18,
       "unit": "count",
-      "shown": "16",
+      "shown": "18",
       "label": "Physics checks that pass",
       "basis": "physics",
       "source": "calc/src/model/summary.ts#L23",
@@ -8022,6 +8257,14 @@
     "earth-like-by-deadline": {
       "pass": true,
       "detail": "The day-by-day simulation reaches Earth-like conditions on 30 September 2036, 92 d before the 31 December 2036 deadline. The chimneys, not the power, set the pace on 56 d."
+    },
+    "ozone-model-earth": {
+      "pass": true,
+      "detail": "280 DU against 279 DU from a three-dimensional model of the pre-industrial Earth, within a quarter either way, with nothing fitted."
+    },
+    "ozone-shield-in-time": {
+      "pass": true,
+      "detail": "One day of sunlight makes 49.9 DU, easily measured. The column reaches 185 DU on 2 December 2036, 91 d after the Veil opens, so lichens and mosses go onto land from 2 December 2036, against a deadline of 31 December 2036."
     },
     "energy-closes": {
       "pass": true,

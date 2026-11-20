@@ -77,7 +77,8 @@ export type CheckKind =
   | "force" // things that hover or hang are held by something
   | "capacity" // a machine is asked for no more than it can give
   | "geometry" // beams and lines of sight clear what they must
-  | "schedule"; // the order of events works
+  | "schedule" // the order of events works
+  | "validation"; // a model run on a known case gives the known answer
 
 export interface Check {
   id: string;

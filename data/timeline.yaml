@@ -139,6 +139,12 @@ rows:
     start: genesis-start
     end: genesis-end
     tech: genesis
+  - id: land-life
+    label: Ozone shields the land; lichens and mosses sown
+    lane: venus
+    kind: milestone
+    start: genesis-land-start
+    tech: genesis
   - id: earth-like
     label: Earth-like Venus (simulated)
     lane: venus

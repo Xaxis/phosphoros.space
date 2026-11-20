@@ -689,6 +689,15 @@ genesis-ph-days:
   unit: d
   label: Days the ocean pH must hold before any life is released
   basis: design
+ozone-shield-column:
+  value: 4.971e22
+  unit: 1/m2
+  show: DU
+  sig: 3
+  label: Ozone column that must stand before any life is released
+  basis: design
+  source: [cooke-2022]
+  note: The top of the range, 120 to 185 DU, that earlier studies took as a full shield against ultraviolet. Land life waits for it; ocean life is shielded by the water above it.
 acid-ocean-ph-max:
   value: 8
   unit: "1"

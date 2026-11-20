@@ -13,6 +13,7 @@ import { foundry, foundryProducts } from "./foundry.ts";
 import { helios } from "./helios.ts";
 import { iceTrain } from "./ice.ts";
 import { outcome } from "./outcome.ts";
+import { ozone } from "./ozone.ts";
 import { ring } from "./ring.ts";
 import { acid, aegis } from "./shield.ts";
 import { summary } from "./summary.ts";
@@ -38,6 +39,7 @@ export const MODULES = [
   aegis,
   outcome,
   trajectory,
+  ozone,
   budget,
   summary,
 ];

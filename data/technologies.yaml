@@ -433,7 +433,7 @@
     - { label: Seeding, value: "From {genesis-start|date=day}, the later of the oxygen ({forge-end|date=day}) and the pH gate ({genesis-ph-clear|date=day})" }
     - { label: Living oceans, value: "{genesis-seed-density} seeded, {genesis-bloom-density} by {genesis-end|date=day}, doubling every {genesis-doubling-days}" }
     - { label: Temperature, value: "{genesis-air-temp} mean air temperature when seeding begins; Earth-like is at least {earth-like-temp}" }
-    - { label: Ozone, value: "Forms from the new oxygen. The model does not compute the layer, so the gate's ozone condition is a measurement, not a model number" }
+    - { label: Ozone, value: "{ozone-first-day} after the first day of sunlight; {ozone-shield-column}, a shield for land life, on {ozone-shield-date|date=day}; settles near {ozone-steady}" }
   groups:
     - { group: Ocean cyanobacteria, from: Synechococcus-type, traits: Stronger carbon-concentrating pumps; sulfate tolerance, job: First oxygen and food web }
     - { group: Nitrogen fixers, from: Anabaena and Trichodesmium-type, traits: Faster fixation under a nitrogen-rich sky, job: Nutrients from the air }

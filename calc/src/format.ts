@@ -51,6 +51,11 @@ const UNIT_TEXT: Record<string, string> = {
   "km2/s2": "km²/s²",
   "1/m3": "per m³",
   "1/cm3": "per cm³",
+  "1/m2": "per m²",
+  "m3/s": "m³/s",
+  "cm3/s": "cm³/s",
+  "m6/s": "m⁶/s",
+  "cm6/s": "cm⁶/s",
   km2: "km²",
   "1": "",
   count: "",
@@ -79,6 +84,11 @@ const SCALE: Record<string, Record<string, number>> = {
   T: { nT: 1e9 },
   "1": { "%": 100, ppm: 1e6 },
   "1/m3": { "1/cm3": 1e-6 },
+  // A Dobson unit is 2.687 × 10²⁰ molecules per m²: a layer 10 µm thick at 0 °C and 1 atm.
+  "1/m2": { DU: 1 / 2.687e20 },
+  "m3/s": { "cm3/s": 1e6 },
+  "m6/s": { "cm6/s": 1e12 },
+  "K/m": { "K/km": 1e3 },
   "m2/s2": { "km2/s2": 1e-6 },
 };
 

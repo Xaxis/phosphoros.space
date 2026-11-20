@@ -20,7 +20,7 @@ description: Verify Phosphoros (the model in calc/, the docs sync, the figures a
 
 | Check | Command | Proves | Baseline |
 |---|---|---|---|
-| lint | `pnpm lint` | Biome, every package's types, docs in sync with the model, figures/svg current, no em dashes or hand-typed quantities | passes, about 40 s |
+| lint | `pnpm lint` | Biome, every package's types, docs in sync with the model, figures/svg current, the ozone model's spectrum table current, no em dashes or hand-typed quantities | passes, about 40 s |
 | test | `pnpm test` | the model's invariants (calc/test/model.test.ts: every input used, content refs resolve, claims explained, energy closes, variants break the deadline) | passes, about 2 s |
 | build | `pnpm build` (run as `~/.claude/claude-core/bin/heavy pnpm build`) | every page prerenders from docs/ and the model | passes, 33 static pages, 1 to 3 min plus queue |
 | typecheck:calc | `cd calc && pnpm typecheck` | model types | passes |

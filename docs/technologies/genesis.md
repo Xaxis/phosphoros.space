@@ -80,7 +80,8 @@ No organism is released until three things are true:
 1. The oceans have held a pH above [7.5](../numbers.md#genesis-ph-min) for
    [90 d](../numbers.md#genesis-ph-days), the [Acid Sweep](acid.md)'s job.
 2. The oxygen is in: [0.25 bar](../numbers.md#o2-target-pressure), when the Forges finish.
-3. Ozone is detectable.
+3. Ozone is detectable. It is within a day of the Veil opening:
+   [49.9 DU](../numbers.md#ozone-first-day) of it ([below](#the-ozone-layer)).
 
 The ice melts when the caps are sealed and the Veil opens, on
 [2 September 2036](../numbers.md?date=day#traj-warming), so the pH hold ends on
@@ -96,10 +97,39 @@ Drones spray cyanobacteria and nitrogen fixers over sunlit water at
 they reach [200,000 per cm³](../numbers.md#genesis-bloom-density), as rich as well-lit seawater on Earth, in
 [11 d](../numbers.md#genesis-green-days): the sunlit water is green by
 [12 December 2036](../numbers.md?date=day#genesis-end), before the deadline
-([check](../numbers.md#check-genesis-by-deadline)). Crews of machines lay black loam
-on shores and caps and sow lichens, mosses and the soil consortium. Orbiters watch chlorophyll and oxygen
+([check](../numbers.md#check-genesis-by-deadline)). Land life waits for a thicker shield. When the ozone
+reaches [185 DU](../numbers.md#ozone-shield-column), on
+[2 December 2036](../numbers.md?date=day#genesis-land-start), crews of machines lay black loam on shores and
+caps and sow lichens, mosses and the soil consortium. Orbiters watch chlorophyll and oxygen
 across the planet, and the Choir's digital twin of Venus forecasts where each population will take hold
 and where it is failing.
+
+### The ozone layer
+
+Ozone needs sunlight, and none reaches the air until the caps are sealed and the Veil opens on
+[2 September 2036](../numbers.md?date=day#traj-warming). The air then holds
+[0.24 bar](../numbers.md#ozone-o2-at-opening) of oxygen and no ozone at all. The hardest ultraviolet in
+sunlight carries enough energy to split oxygen molecules; each freed atom joins another molecule to make ozone, and ozone is destroyed
+when a free atom meets it. At first the oxygen takes all of that light and the layer grows fast:
+[49.9 DU](../numbers.md#ozone-first-day) after one day. Then the new ozone shades the oxygen beneath it and
+growth slows. The column passes [185 DU](../numbers.md#ozone-shield-column), the top of the range earlier
+studies took as a full shield against ultraviolet ([Cooke et al. 2022](../sources.md#cooke-2022)),
+[91 d](../numbers.md#ozone-shield-days) after the Veil opens, on
+[2 December 2036](../numbers.md?date=day#ozone-shield-date), before the deadline
+([check](../numbers.md#check-ozone-shield-in-time)). It settles near
+[301 DU](../numbers.md#ozone-steady), a little more than Earth's: the open Veil gives Earth-strength light,
+and the new air holds more oxygen over each square metre than Earth's does.
+
+> **Physics:** A one-dimensional Chapman model of the whole planet's mean. Measured sunlight and absorption
+> cross-sections ([TUV-x data](../sources.md#tuv-x-spectra)) and IUPAC reaction rates
+> ([Atkinson et al. 2004](../sources.md#atkinson-2004)) go in; the air is cut into thin layers, each shaded
+> by those above it, and the ozone in each is solved exactly over each time step. Run on Earth's air with
+> nothing fitted, it gives [280 DU](../numbers.md#ozone-model-earth) against
+> [279 DU](../numbers.md#earth-ozone-column) for the Earth before industry
+> ([check](../numbers.md#check-ozone-model-earth)). That agreement is partly luck. The model leaves out the
+> Schumann–Runge bands, which make more ozone, and the catalytic cycles of nitrogen, hydrogen and chlorine
+> oxides, which destroy it. It also leaves out the winds that carry Earth's ozone down into the lower
+> stratosphere. Its dates are good to weeks, not days.
 
 ## Specifications
 
@@ -112,7 +142,7 @@ and where it is failing.
 | Seeding | From [1 December 2036](../numbers.md?date=day#genesis-start), the later of the oxygen ([30 September 2036](../numbers.md?date=day#forge-end)) and the pH gate ([1 December 2036](../numbers.md?date=day#genesis-ph-clear)) |
 | Living oceans | [100 per cm³](../numbers.md#genesis-seed-density) seeded, [200,000 per cm³](../numbers.md#genesis-bloom-density) by [12 December 2036](../numbers.md?date=day#genesis-end), doubling every [1 d](../numbers.md#genesis-doubling-days) |
 | Temperature | [288 K](../numbers.md#genesis-air-temp) mean air temperature when seeding begins; Earth-like is at least [285 K](../numbers.md#earth-like-temp) |
-| Ozone | Forms from the new oxygen. The model does not compute the layer, so the gate's ozone condition is a measurement, not a model number |
+| Ozone | [49.9 DU](../numbers.md#ozone-first-day) after the first day of sunlight; [185 DU](../numbers.md#ozone-shield-column), a shield for land life, on [2 December 2036](../numbers.md?date=day#ozone-shield-date); settles near [301 DU](../numbers.md#ozone-steady) |
 <!-- /table -->
 
 ## What is invented
@@ -151,8 +181,10 @@ and where it is failing.
   [90 d](../numbers.md#genesis-ph-days).
 - **The oxygen is late.** Seeding waits for the Forges. The simulated Earth-like date slips with them, and
   so does everything that depends on it.
-- **Ultraviolet before the ozone thickens.** UV-tolerant lichens and mosses go onto land first; ocean life
-  is shielded by the water above it.
+- **Ultraviolet before the ozone thickens.** Ocean life is shielded by the water above it. Lichens and
+  mosses go onto land only once the column reaches [185 DU](../numbers.md#ozone-shield-column). If the
+  ozone grows more slowly than the model says (it leaves out winds and the catalytic cycles), land seeding
+  waits; the oceans do not.
 - **Life on Venus cannot be recalled.** Once seeded, Earth life is there for good. That is why the gate
   comes years before the Veil, and why the plan needs an international framework agreed before the seed
   foundry launches.

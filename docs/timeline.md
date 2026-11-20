@@ -32,6 +32,7 @@ redraws this chart for your variant.
 | Oxygen forging | [1 January 2035](numbers.md?date=day#forge-start) | [30 September 2036](numbers.md?date=day#forge-end) |
 | Acid sweep, until the pH holds | [3 May 2033](numbers.md?date=day#cooling-start) | [1 December 2036](numbers.md?date=day#genesis-ph-clear) |
 | Genesis seeding, oceans green | [1 December 2036](numbers.md?date=day#genesis-start) | [12 December 2036](numbers.md?date=day#genesis-end) |
+| **Ozone shields the land; lichens and mosses sown** | [2 December 2036](numbers.md?date=day#genesis-land-start) |  |
 | **Earth-like Venus (simulated)** | [30 September 2036](numbers.md?date=day#traj-earth-like) |  |
 | **Deadline** | [31 December 2036](numbers.md?date=day#deadline) |  |
 <!-- /table -->

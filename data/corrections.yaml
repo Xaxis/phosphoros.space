@@ -142,6 +142,17 @@
     Version 2 seeded life from mid-2036 behind a gate that needs 0.25 bar of oxygen, but the Forges
     finish only at the end of September 2036. Seeding now starts when the gate opens; one-day
     doubling still greens the sunlit water by December.
+- id: ozone-layer
+  kind: finding
+  version: "3"
+  date: 2026-11-20
+  title: The ozone layer is modelled, and land life waits for it
+  text: >-
+    Version 2 left the gate's ozone condition as a measurement. A Chapman model of the new air, which
+    gives Earth's column when run on Earth's air, makes {ozone-first-day} of ozone in the first day of
+    sunlight, so the condition is met at once. A shield for land, {ozone-shield-column}, takes
+    {ozone-shield-days}: lichens and mosses go onto land on {genesis-land-start|date=day}, after the
+    ocean seeding and before the deadline.
 - id: missions
   kind: correction
   version: "3"
