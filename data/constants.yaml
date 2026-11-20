@@ -1,0 +1,606 @@
+# Physical constants and measured facts. Every number here is established physics or measurement,
+# not a choice: change one only with a better measurement and a source.
+#
+# Each entry:  value (SI), unit (SI, see calc/src/format.ts), label, basis, source (keys in
+# sources.yaml), optional show (display unit), sig (significant figures), note.
+# Dates and choices live in assumptions.yaml.
+
+# --- Fundamental ---------------------------------------------------------------------------------
+grav-constant:
+  value: 6.6743e-11
+  unit: m3 kg-1 s-2
+  label: Gravitational constant
+  basis: physics
+  source: [codata-2018]
+  sig: 5
+speed-of-light:
+  value: 299792458
+  unit: m/s
+  label: Speed of light
+  basis: physics
+  source: [codata-2018]
+  sig: 9
+planck-constant:
+  value: 6.62607015e-34
+  unit: J s
+  label: Planck constant
+  basis: physics
+  source: [codata-2018]
+  sig: 9
+electron-volt:
+  value: 1.602176634e-19
+  unit: J
+  label: Electron volt
+  basis: physics
+  source: [codata-2018]
+  sig: 10
+stefan-boltzmann:
+  value: 5.670374419e-8
+  unit: W m-2 K-4
+  label: Stefan-Boltzmann constant
+  basis: physics
+  source: [codata-2018]
+  sig: 4
+gas-constant:
+  value: 8.314462618
+  unit: J/mol/K
+  label: Molar gas constant
+  basis: physics
+  source: [codata-2018]
+  sig: 4
+proton-mass:
+  value: 1.67262192e-27
+  unit: kg
+  label: Proton mass
+  basis: physics
+  source: [codata-2018]
+  sig: 5
+vacuum-permeability:
+  value: 1.25663706e-6
+  unit: N/A2
+  label: Vacuum permeability
+  basis: physics
+  source: [codata-2018]
+  sig: 6
+standard-gravity:
+  value: 9.80665
+  unit: m/s2
+  label: Standard gravity (one g)
+  basis: physics
+  source: [codata-2018]
+  sig: 4
+
+# --- The Sun and the solar system ----------------------------------------------------------------
+sun-mu:
+  value: 1.32712440018e20
+  unit: m3/s2
+  label: The Sun's gravitational parameter
+  basis: physics
+  source: [nasa-sun-factsheet]
+  sig: 5
+sun-radius:
+  value: 6.957e8
+  unit: m
+  label: The Sun's radius
+  show: km
+  basis: physics
+  source: [iau-2015-nominal]
+  sig: 4
+sun-luminosity:
+  value: 3.828e26
+  unit: W
+  label: The Sun's luminosity
+  basis: physics
+  source: [iau-2015-nominal]
+  sig: 4
+au:
+  value: 1.495978707e11
+  unit: m
+  label: Astronomical unit
+  show: km
+  basis: physics
+  source: [iau-2012-au]
+  sig: 10
+solar-constant-earth:
+  value: 1361
+  unit: W/m2
+  label: Sunlight at Earth's distance (solar constant)
+  basis: physics
+  source: [kopp-lean-2011]
+  sig: 4
+solar-wind-density:
+  value: 1.35e7
+  unit: 1/m3
+  show: 1/cm3
+  label: Solar wind proton density at Venus
+  basis: physics
+  source: [nasa-mars-magnetic-2017]
+  sig: 3
+  note: Typical density; about twice Earth's, as Venus is 0.72 AU from the Sun.
+solar-wind-speed:
+  value: 4.0e5
+  unit: m/s
+  show: km/s
+  label: Solar wind speed
+  basis: physics
+  source: [nasa-mars-magnetic-2017]
+  sig: 2
+
+# --- Venus ---------------------------------------------------------------------------------------
+venus-mass:
+  value: 4.8673e24
+  unit: kg
+  label: Venus mass
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 3
+venus-radius:
+  value: 6.0518e6
+  unit: m
+  show: km
+  label: Venus equatorial radius
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 5
+venus-orbit:
+  value: 1.0821e11
+  unit: m
+  show: AU
+  label: Venus orbital radius (semi-major axis)
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 3
+venus-surface-temp:
+  value: 737
+  unit: K
+  label: Venus mean surface temperature
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 3
+venus-surface-pressure:
+  value: 9.2e6
+  unit: Pa
+  show: bar
+  label: Venus surface pressure
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 2
+venus-atmosphere-mass:
+  value: 4.8e20
+  unit: kg
+  label: Mass of Venus's atmosphere
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 2
+venus-co2-fraction:
+  value: 0.965
+  unit: "1"
+  show: "%"
+  label: CO₂ share of Venus's air, by volume
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 3
+venus-n2-fraction:
+  value: 0.035
+  unit: "1"
+  show: "%"
+  label: Nitrogen share of Venus's air, by volume
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 2
+venus-so2-fraction:
+  value: 1.5e-4
+  unit: "1"
+  show: ppm
+  label: SO₂ in Venus's air, by volume
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 2
+venus-albedo:
+  value: 0.77
+  unit: "1"
+  show: "%"
+  label: Venus Bond albedo
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 2
+venus-moment-factor:
+  value: 0.33
+  unit: "1"
+  label: Venus moment-of-inertia factor
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 2
+  note: Close to 0.33, like Earth; the exact value is still being measured.
+venus-sidereal-day:
+  value: 243.025
+  unit: d
+  label: Venus rotation period (retrograde)
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 3
+venus-solar-day:
+  value: 116.75
+  unit: d
+  label: Venus solar day
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 3
+cloudtop-temp:
+  value: 230
+  unit: K
+  label: Temperature Venus radiates to space from (its cloud tops)
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 2
+  note: Venus's effective temperature; a shaded Venus would cool from roughly here.
+
+# --- Earth, for comparison -----------------------------------------------------------------------
+earth-mass:
+  value: 5.9722e24
+  unit: kg
+  label: Earth mass
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 3
+earth-radius:
+  value: 6.3781e6
+  unit: m
+  show: km
+  label: Earth equatorial radius
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 5
+earth-day:
+  value: 23.9345
+  unit: h
+  label: Earth rotation period
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 3
+earth-atmosphere-mass:
+  value: 5.15e18
+  unit: kg
+  label: Mass of Earth's atmosphere
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 2
+earth-n2-mass:
+  value: 3.87e18
+  unit: kg
+  label: Mass of Earth's atmospheric nitrogen
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 2
+earth-water-mass:
+  value: 1.4e21
+  unit: kg
+  label: Earth's water
+  basis: physics
+  source: [usgs-water]
+  sig: 2
+earth-surface-temp:
+  value: 288
+  unit: K
+  label: Earth's mean surface temperature
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 3
+earth-sea-level-pressure:
+  value: 101325
+  unit: Pa
+  show: bar
+  label: Earth's sea-level pressure
+  basis: physics
+  source: [codata-2018]
+  sig: 3
+earth-o2-pressure:
+  value: 21228
+  unit: Pa
+  show: bar
+  label: Oxygen pressure at Earth's sea level
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 2
+  note: 20.95% of one standard atmosphere.
+earth-dipole:
+  value: 8.0e22
+  unit: A m2
+  label: Earth's magnetic dipole moment
+  basis: physics
+  source: [nasa-earth-factsheet]
+  sig: 1
+seawater-density:
+  value: 1025
+  unit: kg/m3
+  label: Seawater density
+  basis: physics
+  sig: 3
+humanity-power:
+  value: 1.9e13
+  unit: W
+  show: TW
+  label: Humanity's primary power use
+  basis: physics
+  source: [ei-statistical-review]
+  sig: 2
+  note: About 600 EJ a year.
+
+# --- Mercury and Ceres ---------------------------------------------------------------------------
+mercury-mass:
+  value: 3.3011e23
+  unit: kg
+  label: Mercury mass
+  basis: physics
+  source: [nasa-mercury-factsheet]
+  sig: 2
+mercury-orbit:
+  value: 5.7909e10
+  unit: m
+  show: AU
+  label: Mercury orbital radius (semi-major axis)
+  basis: physics
+  source: [nasa-mercury-factsheet]
+  sig: 3
+mercury-escape:
+  value: 4250
+  unit: m/s
+  show: km/s
+  label: Mercury escape speed
+  basis: physics
+  source: [nasa-mercury-factsheet]
+  sig: 3
+ceres-mass:
+  value: 9.384e20
+  unit: kg
+  label: Ceres mass
+  basis: physics
+  source: [park-2016-ceres]
+  sig: 3
+ceres-radius:
+  value: 4.697e5
+  unit: m
+  show: km
+  label: Ceres mean radius
+  basis: physics
+  source: [park-2016-ceres]
+  sig: 3
+ceres-orbit:
+  value: 4.1394e11
+  unit: m
+  show: AU
+  label: Ceres orbital radius (semi-major axis, 2.77 AU)
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 3
+ceres-aphelion:
+  value: 4.4583e11
+  unit: m
+  show: AU
+  label: Ceres aphelion
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 3
+ceres-water-fraction:
+  value: 0.27
+  unit: "1"
+  show: "%"
+  label: Water share of Ceres's mass
+  basis: physics
+  source: [ceres-water]
+  sig: 2
+  note: Estimates run from about 17% to 30%; at the low end the Ice Train would need most of Ceres's water.
+  range: [0.17, 0.35]
+
+# --- Chemistry and phase data ---------------------------------------------------------------------
+co2-molar-mass:
+  value: 0.04401
+  unit: kg/mol
+  label: Molar mass of CO₂
+  basis: physics
+  sig: 4
+n2-molar-mass:
+  value: 0.028013
+  unit: kg/mol
+  label: Molar mass of N₂
+  basis: physics
+  sig: 4
+o2-molar-mass:
+  value: 0.031998
+  unit: kg/mol
+  label: Molar mass of O₂
+  basis: physics
+  sig: 4
+so2-molar-mass:
+  value: 0.064066
+  unit: kg/mol
+  label: Molar mass of SO₂
+  basis: physics
+  sig: 4
+cao-molar-mass:
+  value: 0.056077
+  unit: kg/mol
+  label: Molar mass of CaO
+  basis: physics
+  sig: 4
+h2-molar-mass:
+  value: 0.002016
+  unit: kg/mol
+  label: Molar mass of H₂
+  basis: physics
+  sig: 4
+h2o-molar-mass:
+  value: 0.018015
+  unit: kg/mol
+  label: Molar mass of H₂O
+  basis: physics
+  sig: 4
+c-molar-mass:
+  value: 0.012011
+  unit: kg/mol
+  label: Molar mass of carbon
+  basis: physics
+  sig: 4
+co2-cp:
+  value: 1000
+  unit: J/kg/K
+  label: Heat capacity of Venus's air (CO₂), averaged over the cooling
+  basis: physics
+  source: [nist-co2]
+  sig: 2
+  note: CO₂'s heat capacity runs from about 0.85 kJ/(kg·K) at 300 K to 1.15 at 740 K; 1.0 is the average over the path.
+air-cp:
+  value: 1040
+  unit: J/kg/K
+  label: Heat capacity of nitrogen-oxygen air
+  basis: physics
+  sig: 3
+co2-deposition-heat:
+  value: 5.71e5
+  unit: J/kg
+  show: kJ/kg
+  label: Heat CO₂ releases freezing straight from gas (deposition)
+  basis: physics
+  source: [nist-co2]
+  sig: 3
+co2-sublimation-enthalpy:
+  value: 25200
+  unit: J/mol
+  show: kJ/mol
+  label: Sublimation enthalpy of CO₂
+  basis: physics
+  source: [nist-co2]
+  sig: 3
+co2-sublimation-ref-temp:
+  value: 194.7
+  unit: K
+  label: CO₂ frost point at one atmosphere
+  basis: physics
+  source: [nist-co2]
+  sig: 4
+co2-sublimation-ref-pressure:
+  value: 101325
+  unit: Pa
+  show: bar
+  label: One atmosphere, the pressure of that frost point
+  basis: physics
+  sig: 4
+co2-critical-temp:
+  value: 304.13
+  unit: K
+  label: CO₂ critical temperature
+  basis: physics
+  source: [nist-co2]
+  sig: 4
+co2-critical-pressure:
+  value: 7.3773e6
+  unit: Pa
+  show: bar
+  label: CO₂ critical pressure
+  basis: physics
+  source: [nist-co2]
+  sig: 3
+co2-triple-temp:
+  value: 216.59
+  unit: K
+  label: CO₂ triple-point temperature
+  basis: physics
+  source: [nist-co2]
+  sig: 4
+co2-triple-pressure:
+  value: 5.185e5
+  unit: Pa
+  show: bar
+  label: CO₂ triple-point pressure
+  basis: physics
+  source: [nist-co2]
+  sig: 2
+dry-ice-density:
+  value: 1562
+  unit: kg/m3
+  label: Density of dry ice
+  basis: physics
+  sig: 4
+co2-split-enthalpy:
+  value: 393500
+  unit: J/mol
+  show: kJ/mol
+  label: Least energy to split CO₂ into carbon and oxygen
+  basis: physics
+  source: [nist-co2]
+  sig: 3
+bosch-reaction-heat:
+  value: 90100
+  unit: J/mol
+  show: kJ/mol
+  label: Heat the Bosch reaction releases per mole of CO₂ (water as vapour)
+  basis: physics
+  source: [nist-co2]
+  sig: 3
+ice-density:
+  value: 917
+  unit: kg/m3
+  label: Density of water ice
+  basis: physics
+  sig: 3
+water-density:
+  value: 1000
+  unit: kg/m3
+  label: Density of water
+  basis: physics
+  sig: 3
+ice-melt-heat:
+  value: 3.34e5
+  unit: J/kg
+  show: kJ/kg
+  label: Heat to melt ice
+  basis: physics
+  sig: 3
+ice-cp:
+  value: 1750
+  unit: J/kg/K
+  label: Heat capacity of cold ice (average from 150 K to 273 K)
+  basis: physics
+  sig: 2
+water-cp:
+  value: 4184
+  unit: J/kg/K
+  label: Heat capacity of water
+  basis: physics
+  sig: 3
+graphite-density:
+  value: 2200
+  unit: kg/m3
+  label: Density of graphite
+  basis: physics
+  sig: 2
+
+# --- Rock ----------------------------------------------------------------------------------------
+rock-conductivity:
+  value: 2.5
+  unit: W/m/K
+  label: Thermal conductivity of basalt
+  basis: physics
+  source: [basalt-thermal]
+  sig: 2
+rock-diffusivity:
+  value: 1.0e-6
+  unit: m2/s
+  label: Thermal diffusivity of basalt
+  basis: physics
+  source: [basalt-thermal]
+  sig: 2
+rock-density:
+  value: 3000
+  unit: kg/m3
+  label: Density of basalt
+  basis: physics
+  source: [basalt-thermal]
+  sig: 2
+basalt-cao-fraction:
+  value: 0.10
+  unit: "1"
+  show: "%"
+  label: Lime (CaO) share of basalt
+  basis: physics
+  sig: 2

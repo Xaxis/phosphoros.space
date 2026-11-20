@@ -1,0 +1,27 @@
+{
+  "name": "phosphoros",
+  "private": true,
+  "type": "module",
+  "description": "Phosphoros: a complete, internally consistent plan to make Venus Earth-like by 2036, with every number reproducible from data/ and calc/.",
+  "packageManager": "pnpm@10.30.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "calc": "node calc/cli.ts",
+    "check:claims": "node calc/cli.ts --claims",
+    "docs": "node tools/docs.ts",
+    "docs:check": "node tools/docs.ts --check",
+    "figures": "node --import ./tools/lib/register.ts tools/figures.ts",
+    "dev": "pnpm --filter @phosphoros/web dev",
+    "build": "pnpm --filter @phosphoros/web build",
+    "lint": "biome check . && pnpm -r run typecheck && node tools/docs.ts --check && node tools/style.ts",
+    "format": "biome check --write .",
+    "test": "pnpm -r run test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.8",
+    "@types/node": "24.19.0",
+    "typescript": "7.0.2"
+  }
+}

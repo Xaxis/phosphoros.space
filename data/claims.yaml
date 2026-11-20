@@ -1,0 +1,232 @@
+# Every number in the version 2 research brief, against the model. `pnpm check:claims` recomputes
+# each and reports match, differs or corrected. A number that differs is never quietly changed:
+# it gets a note here and, when it matters, an issue (see data/corrections.yaml).
+#
+#   model:  the quantity id that computes it
+#   brief:  the brief's value, in the quantity's SI unit (dates as YYYY-MM-DD)
+#   tol:    relative tolerance (default 0.10, since the brief writes "~"); for dates, days
+#   where:  the brief's section
+#   correction: id in corrections.yaml when version 3 changed the number on purpose
+#   note:   why it differs, when it does
+
+# --- 2.2 Venus today --------------------------------------------------------------------------------
+- { model: venus-area, brief: 4.602e14, tol: 0.001, where: "2.13" }
+- { model: venus-disk, brief: 1.151e14, tol: 0.001, where: "2.13" }
+- { model: venus-gravity, brief: 8.87, tol: 0.005, where: "2.2" }
+- { model: venus-escape, brief: 10360, tol: 0.005, where: "2.13" }
+- { model: venus-sunlight, brief: 2601, tol: 0.005, where: "2.2" }
+- { model: venus-column-pressure, brief: 9.2e6, tol: 0.02, where: "2.2" }
+- { model: venus-co2-mass, brief: 4.69e20, tol: 0.01, where: "2.13" }
+- { model: venus-n2-mass, brief: 1.08e19, tol: 0.03, where: "2.13" }
+- { model: n2-pressure, brief: 2.1e5, tol: 0.03, where: "2.2" }
+- { model: n2-vs-earth, brief: 3, tol: 0.1, where: "2.2", note: "The brief says about three times; it is 2.8 times by mass." }
+- { model: venus-so2-mass, brief: 1.1e17, where: "2.9.10" }
+
+# --- 2.3 Why ten years is impossible -----------------------------------------------------------------
+- { model: atmosphere-sensible-heat, brief: 2.6e26, where: "2.3" }
+- { model: atmosphere-latent-heat, brief: 2.7e26, where: "2.3" }
+- { model: atmosphere-heat, brief: 5.3e26, where: "2.3" }
+- { model: crust-heat-per-km, brief: 5.5e26, tol: 0.05, where: "2.3",
+    note: "The brief's figure uses a rock heat capacity of 1,000 J/(kg·K). Its own rock constants (k 2.5, κ 10⁻⁶, ρ 3,000) imply 833, which gives 4.6 × 10²⁶ J. The model keeps the constants and derives the heat capacity." }
+- { model: crust-skin-heat, brief: 7e24, tol: 0.1, where: "2.3",
+    note: "Same cause: with the brief's own rock constants conduction pulls 5.8 × 10²⁴ J, not 7 × 10²⁴ J. Either way it is about 1% of the atmosphere's heat." }
+- { model: crust-skin-depth, brief: 15, tol: 0.35, where: "2.3", note: "The brief gives a range of 10 to 20 m." }
+- { model: passive-power, brief: 7.3e16, where: "2.13" }
+- { model: passive-years, brief: 7.26e9, where: "2.3" }
+- { model: passive-cold-years, brief: 1.39e10, where: "2.3" }
+- { model: ten-year-cooling-power, brief: 1.7e18, where: "2.3" }
+- { model: venus-intercepted, brief: 3.0e17, where: "2.3" }
+- { model: ten-year-cooling-vs-sunlight, brief: 5.6, where: "2.3" }
+- { model: ten-year-cooling-vs-humanity, brief: 88000, where: "2.3" }
+- { model: co2-escape-energy, brief: 2.5e28, where: "2.3" }
+- { model: co2-escape-power, brief: 8e19, where: "2.3" }
+- { model: co2-escape-vs-sunlight, brief: 267, tol: 0.02, where: "2.3" }
+- { model: spin-up-energy, brief: 1.6e29, where: "2.3" }
+- { model: spin-up-vs-cooling, brief: 300, where: "2.3" }
+- { model: bosch-hydrogen, brief: 4.3e19, where: "2.3" }
+- { model: bosch-water, brief: 3.8e20, where: "2.3" }
+- { model: bosch-ocean-depth, brief: 830, where: "2.3" }
+- { model: bosch-graphite, brief: 1.3e20, where: "2.3" }
+- { model: bosch-heat, brief: 9.6e26, where: "2.3" }
+- { model: carbonate-cao, brief: 6e20, where: "2.3" }
+- { model: carbonate-crust-depth, brief: 4000, tol: 0.15, where: "2.3" }
+- { model: earth-launched-shade-mass, brief: 1.2e11, where: "2.3" }
+- { model: earth-launched-shade-launches, brief: 1.2e6, where: "2.3" }
+
+# --- 2.5 and 2.9.1 Ouroboros Foundry -------------------------------------------------------------------
+- { model: foundry-doublings, brief: 27, tol: 0, where: "2.5" }
+- { model: foundry-final-mass, brief: 1.3e14, where: "2.9.1" }
+- { model: foundry-mercury-share, brief: 3e-10, tol: 0.35, where: "2.9.1",
+    note: "The brief divides 10¹⁴ kg by Mercury's mass; at the full 1.34 × 10¹⁴ kg it is 4 × 10⁻¹⁰." }
+- { model: foundry-power-per-kg, brief: 13, where: "2.9.1" }
+- { model: foundry-peak-power, brief: 1.3e15, tol: 0.1, where: "2.9.1",
+    note: "The brief multiplies 13 W/kg by 10¹⁴ kg. At the full 1.34 × 10¹⁴ kg the Foundry draws 1.8 × 10¹⁵ W." }
+- { model: foundry-landing, brief: 2029-01-15, tol: 15, where: "2.9.1",
+    note: "Launch moved from 15 to 1 October 2028 so that the brief's 105-day transfer lands in mid-January 2029, as its growth figures assume." }
+- { model: foundry-full-scale, brief: 2033-06-30, tol: 30, where: "2.9.1" }
+- { model: foundry-mass-2030, brief: 6e7, where: "2.9.1" }
+- { model: foundry-mass-2032, brief: 2.6e11, where: "2.9.1" }
+- { model: hardware-energy, brief: 1e22, where: "2.8" }
+
+# --- 2.9.2 Helios Lattice ---------------------------------------------------------------------------
+- { model: mercury-sunlight, brief: 9126, tol: 0.01, where: "2.13" }
+- { model: helios-efficiency, brief: 0.15, tol: 0.001, where: "2.9.2" }
+- { model: helios-area, brief: 5.1e16, where: "2.9.2" }
+- { model: helios-mass, brief: 5.1e13, where: "2.9.2" }
+- { model: helios-petals, brief: 1.0e7, where: "2.9.2" }
+- { model: helios-petal-mass, brief: 5.0e6, where: "2.9.2" }
+- { model: helios-sun-share, brief: 2e-7, tol: 0.1, where: "2.9.2" }
+- { model: helios-spot, brief: 43, where: "2.9.2" }
+- { model: helios-supply, brief: 7.7e27, where: "2.8" }
+
+# --- 2.9.3 Hesperus Veil ------------------------------------------------------------------------------
+- { model: veil-v2-light-accel, brief: 0.0173, tol: 0.01, where: "2.9.3" }
+- { model: veil-v2-distance, brief: 1.37e8, tol: 0.01, where: "2.9.3" }
+- { model: veil-v2-radius, brief: 6.93e6, tol: 0.01, where: "2.9.3" }
+- { model: venus-l1-distance, brief: 1.01e9, tol: 0.01, where: "2.13" }
+- { model: veil-distance, brief: 1.37e8, where: "2.9.3", correction: veil-l1 }
+- { model: veil-area, brief: 1.5e14, where: "2.9.3", correction: veil-l1 }
+- { model: veil-mass, brief: 1.5e11, where: "2.9.3", correction: veil-l1 }
+- { model: veil-slats, brief: 1.0e8, where: "2.9.3", correction: veil-l1 }
+- { model: veil-slat-mass, brief: 1.5e3, tol: 0.1, where: "2.9.3" }
+- { model: veil-area-vs-v2, brief: 3, tol: 0.25, where: "2.9.3", note: "The brief's own comparison: a shade near L1 needs about three times the area." }
+- { model: veil-day-transmission, brief: 0.52, tol: 0.01, where: "2.9.3" }
+- { model: lantern-area, brief: 6e13, where: "2.9.3" }
+- { model: veil-close, brief: 2031-12-31, tol: 31, where: "2.10", correction: veil-l1 }
+
+# --- 2.9.4 Thermal Chimneys ------------------------------------------------------------------------------
+- { model: venus-surface-density, brief: 65, tol: 0.02, where: "2.9.4" }
+- { model: chimney-mass-flow, brief: 4.1e9, tol: 0.02, where: "2.9.4" }
+- { model: chimney-heat, brief: 1.2e15, where: "2.9.4" }
+- { model: chimney-capacity, brief: 1.2e19, where: "2.9.4" }
+- { model: chimney-spacing, brief: 2.15e5, tol: 0.01, where: "2.9.4" }
+
+# --- 2.9.5 Photonic Exhaust ------------------------------------------------------------------------------
+- { model: exhaust-wavelength, brief: 2.3e-6, tol: 0.01, where: "2.9.5" }
+- { model: exhaust-flux, brief: 9e5, tol: 0.02, where: "2.9.5" }
+- { model: exhaust-work, brief: 2.84e27, tol: 0.01, where: "2.13" }
+- { model: exhaust-work-ratio, brief: 5.4, tol: 0.02, where: "2.13" }
+- { model: exhaust-rejected, brief: 3.4e27, where: "2.9.5" }
+- { model: exhaust-heat-avg, brief: 4.8e18, where: "2.9.5" }
+- { model: exhaust-work-avg, brief: 2.6e19, where: "2.9.5" }
+- { model: exhaust-rejected-avg, brief: 3e19, where: "2.9.5" }
+- { model: exhaust-peak, brief: 3.6e19, where: "2.9.5", correction: exhaust-capacity }
+- { model: exhaust-area-installed, brief: 4e13, where: "2.9.5", correction: exhaust-capacity }
+- { model: exhaust-area-working, brief: 3.4e13, where: "2.9.5" }
+- { model: exhaust-area-share, brief: 0.09, where: "2.9.5", correction: exhaust-capacity }
+- { model: canopy-power-in, brief: 2.6e15, where: "2.9.5" }
+- { model: canopy-power-out, brief: 3.1e15, where: "2.9.5" }
+- { model: exhaust-vs-passive-light, brief: 400, where: "2.5",
+    note: "The Exhaust throws out light 420 times faster than a shaded Venus radiates, but removes Venus's own heat 66 times faster: most of the light is the pump's own work." }
+- { model: exhaust-area-share-1000, brief: 0.58, tol: 0.02, where: "2.13" }
+- { model: exhaust-area-share-1500, brief: 0.17, tol: 0.03, where: "2.13" }
+- { model: exhaust-area-share-2500, brief: 0.037, tol: 0.03, where: "2.13" }
+- { model: frost-co2-pressure, brief: 70, tol: 0.15, where: "2.9.5", note: "Gives 300 ppm of the 2036 air; the brief's range is 300 to 600 ppm." }
+
+# --- 2.9.6 Cryo-continents ------------------------------------------------------------------------------
+- { model: cryo-volume, brief: 3e17, where: "2.9.6" }
+- { model: cryo-footprint, brief: 1.5e14, where: "2.9.6" }
+- { model: cryo-footprint-share, brief: 0.33, where: "2.9.6" }
+- { model: cryo-cap-mass, brief: 3e17, where: "2.9.6" }
+- { model: cryo-leak-flux, brief: 0.075, where: "2.9.6" }
+- { model: cryo-leak-total, brief: 1.1e13, where: "2.9.6" }
+- { model: cryo-floor-flux-2, brief: 80, where: "2.9.6" }
+- { model: cryo-floor-flux-10, brief: 36, where: "2.9.6" }
+- { model: cryo-floor-flux-100, brief: 11, where: "2.9.6" }
+- { model: cryo-floor-flux-1000, brief: 4, tol: 0.15, where: "2.9.6" }
+- { model: cryo-floor-load, brief: 1.2e16, where: "2.9.6" }
+- { model: cryo-floor-load-century, brief: 1.7e15, where: "2.9.6" }
+- { model: cryo-unrefrigerated-loss, brief: 0.001, tol: 0.5, where: "2.9.6", note: "0.14% a year; the brief rounds to about 0.1%." }
+- { model: cryo-refrigeration-share, brief: 0.01, where: "2.9.6",
+    note: "The brief budgets about 1% of the Lattice to refrigerate the basin floors. Pumping the first 12 PW from 200 K to an effective 2,000 K takes 0.2%, and far less once the rock cools; 1% is a generous allowance." }
+- { model: cryo-cells, brief: 1.5e6, where: "2.9.6" }
+- { model: cryo-cell-co2, brief: 3e14, where: "2.9.6" }
+
+# --- 2.9.7 Graphite Forges ------------------------------------------------------------------------------
+- { model: o2-mass, brief: 1.3e18, where: "2.9.7" }
+- { model: forge-co2, brief: 1.8e18, where: "2.9.7" }
+- { model: forge-co2-share, brief: 0.004, where: "2.9.7" }
+- { model: forge-graphite, brief: 4.9e17, where: "2.9.7" }
+- { model: forge-energy-per-mol, brief: 6.57e5, tol: 0.01, where: "2.9.7" }
+- { model: forge-energy-per-kg, brief: 1.5e7, where: "2.9.7" }
+- { model: forge-energy, brief: 2.7e25, where: "2.9.7" }
+- { model: forge-power, brief: 4.9e17, where: "2.9.7" }
+- { model: forge-plant-power, brief: 1e12, where: "2.9.7",
+    note: "The brief lists 500 plants of about 1 TW, but 4.9 × 10¹⁷ W shared by 500 Forges is about 1 PW (10¹⁵ W) each, a thousand times more. The total is right; the per-plant figure was a unit slip." }
+- { model: forge-throughput, brief: 6.5e7, where: "2.9.7" }
+- { model: graphite-stockpile, brief: 1.9e17, where: "2.9.7" }
+- { model: o2-vs-earth, brief: 1, tol: 0.25, where: "2.6",
+    note: "The brief says 0.25 bar matches Earth's sea-level oxygen. Earth's is 0.21 bar; 0.25 bar is 18% more, comparable to breathing at about 1.5 m of water depth." }
+
+# --- 2.9.8 Ceres Ice Train ------------------------------------------------------------------------------
+- { model: ceres-gravity, brief: 0.28, tol: 0.03, where: "2.9.8" }
+- { model: ceres-escape, brief: 516, tol: 0.01, where: "2.9.8" }
+- { model: ice-departure-dv, brief: 6380, tol: 0.01, where: "2.13" }
+- { model: ice-launch-speed, brief: 6400, tol: 0.01, where: "2.9.8" }
+- { model: ice-vinf, brief: 9090, tol: 0.01, where: "2.13" }
+- { model: ice-transfer-years, brief: 3.63e7, tol: 0.01, where: "2.13" }
+- { model: ice-launch-start, brief: 2033-06-30, tol: 31, where: "2.10" }
+- { model: ice-launch-end, brief: 2035-10-31, tol: 31, where: "2.10" }
+- { model: ice-throughput, brief: 1.36e12, tol: 0.03, where: "2.9.8" }
+- { model: ice-bricks-per-second, brief: 1360, tol: 0.03, where: "2.9.8" }
+- { model: railhead-interval, brief: 7.4, tol: 0.03, where: "2.9.8" }
+- { model: railhead-length, brief: 10400, tol: 0.02, where: "2.9.8" }
+- { model: railhead-shot-time, brief: 3.3, tol: 0.03, where: "2.9.8" }
+- { model: brick-side, brief: 103, tol: 0.01, where: "2.9.8" }
+- { model: shot-energy, brief: 2.05e16, tol: 0.01, where: "2.9.8" }
+- { model: shot-energy-drawn, brief: 4.1e16, tol: 0.02, where: "2.9.8" }
+- { model: ice-launch-energy, brief: 4.1e27, where: "2.8" }
+- { model: railhead-power, brief: 5.6e19, where: "2.9.8" }
+- { model: railhead-power-each, brief: 5.5e15, where: "2.9.8" }
+- { model: ice-ceres-water-share, brief: 0.40, where: "2.9.8" }
+- { model: ice-ceres-mass-share, brief: 0.11, where: "2.9.8" }
+- { model: ceres-recoil, brief: 760, where: "2.9.8" }
+- { model: ceres-new-aphelion, brief: 4.937e11, tol: 0.01, where: "2.9.8" }
+- { model: launch-window-period, brief: 2.24e7, tol: 0.03, where: "2.9.8" }
+- { model: ocean-depth, brief: 217, tol: 0.01, where: "2.5" }
+- { model: first-catch, brief: 2034-08-15, tol: 31, where: "2.9.8" }
+
+# --- 2.9.9 Braking Ring -----------------------------------------------------------------------------------
+- { model: ring-circumference, brief: 4.054e7, tol: 0.001, where: "2.9.9" }
+- { model: ring-orbital-speed, brief: 7100, tol: 0.01, where: "2.13" }
+- { model: ring-arrival-speed, brief: 13540, tol: 0.01, where: "2.13" }
+- { model: ring-catch-energy-per-kg, brief: 6.65e7, tol: 0.01, where: "2.13" }
+- { model: ring-recovered-per-kg, brief: 5.3e7, tol: 0.02, where: "2.9.9" }
+- { model: ring-recovered-energy, brief: 5.3e27, where: "2.8" }
+- { model: ring-power, brief: 7.2e19, where: "2.9.9" }
+- { model: ring-lowering-recovery, brief: 2e27, where: "2.8" }
+- { model: ring-free-fall-speed, brief: 13800, tol: 0.01, where: "2.7" }
+- { model: ring-free-fall-impact, brief: 9.5e27, where: "2.7" }
+- { model: ring-free-fall-vs-atmosphere, brief: 18, where: "2.7" }
+- { model: ring-braking-force, brief: 1e16, tol: 0.15, where: "2.9.9" }
+- { model: ring-track-length, brief: 1.4e5, tol: 0.05, where: "2.9.9" }
+- { model: tether-interval, brief: 1.4, tol: 0.05, where: "2.9.9" }
+- { model: fall-energy, brief: 9e5, where: "2.9.9" }
+- { model: melt-energy, brief: 6.5e5, where: "2.9.9" }
+
+# --- 2.9.10 Acid Sweep, 2.9.11 Aegis -------------------------------------------------------------------------
+- { model: acid-cao, brief: 9e16, where: "2.9.10" }
+- { model: acid-basalt, brief: 1e18, where: "2.9.10" }
+- { model: acid-basalt-layer, brief: 2, where: "2.9.10" }
+- { model: solar-wind-pressure, brief: 3.6e-9, tol: 0.02, where: "2.9.11" }
+- { model: aegis-field, brief: 9.5e-8, tol: 0.02, where: "2.9.11" }
+- { model: aegis-dipole, brief: 9.5e20, tol: 0.02, where: "2.9.11" }
+- { model: aegis-vs-earth, brief: 0.01, tol: 0.25, where: "2.9.11" }
+- { model: aegis-ampere-turns, brief: 3e12, where: "2.9.11" }
+
+# --- 2.6 The finish line, 2.9.13 Choir ---------------------------------------------------------------------
+- { model: final-pressure, brief: 2.4e5, where: "2.6" }
+- { model: final-co2-ppm, brief: 4.5e-4, tol: 0.35, where: "2.6", note: "The brief gives 300 to 600 ppm." }
+- { model: dive-depth, brief: 14, where: "2.6" }
+- { model: delay-mercury-venus-min, brief: 162, tol: 0.05, where: "2.9.13" }
+- { model: delay-mercury-venus-max, brief: 552, tol: 0.02, where: "2.9.13" }
+- { model: delay-venus-ceres-min, brief: 1020, tol: 0.02, where: "2.9.13" }
+- { model: delay-venus-ceres-max, brief: 1740, tol: 0.02, where: "2.9.13" }
+- { model: delay-earth-ceres-max, brief: 1980, tol: 0.03, where: "2.9.13" }
+
+# --- 2.8 The energy budget -------------------------------------------------------------------------------------
+- { model: budget-demand, brief: 7.0e27, where: "2.8",
+    note: "Version 3 counts the pump work the day-by-day simulation actually spends, including heat from the crust, the Forges and the falling ice, so the demand rises from 7.0 to 7.7 × 10²⁷ J." }
+- { model: traj-pump-energy, brief: 2.84e27, where: "2.8", correction: exhaust-capacity }
+- { model: budget-spare, brief: 0.09, tol: 0.5, where: "2.8", correction: exhaust-capacity }
+- { model: budget-launch-share, brief: 0.9, where: "2.8" }

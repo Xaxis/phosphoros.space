@@ -1,0 +1,23 @@
+{
+  "name": "@phosphoros/calc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Phosphoros model: every derived number, series and physics check, computed from data/. Pure TypeScript; the loader is the only part that reads files.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./load": "./src/load.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.ts"
+  },
+  "dependencies": {
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.0",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,8 @@
+packages:
+  - calc
+  - figures
+  - web
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - "@biomejs/biome"

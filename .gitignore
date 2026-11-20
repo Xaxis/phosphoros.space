@@ -1,0 +1,27 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# dependencies
+node_modules/
+.pnpm-store/
+
+# builds
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+*.log
+
+# OS and editors
+.DS_Store
+.idea/
+.vscode/
+
+# agent worktrees and local settings
+.claude/worktrees/
+.claude/settings.local.json
+
+# Vercel links (tools/deploy.sh writes its own per deploy)
+.vercel/

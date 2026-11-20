@@ -1,0 +1,512 @@
+# Program assumptions: the choices and inventions Phosphoros makes. Change any of these and rerun
+# `pnpm calc` (or move its slider in the Explorer on the site) to see every consequence.
+#
+# basis:  design    a choice (a date, a size, a count)
+#         invented  a breakthrough the plan assumes; it does not exist yet
+#         precedent demonstrated in the real world (cite it)
+# Dates are YYYY-MM-DD; the model counts them as days from 2027-01-01.
+# range: the span the Explorer lets a reader try.
+
+# --- The program -----------------------------------------------------------------------------------
+deadline:
+  value: 2036-12-31
+  unit: date
+  show: day
+  label: Earth-like Venus, the finish line
+  basis: design
+date-2030:
+  value: 2030-01-01
+  unit: date
+  label: Reporting date, January 2030
+  basis: design
+date-2032:
+  value: 2032-01-01
+  unit: date
+  label: Reporting date, January 2032
+  basis: design
+freeze-target-temp:
+  value: 195
+  unit: K
+  label: Temperature the air is cooled to, freezing out its CO₂
+  basis: design
+  note: Just above CO₂'s frost point at one atmosphere, 194.7 K.
+crust-cooling-step:
+  value: 400
+  unit: K
+  label: How much the crust's surface cools
+  basis: design
+skin-campaign-years:
+  value: 4
+  unit: "1"
+  label: Length of a fast cooling campaign, for the crust estimate (years)
+  basis: design
+conventional-campaign-years:
+  value: 10
+  unit: "1"
+  label: The decade target (years)
+  basis: design
+heavy-launch-payload:
+  value: 1.0e5
+  unit: kg
+  show: t
+  label: Payload of one heavy-lift launch from Earth
+  basis: precedent
+  source: [newspace-starship-2026]
+  note: Starship-class; about 100 t to low orbit.
+
+# --- Ouroboros Foundry -----------------------------------------------------------------------------
+foundry-seed-mass:
+  value: 1.0e6
+  unit: kg
+  show: t
+  label: Seed foundry mass
+  basis: design
+  range: [1.0e5, 1.0e7]
+foundry-seed-launch:
+  value: 2028-10-01
+  unit: date
+  label: Seed foundry launches from Earth
+  basis: design
+foundry-transfer-days:
+  value: 105
+  unit: d
+  label: Earth-to-Mercury transfer
+  basis: design
+foundry-doubling-days:
+  value: 60
+  unit: d
+  label: Foundry doubling time
+  basis: invented
+  range: [30, 120]
+  note: The single most important invention. The 1980 NASA study's lunar factory was meant to copy itself in about a year.
+foundry-target-mass:
+  value: 1.0e14
+  unit: kg
+  label: Foundry machinery at full scale
+  basis: design
+foundry-energy-per-kg:
+  value: 1.0e8
+  unit: J/kg
+  show: MJ/kg
+  label: Energy to make a kilogram of machinery from regolith
+  basis: invented
+  range: [3.0e7, 3.0e8]
+
+# --- Helios Lattice --------------------------------------------------------------------------------
+helios-power:
+  value: 7.0e19
+  unit: W
+  label: Power the Helios Lattice delivers
+  basis: design
+  range: [4.0e19, 1.0e20]
+helios-film-efficiency:
+  value: 0.40
+  unit: "1"
+  show: "%"
+  label: Hot-film solar cell efficiency at about 460 K
+  basis: invented
+  range: [0.25, 0.5]
+helios-laser-efficiency:
+  value: 0.50
+  unit: "1"
+  show: "%"
+  label: Electricity-to-laser efficiency
+  basis: invented
+  range: [0.3, 0.7]
+helios-receiver-efficiency:
+  value: 0.75
+  unit: "1"
+  show: "%"
+  label: Receiver efficiency, laser light to electricity
+  basis: invented
+helios-areal-density:
+  value: 1.0e-3
+  unit: kg/m2
+  show: g/m2
+  label: Petal film areal density
+  basis: invented
+helios-petal-side:
+  value: 7.0e4
+  unit: m
+  show: km
+  label: Petal edge
+  basis: design
+helios-wavelength:
+  value: 1.064e-6
+  unit: m
+  show: µm
+  label: Beam wavelength
+  basis: precedent
+  note: The neodymium laser line, in industrial use for decades.
+helios-aperture:
+  value: 1.0e4
+  unit: m
+  show: km
+  label: Phase-locked virtual aperture width
+  basis: invented
+helios-receiver-intensity:
+  value: 1.0e7
+  unit: W/m2
+  show: MW/m2
+  label: Beam intensity at the receivers
+  basis: invented
+helios-fin-temp:
+  value: 1500
+  unit: K
+  label: Receiver radiator temperature
+  basis: design
+helios-first-petals:
+  value: 2030-06-01
+  unit: date
+  label: First Helios Petals fly
+  basis: design
+
+# --- Hesperus Veil ---------------------------------------------------------------------------------
+veil-areal-density:
+  value: 1.0e-3
+  unit: kg/m2
+  show: g/m2
+  label: Veil film areal density
+  basis: invented
+veil-momentum-fraction:
+  value: 0.01
+  unit: "1"
+  label: Share of sunlight's momentum the light-bending film takes up
+  basis: invented
+  range: [0.002, 0.1]
+  note: A mirror takes up 2, a black sheet 1. A clear film that bends light a few degrees, with good anti-reflection coatings, about 0.01.
+veil-block-fraction:
+  value: 0.999
+  unit: "1"
+  show: "%"
+  label: Share of sunlight the closed Veil keeps from Venus
+  basis: design
+veil-open-transmission:
+  value: 0.60
+  unit: "1"
+  show: "%"
+  label: Most light a slat lets through when open
+  basis: invented
+veil-slat-side:
+  value: 1200
+  unit: m
+  show: km
+  label: Slat edge
+  basis: design
+veil-close:
+  value: 2032-06-30
+  unit: date
+  label: Veil closes over Venus
+  basis: design
+  note: Version 2 closed it in December 2031; the L1 Veil is 3.6 times heavier, so it closes six months later, still half a year before active cooling.
+
+# --- Thermal Chimneys ------------------------------------------------------------------------------
+chimney-count:
+  value: 10000
+  unit: count
+  label: Number of chimneys (one per canopy)
+  basis: design
+chimney-diameter:
+  value: 2000
+  unit: m
+  show: km
+  label: Chimney diameter
+  basis: design
+chimney-flow-speed:
+  value: 20
+  unit: m/s
+  label: Gas speed up a chimney
+  basis: design
+chimney-gas-cooling:
+  value: 300
+  unit: K
+  label: How much the chimney gas cools at the canopy
+  basis: design
+chimney-base:
+  value: 1000
+  unit: m
+  show: km
+  label: Chimney base height
+  basis: design
+chimney-top:
+  value: 65000
+  unit: m
+  show: km
+  label: Chimney top height
+  basis: design
+deep-heat-peak:
+  value: 6.0e18
+  unit: W
+  label: Peak heat flow from the deep atmosphere
+  basis: design
+
+# --- Photonic Exhaust ------------------------------------------------------------------------------
+exhaust-effective-temp:
+  value: 2000
+  unit: K
+  label: Effective temperature the emitters shine at
+  basis: invented
+  range: [1000, 3000]
+exhaust-bandgap:
+  value: 0.54
+  unit: eV
+  label: Emitter tile bandgap (InGaAsSb)
+  basis: invented
+exhaust-peak:
+  value: 5.0e19
+  unit: W
+  label: Peak power the Exhaust can throw into space
+  basis: design
+  range: [3.0e19, 7.0e19]
+  note: Version 2 sized it at 3.6 × 10¹⁹ W from the campaign's average. The day-by-day simulation shows the Exhaust, not the power supply, sets the pace once the Ring pays for the Railheads, and at 3.6 × 10¹⁹ W Venus is Earth-like only in April 2037.
+exhaust-canopies:
+  value: 10000
+  unit: count
+  label: Number of floating canopies
+  basis: design
+exhaust-cone:
+  value: 25
+  unit: deg
+  label: Beam cone each tile fires into
+  basis: invented
+cooling-start:
+  value: 2033-01-01
+  unit: date
+  label: Active cooling begins
+  basis: design
+cooling-end:
+  value: 2036-06-30
+  unit: date
+  label: Active cooling ends
+  basis: design
+frost-tower-temp:
+  value: 133
+  unit: K
+  label: Frost Tower cold-trap temperature
+  basis: invented
+
+# --- Cryo-continents -------------------------------------------------------------------------------
+cryo-thickness:
+  value: 2000
+  unit: m
+  show: km
+  label: Cryo-continent thickness
+  basis: design
+cryo-aerogel-thickness:
+  value: 20
+  unit: m
+  label: Carbon aerogel layer in each cap
+  basis: invented
+cryo-aerogel-density:
+  value: 100
+  unit: kg/m3
+  label: Carbon aerogel density
+  basis: precedent
+cryo-aerogel-conductivity:
+  value: 0.014
+  unit: W/m/K
+  label: Carbon aerogel thermal conductivity
+  basis: precedent
+cryo-membrane-thickness:
+  value: 1.0e-3
+  unit: m
+  show: mm
+  label: Graphite membrane thickness
+  basis: invented
+cryo-armour-thickness:
+  value: 2
+  unit: m
+  label: Crushed-basalt armour on each cap
+  basis: design
+cryo-ice-temp:
+  value: 180
+  unit: K
+  label: Temperature the sealed dry ice is held at
+  basis: design
+cryo-floor-step:
+  value: 450
+  unit: K
+  label: Effective temperature step between hot rock and basin floor
+  basis: design
+  note: The rock starts near 737 K and the ice base near 200 K, but the floors are pre-cooled by the cooling air and by basal heat pipes drilled before the Clear Rain.
+cryo-cell-area:
+  value: 1.0e8
+  unit: m2
+  show: km2
+  label: Area of one sealed compartment
+  basis: design
+sealing-end:
+  value: 2036-06-30
+  unit: date
+  label: Last caps sealed
+  basis: design
+
+# --- Graphite Forges -------------------------------------------------------------------------------
+o2-target-pressure:
+  value: 25000
+  unit: Pa
+  show: bar
+  label: Oxygen pressure to make
+  basis: design
+forge-efficiency:
+  value: 0.60
+  unit: "1"
+  show: "%"
+  label: Molten-carbonate splitting efficiency
+  basis: precedent
+  source: [licht-2025-c2cnt]
+forge-count:
+  value: 500
+  unit: count
+  label: Number of Forges
+  basis: design
+forge-start:
+  value: 2035-01-01
+  unit: date
+  label: Forging begins
+  basis: design
+forge-end:
+  value: 2036-09-30
+  unit: date
+  label: Forging ends
+  basis: design
+
+# --- Ceres Ice Train -------------------------------------------------------------------------------
+ice-mass:
+  value: 1.0e20
+  unit: kg
+  label: Water shipped to Venus
+  basis: design
+  range: [3.0e19, 2.0e20]
+brick-mass:
+  value: 1.0e9
+  unit: kg
+  show: Mt
+  label: Ice Brick mass
+  basis: design
+railhead-count:
+  value: 10000
+  unit: count
+  label: Number of Railheads on Ceres
+  basis: design
+railhead-accel:
+  value: 200
+  unit: g
+  label: Railhead acceleration
+  basis: invented
+railhead-efficiency:
+  value: 0.50
+  unit: "1"
+  show: "%"
+  label: Railhead efficiency, electricity to motion
+  basis: invented
+ice-lowering-margin:
+  value: 16
+  unit: d
+  label: Days kept between the last arrival and the deadline
+  basis: design
+
+# --- Braking Ring ----------------------------------------------------------------------------------
+ring-altitude:
+  value: 4.0e5
+  unit: m
+  show: km
+  label: Ring altitude
+  basis: design
+ring-rotor-speed:
+  value: 1.0e4
+  unit: m/s
+  show: km/s
+  label: Rotor speed
+  basis: invented
+ring-rotor-mass:
+  value: 7.0e12
+  unit: kg
+  label: Rotor mass
+  basis: invented
+ring-stator-mass:
+  value: 3.0e12
+  unit: kg
+  label: Stator mass (tracks, tethers, receivers)
+  basis: invented
+ring-catch-accel:
+  value: 50
+  unit: g
+  label: Catcher braking
+  basis: invented
+ring-recovery-efficiency:
+  value: 0.80
+  unit: "1"
+  show: "%"
+  label: Regenerative braking efficiency
+  basis: invented
+ring-tether-lifts:
+  value: 3000
+  unit: count
+  label: Number of tether lifts
+  basis: design
+lowering-release-altitude:
+  value: 1.0e5
+  unit: m
+  show: km
+  label: Height Bricks are released from
+  basis: design
+lowering-start:
+  value: 2035-06-30
+  unit: date
+  label: Lowering begins
+  basis: design
+lowering-end:
+  value: 2036-12-15
+  unit: date
+  label: Lowering ends
+  basis: design
+brick-temp:
+  value: 150
+  unit: K
+  label: Temperature of a Brick when it is lowered
+  basis: design
+
+# --- Aegis Shield ----------------------------------------------------------------------------------
+aegis-bubble-radius:
+  value: 1.0e7
+  unit: m
+  show: km
+  label: Magnetic bubble radius
+  basis: design
+aegis-coil-radius:
+  value: 1.0e4
+  unit: m
+  show: km
+  label: Coil radius
+  basis: design
+aegis-turns:
+  value: 1.0e6
+  unit: count
+  label: Turns in the coil
+  basis: design
+
+# --- Venus in 2036 ---------------------------------------------------------------------------------
+final-humidity:
+  value: 0.75
+  unit: "1"
+  show: "%"
+  label: Relative humidity over the new oceans
+  basis: design
+final-albedo:
+  value: 0.30
+  unit: "1"
+  show: "%"
+  label: Albedo of the finished, Earth-like Venus
+  basis: design
+earth-like-temp:
+  value: 285
+  unit: K
+  label: Coldest mean temperature that counts as Earth-like
+  basis: design
+earth-like-co2:
+  value: 6.0e-4
+  unit: "1"
+  show: ppm
+  label: Most CO₂ that counts as Earth-like
+  basis: design

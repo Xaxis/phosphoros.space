@@ -1,0 +1,136 @@
+# The project's history and every correction, newest last. Shown on the About page and in
+# CHANGELOG.md. A correction names what changed, why, and the numbers before and after.
+#
+#   kind: version | correction | finding | rename | open
+#   issue: the GitHub issue that tracks it (number), once opened
+
+- id: v1
+  kind: version
+  version: "1"
+  title: Project Hesperus
+  text: >-
+    A conventional analysis concluded that an Earth-like Venus in ten years is impossible without
+    imported energy. It proposed a 2027 to 2036 ignition phase (science, seed factories, a pilot
+    sunshade, an aerostat outpost) leading to a 200 to 500 year transformation.
+- id: v2
+  kind: version
+  version: "2"
+  title: Project Hesperus Ten
+  text: Invented the technologies needed to finish in ten years.
+- id: helios-power
+  kind: correction
+  version: "2"
+  title: Helios power raised from 4 to 7 × 10¹⁹ W
+  text: So that the ice launches finish in time.
+- id: veil-statite
+  kind: correction
+  version: "2"
+  title: Veil moved from L1 to a statite 137,000 km sunward
+  text: >-
+    Because the Sun's angular size makes an L1 shade about three times larger (area 1.3 to
+    1.5 × 10¹⁴ m²). Version 3 found this move breaks Newton's laws and reverses it (see veil-l1).
+- id: pump-work
+  kind: correction
+  version: "2"
+  title: Cooling work raised to about 5.4 joules per joule moved
+  text: >-
+    From "equal to the heat moved" to the Carnot cost of lifting heat to emitters at an effective
+    2,000 K. Total delivered energy rose from 4.7 to 7.0 × 10²⁷ J; spare fell from about 40% to
+    about 9%, plus the Ring's recovered energy.
+- id: exhaust-area-v2
+  kind: correction
+  version: "2"
+  title: Exhaust emitter area raised to about 4 × 10¹³ m² (9% of Venus)
+  text: To shine the cooling campaign's average power at 0.9 MW/m².
+- id: floor-heat
+  kind: finding
+  version: "2"
+  title: Cryo-continent floors leak crust heat
+  text: About 12 PW at first, so basal heat pipes and ongoing refrigeration are needed.
+- id: ring-self-powered
+  kind: finding
+  version: "2"
+  title: The Ice Train powers itself from late 2034
+  text: The energy the Ring recovers per kilogram caught exceeds the energy spent launching it.
+- id: rename
+  kind: rename
+  version: "2"
+  title: Renamed Phosphoros
+  text: The light-bringer, at phosphoros.space.
+- id: v3
+  kind: version
+  version: "3"
+  title: Phosphoros, every number reproducible
+  date: 2026-11-20
+  text: >-
+    Every number in the plan now comes from data/ through the model in calc/. Rebuilding the
+    numbers from first principles reproduced almost all of version 2 and found the corrections
+    below.
+- id: veil-l1
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Veil goes back to L1, as a light-bending film
+  text: >-
+    A statite hovers only where light pushes it away from what pulls it. Sunlight travels from the
+    Sun toward Venus, so it pushes a sunward shade toward Venus, the same way Venus's gravity
+    pulls it: the version 2 Veil would fall onto Venus in about a day. The only place a shade can
+    hold station between the Sun and Venus is at or just sunward of the L1 point, 1.01 million km
+    out, where the Sun's pull balances Venus's. Version 3 puts it there and makes it a clear film
+    that bends sunlight a few degrees so it misses Venus, rather than a mirror, so light pressure
+    barely moves it (as in Angel's 2006 design for an Earth sunshade). The cost is area: about 3.6
+    times version 2's, 5.4 × 10¹¹ kg instead of 1.5 × 10¹¹ kg. The Foundry can afford that by March
+    2032, so the Veil closes in June 2032 instead of December 2031, still six months before active
+    cooling. The Aegis coil moves with it, to L1, where NASA's Mars shield study put its own.
+  before: { veil-distance: 1.37e8, veil-area: 1.5e14, veil-mass: 1.5e11, veil-close: 2031-12-31 }
+- id: exhaust-capacity
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Exhaust is sized for the peak the simulation needs
+  text: >-
+    Version 2 sized the Photonic Exhaust from the campaign's average power. The new day-by-day
+    simulation shows the timing matters: until the Ring takes over the Railheads in August 2034
+    most of the Lattice's power goes to Ceres, and after that power is plentiful but the emitters
+    cannot shine it. With 3.6 × 10¹⁹ W of emitters Venus reaches Earth-like conditions only in
+    April 2037. With 5 × 10¹⁹ W (5.5 × 10¹³ m², 12% of Venus) the CO₂ is down by April 2036 and
+    the air is Earth-like by 30 September 2036. The simulation also counts heat the averages left
+    out (from the crust, the Forges and the falling ice), so the energy demand rises from 7.0 to
+    7.7 × 10²⁷ J: 2% spare from the Lattice alone, 28% once the Ring powers the Railheads.
+  before: { exhaust-peak: 3.6e19, exhaust-area-installed: 4e13, budget-demand: 7.0e27, budget-spare: 0.09 }
+- id: ring-lowering
+  kind: open
+  version: "3"
+  date: 2026-11-20
+  title: "Open problem: the Ring cannot lower the ice on tethers"
+  text: >-
+    Bringing 2.2 × 10¹² kg of ice a second to rest 300 km lower takes at least the momentum it
+    would gain falling that far, every second: about 4.7 × 10¹⁵ N. The Ring's rotor has about
+    3 × 10¹³ N of lift to spare, 150 times too little. Catching the ice works; lowering it this way
+    does not. Options under study: drop the Bricks from rest at the Ring and pump out the extra
+    2.5 × 10²⁶ J of heat; lower over a longer time; or a far heavier, faster rotor. The energy
+    budget never counted the lowering's recovered energy, so it still closes.
+- id: o2-match
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: 0.25 bar of oxygen is a little more than Earth's, not a match
+  text: Earth's sea-level oxygen is 0.21 bar. 0.25 bar is about 18% more.
+- id: genesis-gate
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Seeding waits for the oxygen
+  text: >-
+    Version 2 seeded life from mid-2036 behind a gate that needs 0.25 bar of oxygen, but the Forges
+    finish only at the end of September 2036. Seeding now starts when the gate opens; one-day
+    doubling still greens the sunlit water by December.
+- id: missions
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Precursor mission dates checked
+  text: >-
+    EnVision has slipped from November 2031 to 2032; Venus Life Finder waits on Neutron, now due in
+    2027. DAVINCI (December 2030) and VERITAS (November 2032) are confirmed, but NASA's 2027
+    budget request again proposes ending both.
