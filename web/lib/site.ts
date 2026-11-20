@@ -7,10 +7,17 @@ export const TAGLINE = "Venus, Earth-like, by 2036.";
 export const DESCRIPTION =
   "A complete, open plan to make Venus Earth-like in ten years by inventing the technology it needs. Every number is computed from open data, every invention is labelled, and the physics always closes.";
 
-/** A file in the repository, as a GitHub link (optionally to a line). */
+/** The commit this build was made from (tools/deploy.sh passes it), when there is one. */
+const BUILD = process.env.PHOSPHOROS_BUILD ?? process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7);
+
+/**
+ * A file in the repository, as a GitHub link (optionally to a line). A line number is right only in
+ * the commit the site was built from, so line links pin to it; main moves on.
+ */
 export function repoUrl(file: string, line?: number): string {
   const kind = file.endsWith("/") || !/\.[a-z]+$/.test(file) ? "tree" : "blob";
-  return `${REPO}/${kind}/${BRANCH}/${file.replace(/\/$/, "")}${line ? `#L${line}` : ""}`;
+  const ref = line && BUILD ? BUILD : BRANCH;
+  return `${REPO}/${kind}/${ref}/${file.replace(/\/$/, "")}${line ? `#L${line}` : ""}`;
 }
 
 export function editUrl(file: string): string {
@@ -178,6 +185,7 @@ export function routeFor(href: string, fromDoc: string): string | null {
   if (tech) return `/technologies/${tech[1]}${anchor}`;
   const doc = /^docs\/([a-z0-9-]+)\.md$/.exec(target);
   if (doc) return `/${doc[1]}${anchor}`;
-  // Anything else in the repository: code, data, the licence.
-  return `${repoUrl(target)}${anchor}`;
+  // Anything else in the repository: code, data, the licence. A line anchor pins to the build.
+  const line = /^L(\d+)$/.exec(hash ?? "");
+  return line ? repoUrl(target, Number(line[1])) : `${repoUrl(target)}${anchor}`;
 }

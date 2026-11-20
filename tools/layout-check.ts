@@ -94,6 +94,39 @@ for (const width of [320, 390]) {
   check(live === 0, "no aria-live region repeats the table", String(live));
   await ctx.close();
 }
+{
+  // The Explorer marks basis in words and redraws the schedule, the air and the budget per variant.
+  const ctx = await b.newContext({ viewport: { width: 1280, height: 900 } });
+  const p = await ctx.newPage();
+  const look = async (query: string) => {
+    await p.goto(`${base}/explore${query}`, { waitUntil: "load" });
+    await p.waitForTimeout(1200);
+    return p.evaluate(() => {
+      const text = (e: Element | null | undefined) => (e?.textContent ?? "").replace(/\s+/g, " ");
+      const figs = [...document.querySelectorAll(".explorer-results figure")];
+      return {
+        figs: figs.filter((f) => f.querySelector("svg")).length,
+        badges: document.querySelectorAll(".explorer-controls .explorer-input .basis").length,
+        sliders: document.querySelectorAll('.explorer-controls input[type="range"]').length,
+        gantt: text(figs[0]?.querySelector("svg")),
+        when: text(document.querySelector(".explorer-verdict strong")),
+      };
+    });
+  };
+  const plan = await look("");
+  const slow = await look("?set=foundry-doubling-days:63");
+  check(
+    plan.figs === 3 &&
+      plan.badges === plan.sliders &&
+      plan.sliders > 0 &&
+      plan.gantt.includes(plan.when) &&
+      slow.when !== plan.when &&
+      slow.gantt.includes(slow.when),
+    "explorer marks basis in words and redraws the Gantt for a variant",
+    JSON.stringify({ ...plan, gantt: plan.gantt.length, slowWhen: slow.when }),
+  );
+  await ctx.close();
+}
 async function menu(p: Page) {
   return p.evaluate(() => document.querySelector("#all-pages")?.matches(":popover-open"));
 }

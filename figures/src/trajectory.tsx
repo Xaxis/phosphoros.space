@@ -316,7 +316,7 @@ export const trajectory: FigureDef<Props> = {
   file: "figures/src/trajectory.tsx",
   build: ({ r }) => build(r),
   caption: (p) =>
-    `The day-by-day simulation cools the air from ${p.ends.start}, rains and freezes the CO₂ out, then warms the air to ${p.ends.finish}. It is Earth-like on ${p.earthLike.when}, before the deadline of ${p.deadline.when}.`,
+    `The day-by-day simulation cools the air from ${p.ends.start}, rains and freezes the CO₂ out, then warms the air to ${p.ends.finish}. It is Earth-like on ${p.earthLike.when}, ${p.earthLike.day <= p.deadline.day ? "before" : "after"} the deadline of ${p.deadline.when}.`,
   describe: (p) => ({
     summary: `Temperature falls from ${p.ends.start} to the CO₂ frost point and rises to ${p.ends.finish}; surface pressure falls to ${p.ends.total}, with ${p.ends.o2} of oxygen and ${p.ends.co2} of CO₂.`,
     head: ["Event", "Date"],

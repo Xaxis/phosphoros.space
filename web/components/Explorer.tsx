@@ -5,9 +5,15 @@
  * The chosen values live in the URL (?set=id:value,...), so a variant can be shared.
  */
 import { compute } from "@phosphoros/calc";
+import type { Content } from "@phosphoros/calc/content";
 import { formatQuantity } from "@phosphoros/calc/format";
-import type { Basis, Input, Registry } from "@phosphoros/calc/registry";
+import type { Input, Registry } from "@phosphoros/calc/registry";
+import type { FigureDef } from "@phosphoros/figures";
+import { gantt } from "@phosphoros/figures/gantt";
+import { latticeBudget } from "@phosphoros/figures/lattice-budget";
+import { trajectory } from "@phosphoros/figures/trajectory";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { BasisTag, Legend } from "./Basis";
 
 export interface ExplorerGroup {
   title: string;
@@ -61,21 +67,21 @@ function readUrl(): Record<string, number> {
   return out;
 }
 
-const BASIS_CLASS: Record<Basis, string> = {
-  physics: "basis-physics",
-  precedent: "basis-precedent",
-  invented: "basis-invented",
-  design: "basis-design",
-};
+/** The figures the Explorer redraws from the variant: the schedule, the air and the energy. */
+// biome-ignore lint/suspicious/noExplicitAny: each figure has its own props
+const VARIANT_FIGURES: FigureDef<any>[] = [gantt, trajectory, latticeBudget];
 
 export function Explorer({
   inputs,
   groups,
   outcomes,
+  timeline,
 }: {
   inputs: Input[];
   groups: ExplorerGroup[];
   outcomes: Outcome[];
+  /** The Gantt's rows; every date in them is a model id, so the variant moves them. */
+  timeline: Content["timeline"];
 }) {
   const byId = useMemo(() => new Map(inputs.map((q) => [q.id, q])), [inputs]);
   const [overrides, setOverrides] = useState<Record<string, number>>({});
@@ -116,6 +122,7 @@ export function Explorer({
   return (
     <div className="explorer">
       <section className="explorer-controls" aria-label="Assumptions">
+        <Legend />
         {groups.map((g) => (
           <fieldset key={g.title} className="explorer-group">
             <legend>{g.title}</legend>
@@ -127,7 +134,9 @@ export function Explorer({
               return (
                 <div key={qid} className={`explorer-input${moved ? " moved" : ""}`}>
                   <div className="explorer-input-head">
-                    <label htmlFor={`x-${qid}`}>{q.label}</label>
+                    <label htmlFor={`x-${qid}`}>
+                      {q.label} <BasisTag basis={q.basis} />
+                    </label>
                     <output htmlFor={`x-${qid}`} className="explorer-value">
                       {formatQuantity({ ...q, value }, { sig: 3 })}
                     </output>
@@ -146,7 +155,7 @@ export function Explorer({
                   />
                   <div className="explorer-input-foot">
                     <span>{formatQuantity({ ...q, value: q.range[0] }, { sig: 2 })}</span>
-                    <span className={BASIS_CLASS[q.basis]}>
+                    <span>
                       {moved ? (
                         <button
                           type="button"
@@ -202,7 +211,10 @@ export function Explorer({
         {now.error || !now.r || !base.r ? (
           <p className="explorer-error">The model cannot run with these assumptions: {now.error}</p>
         ) : (
-          <Results base={base.r} now={now.r} outcomes={outcomes} changed={changed} />
+          <>
+            <Results base={base.r} now={now.r} outcomes={outcomes} changed={changed} />
+            <VariantFigures r={now.r} timeline={timeline} changed={changed} />
+          </>
         )}
       </section>
     </div>
@@ -280,7 +292,7 @@ function Results({
                   }
                 >
                   <td>
-                    {n.label}
+                    {n.label} {n.basis && <BasisTag basis={n.basis} />}
                     {o.against && <span className="explorer-against"> {o.against}</span>}
                   </td>
                   <td className="explorer-num">{formatQuantity(b, { date: "day" })}</td>
@@ -311,6 +323,40 @@ function Results({
           );
         })}
       </ul>
+    </>
+  );
+}
+
+/** The schedule, the simulated air and the energy budget, drawn from the variant. */
+function VariantFigures({
+  r,
+  timeline,
+  changed,
+}: {
+  r: Registry;
+  timeline: Content["timeline"];
+  changed: boolean;
+}) {
+  // The figures read only the timeline rows from the content; the rest of it stays on the server.
+  const ctx = { r, content: { timeline } as Content };
+  return (
+    <>
+      <h2 className="explorer-h">{changed ? "This variant, drawn" : "The plan, drawn"}</h2>
+      {VARIANT_FIGURES.map((def) => {
+        const props = def.build(ctx);
+        const { Component } = def;
+        return (
+          <figure key={def.id} className="figure">
+            {/* biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling region must take focus to scroll by keys */}
+            <section className="figure-art" tabIndex={0} aria-label={`Figure: ${def.title}`}>
+              <Component {...props} />
+            </section>
+            <figcaption>
+              <span className="figure-title">{def.title}.</span> {def.caption(props)}
+            </figcaption>
+          </figure>
+        );
+      })}
     </>
   );
 }

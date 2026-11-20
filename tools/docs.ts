@@ -235,7 +235,7 @@ const BLOCKS: Record<string, Block> = {
     );
   },
   budget(_arg, p) {
-    const rows = DEMANDS.map(([id, label]) => [label, md(`{${id}}`, p)]);
+    const rows = DEMANDS.map(([id, label]) => [md(label, p), md(`{${id}}`, p)]);
     rows.push(["**Total demand**", `**${md("{budget-demand}", p)}**`]);
     rows.push([`Supply: the Lattice from full power to the deadline`, md("{helios-supply}", p)]);
     rows.push(["Spare", md("{budget-spare}", p)]);
@@ -309,8 +309,23 @@ const BLOCKS: Record<string, Block> = {
     );
   },
   assumptions(_arg, p) {
+    // The calc scripts that read each assumption directly, from the inputs the registry recorded.
+    const usedBy = new Map<string, Set<string>>();
+    for (const q of r.derived.values()) {
+      const file = sourceOf(q).file;
+      for (const id of q.inputs) {
+        const files = usedBy.get(id) ?? new Set<string>();
+        files.add(file);
+        usedBy.set(id, files);
+      }
+    }
+    const scripts = (id: string) =>
+      [...(usedBy.get(id) ?? [])]
+        .sort()
+        .map((f) => `[${f.replace(/^calc\/src\/model\//, "")}](${p}../${f})`)
+        .join(", ");
     return table(
-      ["Assumption", "Value", "Basis", "Explore", "Defined in"],
+      ["Assumption", "Value", "Basis", "Explore", "Defined in", "Used by"],
       [...r.inputs.values()]
         .filter((q) => q.file === "data/assumptions.yaml" && q.unit !== "date")
         .map((q) => [
@@ -321,6 +336,7 @@ const BLOCKS: Record<string, Block> = {
             ? `${formatQuantity({ ...q, value: q.range[0] })} to ${formatQuantity({ ...q, value: q.range[1] })}`
             : "",
           `[${q.file}:${q.line}](${p}../${q.file}#L${q.line})`,
+          scripts(q.id),
         ]),
     );
   },

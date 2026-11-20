@@ -211,8 +211,8 @@ export function GanttExplorer({ p }: { p: GanttProps }) {
           </li>
         </ul>
         <p className="tl-ends">
-          The simulated air is Earth-like on {p.earthLikeText}, {p.slack} before the deadline of{" "}
-          {p.deadlineText}.
+          The simulated air is Earth-like on {p.earthLikeText}, {p.slack}{" "}
+          {p.late ? "after" : "before"} the deadline of {p.deadlineText}.
         </p>
       </div>
 

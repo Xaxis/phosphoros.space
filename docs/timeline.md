@@ -2,8 +2,8 @@
 
 Ten years, five lanes: proof on Earth, industry on Mercury, construction near Venus, water from Ceres,
 and the work on Venus itself. Every date here is either a choice the plan makes or a date the model
-derives from those choices. Move an assumption in the [Explorer](https://phosphoros.space/explore) and the
-chart moves with it.
+derives from those choices. Move an assumption in the [Explorer](https://phosphoros.space/explore) and it
+redraws this chart for your variant.
 
 <!-- figure:gantt -->
 ![The Phosphoros decade, 2027 to 2036](../figures/svg/gantt.svg)

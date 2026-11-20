@@ -81,11 +81,11 @@ Petals, which fly in [June 2030](../numbers.md?date=month#helios-first-petals), 
 <!-- table:budget -->
 | Task | Energy the Lattice delivers |
 | --- | --- |
-| Launch 10²⁰ kg of ice from Ceres | [4.8 × 10²⁷ J](../numbers.md#ice-launch-energy) |
+| Launch [1.0 × 10²⁰ kg](../numbers.md#ice-mass) of ice from Ceres | [4.8 × 10²⁷ J](../numbers.md#ice-launch-energy) |
 | Heat-pump work to cool Venus | [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy) |
 | Run the chimney fans | [1.0 × 10²⁵ J](../numbers.md#traj-fan-energy) |
 | Warm the air and melt the last ice | [4.4 × 10²⁵ J](../numbers.md#traj-warm-energy) |
-| Forge 0.25 bar of oxygen | [2.7 × 10²⁵ J](../numbers.md#forge-energy) |
+| Forge [0.25 bar](../numbers.md#o2-target-pressure) of oxygen | [2.7 × 10²⁵ J](../numbers.md#forge-energy) |
 | Build the Foundry, the Veil, the Lattice and the Ring | [10²² J](../numbers.md#hardware-energy) |
 | **Total demand** | **[8.4 × 10²⁷ J](../numbers.md#budget-demand)** |
 | Supply: the Lattice from full power to the deadline | [9.2 × 10²⁷ J](../numbers.md#helios-supply) |

@@ -4,7 +4,7 @@
  */
 import { fill } from "@phosphoros/calc/template";
 import type { ReactNode } from "react";
-import { Art, Frame, Link, linear, show, W } from "./kit.tsx";
+import { Art, Frame, Link, linear, show, showValue, W } from "./kit.tsx";
 import { Diamond, YearBands } from "./structure-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -33,7 +33,10 @@ export interface GanttProps {
   earthLikeText: string;
   deadline: number;
   deadlineText: string;
+  /** Days between the Earth-like date and the deadline, as text, without a sign. */
   slack: string;
+  /** Earth-like after the deadline (a variant in the Explorer). */
+  late: boolean;
   criticalPath: string;
 }
 
@@ -65,7 +68,7 @@ function Gantt(p: GanttProps) {
     <Frame
       id="gantt"
       title="The Phosphoros decade, 2027 to 2036"
-      desc={`To scale. ${p.rows.length} workstreams and milestones in five lanes, from the proof experiments to the deadline. The critical path is drawn with thicker bars. Earth-like Venus, in the simulation, comes on ${p.earthLikeText}, ${p.slack} before the deadline.`}
+      desc={`To scale. ${p.rows.length} workstreams and milestones in five lanes, from the proof experiments to the deadline. The critical path is drawn with thicker bars. Earth-like Venus, in the simulation, comes on ${p.earthLikeText}, ${p.slack} ${p.late ? "after" : "before"} the deadline.`}
       height={H}
       links
     >
@@ -89,27 +92,35 @@ function Gantt(p: GanttProps) {
             Go or no-go gate
           </text>
           <rect className="f-accent-wash" x={530} y={11} width={10} height={16} />
-          <line className="f-accent-line" strokeWidth={2} x1={530} x2={530} y1={11} y2={27} />
+          {/* Solid is Earth-like, dashed the deadline, drawn in the order they fall. */}
+          <line
+            className="f-accent-line"
+            strokeWidth={2}
+            x1={p.late ? 540 : 530}
+            x2={p.late ? 540 : 530}
+            y1={11}
+            y2={27}
+          />
           <line
             className="f-accent-line"
             strokeWidth={2}
             strokeDasharray="3 2"
-            x1={540}
-            x2={540}
+            x1={p.late ? 530 : 540}
+            x2={p.late ? 530 : 540}
             y1={11}
             y2={27}
           />
           <text x={548} y={19} dy="0.32em">
-            Earth-like, then the deadline
+            {p.late ? "The deadline, then Earth-like" : "Earth-like, then the deadline"}
           </text>
         </g>
 
         {/* The slack between the simulated Earth-like date and the deadline. */}
         <rect
           className="f-accent-wash"
-          x={xe}
+          x={Math.min(xe, xd)}
           y={TOP - 18}
-          width={xd - xe}
+          width={Math.abs(xd - xe)}
           height={bottom - TOP + 18}
         />
         <YearBands
@@ -227,8 +238,14 @@ function Gantt(p: GanttProps) {
           y2={bottom + 30}
         />
         <path className="f-accent-line" strokeWidth={1.5} d={`M${xe},${bottom + 30}H${xd}`} />
-        <text className="f-note f-num" x={xe - 6} y={bottom + 30} dy="0.32em" textAnchor="end">
-          Simulated Earth-like date: {p.slack} before the deadline
+        <text
+          className="f-note f-num"
+          x={Math.min(xe, xd) - 6}
+          y={bottom + 30}
+          dy="0.32em"
+          textAnchor="end"
+        >
+          Simulated Earth-like date: {p.slack} {p.late ? "after" : "before"} the deadline
         </text>
       </Art>
     </Frame>
@@ -243,6 +260,7 @@ export const gantt: FigureDef<GanttProps> = {
     const day = (id: string) => r.get(id).value;
     const date = (id: string) => show(r, id, { date: "day" });
     const t = content.timeline;
+    const slack = r.get("traj-slack-days");
     const rows: GanttRow[] = t.rows.map((row) => ({
       id: row.id,
       label: row.label,
@@ -262,19 +280,25 @@ export const gantt: FigureDef<GanttProps> = {
       lanes: t.lanes,
       rows,
       from: day("program-start"),
-      to: day("deadline"),
+      // The deadline ends the chart, unless a variant runs past it; then the chart runs on.
+      to: Math.max(
+        day("deadline"),
+        day("traj-earth-like"),
+        ...rows.map((row) => row.end ?? row.start),
+      ),
       earthLike: day("traj-earth-like"),
       earthLikeText: date("traj-earth-like"),
       deadline: day("deadline"),
       deadlineText: date("deadline"),
-      slack: show(r, "traj-slack-days"),
+      slack: showValue(slack, Math.abs(slack.value)),
+      late: slack.value < 0,
       criticalPath: fill(t.critical_path, (id) => r.get(id)),
     };
   },
   caption: (p) =>
-    `Every workstream to scale, from the first experiments to the deadline. The critical path runs through the Foundry and the ice; the simulated air is Earth-like on ${p.earthLikeText}, ${p.slack} early.`,
+    `Every workstream to scale, from the first experiments to the deadline. The critical path runs through the Foundry and the ice; the simulated air is Earth-like on ${p.earthLikeText}, ${p.slack} ${p.late ? "late" : "early"}.`,
   describe: (p) => ({
-    summary: `${p.criticalPath} Earth-like Venus comes on ${p.earthLikeText} in the simulation, ${p.slack} before the deadline of ${p.deadlineText}.`,
+    summary: `${p.criticalPath} Earth-like Venus comes on ${p.earthLikeText} in the simulation, ${p.slack} ${p.late ? "after" : "before"} the deadline of ${p.deadlineText}.`,
     head: ["Lane", "Workstream or milestone", "Start", "End", "Critical path"],
     rows: p.rows.map((row) => [
       p.lanes.find((l) => l.id === row.lane)?.label ?? row.lane,

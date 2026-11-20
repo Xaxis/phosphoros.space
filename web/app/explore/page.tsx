@@ -41,7 +41,7 @@ const OUTCOMES: Outcome[] = [
 ];
 
 export default function ExplorePage() {
-  const { r } = model();
+  const { r, content } = model();
   const inputs = [...r.inputs.values()];
   return (
     <>
@@ -54,14 +54,14 @@ export default function ExplorePage() {
             <p>
               This page runs the same model the site is built from, in your browser. Move an
               assumption and every consequence is recomputed, including the day-by-day simulation of
-              Venus's air and every physics check. The link in your address bar keeps your variant.
-              To change anything else, edit{" "}
+              Venus's air, every physics check, the schedule and the energy budget. The link in your
+              address bar keeps your variant. To change anything else, edit{" "}
               <a href={`${REPO}/blob/main/data/assumptions.yaml`}>data/assumptions.yaml</a> and run{" "}
               <code>pnpm calc</code>.
             </p>
           </div>
         </div>
-        <Explorer inputs={inputs} groups={GROUPS} outcomes={OUTCOMES} />
+        <Explorer inputs={inputs} groups={GROUPS} outcomes={OUTCOMES} timeline={content.timeline} />
       </main>
       <Footer doc="calc/src/model/index.ts" />
     </>

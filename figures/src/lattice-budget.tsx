@@ -31,6 +31,7 @@ interface Props {
 const NAMES: Record<string, { label: string; tech?: string }> = {
   "ice-launch-energy": { label: "Launch the ice from Ceres", tech: "ice-train" },
   "traj-pump-energy": { label: "Heat-pump work to cool Venus", tech: "exhaust" },
+  "traj-fan-energy": { label: "Run the chimney fans", tech: "chimneys" },
   "traj-warm-energy": { label: "Warm the air, melt the last ice" },
   "forge-energy": { label: "Forge the oxygen", tech: "forges" },
   "hardware-energy": { label: "Build all the hardware", tech: "ouroboros" },
@@ -108,7 +109,7 @@ function LatticeBudget(p: Props) {
     <Frame
       id="lattice-budget"
       title="Energy the Helios Lattice must deliver, against its supply"
-      desc={`Demand ${p.total.text} against supply ${p.supply.text}: ${p.spare} spare. Launching the water and pumping out the heat take ${p.share} of the supply.`}
+      desc={`Demand ${p.total.text} against supply ${p.supply.text}: ${p.spare}. Launching the water and pumping out the heat take ${p.share} of the supply.`}
       height={H}
       links
     >
@@ -161,7 +162,7 @@ function LatticeBudget(p: Props) {
             />
           ))}
           <Halo className="f-num" x={x(p.total.value) + 8} y={totalY + ROW / 2} dy="0.32em">
-            {`${p.total.text}, ${p.spare} spare`}
+            {`${p.total.text}, ${p.spare}`}
           </Halo>
         </g>
         <path
@@ -191,7 +192,7 @@ function LatticeBudget(p: Props) {
         y={withY}
         x={x}
         tone="s1"
-        note={`${p.spareWithRing} spare`}
+        note={p.spareWithRing}
         sub="once the Ring powers the Railheads"
       />
     </Frame>
@@ -216,34 +217,39 @@ export const latticeBudget: FigureDef<Props> = {
     const supply = item("helios-supply", "Lattice supply", "helios");
     const q = r.get("helios-supply");
     const max = Math.max(supply.value, r.get("budget-demand").value) * 1.04;
+    // "9.3% spare", or for a variant that does not close, how far short it falls.
+    const margin = (id: string) => {
+      const m = r.get(id);
+      return m.value >= 0 ? `${show(r, id)} spare` : `${showValue(m, -m.value)} short`;
+    };
     return {
       demands,
       total: item("budget-demand", "Total demand"),
       supply,
       share: show(r, "budget-launch-share"),
-      spare: show(r, "budget-spare"),
+      spare: margin("budget-spare"),
       ring: item("ring-recovered-energy", "Recovered by the Ring", "ring"),
       caught: show(r, "ring-catch-energy"),
       gain: show(r, "ice-solar-gain"),
       withRing: item("budget-demand-with-ring", "Demand on the Lattice"),
-      spareWithRing: show(r, "budget-spare-with-ring"),
+      spareWithRing: margin("budget-spare-with-ring"),
       ticks: ticks(0, max, 5).map((v) => ({ value: v, text: showValue(q, v, { sig: 1 }) })),
       max,
     };
   },
   caption: (p) =>
-    `The Lattice supplies ${p.supply.text} against a demand of ${p.total.text}: the budget closes with ${p.spare} to spare, ${p.spareWithRing} once the Braking Ring's recovered energy pays for the launches. Launching the water and pumping out the heat take ${p.share} of the supply.`,
+    `The Lattice supplies ${p.supply.text} against a demand of ${p.total.text}: ${p.spare}, and ${p.spareWithRing} once the Braking Ring's recovered energy pays for the launches. Launching the water and pumping out the heat take ${p.share} of the supply.`,
   describe: (p) => ({
-    summary: `Five demands add up to ${p.total.text}, under the Lattice's supply of ${p.supply.text} (${p.spare} spare). The Ring recovers ${p.ring.text} from the falling ice, of ${p.caught} caught; once it powers the Railheads the Lattice's demand falls to ${p.withRing.text} (${p.spareWithRing} spare).`,
+    summary: `${p.demands.length} demands add up to ${p.total.text}, against the Lattice's supply of ${p.supply.text} (${p.spare}). The Ring recovers ${p.ring.text} from the falling ice, of ${p.caught} caught; once it powers the Railheads the Lattice's demand falls to ${p.withRing.text} (${p.spareWithRing}).`,
     head: ["Item", "Energy"],
     rows: [
       ...p.demands.map((d) => [d.label, d.text]),
       [p.total.label, p.total.text],
       [p.supply.label, p.supply.text],
-      ["Spare", p.spare],
+      ["Margin", p.spare],
       [p.ring.label, p.ring.text],
       [`${p.withRing.label}, once the Ring powers the Railheads`, p.withRing.text],
-      ["Spare once the Ring pays the Railheads", p.spareWithRing],
+      ["Margin once the Ring pays the Railheads", p.spareWithRing],
     ],
   }),
   numbers: (p) => [

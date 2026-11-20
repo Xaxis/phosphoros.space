@@ -4,13 +4,13 @@ import type { Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
 import { fmt } from "./text.ts";
 
-/** Rows of the energy budget, in the order the site shows them. */
+/** Rows of the energy budget, in the order the site shows them. Labels are templates: fill them. */
 export const DEMANDS = [
-  ["ice-launch-energy", "Launch 10²⁰ kg of ice from Ceres"],
+  ["ice-launch-energy", "Launch {ice-mass} of ice from Ceres"],
   ["traj-pump-energy", "Heat-pump work to cool Venus"],
   ["traj-fan-energy", "Run the chimney fans"],
   ["traj-warm-energy", "Warm the air and melt the last ice"],
-  ["forge-energy", "Forge 0.25 bar of oxygen"],
+  ["forge-energy", "Forge {o2-target-pressure} of oxygen"],
   ["hardware-energy", "Build the Foundry, the Veil, the Lattice and the Ring"],
 ] as const;
 
