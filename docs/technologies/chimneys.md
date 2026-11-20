@@ -85,7 +85,7 @@ power set the pace on [56 d](../numbers.md#traj-chimney-days).
 [May 2033](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
 [July 2034](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
 CO₂ forms on them and drains to the basins. As the CO₂ rains out the air thins, the canopies float lower and the
-towers are shortened. They retire once the CO₂ is down, in [August 2036](../numbers.md?date=month#traj-cold), and
+towers are shortened. They retire once the CO₂ is down, in [September 2036](../numbers.md?date=month#traj-cold), and
 their carbon goes into the cryo-continent caps.
 
 ## Specifications
@@ -135,7 +135,7 @@ because they describe the air drawn through the intake and the heat taken from i
   critical temperature and the exchangers start condensing liquid CO₂.
 - **[16 September 2034](../numbers.md?date=day#ring-pays-from):** The Ring powers the Railheads and the Exhaust runs at
   its limit, with the chimneys lifting heat well above the design peak.
-- **[3 August 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
+- **[15 September 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
   apart.
 - **[1 September 2036](../numbers.md?date=day#cooling-end):** Active cooling ends.
 

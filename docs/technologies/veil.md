@@ -169,7 +169,7 @@ The Veil stays after 2036 as the planet's thermostat.
 - **[1 December 2032](../numbers.md?date=day#veil-close):** The Veil closes over Venus.
 - **[May 2033](../numbers.md?date=month#cooling-start):** Active cooling begins under the closed Veil.
 - **[June 2034](../numbers.md?date=month#aegis-online):** The Aegis coil switches on beside it.
-- **[2 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed and the Veil opens to its day setting.
+- **[5 October 2036](../numbers.md?date=day#traj-warming):** The caps are sealed and the Veil opens to its day setting.
   The air warms to Earth-like temperatures within days.
 
 ## Failure modes and safeguards

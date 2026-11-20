@@ -25,12 +25,18 @@ corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the 
   widest spot grow; the Exhaust's dark strip and far field are sized from its cone; the Veil blocks
   every colour and the Exhaust aims its cones around it; the Veil's spare slats are not claimed; the
   Choir's machine count is the model's; the cryo caps use measured aerogel; and Mercury's surface is
-  poor in iron, as MESSENGER found.
+  poor in iron, as MESSENGER found. CO₂'s sublimation curve follows Span and Wagner and meets the
+  vapour curve at the triple point; the seas give up their heat of fusion at the triple point
+  instead of the latent heat being spread evenly above it; the simulation's heat books balance,
+  with a check; and unrefrigerated floor heat melts the base of the cryo ice rather than turning it
+  to gas ([#10](https://github.com/Xaxis/phosphoros.space/issues/10)).
 - Open problems: the Braking Ring cannot lower the caught ice on tethers as version 2 describes
   ([#2](https://github.com/Xaxis/phosphoros.space/issues/2)), and catching half the ice eastbound
   and half westbound cancels the twist on the Ring, not its braking force
   ([#3](https://github.com/Xaxis/phosphoros.space/issues/3)). The Exhaust's narrow beams cost far
   more pump work than the model charges ([#4](https://github.com/Xaxis/phosphoros.space/issues/4)).
+  Freezing the seas at the triple point takes long enough that the Frost Towers finish after the
+  last caps are due and seeded life greens the oceans after the deadline.
   Each is carried as a failing check until a design closes it. Other gaps found while rebuilding the numbers are open as
   [issues](https://github.com/Xaxis/phosphoros.space/issues).
 - The site, phosphoros.space, renders every page from the docs in this repository, and the

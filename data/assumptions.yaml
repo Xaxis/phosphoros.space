@@ -415,7 +415,7 @@ cooling-end:
   unit: date
   label: Active cooling ends
   basis: design
-  note: Set just after the simulated Frost Towers finish. The check that they finish before the caps are sealed fails if the simulation passes this date.
+  note: Set with the last caps, just after the simulated Frost Towers finished. With the seas freezing at the triple point the simulation now passes it, so the check that the Frost Towers finish before the caps are sealed fails, an open problem.
 frost-tower-temp:
   value: 133
   unit: K
@@ -496,7 +496,7 @@ sealing-end:
   unit: date
   label: Last caps sealed
   basis: design
-  note: The caps go on once the Frost Towers have taken the last CO₂ out of the air, so this follows the simulation.
+  note: Caps go on from the day the seas are frozen through, and the last once the Frost Towers have taken the last CO₂ out of the air, so this was set to follow the simulation. With the seas freezing at the triple point the simulation now passes it, an open problem.
 heat-pipe-depth:
   value: 200
   unit: m

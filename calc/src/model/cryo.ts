@@ -1,10 +1,42 @@
 /** Cryo-continents: all of Venus's CO₂, frozen into plateaus and sealed under insulating caps. */
-import { co2MeltingTemp, conductedFlux } from "../physics.ts";
+import { co2FusionShare, co2MeltingTemp, conductedFlux } from "../physics.ts";
 import type { Registry } from "../registry.ts";
 import { YEAR_S } from "../time.ts";
 
 export function cryo(r: Registry) {
   const { v } = r.in("model/cryo.ts");
+
+  r.q(
+    "co2-fusion-heat",
+    {
+      label: "Heat CO₂ releases freezing from liquid, at the triple point",
+      unit: "J/kg",
+      show: "kJ/kg",
+      sig: 2,
+      formula: "L_deposition [1 − (d ln p_vapour/dT) / (d ln p_sublimation/dT)] at T_t",
+      basis: "physics",
+      note: "Clapeyron's equation: where the vapour and sublimation curves meet, their slopes split the deposition heat between condensing and freezing. The rest, the heat of condensation, is released as the CO₂ rains out.",
+    },
+    () =>
+      v("co2-deposition-heat") *
+      co2FusionShare(
+        { T: v("co2-triple-temp"), P: v("co2-triple-pressure") },
+        { T: v("co2-critical-temp"), P: v("co2-critical-pressure") },
+        v("co2-sublimation-a1"),
+      ),
+  );
+  r.q(
+    "co2-triple-vapour-share",
+    {
+      label: "Share of Venus's CO₂ still in the air when it reaches the triple point",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "p_t A / (g M_CO₂)",
+      basis: "physics",
+    },
+    () => (v("co2-triple-pressure") * v("venus-area")) / v("venus-gravity") / v("venus-co2-mass"),
+  );
 
   r.q(
     "cryo-volume",
@@ -136,17 +168,31 @@ export function cryo(r: Registry) {
     },
     () => v("cryo-floor-flux-100") * v("cryo-footprint"),
   );
+  // Under 2 km of dry ice the base is far above the triple-point pressure, so floor heat that is not
+  // pumped away melts it rather than turning it to gas.
   r.q(
     "cryo-unrefrigerated-loss",
     {
-      label: "Share of the CO₂ the floor heat would sublimate each year, unrefrigerated",
+      label: "Share of the CO₂ the floor heat would melt each year at first, unrefrigerated",
       unit: "1",
       show: "%",
       sig: 1,
-      formula: "Q_floor × 1 yr / (L M_CO₂)",
+      formula: "Q_floor × 1 yr / (L_fusion M_CO₂)",
       basis: "physics",
     },
-    () => (v("cryo-floor-load") * YEAR_S) / (v("co2-deposition-heat") * v("venus-co2-mass")),
+    () => (v("cryo-floor-load") * YEAR_S) / (v("co2-fusion-heat") * v("venus-co2-mass")),
+  );
+  r.q(
+    "cryo-base-melt-rate",
+    {
+      label: "Dry ice the floor heat would melt off the base each year at first, unrefrigerated",
+      unit: "m",
+      sig: 2,
+      formula: "q(2 yr) × 1 yr / (ρ_ice L_fusion)",
+      basis: "physics",
+      note: "Dry ice conducts too little to carry tens of watts a square metre up through 2 km, so almost all the floor heat goes into melting.",
+    },
+    () => (v("cryo-floor-flux-2") * YEAR_S) / (v("dry-ice-density") * v("co2-fusion-heat")),
   );
   r.q(
     "cryo-refrigeration-share",

@@ -11,27 +11,27 @@ gives each one's formula and inputs.
 | Task | Energy the Lattice delivers |
 | --- | --- |
 | Launch [1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice from Ceres | [4.8 × 10²⁷ J](numbers.md#ice-launch-energy) |
-| Heat-pump work to cool Venus | [3.5 × 10²⁷ J](numbers.md#traj-pump-energy) |
-| Run the chimney fans | [1.0 × 10²⁵ J](numbers.md#traj-fan-energy) |
-| Warm the air and melt the last ice | [4.4 × 10²⁵ J](numbers.md#traj-warm-energy) |
+| Heat-pump work to cool Venus | [3.7 × 10²⁷ J](numbers.md#traj-pump-energy) |
+| Run the chimney fans | [1.1 × 10²⁵ J](numbers.md#traj-fan-energy) |
+| Warm the air and melt the last ice | [4.7 × 10²⁵ J](numbers.md#traj-warm-energy) |
 | Forge [0.25 bar](numbers.md#o2-target-pressure) of oxygen | [2.7 × 10²⁵ J](numbers.md#forge-energy) |
 | Build the Foundry, the Veil, the Lattice and the Ring | [10²² J](numbers.md#hardware-energy) |
-| **Total demand** | **[8.4 × 10²⁷ J](numbers.md#budget-demand)** |
+| **Total demand** | **[8.5 × 10²⁷ J](numbers.md#budget-demand)** |
 | Supply: the Lattice from full power to the deadline | [9.2 × 10²⁷ J](numbers.md#helios-supply) |
-| Spare | [9.3%](numbers.md#budget-spare) |
-| Spare once the Ring powers the Railheads | [34%](numbers.md#budget-spare-with-ring) |
+| Spare | [7.8%](numbers.md#budget-spare) |
+| Spare once the Ring powers the Railheads | [33%](numbers.md#budget-spare-with-ring) |
 <!-- /table -->
 
 <!-- figure:lattice-budget -->
 ![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
-The plan must deliver [8.4 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Helios
+The plan must deliver [8.5 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Helios
 Lattice supplies [9.2 × 10²⁷ J](numbers.md#helios-supply): [8.5 × 10¹⁹ W](numbers.md#helios-power) for the
 [3.4 yr](numbers.md#helios-supply-years) from full power in [July 2033](numbers.md?date=month#helios-full-power)
-to the deadline. That leaves [9.3%](numbers.md#budget-spare) spare on the Lattice alone, and
-[34%](numbers.md#budget-spare-with-ring) once the Braking Ring's recovered energy powers the Railheads.
-Launching the water and pumping out the heat take [90%](numbers.md#budget-launch-share) of the Lattice's
+to the deadline. That leaves [7.8%](numbers.md#budget-spare) spare on the Lattice alone, and
+[33%](numbers.md#budget-spare-with-ring) once the Braking Ring's recovered energy powers the Railheads.
+Launching the water and pumping out the heat take [91%](numbers.md#budget-launch-share) of the Lattice's
 output; oxygen and hardware are small change.
 
 The supply side is conservative. It counts only the full-power years, while the simulation also uses the
@@ -81,20 +81,22 @@ over the [3.3 yr](numbers.md#cooling-seconds) campaign.
 ### Why the simulation pumps more
 
 The budget does not charge [2.92 × 10²⁷ J](numbers.md#exhaust-work). It charges what the day-by-day
-[simulation](plan.md#the-simulated-atmosphere) actually spends, [3.5 × 10²⁷ J](numbers.md#traj-pump-energy).
+[simulation](plan.md#the-simulated-atmosphere) actually spends, [3.7 × 10²⁷ J](numbers.md#traj-pump-energy).
 The difference has three causes.
 
-- **Heat keeps arriving.** During the campaign [7.9 × 10²⁵ J](numbers.md#traj-heat-added) enters the air
+- **Heat keeps arriving.** While the pumps run, [8.0 × 10²⁵ J](numbers.md#traj-heat-added) enters the air
   from the crust, from the Forges' waste heat, from ice falling the last
   [100 km](numbers.md#lowering-release-altitude), and from the sunlight the closed Veil lets through.
-- **It arrives when pumping is dearest.** Much of that heat comes late, when the air is near
-  [195 K](numbers.md?sig=3#freeze-target-temp) and every joule costs more work than the campaign's average
-  of [5.5](numbers.md#exhaust-work-ratio). The air is also held cold for weeks while the caps are sealed.
+- **It arrives when pumping is dearest.** Much of that heat comes late, while the seas freeze at
+  [216.6 K](numbers.md#co2-triple-temp) and after, when every joule costs more work than the campaign's
+  average of [5.5](numbers.md#exhaust-work-ratio). The simple estimate also spreads all the latent heat
+  between the critical and triple points, where the simulation lifts the seas' heat of fusion,
+  [210 kJ/kg](numbers.md#co2-fusion-heat), at the triple point itself.
 - **The Frost Towers.** Trapping the last [5.4 × 10¹⁸ kg](numbers.md#frost-residual-co2) of CO₂ at
   [133 K](numbers.md#frost-tower-temp) takes about [4.3 × 10²⁵ J](numbers.md#frost-work) more.
 
 After the caps are sealed, the beamed power also warms the air and melts the ice that was lowered while the
-air was below freezing: [4.4 × 10²⁵ J](numbers.md#traj-warm-energy). Version 2 charged only the simple
+air was below freezing: [4.7 × 10²⁵ J](numbers.md#traj-warm-energy). Version 2 charged only the simple
 estimate; counting the simulation is most of why the demand rose
 ([correction](about.md#corrections)).
 
@@ -128,9 +130,9 @@ or [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) for all the ice. That
 The budget counts it like this. Until the first Brick is caught on
 [16 September 2034](numbers.md?date=day#ring-pays-from), the Lattice powers the Railheads, which costs it
 [2.4 × 10²⁷ J](numbers.md#budget-lattice-launch). After that the Ring powers them, so the Lattice delivers
-only [6.1 × 10²⁷ J](numbers.md#budget-demand-with-ring), leaving [34%](numbers.md#budget-spare-with-ring)
+only [6.2 × 10²⁷ J](numbers.md#budget-demand-with-ring), leaving [33%](numbers.md#budget-spare-with-ring)
 spare. Counted instead as extra supply, the Ring brings the total to
-[1.5 × 10²⁸ J](numbers.md#budget-supply-total) and the spare to [42%](numbers.md#budget-spare-total). The
+[1.5 × 10²⁸ J](numbers.md#budget-supply-total) and the spare to [41%](numbers.md#budget-spare-total). The
 budget never counts the further [2.0 × 10²⁷ J](numbers.md#ring-lowering-recovery) that slowing the parked
 ice to rest would recover, because lowering the ice is an [open problem](#physics-checks).
 
@@ -190,14 +192,16 @@ Every run of the model tests these. A check is a law of physics or a requirement
 | [The Foundry stops growing at the size that finishes the Lattice and the Ring soonest](numbers.md#check-foundry-size) | Pass | After 26 doublings the 6.7 × 10¹³ kg Foundry builds the 6.2 × 10¹³ kg Lattice in 80 d and the Ring in 13 d: both done 1653 days after landing, against 1687 with one doubling fewer and 1667 with one more. |
 | [The Ring's mass reaches Venus before the Ring must be complete](numbers.md#check-foundry-builds-ring) | Pass | After the Lattice, the Foundry builds the 1.0 × 10¹³ kg Ring in 13 d; its last parts reach Venus on 19 October 2033, and the Ring must be complete on 31 December 2033. |
 | [The Foundry can build the structure that holds the Aegis coil together](numbers.md#check-aegis-structure) | Pass | The coil's field pulls on its winding with 1.2 × 10¹¹ N; holding it takes at least 2.0 × 10¹¹ kg of carbon fibre at full strength, 0.25 days of the full Foundry's output against the 60 d of one doubling. |
-| [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) | Pass | The simulated Frost Towers finish on 22 August 2036; the last caps are sealed on 1 September 2036. |
-| [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline) | Pass | Seeding waits for the oxygen (30 September 2036) and for the oceans to hold their pH (1 December 2036), so it begins on 1 December 2036; doubling every 1 d, the cells reach bloom density on 12 December 2036, against a deadline of 31 December 2036. |
-| [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline) | Pass | The day-by-day simulation reaches Earth-like conditions on 30 September 2036, 92 d before the 31 December 2036 deadline. The chimneys, not the power, set the pace on 56 d. |
-| [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) | Pass | Lattice supply 9.2 × 10²⁷ J against demand 8.4 × 10²⁷ J: 9.3% spare before the Ring's recovered energy, 34% once the Ring powers the Railheads. |
-| [With the Ring's recovered energy, supply covers demand](numbers.md#check-energy-closes-with-ring) | Pass | The Lattice delivers 9.2 × 10²⁷ J against 6.1 × 10²⁷ J once the Ring powers the Railheads, and the Ring recovers 5.3 × 10²⁷ J against the 2.3 × 10²⁷ J of launches it pays for. |
+| [The simulation's heat books balance](numbers.md#check-traj-heat-books) | Pass | The Exhaust lifts 6.1 × 10²⁶ J: Venus's 5.3 × 10²⁶ J, less the 1.6 × 10²¹ J still held by the CO₂ the Frost Towers leave in the air, plus 8.0 × 10²⁵ J that enters while the pumps run. The two sides agree to rounding. |
+| [The seas are frozen through before the last caps are sealed](numbers.md#check-frozen-before-sealing) | Pass | The simulated seas are frozen through on 18 June 2036, leaving 75 d to the last cap on 1 September 2036: the crawler-rafts must lay 2.0 × 10⁶ km²/d. |
+| [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) | **Fails (open issue)** | The simulated Frost Towers finish on 4 October 2036; the last caps are sealed on 1 September 2036. |
+| [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline) | **Fails (open issue)** | Seeding waits for the oxygen (30 September 2036) and for the oceans to hold their pH (3 January 2037), so it begins on 3 January 2037; doubling every 1 d, the cells reach bloom density on 14 January 2037, against a deadline of 31 December 2036. |
+| [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline) | Pass | The day-by-day simulation reaches Earth-like conditions on 8 October 2036, 84 d before the 31 December 2036 deadline. The chimneys, not the power, set the pace on 56 d. |
+| [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) | Pass | Lattice supply 9.2 × 10²⁷ J against demand 8.5 × 10²⁷ J: 7.8% spare before the Ring's recovered energy, 33% once the Ring powers the Railheads. |
+| [With the Ring's recovered energy, supply covers demand](numbers.md#check-energy-closes-with-ring) | Pass | The Lattice delivers 9.2 × 10²⁷ J against 6.2 × 10²⁷ J once the Ring powers the Railheads, and the Ring recovers 5.3 × 10²⁷ J against the 2.3 × 10²⁷ J of launches it pays for. |
 <!-- /table -->
 
-[4](numbers.md#checks-failing) of the [20](numbers.md#checks-total) checks fail, and each is shown on purpose.
+[6](numbers.md#checks-failing) of the [22](numbers.md#checks-total) checks fail, and each is shown on purpose.
 
 **The version 2 statite.** This check tests version 2's Veil, not the current one, and it is kept failing
 so the error stays visible. Version 2 put the Veil [137,000 km](numbers.md?sig=3#veil-v2-distance) sunward of
@@ -230,11 +234,25 @@ orbital motion, [280](numbers.md#ring-net-overload) times the rotor's spare lift
 recovers is real; what holds the Ring in place while it catches is unsolved
 ([Braking Ring](technologies/ring.md)).
 
+**Freezing the seas.** Two schedule checks fail for one reason. At the triple point,
+[216.6 K](numbers.md#co2-triple-temp), the seas give up their heat of fusion while the air holds there. The
+emitters are at their peak all through it and the falling ice keeps adding heat, so the seas start to freeze on
+[16 August 2035](numbers.md?date=day#traj-freeze) and are frozen through only on
+[18 June 2036](numbers.md?date=day#traj-frozen). All the CO₂ is down on
+[15 September 2036](numbers.md?date=day#traj-cold) and the Frost Towers finish on
+[4 October 2036](numbers.md?date=day#traj-scavenged), after the last caps are due on
+[1 September 2036](numbers.md?date=day#sealing-end). The ice melts and the oceans start their pH hold only when
+the Veil opens, on [5 October 2036](numbers.md?date=day#traj-warming), so seeded life greens them on
+[14 January 2037](numbers.md?date=day#genesis-end), after the deadline. The air itself is still Earth-like on
+[8 October 2036](numbers.md?date=day#traj-earth-like). The ways out under study: a little more Exhaust (try
+`pnpm calc --set exhaust-peak=5.5e19`), less heat from the falling ice during the freeze, a shorter pH hold,
+or green water early in 2037 ([open problem](about.md#corrections)).
+
 **Launches between windows.** The Railheads fire through every part of the
 [8.5 months](numbers.md#launch-window-period) between launch windows, and those shots cost
 [6.7 × 10²⁶ J](numbers.md#ice-launch-offwindow-energy) more than the Hohmann minimum. The budget charges them,
 and the Lattice is sized for it: [8.5 × 10¹⁹ W](numbers.md#helios-power), enough to close the budget on its own
-with [9.3%](numbers.md#budget-spare) to spare and [34%](numbers.md#budget-spare-with-ring) once the Ring powers
+with [7.8%](numbers.md#budget-spare) to spare and [33%](numbers.md#budget-spare-with-ring) once the Ring powers
 the Railheads ([check](numbers.md#check-energy-closes-with-ring)).
 
 ## Every assumption

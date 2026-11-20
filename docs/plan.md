@@ -6,7 +6,7 @@ every [60 d](numbers.md#foundry-doubling-days). Everything else follows from th
 One rule binds every invention: it may assume engineering we do not have yet, but it must obey
 conservation of energy and the second law of thermodynamics. The binding constraint is energy. Venus
 cannot shed its heat fast enough on its own ([The Problem](problem.md)), so the plan brings in
-[8.4 × 10²⁷ J](numbers.md#budget-demand) from outside the planet, almost all of it sunlight harvested near
+[8.5 × 10²⁷ J](numbers.md#budget-demand) from outside the planet, almost all of it sunlight harvested near
 Mercury and beamed across the inner Solar System.
 
 ## The five moves
@@ -118,10 +118,13 @@ emitters, [12%](numbers.md#exhaust-area-share) of Venus's area, enough to throw 
 As the air cools, its CO₂ comes down. The Clear Rain begins on
 [13 July 2034](numbers.md?date=day#traj-clear-rain), when the air drops below
 [304 K](numbers.md?sig=3#co2-critical-temp) and liquid CO₂ runs into the lowland basins. The seas start to
-freeze from the top on [23 June 2036](numbers.md?date=day#traj-freeze), below
-[216.6 K](numbers.md#co2-triple-temp). Frost Towers, the same emitter tiles on towers at
-[133 K](numbers.md#frost-tower-temp), trap the last vapor down to [74 Pa](numbers.md#frost-co2-pressure).
-Crawler-rafts seal the frozen seas under a [1 mm](numbers.md#cryo-membrane-thickness) graphite membrane,
+freeze on [16 August 2035](numbers.md?date=day#traj-freeze), when the air reaches the triple point,
+[216.6 K](numbers.md#co2-triple-temp), and the air holds there until they are frozen through on
+[18 June 2036](numbers.md?date=day#traj-frozen). Dry ice is denser than liquid CO₂, so the crystals sink and
+the seas fill with ice from the bottom up. Frost Towers, the same emitter tiles on towers at
+[133 K](numbers.md#frost-tower-temp), trap the last vapor down to [54 Pa](numbers.md#frost-co2-pressure).
+Crawler-rafts seal the frozen seas, [2.0 × 10⁶ km²/d](numbers.md#cap-laying-rate) of cap a day, under a
+[1 mm](numbers.md#cryo-membrane-thickness) graphite membrane,
 [20 m](numbers.md#cryo-aerogel-thickness) of carbon aerogel and [2 m](numbers.md#cryo-armour-thickness) of
 basalt. The [Cryo-continents](technologies/cryo.md) are [2 km](numbers.md#cryo-thickness) plateaus over
 [33%](numbers.md#cryo-footprint-share) of the planet: new land. The hot rock beneath them leaks
@@ -197,11 +200,12 @@ magnetic bubble so the solar wind cannot strip the new water. The Veil opens to
 [52%](numbers.md#veil-day-transmission) for daylight and closes for night, and mirror swarms light the far
 side, giving a [24 h](numbers.md#day-length) day. [Genesis Biota](technologies/genesis.md), engineered
 microbes, algae, lichens and mosses, are seeded once the oxygen is in and the new oceans have held their
-pH, from [1 December 2036](numbers.md?date=day#genesis-start).
+pH, from [3 January 2037](numbers.md?date=day#genesis-start), which now falls after the deadline
+([open problem](budget.md#physics-checks)).
 
 The air at the end is [2.4 bar](numbers.md#final-pressure): [2.1 bar](numbers.md#n2-pressure) of nitrogen,
 [0.25 bar](numbers.md#o2-target-pressure) of oxygen ([1.2](numbers.md#o2-vs-earth) times Earth's sea-level
-oxygen) and [310 ppm](numbers.md#final-co2-ppm) of CO₂. Breathing it feels like breathing
+oxygen) and [230 ppm](numbers.md#final-co2-ppm) of CO₂. Breathing it feels like breathing
 [13 m](numbers.md#dive-depth) under the sea.
 
 ## The finish line
@@ -213,7 +217,7 @@ oxygen) and [310 ppm](numbers.md#final-co2-ppm) of CO₂. Breathing it feels li
 | Surface pressure | [92 bar](numbers.md#venus-surface-pressure) | [2.4 bar](numbers.md#final-pressure) | [Cryo-continents](technologies/cryo.md) |
 | Nitrogen | [3.5%](numbers.md#venus-n2-fraction) of the air | [2.1 bar](numbers.md#n2-pressure) (kept) | Already there. |
 | Oxygen | Trace | [0.25 bar](numbers.md#o2-target-pressure) | [Graphite Forges](technologies/forges.md) |
-| CO₂ | [96.5%](numbers.md#venus-co2-fraction) | [310 ppm](numbers.md#final-co2-ppm) | [Cryo-continents](technologies/cryo.md), [Graphite Forges](technologies/forges.md), [Photonic Exhaust](technologies/exhaust.md) |
+| CO₂ | [96.5%](numbers.md#venus-co2-fraction) | [230 ppm](numbers.md#final-co2-ppm) | [Cryo-continents](technologies/cryo.md), [Graphite Forges](technologies/forges.md), [Photonic Exhaust](technologies/exhaust.md) |
 | Water | Nearly none | [1.0 × 10²⁰ kg](numbers.md#ice-mass), a [217 m](numbers.md#ocean-depth) global ocean | [Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md) |
 | Light cycle | A [117 d](numbers.md#venus-solar-day) solar day | A [24 h](numbers.md#day-length) day | [Hesperus Veil](technologies/veil.md) |
 | Clouds | Sulfuric acid | Water | [Acid Sweep](technologies/acid.md) |
@@ -245,7 +249,7 @@ growth are not yet modelled ([issue #7](https://github.com/Xaxis/phosphoros.spac
 | [Braking Ring](technologies/ring.md) | Catch the ice without heating Venus | Orbital ring of [1.0 × 10¹³ kg](numbers.md#ring-mass) | Regenerative magnetic braking recovering [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) | [2034](numbers.md?date=year#first-catch) |
 | [Acid Sweep](technologies/acid.md) | Remove the sulfuric-acid clouds | Rain-out plus basalt neutralization | None but scale | [2034](numbers.md?date=year#traj-clear-rain) |
 | [Aegis Shield](technologies/aegis.md) | Stop the solar wind stripping the new water | Superconducting dipole beside the Veil | Large deep-space superconducting coils | [2034](numbers.md?date=year#aegis-online) |
-| [Genesis Biota](technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, fresh, nitrogen-rich water | [2036](numbers.md?date=year#genesis-start) |
+| [Genesis Biota](technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, fresh, nitrogen-rich water | [2037](numbers.md?date=year#genesis-start) |
 | [Choir](technologies/choir.md) | Run every machine on three worlds as one system | Autonomy across three worlds | Self-correcting swarm control with a verified safety core | [2029](numbers.md?date=year#foundry-landing) |
 <!-- /table -->
 
@@ -287,8 +291,12 @@ cooling on [3 May 2033](numbers.md?date=day#cooling-start) using only the power 
    curve. Then Frost Towers trap the last CO₂, the Forges add oxygen, and once the caps are sealed the
    beamed power and the opened Veil warm the air and melt the ice.
 
-Its simplifications are named in the code: the whole atmosphere shares one temperature, the latent heat
-is released evenly between the critical and triple points, receiver loss heat goes straight to space, and the
+The CO₂ gives up its heat where the physics puts it: its heat of condensation as it rains out along the vapor
+curve, its heat of fusion, [210 kJ/kg](numbers.md#co2-fusion-heat), while the seas freeze at the triple point,
+and the whole deposition heat for the [5.7%](numbers.md#co2-triple-vapour-share) still in the air there, as it
+freezes out below. Its simplifications are named in the code: the whole atmosphere shares one temperature,
+its heat capacity and the CO₂'s deposition heat are averages over the path, receiver loss heat goes straight
+to space, and the
 pumps are charged the work for light as hot as [2,000 K](numbers.md#exhaust-effective-temp), a floor until the
 Exhaust's beamed light is reconciled ([open problem](budget.md#physics-checks)).
 
@@ -297,25 +305,31 @@ What it finds:
 | Event | Simulated date |
 | --- | --- |
 | The Clear Rain: air below [304 K](numbers.md?sig=3#co2-critical-temp) | [13 July 2034](numbers.md?date=day#traj-clear-rain) |
-| CO₂ seas start to freeze | [23 June 2036](numbers.md?date=day#traj-freeze) |
-| All the CO₂ is down | [3 August 2036](numbers.md?date=day#traj-cold) |
-| Frost Towers reach the CO₂ target | [22 August 2036](numbers.md?date=day#traj-scavenged) |
-| Caps sealed; the Veil opens | [2 September 2036](numbers.md?date=day#traj-warming) |
-| Air reaches [285 K](numbers.md#earth-like-temp) | [6 September 2036](numbers.md?date=day#traj-warm) |
-| **Earth-like** | **[30 September 2036](numbers.md?date=day#traj-earth-like)** |
+| CO₂ seas start to freeze | [16 August 2035](numbers.md?date=day#traj-freeze) |
+| The seas are frozen through | [18 June 2036](numbers.md?date=day#traj-frozen) |
+| All the CO₂ is down | [15 September 2036](numbers.md?date=day#traj-cold) |
+| Frost Towers reach the CO₂ target | [4 October 2036](numbers.md?date=day#traj-scavenged) |
+| Caps sealed; the Veil opens | [5 October 2036](numbers.md?date=day#traj-warming) |
+| Air reaches [285 K](numbers.md#earth-like-temp) | [8 October 2036](numbers.md?date=day#traj-warm) |
+| **Earth-like** | **[8 October 2036](numbers.md?date=day#traj-earth-like)** |
 | Deadline | [31 December 2036](numbers.md?date=day#deadline) |
 
-Venus is Earth-like [92 d](numbers.md#traj-slack-days) before the deadline. Three things stand out.
+Venus is Earth-like [84 d](numbers.md#traj-slack-days) before the deadline. Three things stand out.
 Until the Ring takes over the Railheads in [September 2034](numbers.md?date=month#ring-pays-from), cooling is
 starved of power; after that, power is plentiful and the emitters are the limit, which is why the Exhaust
 is sized for the peak and not the average ([correction](about.md#corrections)). The long stretch between
-the Clear Rain and the freeze is the CO₂ condensing: its latent heat,
-[2.7 × 10²⁶ J](numbers.md#atmosphere-latent-heat), is about as much as the sensible cooling of the whole
-air, [2.6 × 10²⁶ J](numbers.md#atmosphere-sensible-heat).
-And the last condition to fall is the oxygen: the air is warm by [September 2036](numbers.md?date=month#traj-warm), but it is Earth-like only on
-the day the Forges finish.
+the Clear Rain and the seas frozen through is the CO₂'s latent heat,
+[2.7 × 10²⁶ J](numbers.md#atmosphere-latent-heat), about as much as the sensible cooling of the whole
+air, [2.6 × 10²⁶ J](numbers.md#atmosphere-sensible-heat). Freezing the seas alone holds the air at the
+triple point from [August 2035](numbers.md?date=month#traj-freeze) to
+[June 2036](numbers.md?date=month#traj-frozen), with the emitters at their peak and the falling ice adding
+heat all the while. And the last condition to fall is the warmth: the oxygen is complete on
+[30 September 2036](numbers.md?date=day#forge-end), but the Veil opens only once the Frost Towers finish, so
+the air is warm, and Earth-like, on [8 October 2036](numbers.md?date=day#traj-earth-like). The Frost Towers
+finish after the last caps are due, and the oceans hold their pH too late for seeded life to green them by
+the deadline: two schedule checks fail, an [open problem](budget.md#physics-checks).
 
-The simulation's pump work, [3.5 × 10²⁷ J](numbers.md#traj-pump-energy), is what the energy budget charges,
+The simulation's pump work, [3.7 × 10²⁷ J](numbers.md#traj-pump-energy), is what the energy budget charges,
 and it is more than the simple estimate for the air alone ([why](budget.md#why-the-simulation-pumps-more)).
 To see how the dates move, change an assumption in the [Explorer](https://phosphoros.space/explore) or run
 `pnpm calc --set exhaust-peak=3.6e19` to try version 2's smaller Exhaust.

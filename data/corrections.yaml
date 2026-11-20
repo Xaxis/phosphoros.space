@@ -535,3 +535,100 @@
     iron: under {mercury-surface-fe-max} iron by mass, held mostly in sulfides and metal grains.
     The Foundry's iron cores and rails need more rock dug per kilogram than version 2 implied; the
     model does not yet size the Foundry's diggers by element.
+- id: sublimation-curve
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The sublimation curve meets the vapour curve at the triple point
+  issue: 10
+  text: >-
+    The model drew CO₂'s sublimation curve by Clausius-Clapeyron from one atmosphere at 194.7 K with
+    a constant enthalpy. That curve gave 74 Pa at the Frost Towers' {frost-tower-temp}, and 4.9 bar
+    at the triple point against the measured {co2-triple-pressure}, so the simulated pressure stepped
+    down as the air crossed it. Span and Wagner's sublimation equation meets the vapour curve at their triple
+    point, {co2-triple-temp} and {co2-triple-pressure}, which the model now uses as well, and gives
+    {frost-co2-pressure} at {frost-tower-temp}. The Frost Towers leave {frost-residual-target}
+    airborne, and the finished air holds {final-co2-ppm} of CO₂.
+  before:
+    frost-co2-pressure: 74.0
+    frost-residual-target: 3.84e15
+    final-co2-ppm: 3.15e-4
+    final-co2-vs-earth: 0.750
+- id: triple-point-freeze
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The seas freeze at the triple point, and the simulation's heat books balance
+  issue: 10
+  text: >-
+    The simulation released all of the CO₂'s latent heat evenly between its critical point and its
+    triple point, although
+    {co2-triple-vapour-share} of the CO₂ is still vapour at the triple point and liquid CO₂ cannot
+    freeze above it. Now the CO₂ gives up its heat of condensation as it rains out along the vapour
+    curve; at the triple point the seas give up their heat of fusion, {co2-fusion-heat}, while the
+    air holds at {co2-triple-temp}; and the CO₂ still in the air gives up the whole deposition heat
+    as it freezes out below. The air reaches the triple point on {traj-freeze|date=day}, the seas
+    are frozen through on {traj-frozen|date=day}, all the CO₂ is down on {traj-cold|date=day}, the
+    Frost Towers finish on {traj-scavenged|date=day} and the air is Earth-like on
+    {traj-earth-like|date=day}. The Frost Towers also counted the leftover CO₂'s latent heat a
+    second time, the pumps ran on past the end of the cooling path, and heat entering after the
+    pumps stopped was counted as lifted. With those fixed, the heat lifted equals Venus's heat, less
+    the {traj-heat-left-airborne} the CO₂ left in the air still holds, plus the heat added while the
+    pumps run, and a new check keeps it so. The time to lay the caps, {sealing-window}, and the rate
+    of laying them, {cap-laying-rate}, are now model numbers.
+  before:
+    traj-freeze: 2036-06-23
+    traj-cold: 2036-08-03
+    traj-scavenged: 2036-08-22
+    traj-warming: 2036-09-02
+    traj-warm: 2036-09-06
+    traj-earth-like: 2036-09-30
+    traj-slack-days: 92
+    traj-pump-energy: 3.53e27
+    traj-heat-added: 7.91e25
+    traj-heat-lifted: 6.06e26
+    traj-exhaust-light: 4.13e27
+    traj-fan-energy: 1.03e25
+    traj-warm-energy: 4.38e25
+    genesis-ph-clear: 2036-12-01
+    genesis-start: 2036-12-01
+    genesis-end: 2036-12-12
+    budget-demand: 8.38e27
+    budget-spare: 0.0933
+    budget-launch-share: 0.898
+    budget-spare-total: 0.424
+    budget-demand-with-ring: 6.05e27
+    budget-spare-with-ring: 0.345
+    budget-lattice-spare: 3.18e27
+- id: floor-melts
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Unrefrigerated floor heat melts the base of the ice
+  issue: 10
+  text: >-
+    The model priced the floor heat, if it is not pumped away, with the deposition heat, as if it
+    turned the ice straight to gas. Under {cryo-thickness} of dry ice the base is at
+    {cryo-base-pressure}, far above the triple-point pressure, so the heat melts it, which takes
+    only the heat of fusion, {co2-fusion-heat}: {cryo-unrefrigerated-loss} of the CO₂ a year at
+    first, {cryo-base-melt-rate} off the base of the sheet. The liquid is lighter than the ice above
+    it and carries its weight, so it lubricates the sheet and presses toward the cell walls. The
+    basal refrigeration the plan already carries keeps the base below its melting point,
+    {cryo-base-melt-temp}.
+  before: { cryo-unrefrigerated-loss: 0.00141 }
+- id: freeze-outlasts-sealing
+  kind: open
+  version: "3"
+  date: 2026-11-20
+  title: Freezing the seas pushes the Frost Towers past the caps and the seeded life past the deadline
+  text: >-
+    With the heat of fusion released at the triple point, the seas freeze from
+    {traj-freeze|date=day} to {traj-frozen|date=day}. The Exhaust is at its peak all through it, and
+    the falling ice adds most of the heat that enters meanwhile. All the CO₂ is down on
+    {traj-cold|date=day}, so the Frost Towers finish on {traj-scavenged|date=day}, after active
+    cooling and the last caps were due on {sealing-end|date=day}. The Veil opens on
+    {traj-warming|date=day} and the air is still Earth-like on {traj-earth-like|date=day}, but the
+    oceans hold their pH only from {genesis-ph-clear|date=day}, so seeded life greens them on
+    {genesis-end|date=day}, after the deadline. A tenth more Exhaust than its peak of {exhaust-peak}
+    freezes the seas by spring and passes both checks; less heat from the falling ice during the freeze, a
+    shorter pH hold, or seeding early in 2037 are the other ways out.

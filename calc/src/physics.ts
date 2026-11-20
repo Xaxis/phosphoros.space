@@ -80,14 +80,36 @@ export function co2LiquidPressure(
   return critical.P * Math.exp(-B * (1 / T - 1 / critical.T));
 }
 
-/** Sublimation pressure of solid CO₂ by Clausius-Clapeyron from a reference point. */
-export function co2SolidPressure(
+/**
+ * Sublimation pressure of solid CO₂, Span and Wagner's Eq. 3.12, for T at or below the triple point:
+ * ln(p/p_t) = (T_t/T) [a₁ θ + a₂ θ^1.9 + a₃ θ^2.9], θ = 1 − T/T_t. It meets the vapour curve at the
+ * triple point by construction.
+ */
+export function co2SublimationPressure(
   T: number,
-  ref: { T: number; P: number },
-  enthalpy: number,
-  R: number,
+  triple: { T: number; P: number },
+  a: readonly [number, number, number],
 ) {
-  return ref.P * Math.exp(-(enthalpy / R) * (1 / T - 1 / ref.T));
+  if (T > triple.T * (1 + 1e-9))
+    throw new Error(`co2SublimationPressure: ${T} K is above the triple point`);
+  const th = Math.max(0, 1 - T / triple.T);
+  return triple.P * Math.exp((triple.T / T) * (a[0] * th + a[1] * th ** 1.9 + a[2] * th ** 2.9));
+}
+
+/**
+ * Share of CO₂'s deposition heat given up on freezing, at the triple point. By Clapeyron's equation
+ * each curve's slope is its latent heat over T Δv, and the vapour's volume dwarfs the liquid's and
+ * the solid's, so condensing and depositing differ only in their slopes there:
+ * L_fusion / L_deposition = 1 − (d ln p_vapour/dT) / (d ln p_sublimation/dT). The vapour curve is
+ * co2LiquidPressure's, the sublimation curve Span and Wagner's (slope −a₁/T_t at the triple point).
+ */
+export function co2FusionShare(
+  triple: { T: number; P: number },
+  critical: { T: number; P: number },
+  a1: number,
+) {
+  const B = Math.log(critical.P / triple.P) / (1 / triple.T - 1 / critical.T);
+  return 1 - B / triple.T ** 2 / (-a1 / triple.T);
 }
 
 /** Melting pressure of CO₂, Span and Wagner's correlation: p/p_t = 1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)². */

@@ -56,8 +56,8 @@ electricity ([Santhanam 2012](sources.md#santhanam-2012)). The kill signal sits 
 reaches: a tile that cannot beat passive radiation is not a heat pump worth building. The pass bar is well
 above that, and names a distance from the Carnot limit, because the model charges the pump work at the
 Carnot minimum, [5.5](numbers.md#exhaust-work-ratio) joules per joule. A real tile will do worse. The Lattice
-alone leaves [9.3%](numbers.md#budget-spare) spare, and once the Ring powers the Railheads the spare is
-[34%](numbers.md#budget-spare-with-ring), so the plan can absorb a tile somewhat short of ideal, not one far
+alone leaves [7.8%](numbers.md#budget-spare) spare, and once the Ring powers the Railheads the spare is
+[33%](numbers.md#budget-spare-with-ring), so the plan can absorb a tile somewhat short of ideal, not one far
 short, and not yet the full cost of its narrow beam ([open problem](budget.md#physics-checks)). The
 production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by [2031](numbers.md?date=year#exhaust-production-tile).
 

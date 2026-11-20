@@ -52,11 +52,12 @@ the coilguns from [September 2034](numbers.md?date=month#ring-pays-from). Loweri
 surface is an [open problem](risks.md#the-ring-cannot-yet-lower-the-ice).
 ([Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md))
 
-**5. Make it breathe ([2035](numbers.md?date=year#forge-start) to [2036](numbers.md?date=year#genesis-end)).** Graphite Forges split CO₂ into
+**5. Make it breathe ([2035](numbers.md?date=year#forge-start) to [2037](numbers.md?date=year#genesis-end)).** Graphite Forges split CO₂ into
 [0.25 bar](numbers.md#o2-target-pressure) of oxygen and the graphite the caps are made of. The Acid Sweep
 clears the sulfur, a magnetic shield guards the new water, the Veil sets a
-[24 h](numbers.md#day-length) day, and engineered life is seeded once the oxygen is in, from
-[30 September 2036](numbers.md?date=day#forge-end). ([Graphite Forges](technologies/forges.md),
+[24 h](numbers.md#day-length) day, and engineered life is seeded once the oxygen is in and the new oceans hold
+their pH, from [3 January 2037](numbers.md?date=day#genesis-start), after the deadline
+([open problem](budget.md#physics-checks)). ([Graphite Forges](technologies/forges.md),
 [Acid Sweep](technologies/acid.md), [Genesis Biota](technologies/genesis.md))
 
 ## The one gate that can stop it
@@ -75,14 +76,14 @@ and [Risks and Governance](risks.md#the-native-life-gate).
 | Surface pressure | [92 bar](numbers.md#venus-surface-pressure) | [2.4 bar](numbers.md#final-pressure) | [Cryo-continents](technologies/cryo.md) |
 | Nitrogen | [3.5%](numbers.md#venus-n2-fraction) of the air | [2.1 bar](numbers.md#n2-pressure) (kept) | Already there. |
 | Oxygen | Trace | [0.25 bar](numbers.md#o2-target-pressure) | [Graphite Forges](technologies/forges.md) |
-| CO₂ | [96.5%](numbers.md#venus-co2-fraction) | [310 ppm](numbers.md#final-co2-ppm) | [Cryo-continents](technologies/cryo.md), [Graphite Forges](technologies/forges.md), [Photonic Exhaust](technologies/exhaust.md) |
+| CO₂ | [96.5%](numbers.md#venus-co2-fraction) | [230 ppm](numbers.md#final-co2-ppm) | [Cryo-continents](technologies/cryo.md), [Graphite Forges](technologies/forges.md), [Photonic Exhaust](technologies/exhaust.md) |
 | Water | Nearly none | [1.0 × 10²⁰ kg](numbers.md#ice-mass), a [217 m](numbers.md#ocean-depth) global ocean | [Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md) |
 | Light cycle | A [117 d](numbers.md#venus-solar-day) solar day | A [24 h](numbers.md#day-length) day | [Hesperus Veil](technologies/veil.md) |
 | Clouds | Sulfuric acid | Water | [Acid Sweep](technologies/acid.md) |
 <!-- /table -->
 
 The day-by-day [simulation](plan.md#the-simulated-atmosphere) reaches all of it on
-[30 September 2036](numbers.md?date=day#traj-earth-like), [92 d](numbers.md#traj-slack-days) before the
+[8 October 2036](numbers.md?date=day#traj-earth-like), [84 d](numbers.md#traj-slack-days) before the
 deadline.
 
 ## The energy budget
@@ -91,13 +92,13 @@ deadline.
 ![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
-The plan must bring [8.4 × 10²⁷ J](numbers.md#budget-demand) to Venus from outside. The Lattice supplies
+The plan must bring [8.5 × 10²⁷ J](numbers.md#budget-demand) to Venus from outside. The Lattice supplies
 [9.2 × 10²⁷ J](numbers.md#helios-supply) between full power and the deadline, which leaves
-[9.3%](numbers.md#budget-spare) spare on its own, even though the coilguns fire between launch windows too and
+[7.8%](numbers.md#budget-spare) spare on its own, even though the coilguns fire between launch windows too and
 pay [16%](numbers.md#launch-offwindow-mean) more for it. Once the Ring's recovered energy powers the coilguns
-the spare is [34%](numbers.md#budget-spare-with-ring). Launching the water and pumping out the heat take
-[90%](numbers.md#budget-launch-share) of the Lattice's output. The walkthrough, and the
-[4](numbers.md#checks-failing) physics checks that still fail, are in [Energy and Mass Budget](budget.md).
+the spare is [33%](numbers.md#budget-spare-with-ring). Launching the water and pumping out the heat take
+[91%](numbers.md#budget-launch-share) of the Lattice's output. The walkthrough, and the
+[6](numbers.md#checks-failing) physics checks that still fail, are in [Energy and Mass Budget](budget.md).
 
 ## Read on
 

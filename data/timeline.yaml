@@ -102,10 +102,16 @@ rows:
     kind: milestone
     start: traj-clear-rain
     tech: cryo
-  - id: sealing
-    label: CO₂ rain-out and sealing
+  - id: freeze
+    label: CO₂ rains out and freezes
     lane: venus
     start: traj-clear-rain
+    end: traj-frozen
+    tech: cryo
+  - id: sealing
+    label: Caps laid on the frozen seas
+    lane: venus
+    start: traj-frozen
     end: sealing-end
     tech: cryo
   - id: ice-catch

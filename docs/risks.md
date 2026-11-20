@@ -122,8 +122,8 @@ westbound cancels the twist the catch puts on the Ring, not its push: every Bric
 [280](numbers.md#ring-net-overload) times the rotor's spare lift. An orbital ring has no stiff way to hand that force
 to the planet. The energy the catch recovers is real, and the budget counts it; what holds the Ring in place while it
 does is unsolved ([issue 3](https://github.com/Xaxis/phosphoros.space/issues/3)). If no answer is found the Bricks
-must be braked some other way, and the [34%](numbers.md#budget-spare-with-ring) spare that the Ring's energy adds is
-lost, leaving the Lattice's own [9.3%](numbers.md#budget-spare).
+must be braked some other way, and the [33%](numbers.md#budget-spare-with-ring) spare that the Ring's energy adds is
+lost, leaving the Lattice's own [7.8%](numbers.md#budget-spare).
 
 ### The Exhaust's light costs more than the model charges
 
@@ -134,6 +134,18 @@ in colour and direction that, by its entropy, it counts as at least
 and the biggest unpriced cost in the plan ([issue 4](https://github.com/Xaxis/phosphoros.space/issues/4)). Either the
 tiles spread their light far wider, which the thin air above the canopies must then let through, or the pumps and the
 Lattice grow several times. The Exhaust experiments on the [Research Agenda](research.md) must settle which.
+
+### The seas freeze too slowly for the endgame
+
+At the triple point the CO₂ seas give up their heat of fusion, [210 kJ/kg](numbers.md#co2-fusion-heat), while the air
+holds at [216.6 K](numbers.md#co2-triple-temp). With the emitters at their peak and the falling ice adding heat all the
+while, they are frozen through only on [18 June 2036](numbers.md?date=day#traj-frozen). The Frost Towers then finish on
+[4 October 2036](numbers.md?date=day#traj-scavenged), after the last caps are due
+([failing check](numbers.md#check-frost-before-sealing)), and the oceans melt so late that seeded life greens them only
+on [14 January 2037](numbers.md?date=day#genesis-end), after the deadline
+([failing check](numbers.md#check-genesis-by-deadline)). The air is still Earth-like on
+[8 October 2036](numbers.md?date=day#traj-earth-like). A little more Exhaust, less heat from the falling ice during the
+freeze, or a shorter pH hold would each close part of the gap; which one the plan takes is open.
 
 ## The treaties
 

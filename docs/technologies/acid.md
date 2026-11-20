@@ -64,7 +64,7 @@ sulfur-laden liquid CO₂ then land on fresh lime rather than bare rock.
 ### The shore buffer
 
 When the ice melts and the oceans form, after the caps are sealed and the Veil opens on
-[2 September 2036](../numbers.md?date=day#traj-warming), crushed basalt on the shores and the sea floor keeps
+[5 October 2036](../numbers.md?date=day#traj-warming), crushed basalt on the shores and the sea floor keeps
 the water slightly alkaline, between pH [7.5](../numbers.md#genesis-ph-min) and
 [8](../numbers.md#acid-ocean-ph-max). [Genesis](genesis.md) needs it above pH
 [7.5](../numbers.md#genesis-ph-min) for [90 d](../numbers.md#genesis-ph-days) before any life is released.
@@ -105,9 +105,9 @@ the oceans melt, where the same reaction is fast.
   have rained out onto dusted ground, and the SO₂ runs into the basins with the liquid CO₂.
 - **[January 2035](../numbers.md?date=month#forge-start):** The Forges start, and their oxygen turns
   sulfite to sulfate.
-- **[September 2036](../numbers.md?date=month#traj-warming):** The caps are sealed, the Veil opens and the
+- **[October 2036](../numbers.md?date=month#traj-warming):** The caps are sealed, the Veil opens and the
   ice melts. Shore basalt buffers the new oceans and the pH clock starts.
-- **[December 2036](../numbers.md?date=month#genesis-start):** The oxygen is in and the oceans have held
+- **[January 2037](../numbers.md?date=month#genesis-start):** The oxygen is in and the oceans have held
   their pH. [Genesis](genesis.md) seeding begins.
 
 ## Failure modes and safeguards

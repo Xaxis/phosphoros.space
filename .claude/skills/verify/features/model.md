@@ -28,9 +28,10 @@ Runtime:
 pnpm calc --only veil-distance; echo "exit $?"
 pnpm calc --set foundry-doubling-days=70 | grep -E "Earth-like|earth-like-by-deadline"
 pnpm calc --claims | tail -3; echo "exit $?"
+pnpm calc | grep -E "heat books|frozen through|^checks"
 ```
 
-Proves it when: `--only` prints "Veil station, sunward of Venus" with a value in km and its inputs, exit 0; the 70-day variant shows the `earth-like-by-deadline` check failing and a 2037 date; `--claims` ends with a summary of match, corrected and explained counts and exits 0.
+Proves it when: `--only` prints "Veil station, sunward of Venus" with a value in km and its inputs, exit 0; the 70-day variant shows the `earth-like-by-deadline` check failing and a 2037 date; `--claims` ends with a summary of match, corrected and explained counts and exits 0; the grep shows "PASS  The simulation's heat books balance" and "PASS  The seas are frozen through before the last caps are sealed", with `checks-failing` equal to the failures listed in SKILL.md.
 
 ## Gotchas
 

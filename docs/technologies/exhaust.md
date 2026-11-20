@@ -6,7 +6,7 @@ fire it into space at [2.3 µm](../numbers.md#exhaust-wavelength). Each tile sh
 [0.91 MW/m²](../numbers.md#exhaust-flux) while sitting at the temperature of the air it cools. At the peak the
 Exhaust throws out [5.0 × 10¹⁹ W](../numbers.md#exhaust-peak); over the campaign it removes
 [5.3 × 10²⁶ J](../numbers.md#atmosphere-heat) of Venus's heat and spends
-[3.5 × 10²⁷ J](../numbers.md#traj-pump-energy) of beamed electricity doing it.
+[3.7 × 10²⁷ J](../numbers.md#traj-pump-energy) of beamed electricity doing it.
 
 <!-- figure:heat-path -->
 ![Venus's heat path, in cross-section](../../figures/svg/heat-path.svg)
@@ -125,28 +125,32 @@ three different phases:
 So the emitters must be sized for the peak of the third phase. With version 2's smaller Exhaust the simulated air
 becomes Earth-like months after the deadline. With [5.0 × 10¹⁹ W](../numbers.md#exhaust-peak) of emitters,
 [5.5 × 10¹³ m²](../numbers.md#exhaust-area-installed), the CO₂ is down by
-[3 August 2036](../numbers.md?date=day#traj-cold) and the air is Earth-like on
-[30 September 2036](../numbers.md?date=day#traj-earth-like), with [92 d](../numbers.md#traj-slack-days) to spare. A bigger
-Exhaust buys nothing: the finish then waits on the Forges' oxygen, and the extra pumping overdraws the Lattice.
+[15 September 2036](../numbers.md?date=day#traj-cold) and the air is Earth-like on
+[8 October 2036](../numbers.md?date=day#traj-earth-like), with [84 d](../numbers.md#traj-slack-days) to spare. The
+emitters are at their peak all through the freezing of the seas, from
+[August 2035](../numbers.md?date=month#traj-freeze) to [June 2036](../numbers.md?date=month#traj-frozen), and that
+sets the endgame: the Frost Towers finish after the caps are due, and the oceans hold their pH too late for seeded
+life to green them by the deadline, an open problem. `pnpm calc --set exhaust-peak=5.5e19` shows what a tenth more
+Exhaust would do: the seas freeze by spring, and the finish waits on the Forges' oxygen again.
 
 <!-- figure:trajectory -->
 ![The simulated atmosphere, 2033 to 2036](../../figures/svg/trajectory.svg)
 <!-- /figure -->
 
-**What the simulation pumps.** The simulation spends [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy) of pump work, more
+**What the simulation pumps.** The simulation spends [3.7 × 10²⁷ J](../numbers.md#traj-pump-energy) of pump work, more
 than the [2.92 × 10²⁷ J](../numbers.md#exhaust-work) the air alone needs. Heat keeps arriving from the crust, the
 Forges' waste, the falling ice and the sunlight the closed Veil lets through,
-[7.9 × 10²⁵ J](../numbers.md#traj-heat-added) in all, much of it late, when pumping is dearest. With everything else,
-the plan's demand is [8.4 × 10²⁷ J](../numbers.md#budget-demand) against the Lattice's
-[9.2 × 10²⁷ J](../numbers.md#helios-supply): [9.3%](../numbers.md#budget-spare) spare from the Lattice alone, and
-[34%](../numbers.md#budget-spare-with-ring) once the Ring powers the Railheads.
+[8.0 × 10²⁵ J](../numbers.md#traj-heat-added) in all, much of it late, when pumping is dearest. With everything else,
+the plan's demand is [8.5 × 10²⁷ J](../numbers.md#budget-demand) against the Lattice's
+[9.2 × 10²⁷ J](../numbers.md#helios-supply): [7.8%](../numbers.md#budget-spare) spare from the Lattice alone, and
+[33%](../numbers.md#budget-spare-with-ring) once the Ring powers the Railheads.
 
 **Frost Towers.** At [195 K](../numbers.md?sig=3#freeze-target-temp) the air still holds
 [1 bar](../numbers.md#co2-pressure-at-freeze) of CO₂ vapor, [5.4 × 10¹⁸ kg](../numbers.md#frost-residual-co2). The same
 tiles on surface towers held at [133 K](../numbers.md#frost-tower-temp) freeze it out down to
-[74 Pa](../numbers.md#frost-co2-pressure), leaving [3.8 × 10¹⁵ kg](../numbers.md#frost-residual-target) airborne and
-[310 ppm](../numbers.md#final-co2-ppm) in the finished air. That takes [4.3 × 10²⁵ J](../numbers.md#frost-work) of work
-and is done by [22 August 2036](../numbers.md?date=day#traj-scavenged).
+[54 Pa](../numbers.md#frost-co2-pressure), leaving [2.8 × 10¹⁵ kg](../numbers.md#frost-residual-target) airborne and
+[230 ppm](../numbers.md#final-co2-ppm) in the finished air. That takes [4.3 × 10²⁵ J](../numbers.md#frost-work) of work
+and is done by [4 October 2036](../numbers.md?date=day#traj-scavenged).
 
 <!-- figure:co2-phase -->
 ![CO₂ phase diagram with Venus's simulated cooling path](../../figures/svg/co2-phase.svg)
@@ -163,13 +167,14 @@ and is done by [22 August 2036](../numbers.md?date=day#traj-scavenged).
 | Effective emitter temperature | [2,000 K](../numbers.md#exhaust-effective-temp) |
 | Heat removed from Venus's air | [5.3 × 10²⁶ J](../numbers.md#atmosphere-heat) (average [5.0 × 10¹⁸ W](../numbers.md#exhaust-heat-avg)) |
 | Pump work for that heat | [2.92 × 10²⁷ J](../numbers.md#exhaust-work), [5.5](../numbers.md#exhaust-work-ratio) J per joule moved |
-| Pump work in the simulation | [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy), counting heat from the crust, the Forges and the ice |
+| Pump work in the simulation | [3.7 × 10²⁷ J](../numbers.md#traj-pump-energy), counting heat from the crust, the Forges and the ice |
 | Peak power out | [5.0 × 10¹⁹ W](../numbers.md#exhaust-peak) |
+| Fastest heat removal in the simulation | [1.3 × 10¹⁹ W](../numbers.md#traj-heat-peak), all the chimneys can carry, while the air is still hot |
 | Per canopy | [2.8 × 10¹⁵ W](../numbers.md#canopy-power-in) in, [3.3 × 10¹⁵ W](../numbers.md#canopy-power-out) out |
-| Average electrical input | [2.8 × 10¹⁹ W](../numbers.md#exhaust-work-avg), [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy) in all |
+| Average electrical input | [2.8 × 10¹⁹ W](../numbers.md#exhaust-work-avg), [3.7 × 10²⁷ J](../numbers.md#traj-pump-energy) in all |
 | Dark strip under the Ring | [150 km](../numbers.md#exhaust-dark-strip) wide, [1.2%](../numbers.md#exhaust-dark-strip-share) of the surface, where a cone would reach the Ring at [400 km](../numbers.md#ring-altitude) |
 | Far field | Each canopy's cone is dimmer than [10 W/m²](../numbers.md#exhaust-far-limit) beyond [58,000 km](../numbers.md#exhaust-cone-safe-distance) at peak power; where cones overlap, their light adds |
-| Frost Towers | Tiles at [133 K](../numbers.md#frost-tower-temp) trap the last CO₂ to [74 Pa](../numbers.md#frost-co2-pressure) |
+| Frost Towers | Tiles at [133 K](../numbers.md#frost-tower-temp) trap the last CO₂ to [54 Pa](../numbers.md#frost-co2-pressure) |
 <!-- /table -->
 
 ## What is invented
@@ -201,11 +206,14 @@ and is done by [22 August 2036](../numbers.md?date=day#traj-scavenged).
 - **[16 September 2034](../numbers.md?date=day#ring-pays-from):** The Ring pays for the Railheads. The Exhaust runs at its
   limit from here on.
 - **[13 July 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain: liquid CO₂ starts to fall.
-- **[23 June 2036](../numbers.md?date=day#traj-freeze):** The CO₂ seas start to freeze.
-- **[3 August 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The Frost Towers take over.
-- **[22 August 2036](../numbers.md?date=day#traj-scavenged):** The CO₂ left in the air is at its target.
-- **[1 September 2036](../numbers.md?date=day#cooling-end):** Active cooling ends; the caps are sealed and the Veil opens.
-- **[30 September 2036](../numbers.md?date=day#traj-earth-like):** Venus is Earth-like.
+- **[16 August 2035](../numbers.md?date=day#traj-freeze):** The CO₂ seas start to freeze, and the air holds at the
+  triple point while they do.
+- **[18 June 2036](../numbers.md?date=day#traj-frozen):** The seas are frozen through.
+- **[1 September 2036](../numbers.md?date=day#cooling-end):** Active cooling was planned to end here, with the last caps.
+- **[15 September 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The Frost Towers take over.
+- **[4 October 2036](../numbers.md?date=day#traj-scavenged):** The CO₂ left in the air is at its target. The pumps stop,
+  and the Veil opens the next day.
+- **[8 October 2036](../numbers.md?date=day#traj-earth-like):** Venus is Earth-like.
 
 ## Failure modes and safeguards
 
@@ -224,7 +232,7 @@ and is done by [22 August 2036](../numbers.md?date=day#traj-scavenged).
   the Veil lets through, so a pause costs time, not ground.
 - **The second law.** The model charges ideal pumping. Every real loss adds work, and the entropy of narrow,
   beamed light adds far more ([below](#the-cost-of-beamed-light)). The Lattice alone leaves
-  [9.3%](../numbers.md#budget-spare) spare and the Ring's recovered energy [34%](../numbers.md#budget-spare-with-ring),
+  [7.8%](../numbers.md#budget-spare) spare and the Ring's recovered energy [33%](../numbers.md#budget-spare-with-ring),
   which absorbs a tile somewhat short of ideal but not the beamed light's full price.
 
 ## Reproduce these numbers

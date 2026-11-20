@@ -8,7 +8,12 @@ import { formatNumber, formatQuantity } from "../src/format.ts";
 import { loadInputs, ROOT, readYaml, run, sourceLines } from "../src/load.ts";
 import { compute } from "../src/model/index.ts";
 import { simulate } from "../src/model/trajectory.ts";
-import { blackBodyShare, lambert } from "../src/physics.ts";
+import {
+  blackBodyShare,
+  co2LiquidPressure,
+  co2SublimationPressure,
+  lambert,
+} from "../src/physics.ts";
 import { NUMBER_LINK, refsIn, stringsIn } from "../src/template.ts";
 import { dayOf, isoOf } from "../src/time.ts";
 
@@ -134,7 +139,7 @@ test("the Hohmann transfer from Ceres matches the textbook numbers", () => {
 test("the simulated atmosphere cools, rains out, freezes and warms in order", () => {
   const sim = simulate(v);
   const e = sim.events as Record<string, number>;
-  const order = ["clear-rain", "freeze", "cold", "scavenged", "warming", "earth-like"];
+  const order = ["clear-rain", "freeze", "frozen", "cold", "scavenged", "warming", "earth-like"];
   for (let i = 1; i < order.length; i++)
     assert.ok((e[order[i - 1] as string] as number) <= (e[order[i] as string] as number), order[i]);
   const first = sim.days[0];
@@ -145,6 +150,50 @@ test("the simulated atmosphere cools, rains out, freezes and warms in order", ()
     (e["earth-like"] as number) <= v("deadline"),
     `Earth-like on ${isoOf(e["earth-like"] as number)}`,
   );
+});
+
+test("CO₂'s sublimation and vapour curves meet at the triple point and match measured points", () => {
+  const triple = { T: v("co2-triple-temp"), P: v("co2-triple-pressure") };
+  const critical = { T: v("co2-critical-temp"), P: v("co2-critical-pressure") };
+  const a = [v("co2-sublimation-a1"), v("co2-sublimation-a2"), v("co2-sublimation-a3")] as const;
+  assert.ok(Math.abs(co2SublimationPressure(triple.T, triple, a) / triple.P - 1) < 1e-12);
+  assert.ok(Math.abs(co2LiquidPressure(triple.T, triple, critical) / triple.P - 1) < 1e-12);
+  // Dry ice sublimes at one atmosphere at 194.69 K (NIST).
+  assert.ok(Math.abs(co2SublimationPressure(194.69, triple, a) / 101_325 - 1) < 0.01);
+  assert.throws(() => co2SublimationPressure(triple.T + 1, triple, a));
+  // Heat of fusion at the triple point, measured: 196 to 205 kJ/kg.
+  assert.ok(
+    v("co2-fusion-heat") > 1.9e5 && v("co2-fusion-heat") < 2.15e5,
+    `${v("co2-fusion-heat")}`,
+  );
+});
+
+test("the seas freeze at the triple point, and the simulation's heat books balance", () => {
+  const sim = simulate(v);
+  const e = sim.events as Record<string, number>;
+  const Tt = v("co2-triple-temp");
+  const Pt = v("co2-triple-pressure");
+  const [from, to] = [e.freeze as number, e.frozen as number];
+  const held = sim.days.filter((d) => d.day > from && d.day < to);
+  assert.ok(held.length > 30, `${held.length} days between freezing and frozen through`);
+  for (const d of held) {
+    assert.equal(d.temp, Tt);
+    assert.ok(Math.abs(d.co2 / Pt - 1) < 1e-9);
+  }
+  // The CO₂ pressure never jumps from one day to the next while the pumps cool the air.
+  for (let i = 1; i < sim.days.length; i++) {
+    const [a, b] = [sim.days[i - 1], sim.days[i]];
+    if (a && b && b.phase === "cooling")
+      assert.ok(b.co2 <= a.co2 && (a.co2 - b.co2) / a.co2 < 0.04);
+  }
+  assert.equal(
+    r.checks.get("traj-heat-books")?.pass,
+    true,
+    r.checks.get("traj-heat-books")?.detail,
+  );
+  const books = v("atmosphere-heat") - v("traj-heat-left-airborne") + v("traj-heat-added");
+  assert.ok(Math.abs(v("traj-heat-lifted") / books - 1) < 1e-9);
+  assert.ok(v("sealing-window") > 0 && v("cap-laying-rate") > 0);
 });
 
 test("changing an assumption changes the consequences", () => {

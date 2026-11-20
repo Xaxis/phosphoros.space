@@ -124,7 +124,7 @@
 - { model: exhaust-area-share-1000, brief: 0.58, tol: 0.02, where: "2.13", correction: sealing-follows-frost }
 - { model: exhaust-area-share-1500, brief: 0.17, tol: 0.03, where: "2.13", correction: sealing-follows-frost }
 - { model: exhaust-area-share-2500, brief: 0.037, tol: 0.03, where: "2.13", correction: sealing-follows-frost }
-- { model: frost-co2-pressure, brief: 70, tol: 0.15, where: "2.9.5", note: "Gives 300 ppm of the 2036 air; the brief's range is 300 to 600 ppm." }
+- { model: frost-co2-pressure, brief: 70, tol: 0.15, where: "2.9.5", correction: sublimation-curve }
 
 # --- 2.9.6 Cryo-continents ------------------------------------------------------------------------------
 - { model: cryo-volume, brief: 3e17, where: "2.9.6" }
@@ -139,7 +139,7 @@
 - { model: cryo-floor-flux-1000, brief: 4, tol: 0.15, where: "2.9.6" }
 - { model: cryo-floor-load, brief: 1.2e16, where: "2.9.6" }
 - { model: cryo-floor-load-century, brief: 1.7e15, where: "2.9.6" }
-- { model: cryo-unrefrigerated-loss, brief: 0.001, tol: 0.5, where: "2.9.6", note: "0.14% a year; the brief rounds to about 0.1%." }
+- { model: cryo-unrefrigerated-loss, brief: 0.001, tol: 0.5, where: "2.9.6", correction: floor-melts }
 - { model: cryo-refrigeration-share, brief: 0.01, where: "2.9.6",
     note: "The brief budgets about 1% of the Lattice to refrigerate the basin floors. Pumping the first 12 PW from 200 K to an effective 2,000 K takes 0.2%, and far less once the rock cools; 1% is a generous allowance." }
 - { model: cryo-cells, brief: 1.5e6, where: "2.9.6" }
@@ -222,7 +222,7 @@
 
 # --- 2.6 The finish line, 2.9.13 Choir ---------------------------------------------------------------------
 - { model: final-pressure, brief: 2.4e5, where: "2.6" }
-- { model: final-co2-ppm, brief: 4.5e-4, tol: 0.35, where: "2.6", note: "The brief gives 300 to 600 ppm." }
+- { model: final-co2-ppm, brief: 4.5e-4, tol: 0.35, where: "2.6", correction: sublimation-curve }
 - { model: dive-depth, brief: 14, where: "2.6" }
 - { model: delay-mercury-venus-min, brief: 162, tol: 0.05, where: "2.9.13" }
 - { model: delay-mercury-venus-max, brief: 552, tol: 0.02, where: "2.9.13" }

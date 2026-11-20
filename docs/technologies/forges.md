@@ -37,7 +37,7 @@ the rest of the CO₂ stays frozen in the cryo-continents; the Forges only make 
 **What it costs.** At an efficiency of [60%](../numbers.md#forge-efficiency), each mole takes
 [656 kJ/mol](../numbers.md#forge-energy-per-mol), [15 MJ/kg](../numbers.md#forge-energy-per-kg) of CO₂: in all
 [2.7 × 10²⁵ J](../numbers.md#forge-energy). Over [21 months](../numbers.md#forge-seconds) that is
-[4.8 × 10¹⁷ W](../numbers.md#forge-power), a small share of the plan's [8.4 × 10²⁷ J](../numbers.md#budget-demand)
+[4.8 × 10¹⁷ W](../numbers.md#forge-power), a small share of the plan's [8.5 × 10²⁷ J](../numbers.md#budget-demand)
 ([budget](../budget.md#forging-the-oxygen)). The energy the electrolysis
 loses, [1.1 × 10²⁵ J](../numbers.md#forge-waste-heat) of heat, stays on Venus, and the Exhaust pumps it out with the rest.
 
@@ -60,9 +60,10 @@ They draw their feed straight from the cold, dense liquid under them. Sulfur is 
 reduced to sulfur and do not poison the electrolysis ([Licht 2015](../sources.md#licht-2015), citing
 [Kaplan 2013](../sources.md#kaplan-2013)).
 
-**After the freeze.** On [23 June 2036](../numbers.md?date=day#traj-freeze) the seas start to freeze. Below the triple
-point no open liquid survives, so the Forges change feed: they quarry dry ice and turn it back to gas with their own waste
-heat. Each kilogram split leaves several megajoules of heat, many times the
+**After the freeze.** On [16 August 2035](../numbers.md?date=day#traj-freeze) the seas start to freeze. The crystals sink,
+so the Forges keep drawing liquid from above the settling ice until the seas are frozen through on
+[18 June 2036](../numbers.md?date=day#traj-frozen). Then no open liquid survives, so the Forges change feed: they quarry dry
+ice and turn it back to gas with their own waste heat. Each kilogram split leaves several megajoules of heat, many times the
 [571 kJ/kg](../numbers.md#co2-deposition-heat) it takes to turn a kilogram of dry ice into gas. The caps are complete by
 [1 September 2036](../numbers.md?date=day#sealing-end); the Forges on the last compartments become part of them, drawing dry ice
 up through shafts under gas-tight hoods, and those shafts close when forging ends.
@@ -74,10 +75,9 @@ spare; the model checks it ([check](../numbers.md#check-graphite-for-caps)). In 
 [4.9 × 10¹⁷ kg](../numbers.md#forge-graphite), leaving [2.4 × 10¹⁷ kg](../numbers.md#graphite-stockpile) after the caps for
 structures and for the black loam soil of [Genesis](genesis.md).
 
-**The oxygen sets the finish.** In the day-by-day [simulation](../plan.md#the-simulated-atmosphere) the air is warm by
-[6 September 2036](../numbers.md?date=day#traj-warm), but it is Earth-like only on
-[30 September 2036](../numbers.md?date=day#traj-earth-like), the day the Forges finish. The cooling is done; the oxygen is
-the last thing to arrive. Ultraviolet sunlight starts turning some of it into ozone as soon as it is in the air, the
+**The oxygen comes just before the finish.** In the day-by-day [simulation](../plan.md#the-simulated-atmosphere) the
+Forges finish on [30 September 2036](../numbers.md?date=day#forge-end), but the air is warm, and Earth-like, only on
+[8 October 2036](../numbers.md?date=day#traj-earth-like), once the Frost Towers are done and the Veil opens. Ultraviolet sunlight starts turning some of it into ozone as soon as it is in the air, the
 beginning of a shield for the life that follows.
 
 ## Specifications
@@ -120,11 +120,14 @@ beginning of a shield for the life that follows.
   Forge rafts are floated onto the new seas.
 - **[1 January 2035](../numbers.md?date=day#forge-start):** Forging begins. Oxygen starts to build in the air; graphite
   starts to pile up for the caps.
-- **[23 June 2036](../numbers.md?date=day#traj-freeze):** The seas freeze. The Forges switch to quarrying dry ice.
+- **[16 August 2035](../numbers.md?date=day#traj-freeze):** The seas start to freeze.
+- **[18 June 2036](../numbers.md?date=day#traj-frozen):** The seas are frozen through. The Forges switch to quarrying
+  dry ice.
 - **[1 September 2036](../numbers.md?date=day#sealing-end):** The caps are complete, with
   [4.6 × 10¹⁷ kg](../numbers.md#graphite-by-sealing) of graphite made so far.
 - **[30 September 2036](../numbers.md?date=day#forge-end):** Forging ends with [0.25 bar](../numbers.md#o2-target-pressure)
-  of oxygen in the air. Venus is Earth-like the same day, and [Genesis](genesis.md) seeding begins.
+  of oxygen in the air. Venus is Earth-like once the air warms, on
+  [8 October 2036](../numbers.md?date=day#traj-earth-like).
 
 ## Failure modes and safeguards
 
@@ -149,7 +152,7 @@ The Forges' numbers come from [calc/src/model/forges.ts](../../calc/src/model/fo
 pnpm calc --only forge-energy          # moles of O₂ × ΔH / η
 pnpm calc --only graphite-by-sealing   # graphite made by the end of sealing
 pnpm calc --only forge-plant-power     # power of one Forge
-pnpm calc --only traj-earth-like       # the finish, which waits for the oxygen
+pnpm calc --only traj-earth-like       # the finish
 ```
 
 In the [Explorer](https://phosphoros.space/explore), lower `forge-efficiency` and the energy rises, though it stays a small
