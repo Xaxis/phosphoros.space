@@ -13,6 +13,7 @@ cite it for. To add one, open an ["add a source" issue](https://github.com/Xaxis
 - <a id="nasa-sun-factsheet"></a>Williams, D. R. (NASA Goddard Space Flight Center, NSSDCA) (2024). [Sun Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html). Checked 2026-11-20.
 - <a id="nist-co2"></a>National Institute of Standards and Technology. [NIST Chemistry WebBook, SRD 69: Carbon dioxide, phase change data](https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Mask=4). Checked 2026-11-20.<br>Triple point 216.58 K and 5.185 bar, critical point 304.13 K and 73.77 bar, sublimation enthalpy.
 - <a id="jpl-sbdb-ceres"></a>NASA Jet Propulsion Laboratory, Solar System Dynamics. [JPL Small-Body Database: 1 Ceres](https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=1). Checked 2026-11-20.<br>Ceres's semi-major axis and aphelion.
+- <a id="toray-t1100g"></a>Toray Composite Materials America (2025). [TORAYCA T1100G Intermediate Modulus Carbon Fiber, technical data sheet (Rev. 11/24/2025)](https://www.toraycma.com/wp-content/uploads/T1100G-Data-Sheet.pdf). Checked 2026-11-20.<br>Tensile strength 7,000 MPa and density 1.79 g/cm³; sizes the Aegis coil's structure.
 
 ## Papers and books
 

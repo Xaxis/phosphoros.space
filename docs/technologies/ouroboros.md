@@ -1,9 +1,9 @@
 # Ouroboros Foundry
 
 A [1,000 t](../numbers.md#foundry-seed-mass) seed factory lands on Mercury and rebuilds itself from local rock and
-sunlight every [60 d](../numbers.md#foundry-doubling-days). After [27](../numbers.md#foundry-doublings) doublings,
-on [22 June 2033](../numbers.md?date=day#foundry-full-scale), it is [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass)
-of machinery, still only [4 × 10⁻¹⁰](../numbers.md#foundry-mercury-share) of Mercury's mass. Every other
+sunlight every [60 d](../numbers.md#foundry-doubling-days). After [26](../numbers.md#foundry-doublings) doublings,
+on [3 May 2033](../numbers.md?date=day#foundry-full-scale), it is [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass)
+of machinery, still only [2 × 10⁻¹⁰](../numbers.md#foundry-mercury-share) of Mercury's mass. Every other
 invention in the plan is built from its output, so its doubling time is the plan's critical path.
 
 <!-- figure:foundry-growth -->
@@ -16,26 +16,27 @@ A factory doubles when it can make every one of its own parts, chips and robots 
 around it. If each kilogram of machinery builds another kilogram in a fixed time T, the mass grows as
 `M(t) = M₀ · 2^(t/T)`. Nothing else about the plan scales like that, and nothing else needs to.
 
-**The doubling arithmetic.** From a [1,000 t](../numbers.md#foundry-seed-mass) seed to the
-[1.0 × 10¹⁴ kg](../numbers.md#foundry-target-mass) the plan needs is log₂ of their ratio, rounded up to a
-whole number: [27](../numbers.md#foundry-doublings) doublings, which give
-[1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). At [60 d](../numbers.md#foundry-doubling-days) each, that
-takes [4.4 yr](../numbers.md#foundry-years-to-scale). Two consequences follow from the shape of the curve:
+**The doubling arithmetic.** The Foundry grows until it weighs about as much as what it must build next, the
+Lattice and the Ring, [6.0 × 10¹³ kg](../numbers.md#foundry-target-mass). From a
+[1,000 t](../numbers.md#foundry-seed-mass) seed that is log₂ of their ratio, rounded up to a whole number:
+[26](../numbers.md#foundry-doublings) doublings, which give [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass). At
+[60 d](../numbers.md#foundry-doubling-days) each, plus a short stop to build the Veil, that takes
+[4.3 yr](../numbers.md#foundry-years-to-scale). Two consequences follow from the shape of the curve:
 
 - **Most of the mass arrives at the end.** Each doubling makes as much as all the doublings before it. In
   [January 2030](../numbers.md?date=month#date-2030), a year after landing, the Foundry is only
   [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030); by [January 2032](../numbers.md?date=month#date-2032) it
   is [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032); and in the eighteen months after that it grows to
-  [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). Almost everything the plan builds, it builds in the last
+  [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass). Almost everything the plan builds, it builds in the last
   year.
-- **Every day counts many times over.** Full scale comes [27](../numbers.md#foundry-doublings) doubling periods after
+- **Every day counts many times over.** Full scale comes [26](../numbers.md#foundry-doublings) doubling periods after
   landing, so each day added to the doubling time moves full scale, the Lattice's full power and the first
-  ice launch by [27](../numbers.md#foundry-doublings) days.
+  ice launch by [26](../numbers.md#foundry-doublings) days.
 
 **Power follows from the doubling time.** Making a kilogram of machinery from raw regolith takes about
 [100 MJ/kg](../numbers.md#foundry-energy-per-kg). Growing continuously, the machinery adds mass at
 `M · ln 2 / T`, so each kilogram draws `e · ln 2 / T`: [13 W/kg](../numbers.md#foundry-power-per-kg). At full
-scale that is [1.8 × 10¹⁵ W](../numbers.md#foundry-peak-power), all of it from the Foundry's own solar film.
+scale that is [9.0 × 10¹⁴ W](../numbers.md#foundry-peak-power), all of it from the Foundry's own solar film.
 
 **Why Mercury.** Sunlight there is [9,080 W/m²](../numbers.md#mercury-sunlight) at its mean distance from the
 Sun. Mercury's axis is almost upright ([NASA](../sources.md#nasa-mercury-factsheet)), so crater rims near its
@@ -75,22 +76,30 @@ optics); the rest is film, beams, rail and wire, which are quick to make in bulk
 trace elements it cannot yet refine, until refining closes that last gap in 2030 (the specifications below
 give the closure).
 
-**Products are diverted growth.** The Foundry can build a product in one doubling period once its own mass
-equals the product's, because one doubling's output is the Foundry's mass. That sets when each piece of the
-plan becomes affordable:
+**Products are diverted growth.** Mass is conserved: every kilogram the Foundry puts into a product is a kilogram
+it does not add to itself, along with all the growth that kilogram would have compounded into. A Foundry of mass M
+turns out M ln 2 / T kilograms a day. It can build a product in one doubling period once its own mass equals the
+product's, which sets when each piece of the plan becomes affordable:
 
 - The [Hesperus Veil](veil.md), [5.4 × 10¹¹ kg](../numbers.md#veil-mass), on
   [2 March 2032](../numbers.md?date=day#veil-affordable).
 - The [Braking Ring](ring.md), [1.0 × 10¹³ kg](../numbers.md#ring-mass), on
   [9 November 2032](../numbers.md?date=day#ring-affordable).
-- The [Helios Lattice](helios.md), [5.1 × 10¹³ kg](../numbers.md#helios-mass), on
-  [31 March 2033](../numbers.md?date=day#helios-affordable).
+- The [Helios Lattice](helios.md), [6.2 × 10¹³ kg](../numbers.md#helios-mass), on
+  [17 April 2033](../numbers.md?date=day#helios-affordable).
 
-Building the Veil at its close date, [30 June 2032](../numbers.md?date=day#veil-close), costs the Foundry
-[19 d](../numbers.md#veil-diversion-days) of growth: by then the Veil is a quarter of one doubling's output.
-Version 2's lighter Veil, built earlier, cost about a whole doubling. Matter is cheap once the loop runs: all
-of the plan's hardware takes about [10²² J](../numbers.md#hardware-energy), less than a millionth of the
-energy the plan spends on water and cooling.
+The Veil's parts must coast [76 d](../numbers.md#mercury-venus-transfer-days) from Mercury to L1, so the last of them
+leave on [16 September 2032](../numbers.md?date=day#veil-build-end) for the Veil to close on
+[1 December 2032](../numbers.md?date=day#veil-close). By then the Foundry is large, so it stops growing for only
+[9.8 d](../numbers.md#veil-diversion-days) to build it ([check](../numbers.md#check-foundry-affords-veil)), and full scale
+comes that much later. The Lattice and the Ring wait until the Foundry stops growing: building them after costs less
+time than building them during, because the full Foundry outproduces any smaller one. It builds the Lattice in
+[80 d](../numbers.md#lattice-build-days), then the Ring in [13 d](../numbers.md#ring-build-days), whose last parts reach
+Venus on [19 October 2033](../numbers.md?date=day#ring-delivered) ([check](../numbers.md#check-foundry-builds-ring)).
+Stopping at [26](../numbers.md#foundry-doublings) doublings finishes both sooner than one more or one fewer would
+([check](../numbers.md#check-foundry-size)). Matter is cheap once the loop runs: all
+[1.4 × 10¹⁴ kg](../numbers.md#foundry-built-mass) the Foundry builds, itself included, takes about
+[10²² J](../numbers.md#hardware-energy), about a millionth of the energy the plan spends on water and cooling.
 
 ## Specifications
 
@@ -99,12 +108,12 @@ energy the plan spends on water and cooling.
 | --- | --- |
 | Seed mass | [1,000 t](../numbers.md#foundry-seed-mass), launched [1 October 2028](../numbers.md?date=day#foundry-seed-launch), landed [14 January 2029](../numbers.md?date=day#foundry-landing) |
 | Doubling time | [60 d](../numbers.md#foundry-doubling-days) |
-| Doublings to full scale | [27](../numbers.md#foundry-doublings), giving [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) |
-| Full scale | [22 June 2033](../numbers.md?date=day#foundry-full-scale) |
+| Doublings to full scale | [26](../numbers.md#foundry-doublings), giving [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass) |
+| Full scale | [3 May 2033](../numbers.md?date=day#foundry-full-scale) |
 | Energy per kilogram built | [100 MJ/kg](../numbers.md#foundry-energy-per-kg) |
 | Power per kilogram of machinery | [13 W/kg](../numbers.md#foundry-power-per-kg) |
-| Peak power | [1.8 × 10¹⁵ W](../numbers.md#foundry-peak-power), from its own film |
-| Share of Mercury used | [4 × 10⁻¹⁰](../numbers.md#foundry-mercury-share) of its mass |
+| Peak power | [9.0 × 10¹⁴ W](../numbers.md#foundry-peak-power), from its own film |
+| Share of Mercury used | [2 × 10⁻¹⁰](../numbers.md#foundry-mercury-share) of its mass |
 | Mercury's escape speed | [4.25 km/s](../numbers.md#mercury-escape), so parts reach orbit by mass driver |
 | Machinery in January 2030 | [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030) |
 | Machinery in January 2032 | [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032) |
@@ -142,17 +151,20 @@ energy the plan spends on water and cooling.
   [Choir](choir.md) goes live with it.
 - **[January 2030](../numbers.md?date=month#date-2030):** [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030) of
   machinery. Trace-element refining closes the loop completely.
-- **[June 2030](../numbers.md?date=month#helios-first-petals):** The first Helios Petals fly and Veil slat
-  production begins, small diversions from a growing base.
+- **[June 2030](../numbers.md?date=month#helios-first-petals):** The first Helios Petals fly and the first Veil
+  slats are tested: demonstrations, too small to slow the growth.
 - **[January 2032](../numbers.md?date=month#date-2032):** [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032).
 - **[March 2032](../numbers.md?date=month#veil-affordable):** The Foundry can build the whole Veil in one
-  doubling. It closes over Venus on [30 June 2032](../numbers.md?date=day#veil-close).
-- **[November 2032](../numbers.md?date=month#ring-affordable):** The Braking Ring becomes affordable; its
-  construction runs to [December 2033](../numbers.md?date=month#ring-complete).
-- **[March 2033](../numbers.md?date=month#helios-affordable):** The Helios Lattice becomes affordable.
-- **[22 June 2033](../numbers.md?date=day#foundry-full-scale):** Full scale,
-  [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). The Lattice reaches full power the same day and the first
-  Ice Bricks leave Ceres ([June 2033](../numbers.md?date=month#ice-launch-start)).
+  doubling. It stops for [9.8 d](../numbers.md#veil-diversion-days) to do so; the last parts leave on
+  [16 September 2032](../numbers.md?date=day#veil-build-end), and the Veil closes over Venus on
+  [1 December 2032](../numbers.md?date=day#veil-close).
+- **[3 May 2033](../numbers.md?date=day#foundry-full-scale):** Full scale,
+  [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass). The Foundry stops growing and turns to the Petals; the Lattice's
+  first power starts the cooling.
+- **[22 July 2033](../numbers.md?date=day#helios-full-power):** The Lattice reaches full power and the first Ice
+  Bricks leave Ceres. The Foundry turns to the Ring, whose last parts reach Venus on
+  [19 October 2033](../numbers.md?date=day#ring-delivered), in time for its completion in
+  [December 2033](../numbers.md?date=month#ring-complete).
 
 ## Failure modes and safeguards
 
@@ -180,7 +192,8 @@ The Foundry's numbers come from [calc/src/model/foundry.ts](../../calc/src/model
 pnpm calc --only foundry-full-scale     # landing + n doubling periods
 pnpm calc --only foundry-power-per-kg   # e ln 2 / T
 pnpm calc --only veil-affordable        # when one doubling's output equals the Veil
-pnpm calc --only veil-diversion-days    # growth the Veil costs at its close date
+pnpm calc --only veil-diversion-days    # days the Foundry stops growing to build the Veil
+pnpm calc --only lattice-build-days     # the full Foundry building the Lattice
 ```
 
 The assumption to try is the doubling time, `foundry-doubling-days`, in the

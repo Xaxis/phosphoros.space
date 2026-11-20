@@ -16,8 +16,8 @@
 import { formatQuantity } from "../format.ts";
 import { co2LiquidPressure, co2SolidPressure, conductedFlux } from "../physics.ts";
 import type { Point, Registry } from "../registry.ts";
-import { DAY_S, isoOf } from "../time.ts";
-import { foundryMassAt } from "./foundry.ts";
+import { DAY_S } from "../time.ts";
+import { fmt } from "./text.ts";
 
 export interface TrajectoryDay {
   day: number;
@@ -33,12 +33,16 @@ export interface TrajectoryDay {
   heatIn: number;
   /** Electrical power spent warming the air and melting ice once the caps are sealed (W). */
   warmPower: number;
+  /** Electrical power the chimney fans draw (W). */
+  fanPower: number;
   phase: "cooling" | "scavenging" | "holding" | "warming" | "earth-like";
 }
 
 export function simulate(v: (id: string) => number): {
   days: TrajectoryDay[];
   events: Record<string, number>;
+  /** Days the chimneys' capacity, not the power, set how fast the air cooled. */
+  chimneyDays: number;
 } {
   const M = v("venus-atmosphere-mass");
   const cp = v("co2-cp");
@@ -72,18 +76,13 @@ export function simulate(v: (id: string) => number): {
       v("gas-constant"),
     );
 
-  const foundry = {
-    seed: v("foundry-seed-mass"),
-    landing: v("foundry-landing"),
-    doubling: v("foundry-doubling-days"),
-    final: v("foundry-final-mass"),
-  };
-  const fullPower = v("helios-full-power");
-  const fullMass = foundryMassAt(fullPower, foundry);
+  // The full Foundry builds the Lattice after it stops growing, so its power climbs from nothing
+  // at full scale to full power as the petals come off the line. The first demonstration petals
+  // (2030) are too few to count.
+  const ramp0 = v("cooling-start");
+  const ramp1 = v("helios-full-power");
   const lattice = (d: number) =>
-    d < v("helios-first-petals")
-      ? 0
-      : v("helios-power") * Math.min(1, foundryMassAt(d, foundry) / fullMass);
+    v("helios-power") * Math.min(1, Math.max(0, (d - ramp0) / Math.max(1, ramp1 - ramp0)));
 
   const start = v("cooling-start");
   const deadline = v("deadline");
@@ -98,6 +97,7 @@ export function simulate(v: (id: string) => number): {
   let temp = T0;
   let iceCold = 0; // ice lowered while the air was below freezing, still to melt (kg)
   let phase: TrajectoryDay["phase"] = "cooling";
+  let chimneyDays = 0; // days the chimneys, not the power, limit the cooling
   const days: TrajectoryDay[] = [];
   const pressureOf = (pCO2: number, o2: number, T: number) => {
     const water = T >= 273.15 ? v("final-water-vapour") : 0;
@@ -114,6 +114,9 @@ export function simulate(v: (id: string) => number): {
     if (catching) power += v("ring-power") - (launching ? v("railhead-power") : 0);
     const forging = d >= v("forge-start") && d < v("forge-end");
     if (forging) power -= Math.min(power, v("forge-power"));
+    // The chimney fans run while the pumps do.
+    const fanPower = phase === "cooling" ? Math.min(power, v("chimney-fan-power")) : 0;
+    power -= fanPower;
     power = Math.max(0, power);
 
     // Heat entering the air.
@@ -151,9 +154,15 @@ export function simulate(v: (id: string) => number): {
 
     if (phase === "cooling" || phase === "scavenging" || phase === "holding") {
       // The cold side is the air (or the Frost Towers once only the last CO₂ is left).
-      const cold = phase === "cooling" ? temp : Tf;
+      // While the air cools as a gas the pumps see it through the chimneys' exchangers, colder than
+      // the air itself; condensing CO₂ gives up its heat at the air's temperature.
+      const gas = H < HA || H >= HA + HB;
+      const cold = phase === "cooling" ? (gas ? temp * v("chimney-cold-factor") : temp) : Tf;
       const maxWork = v("exhaust-peak") * (1 - cold / Th);
-      const work = Math.min(power, maxWork);
+      // Every watt the pumps lift has to come up the chimneys first.
+      const chimneyWork = (v("chimney-capacity") * (Th - cold)) / cold;
+      const work = Math.min(power, maxWork, chimneyWork);
+      if (chimneyWork < Math.min(power, maxWork)) chimneyDays++;
       const capacity = (work * cold) / (Th - cold);
       pumpPower = work;
       if (phase === "cooling") {
@@ -232,13 +241,14 @@ export function simulate(v: (id: string) => number): {
       heatOut,
       heatIn,
       warmPower,
+      fanPower,
       phase,
     });
     if (phase === "earth-like" && d > deadline) break;
   }
   for (const k of ["clear-rain", "freeze", "cold", "scavenged", "warming", "warm", "earth-like"])
     mark(k, stop);
-  return { days, events };
+  return { days, events, chimneyDays };
 }
 
 export function trajectory(r: Registry) {
@@ -318,6 +328,16 @@ export function trajectory(r: Registry) {
     () => total((t) => t.heatOut + t.pumpPower),
   );
   r.q(
+    "traj-fan-energy",
+    {
+      label: "Energy the chimney fans use while the pumps run",
+      unit: "J",
+      formula: "Σ fan power × 1 day",
+      basis: "invented",
+    },
+    () => total((t) => t.fanPower),
+  );
+  r.q(
     "traj-warm-energy",
     {
       label: "Beamed power spent warming the air and melting the cold ice after sealing",
@@ -326,6 +346,27 @@ export function trajectory(r: Registry) {
       basis: "physics",
     },
     () => total((t) => t.warmPower),
+  );
+  r.q(
+    "traj-chimney-days",
+    {
+      label: "Days the chimneys, not the power, limit how fast the air cools",
+      unit: "d",
+      sig: 2,
+      formula: "days the simulation caps heat removal at the chimneys' capacity",
+      basis: "physics",
+    },
+    () => (sim ?? run()).chimneyDays,
+  );
+  r.q(
+    "traj-heat-peak",
+    {
+      label: "Fastest heat removal in the simulation",
+      unit: "W",
+      formula: "max over days of heat leaving the air",
+      basis: "physics",
+    },
+    () => Math.max(...(sim ?? run()).days.map((t) => t.heatOut)),
   );
   r.q(
     "traj-slack-days",
@@ -433,7 +474,7 @@ export function trajectory(r: Registry) {
       const d = (sim ?? run()).events["earth-like"] as number;
       return {
         pass: d <= v("deadline"),
-        detail: `The day-by-day simulation reaches Earth-like conditions on ${isoOf(d)}; the deadline is ${isoOf(v("deadline"))}.`,
+        detail: `The day-by-day simulation reaches Earth-like conditions on ${fmt(r, "traj-earth-like", { date: "day" })}, ${fmt(r, "traj-slack-days")} before the ${fmt(r, "deadline", { date: "day" })} deadline. The chimneys, not the power, set the pace on ${fmt(r, "traj-chimney-days")}.`,
       };
     },
   );

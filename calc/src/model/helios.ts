@@ -132,13 +132,36 @@ export function helios(r: Registry) {
     () => (2.44 * v("helios-wavelength") * v("ring-to-ceres-range")) / v("helios-aperture"),
   );
   r.q(
+    "lattice-build-days",
+    {
+      label: "Days the full Foundry takes to build the Helios Lattice",
+      unit: "d",
+      sig: 2,
+      formula: "M_Lattice T / (M_Foundry ln 2)",
+      basis: "invented",
+      note: "Growing to full scale first and building after is the fastest order: every kilogram spent on products earlier costs the growth it would have compounded into.",
+    },
+    () => (v("helios-mass") * v("foundry-doubling-days")) / (v("foundry-final-mass") * Math.LN2),
+  );
+  r.q(
     "helios-full-power",
     {
       label: "Helios Lattice reaches full power",
       unit: "date",
+      formula: "Foundry full scale + Lattice build time",
+      basis: "invented",
+      note: "The Lattice's petals stay at Mercury, so they shine as soon as they are built; power climbs from nothing at the Foundry's full scale to full here.",
+    },
+    () => v("foundry-full-scale") + v("lattice-build-days"),
+  );
+  r.q(
+    "cooling-start",
+    {
+      label: "Active cooling begins: the Lattice's first power reaches Venus",
+      unit: "date",
       formula: "the Foundry's full-scale date",
       basis: "invented",
-      note: "The Lattice is the product of the Foundry's last doublings, so it is finished when the Foundry is.",
+      note: "The Exhaust can pump only as fast as the Lattice powers it, and the Lattice is built once the Foundry stops growing.",
     },
     () => v("foundry-full-scale"),
   );

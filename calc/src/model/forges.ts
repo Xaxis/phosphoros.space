@@ -1,6 +1,7 @@
 /** Graphite Forges: splitting CO₂ into breathable oxygen and graphite. */
 import type { Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
+import { fmt } from "./text.ts";
 
 export function forges(r: Registry) {
   const { v } = r.in("model/forges.ts");
@@ -155,7 +156,7 @@ export function forges(r: Registry) {
     { label: "The Forges make the cap graphite before sealing ends", kind: "schedule" },
     () => ({
       pass: v("graphite-by-sealing") >= v("cryo-cap-mass"),
-      detail: `${v("graphite-by-sealing").toExponential(2)} kg of graphite by the end of sealing; the caps need ${v("cryo-cap-mass").toExponential(2)} kg.`,
+      detail: `${fmt(r, "graphite-by-sealing")} of graphite by the end of sealing; the caps need ${fmt(r, "cryo-cap-mass")}.`,
     }),
   );
 }

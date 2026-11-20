@@ -1,7 +1,8 @@
 /** Ceres Ice Train: coilguns on Ceres throw water ice onto transfer orbits to Venus. */
 import { circularSpeed, hohmann, offWindowPenalty, period } from "../physics.ts";
 import type { Registry } from "../registry.ts";
-import { DAY_S, YEAR_S } from "../time.ts";
+import { DAY_S } from "../time.ts";
+import { fmt } from "./text.ts";
 
 export function iceTrain(r: Registry) {
   const { v } = r.in("model/ice.ts");
@@ -464,7 +465,7 @@ export function iceTrain(r: Registry) {
     { label: "The last Brick arrives before the deadline", kind: "schedule" },
     () => ({
       pass: v("last-arrival") <= v("deadline"),
-      detail: `Last launch ${(2027 + v("ice-launch-end") / 365.25).toFixed(2)}, transfer ${((v("ice-transfer-days") * DAY_S) / YEAR_S).toFixed(2)} yr, last arrival ${(2027 + v("last-arrival") / 365.25).toFixed(2)}.`,
+      detail: `Last launch ${fmt(r, "ice-launch-end", { date: "day" })}, a ${fmt(r, "ice-transfer-days", { show: "yr" })} transfer, last arrival ${fmt(r, "last-arrival", { date: "day" })}.`,
     }),
   );
 }

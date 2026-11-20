@@ -1,5 +1,8 @@
 /** Acid Sweep and Aegis Shield: clearing the sulfur and guarding the new water. */
+
+import { formatNumber } from "../format.ts";
 import type { Registry } from "../registry.ts";
+import { fmt } from "./text.ts";
 
 export function acid(r: Registry) {
   const { v } = r.in("model/shield.ts");
@@ -119,5 +122,94 @@ export function aegis(r: Registry) {
     "aegis-current",
     { label: "Current per turn", unit: "A", sig: 1, formula: "NI / N", basis: "invented" },
     () => v("aegis-ampere-turns") / v("aegis-turns"),
+  );
+  // A thin current loop: self-inductance μ₀a(ln(8a/b) − 2), and an outward pull on its winding that
+  // puts a hoop tension μ₀I²(ln(8a/b) − 1)/4π in it (Shafranov's thin-ring result).
+  const log = () => Math.log((8 * v("aegis-coil-radius")) / v("aegis-winding-radius"));
+  r.q(
+    "aegis-stored-energy",
+    {
+      label: "Magnetic energy stored in the Aegis coil",
+      unit: "J",
+      sig: 2,
+      formula: "½ μ₀ a (ln(8a/b) − 2) (NI)²",
+      basis: "physics",
+    },
+    () =>
+      0.5 *
+      v("vacuum-permeability") *
+      v("aegis-coil-radius") *
+      (log() - 2) *
+      v("aegis-ampere-turns") ** 2,
+  );
+  r.q(
+    "aegis-hoop-tension",
+    {
+      label: "Tension the coil's own field puts in its winding",
+      unit: "N",
+      sig: 2,
+      formula: "μ₀ (NI)² (ln(8a/b) − 1) / 4π",
+      basis: "physics",
+    },
+    () => (v("vacuum-permeability") * v("aegis-ampere-turns") ** 2 * (log() - 1)) / (4 * Math.PI),
+  );
+  r.q(
+    "aegis-structure-mass",
+    {
+      label: "Least carbon fibre that holds the coil together",
+      unit: "kg",
+      sig: 2,
+      formula: "2π a × (T / σ) × ρ",
+      basis: "physics",
+      note: "At the fibre's full rated strength with no safety margin, so a floor. By the virial theorem no structure of any shape can hold the coil with less material than its stored energy times density over strength.",
+    },
+    () =>
+      2 *
+      Math.PI *
+      v("aegis-coil-radius") *
+      (v("aegis-hoop-tension") / v("carbon-fibre-strength")) *
+      v("carbon-fibre-density"),
+  );
+  r.q(
+    "aegis-wind-force",
+    {
+      label: "Solar wind push on the magnetic bubble",
+      unit: "N",
+      sig: 1,
+      formula: "p π R²",
+      basis: "physics",
+    },
+    () => v("solar-wind-pressure") * Math.PI * v("aegis-bubble-radius") ** 2,
+  );
+  r.q(
+    "aegis-wind-beta",
+    {
+      label: "The wind's push on the coil over the Sun's pull on it",
+      unit: "1",
+      sig: 1,
+      formula: "(F / M) / (μ☉ / r²)",
+      basis: "physics",
+      note: "The Veil balances a light push larger than the Sun's pull at its station; the coil's is far smaller, so it sits close to L1.",
+    },
+    () =>
+      v("aegis-wind-force") /
+      v("aegis-structure-mass") /
+      (v("sun-mu") / (v("venus-orbit") - v("veil-distance")) ** 2),
+  );
+  r.c(
+    "aegis-structure",
+    {
+      label: "The Foundry can build the structure that holds the Aegis coil together",
+      kind: "capacity",
+    },
+    () => {
+      const days =
+        (v("aegis-structure-mass") * v("foundry-doubling-days")) /
+        (v("foundry-final-mass") * Math.LN2);
+      return {
+        pass: days <= v("foundry-doubling-days"),
+        detail: `The coil's field pulls on its winding with ${fmt(r, "aegis-hoop-tension")}; holding it takes at least ${fmt(r, "aegis-structure-mass")} of carbon fibre at full strength, ${formatNumber(days, 2)} days of the full Foundry's output against the ${fmt(r, "foundry-doubling-days")} of one doubling.`,
+      };
+    },
   );
 }

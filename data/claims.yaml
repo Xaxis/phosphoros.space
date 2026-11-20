@@ -54,8 +54,8 @@
 - { model: earth-launched-shade-launches, brief: 1.2e6, where: "2.3" }
 
 # --- 2.5 and 2.9.1 Ouroboros Foundry -------------------------------------------------------------------
-- { model: foundry-doublings, brief: 27, tol: 0, where: "2.5" }
-- { model: foundry-final-mass, brief: 1.3e14, where: "2.9.1" }
+- { model: foundry-doublings, brief: 27, tol: 0, where: "2.5", correction: foundry-products }
+- { model: foundry-final-mass, brief: 1.3e14, where: "2.9.1", correction: foundry-products }
 - { model: foundry-mercury-share, brief: 3e-10, tol: 0.35, where: "2.9.1",
     note: "The brief divides 10¹⁴ kg by Mercury's mass; at the full 1.34 × 10¹⁴ kg it is 4 × 10⁻¹⁰." }
 - { model: foundry-power-per-kg, brief: 13, where: "2.9.1" }
@@ -63,21 +63,21 @@
     note: "The brief multiplies 13 W/kg by 10¹⁴ kg. At the full 1.34 × 10¹⁴ kg the Foundry draws 1.8 × 10¹⁵ W." }
 - { model: foundry-landing, brief: 2029-01-15, tol: 15, where: "2.9.1",
     note: "Launch moved from 15 to 1 October 2028 so that the brief's 105-day transfer lands in mid-January 2029, as its growth figures assume." }
-- { model: foundry-full-scale, brief: 2033-06-30, tol: 30, where: "2.9.1" }
+- { model: foundry-full-scale, brief: 2033-06-30, tol: 30, where: "2.9.1", correction: foundry-products }
 - { model: foundry-mass-2030, brief: 6e7, where: "2.9.1" }
 - { model: foundry-mass-2032, brief: 2.6e11, where: "2.9.1" }
-- { model: hardware-energy, brief: 1e22, where: "2.8" }
+- { model: hardware-energy, brief: 1e22, where: "2.8", correction: foundry-products }
 
 # --- 2.9.2 Helios Lattice ---------------------------------------------------------------------------
 - { model: mercury-sunlight, brief: 9126, tol: 0.01, where: "2.13" }
 - { model: helios-efficiency, brief: 0.15, tol: 0.001, where: "2.9.2" }
-- { model: helios-area, brief: 5.1e16, where: "2.9.2" }
-- { model: helios-mass, brief: 5.1e13, where: "2.9.2" }
-- { model: helios-petals, brief: 1.0e7, where: "2.9.2" }
+- { model: helios-area, brief: 5.1e16, where: "2.9.2", correction: budget-offwindow }
+- { model: helios-mass, brief: 5.1e13, where: "2.9.2", correction: budget-offwindow }
+- { model: helios-petals, brief: 1.0e7, where: "2.9.2", correction: budget-offwindow }
 - { model: helios-petal-mass, brief: 5.0e6, where: "2.9.2" }
-- { model: helios-sun-share, brief: 2e-7, tol: 0.1, where: "2.9.2" }
+- { model: helios-sun-share, brief: 2e-7, tol: 0.1, where: "2.9.2", correction: budget-offwindow }
 - { model: helios-spot, brief: 43, where: "2.9.2" }
-- { model: helios-supply, brief: 7.7e27, where: "2.8" }
+- { model: helios-supply, brief: 7.7e27, where: "2.8", correction: budget-offwindow }
 
 # --- 2.9.3 Hesperus Veil ------------------------------------------------------------------------------
 - { model: veil-v2-light-accel, brief: 0.0173, tol: 0.01, where: "2.9.3" }
@@ -96,7 +96,7 @@
 
 # --- 2.9.4 Thermal Chimneys ------------------------------------------------------------------------------
 - { model: venus-surface-density, brief: 65, tol: 0.02, where: "2.9.4" }
-- { model: chimney-mass-flow, brief: 4.1e9, tol: 0.02, where: "2.9.4" }
+- { model: chimney-mass-flow, brief: 4.1e9, tol: 0.02, where: "2.9.4", correction: chimney-design }
 - { model: chimney-heat, brief: 1.2e15, where: "2.9.4" }
 - { model: chimney-capacity, brief: 1.2e19, where: "2.9.4" }
 - { model: chimney-spacing, brief: 2.15e5, tol: 0.01, where: "2.9.4" }
@@ -104,8 +104,8 @@
 # --- 2.9.5 Photonic Exhaust ------------------------------------------------------------------------------
 - { model: exhaust-wavelength, brief: 2.3e-6, tol: 0.01, where: "2.9.5" }
 - { model: exhaust-flux, brief: 9e5, tol: 0.02, where: "2.9.5" }
-- { model: exhaust-work, brief: 2.84e27, tol: 0.01, where: "2.13" }
-- { model: exhaust-work-ratio, brief: 5.4, tol: 0.02, where: "2.13" }
+- { model: exhaust-work, brief: 2.84e27, tol: 0.01, where: "2.13", correction: chimney-design }
+- { model: exhaust-work-ratio, brief: 5.4, tol: 0.02, where: "2.13", correction: chimney-design }
 - { model: exhaust-rejected, brief: 3.4e27, where: "2.9.5" }
 - { model: exhaust-heat-avg, brief: 4.8e18, where: "2.9.5" }
 - { model: exhaust-work-avg, brief: 2.6e19, where: "2.9.5" }
@@ -167,9 +167,9 @@
 - { model: ice-transfer-years, brief: 3.63e7, tol: 0.01, where: "2.13" }
 - { model: ice-launch-start, brief: 2033-06-30, tol: 31, where: "2.10" }
 - { model: ice-launch-end, brief: 2035-10-31, tol: 31, where: "2.10" }
-- { model: ice-throughput, brief: 1.36e12, tol: 0.03, where: "2.9.8" }
-- { model: ice-bricks-per-second, brief: 1360, tol: 0.03, where: "2.9.8" }
-- { model: railhead-interval, brief: 7.4, tol: 0.03, where: "2.9.8" }
+- { model: ice-throughput, brief: 1.36e12, tol: 0.03, where: "2.9.8", correction: foundry-products }
+- { model: ice-bricks-per-second, brief: 1360, tol: 0.03, where: "2.9.8", correction: foundry-products }
+- { model: railhead-interval, brief: 7.4, tol: 0.03, where: "2.9.8", correction: foundry-products }
 - { model: railhead-length, brief: 10400, tol: 0.02, where: "2.9.8" }
 - { model: railhead-shot-time, brief: 3.3, tol: 0.03, where: "2.9.8" }
 - { model: brick-side, brief: 103, tol: 0.01, where: "2.9.8" }
@@ -184,7 +184,7 @@
 - { model: ceres-new-aphelion, brief: 4.937e11, tol: 0.01, where: "2.9.8" }
 - { model: launch-window-period, brief: 2.24e7, tol: 0.03, where: "2.9.8" }
 - { model: ocean-depth, brief: 217, tol: 0.01, where: "2.5" }
-- { model: first-catch, brief: 2034-08-15, tol: 31, where: "2.9.8" }
+- { model: first-catch, brief: 2034-08-15, tol: 31, where: "2.9.8", correction: foundry-products }
 
 # --- 2.9.9 Braking Ring -----------------------------------------------------------------------------------
 - { model: ring-circumference, brief: 4.054e7, tol: 0.001, where: "2.9.9" }
@@ -212,7 +212,7 @@
 - { model: aegis-field, brief: 9.5e-8, tol: 0.02, where: "2.9.11" }
 - { model: aegis-dipole, brief: 9.5e20, tol: 0.02, where: "2.9.11" }
 - { model: aegis-vs-earth, brief: 0.01, tol: 0.25, where: "2.9.11" }
-- { model: aegis-ampere-turns, brief: 3e12, where: "2.9.11" }
+- { model: aegis-ampere-turns, brief: 3e12, where: "2.9.11", correction: aegis-coil }
 
 # --- 2.6 The finish line, 2.9.13 Choir ---------------------------------------------------------------------
 - { model: final-pressure, brief: 2.4e5, where: "2.6" }

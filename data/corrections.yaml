@@ -232,16 +232,127 @@
     {genesis-end|date=day}, and a new check holds that to the deadline. That date used to mark the
     end of seeding; it now marks green water.
   before: { genesis-end: 2036-12-15 }
-- id: budget-offwindow
+- id: foundry-products
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Foundry pays for what it builds
+  text: >-
+    Version 2 grew the Foundry as if the Veil and the Lattice cost it nothing, and let the
+    Lattice's power climb with the Foundry from 2030. Mass is conserved: every kilogram of product
+    is a kilogram the Foundry did not add to itself. Now it stops growing for
+    {veil-diversion-days} to build the Veil, whose parts take {mercury-venus-transfer-days} to coast
+    from Mercury to L1, so the Veil closes on {veil-close|date=day}, late enough that the Foundry is
+    large. It then grows to full scale and builds the Lattice and the Ring after. Growing to about
+    the mass of what it must build next finishes soonest, so it stops at {foundry-doublings}
+    doublings, {foundry-final-mass}, instead of 27. Active cooling starts with the Lattice's first
+    power, {cooling-start|date=day}, instead of January 2033, and the ice launches with full power
+    on {ice-launch-start|date=day}.
+  before:
+    foundry-target-mass: 1.0e14
+    foundry-doublings: 27
+    foundry-final-mass: 1.34e14
+    foundry-full-scale: 2033-06-22
+    foundry-years-to-scale: 1620
+    foundry-peak-power: 1.79e15
+    foundry-mercury-share: 4.07e-10
+    veil-close: 2032-06-30
+    veil-diversion-days: 19.3
+    cooling-start: 2033-01-01
+    helios-full-power: 2033-06-22
+    helios-supply-years: 1288
+    ice-launch-start: 2033-06-22
+    ice-campaign: 7.35e7
+    ice-throughput: 1.36e12
+    ice-bricks-per-second: 1360
+    railhead-interval: 7.35
+    launch-windows: 3.28
+    first-catch: 2034-08-17
+    ring-pays-from: 2034-08-17
+    ring-power: 7.22e19
+    ring-braking-force: 8.75e15
+    ring-net-braking-force: 8.10e15
+    ring-net-overload: 266
+- id: chimney-design
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Cooling waits for the chimneys, and the chimneys cool the air less
+  issue: 5
+  text: >-
+    The simulation now caps the heat it removes at what the chimneys carry; the cap binds on
+    {traj-chimney-days}. It also charges what the chimneys cost the pumps. The exchangers cooled the
+    air by 300 K, and the pumps see that heat over the whole range, as if the air were at the
+    range's log-mean temperature: about 22% colder, which raised the work for each joule of the
+    gas's heat by a third or more.
+    Version 3's chimneys are wider, {chimney-diameter}, and cool the air by {chimney-gas-cooling},
+    so the pumps see {chimney-cold-factor} of its temperature. The bigger flow costs fan power,
+    {chimney-fan-power}, which the budget now charges.
+  before:
+    chimney-diameter: 2000
+    chimney-gas-cooling: 300
+    chimney-flow-area: 3.14e6
+    chimney-mass-flow: 4.10e9
+    chimney-heat: 1.23e15
+    chimney-capacity: 1.23e19
+    chimney-vs-peak: 2.05
+    exhaust-work-sensible: 1.02e27
+    exhaust-work: 2.83e27
+    exhaust-work-ratio: 5.35
+    cryo-refrigeration-share: 0.00154
+- id: aegis-coil
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Aegis coil grows to 1,000 km so it can hold itself together
+  issue: 6
+  text: >-
+    A magnet's field pulls its own winding outward. Version 2's 10 km coil would have needed about
+    10¹⁷ kg of the strongest carbon fibre to hold together, far more than the Foundry ever builds.
+    The same dipole from a wider loop needs far less current, and the pull falls with the cube of
+    the radius. At {aegis-coil-radius} the coil carries {aegis-ampere-turns} in all,
+    {aegis-current} per turn, and its structure needs at least {aegis-structure-mass}.
+  before: { aegis-coil-radius: 1.0e4, aegis-ampere-turns: 3.03e12, aegis-current: 3.03e6 }
+- id: exhaust-entropy
   kind: open
   version: "3"
   date: 2026-11-20
-  title: From the Lattice alone, the energy budget does not close
+  title: The Exhaust's narrow beams cost far more pump work than the model charges
+  issue: 4
+  text: >-
+    The model charges the heat pumps the Carnot work for emitters at {exhaust-effective-temp}, right
+    for light spread over colours and directions the way a surface that hot spreads it. The tiles
+    instead put {exhaust-flux} into a {exhaust-band} band and a {exhaust-cone} cone, light that counts
+    as at least {exhaust-light-temp} by its entropy. Lifting a joule from the starting air into it
+    takes {exhaust-work-multiple} times the work charged. Either the tiles spread their light over
+    far more colours and directions, or the pumps need many times the power. The budget's pump work
+    is a floor until this is solved.
+- id: budget-offwindow
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Lattice grows to 8.5 × 10¹⁹ W so the budget closes without the Ring
   issue: 12
   text: >-
-    Charging the launches fired between windows adds {ice-launch-offwindow-energy} to the demand.
-    The Lattice delivers {helios-supply} against {budget-demand}, so it falls short:
-    {budget-spare} spare. The plan closes only with the Ring's recovered energy, which leaves
-    {budget-spare-with-ring} spare, so the Ring is no longer a margin but a necessity. Options
-    under study: fire harder near each window (more Railheads, less energy), a larger Lattice, or
-    less water.
+    Charging the launches fired between windows added {ice-launch-offwindow-energy} to the demand,
+    and the Lattice's power now arrives only once the Foundry stops growing. At 7 × 10¹⁹ W the
+    Lattice alone fell 7% short, and the air was Earth-like only in February 2037. Version 2 raised
+    the Lattice from 4 to 7 × 10¹⁹ W for the same reason: the launches. At {helios-power} the
+    Lattice delivers {helios-supply} against {budget-demand}, {budget-spare} spare before the Ring's
+    recovered energy and {budget-spare-with-ring} after, and the plan finishes on time. It takes
+    {helios-mass} of petals, which the full Foundry builds in {lattice-build-days}.
+  before:
+    helios-power: 7.0e19
+    helios-area: 5.14e16
+    helios-mass: 5.14e13
+    helios-petals: 1.05e7
+    helios-sun-share: 1.83e-7
+    helios-supply: 7.79e27
+    helios-sunlight-energy: 5.19e28
+    helios-loss-energy: 4.41e28
+    helios-receiver-incident: 9.33e19
+    helios-receiver-area: 9.33e12
+    helios-receiver-loss: 2.33e19
+    helios-fin-area: 4.06e13
+    helios-affordable: 2033-03-31
+    budget-supply-total: 1.31e28

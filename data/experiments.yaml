@@ -24,7 +24,7 @@ experiments:
     where: Low Earth orbit
     tech: helios
     proves: Coherent power beaming
-    pass: 1 MW over 1,000 km between satellites at 30% end to end
+    pass: 1 MW over a thousand kilometres between satellites at 30% end to end
     kill: Phase lock fails beyond 100 emitters
   - id: veil-1
     name: Veil-1
@@ -44,7 +44,7 @@ experiments:
     name: Cryo-seal
     where: Earth
     tech: cryo
-    proves: "Dry-ice storage under a {earth-like-temp} sky"
+    proves: "Dry-ice storage under a {earth-surface-temp} sky"
     pass: Under 0.1 W/m² of heat leak for 12 months
     kill: The cap cracks under thermal cycling
   - id: mini-aegis

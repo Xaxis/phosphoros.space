@@ -8,7 +8,7 @@ no engineering can answer: whether Venus should be changed at all, who decides, 
 | Risk | What goes wrong | Safeguard |
 | --- | --- | --- |
 | Runaway replication | Copies grow past their mandate | A hard mass budget in the Choir Mass Ledger, signed build orders, and an international kill code |
-| Beam misdirection | A beam carrying [7.0 × 10¹⁹ W](numbers.md#helios-power) hits the wrong target | Every beam fires only with a live, signed handshake from its receiver and defocuses within a millisecond if it drops |
+| Beam misdirection | A beam carrying [8.5 × 10¹⁹ W](numbers.md#helios-power) hits the wrong target | Every beam fires only with a live, signed handshake from its receiver and defocuses within a millisecond if it drops |
 | Veil failure after cooling | Sunlight boils the CO₂ back out | [3.8 × 10⁸](numbers.md#veil-slats) independent slats with 20% spare, slats that fail opaque, and CO₂ sealed in cryo-continents |
 | Cryo-continent breach | CO₂ escapes back into the air | [1.5 × 10⁶](numbers.md#cryo-cells) compartments of [100 km²](numbers.md#cryo-cell-area), each with its own seal and refrigeration |
 | Ceres depletion | [39%](numbers.md#ice-ceres-water-share) of Ceres's water is used and its orbit is changed for good | Agreed internationally in advance; comets from the outer belt as the fallback |
@@ -56,7 +56,7 @@ from the outer Solar System as the fallback source of water.
 ### Weaponization
 
 Everything that makes Phosphoros work could be used to hurt people. The Helios Lattice delivers
-[7.0 × 10¹⁹ W](numbers.md#helios-power), in beams that receivers take at
+[8.5 × 10¹⁹ W](numbers.md#helios-power), in beams that receivers take at
 [10 MW/m²](numbers.md#helios-receiver-intensity). The Ice Train throws [1 Mt](numbers.md#brick-mass) Bricks
 at [6.4 km/s](numbers.md#ice-launch-speed), and their transfer orbits from Ceres to Venus cross Earth's
 orbit on the way in. The Ring's rotor stores the energy of [7.0 × 10¹² kg](numbers.md#ring-rotor-mass)
@@ -77,9 +77,9 @@ governance exists before the hardware does.
 
 A factory that copies itself every [60 d](numbers.md#foundry-doubling-days) is the plan's engine and its
 most obvious danger. The same exponential that grows a [1,000 t](numbers.md#foundry-seed-mass) seed into
-[1.3 × 10¹⁴ kg](numbers.md#foundry-final-mass) in [4.4 yr](numbers.md#foundry-years-to-scale) would not stop
+[6.7 × 10¹³ kg](numbers.md#foundry-final-mass) in [4.3 yr](numbers.md#foundry-years-to-scale) would not stop
 on its own at the mass the plan needs. At full scale the Foundry is only
-[4 × 10⁻¹⁰](numbers.md#foundry-mercury-share) of Mercury, so the limit has to be imposed; Mercury will not
+[2 × 10⁻¹⁰](numbers.md#foundry-mercury-share) of Mercury, so the limit has to be imposed; Mercury will not
 impose it.
 
 [Choir](technologies/choir.md)'s safety core imposes it in several independent ways. The Mass Ledger, an
@@ -114,6 +114,27 @@ The energy budget never counted the energy that lowering would recover, so this 
 that fails drops its Brick, which is the first option for that Brick: safe for Venus, costly in heat. The
 problem is open for [contributions](contribute.md#open-questions).
 
+### Nothing yet holds the Ring against the catch
+
+Also open, and also a [failing check](numbers.md#check-ring-net-force). Catching half the Bricks eastbound and half
+westbound cancels the twist the catch puts on the Ring, not its push: every Brick arrives from the same direction, so
+[8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) remains along Venus's orbital motion,
+[280](numbers.md#ring-net-overload) times the rotor's spare lift. An orbital ring has no stiff way to hand that force
+to the planet. The energy the catch recovers is real, and the budget counts it; what holds the Ring in place while it
+does is unsolved ([issue 3](https://github.com/Xaxis/phosphoros.space/issues/3)). If no answer is found the Bricks
+must be braked some other way, and the [34%](numbers.md#budget-spare-with-ring) spare that the Ring's energy adds is
+lost, leaving the Lattice's own [9.3%](numbers.md#budget-spare).
+
+### The Exhaust's light costs more than the model charges
+
+The [Photonic Exhaust](technologies/exhaust.md#the-cost-of-beamed-light) beams its heat away as light so concentrated
+in colour and direction that, by its entropy, it counts as at least
+[16,000 K](numbers.md#exhaust-light-temp). Pumping heat into such light takes
+[12](numbers.md#exhaust-work-multiple) times the work the budget charges, a [failing check](numbers.md#check-exhaust-entropy)
+and the biggest unpriced cost in the plan ([issue 4](https://github.com/Xaxis/phosphoros.space/issues/4)). Either the
+tiles spread their light far wider, which the thin air above the canopies must then let through, or the pumps and the
+Lattice grow several times. The Exhaust experiments on the [Research Agenda](research.md) must settle which.
+
 ## The treaties
 
 The 1967 Outer Space Treaty ([UNOOSA](sources.md#outer-space-treaty)) is the law that applies, and several
@@ -137,7 +158,7 @@ Planetary protection is governed in practice by COSPAR's policy ([COSPAR](source
 requirements by target and mission type to keep spacecraft from contaminating the places scientists want to
 study, and Earth from returned samples. It was written for probes. Nothing in the treaty or the policy
 contemplates rebuilding a planet, moving a dwarf planet's orbit or aiming
-[7.0 × 10¹⁹ W](numbers.md#helios-power) of beams across the inner Solar System.
+[8.5 × 10¹⁹ W](numbers.md#helios-power) of beams across the inner Solar System.
 
 ### What a new framework needs
 

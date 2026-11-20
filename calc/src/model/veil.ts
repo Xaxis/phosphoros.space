@@ -5,6 +5,7 @@
  */
 import { bisect, sunwardBalance } from "../physics.ts";
 import type { Registry } from "../registry.ts";
+import { fmt } from "./text.ts";
 
 export function veil(r: Registry) {
   const { v } = r.in("model/veil.ts");
@@ -95,7 +96,7 @@ export function veil(r: Registry) {
     },
     () => ({
       pass: Math.abs(v("veil-v2-net-accel")) < 1e-6,
-      detail: `Light pressure (${v("veil-v2-light-accel").toFixed(4)} m/s²) and Venus's gravity both point toward Venus; the shade falls with ${v("veil-v2-net-accel").toFixed(4)} m/s² and reaches Venus in about ${Math.max(1, Math.round(v("veil-v2-fall-days")))} day${Math.round(v("veil-v2-fall-days")) > 1 ? "s" : ""}.`,
+      detail: `Light pressure (${fmt(r, "veil-v2-light-accel")}) and Venus's gravity both point toward Venus; the shade falls with ${fmt(r, "veil-v2-net-accel")} and reaches Venus in about ${fmt(r, "veil-v2-fall-days")}.`,
     }),
   );
 
@@ -257,7 +258,7 @@ export function veil(r: Registry) {
     },
     () => ({
       pass: Math.abs(v("veil-net-accel")) < 1e-9,
-      detail: `At ${(v("veil-distance") / 1e9).toFixed(3)} million km sunward the residual is ${v("veil-net-accel").toExponential(1)} m/s², nil; slats trim the small, slow drift of this unstable point by tilting.`,
+      detail: `At ${fmt(r, "veil-distance", { show: "km" })} sunward of Venus the residual is ${fmt(r, "veil-net-accel")}; slats trim the small, slow drift of this unstable point by tilting.`,
     }),
   );
   r.q(
