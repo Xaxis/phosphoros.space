@@ -1841,10 +1841,19 @@ button.button {
   white-space: nowrap;
 }
 
-/* On a phone the numbers may wrap between words, never inside one, so all three columns fit. */
+/* On a phone the numbers may wrap between words, never inside one, and the cells tighten, so all
+   three columns fit without a sideways scroll. */
 @media (max-width: 640px) {
   .explorer-num {
     white-space: normal;
+    font-size: 0.76rem;
+  }
+  .explorer-table th,
+  .explorer-table td {
+    padding: 0.55rem 0.45rem;
+  }
+  .explorer-table td:first-child {
+    font-size: 0.85rem;
   }
 }
 

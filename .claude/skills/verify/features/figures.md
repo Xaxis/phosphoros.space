@@ -36,3 +36,5 @@ Proves it when: the check says "is current" and exits 0; `foundry-growth-dark.pn
 - Node cannot run `.tsx` alone: `tools/lib/register.ts` compiles it with sucrase (`node --import ./tools/lib/register.ts ...`; the scripts do this).
 - Colour only through theme classes (`f-<token>`); a hex in a figure breaks the dark or light theme.
 - Every number in a figure comes from the model through `show()`; never type one.
+- A figure with links passes `links` to `Frame` (it becomes a group named by its title), draws each link with `Link` and everything else inside `Art`, which hides it from assistive technology. Each link must light a visible box on focus in both themes; a link whose only shape is a thin bar needs a box round its whole row.
+- Numbers come out of `calc/src/format.ts` joined with no-break spaces (U+00A0), so "7.8 × 10²⁷ J" never splits. Type a plain space next to a unit in a figure and it can split again.
