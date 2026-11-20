@@ -95,6 +95,8 @@ export interface Proposal {
   id: string;
   who: string;
   year: number;
+  /** The table's name for it when its sources span years, e.g. "Landis (2011); HAVOC (2015)". */
+  cite?: string;
   title?: string;
   mechanism: string;
   verdict: string;

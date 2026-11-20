@@ -366,3 +366,13 @@
     counts the machines the model does size, {choir-machines}: the Lattice's Petals, the Veil's
     slats, the Exhaust canopies, the Thermal Chimneys, the Forges, the Railheads and the Ring's
     tether lifts. The Foundry's own robots are not sized, so this is a floor.
+- id: veil-spare
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Veil's spare slats are not claimed until the model carries them
+  text: >-
+    Version 2 listed 20% spare slats as a safeguard against the Veil failing after cooling. The
+    model sizes the Veil, its mass and the date the Foundry can afford it with no spares, so
+    version 3 no longer claims them. The safeguards it does carry are {veil-slats} independent
+    slats that fail opaque and the CO₂ sealed under the cryo-continents.

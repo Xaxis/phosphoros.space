@@ -51,9 +51,11 @@
   title: "IAU 2012 Resolution B2: re-definition of the astronomical unit of length"
   authors: International Astronomical Union
   year: 2012
-  url: https://www.iau.org/administration/resolutions/general_assemblies/
+  url: https://www.iau.org/IAU/Iau/Publications/List-of-Resolutions.aspx
   checked: 2026-11-20
-  note: The astronomical unit is exactly 149,597,870,700 m.
+  note: >-
+    The astronomical unit is exactly 149,597,870,700 m. The list gives Resolution B2 under the 2012
+    General Assembly; the version 2 link to the General Assemblies page now returns 404.
 - id: kopp-lean-2011
   kind: paper
   title: "A new, lower value of total solar irradiance: Evidence and climate significance"
@@ -181,7 +183,7 @@
   checked: 2026-11-20
   note: >-
     The author's own site no longer resolves; an archived copy is at
-    https://web.archive.org/web/20201204191839/http://www.paulbirch.net/TerraformingVenusQuickly.pdf
+    https://web.archive.org/web/20110516190418/http://www.paulbirch.net/TerraformingVenusQuickly.pdf
 - id: bullock-grinspoon-1996
   kind: paper
   title: The stability of climate on Venus

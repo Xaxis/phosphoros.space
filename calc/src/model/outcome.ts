@@ -130,6 +130,19 @@ export function outcome(r: Registry) {
     );
   }
 
+  r.q(
+    "helios-handshake-delay",
+    {
+      label: "Age of a receiver's handshake when it reaches its emitter, at the longest beam range",
+      unit: "s",
+      show: "min",
+      sig: 2,
+      formula: "range / c",
+      basis: "physics",
+    },
+    () => v("helios-range") / v("speed-of-light"),
+  );
+
   const machines = [
     "helios-petals",
     "veil-slats",

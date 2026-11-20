@@ -134,14 +134,14 @@ People have proposed terraforming Venus since 1961. Phosphoros borrows from the 
 <!-- table:literature -->
 | Proposal | Mechanism | Verdict |
 | --- | --- | --- |
-| Sagan (1961) [source](sources.md#sagan-1961) | Seed the clouds with algae to turn CO₂ into oxygen and organic matter | Leaves tens of bars of oxygen and the carbon still in the air; not viable alone |
-| Adelman (1982) [source](sources.md#adelman-1982) | Strip the atmosphere with asteroid impacts | Needs more impactor mass than the atmosphere it removes; rejected |
-| Birch (1991) [source](sources.md#birch-1991) | A sunshade near L1, freeze out the CO₂, bury or export it, import water from an icy moon, mirrors (solettas) for daylight, heat pipes, and a 24 h day made by the shade's orbit | About 200 years. The backbone of every later plan, including this one |
-| Bullock and Grinspoon (1996) [source](sources.md#bullock-grinspoon-1996) | React CO₂ with calcium and magnesium minerals in the crust | Takes 10 to 100 million years naturally |
-| Landis; NASA HAVOC (2011) [source](sources.md#landis-2003) | Aerostat cities floating at about 50 km, where pressure and temperature are Earth-like | Feasible habitats, not a planet |
-| Howe, Cloud Continents (2022) [source](sources.md#howe-2022) | A floating artificial surface at 50 km of about 7 × 10¹⁰ tiles 100 m across, with imported water | About 200 years, limited by energy |
-| Green and colleagues (NASA) (2017) [source](sources.md#nasa-mars-magnetic-2017) | A magnetic dipole at Mars's L1 point deflects the solar wind so an atmosphere can build up | Adapted here as the Aegis Shield |
-| Angel (2006) [source](sources.md#angel-2006) | A cloud of thin flyers near Earth's L1 that bend sunlight a few degrees to shade the planet | A serious design for cooling Earth; light pressure barely moves a refracting shade |
+| [Sagan (1961)](sources.md#sagan-1961) | Seed the clouds with algae to turn CO₂ into oxygen and organic matter | Leaves tens of bars of oxygen and the carbon still in the air; not viable alone |
+| Adelman (1982): [Adelman 1982](sources.md#adelman-1982), [Howe 2022](sources.md#howe-2022) | Strip the atmosphere with asteroid impacts | Needs more impactor mass than the atmosphere it removes, [4.8 × 10²⁰ kg](numbers.md#venus-atmosphere-mass); rejected |
+| [Birch (1991)](sources.md#birch-1991) | A sunshade near L1, freeze out the CO₂, bury or export it, import water from an icy moon, mirrors (solettas) for daylight, heat pipes, and a 24 h day made by the shade's orbit | About 200 years. The backbone of every later plan, including this one |
+| [Bullock and Grinspoon (1996)](sources.md#bullock-grinspoon-1996) | React CO₂ with calcium and magnesium minerals in the crust | Takes 10 to 100 million years naturally |
+| Landis (2011); HAVOC (2015): [Landis 2003](sources.md#landis-2003), [Landis 2011](sources.md#landis-2011), [Arney and Jones 2015](sources.md#havoc-2015) | Aerostat cities floating at about 50 km, where pressure and temperature are Earth-like | Feasible habitats, not a planet |
+| [Howe, Cloud Continents (2022)](sources.md#howe-2022) | A floating artificial surface at 50 km of [7.2 × 10¹⁰](numbers.md#howe-tiles) tiles 100 m across, with [2.3 × 10¹⁷ kg](numbers.md#howe-water-mass) of imported water | About 200 years, limited by energy |
+| Green and colleagues, NASA (2017): [Green et al. 2017](sources.md#nasa-mars-magnetic-2017), [Kaufman 2017](sources.md#nasa-mars-magnetic-2017-news) | A magnetic dipole at Mars's L1 point deflects the solar wind so an atmosphere can build up | Adapted here as the Aegis Shield |
+| [Angel (2006)](sources.md#angel-2006) | A cloud of thin flyers near Earth's L1 that bend sunlight a few degrees to shade the planet | A serious design for cooling Earth; light pressure barely moves a refracting shade |
 <!-- /table -->
 
 **What Phosphoros takes from Birch 1991.** Paul Birch's "Terraforming Venus Quickly"

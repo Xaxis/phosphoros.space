@@ -785,6 +785,22 @@
       "basis": "precedent",
       "source": "data/constants.yaml#L727"
     },
+    "howe-tiles": {
+      "value": 72000000000,
+      "unit": "count",
+      "shown": "7.2 × 10¹⁰",
+      "label": "Floating tiles, 100 m across, that Cloud Continents needs to cover Venus at 50 km",
+      "basis": "precedent",
+      "source": "data/constants.yaml#L735"
+    },
+    "howe-water-mass": {
+      "value": 230000000000000000,
+      "unit": "kg",
+      "shown": "2.3 × 10¹⁷ kg",
+      "label": "Water Cloud Continents imports, enough for arable soil over the whole planet",
+      "basis": "precedent",
+      "source": "data/constants.yaml#L741"
+    },
     "program-start": {
       "value": "2027-01-01",
       "unit": "date",
@@ -6031,13 +6047,26 @@
         "speed-of-light"
       ]
     },
+    "helios-handshake-delay": {
+      "value": 554.113,
+      "unit": "s",
+      "shown": "9.2 min",
+      "label": "Age of a receiver's handshake when it reaches its emitter, at the longest beam range",
+      "basis": "physics",
+      "source": "calc/src/model/outcome.ts#L134",
+      "formula": "range / c",
+      "inputs": [
+        "helios-range",
+        "speed-of-light"
+      ]
+    },
     "choir-machines": {
       "value": 388580000,
       "unit": "count",
       "shown": "3.9 × 10⁸",
       "label": "Machines the Choir runs that the model counts",
       "basis": "design",
-      "source": "calc/src/model/outcome.ts#L143",
+      "source": "calc/src/model/outcome.ts#L156",
       "formula": "Petals + slats + canopies + chimneys + Forges + Railheads + tether lifts",
       "inputs": [
         "helios-petals",

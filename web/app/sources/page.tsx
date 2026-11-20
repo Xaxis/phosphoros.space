@@ -74,11 +74,11 @@ export default function SourcesPage() {
                             {s.checked && <span>Checked {s.checked}</span>}
                             {numbers.length > 0 && (
                               <span>
-                                Used for{" "}
+                                Used for:{" "}
                                 {numbers.map((n, i) => (
                                   <span key={n}>
-                                    {i > 0 && ", "}
-                                    <a href={`/numbers#${n}`}>{r.get(n).label.toLowerCase()}</a>
+                                    {i > 0 && "; "}
+                                    <a href={`/numbers#${n}`}>{r.get(n).label}</a>
                                   </span>
                                 ))}
                               </span>

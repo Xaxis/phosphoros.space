@@ -171,7 +171,7 @@
     heat up to the Exhaust canopies at {chimney-heat} each.
   job: Lift deep heat to the cloud tops
   scale: Forced-convection columns {chimney-height} tall
-  breakthrough: Structures that survive {venus-surface-temp} and {venus-surface-pressure} for four years
+  breakthrough: Structures that survive {venus-surface-temp} and {venus-surface-pressure} through the {cooling-seconds} of active cooling
   specs:
     - { label: Number, value: "{chimney-count}, one per canopy, about {chimney-spacing} apart" }
     - { label: Diameter, value: "{chimney-diameter}" }
@@ -183,7 +183,7 @@
     - { label: Fans, value: "{chimney-fan-power} in all, {chimney-fan-share} of the heat carried" }
     - { label: Total capacity, value: "{chimney-capacity}, {chimney-vs-peak} times the {deep-heat-peak} peak deep heat flow" }
   invented:
-    - Silicon-carbide and graphene composite walls stable at 750 K in CO₂, SO₂ and acid for four years
+    - Silicon-carbide and graphene composite walls stable at {venus-surface-temp} in CO₂, SO₂ and acid for the {cooling-seconds} of active cooling
     - Ground anchors that grip basalt at {venus-surface-temp}
   precedent: []
   experiments: []
@@ -214,7 +214,7 @@
     - { label: Frost Towers, value: "Tiles at {frost-tower-temp} trap the last CO₂ to {frost-co2-pressure}" }
   invented:
     - "{exhaust-bandgap} thermophotonic diodes with photon recycling, {exhaust-eqe} external quantum efficiency at {exhaust-flux}"
-    - Hot-gas aerostat canopies {canopy-width} across at 62 to 66 km
+    - Hot-gas aerostat canopies {canopy-width} across, on the chimney tops {chimney-top} up
   precedent:
     - text: An LED at MIT emitted {led-2012-light-out} of light from {led-2012-power-in} of electricity, drawing the rest from heat.
       source: santhanam-2012

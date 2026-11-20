@@ -8,8 +8,8 @@ no engineering can answer: whether Venus should be changed at all, who decides, 
 | Risk | What goes wrong | Safeguard |
 | --- | --- | --- |
 | Runaway replication | Copies grow past their mandate | A hard mass budget in the Choir Mass Ledger, signed build orders, and an international kill code |
-| Beam misdirection | A beam carrying [8.5 × 10¹⁹ W](numbers.md#helios-power) hits the wrong target | Every beam fires only with a live, signed handshake from its receiver and defocuses within a millisecond if it drops |
-| Veil failure after cooling | Sunlight boils the CO₂ back out | [3.8 × 10⁸](numbers.md#veil-slats) independent slats with 20% spare, slats that fail opaque, and CO₂ sealed in cryo-continents |
+| Beam misdirection | A beam carrying [8.5 × 10¹⁹ W](numbers.md#helios-power) hits the wrong target | Every beam fires only with a live, signed handshake from its receiver and defocuses within [1 ms](numbers.md#beam-defocus-time) once the handshake stops arriving. At the longest range the handshake is [9.2 min](numbers.md#helios-handshake-delay) old when it arrives, so light already in flight, aimed where the receiver was, still lands |
+| Veil failure after cooling | Sunlight boils the CO₂ back out | [3.8 × 10⁸](numbers.md#veil-slats) independent slats that fail opaque, so a dead slat still shades, and CO₂ sealed in cryo-continents |
 | Cryo-continent breach | CO₂ escapes back into the air | [1.5 × 10⁶](numbers.md#cryo-cells) compartments of [100 km²](numbers.md#cryo-cell-area), each with its own seal and refrigeration |
 | Ceres depletion | [39%](numbers.md#ice-ceres-water-share) of Ceres's water is used and its orbit is changed for good | Agreed internationally in advance; comets from the outer belt as the fallback |
 | Native life on Venus | Cooling the planet would destroy it | The 2027 to 2028 cloud-life survey gates the Veil; a credible biosignature stops the program |
