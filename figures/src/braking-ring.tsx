@@ -3,7 +3,7 @@
  * their arrival speed and Venus's gravity (to scale), and a side view along the Ring of a catch, the
  * parking belt and a tether lift (heights to scale, lengths not).
  */
-import { Frame, Key, path, show, W } from "./kit.tsx";
+import { Art, Frame, Key, Link, path, show, textWidth, W } from "./kit.tsx";
 import { Arrow, Dot, Lines, Tag } from "./space-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -144,178 +144,185 @@ function BrakingRing(p: Props) {
   const brick = (x: number, y: number, key: string) => (
     <rect key={key} className="f-s1 f-ring" x={x - 5} y={y - 5} width={10} height={10} rx={2} />
   );
+  const ringName = `Braking Ring: ${t.alt} up, ${t.radius} from Venus's centre`;
+  const nameLines = ["Braking Ring", `${t.alt} up; dotted: parking belt`];
+  const nameY = CY + ringPx + 26;
+  const nameW = Math.max(textWidth(nameLines[0] ?? ""), textWidth(nameLines[1] ?? "", 11.5));
+  const nameBox = { x: CX - nameW / 2 - 6, y: nameY - 15, w: nameW + 12, h: 14.5 + 21 };
+  const sideName = `The Ring at ${t.alt}: a rotor at ${t.rotor} inside a stator that stands still`;
+  const rotor = `rotor ${t.rotor} inside a still stator`;
+  const rotorBox = { x: SX - 16, y: yRing + 7, w: textWidth(rotor, 11.5) + 12, h: 19 };
   return (
     <Frame
       id="braking-ring"
       title="Braking Ring: catching the Ice Train"
       desc={`Left, to scale, seen from the north: Venus and the Ring ${t.alt} up. Bricks come from behind Venus at ${t.vinf}, half aimed past each side, and Venus's gravity bends them onto the Ring's height at ${t.arrive}, eastbound on one side, westbound on the other. Right, a side view along the Ring: a catch, the parking belt and a tether lift.`}
       height={H}
+      links
     >
-      {/* Top view. */}
-      <text className="f-title" x={16} y={28}>
-        Seen from the north
-      </text>
-      <Tag x={16} y={50} text="To scale; tracks and belt enlarged" />
-      <circle className="f-hot-wash" cx={CX} cy={CY} r={RPX} />
-      <circle className="f-hot-line" cx={CX} cy={CY} r={RPX} strokeWidth={1.5} />
-      <text className="f-label" x={CX} y={CY - 4} textAnchor="middle">
-        Venus
-      </text>
-      <text className="f-note" x={CX} y={CY + 12} textAnchor="middle">
-        turns slowly westward
-      </text>
-      <circle
-        className="f-soft-line"
-        cx={CX}
-        cy={CY}
-        r={belt}
-        strokeWidth={1}
-        strokeDasharray="1 3"
-      />
-      <a href="/technologies/ring">
+      <Art>
+        {/* Top view. */}
+        <text className="f-title" x={16} y={28}>
+          Seen from the north
+        </text>
+        <Tag x={16} y={50} text="To scale; tracks and belt enlarged" />
+        <circle className="f-hot-wash" cx={CX} cy={CY} r={RPX} />
+        <circle className="f-hot-line" cx={CX} cy={CY} r={RPX} strokeWidth={1.5} />
+        <text className="f-label" x={CX} y={CY - 4} textAnchor="middle">
+          Venus
+        </text>
+        <text className="f-note" x={CX} y={CY + 12} textAnchor="middle">
+          turns slowly westward
+        </text>
+        <circle
+          className="f-soft-line"
+          cx={CX}
+          cy={CY}
+          r={belt}
+          strokeWidth={1}
+          strokeDasharray="1 3"
+        />
+      </Art>
+      {/* The streams pass wide of the Ring's name, so it is drawn here, in the link. */}
+      <Link href="/technologies/ring" label={ringName} box={nameBox}>
         <circle className="f-accent-line f-node" cx={CX} cy={CY} r={ringPx} strokeWidth={2.5}>
-          <title>{`Braking Ring: ${t.alt} up, ${t.radius} from Venus's centre`}</title>
+          <title>{ringName}</title>
         </circle>
-      </a>
-      <path className="f-s1-line f-mark-line" d={path(east)}>
-        <title>{`Eastbound Bricks: ${t.vinf} far out, ${t.arrive} at the Ring`}</title>
-      </path>
-      <path className="f-s1-line f-mark-line" d={path(west)}>
-        <title>{`Westbound Bricks: ${t.vinf} far out, ${t.arrive} at the Ring`}</title>
-      </path>
-      <path className="f-ink-line" d={track(1)} strokeWidth={6} strokeLinecap="round" />
-      <path className="f-ink-line" d={track(-1)} strokeWidth={6} strokeLinecap="round" />
-      <Arrow x1={pe.x} y1={pe.y} x2={pe.x2} y2={pe.y2} tone="ink" width={1.5} />
-      <Arrow x1={pw.x} y1={pw.y} x2={pw.x2} y2={pw.y2} tone="ink" width={1.5} />
-      <Dot x={ex} y={ey} tone="s1" title={`Eastbound catch at ${t.arrive}`} />
-      <Dot x={wx} y={wy} tone="s1" title={`Westbound catch at ${t.arrive}`} />
-      <Lines
-        x={pe.x2 + 8}
-        y={pe.y2 - 6}
-        halo
-        lines={["Eastbound catch", `braked to ${t.orbital}`]}
-      />
-      <Lines
-        x={pw.x2 - 8}
-        y={pw.y2 - 6}
-        anchor="end"
-        halo
-        lines={["Westbound catch", "the mirror image"]}
-      />
-      <Lines
-        x={CX}
-        y={CY - ringPx - 88}
-        anchor="middle"
-        halo
-        lines={[
-          { text: "Arrows: each catch pushes its track the way its", kind: "note" },
-          { text: "Brick was going. The twists cancel; the pushes add.", kind: "note" },
-        ]}
-      />
-      <Problem
-        x={CX - 86}
-        y={CY - ringPx - 47}
-        notes={["the forward pushes add up to", `${t.netOverload} times the Ring's lift`]}
-      />
-      {/* The resultant: the twists cancel, so it acts through the centre. */}
-      <Arrow
-        x1={CX}
-        y1={CY - 26}
-        x2={CX}
-        y2={CY - 82}
-        tone="danger"
-        width={2}
-        head={8}
-        title={`Net push on the Ring: ${t.net}, along Venus's orbital motion`}
-      />
-      <Lines
-        x={CX + 8}
-        y={CY - 62}
-        lines={[
-          { text: "net push", kind: "note" },
-          { text: t.net, kind: "note" },
-        ]}
-      />
-      <Lines
-        x={CX}
-        y={CY + ringPx + 26}
-        anchor="middle"
-        halo
-        lines={["Braking Ring", `${t.alt} up; dotted: parking belt`]}
-      />
-      <Lines
-        x={CX}
-        y={CY + ringPx + 68}
-        anchor="middle"
-        halo
-        lines={[
-          { text: "Bricks arrive from behind Venus,", kind: "note" },
-          { text: `${t.vinf} faster than the planet;`, kind: "note" },
-          { text: "its gravity bends them onto", kind: "note" },
-          { text: `the Ring's height at ${t.arrive}`, kind: "note" },
-        ]}
-      />
-      <Arrow x1={30} y1={H - 22} x2={30} y2={H - 62} tone="muted" />
-      <Lines
-        x={40}
-        y={H - 52}
-        lines={[
-          { text: "Venus's", kind: "note" },
-          { text: "orbital", kind: "note" },
-          { text: "motion", kind: "note" },
-        ]}
-      />
-      <Arrow x1={64} y1={H - 92} x2={22} y2={H - 92} tone="muted" />
-      <text className="f-note" x={22} y={H - 102}>
-        to the Sun
-      </text>
-      {[east, west].map((s, n) => {
-        // An arrowhead part way up each stream, pointing the way the Bricks go.
-        const i = s.findIndex(([, y]) => y < H - 70);
-        const a = s[i];
-        const b = s[i + 4];
-        if (!a || !b) return null;
-        return (
-          <Arrow key={n} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} tone="s1" head={8} width={0} />
-        );
-      })}
+        <Lines x={CX} y={nameY} anchor="middle" halo lines={nameLines} />
+      </Link>
+      <Art>
+        <path className="f-s1-line f-mark-line" d={path(east)}>
+          <title>{`Eastbound Bricks: ${t.vinf} far out, ${t.arrive} at the Ring`}</title>
+        </path>
+        <path className="f-s1-line f-mark-line" d={path(west)}>
+          <title>{`Westbound Bricks: ${t.vinf} far out, ${t.arrive} at the Ring`}</title>
+        </path>
+        <path className="f-ink-line" d={track(1)} strokeWidth={6} strokeLinecap="round" />
+        <path className="f-ink-line" d={track(-1)} strokeWidth={6} strokeLinecap="round" />
+        <Arrow x1={pe.x} y1={pe.y} x2={pe.x2} y2={pe.y2} tone="ink" width={1.5} />
+        <Arrow x1={pw.x} y1={pw.y} x2={pw.x2} y2={pw.y2} tone="ink" width={1.5} />
+        <Dot x={ex} y={ey} tone="s1" title={`Eastbound catch at ${t.arrive}`} />
+        <Dot x={wx} y={wy} tone="s1" title={`Westbound catch at ${t.arrive}`} />
+        <Lines
+          x={pe.x2 + 8}
+          y={pe.y2 - 6}
+          halo
+          lines={["Eastbound catch", `braked to ${t.orbital}`]}
+        />
+        <Lines
+          x={pw.x2 - 8}
+          y={pw.y2 - 6}
+          anchor="end"
+          halo
+          lines={["Westbound catch", "the mirror image"]}
+        />
+        <Lines
+          x={CX}
+          y={CY - ringPx - 88}
+          anchor="middle"
+          halo
+          lines={[
+            { text: "Arrows: each catch pushes its track the way its", kind: "note" },
+            { text: "Brick was going. The twists cancel; the pushes add.", kind: "note" },
+          ]}
+        />
+        <Problem
+          x={CX - 86}
+          y={CY - ringPx - 47}
+          notes={["the forward pushes add up to", `${t.netOverload} times the Ring's lift`]}
+        />
+        {/* The resultant: the twists cancel, so it acts through the centre. */}
+        <Arrow
+          x1={CX}
+          y1={CY - 26}
+          x2={CX}
+          y2={CY - 82}
+          tone="danger"
+          width={2}
+          head={8}
+          title={`Net push on the Ring: ${t.net}, along Venus's orbital motion`}
+        />
+        <Lines
+          x={CX + 8}
+          y={CY - 62}
+          lines={[
+            { text: "net push", kind: "note" },
+            { text: t.net, kind: "note" },
+          ]}
+        />
+        <Lines
+          x={CX}
+          y={CY + ringPx + 68}
+          anchor="middle"
+          halo
+          lines={[
+            { text: "Bricks arrive from behind Venus,", kind: "note" },
+            { text: `${t.vinf} faster than the planet;`, kind: "note" },
+            { text: "its gravity bends them onto", kind: "note" },
+            { text: `the Ring's height at ${t.arrive}`, kind: "note" },
+          ]}
+        />
+        <Arrow x1={30} y1={H - 22} x2={30} y2={H - 62} tone="muted" />
+        <Lines
+          x={40}
+          y={H - 52}
+          lines={[
+            { text: "Venus's", kind: "note" },
+            { text: "orbital", kind: "note" },
+            { text: "motion", kind: "note" },
+          ]}
+        />
+        <Arrow x1={64} y1={H - 92} x2={22} y2={H - 92} tone="muted" />
+        <text className="f-note" x={22} y={H - 102}>
+          to the Sun
+        </text>
+        {[east, west].map((s, n) => {
+          // An arrowhead part way up each stream, pointing the way the Bricks go.
+          const i = s.findIndex(([, y]) => y < H - 70);
+          const a = s[i];
+          const b = s[i + 4];
+          if (!a || !b) return null;
+          return (
+            <Arrow key={n} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} tone="s1" head={8} width={0} />
+          );
+        })}
 
-      {/* Side view along the Ring. */}
-      <line className="f-axis" x1={SX - 18} x2={SX - 18} y1={Y_TOP - 6} y2={Y_GROUND} />
-      {[0, 100, 200, 300, 400].map((km) => (
-        <g key={km}>
-          <line className="f-grid" x1={SX - 18} x2={SR} y1={alt(km)} y2={alt(km)} />
-          <text className="f-tick" x={SX - 24} y={alt(km)} dy="0.32em" textAnchor="end">
-            {km} km
-          </text>
-        </g>
-      ))}
-      <text className="f-title" x={SX - 52} y={28}>
-        Side view along the Ring
-      </text>
-      <Tag x={SX - 52} y={50} text="Heights to scale, lengths not" />
-      {/* The air and clouds, then the ground. */}
-      <rect
-        className="f-hot-wash"
-        x={SX - 18}
-        y={alt(p.cloudTop)}
-        width={SR - SX + 18}
-        height={Y_GROUND - alt(p.cloudTop)}
-      />
-      <line
-        className="f-ink-line"
-        x1={SX - 18}
-        x2={SR}
-        y1={Y_GROUND}
-        y2={Y_GROUND}
-        strokeWidth={1.5}
-      />
-      <text className="f-note" x={SX - 10} y={Y_GROUND - 8}>
-        air; clouds up to {t.cloudTop}
-      </text>
-
+        {/* Side view along the Ring. */}
+        <line className="f-axis" x1={SX - 18} x2={SX - 18} y1={Y_TOP - 6} y2={Y_GROUND} />
+        {[0, 100, 200, 300, 400].map((km) => (
+          <g key={km}>
+            <line className="f-grid" x1={SX - 18} x2={SR} y1={alt(km)} y2={alt(km)} />
+            <text className="f-tick" x={SX - 24} y={alt(km)} dy="0.32em" textAnchor="end">
+              {km} km
+            </text>
+          </g>
+        ))}
+        <text className="f-title" x={SX - 52} y={28}>
+          Side view along the Ring
+        </text>
+        <Tag x={SX - 52} y={50} text="Heights to scale, lengths not" />
+        {/* The air and clouds, then the ground. */}
+        <rect
+          className="f-hot-wash"
+          x={SX - 18}
+          y={alt(p.cloudTop)}
+          width={SR - SX + 18}
+          height={Y_GROUND - alt(p.cloudTop)}
+        />
+        <line
+          className="f-ink-line"
+          x1={SX - 18}
+          x2={SR}
+          y1={Y_GROUND}
+          y2={Y_GROUND}
+          strokeWidth={1.5}
+        />
+        <text className="f-note" x={SX - 10} y={Y_GROUND - 8}>
+          air; clouds up to {t.cloudTop}
+        </text>
+      </Art>
       {/* The Ring: stator and rotor. */}
-      <a href="/technologies/ring">
+      <Link href="/technologies/ring" label={sideName} box={rotorBox}>
         <rect
           className="f-accent f-node"
           x={SX - 18}
@@ -324,108 +331,110 @@ function BrakingRing(p: Props) {
           height={8}
           rx={4}
         >
-          <title>{`The Ring at ${t.alt}: a rotor at ${t.rotor} inside a stator that stands still`}</title>
+          <title>{sideName}</title>
         </rect>
-      </a>
-      <text className="f-note" x={SX - 10} y={yRing + 20}>
-        rotor {t.rotor} inside a still stator
-      </text>
-      {/* A catch on a track. */}
-      <line
-        className="f-ink-line"
-        x1={trackX0}
-        x2={trackX1}
-        y1={yRing - 7}
-        y2={yRing - 7}
-        strokeWidth={3}
-        strokeLinecap="round"
-      />
-      {brick(trackX0 - 22, yRing - 13, "in")}
-      <Arrow
-        x1={trackX0 - 52}
-        y1={yRing - 13}
-        x2={trackX0 - 30}
-        y2={yRing - 13}
-        tone="s1"
-        head={6}
-      />
-      <Lines
-        x={trackX0 - 30}
-        y={yRing - 46}
-        lines={[`in at ${t.arrive}`, `track ${t.track}, ${t.g}`]}
-      />
-      {/* Off to the parking belt. */}
-      <path
-        className="f-s1-line"
-        d={`M${trackX1},${yRing - 9}C${trackX1 + 14},${yRing - 9} ${trackX1 + 14},${yBelt} ${trackX1 + 30},${yBelt}`}
-        strokeWidth={1.5}
-      />
-      <line
-        className="f-soft-line"
-        x1={trackX1 + 30}
-        x2={SR}
-        y1={yBelt}
-        y2={yBelt}
-        strokeDasharray="1 3"
-      />
-      {[liftX - 26, liftX + 14, liftX + 46].map((x) => brick(x, yBelt, `belt-${x}`))}
-      <text className="f-note" x={SR - 4} y={yBelt - 12} textAnchor="end">
-        parking belt
-      </text>
+        <text className="f-note" x={SX - 10} y={yRing + 20}>
+          {rotor}
+        </text>
+      </Link>
+      <Art>
+        {/* A catch on a track. */}
+        <line
+          className="f-ink-line"
+          x1={trackX0}
+          x2={trackX1}
+          y1={yRing - 7}
+          y2={yRing - 7}
+          strokeWidth={3}
+          strokeLinecap="round"
+        />
+        {brick(trackX0 - 22, yRing - 13, "in")}
+        <Arrow
+          x1={trackX0 - 52}
+          y1={yRing - 13}
+          x2={trackX0 - 30}
+          y2={yRing - 13}
+          tone="s1"
+          head={6}
+        />
+        <Lines
+          x={trackX0 - 30}
+          y={yRing - 46}
+          lines={[`in at ${t.arrive}`, `track ${t.track}, ${t.g}`]}
+        />
+        {/* Off to the parking belt. */}
+        <path
+          className="f-s1-line"
+          d={`M${trackX1},${yRing - 9}C${trackX1 + 14},${yRing - 9} ${trackX1 + 14},${yBelt} ${trackX1 + 30},${yBelt}`}
+          strokeWidth={1.5}
+        />
+        <line
+          className="f-soft-line"
+          x1={trackX1 + 30}
+          x2={SR}
+          y1={yBelt}
+          y2={yBelt}
+          strokeDasharray="1 3"
+        />
+        {[liftX - 26, liftX + 14, liftX + 46].map((x) => brick(x, yBelt, `belt-${x}`))}
+        <text className="f-note" x={SR - 4} y={yBelt - 12} textAnchor="end">
+          parking belt
+        </text>
 
-      {/* A tether lift lowers a Brick, as designed; the release and the fall. */}
-      <line
-        className="f-ink-line"
-        x1={liftX}
-        x2={liftX}
-        y1={yRing + 4}
-        y2={yRelease}
-        strokeWidth={1.5}
-      />
-      {brick(liftX, alt(240), "lift")}
-      <Arrow x1={liftX + 14} y1={alt(300)} x2={liftX + 14} y2={alt(200)} tone="muted" head={6} />
-      <line
-        className="f-axis"
-        x1={liftX - 34}
-        x2={liftX + 34}
-        y1={yRelease}
-        y2={yRelease}
-        strokeDasharray="2 3"
-      />
-      {brick(liftX, yRelease + 8, "release")}
-      <Arrow
-        x1={liftX}
-        y1={yRelease + 18}
-        x2={liftX}
-        y2={Y_GROUND - 4}
-        tone="muted"
-        head={6}
-        dash="3 3"
-      />
-      <Lines
-        x={liftX - 12}
-        y={alt(330)}
-        anchor="end"
-        lines={[`${t.lifts} tether lifts`, `a Brick every ${t.interval}`, `down to ${t.release}`]}
-      />
-      <Lines
-        x={liftX - 12}
-        y={yRelease + 26}
-        anchor="end"
-        lines={[
-          { text: "released, falls", kind: "label" },
-          { text: `gaining ${t.fall}`, kind: "note" },
-        ]}
-      />
-      <Problem
-        x={liftX - 120}
-        y={alt(200)}
-        notes={["lowering needs", `${t.overload} times the Ring's lift`]}
-      />
+        {/* A tether lift lowers a Brick, as designed; the release and the fall. */}
+        <line
+          className="f-ink-line"
+          x1={liftX}
+          x2={liftX}
+          y1={yRing + 4}
+          y2={yRelease}
+          strokeWidth={1.5}
+        />
+        {brick(liftX, alt(240), "lift")}
+        <Arrow x1={liftX + 14} y1={alt(300)} x2={liftX + 14} y2={alt(200)} tone="muted" head={6} />
+        <line
+          className="f-axis"
+          x1={liftX - 34}
+          x2={liftX + 34}
+          y1={yRelease}
+          y2={yRelease}
+          strokeDasharray="2 3"
+        />
+        {brick(liftX, yRelease + 8, "release")}
+        <Arrow
+          x1={liftX}
+          y1={yRelease + 18}
+          x2={liftX}
+          y2={Y_GROUND - 4}
+          tone="muted"
+          head={6}
+          dash="3 3"
+        />
+        <Lines
+          x={liftX - 12}
+          y={alt(330)}
+          anchor="end"
+          lines={[`${t.lifts} tether lifts`, `a Brick every ${t.interval}`, `down to ${t.release}`]}
+        />
+        <Lines
+          x={liftX - 12}
+          y={yRelease + 26}
+          anchor="end"
+          lines={[
+            { text: "released, falls", kind: "label" },
+            { text: `gaining ${t.fall}`, kind: "note" },
+          ]}
+        />
+        <Problem
+          x={liftX - 120}
+          y={alt(200)}
+          notes={["lowering needs", `${t.overload} times the Ring's lift`]}
+        />
 
-      <Key x={SX - 52} y={H - 22} tone="s1" label="Ice Brick" />
-      <Key x={SX + 46} y={H - 22} tone="accent" label="Ring" />
-      <Key x={SX + 112} y={H - 22} tone="ink" label="Tracks, tethers" />
+        <Key x={SX - 52} y={H - 22} tone="s1" label="Ice Brick" />
+        <Key x={SX + 46} y={H - 22} tone="accent" label="Ring" />
+        <Key x={SX + 112} y={H - 22} tone="ink" label="Tracks, tethers" />
+      </Art>
     </Frame>
   );
 }

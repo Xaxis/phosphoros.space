@@ -9,8 +9,13 @@ import type { ReactNode } from "react";
 export const W = 760;
 
 /**
- * The frame: an accessible SVG whose title and description name the figure. The site shows the
- * full text alternative (the data in words) under it.
+ * The frame: an accessible SVG named by its title and described by its description. The site shows
+ * the full text alternative (the data in words) under it.
+ *
+ * A figure without links is one image. A figure with links (`links`) is a group of them instead,
+ * since an image cannot hold controls: it must draw everything that is not a link inside `Art` and
+ * every link with `Link`, so a screen reader meets the title, the description and then each link
+ * once, by its own name.
  */
 export function Frame({
   id,
@@ -18,6 +23,7 @@ export function Frame({
   desc,
   height,
   width = W,
+  links = false,
   children,
 }: {
   id: string;
@@ -25,6 +31,7 @@ export function Frame({
   desc: string;
   height: number;
   width?: number;
+  links?: boolean;
   children: ReactNode;
 }) {
   return (
@@ -32,14 +39,73 @@ export function Frame({
       xmlns="http://www.w3.org/2000/svg"
       viewBox={`0 0 ${width} ${height}`}
       className="fig"
-      role="img"
-      aria-labelledby={`${id}-t ${id}-d`}
+      role={links ? "group" : "img"}
+      aria-labelledby={`${id}-t`}
+      aria-describedby={`${id}-d`}
       data-figure={id}
     >
       <title id={`${id}-t`}>{title}</title>
       <desc id={`${id}-d`}>{desc}</desc>
       {children}
     </svg>
+  );
+}
+
+/** Drawing that assistive technology skips: in a figure with links, everything but the links. */
+export function Art({ children }: { children: ReactNode }) {
+  // biome-ignore lint/a11y/noAriaHiddenOnFocusable: an SVG g is never focusable; Biome cannot tell.
+  return <g aria-hidden="true">{children}</g>;
+}
+
+/**
+ * A width that a line of text at `size` px will not exceed: wider than Inter, the site's face, and
+ * the common system faces draw it. For boxes drawn around text.
+ */
+export function textWidth(text: string, size = 13): number {
+  return text.length * size * 0.56;
+}
+
+/** A rectangle in figure units. */
+export interface Box {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+/**
+ * A link in a figure. Its accessible name is `label` alone; its drawing is hidden from assistive
+ * technology so no text is read twice. Keyboard focus and hover light every .f-node inside it in the
+ * accent colour: give it a `box` around everything it names unless its drawing already holds an
+ * .f-node mark big enough to see when lit.
+ */
+export function Link({
+  href,
+  label,
+  box,
+  children,
+}: {
+  href: string;
+  label: string;
+  box?: Box;
+  children: ReactNode;
+}) {
+  return (
+    <a href={href} aria-label={label}>
+      <Art>{children}</Art>
+      {box && (
+        <rect
+          className="f-node"
+          x={box.x}
+          y={box.y}
+          width={box.w}
+          height={box.h}
+          rx={5}
+          fill="none"
+          pointerEvents="all"
+        />
+      )}
+    </a>
   );
 }
 
@@ -117,6 +183,11 @@ export function years(fromDay: number, toDay: number): [number, number][] {
 /** A model number as the site writes it. */
 export function show(r: Registry, id: string, opts: RefOptions = {}): string {
   return formatRef(r.get(id), opts);
+}
+
+/** Data text carried on mid-sentence: only its first letter lowered, so names inside keep theirs. */
+export function midSentence(text: string): string {
+  return text.charAt(0).toLowerCase() + text.slice(1);
 }
 
 /** A value in a quantity's units, written like the quantity. */

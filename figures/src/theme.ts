@@ -71,7 +71,8 @@ const RULES = [
     `.fig .f-${n}-wash{fill:var(--f-${n});fill-opacity:.1}`,
   ]),
   // No var() here: an undefined variable would void the whole stack. The site sets its own face.
-  ".fig{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px}",
+  // Geometric precision keeps glyph spacing true when the figure is scaled down ("m otion").
+  ".fig{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;text-rendering:geometricPrecision}",
   ".fig text{fill:var(--f-soft)}",
   ".fig .f-title{fill:var(--f-ink);font-weight:600}",
   ".fig .f-label{fill:var(--f-ink)}",
@@ -85,6 +86,9 @@ const RULES = [
   ".fig a:hover .f-node, .fig a:focus .f-node{stroke:var(--f-accent);stroke-width:2}",
   ".fig a:focus{outline:none}",
   ".fig a:focus-visible .f-node{stroke-width:3}",
+  // A halo: a hidden copy of a label, drawn under it as a surface-coloured outline, so the label reads
+  // where a line crosses it. Last, so its fill:none beats the text classes'.
+  ".fig .f-halo{fill:none;stroke:var(--f-surface);stroke-linejoin:round}",
 ];
 
 /**

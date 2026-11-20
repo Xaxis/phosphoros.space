@@ -1,7 +1,7 @@
 /** The energy budget: what the Helios Lattice must deliver, against what it supplies. */
 import { DEMANDS } from "@phosphoros/calc/model/budget";
 import { Halo, hbar, TechLink } from "./charts-kit.tsx";
-import { Frame, Key, linear, show, showValue, ticks, W } from "./kit.tsx";
+import { Art, Frame, Key, linear, show, showValue, ticks, W } from "./kit.tsx";
 import type { FigureDef } from "./types.ts";
 
 interface Item {
@@ -56,11 +56,15 @@ function Row({
   sub?: string;
 }) {
   const mid = y + ROW / 2;
+  // A linked row lights a box around the whole row: some bars are too short to show focus.
   return (
-    <TechLink tech={item.tech} label={`${item.label}: ${item.text}`}>
+    <TechLink
+      tech={item.tech}
+      label={`${item.label}: ${item.text}`}
+      box={{ x: 20, y: y + 1, w: W - 24, h: ROW - 2 }}
+    >
       <g>
         <title>{`${item.label}: ${item.text}`}</title>
-        <rect className="f-surface" x={24} y={y} width={W - 48} height={ROW} opacity={0} />
         <text className="f-label" x={M.l - 12} y={sub ? mid - 7 : mid} dy="0.32em" textAnchor="end">
           {item.label}
         </text>
@@ -69,10 +73,7 @@ function Row({
             {sub}
           </text>
         )}
-        <path
-          className={`f-${tone}${item.tech ? " f-node" : ""}`}
-          d={hbar(x(0), x(item.value), mid - BAR / 2, BAR)}
-        />
+        <path className={`f-${tone}`} d={hbar(x(0), x(item.value), mid - BAR / 2, BAR)} />
         <Halo className="f-num" x={x(item.value) + 8} y={mid} dy="0.32em">
           {note ? `${item.text}, ${note}` : item.text}
         </Halo>
@@ -109,69 +110,82 @@ function LatticeBudget(p: Props) {
       title="Energy the Helios Lattice must deliver, against its supply"
       desc={`Demand ${p.total.text} against supply ${p.supply.text}: ${p.spare} spare. Launching the water and pumping out the heat take ${p.share} of the supply.`}
       height={H}
+      links
     >
-      <Key x={24} y={20} tone="s1" label="Demand" />
-      <Key x={110} y={20} tone="accent" label="Lattice supply" />
-      <Key x={232} y={20} tone="s3" label="Recovered by the Braking Ring" />
-      {p.ticks.map((t) => (
-        <g key={t.value}>
-          <line className="f-grid" x1={x(t.value)} x2={x(t.value)} y1={top - 8} y2={axisY} />
-          <text className="f-tick" x={x(t.value)} y={axisY + 18} textAnchor="middle">
-            {t.text}
-          </text>
-        </g>
-      ))}
-      <line className="f-axis" x1={x(0)} x2={x(0)} y1={top - 8} y2={axisY} />
-      <text className="f-note" x={M.l} y={axisY + 40}>
-        Energy over the campaign, to the deadline (linear scale)
-      </text>
+      <Art>
+        <Key x={24} y={20} tone="s1" label="Demand" />
+        <Key x={110} y={20} tone="accent" label="Lattice supply" />
+        <Key x={232} y={20} tone="s3" label="Recovered by the Braking Ring" />
+        {p.ticks.map((t) => (
+          <g key={t.value}>
+            <line className="f-grid" x1={x(t.value)} x2={x(t.value)} y1={top - 8} y2={axisY} />
+            <text className="f-tick" x={x(t.value)} y={axisY + 18} textAnchor="middle">
+              {t.text}
+            </text>
+          </g>
+        ))}
+        <line className="f-axis" x1={x(0)} x2={x(0)} y1={top - 8} y2={axisY} />
+        <text className="f-note" x={M.l} y={axisY + 40}>
+          Energy over the campaign, to the deadline (linear scale)
+        </text>
 
-      <text className="f-title" x={24} y={top - 14}>
-        What the Lattice must deliver
-      </text>
+        <text className="f-title" x={24} y={top - 14}>
+          What the Lattice must deliver
+        </text>
+      </Art>
       {p.demands.map((d, i) => (
         <Row key={d.id} item={d} y={top + i * ROW} x={x} tone="s1" />
       ))}
 
-      {/* The supply line runs through every row, so each bar reads against it. */}
-      <line className="f-accent-line" x1={sx} x2={sx} y1={top - 8} y2={axisY} />
-      <Halo className="f-note" x={sx + 6} y={top - 14}>
-        Lattice supply
-      </Halo>
-
-      <g>
-        <title>{`${p.total.label}: ${p.total.text}`}</title>
-        <text className="f-label" x={M.l - 12} y={totalY + ROW / 2} dy="0.32em" textAnchor="end">
-          {p.total.label}
-        </text>
-        {big.map((s, i) => (
-          <path
-            key={s.id}
-            className="f-s1"
-            d={
-              i === big.length - 1
-                ? hbar(s.x0, x(p.total.value), totalY + (ROW - BAR) / 2, BAR)
-                : `M${s.x0.toFixed(1)},${totalY + (ROW - BAR) / 2}h${(s.x1 - s.x0 - 2).toFixed(1)}v${BAR}h${-(s.x1 - s.x0 - 2)}Z`
-            }
-          />
-        ))}
-        <Halo className="f-num" x={x(p.total.value) + 8} y={totalY + ROW / 2} dy="0.32em">
-          {`${p.total.text}, ${p.spare} spare`}
+      <Art>
+        {/* The supply line runs through every row, so each bar reads against it. */}
+        <line className="f-accent-line" x1={sx} x2={sx} y1={top - 8} y2={axisY} />
+        <Halo className="f-note" x={sx + 6} y={top - 14}>
+          Lattice supply
         </Halo>
-      </g>
-      <path className="f-muted-line" d={`M${x(0)},${bracketY}v5H${shareEnd}v-5`} strokeWidth={1} />
-      <Halo className="f-note" x={x(0)} y={bracketY + 18}>
-        {`Launching the water and pumping out the heat: ${p.share} of the supply`}
-      </Halo>
+
+        <g>
+          <title>{`${p.total.label}: ${p.total.text}`}</title>
+          <text className="f-label" x={M.l - 12} y={totalY + ROW / 2} dy="0.32em" textAnchor="end">
+            {p.total.label}
+          </text>
+          {big.map((s, i) => (
+            <path
+              key={s.id}
+              className="f-s1"
+              d={
+                i === big.length - 1
+                  ? hbar(s.x0, x(p.total.value), totalY + (ROW - BAR) / 2, BAR)
+                  : `M${s.x0.toFixed(1)},${totalY + (ROW - BAR) / 2}h${(s.x1 - s.x0 - 2).toFixed(1)}v${BAR}h${-(s.x1 - s.x0 - 2)}Z`
+              }
+            />
+          ))}
+          <Halo className="f-num" x={x(p.total.value) + 8} y={totalY + ROW / 2} dy="0.32em">
+            {`${p.total.text}, ${p.spare} spare`}
+          </Halo>
+        </g>
+        <path
+          className="f-muted-line"
+          d={`M${x(0)},${bracketY}v5H${shareEnd}v-5`}
+          strokeWidth={1}
+        />
+        <Halo className="f-note" x={x(0)} y={bracketY + 18}>
+          {`Launching the water and pumping out the heat: ${p.share} of the supply`}
+        </Halo>
+      </Art>
       <Row item={p.supply} y={supplyY} x={x} tone="accent" />
 
-      <text className="f-title" x={24} y={ringHead - 6}>
-        Counted separately: the Braking Ring
-      </text>
+      <Art>
+        <text className="f-title" x={24} y={ringHead - 6}>
+          Counted separately: the Braking Ring
+        </text>
+      </Art>
       <Row item={p.ring} y={ringY} x={x} tone="s3" />
-      <Halo className="f-note" x={M.l} y={ringY + ROW + 8}>
-        {`Of ${p.caught} caught. Gravity, the Sun's and then Venus's, gave the ice ${p.gain} of it.`}
-      </Halo>
+      <Art>
+        <Halo className="f-note" x={M.l} y={ringY + ROW + 8}>
+          {`Of ${p.caught} caught. Gravity, the Sun's and then Venus's, gave the ice ${p.gain} of it.`}
+        </Halo>
+      </Art>
       <Row
         item={p.withRing}
         y={withY}

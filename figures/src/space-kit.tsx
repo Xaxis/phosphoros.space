@@ -1,5 +1,6 @@
 /** Drawing helpers for the "space" diagrams: arrows, stacked labels, region names and scale notes. */
 import type { ReactNode } from "react";
+import { Art } from "./kit.tsx";
 
 export type Anchor = "start" | "middle" | "end";
 
@@ -104,34 +105,40 @@ export function Lines({
   lines: (Line | string)[];
   anchor?: Anchor;
   gap?: number;
-  /** Draw a surface-coloured outline under the text, so it reads where it crosses lines. */
+  /**
+   * Draw a surface-coloured outline under the text, so it reads where lines cross it: hidden copies
+   * (.f-halo), all under all the lines' text, so no halo covers the line above.
+   */
   halo?: boolean;
 }) {
+  const set = lines.map((l, i) => {
+    const line = typeof l === "string" ? { text: l, kind: i ? "note" : "label" } : l;
+    const cls = line.kind === "label" ? "f-label" : line.kind === "note" ? "f-note f-num" : "";
+    return { text: line.text, cls, y: y + i * gap, key: `${i}-${line.text}` };
+  });
   return (
     <g>
-      {lines.map((l, i) => {
-        const line = typeof l === "string" ? { text: l, kind: i ? "note" : "label" } : l;
-        const cls = line.kind === "label" ? "f-label" : line.kind === "note" ? "f-note f-num" : "";
-        return (
-          <g key={`${i}-${line.text}`}>
-            {halo && (
-              <text
-                className={`${cls} f-surface-line`}
-                x={x}
-                y={y + i * gap}
-                textAnchor={anchor}
-                strokeWidth={4}
-                strokeLinejoin="round"
-              >
-                {line.text}
-              </text>
-            )}
-            <text className={cls || undefined} x={x} y={y + i * gap} textAnchor={anchor}>
-              {line.text}
+      {halo && (
+        <Art>
+          {set.map((l) => (
+            <text
+              key={l.key}
+              className={`${l.cls} f-halo`}
+              x={x}
+              y={l.y}
+              textAnchor={anchor}
+              strokeWidth={7}
+            >
+              {l.text}
             </text>
-          </g>
-        );
-      })}
+          ))}
+        </Art>
+      )}
+      {set.map((l) => (
+        <text key={l.key} className={l.cls || undefined} x={x} y={l.y} textAnchor={anchor}>
+          {l.text}
+        </text>
+      ))}
     </g>
   );
 }

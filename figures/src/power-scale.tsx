@@ -1,6 +1,6 @@
 /** Power scale: what a ten-year campaign needs against the power there is, on one log axis. */
 import { Halo, hbar, TechLink } from "./charts-kit.tsx";
-import { Frame, log, pow10, show, W } from "./kit.tsx";
+import { Art, Frame, log, pow10, show, W } from "./kit.tsx";
 import type { FigureDef } from "./types.ts";
 
 interface Bar {
@@ -58,70 +58,72 @@ function PowerScale({ groups, sunlight, plan, years }: Props) {
       title={`Power needs against supply, ${years}-year tasks, log scale`}
       desc={`Every conventional ${years}-year task needs more power than all the sunlight Venus intercepts (${sunlight.text}). The Helios Lattice delivers ${plan.text}.`}
       height={H}
+      links
     >
-      {exps.map((v) => (
-        <g key={v}>
-          <line className="f-grid" x1={x(v)} x2={x(v)} y1={top} y2={bottom} />
-          <text className="f-tick" x={x(v)} y={bottom + 18} textAnchor="middle">
-            {pow10(v)}
-          </text>
-        </g>
-      ))}
-      <line className="f-axis" x1={M.l} x2={M.l} y1={top} y2={bottom} />
-      <text className="f-note" x={M.l} y={bottom + 40}>
-        Power in watts (log scale; each gridline is ten times the last)
-      </text>
-      {/* Two reference lines: what Venus receives from the Sun, and what the plan supplies. */}
-      <line
-        className="f-muted-line"
-        x1={x(sunlight.value)}
-        x2={x(sunlight.value)}
-        y1={top - 6}
-        y2={bottom}
-      />
-      <text className="f-note" x={x(sunlight.value) - 6} y={top - 26} textAnchor="end">
-        All the sunlight
-      </text>
-      <text className="f-note" x={x(sunlight.value) - 6} y={top - 12} textAnchor="end">
-        Venus intercepts
-      </text>
-      <line
-        className="f-accent-line"
-        x1={x(plan.value)}
-        x2={x(plan.value)}
-        y1={top - 6}
-        y2={bottom}
-      />
-      <text className="f-note" x={x(plan.value) + 6} y={top - 26}>
-        What the Helios
-      </text>
-      <text className="f-note" x={x(plan.value) + 6} y={top - 12}>
-        Lattice delivers
-      </text>
+      <Art>
+        {exps.map((v) => (
+          <g key={v}>
+            <line className="f-grid" x1={x(v)} x2={x(v)} y1={top} y2={bottom} />
+            <text className="f-tick" x={x(v)} y={bottom + 18} textAnchor="middle">
+              {pow10(v)}
+            </text>
+          </g>
+        ))}
+        <line className="f-axis" x1={M.l} x2={M.l} y1={top} y2={bottom} />
+        <text className="f-note" x={M.l} y={bottom + 40}>
+          Power in watts (log scale; each gridline is ten times the last)
+        </text>
+        {/* Two reference lines: what Venus receives from the Sun, and what the plan supplies. */}
+        <line
+          className="f-muted-line"
+          x1={x(sunlight.value)}
+          x2={x(sunlight.value)}
+          y1={top - 6}
+          y2={bottom}
+        />
+        <text className="f-note" x={x(sunlight.value) - 6} y={top - 26} textAnchor="end">
+          All the sunlight
+        </text>
+        <text className="f-note" x={x(sunlight.value) - 6} y={top - 12} textAnchor="end">
+          Venus intercepts
+        </text>
+        <line
+          className="f-accent-line"
+          x1={x(plan.value)}
+          x2={x(plan.value)}
+          y1={top - 6}
+          y2={bottom}
+        />
+        <text className="f-note" x={x(plan.value) + 6} y={top - 26}>
+          What the Helios
+        </text>
+        <text className="f-note" x={x(plan.value) + 6} y={top - 12}>
+          Lattice delivers
+        </text>
+      </Art>
       {placed.map((g) => (
         <g key={g.title}>
-          <text className="f-title" x={24} y={g.head + 20}>
-            {g.title}
-          </text>
+          <Art>
+            <text className="f-title" x={24} y={g.head + 20}>
+              {g.title}
+            </text>
+          </Art>
           {g.rows.map((b) => {
             const mid = b.y + ROW / 2;
             return (
-              <TechLink key={b.id} tech={b.tech} label={`${b.label}: ${b.text}`}>
+              <TechLink
+                key={b.id}
+                tech={b.tech}
+                label={`${b.label}: ${b.text}`}
+                box={{ x: 20, y: b.y + 1, w: W - 24, h: ROW - 2 }}
+              >
                 <g>
                   <title>{`${b.label}: ${b.text}`}</title>
-                  <rect
-                    className="f-surface"
-                    x={24}
-                    y={b.y}
-                    width={W - 48}
-                    height={ROW}
-                    opacity={0}
-                  />
                   <text className="f-label" x={M.l - 12} y={mid} dy="0.32em" textAnchor="end">
                     {b.label}
                   </text>
                   <path
-                    className={b.plan ? "f-accent f-node" : "f-s1"}
+                    className={b.plan ? "f-accent" : "f-s1"}
                     d={hbar(M.l, x(b.value), mid - BAR / 2, BAR)}
                   />
                   <Halo className="f-num" x={x(b.value) + 8} y={mid} dy="0.32em">

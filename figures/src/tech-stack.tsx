@@ -4,7 +4,7 @@
  * technology page.
  */
 import type { Place, Technology } from "@phosphoros/calc/content";
-import { Frame, show, W } from "./kit.tsx";
+import { Art, Frame, show, W } from "./kit.tsx";
 import { Arrow, Card, type Flow, FlowKey } from "./structure-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -264,42 +264,52 @@ function TechStack({ nodes, seedLaunch }: Props) {
       title="The Phosphoros technology stack"
       desc="Thirteen inventions in the place each works, from Earth to Mercury, Ceres, near Venus and Venus, with the flows between them. Each box links to its technology page."
       height={H}
+      links
     >
-      <rect className="f-sunk" x={wash.x} y={wash.y} width={wash.w} height={wash.h} rx={10} />
-      {(["earth", "mercury", "space", "venus"] as const).map((p) => (
-        <text key={p} className="f-title" x={COL[p].x} y={22}>
-          {COL[p].label}
-        </text>
-      ))}
-      {ice && (
-        <text className="f-title" x={COL.ceres.x} y={ice.y - 10}>
-          {COL.ceres.label}
-        </text>
-      )}
-      {arrows.map((a, i) => (
-        <g key={i}>
-          {a.points.length > 1 && <Arrow points={a.points} flow={a.flow} />}
-          {a.label && (
-            <text className="f-note" x={a.lx} y={a.ly} textAnchor={a.anchor ?? "middle"}>
-              {a.label}
-            </text>
-          )}
-        </g>
-      ))}
-      <rect className="f-surface" x={gap - 4} y={bus - 3} width={8} height={6} />
-      <line className="f-soft-line" strokeWidth={1.5} x1={gap} x2={gap} y1={bus - 4} y2={bus + 4} />
-      <Card
-        {...seed}
-        title={`Seed foundry: launches from Earth in ${seedLaunch}`}
-        name="Seed foundry"
-        sub={seedLaunch}
-      />
-      <Card
-        {...factories}
-        title="The first Ceres factories: the only other hardware that leaves Earth"
-        name="First factories"
-        sub="for Ceres"
-      />
+      <Art>
+        <rect className="f-sunk" x={wash.x} y={wash.y} width={wash.w} height={wash.h} rx={10} />
+        {(["earth", "mercury", "space", "venus"] as const).map((p) => (
+          <text key={p} className="f-title" x={COL[p].x} y={22}>
+            {COL[p].label}
+          </text>
+        ))}
+        {ice && (
+          <text className="f-title" x={COL.ceres.x} y={ice.y - 10}>
+            {COL.ceres.label}
+          </text>
+        )}
+        {arrows.map((a, i) => (
+          <g key={i}>
+            {a.points.length > 1 && <Arrow points={a.points} flow={a.flow} />}
+            {a.label && (
+              <text className="f-note" x={a.lx} y={a.ly} textAnchor={a.anchor ?? "middle"}>
+                {a.label}
+              </text>
+            )}
+          </g>
+        ))}
+        <rect className="f-surface" x={gap - 4} y={bus - 3} width={8} height={6} />
+        <line
+          className="f-soft-line"
+          strokeWidth={1.5}
+          x1={gap}
+          x2={gap}
+          y1={bus - 4}
+          y2={bus + 4}
+        />
+        <Card
+          {...seed}
+          title={`Seed foundry: launches from Earth in ${seedLaunch}`}
+          name="Seed foundry"
+          sub={seedLaunch}
+        />
+        <Card
+          {...factories}
+          title="The first Ceres factories: the only other hardware that leaves Earth"
+          name="First factories"
+          sub="for Ceres"
+        />
+      </Art>
       {nodes
         .filter((n) => n.place !== "everywhere")
         .map((n) => {
@@ -329,12 +339,14 @@ function TechStack({ nodes, seedLaunch }: Props) {
           fill="sunk"
         />
       )}
-      <FlowKey x={COL.earth.x} y={keyY} flow="mass" label="Material" />
-      <FlowKey x={COL.earth.x + 120} y={keyY} flow="power" label="Power" />
-      <FlowKey x={COL.earth.x + 220} y={keyY} flow="effect" label="Shade, shield and heat" />
-      <text className="f-note" x={COL.earth.x} y={keyY + 24} dy="0.32em">
-        Dates: when each leaves Earth or comes online. Click a box for its page.
-      </text>
+      <Art>
+        <FlowKey x={COL.earth.x} y={keyY} flow="mass" label="Material" />
+        <FlowKey x={COL.earth.x + 120} y={keyY} flow="power" label="Power" />
+        <FlowKey x={COL.earth.x + 220} y={keyY} flow="effect" label="Shade, shield and heat" />
+        <text className="f-note" x={COL.earth.x} y={keyY + 24} dy="0.32em">
+          Dates: when each leaves Earth or comes online. Click a box for its page.
+        </text>
+      </Art>
     </Frame>
   );
 }

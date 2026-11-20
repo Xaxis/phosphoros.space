@@ -4,7 +4,7 @@
  */
 import { fill } from "@phosphoros/calc/template";
 import type { ReactNode } from "react";
-import { Frame, linear, show, W } from "./kit.tsx";
+import { Art, Frame, Link, linear, show, W } from "./kit.tsx";
 import { Diamond, YearBands } from "./structure-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -67,68 +67,71 @@ function Gantt(p: Props) {
       title="The Phosphoros decade, 2027 to 2036"
       desc={`To scale. ${p.rows.length} workstreams and milestones in five lanes, from the proof experiments to the deadline. The critical path is drawn with thicker bars. Earth-like Venus, in the simulation, comes on ${p.earthLikeText}, ${p.slack} before the deadline.`}
       height={H}
+      links
     >
-      {/* Key */}
-      <g>
-        <rect className="f-s1" x={16} y={14} width={22} height={10} rx={3} />
-        <text x={44} y={19} dy="0.32em">
-          Workstream
-        </text>
-        <rect className="f-s2" x={132} y={12} width={22} height={14} rx={4} />
-        <text x={160} y={19} dy="0.32em">
-          On the critical path
-        </text>
-        <Diamond x={302} y={19} r={5.5} />
-        <text x={313} y={19} dy="0.32em">
-          Milestone
-        </text>
-        <Diamond x={396} y={19} r={5.5} hollow />
-        <text x={407} y={19} dy="0.32em">
-          Go or no-go gate
-        </text>
-        <rect className="f-accent-wash" x={530} y={11} width={10} height={16} />
-        <line className="f-accent-line" strokeWidth={2} x1={530} x2={530} y1={11} y2={27} />
-        <line
-          className="f-accent-line"
-          strokeWidth={2}
-          strokeDasharray="3 2"
-          x1={540}
-          x2={540}
-          y1={11}
-          y2={27}
-        />
-        <text x={548} y={19} dy="0.32em">
-          Earth-like, then the deadline
-        </text>
-      </g>
+      <Art>
+        {/* Key */}
+        <g>
+          <rect className="f-s1" x={16} y={14} width={22} height={10} rx={3} />
+          <text x={44} y={19} dy="0.32em">
+            Workstream
+          </text>
+          <rect className="f-s2" x={132} y={12} width={22} height={14} rx={4} />
+          <text x={160} y={19} dy="0.32em">
+            On the critical path
+          </text>
+          <Diamond x={302} y={19} r={5.5} />
+          <text x={313} y={19} dy="0.32em">
+            Milestone
+          </text>
+          <Diamond x={396} y={19} r={5.5} hollow />
+          <text x={407} y={19} dy="0.32em">
+            Go or no-go gate
+          </text>
+          <rect className="f-accent-wash" x={530} y={11} width={10} height={16} />
+          <line className="f-accent-line" strokeWidth={2} x1={530} x2={530} y1={11} y2={27} />
+          <line
+            className="f-accent-line"
+            strokeWidth={2}
+            strokeDasharray="3 2"
+            x1={540}
+            x2={540}
+            y1={11}
+            y2={27}
+          />
+          <text x={548} y={19} dy="0.32em">
+            Earth-like, then the deadline
+          </text>
+        </g>
 
-      {/* The slack between the simulated Earth-like date and the deadline. */}
-      <rect
-        className="f-accent-wash"
-        x={xe}
-        y={TOP - 18}
-        width={xd - xe}
-        height={bottom - TOP + 18}
-      />
-      <YearBands
-        x={x}
-        top={TOP - 18}
-        bottom={bottom}
-        labelY={[TOP - 24, bottom + 16]}
-        from={p.from}
-        to={p.to}
-      />
-      <line className="f-axis" x1={M.l} x2={W - M.r} y1={bottom} y2={bottom} />
+        {/* The slack between the simulated Earth-like date and the deadline. */}
+        <rect
+          className="f-accent-wash"
+          x={xe}
+          y={TOP - 18}
+          width={xd - xe}
+          height={bottom - TOP + 18}
+        />
+        <YearBands
+          x={x}
+          top={TOP - 18}
+          bottom={bottom}
+          labelY={[TOP - 24, bottom + 16]}
+          from={p.from}
+          to={p.to}
+        />
+        <line className="f-axis" x1={M.l} x2={W - M.r} y1={bottom} y2={bottom} />
+      </Art>
 
       {placed.map(({ lane, row, y: ry }) => {
         if (lane)
           return (
-            <g key={lane.id}>
+            <Art key={lane.id}>
               <line className="f-grid" x1={16} x2={W - M.r} y1={ry + 4} y2={ry + 4} />
               <text className="f-title" x={16} y={ry + 20}>
                 {lane.label}
               </text>
-            </g>
+            </Art>
           );
         if (!row) return null;
         const cy = ry + ROW / 2;
@@ -145,7 +148,7 @@ function Gantt(p: Props) {
           const h = row.critical ? 14 : 10;
           mark = (
             <rect
-              className={`f-${tone} f-node`}
+              className={`f-${tone}`}
               x={x(row.start)}
               y={cy - h / 2}
               width={Math.max(2, x(row.end) - x(row.start))}
@@ -173,9 +176,10 @@ function Gantt(p: Props) {
             </g>
           );
         }
+        const name = `${row.label}: ${when}${row.critical ? " (critical path)" : ""}`;
         const body = (
           <g>
-            <title>{`${row.label}: ${when}${row.critical ? " (critical path)" : ""}`}</title>
+            <title>{name}</title>
             <text
               className="f-label"
               x={28}
@@ -188,31 +192,45 @@ function Gantt(p: Props) {
             {mark}
           </g>
         );
-        return <g key={row.id}>{row.href ? <a href={row.href}>{body}</a> : body}</g>;
+        // A linked row lights a box around its label, mark and date: a milestone's diamond alone is
+        // too small to show focus.
+        return (
+          <g key={row.id}>
+            {row.href ? (
+              <Link href={row.href} label={name} box={{ x: 20, y: ry + 1, w: W - 24, h: ROW - 2 }}>
+                {body}
+              </Link>
+            ) : (
+              <Art>{body}</Art>
+            )}
+          </g>
+        );
       })}
 
       {/* The Earth-like date and the deadline run the height of the chart. */}
-      <line
-        className="f-accent-line"
-        strokeWidth={2}
-        x1={xe}
-        x2={xe}
-        y1={TOP - 18}
-        y2={bottom + 30}
-      />
-      <line
-        className="f-accent-line"
-        strokeWidth={2}
-        strokeDasharray="3 2"
-        x1={xd}
-        x2={xd}
-        y1={TOP - 18}
-        y2={bottom + 30}
-      />
-      <path className="f-accent-line" strokeWidth={1.5} d={`M${xe},${bottom + 30}H${xd}`} />
-      <text className="f-note f-num" x={xe - 6} y={bottom + 30} dy="0.32em" textAnchor="end">
-        Simulated Earth-like date: {p.slack} before the deadline
-      </text>
+      <Art>
+        <line
+          className="f-accent-line"
+          strokeWidth={2}
+          x1={xe}
+          x2={xe}
+          y1={TOP - 18}
+          y2={bottom + 30}
+        />
+        <line
+          className="f-accent-line"
+          strokeWidth={2}
+          strokeDasharray="3 2"
+          x1={xd}
+          x2={xd}
+          y1={TOP - 18}
+          y2={bottom + 30}
+        />
+        <path className="f-accent-line" strokeWidth={1.5} d={`M${xe},${bottom + 30}H${xd}`} />
+        <text className="f-note f-num" x={xe - 6} y={bottom + 30} dy="0.32em" textAnchor="end">
+          Simulated Earth-like date: {p.slack} before the deadline
+        </text>
+      </Art>
     </Frame>
   );
 }

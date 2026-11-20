@@ -2,7 +2,7 @@
  * The Ouroboros Foundry's machine loop: its machine types in a closed ring, each handing what it
  * makes to the next, with the doubling time the loop achieves in the centre.
  */
-import { Frame, show, W } from "./kit.tsx";
+import { Frame, midSentence, show, W } from "./kit.tsx";
 import { Arrow } from "./structure-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -66,7 +66,7 @@ function FoundryLoop({ machines, doubling, doublings, seed, final }: Props) {
         const top = side === "middle" ? (uy < 0 ? y - 30 : y + 24) : y + uy * 16 - 3;
         return (
           <g key={m.name}>
-            <title>{`${m.name}: make ${m.makes.toLowerCase()} for ${m.feeds.toLowerCase()}.`}</title>
+            <title>{`${m.name}: make ${midSentence(m.makes)} for ${midSentence(m.feeds)}.`}</title>
             <circle className="f-accent f-ring" cx={x} cy={y} r={DOT} />
             <text className="f-label" x={lx} y={top} textAnchor={side} fontWeight={600}>
               {m.name}

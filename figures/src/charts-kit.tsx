@@ -1,6 +1,7 @@
 /** Helpers the "charts" set shares: bars with a rounded data end, technology links, model series. */
 import type { Registry } from "@phosphoros/calc/registry";
 import type { ReactNode } from "react";
+import { Art, type Box, Link } from "./kit.tsx";
 
 /**
  * A horizontal bar from x0 (the baseline, square) to x1 (the data end, rounded 4px). Bars too short
@@ -13,27 +14,32 @@ export function hbar(x0: number, x1: number, y: number, h: number, r = 4): strin
   return `M${f(x0)},${f(y)}H${f(x0 + w - k)}A${k},${k} 0 0 1 ${f(x0 + w)},${f(y + k)}V${f(y + h - k)}A${k},${k} 0 0 1 ${f(x0 + w - k)},${f(y + h)}H${f(x0)}Z`;
 }
 
-/** A node that names a technology links to its page; keyboard reachable, styled on focus. */
+/**
+ * A mark that names a technology links to its page (see Link: named by `label`, lit by `box` on
+ * focus). One that names none is drawing only, hidden from assistive technology.
+ */
 export function TechLink({
   tech,
   label,
+  box,
   children,
 }: {
   tech?: string;
   label: string;
+  box?: Box;
   children: ReactNode;
 }) {
-  if (!tech) return <g>{children}</g>;
+  if (!tech) return <Art>{children}</Art>;
   return (
-    <a href={`/technologies/${tech}`} aria-label={label}>
+    <Link href={`/technologies/${tech}`} label={label} box={box}>
       {children}
-    </a>
+    </Link>
   );
 }
 
 /**
- * Text with a halo in the surface colour, so a label stays legible where it crosses a gridline or
- * a reference line. The halo is a second copy drawn as a surface stroke underneath.
+ * Text with a halo in the surface colour, so a label stays legible where it crosses a gridline or a
+ * reference line. The halo is a copy drawn underneath (.f-halo), hidden from assistive technology.
  */
 export function Halo({
   x,
@@ -52,17 +58,18 @@ export function Halo({
 }) {
   return (
     <g>
-      <text
-        className={`${className} f-surface-line`}
-        x={x}
-        y={y}
-        dy={dy}
-        textAnchor={anchor}
-        strokeWidth={5}
-        strokeLinejoin="round"
-      >
-        {children}
-      </text>
+      <Art>
+        <text
+          className={`${className} f-halo`}
+          x={x}
+          y={y}
+          dy={dy}
+          textAnchor={anchor}
+          strokeWidth={5}
+        >
+          {children}
+        </text>
+      </Art>
       <text className={className} x={x} y={y} dy={dy} textAnchor={anchor}>
         {children}
       </text>

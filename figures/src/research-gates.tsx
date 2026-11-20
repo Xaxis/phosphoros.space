@@ -3,7 +3,7 @@
  * signal, against the gates that end the proof years and the seed foundry's flight.
  */
 import { fill, refsIn } from "@phosphoros/calc/template";
-import { Frame, linear, show, W } from "./kit.tsx";
+import { Art, Frame, Link, linear, midSentence, show, W } from "./kit.tsx";
 import { YearBands } from "./structure-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -62,32 +62,35 @@ function ResearchGates({ exps, markers, from, to }: Props) {
       title="The proof experiments and their gates, 2027 and 2028"
       desc={`${exps.length} experiments run in parallel from 2027, each with a pass mark and a kill signal, and must pass by ${markers.find((m) => m.kind === "end")?.when}. The cloud-life gate falls just before.`}
       height={H}
+      links
     >
-      {/* Key */}
-      <rect className="f-s1" x={16} y={12} width={22} height={10} rx={3} />
-      <text x={44} y={17} dy="0.32em">
-        Proof experiment
-      </text>
-      <rect className="f-accent" x={168} y={12} width={22} height={10} rx={3} />
-      <text x={196} y={17} dy="0.32em">
-        Cloud-life survey, the gate on the whole program
-      </text>
+      <Art>
+        {/* Key */}
+        <rect className="f-s1" x={16} y={12} width={22} height={10} rx={3} />
+        <text x={44} y={17} dy="0.32em">
+          Proof experiment
+        </text>
+        <rect className="f-accent" x={168} y={12} width={22} height={10} rx={3} />
+        <text x={196} y={17} dy="0.32em">
+          Cloud-life survey, the gate on the whole program
+        </text>
 
-      <YearBands
-        x={x}
-        top={axisY + 4}
-        bottom={rowsBottom}
-        labelY={[axisY, rowsBottom + 18]}
-        from={from}
-        to={to}
-      />
-      <line className="f-axis" x1={M.l} x2={W - M.r} y1={rowsBottom} y2={rowsBottom} />
-
+        <YearBands
+          x={x}
+          top={axisY + 4}
+          bottom={rowsBottom}
+          labelY={[axisY, rowsBottom + 18]}
+          from={from}
+          to={to}
+        />
+        <line className="f-axis" x1={M.l} x2={W - M.r} y1={rowsBottom} y2={rowsBottom} />
+      </Art>
       {exps.map((e, i) => {
         const top = rowsTop + i * ROW;
+        const title = `${e.name} (${e.where}), ${e.when}: proves ${midSentence(e.proves)}.`;
         const name = (
           <g>
-            <title>{`${e.name} (${e.where}), ${e.when}: proves ${e.proves.toLowerCase()}.`}</title>
+            <title>{title}</title>
             <text className="f-label" x={16} y={top + 17} fontWeight={600}>
               {e.name}
             </text>
@@ -104,57 +107,67 @@ function ResearchGates({ exps, markers, from, to }: Props) {
         return (
           <g key={e.id}>
             {i > 0 && <line className="f-grid" x1={16} x2={W - M.r} y1={top} y2={top} />}
-            {e.href ? <a href={e.href}>{name}</a> : name}
-            <text className="f-note" x={16} y={top + 33}>
-              {e.where}
-            </text>
-            {(e.fallback || e.gate) && (
-              <text className="f-note" x={16} y={top + 48} fontStyle="italic">
-                {e.gate ? "Stops the whole program" : "No substitute"}
-              </text>
+            {e.href ? (
+              <Link href={e.href} label={title}>
+                {name}
+              </Link>
+            ) : (
+              <Art>{name}</Art>
             )}
-            <text x={M.l} y={top + 34}>
-              <tspan className="f-label" fontWeight={600}>
-                Pass{" "}
-              </tspan>
-              {e.pass}
-            </text>
-            <text x={M.l} y={top + 49}>
-              <tspan className="f-label" fontWeight={600}>
-                Kill{" "}
-              </tspan>
-              {e.kill}
-            </text>
+            <Art>
+              <text className="f-note" x={16} y={top + 33}>
+                {e.where}
+              </text>
+              {(e.fallback || e.gate) && (
+                <text className="f-note" x={16} y={top + 48} fontStyle="italic">
+                  {e.gate ? "Stops the whole program" : "No substitute"}
+                </text>
+              )}
+              <text x={M.l} y={top + 34}>
+                <tspan className="f-label" fontWeight={600}>
+                  Pass{" "}
+                </tspan>
+                {e.pass}
+              </text>
+              <text x={M.l} y={top + 49}>
+                <tspan className="f-label" fontWeight={600}>
+                  Kill{" "}
+                </tspan>
+                {e.kill}
+              </text>
+            </Art>
           </g>
         );
       })}
 
-      {stacked.map((m, i) => {
-        const mx = x(m.day);
-        const ly = LABELS + i * STACK;
-        return (
-          <g key={m.id}>
-            <title>{`${m.label}: ${m.when}`}</title>
-            <line
-              className={lineClass(m.kind)}
-              strokeWidth={m.kind === "event" ? 1 : 2}
-              strokeDasharray={m.kind === "event" ? "3 3" : undefined}
-              x1={mx}
-              x2={mx}
-              y1={ly + 5}
-              y2={rowsBottom}
-            />
-            <text x={mx - 6} y={ly} textAnchor="end">
-              <tspan className="f-label">{m.label}</tspan>
-              <tspan className="f-note f-num">, {m.when}</tspan>
-            </text>
-          </g>
-        );
-      })}
+      <Art>
+        {stacked.map((m, i) => {
+          const mx = x(m.day);
+          const ly = LABELS + i * STACK;
+          return (
+            <g key={m.id}>
+              <title>{`${m.label}: ${m.when}`}</title>
+              <line
+                className={lineClass(m.kind)}
+                strokeWidth={m.kind === "event" ? 1 : 2}
+                strokeDasharray={m.kind === "event" ? "3 3" : undefined}
+                x1={mx}
+                x2={mx}
+                y1={ly + 5}
+                y2={rowsBottom}
+              />
+              <text x={mx - 6} y={ly} textAnchor="end">
+                <tspan className="f-label">{m.label}</tspan>
+                <tspan className="f-note f-num">, {m.when}</tspan>
+              </text>
+            </g>
+          );
+        })}
 
-      <text className="f-note" x={16} y={rowsBottom + 44}>
-        No substitute: if this line fails, the plan falls back to the multi-century route.
-      </text>
+        <text className="f-note" x={16} y={rowsBottom + 44}>
+          No substitute: if this line fails, the plan falls back to the multi-century route.
+        </text>
+      </Art>
     </Frame>
   );
 }

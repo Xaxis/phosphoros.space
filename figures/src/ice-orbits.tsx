@@ -3,7 +3,7 @@
  * Hohmann transfer the Bricks fall along, and the transfers of the next cheap windows.
  */
 import { period } from "@phosphoros/calc/physics";
-import { Frame, Key, path, show, W } from "./kit.tsx";
+import { Art, Frame, Key, Link, path, show, textWidth, W } from "./kit.tsx";
 import { conic, Dot, Lines, Tag } from "./space-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -62,6 +62,11 @@ function IceOrbits(p: Props) {
   const [vx, vy] = pt(p.venus, 180 - p.venusLead);
   const [nx, ny] = pt(p.ceresAphelion, 180);
   const px = W - 220;
+  const fall = `Hohmann transfer: ${t.transfer} from Ceres to Venus`;
+  const fallLines = ["Bricks fall", `for ${t.transfer}`];
+  const [fx, fy] = pt(2.1, 62);
+  const fallW = Math.max(textWidth(fallLines[0] ?? ""), textWidth(fallLines[1] ?? "", 11.5));
+  const fallBox = { x: fx - 6, y: fy - 15, w: fallW + 12, h: 14.5 + 21 };
   // Short arrowheads showing which way everything goes round: anticlockwise, seen from the north.
   const head = (from: [number, number], to: [number, number], tone: string) => {
     const [x0, y0] = from;
@@ -81,147 +86,146 @@ function IceOrbits(p: Props) {
       title="Ceres Ice Train orbits, to scale"
       desc={`To scale. Bricks fall from Ceres's orbit at ${t.ceres} to Venus's at ${t.venus} along half an ellipse, in ${t.transfer}. Throwing the ice stretches Ceres's orbit to an aphelion of ${t.ceresNew}.`}
       height={H}
+      links
     >
-      {/* Ceres after the campaign, modelled as one kick at the launch point. */}
-      <path
-        className="f-s1-line"
-        d={path(conic(CX, CY, newA * AU, newE, 0))}
-        strokeWidth={1.5}
-        strokeDasharray="5 4"
-      >
-        <title>{`Ceres's orbit after the campaign: ${t.ceres} at its nearest, ${t.ceresNew} at its farthest`}</title>
-      </path>
-      <circle className="f-s1-line" cx={CX} cy={CY} r={p.ceres * AU} strokeWidth={2}>
-        <title>{`Ceres's orbit, ${t.ceres} (treated as a circle)`}</title>
-      </circle>
-      <circle className="f-hot-line" cx={CX} cy={CY} r={p.venus * AU} strokeWidth={2}>
-        <title>{`Venus's orbit, ${t.venus}`}</title>
-      </circle>
-      {head(pt(p.ceres, 128), pt(p.ceres, 135), "s1")}
-      {head(pt(p.venus, 300), pt(p.venus, 310), "hot")}
-
-      {/* Later windows: the same transfer, turned by the angle Ceres moves in a synodic period. */}
-      {later.map((w) => (
+      <Art>
+        {/* Ceres after the campaign, modelled as one kick at the launch point. */}
         <path
-          key={w}
-          className="f-accent-line"
-          d={transfer(w)}
-          strokeWidth={1}
-          strokeDasharray="2 4"
-        >
-          <title>{`A later window, ${t.windowPeriod} after the one before`}</title>
-        </path>
-      ))}
-      <a href="/technologies/ice-train">
-        <path className="f-accent-line f-mark-line f-node" d={transfer(0)}>
-          <title>{`Hohmann transfer: ${t.transfer} from Ceres to Venus`}</title>
-        </path>
-      </a>
-      {(() => {
-        const a = arc(0);
-        const i = Math.round(a.length * 0.42);
-        return head(a[i - 3] ?? [0, 0], a[i] ?? [0, 0], "accent");
-      })()}
-      <Lines
-        x={pt(2.1, 62)[0]}
-        y={pt(2.1, 62)[1]}
-        halo
-        lines={["Bricks fall", `for ${t.transfer}`]}
-      />
-
-      <circle className="f-s4" cx={CX} cy={CY} r={7}>
-        <title>The Sun</title>
-      </circle>
-      <text className="f-label" x={CX + 12} y={CY + 4}>
-        Sun
-      </text>
-
-      <Dot x={lx} y={ly} tone="s1" r={5} title={`Ceres at launch, ${t.ceres} from the Sun`} />
-      <Lines x={lx - 10} y={ly + 20} anchor="end" lines={["Ceres", "at launch"]} />
-      <Dot x={vx} y={vy} tone="hot" title="Venus when the Brick leaves" />
-      <Lines x={vx} y={vy + 22} anchor="middle" halo lines={["Venus", "at launch"]} />
-      <Dot x={ax} y={ay} tone="hot" title={`Venus when the Brick arrives, ${t.transfer} later`} />
-      <Lines x={ax - 10} y={ay - 22} anchor="end" lines={["Venus", "at arrival"]} />
-      <Dot x={nx} y={ny} tone="s1" r={4} title={`Ceres's new aphelion, ${t.ceresNew}`} />
-      <Lines x={nx + 9} y={ny + 18} lines={["New aphelion", t.ceresNew]} />
-
-      <text className="f-note f-num" x={CX} y={CY - p.venus * AU - 8} textAnchor="middle">
-        Venus {t.venus}
-      </text>
-      <text className="f-note f-num" x={CX} y={CY + p.ceres * AU - 10} textAnchor="middle">
-        Ceres {t.ceres}
-      </text>
-
-      {/* The story, beside the drawing. */}
-      <Key x={px} y={44} tone="hot" label="Venus's orbit" line />
-      <Key x={px} y={66} tone="s1" label="Ceres's orbit, before" line />
-      <g>
-        <line
           className="f-s1-line"
-          x1={px}
-          x2={px + 16}
-          y1={88}
-          y2={88}
+          d={path(conic(CX, CY, newA * AU, newE, 0))}
           strokeWidth={1.5}
           strokeDasharray="5 4"
-        />
-        <text x={px + 22} y={88} dy="0.32em">
-          Ceres's orbit, after
-        </text>
-      </g>
-      <Key x={px} y={110} tone="accent" label="Brick transfer" line />
-      <g>
-        <line
-          className="f-accent-line"
-          x1={px}
-          x2={px + 16}
-          y1={132}
-          y2={132}
-          strokeWidth={1}
-          strokeDasharray="2 4"
-        />
-        <text x={px + 22} y={132} dy="0.32em">
-          Later windows
-        </text>
-      </g>
+        >
+          <title>{`Ceres's orbit after the campaign: ${t.ceres} at its nearest, ${t.ceresNew} at its farthest`}</title>
+        </path>
+        <circle className="f-s1-line" cx={CX} cy={CY} r={p.ceres * AU} strokeWidth={2}>
+          <title>{`Ceres's orbit, ${t.ceres} (treated as a circle)`}</title>
+        </circle>
+        <circle className="f-hot-line" cx={CX} cy={CY} r={p.venus * AU} strokeWidth={2}>
+          <title>{`Venus's orbit, ${t.venus}`}</title>
+        </circle>
+        {head(pt(p.ceres, 128), pt(p.ceres, 135), "s1")}
+        {head(pt(p.venus, 300), pt(p.venus, 310), "hot")}
 
-      <Lines
-        x={px}
-        y={178}
-        lines={[
-          "The fall",
-          `${t.transfer}, half the ellipse`,
-          `launched at ${t.launch}`,
-          `arrives ${t.vinf} faster than Venus`,
-        ]}
-      />
-      <Lines
-        x={px}
-        y={256}
-        lines={[
-          "Launch windows",
-          `cheapest every ${t.windowPeriod}`,
-          `about ${t.windows} in the campaign,`,
-          `${t.start} to ${t.end}`,
-        ]}
-      />
-      <Lines
-        x={px}
-        y={334}
-        lines={[
-          "Ceres pays in orbit",
-          `recoil adds ${t.recoil} to its speed`,
-          `aphelion moves out to ${t.ceresNew}`,
-          `(today's real aphelion: ${t.realAphelion})`,
-        ]}
-      />
-      <Tag x={px} y={H - 76} text="Orbits to scale; dots enlarged" />
-      <text className="f-note" x={px} y={H - 48}>
-        Seen from the north: everything
-      </text>
-      <text className="f-note" x={px} y={H - 33}>
-        goes round anticlockwise.
-      </text>
+        {/* Later windows: the same transfer, turned by the angle Ceres moves in a synodic period. */}
+        {later.map((w) => (
+          <path
+            key={w}
+            className="f-accent-line"
+            d={transfer(w)}
+            strokeWidth={1}
+            strokeDasharray="2 4"
+          >
+            <title>{`A later window, ${t.windowPeriod} after the one before`}</title>
+          </path>
+        ))}
+        {(() => {
+          const a = arc(0);
+          const i = Math.round(a.length * 0.42);
+          return head(a[i - 3] ?? [0, 0], a[i] ?? [0, 0], "accent");
+        })()}
+      </Art>
+      <Link href="/technologies/ice-train" label={fall} box={fallBox}>
+        <path className="f-accent-line f-mark-line f-node" d={transfer(0)}>
+          <title>{fall}</title>
+        </path>
+        <Lines x={fx} y={fy} halo lines={fallLines} />
+      </Link>
+      <Art>
+        <circle className="f-s4" cx={CX} cy={CY} r={7}>
+          <title>The Sun</title>
+        </circle>
+        <text className="f-label" x={CX + 12} y={CY + 4}>
+          Sun
+        </text>
+
+        <Dot x={lx} y={ly} tone="s1" r={5} title={`Ceres at launch, ${t.ceres} from the Sun`} />
+        <Lines x={lx - 10} y={ly + 20} anchor="end" lines={["Ceres", "at launch"]} />
+        <Dot x={vx} y={vy} tone="hot" title="Venus when the Brick leaves" />
+        <Lines x={vx} y={vy + 22} anchor="middle" halo lines={["Venus", "at launch"]} />
+        <Dot x={ax} y={ay} tone="hot" title={`Venus when the Brick arrives, ${t.transfer} later`} />
+        <Lines x={ax - 10} y={ay - 22} anchor="end" lines={["Venus", "at arrival"]} />
+        <Dot x={nx} y={ny} tone="s1" r={4} title={`Ceres's new aphelion, ${t.ceresNew}`} />
+        <Lines x={nx + 9} y={ny + 18} lines={["New aphelion", t.ceresNew]} />
+
+        <text className="f-note f-num" x={CX} y={CY - p.venus * AU - 8} textAnchor="middle">
+          Venus {t.venus}
+        </text>
+        <text className="f-note f-num" x={CX} y={CY + p.ceres * AU - 10} textAnchor="middle">
+          Ceres {t.ceres}
+        </text>
+
+        {/* The story, beside the drawing. */}
+        <Key x={px} y={44} tone="hot" label="Venus's orbit" line />
+        <Key x={px} y={66} tone="s1" label="Ceres's orbit, before" line />
+        <g>
+          <line
+            className="f-s1-line"
+            x1={px}
+            x2={px + 16}
+            y1={88}
+            y2={88}
+            strokeWidth={1.5}
+            strokeDasharray="5 4"
+          />
+          <text x={px + 22} y={88} dy="0.32em">
+            Ceres's orbit, after
+          </text>
+        </g>
+        <Key x={px} y={110} tone="accent" label="Brick transfer" line />
+        <g>
+          <line
+            className="f-accent-line"
+            x1={px}
+            x2={px + 16}
+            y1={132}
+            y2={132}
+            strokeWidth={1}
+            strokeDasharray="2 4"
+          />
+          <text x={px + 22} y={132} dy="0.32em">
+            Later windows
+          </text>
+        </g>
+
+        <Lines
+          x={px}
+          y={178}
+          lines={[
+            "The fall",
+            `${t.transfer}, half the ellipse`,
+            `launched at ${t.launch}`,
+            `arrives ${t.vinf} faster than Venus`,
+          ]}
+        />
+        <Lines
+          x={px}
+          y={256}
+          lines={[
+            "Launch windows",
+            `cheapest every ${t.windowPeriod}`,
+            `about ${t.windows} in the campaign,`,
+            `${t.start} to ${t.end}`,
+          ]}
+        />
+        <Lines
+          x={px}
+          y={334}
+          lines={[
+            "Ceres pays in orbit",
+            `recoil adds ${t.recoil} to its speed`,
+            `aphelion moves out to ${t.ceresNew}`,
+            `(today's real aphelion: ${t.realAphelion})`,
+          ]}
+        />
+        <Tag x={px} y={H - 76} text="Orbits to scale; dots enlarged" />
+        <text className="f-note" x={px} y={H - 48}>
+          Seen from the north: everything
+        </text>
+        <text className="f-note" x={px} y={H - 33}>
+          goes round anticlockwise.
+        </text>
+      </Art>
     </Frame>
   );
 }

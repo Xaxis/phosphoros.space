@@ -1,7 +1,7 @@
 /** Drawing helpers the structure figures share: arrows, linked boxes, time bands and glyphs. */
 import { dayOf } from "@phosphoros/calc/time";
 import type { ReactNode } from "react";
-import type { Scale } from "./kit.tsx";
+import { Link, type Scale } from "./kit.tsx";
 
 /** The flows between machines. Each has its own line, so colour is never the only cue. */
 export type Flow = "mass" | "power" | "effect";
@@ -82,8 +82,8 @@ export function FlowKey({
 }
 
 /**
- * A box that names something: a filled card with a hairline edge. With `href` it is a link; the
- * theme lights the edge (.f-node) on hover and keyboard focus.
+ * A box that names something: a filled card with a hairline edge. With `href` it is a link named
+ * by its title; the theme lights the edge (.f-node) on hover and keyboard focus.
  */
 export function Card({
   x,
@@ -129,7 +129,13 @@ export function Card({
       )}
     </g>
   );
-  return href ? <a href={href}>{body}</a> : body;
+  return href ? (
+    <Link href={href} label={title}>
+      {body}
+    </Link>
+  ) : (
+    body
+  );
 }
 
 /** A diamond centred on (x, y): a milestone, or hollow, a gate. */

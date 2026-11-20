@@ -4,7 +4,7 @@
  */
 import type { Registry } from "@phosphoros/calc/registry";
 import { Halo, TechLink } from "./charts-kit.tsx";
-import { Frame, Key, show } from "./kit.tsx";
+import { Art, Frame, Key, show } from "./kit.tsx";
 import type { FigureDef } from "./types.ts";
 
 interface Flow {
@@ -88,8 +88,8 @@ function Node({
   name: string;
 }) {
   return (
-    <TechLink tech={tech} label={name}>
-      <rect className={`f-ink${tech ? " f-node" : ""}`} x={x} y={y} width={NW} height={h} rx={1.5}>
+    <TechLink tech={tech} label={name} box={{ x: x - 4, y: y - 4, w: NW + 8, h: h + 8 }}>
+      <rect className="f-ink" x={x} y={y} width={NW} height={h} rx={1.5}>
         <title>{name}</title>
       </rect>
     </TechLink>
@@ -199,98 +199,101 @@ function EnergySankey(p: Props) {
       title="Energy flows of the Phosphoros campaign, to the deadline"
       desc={`Sunlight ${p.sunlight.text} reaches the Lattice; it delivers ${p.supply.text}. The Ring recovers ${p.recovered.text} from the falling ice and pays the Railheads back. The Exhaust throws ${p.light.text} into space as light.`}
       height={H}
+      links
     >
-      <Key x={24} y={14} tone="accent" label="Sunlight and electricity" />
-      <Key x={202} y={14} tone="s1" label="Motion of the ice" />
-      <Key x={336} y={14} tone="hot" label="Venus's heat, and light to space" />
-      <Key x={576} y={14} tone="muted" label="Waste heat" />
+      <Art>
+        <Key x={24} y={14} tone="accent" label="Sunlight and electricity" />
+        <Key x={202} y={14} tone="s1" label="Motion of the ice" />
+        <Key x={336} y={14} tone="hot" label="Venus's heat, and light to space" />
+        <Key x={576} y={14} tone="muted" label="Waste heat" />
 
-      {/* Sunlight into the Lattice, and the Lattice's own losses. */}
-      <Band
-        d={`M${X.sun},${LY + w(p.sunlight) / 2}H${X.lattice}`}
-        w={w(p.sunlight)}
-        tone="accent"
-        title={`Sunlight on the Lattice's film: ${p.sunlight.text}`}
-      />
-      <Band
-        d={`M${X.lattice + NW},${out.loss}H${lossEnd}`}
-        w={w(p.latticeLoss)}
-        tone="muted"
-        title={`Waste heat from the film, lasers and receivers: ${p.latticeLoss.text}`}
-      />
-      <Band
-        d={`M${X.lattice + NW},${out.other}H${lossEnd + 14}`}
-        w={w(other)}
-        tone="accent"
-        title={`Warming ${p.warm.text}, oxygen ${p.forge.text}, hardware ${p.hardware.text}`}
-      />
+        {/* Sunlight into the Lattice, and the Lattice's own losses. */}
+        <Band
+          d={`M${X.sun},${LY + w(p.sunlight) / 2}H${X.lattice}`}
+          w={w(p.sunlight)}
+          tone="accent"
+          title={`Sunlight on the Lattice's film: ${p.sunlight.text}`}
+        />
+        <Band
+          d={`M${X.lattice + NW},${out.loss}H${lossEnd}`}
+          w={w(p.latticeLoss)}
+          tone="muted"
+          title={`Waste heat from the film, lasers and receivers: ${p.latticeLoss.text}`}
+        />
+        <Band
+          d={`M${X.lattice + NW},${out.other}H${lossEnd + 14}`}
+          w={w(other)}
+          tone="accent"
+          title={`Warming ${p.warm.text}, oxygen ${p.forge.text}, hardware ${p.hardware.text}`}
+        />
 
-      {/* The Lattice's electricity. */}
-      <Band
-        d={link(X.lattice + NW, out.launch, X.rail, railIn.lattice)}
-        w={w(p.latticeLaunch)}
-        tone="accent"
-        title={`Lattice to the Railheads, before the first catch: ${p.latticeLaunch.text}`}
-      />
-      <Band
-        d={`M${X.lattice + NW},${out.spare}H${X.sink}`}
-        w={w(p.latticeSpare)}
-        tone="accent"
-        title={`Lattice energy left over: ${p.latticeSpare.text}`}
-      />
-      <Band
-        d={levelThen(X.lattice + NW, out.pump, lossEnd + 10, X.ring, exIn.pump)}
-        w={w(p.pump)}
-        tone="accent"
-        title={`Heat-pump work: ${p.pump.text}`}
-      />
+        {/* The Lattice's electricity. */}
+        <Band
+          d={link(X.lattice + NW, out.launch, X.rail, railIn.lattice)}
+          w={w(p.latticeLaunch)}
+          tone="accent"
+          title={`Lattice to the Railheads, before the first catch: ${p.latticeLaunch.text}`}
+        />
+        <Band
+          d={`M${X.lattice + NW},${out.spare}H${X.sink}`}
+          w={w(p.latticeSpare)}
+          tone="accent"
+          title={`Lattice energy left over: ${p.latticeSpare.text}`}
+        />
+        <Band
+          d={levelThen(X.lattice + NW, out.pump, lossEnd + 10, X.ring, exIn.pump)}
+          w={w(p.pump)}
+          tone="accent"
+          title={`Heat-pump work: ${p.pump.text}`}
+        />
 
-      {/* Railheads, the ice's fall, the Ring and its loop back. */}
-      <Band d={loop} w={lw} tone="accent" title={`Ring to the Railheads: ${p.ringLaunch.text}`} />
-      <Band
-        d={link(X.rail + NW, railOut.motion, X.ring, ringIn.motion)}
-        w={w(p.motion)}
-        tone="s1"
-        title={`Motion the Railheads give the ice: ${p.motion.text}`}
-      />
-      <Band
-        d={drop(X.rail + NW, railOut.loss, w(p.railheadLoss), railDrop)}
-        w={w(p.railheadLoss)}
-        tone="muted"
-        title={`Waste heat at the Railheads: ${p.railheadLoss.text}`}
-      />
-      <Band
-        d={link(X.source + NW, gainY + w(p.gain) / 2, X.ring, ringIn.gain)}
-        w={w(p.gain)}
-        tone="s1"
-        title={`Energy gravity adds to the falling ice: ${p.gain.text}`}
-      />
-      <Band
-        d={`M${X.ring + NW},${ringOut.surplus}H${X.sink}`}
-        w={w(p.ringSurplus)}
-        tone="accent"
-        title={`Ring energy left over: ${p.ringSurplus.text}`}
-      />
-      <Band
-        d={drop(X.ring + NW, ringOut.loss, w(p.ringLoss), ringDrop)}
-        w={w(p.ringLoss)}
-        tone="muted"
-        title={`Waste heat at the Ring: ${p.ringLoss.text}`}
-      />
+        {/* Railheads, the ice's fall, the Ring and its loop back. */}
+        <Band d={loop} w={lw} tone="accent" title={`Ring to the Railheads: ${p.ringLaunch.text}`} />
+        <Band
+          d={link(X.rail + NW, railOut.motion, X.ring, ringIn.motion)}
+          w={w(p.motion)}
+          tone="s1"
+          title={`Motion the Railheads give the ice: ${p.motion.text}`}
+        />
+        <Band
+          d={drop(X.rail + NW, railOut.loss, w(p.railheadLoss), railDrop)}
+          w={w(p.railheadLoss)}
+          tone="muted"
+          title={`Waste heat at the Railheads: ${p.railheadLoss.text}`}
+        />
+        <Band
+          d={link(X.source + NW, gainY + w(p.gain) / 2, X.ring, ringIn.gain)}
+          w={w(p.gain)}
+          tone="s1"
+          title={`Energy gravity adds to the falling ice: ${p.gain.text}`}
+        />
+        <Band
+          d={`M${X.ring + NW},${ringOut.surplus}H${X.sink}`}
+          w={w(p.ringSurplus)}
+          tone="accent"
+          title={`Ring energy left over: ${p.ringSurplus.text}`}
+        />
+        <Band
+          d={drop(X.ring + NW, ringOut.loss, w(p.ringLoss), ringDrop)}
+          w={w(p.ringLoss)}
+          tone="muted"
+          title={`Waste heat at the Ring: ${p.ringLoss.text}`}
+        />
 
-      {/* Venus's heat and the Exhaust. */}
-      <Band
-        d={link(X.source + NW, heatY + w(p.heatLifted) / 2, X.ring, exIn.heat)}
-        w={w(p.heatLifted)}
-        tone="hot"
-        title={`Heat lifted from Venus's air: ${p.heatLifted.text}`}
-      />
-      <Band
-        d={`M${X.ring + NW},${EY + exH / 2}H${X.sink}`}
-        w={exH}
-        tone="hot"
-        title={`Light thrown into space: ${p.light.text}`}
-      />
+        {/* Venus's heat and the Exhaust. */}
+        <Band
+          d={link(X.source + NW, heatY + w(p.heatLifted) / 2, X.ring, exIn.heat)}
+          w={w(p.heatLifted)}
+          tone="hot"
+          title={`Heat lifted from Venus's air: ${p.heatLifted.text}`}
+        />
+        <Band
+          d={`M${X.ring + NW},${EY + exH / 2}H${X.sink}`}
+          w={exH}
+          tone="hot"
+          title={`Light thrown into space: ${p.light.text}`}
+        />
+      </Art>
 
       {/* Nodes. */}
       <Node
@@ -337,110 +340,112 @@ function EnergySankey(p: Props) {
       <Node x={X.sink} y={EY} h={exH} name={`Light to space: ${p.light.text}`} />
 
       {/* Labels. */}
-      <Lines
-        x={(X.rail + X.ring + NW) / 2}
-        y={loopY - 12}
-        anchor="middle"
-        lines={[[`The Ring powers the Railheads: ${p.ringLaunch.text}`, "f-num"]]}
-      />
-      <Lines x={X.rail} y={CY - 10} lines={[["Ceres Railheads", "f-label"]]} />
-      <Lines x={X.ring + NW} y={CY - 10} anchor="end" lines={[["Braking Ring", "f-label"]]} />
-      <Lines
-        x={X.rail + NW + 30}
-        y={railDrop - 14}
-        lines={[["Waste heat"], [p.railheadLoss.text, "f-num"]]}
-      />
-      <Lines
-        x={X.source - 8}
-        y={gainY + 4}
-        anchor="end"
-        lines={[["Gravity of the Sun", "f-label"], ["and of Venus"], [p.gain.text, "f-num"]]}
-      />
-      <Lines
-        x={X.ring + NW + 20}
-        y={ringDrop - 4}
-        lines={[["Waste heat"], [p.ringLoss.text, "f-num"]]}
-      />
-      <Lines
-        x={X.sink + NW + 6}
-        y={ringOut.surplus - 4}
-        lines={[
-          ["Ring's surplus", "f-label"],
-          [p.ringSurplus.text, "f-num"],
-        ]}
-      />
-      <Lines
-        x={X.sink + NW + 6}
-        y={out.spare - 4}
-        lines={[
-          ["Lattice's spare", "f-label"],
-          [p.latticeSpare.text, "f-num"],
-        ]}
-      />
-      <Lines
-        x={X.ring + NW / 2}
-        y={EY - 10}
-        anchor="middle"
-        lines={[["Photonic Exhaust", "f-label"]]}
-      />
-      <Lines
-        x={X.sink + NW + 6}
-        y={EY + 4}
-        lines={[
-          ["Light to space", "f-label"],
-          [p.light.text, "f-num"],
-        ]}
-      />
-      <Lines
-        x={X.source - 8}
-        y={heatY + 4}
-        anchor="end"
-        lines={[
-          ["Venus's heat", "f-label"],
-          [p.heatLifted.text, "f-num"],
-        ]}
-      />
-      <Lines
-        x={X.source}
-        y={heatY + 26}
-        lines={[
-          ["The air's own heat, plus heat that leaks in"],
-          ["from the crust, the Forges, the falling ice"],
-          ["and the sunlight the Veil lets through"],
-        ]}
-      />
-      <Lines
-        x={X.sun}
-        y={LY - 28}
-        lines={[
-          ["Helios Lattice", "f-label"],
-          [`${p.supply.text} delivered`, "f-num"],
-        ]}
-      />
-      <Lines
-        inside
-        x={X.sun + 8}
-        y={LY + 70}
-        lines={[
-          ["Sunlight", "f-label"],
-          [p.sunlight.text, "f-label f-num"],
-        ]}
-      />
-      <Lines
-        inside
-        x={X.lattice + NW + 10}
-        y={lossTop + 70}
-        lines={[
-          ["Waste heat", "f-label"],
-          ["film, lasers, receivers", "f-label"],
-          [p.latticeLoss.text, "f-label f-num"],
-        ]}
-      />
-      <Lines
-        x={lossEnd + 20}
-        y={out.other + 4}
-        lines={[["Warming, oxygen, hardware"], [show3(p), "f-num"]]}
-      />
+      <Art>
+        <Lines
+          x={(X.rail + X.ring + NW) / 2}
+          y={loopY - 12}
+          anchor="middle"
+          lines={[[`The Ring powers the Railheads: ${p.ringLaunch.text}`, "f-num"]]}
+        />
+        <Lines x={X.rail} y={CY - 10} lines={[["Ceres Railheads", "f-label"]]} />
+        <Lines x={X.ring + NW} y={CY - 10} anchor="end" lines={[["Braking Ring", "f-label"]]} />
+        <Lines
+          x={X.rail + NW + 30}
+          y={railDrop - 14}
+          lines={[["Waste heat"], [p.railheadLoss.text, "f-num"]]}
+        />
+        <Lines
+          x={X.source - 8}
+          y={gainY + 4}
+          anchor="end"
+          lines={[["Gravity of the Sun", "f-label"], ["and of Venus"], [p.gain.text, "f-num"]]}
+        />
+        <Lines
+          x={X.ring + NW + 20}
+          y={ringDrop - 4}
+          lines={[["Waste heat"], [p.ringLoss.text, "f-num"]]}
+        />
+        <Lines
+          x={X.sink + NW + 6}
+          y={ringOut.surplus - 4}
+          lines={[
+            ["Ring's surplus", "f-label"],
+            [p.ringSurplus.text, "f-num"],
+          ]}
+        />
+        <Lines
+          x={X.sink + NW + 6}
+          y={out.spare - 4}
+          lines={[
+            ["Lattice's spare", "f-label"],
+            [p.latticeSpare.text, "f-num"],
+          ]}
+        />
+        <Lines
+          x={X.ring + NW / 2}
+          y={EY - 10}
+          anchor="middle"
+          lines={[["Photonic Exhaust", "f-label"]]}
+        />
+        <Lines
+          x={X.sink + NW + 6}
+          y={EY + 4}
+          lines={[
+            ["Light to space", "f-label"],
+            [p.light.text, "f-num"],
+          ]}
+        />
+        <Lines
+          x={X.source - 8}
+          y={heatY + 4}
+          anchor="end"
+          lines={[
+            ["Venus's heat", "f-label"],
+            [p.heatLifted.text, "f-num"],
+          ]}
+        />
+        <Lines
+          x={X.source}
+          y={heatY + 26}
+          lines={[
+            ["The air's own heat, plus heat that leaks in"],
+            ["from the crust, the Forges, the falling ice"],
+            ["and the sunlight the Veil lets through"],
+          ]}
+        />
+        <Lines
+          x={X.sun}
+          y={LY - 28}
+          lines={[
+            ["Helios Lattice", "f-label"],
+            [`${p.supply.text} delivered`, "f-num"],
+          ]}
+        />
+        <Lines
+          inside
+          x={X.sun + 8}
+          y={LY + 70}
+          lines={[
+            ["Sunlight", "f-label"],
+            [p.sunlight.text, "f-label f-num"],
+          ]}
+        />
+        <Lines
+          inside
+          x={X.lattice + NW + 10}
+          y={lossTop + 70}
+          lines={[
+            ["Waste heat", "f-label"],
+            ["film, lasers, receivers", "f-label"],
+            [p.latticeLoss.text, "f-label f-num"],
+          ]}
+        />
+        <Lines
+          x={lossEnd + 20}
+          y={out.other + 4}
+          lines={[["Warming, oxygen, hardware"], [show3(p), "f-num"]]}
+        />
+      </Art>
     </Frame>
   );
 }
