@@ -107,6 +107,8 @@
   scale: "{helios-area} of film; {helios-power} delivered"
   breakthrough: "{helios-efficiency} sunlight-to-target efficiency through kilometre-scale coherent laser arrays"
   specs:
+    - { label: Orbits, value: "Circular, {helios-orbit-inner} to {helios-orbit-outer} from the Sun, at many inclinations so no Petal shades another" }
+    - { label: Film temperature, value: "{helios-film-temp} near Mercury, {helios-film-temp-inner} on the innermost orbits" }
     - { label: Sunlight near Mercury, value: "{mercury-sunlight}" }
     - { label: End-to-end efficiency, value: "{helios-film-efficiency} film × {helios-laser-efficiency} laser × {helios-receiver-efficiency} receiver = {helios-efficiency}" }
     - { label: Petals, value: "{helios-petals}, each {helios-petal-side} square and {helios-petal-mass}" }
@@ -118,7 +120,7 @@
     - { label: Receiver intensity, value: "{helios-receiver-intensity}, actively cooled" }
     - { label: Receiver loss, value: "{helios-receiver-loss}, radiated from {helios-fin-temp} fins to space" }
   invented:
-    - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency at {helios-film-temp}
+    - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency from {helios-film-temp} to {helios-film-temp-inner}
     - Phase-locked emitter grids acting as {helios-aperture} virtual apertures
   precedent: []
   experiments: [lightpipe]

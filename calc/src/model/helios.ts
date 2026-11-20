@@ -88,25 +88,37 @@ export function helios(r: Registry) {
   r.q(
     "helios-range",
     {
-      label: "Longest Mercury-to-Venus beam range",
+      label: "Longest Lattice-to-Venus beam range, from the outermost Petal orbit",
       unit: "m",
       show: "AU",
       sig: 2,
-      formula: "a_Mercury + a_V",
+      formula: "a_outer + a_V",
       basis: "physics",
     },
-    () => v("mercury-orbit") + v("venus-orbit"),
+    () => v("helios-orbit-outer") + v("venus-orbit"),
   );
   r.q(
     "helios-spot",
     {
-      label: "Beam spot at the longest Mercury-to-Venus range",
+      label: "Beam spot at the longest Lattice-to-Venus range",
       unit: "m",
       sig: 2,
       formula: "2.44 λ L / D",
       basis: "physics",
     },
     () => (2.44 * v("helios-wavelength") * v("helios-range")) / v("helios-aperture"),
+  );
+  r.q(
+    "helios-film-temp-inner",
+    {
+      label: "Petal film temperature on the innermost orbit",
+      unit: "K",
+      sig: 2,
+      formula: "T_film (a_Mercury / a_inner)^½",
+      basis: "physics",
+      note: "A film that sheds its heat by radiation runs at the fourth root of the sunlight it takes in, and sunlight falls as the square of distance.",
+    },
+    () => v("helios-film-temp") * Math.sqrt(v("mercury-orbit") / v("helios-orbit-inner")),
   );
   r.q(
     "ring-to-ceres-range",

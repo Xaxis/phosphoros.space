@@ -76,7 +76,7 @@
 - { model: helios-petals, brief: 1.0e7, where: "2.9.2", correction: budget-offwindow }
 - { model: helios-petal-mass, brief: 5.0e6, where: "2.9.2" }
 - { model: helios-sun-share, brief: 2e-7, tol: 0.1, where: "2.9.2", correction: budget-offwindow }
-- { model: helios-spot, brief: 43, where: "2.9.2" }
+- { model: helios-spot, brief: 43, where: "2.9.2", correction: helios-orbits }
 - { model: helios-supply, brief: 7.7e27, where: "2.8", correction: budget-offwindow }
 
 # --- 2.9.3 Hesperus Veil ------------------------------------------------------------------------------

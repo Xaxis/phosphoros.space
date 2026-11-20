@@ -85,7 +85,7 @@ near Mercury, [6.2 × 10¹⁶ m²](numbers.md#helios-area) in all. Each turns
 [75%](numbers.md#helios-receiver-efficiency) receiver make [15%](numbers.md#helios-efficiency) end to end.
 From [July 2033](numbers.md?date=month#helios-full-power) it delivers [8.5 × 10¹⁹ W](numbers.md#helios-power),
 [2.2 × 10⁻⁵%](numbers.md#helios-sun-share) of the Sun's output, in beams that stay
-[43 m](numbers.md#helios-spot) wide across [1.1 AU](numbers.md#helios-range). The receivers ride above the
+[46 m](numbers.md#helios-spot) wide across [1.2 AU](numbers.md#helios-range). The receivers ride above the
 air and radiate their own loss heat, [2.8 × 10¹⁹ W](numbers.md#helios-receiver-loss), to space from
 [1,500 K](numbers.md#helios-fin-temp) fins, never into Venus.
 

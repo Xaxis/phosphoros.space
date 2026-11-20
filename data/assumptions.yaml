@@ -219,6 +219,21 @@ beam-keep-out:
   sig: 1
   label: Closest any beam path comes to Earth or a crewed craft
   basis: design
+helios-orbit-inner:
+  value: 4.488e10
+  unit: m
+  show: AU
+  sig: 2
+  label: Innermost Petal orbit
+  basis: design
+  note: Circular orbits from 0.30 to 0.45 AU at many inclinations, so no Petal shades another. Sunlight is taken at Mercury's distance, near the middle of the band.
+helios-orbit-outer:
+  value: 6.732e10
+  unit: m
+  show: AU
+  sig: 2
+  label: Outermost Petal orbit
+  basis: design
 beam-defocus-time:
   value: 1.0e-3
   unit: s

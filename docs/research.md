@@ -58,7 +58,7 @@ production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by [2031](num
 
 Coherent power beaming between satellites. The [Helios Lattice](technologies/helios.md) needs emitters
 phase-locked into virtual apertures [10 km](numbers.md#helios-aperture) wide, so a beam stays
-[43 m](numbers.md#helios-spot) across over [1.1 AU](numbers.md#helios-range). Each aperture is millions of
+[46 m](numbers.md#helios-spot) across over [1.2 AU](numbers.md#helios-range). Each aperture is millions of
 emitters acting as one. If phase lock fails with only [100](numbers.md#lightpipe-kill-emitters) or so, it will not hold with millions: beams
 spread, receivers balloon, and the beam-safety rules, which rely on precise pointing and instant defocus,
 cannot be met.

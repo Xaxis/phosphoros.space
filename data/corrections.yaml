@@ -376,3 +376,14 @@
     model sizes the Veil, its mass and the date the Foundry can afford it with no spares, so
     version 3 no longer claims them. The safeguards it does carry are {veil-slats} independent
     slats that fail opaque and the CO₂ sealed under the cryo-continents.
+- id: helios-orbits
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The longest beam starts from the Lattice's outermost orbit
+  text: >-
+    Version 2 put the Petals on orbits from {helios-orbit-inner} to {helios-orbit-outer} but
+    measured the longest beam from Mercury's orbit. Measured from the outermost Petals, the
+    longest beam to Venus is {helios-range}, and a {helios-aperture} aperture spreads it to
+    {helios-spot}.
+  before: { helios-range: 1.66e11, helios-spot: 43 }
