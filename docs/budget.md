@@ -105,7 +105,7 @@ draws [41 MJ/kg](numbers.md#launch-energy-per-kg). For [1.0 × 10²⁰ kg](numbe
 [4.1 × 10²⁷ J](numbers.md#ice-launch-energy), drawn at [5.6 × 10¹⁹ W](numbers.md#railhead-power) while the
 campaign runs.
 
-### Ring recovery and the Sun's gravity
+### Ring recovery and gravity
 
 The ice reaches Venus at [9.08 km/s](numbers.md#ice-vinf) relative to the planet and speeds up to
 [13.5 km/s](numbers.md#ring-arrival-speed) by the Ring's height. Braking it to orbital speed,

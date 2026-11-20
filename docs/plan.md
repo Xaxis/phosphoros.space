@@ -157,9 +157,9 @@ stator aloft. Magnetic sleds brake each Brick from [13.5 km/s](numbers.md#ring-a
 speed and turn [53 MJ/kg](numbers.md#ring-recovered-per-kg) of its motion into electricity:
 [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) in all, [7.2 × 10¹⁹ W](numbers.md#ring-power) at full rate.
 That is more than the coilguns draw, so from [17 August 2034](numbers.md?date=day#ring-pays-from) the Ring
-powers the Railheads and the Lattice is free to cool Venus. The surplus is not free energy: the Sun's
-gravity adds it as the ice falls from Ceres's orbit to Venus's
-([budget](budget.md#ring-recovery-and-the-suns-gravity)).
+powers the Railheads and the Lattice is free to cool Venus. The surplus is not free energy: gravity
+adds it as the ice falls from Ceres's orbit into the Sun's well and then into Venus's
+([budget](budget.md#ring-recovery-and-gravity)).
 
 <!-- figure:braking-ring -->
 ![Braking Ring: catching the Ice Train](../figures/svg/braking-ring.svg)
