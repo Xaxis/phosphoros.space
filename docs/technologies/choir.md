@@ -142,12 +142,13 @@ and crawlers before conditions change rather than after.
   with almost no human help. Pass and kill marks are on the [Research Agenda](../research.md).
 - **[January 2029](../numbers.md?date=month#foundry-landing):** Choir goes live with the seed foundry on
   Mercury. The Ledger's first entry is the seed itself.
-- **[June 2030](../numbers.md?date=month#helios-first-petals):** The first Lattice Petals fly and Veil
-  slat production begins. Beam handshakes start.
+- **[June 2030](../numbers.md?date=month#helios-first-petals):** The first Lattice Petals fly and the first
+  Veil slats are tested. Beam handshakes start.
 - **[December 2032](../numbers.md?date=month#veil-close):** The Veil closes. Choir holds its slats on station
   and sets its transmission.
 - **[May 2033](../numbers.md?date=month#foundry-full-scale):** The Foundry reaches full scale and its
-  budget; replication stops there. The first Bricks leave Ceres.
+  budget; replication stops there, and the Foundry turns to the Lattice and the Ring.
+- **[July 2033](../numbers.md?date=month#ice-launch-start):** The first Bricks leave Ceres.
 - **[September 2034](../numbers.md?date=month#first-catch):** The first catch. Ceres and Venus now work as
   one schedule.
 - **[December 2036](../numbers.md?date=month#deadline):** The deadline. Choir stays on: the Veil remains

@@ -106,10 +106,10 @@ export function stageAt(day: number, data: HeroData): Stage {
 
   return {
     sun,
-    veil: ramp(d("veil-build-start"), d("veil-close"), day),
+    veil: ramp(d("veil-build-begin"), d("veil-close"), day),
     veilOpen: open,
     aegis: ramp(d("aegis-online") - 40, d("aegis-online"), day),
-    ring: clamp((day - d("ring-build-start")) / (d("ring-complete") - d("ring-build-start"))),
+    ring: clamp((day - d("ring-build-begin")) / (d("ring-complete") - d("ring-build-begin"))),
     beams:
       ramp(d("cooling-start") - 40, d("cooling-start"), day) *
       (1 - 0.5 * ramp(d("traj-earth-like"), d("deadline"), day)),

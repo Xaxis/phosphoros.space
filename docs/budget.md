@@ -274,93 +274,93 @@ its basis says whether it is a design choice, an invention or a demonstrated pre
 | Share of sunlight the closed Veil keeps from Venus | [99.9%](numbers.md#veil-block-fraction) | Design choice |  | [data/assumptions.yaml:244](../data/assumptions.yaml#L244) |
 | Most light a slat lets through when open | [60%](numbers.md#veil-open-transmission) | Invented |  | [data/assumptions.yaml:251](../data/assumptions.yaml#L251) |
 | Slat edge | [1.2 km](numbers.md#veil-slat-side) | Design choice |  | [data/assumptions.yaml:257](../data/assumptions.yaml#L257) |
-| Number of chimneys (one per canopy) | [10,000](numbers.md#chimney-count) | Design choice |  | [data/assumptions.yaml:276](../data/assumptions.yaml#L276) |
-| Chimney diameter | [3.5 km](numbers.md#chimney-diameter) | Design choice |  | [data/assumptions.yaml:281](../data/assumptions.yaml#L281) |
-| Air speed through a chimney's intake exchangers | [20 m/s](numbers.md#chimney-flow-speed) | Design choice |  | [data/assumptions.yaml:288](../data/assumptions.yaml#L288) |
-| How much the air cools passing a chimney's intake exchangers, at the starting 737 K | [100 K](numbers.md#chimney-gas-cooling) | Design choice |  | [data/assumptions.yaml:293](../data/assumptions.yaml#L293) |
-| Pressure lost across a chimney's exchangers, in units of the flow's dynamic pressure | [4](numbers.md#chimney-loss-coefficient) | Invented |  | [data/assumptions.yaml:299](../data/assumptions.yaml#L299) |
-| Chimney base height | [1 km](numbers.md#chimney-base) | Design choice |  | [data/assumptions.yaml:305](../data/assumptions.yaml#L305) |
-| Chimney top height | [65 km](numbers.md#chimney-top) | Design choice |  | [data/assumptions.yaml:311](../data/assumptions.yaml#L311) |
-| Peak heat flow from the deep atmosphere | [6.0 × 10¹⁸ W](numbers.md#deep-heat-peak) | Design choice |  | [data/assumptions.yaml:317](../data/assumptions.yaml#L317) |
-| Effective temperature the emitters shine at | [2,000 K](numbers.md#exhaust-effective-temp) | Invented | 1,000 K to 3,000 K | [data/assumptions.yaml:324](../data/assumptions.yaml#L324) |
-| Emitter tile bandgap (InGaAsSb) | [0.54 eV](numbers.md#exhaust-bandgap) | Invented |  | [data/assumptions.yaml:330](../data/assumptions.yaml#L330) |
-| Peak power the Exhaust can throw into space | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Design choice | 3.0 × 10¹⁹ W to 7.0 × 10¹⁹ W | [data/assumptions.yaml:335](../data/assumptions.yaml#L335) |
-| Number of floating canopies | [10,000](numbers.md#exhaust-canopies) | Design choice |  | [data/assumptions.yaml:342](../data/assumptions.yaml#L342) |
-| Beam cone each tile fires into (full apex angle) | [25°](numbers.md#exhaust-cone) | Invented |  | [data/assumptions.yaml:347](../data/assumptions.yaml#L347) |
-| Width of the band each tile emits in | [0.4 µm](numbers.md#exhaust-band) | Invented |  | [data/assumptions.yaml:352](../data/assumptions.yaml#L352) |
-| Frost Tower cold-trap temperature | [133 K](numbers.md#frost-tower-temp) | Invented |  | [data/assumptions.yaml:365](../data/assumptions.yaml#L365) |
-| External quantum efficiency of the emitter tiles (photons out per electron in) | [99.9%](numbers.md#exhaust-eqe) | Invented |  | [data/assumptions.yaml:371](../data/assumptions.yaml#L371) |
-| Cryo-continent thickness | [2 km](numbers.md#cryo-thickness) | Design choice |  | [data/assumptions.yaml:381](../data/assumptions.yaml#L381) |
-| Carbon aerogel layer in each cap | [20 m](numbers.md#cryo-aerogel-thickness) | Invented |  | [data/assumptions.yaml:387](../data/assumptions.yaml#L387) |
-| Carbon aerogel density | [100 kg/m³](numbers.md#cryo-aerogel-density) | Precedent |  | [data/assumptions.yaml:392](../data/assumptions.yaml#L392) |
-| Carbon aerogel thermal conductivity | [0.014 W/(m·K)](numbers.md#cryo-aerogel-conductivity) | Precedent |  | [data/assumptions.yaml:397](../data/assumptions.yaml#L397) |
-| Graphite membrane thickness | [1 mm](numbers.md#cryo-membrane-thickness) | Invented |  | [data/assumptions.yaml:402](../data/assumptions.yaml#L402) |
-| Crushed-basalt armour on each cap | [2 m](numbers.md#cryo-armour-thickness) | Design choice |  | [data/assumptions.yaml:408](../data/assumptions.yaml#L408) |
-| Temperature the sealed dry ice is held at | [180 K](numbers.md#cryo-ice-temp) | Design choice |  | [data/assumptions.yaml:413](../data/assumptions.yaml#L413) |
-| Effective temperature step between hot rock and basin floor | [450 K](numbers.md#cryo-floor-step) | Design choice |  | [data/assumptions.yaml:418](../data/assumptions.yaml#L418) |
-| Area of one sealed compartment | [100 km²](numbers.md#cryo-cell-area) | Design choice |  | [data/assumptions.yaml:424](../data/assumptions.yaml#L424) |
-| Depth basal heat pipes reach into the basin floors | [200 m](numbers.md#heat-pipe-depth) | Design choice |  | [data/assumptions.yaml:436](../data/assumptions.yaml#L436) |
-| Oxygen pressure to make | [0.25 bar](numbers.md#o2-target-pressure) | Design choice |  | [data/assumptions.yaml:443](../data/assumptions.yaml#L443) |
-| Molten-carbonate splitting efficiency | [60%](numbers.md#forge-efficiency) | Precedent |  | [data/assumptions.yaml:449](../data/assumptions.yaml#L449) |
-| Number of Forges | [500](numbers.md#forge-count) | Design choice |  | [data/assumptions.yaml:456](../data/assumptions.yaml#L456) |
-| Width of one Forge raft | [30 km](numbers.md#forge-raft-width) | Design choice |  | [data/assumptions.yaml:471](../data/assumptions.yaml#L471) |
-| Water shipped to Venus | [1.0 × 10²⁰ kg](numbers.md#ice-mass) | Design choice | 3.0 × 10¹⁹ kg to 2.0 × 10²⁰ kg | [data/assumptions.yaml:479](../data/assumptions.yaml#L479) |
-| Ice Brick mass | [1 Mt](numbers.md#brick-mass) | Design choice |  | [data/assumptions.yaml:485](../data/assumptions.yaml#L485) |
-| Number of Railheads on Ceres | [10,000](numbers.md#railhead-count) | Design choice |  | [data/assumptions.yaml:491](../data/assumptions.yaml#L491) |
-| Railhead acceleration | [200 g](numbers.md#railhead-accel) | Invented |  | [data/assumptions.yaml:496](../data/assumptions.yaml#L496) |
-| Railhead efficiency, electricity to motion | [50%](numbers.md#railhead-efficiency) | Invented |  | [data/assumptions.yaml:501](../data/assumptions.yaml#L501) |
-| Days kept between the last arrival and the deadline | [16 d](numbers.md#ice-lowering-margin) | Design choice |  | [data/assumptions.yaml:507](../data/assumptions.yaml#L507) |
-| Ring altitude | [400 km](numbers.md#ring-altitude) | Design choice |  | [data/assumptions.yaml:524](../data/assumptions.yaml#L524) |
-| Rotor speed | [10 km/s](numbers.md#ring-rotor-speed) | Invented |  | [data/assumptions.yaml:530](../data/assumptions.yaml#L530) |
-| Rotor mass | [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) | Invented |  | [data/assumptions.yaml:536](../data/assumptions.yaml#L536) |
-| Stator mass (tracks, tethers, receivers) | [3.0 × 10¹² kg](numbers.md#ring-stator-mass) | Invented |  | [data/assumptions.yaml:541](../data/assumptions.yaml#L541) |
-| Catcher braking | [50 g](numbers.md#ring-catch-accel) | Invented |  | [data/assumptions.yaml:546](../data/assumptions.yaml#L546) |
-| Regenerative braking efficiency | [80%](numbers.md#ring-recovery-efficiency) | Invented |  | [data/assumptions.yaml:551](../data/assumptions.yaml#L551) |
-| Number of tether lifts | [3,000](numbers.md#ring-tether-lifts) | Design choice |  | [data/assumptions.yaml:557](../data/assumptions.yaml#L557) |
-| Height Bricks are released from | [100 km](numbers.md#lowering-release-altitude) | Design choice |  | [data/assumptions.yaml:562](../data/assumptions.yaml#L562) |
-| Temperature of a Brick when it is lowered | [150 K](numbers.md#brick-temp) | Design choice |  | [data/assumptions.yaml:578](../data/assumptions.yaml#L578) |
-| Magnetic bubble radius | [10,000 km](numbers.md#aegis-bubble-radius) | Design choice |  | [data/assumptions.yaml:591](../data/assumptions.yaml#L591) |
-| Coil radius | [1,000 km](numbers.md#aegis-coil-radius) | Design choice |  | [data/assumptions.yaml:597](../data/assumptions.yaml#L597) |
-| Turns in the coil | [1,000,000](numbers.md#aegis-turns) | Design choice |  | [data/assumptions.yaml:604](../data/assumptions.yaml#L604) |
-| Radius of the coil's winding pack | [5 m](numbers.md#aegis-winding-radius) | Design choice |  | [data/assumptions.yaml:609](../data/assumptions.yaml#L609) |
-| Temperature the Aegis cable runs at | [40 K](numbers.md#aegis-coil-temp) | Invented |  | [data/assumptions.yaml:614](../data/assumptions.yaml#L614) |
-| Ocean pH that must hold before any life is released | [7.5](numbers.md#genesis-ph-min) | Design choice |  | [data/assumptions.yaml:622](../data/assumptions.yaml#L622) |
-| Days the ocean pH must hold before any life is released | [90 d](numbers.md#genesis-ph-days) | Design choice |  | [data/assumptions.yaml:628](../data/assumptions.yaml#L628) |
-| Density the drones seed cyanobacteria at in sunlit water | [100 per cm³](numbers.md#genesis-seed-density) | Design choice |  | [data/assumptions.yaml:633](../data/assumptions.yaml#L633) |
-| Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean | [200,000 per cm³](numbers.md#genesis-bloom-density) | Precedent |  | [data/assumptions.yaml:640](../data/assumptions.yaml#L640) |
-| Doubling time of the seeded ocean cyanobacteria in sunlit water | [1 d](numbers.md#genesis-doubling-days) | Invented |  | [data/assumptions.yaml:648](../data/assumptions.yaml#L648) |
-| Thinnest black-loam soil laid on caps and shores | [10 cm](numbers.md#genesis-soil-min) | Design choice |  | [data/assumptions.yaml:654](../data/assumptions.yaml#L654) |
-| Thickest black-loam soil laid on caps and shores | [30 cm](numbers.md#genesis-soil-max) | Design choice |  | [data/assumptions.yaml:660](../data/assumptions.yaml#L660) |
-| Length of the day the Veil and Lanterns set | [24 h](numbers.md#day-length) | Design choice |  | [data/assumptions.yaml:666](../data/assumptions.yaml#L666) |
-| Relative humidity over the new oceans | [75%](numbers.md#final-humidity) | Design choice |  | [data/assumptions.yaml:673](../data/assumptions.yaml#L673) |
-| Albedo of the finished, Earth-like Venus | [30%](numbers.md#final-albedo) | Design choice |  | [data/assumptions.yaml:679](../data/assumptions.yaml#L679) |
-| Coldest mean temperature that counts as Earth-like | [285 K](numbers.md#earth-like-temp) | Design choice |  | [data/assumptions.yaml:685](../data/assumptions.yaml#L685) |
-| Most CO₂ that counts as Earth-like | [600 ppm](numbers.md#earth-like-co2) | Design choice |  | [data/assumptions.yaml:691](../data/assumptions.yaml#L691) |
-| Days a replicator keeps building without a Mass Ledger heartbeat | [7 d](numbers.md#choir-deadman-days) | Design choice |  | [data/assumptions.yaml:699](../data/assumptions.yaml#L699) |
-| Ouroboros-0 passes at this share of its own mass made from simulated regolith | [95%](numbers.md#ouroboros-0-closure) | Design choice |  | [data/assumptions.yaml:707](../data/assumptions.yaml#L707) |
-| Ouroboros-0 passes if it doubles in less than this | [120 d](numbers.md#ouroboros-0-doubling) | Design choice |  | [data/assumptions.yaml:713](../data/assumptions.yaml#L713) |
-| Ouroboros-0 is killed below this mass closure | [70%](numbers.md#ouroboros-0-kill-closure) | Design choice |  | [data/assumptions.yaml:718](../data/assumptions.yaml#L718) |
-| Exhaust-1 passes at this much net cooling | [10 kW/m²](numbers.md#exhaust-1-cooling) | Design choice |  | [data/assumptions.yaml:724](../data/assumptions.yaml#L724) |
-| Exhaust-1 must come within this share of the Carnot limit | [50%](numbers.md#exhaust-1-carnot) | Design choice |  | [data/assumptions.yaml:730](../data/assumptions.yaml#L730) |
-| Exhaust-1 is killed if it shows no net cooling above this | [100 W/m²](numbers.md#exhaust-1-kill-cooling) | Design choice |  | [data/assumptions.yaml:736](../data/assumptions.yaml#L736) |
-| Power the Lightpipe test beams between satellites | [1 MW](numbers.md#lightpipe-power) | Design choice |  | [data/assumptions.yaml:746](../data/assumptions.yaml#L746) |
-| Distance the Lightpipe test beams over | [1,000 km](numbers.md#lightpipe-range) | Design choice |  | [data/assumptions.yaml:752](../data/assumptions.yaml#L752) |
-| Lightpipe passes at this end-to-end efficiency | [30%](numbers.md#lightpipe-efficiency) | Design choice |  | [data/assumptions.yaml:758](../data/assumptions.yaml#L758) |
-| Lightpipe is killed if phase lock fails beyond this many emitters | [100](numbers.md#lightpipe-kill-emitters) | Design choice |  | [data/assumptions.yaml:764](../data/assumptions.yaml#L764) |
-| Area of the Veil-1 test slat | [1 km²](numbers.md#veil-1-area) | Design choice |  | [data/assumptions.yaml:769](../data/assumptions.yaml#L769) |
-| Veil-1 must dim to block this share of sunlight | [99%](numbers.md#veil-1-dim) | Design choice |  | [data/assumptions.yaml:775](../data/assumptions.yaml#L775) |
-| Veil-1 is killed if its film degrades within this | [6 months](numbers.md#veil-1-kill-life) | Design choice |  | [data/assumptions.yaml:781](../data/assumptions.yaml#L781) |
-| Ice block the Railhead test throws | [1 t](numbers.md#railhead-test-mass) | Design choice |  | [data/assumptions.yaml:787](../data/assumptions.yaml#L787) |
-| Railhead test passes at this muzzle speed | [3 km/s](numbers.md#railhead-test-speed) | Design choice |  | [data/assumptions.yaml:793](../data/assumptions.yaml#L793) |
-| Railhead test passes at this many shots an hour | [10](numbers.md#railhead-test-rate) | Design choice |  | [data/assumptions.yaml:799](../data/assumptions.yaml#L799) |
-| Railhead test is killed below this muzzle speed | [1 km/s](numbers.md#railhead-kill-speed) | Design choice |  | [data/assumptions.yaml:804](../data/assumptions.yaml#L804) |
-| Railhead test is killed below this many shots an hour | [1](numbers.md#railhead-kill-rate) | Design choice |  | [data/assumptions.yaml:810](../data/assumptions.yaml#L810) |
-| Cryo-seal passes if the cap leaks less heat than this | [0.1 W/m²](numbers.md#cryo-seal-leak) | Design choice |  | [data/assumptions.yaml:815](../data/assumptions.yaml#L815) |
-| How long Cryo-seal must hold its leak | [12 months](numbers.md#cryo-seal-months) | Design choice |  | [data/assumptions.yaml:821](../data/assumptions.yaml#L821) |
-| Size of the Mini-Aegis test coil | [10 m](numbers.md#mini-aegis-coil) | Design choice |  | [data/assumptions.yaml:827](../data/assumptions.yaml#L827) |
-| Robots in the Choir-sim test factory | [10,000](numbers.md#choir-sim-robots) | Design choice |  | [data/assumptions.yaml:832](../data/assumptions.yaml#L832) |
-| How long Choir-sim must run unattended | [90 d](numbers.md#choir-sim-days) | Design choice |  | [data/assumptions.yaml:837](../data/assumptions.yaml#L837) |
-| Choir-sim is killed above this many human interventions a day | [1](numbers.md#choir-sim-kill-interventions) | Design choice |  | [data/assumptions.yaml:842](../data/assumptions.yaml#L842) |
+| Number of chimneys (one per canopy) | [10,000](numbers.md#chimney-count) | Design choice |  | [data/assumptions.yaml:277](../data/assumptions.yaml#L277) |
+| Chimney diameter | [3.5 km](numbers.md#chimney-diameter) | Design choice |  | [data/assumptions.yaml:282](../data/assumptions.yaml#L282) |
+| Air speed through a chimney's intake exchangers | [20 m/s](numbers.md#chimney-flow-speed) | Design choice |  | [data/assumptions.yaml:289](../data/assumptions.yaml#L289) |
+| How much the air cools passing a chimney's intake exchangers, at the starting 737 K | [100 K](numbers.md#chimney-gas-cooling) | Design choice |  | [data/assumptions.yaml:294](../data/assumptions.yaml#L294) |
+| Pressure lost across a chimney's exchangers, in units of the flow's dynamic pressure | [4](numbers.md#chimney-loss-coefficient) | Invented |  | [data/assumptions.yaml:300](../data/assumptions.yaml#L300) |
+| Chimney base height | [1 km](numbers.md#chimney-base) | Design choice |  | [data/assumptions.yaml:306](../data/assumptions.yaml#L306) |
+| Chimney top height | [65 km](numbers.md#chimney-top) | Design choice |  | [data/assumptions.yaml:312](../data/assumptions.yaml#L312) |
+| Peak heat flow from the deep atmosphere | [6.0 × 10¹⁸ W](numbers.md#deep-heat-peak) | Design choice |  | [data/assumptions.yaml:318](../data/assumptions.yaml#L318) |
+| Effective temperature the emitters shine at | [2,000 K](numbers.md#exhaust-effective-temp) | Invented | 1,000 K to 3,000 K | [data/assumptions.yaml:325](../data/assumptions.yaml#L325) |
+| Emitter tile bandgap (InGaAsSb) | [0.54 eV](numbers.md#exhaust-bandgap) | Invented |  | [data/assumptions.yaml:331](../data/assumptions.yaml#L331) |
+| Peak power the Exhaust can throw into space | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Design choice | 3.0 × 10¹⁹ W to 7.0 × 10¹⁹ W | [data/assumptions.yaml:336](../data/assumptions.yaml#L336) |
+| Number of floating canopies | [10,000](numbers.md#exhaust-canopies) | Design choice |  | [data/assumptions.yaml:343](../data/assumptions.yaml#L343) |
+| Beam cone each tile fires into (full apex angle) | [25°](numbers.md#exhaust-cone) | Invented |  | [data/assumptions.yaml:348](../data/assumptions.yaml#L348) |
+| Width of the band each tile emits in | [0.4 µm](numbers.md#exhaust-band) | Invented |  | [data/assumptions.yaml:353](../data/assumptions.yaml#L353) |
+| Frost Tower cold-trap temperature | [133 K](numbers.md#frost-tower-temp) | Invented |  | [data/assumptions.yaml:366](../data/assumptions.yaml#L366) |
+| External quantum efficiency of the emitter tiles (photons out per electron in) | [99.9%](numbers.md#exhaust-eqe) | Invented |  | [data/assumptions.yaml:372](../data/assumptions.yaml#L372) |
+| Cryo-continent thickness | [2 km](numbers.md#cryo-thickness) | Design choice |  | [data/assumptions.yaml:382](../data/assumptions.yaml#L382) |
+| Carbon aerogel layer in each cap | [20 m](numbers.md#cryo-aerogel-thickness) | Invented |  | [data/assumptions.yaml:388](../data/assumptions.yaml#L388) |
+| Carbon aerogel density | [100 kg/m³](numbers.md#cryo-aerogel-density) | Precedent |  | [data/assumptions.yaml:393](../data/assumptions.yaml#L393) |
+| Carbon aerogel thermal conductivity | [0.014 W/(m·K)](numbers.md#cryo-aerogel-conductivity) | Precedent |  | [data/assumptions.yaml:398](../data/assumptions.yaml#L398) |
+| Graphite membrane thickness | [1 mm](numbers.md#cryo-membrane-thickness) | Invented |  | [data/assumptions.yaml:403](../data/assumptions.yaml#L403) |
+| Crushed-basalt armour on each cap | [2 m](numbers.md#cryo-armour-thickness) | Design choice |  | [data/assumptions.yaml:409](../data/assumptions.yaml#L409) |
+| Temperature the sealed dry ice is held at | [180 K](numbers.md#cryo-ice-temp) | Design choice |  | [data/assumptions.yaml:414](../data/assumptions.yaml#L414) |
+| Effective temperature step between hot rock and basin floor | [450 K](numbers.md#cryo-floor-step) | Design choice |  | [data/assumptions.yaml:419](../data/assumptions.yaml#L419) |
+| Area of one sealed compartment | [100 km²](numbers.md#cryo-cell-area) | Design choice |  | [data/assumptions.yaml:425](../data/assumptions.yaml#L425) |
+| Depth basal heat pipes reach into the basin floors | [200 m](numbers.md#heat-pipe-depth) | Design choice |  | [data/assumptions.yaml:437](../data/assumptions.yaml#L437) |
+| Oxygen pressure to make | [0.25 bar](numbers.md#o2-target-pressure) | Design choice |  | [data/assumptions.yaml:444](../data/assumptions.yaml#L444) |
+| Molten-carbonate splitting efficiency | [60%](numbers.md#forge-efficiency) | Precedent |  | [data/assumptions.yaml:450](../data/assumptions.yaml#L450) |
+| Number of Forges | [500](numbers.md#forge-count) | Design choice |  | [data/assumptions.yaml:457](../data/assumptions.yaml#L457) |
+| Width of one Forge raft | [30 km](numbers.md#forge-raft-width) | Design choice |  | [data/assumptions.yaml:472](../data/assumptions.yaml#L472) |
+| Water shipped to Venus | [1.0 × 10²⁰ kg](numbers.md#ice-mass) | Design choice | 3.0 × 10¹⁹ kg to 2.0 × 10²⁰ kg | [data/assumptions.yaml:480](../data/assumptions.yaml#L480) |
+| Ice Brick mass | [1 Mt](numbers.md#brick-mass) | Design choice |  | [data/assumptions.yaml:486](../data/assumptions.yaml#L486) |
+| Number of Railheads on Ceres | [10,000](numbers.md#railhead-count) | Design choice |  | [data/assumptions.yaml:492](../data/assumptions.yaml#L492) |
+| Railhead acceleration | [200 g](numbers.md#railhead-accel) | Invented |  | [data/assumptions.yaml:497](../data/assumptions.yaml#L497) |
+| Railhead efficiency, electricity to motion | [50%](numbers.md#railhead-efficiency) | Invented |  | [data/assumptions.yaml:502](../data/assumptions.yaml#L502) |
+| Days kept between the last arrival and the deadline | [16 d](numbers.md#ice-lowering-margin) | Design choice |  | [data/assumptions.yaml:508](../data/assumptions.yaml#L508) |
+| Ring altitude | [400 km](numbers.md#ring-altitude) | Design choice |  | [data/assumptions.yaml:520](../data/assumptions.yaml#L520) |
+| Rotor speed | [10 km/s](numbers.md#ring-rotor-speed) | Invented |  | [data/assumptions.yaml:526](../data/assumptions.yaml#L526) |
+| Rotor mass | [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) | Invented |  | [data/assumptions.yaml:532](../data/assumptions.yaml#L532) |
+| Stator mass (tracks, tethers, receivers) | [3.0 × 10¹² kg](numbers.md#ring-stator-mass) | Invented |  | [data/assumptions.yaml:537](../data/assumptions.yaml#L537) |
+| Catcher braking | [50 g](numbers.md#ring-catch-accel) | Invented |  | [data/assumptions.yaml:542](../data/assumptions.yaml#L542) |
+| Regenerative braking efficiency | [80%](numbers.md#ring-recovery-efficiency) | Invented |  | [data/assumptions.yaml:547](../data/assumptions.yaml#L547) |
+| Number of tether lifts | [3,000](numbers.md#ring-tether-lifts) | Design choice |  | [data/assumptions.yaml:553](../data/assumptions.yaml#L553) |
+| Height Bricks are released from | [100 km](numbers.md#lowering-release-altitude) | Design choice |  | [data/assumptions.yaml:558](../data/assumptions.yaml#L558) |
+| Temperature of a Brick when it is lowered | [150 K](numbers.md#brick-temp) | Design choice |  | [data/assumptions.yaml:574](../data/assumptions.yaml#L574) |
+| Magnetic bubble radius | [10,000 km](numbers.md#aegis-bubble-radius) | Design choice |  | [data/assumptions.yaml:587](../data/assumptions.yaml#L587) |
+| Coil radius | [1,000 km](numbers.md#aegis-coil-radius) | Design choice |  | [data/assumptions.yaml:593](../data/assumptions.yaml#L593) |
+| Turns in the coil | [1,000,000](numbers.md#aegis-turns) | Design choice |  | [data/assumptions.yaml:600](../data/assumptions.yaml#L600) |
+| Radius of the coil's winding pack | [5 m](numbers.md#aegis-winding-radius) | Design choice |  | [data/assumptions.yaml:605](../data/assumptions.yaml#L605) |
+| Temperature the Aegis cable runs at | [40 K](numbers.md#aegis-coil-temp) | Invented |  | [data/assumptions.yaml:610](../data/assumptions.yaml#L610) |
+| Ocean pH that must hold before any life is released | [7.5](numbers.md#genesis-ph-min) | Design choice |  | [data/assumptions.yaml:618](../data/assumptions.yaml#L618) |
+| Days the ocean pH must hold before any life is released | [90 d](numbers.md#genesis-ph-days) | Design choice |  | [data/assumptions.yaml:624](../data/assumptions.yaml#L624) |
+| Density the drones seed cyanobacteria at in sunlit water | [100 per cm³](numbers.md#genesis-seed-density) | Design choice |  | [data/assumptions.yaml:629](../data/assumptions.yaml#L629) |
+| Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean | [200,000 per cm³](numbers.md#genesis-bloom-density) | Precedent |  | [data/assumptions.yaml:636](../data/assumptions.yaml#L636) |
+| Doubling time of the seeded ocean cyanobacteria in sunlit water | [1 d](numbers.md#genesis-doubling-days) | Invented |  | [data/assumptions.yaml:644](../data/assumptions.yaml#L644) |
+| Thinnest black-loam soil laid on caps and shores | [10 cm](numbers.md#genesis-soil-min) | Design choice |  | [data/assumptions.yaml:650](../data/assumptions.yaml#L650) |
+| Thickest black-loam soil laid on caps and shores | [30 cm](numbers.md#genesis-soil-max) | Design choice |  | [data/assumptions.yaml:656](../data/assumptions.yaml#L656) |
+| Length of the day the Veil and Lanterns set | [24 h](numbers.md#day-length) | Design choice |  | [data/assumptions.yaml:662](../data/assumptions.yaml#L662) |
+| Relative humidity over the new oceans | [75%](numbers.md#final-humidity) | Design choice |  | [data/assumptions.yaml:669](../data/assumptions.yaml#L669) |
+| Albedo of the finished, Earth-like Venus | [30%](numbers.md#final-albedo) | Design choice |  | [data/assumptions.yaml:675](../data/assumptions.yaml#L675) |
+| Coldest mean temperature that counts as Earth-like | [285 K](numbers.md#earth-like-temp) | Design choice |  | [data/assumptions.yaml:681](../data/assumptions.yaml#L681) |
+| Most CO₂ that counts as Earth-like | [600 ppm](numbers.md#earth-like-co2) | Design choice |  | [data/assumptions.yaml:687](../data/assumptions.yaml#L687) |
+| Days a replicator keeps building without a Mass Ledger heartbeat | [7 d](numbers.md#choir-deadman-days) | Design choice |  | [data/assumptions.yaml:695](../data/assumptions.yaml#L695) |
+| Ouroboros-0 passes at this share of its own mass made from simulated regolith | [95%](numbers.md#ouroboros-0-closure) | Design choice |  | [data/assumptions.yaml:703](../data/assumptions.yaml#L703) |
+| Ouroboros-0 passes if it doubles in less than this | [120 d](numbers.md#ouroboros-0-doubling) | Design choice |  | [data/assumptions.yaml:709](../data/assumptions.yaml#L709) |
+| Ouroboros-0 is killed below this mass closure | [70%](numbers.md#ouroboros-0-kill-closure) | Design choice |  | [data/assumptions.yaml:714](../data/assumptions.yaml#L714) |
+| Exhaust-1 passes at this much net cooling | [10 kW/m²](numbers.md#exhaust-1-cooling) | Design choice |  | [data/assumptions.yaml:720](../data/assumptions.yaml#L720) |
+| Exhaust-1 must come within this share of the Carnot limit | [50%](numbers.md#exhaust-1-carnot) | Design choice |  | [data/assumptions.yaml:726](../data/assumptions.yaml#L726) |
+| Exhaust-1 is killed if it shows no net cooling above this | [100 W/m²](numbers.md#exhaust-1-kill-cooling) | Design choice |  | [data/assumptions.yaml:732](../data/assumptions.yaml#L732) |
+| Power the Lightpipe test beams between satellites | [1 MW](numbers.md#lightpipe-power) | Design choice |  | [data/assumptions.yaml:742](../data/assumptions.yaml#L742) |
+| Distance the Lightpipe test beams over | [1,000 km](numbers.md#lightpipe-range) | Design choice |  | [data/assumptions.yaml:748](../data/assumptions.yaml#L748) |
+| Lightpipe passes at this end-to-end efficiency | [30%](numbers.md#lightpipe-efficiency) | Design choice |  | [data/assumptions.yaml:754](../data/assumptions.yaml#L754) |
+| Lightpipe is killed if phase lock fails beyond this many emitters | [100](numbers.md#lightpipe-kill-emitters) | Design choice |  | [data/assumptions.yaml:760](../data/assumptions.yaml#L760) |
+| Area of the Veil-1 test slat | [1 km²](numbers.md#veil-1-area) | Design choice |  | [data/assumptions.yaml:765](../data/assumptions.yaml#L765) |
+| Veil-1 must dim to block this share of sunlight | [99%](numbers.md#veil-1-dim) | Design choice |  | [data/assumptions.yaml:771](../data/assumptions.yaml#L771) |
+| Veil-1 is killed if its film degrades within this | [6 months](numbers.md#veil-1-kill-life) | Design choice |  | [data/assumptions.yaml:777](../data/assumptions.yaml#L777) |
+| Ice block the Railhead test throws | [1 t](numbers.md#railhead-test-mass) | Design choice |  | [data/assumptions.yaml:783](../data/assumptions.yaml#L783) |
+| Railhead test passes at this muzzle speed | [3 km/s](numbers.md#railhead-test-speed) | Design choice |  | [data/assumptions.yaml:789](../data/assumptions.yaml#L789) |
+| Railhead test passes at this many shots an hour | [10](numbers.md#railhead-test-rate) | Design choice |  | [data/assumptions.yaml:795](../data/assumptions.yaml#L795) |
+| Railhead test is killed below this muzzle speed | [1 km/s](numbers.md#railhead-kill-speed) | Design choice |  | [data/assumptions.yaml:800](../data/assumptions.yaml#L800) |
+| Railhead test is killed below this many shots an hour | [1](numbers.md#railhead-kill-rate) | Design choice |  | [data/assumptions.yaml:806](../data/assumptions.yaml#L806) |
+| Cryo-seal passes if the cap leaks less heat than this | [0.1 W/m²](numbers.md#cryo-seal-leak) | Design choice |  | [data/assumptions.yaml:811](../data/assumptions.yaml#L811) |
+| How long Cryo-seal must hold its leak | [12 months](numbers.md#cryo-seal-months) | Design choice |  | [data/assumptions.yaml:817](../data/assumptions.yaml#L817) |
+| Size of the Mini-Aegis test coil | [10 m](numbers.md#mini-aegis-coil) | Design choice |  | [data/assumptions.yaml:823](../data/assumptions.yaml#L823) |
+| Robots in the Choir-sim test factory | [10,000](numbers.md#choir-sim-robots) | Design choice |  | [data/assumptions.yaml:828](../data/assumptions.yaml#L828) |
+| How long Choir-sim must run unattended | [90 d](numbers.md#choir-sim-days) | Design choice |  | [data/assumptions.yaml:833](../data/assumptions.yaml#L833) |
+| Choir-sim is killed above this many human interventions a day | [1](numbers.md#choir-sim-kill-interventions) | Design choice |  | [data/assumptions.yaml:838](../data/assumptions.yaml#L838) |
 <!-- /table -->
 
 Every assumption with a range is a slider in the [Explorer](https://phosphoros.space/explore), which runs

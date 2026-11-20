@@ -263,8 +263,9 @@ veil-slat-side:
 veil-build-start:
   value: 2030-06-01
   unit: date
-  label: Veil slat production begins
+  label: First test Veil slats made
   basis: design
+  note: Test articles, too few to shade Venus. The Veil itself is built late in 2032; see veil-build-begin.
 veil-close:
   value: 2032-12-01
   unit: date
@@ -511,11 +512,6 @@ ice-lowering-margin:
   basis: design
 
 # --- Braking Ring ----------------------------------------------------------------------------------
-ring-build-start:
-  value: 2032-06-01
-  unit: date
-  label: Braking Ring construction begins
-  basis: design
 ring-complete:
   value: 2033-12-31
   unit: date

@@ -158,9 +158,9 @@ function Gantt(p: GanttProps) {
           );
         } else {
           const mx = x(row.start);
-          // Dates sit right of their diamond unless they would run off the edge; then left, and
-          // clear of the Earth-like line.
-          const right = mx + 11 + row.startText.length * 6.4 < W - 4;
+          // Dates sit right of their diamond unless they would cross the Earth-like line or run off
+          // the edge; then left, and clear of the line.
+          const right = mx + 11 + row.startText.length * 6.4 < (mx < xe ? xe : W) - 4;
           mark = (
             <g>
               <Diamond x={mx} y={cy} r={7} tone={tone} hollow={row.kind === "gate"} />
