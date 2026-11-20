@@ -496,3 +496,48 @@
   url: https://en.wikipedia.org/wiki/Synechococcus
   checked: 2026-11-20
   note: Abundant in well-lit surface water, generally 1,000 to 200,000 cells per millilitre.
+- id: theweek-2026-vom
+  kind: news
+  title: "ISRO's upcoming Venus, Mars missions explained"
+  authors: Abhinav Singh, The Week
+  year: 2026
+  date: 2026-08-30
+  url: https://www.theweek.in/theweek/specials/2026/08/28/isros-upcoming-venus-mars-missions-explained.html
+  checked: 2026-11-20
+  note: >-
+    Cabinet approval in September 2024, preliminary design review finished in April 2026, launch
+    on track for 29 March 2028, likely on LVM3, and orbit insertion on 19 July 2028; 19 payloads,
+    led by a subsurface radar.
+- id: planetary-2026-house
+  kind: news
+  title: House appropriators advance key NASA funding bill
+  authors: The Planetary Society
+  year: 2026
+  date: 2026-05-14
+  url: https://www.planetary.org/articles/house-appropriators-advance-key-nasa-funding-bill
+  checked: 2026-11-20
+  note: >-
+    The House Appropriations Committee advanced its bill on 13 May 2026. VERITAS, DAVINCI and the
+    VenSAR contribution to EnVision "do not get the same protections that other planetary missions
+    receive" and face "cancellation-by-omission".
+- id: snsa-2026-minif
+  kind: report
+  title: Calls available for financial support in 2027 and beyond for mission candidates for M8, F3 and Mini-F
+  authors: Swedish National Space Agency
+  year: 2026
+  date: 2026-02-27
+  url: https://www.rymdstyrelsen.se/contentassets/0c8dc7398d324ac580fde1bf2e275b6a/support-to-m8-f3-and-mini-f.pdf
+  checked: 2026-11-20
+  note: >-
+    "The ESA Science Directorate is preparing for decisions in November 2026", including the
+    "Selection of first Mini-F (to be confirmed)". We found no announcement of the result by the
+    date checked.
+- id: esa-envision-timeline
+  kind: web
+  title: EnVision timeline
+  authors: European Space Agency, EnVision science team
+  url: https://www.cosmos.esa.int/web/envision/timeline
+  checked: 2026-11-20
+  note: >-
+    Gives December 2031 as the baseline launch date, then a 15-month cruise and 11 months of
+    aerobraking.
