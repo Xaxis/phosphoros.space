@@ -1,0 +1,45 @@
+name: Challenge a number
+description: A number on the site or in the repository looks wrong. Say which, what you think it should be, and why.
+title: "Number: <id>"
+labels: ["challenge"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Challenges make the plan more honest, and every accepted one is recorded in the
+        [corrections log](https://phosphoros.space/about#corrections) with credit.
+        Every number has an id: click it on the site, or find it in the
+        [ledger](https://github.com/Xaxis/phosphoros.space/blob/main/docs/numbers.md).
+  - type: input
+    id: number
+    attributes:
+      label: Number id
+      description: The id from the number's card or the ledger.
+      placeholder: veil-distance
+    validations:
+      required: true
+  - type: input
+    id: should-be
+    attributes:
+      label: What you think it should be
+      placeholder: "about 1.2 million km"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: The physics, a calculation, or a source. If an input is wrong, say which; if a formula is wrong, say how.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to check it
+      description: For example `pnpm calc --only veil-distance`, or `pnpm calc --set id=value` with the change you propose.
+      render: shell
+  - type: input
+    id: source
+    attributes:
+      label: Source, if any
+      description: A DOI or link.

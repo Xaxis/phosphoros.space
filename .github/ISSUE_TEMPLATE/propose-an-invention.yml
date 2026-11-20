@@ -1,0 +1,47 @@
+name: Propose an invention
+description: An invention that would make the plan faster, cheaper or more certain, without breaking physics.
+title: "Invention: <name>"
+labels: ["invention"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Phosphoros may assume engineering we do not have. It may never assume a violation of
+        conservation of energy or the second law of thermodynamics. Say which is which.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: The job it does
+      description: Which technology or step it replaces or improves, and what changes in the plan.
+    validations:
+      required: true
+  - type: textarea
+    id: invented
+    attributes:
+      label: What is invented
+      description: The breakthroughs it needs that do not exist today.
+    validations:
+      required: true
+  - type: textarea
+    id: physics
+    attributes:
+      label: Why the physics holds
+      description: The energy it takes, where the energy comes from, and where the waste heat goes.
+    validations:
+      required: true
+  - type: textarea
+    id: precedent
+    attributes:
+      label: Precedent
+      description: The nearest thing that has been demonstrated, with sources.
+  - type: textarea
+    id: numbers
+    attributes:
+      label: Numbers it changes
+      description: Ids from the ledger, and what they would become. A `pnpm calc --set` run helps.

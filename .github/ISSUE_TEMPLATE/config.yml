@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Every number, with its formula and inputs
+    url: https://github.com/Xaxis/phosphoros.space/blob/main/docs/numbers.md
+    about: Find a number's id before challenging it.
+  - name: Explorer
+    url: https://phosphoros.space/explore
+    about: Change an assumption and see what follows before proposing a change.

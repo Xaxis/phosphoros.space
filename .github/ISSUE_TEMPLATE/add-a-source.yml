@@ -1,0 +1,30 @@
+name: Add a source
+description: A paper, dataset or report that supports, sharpens or contradicts something Phosphoros says.
+title: "Source: <short title>"
+labels: ["source"]
+body:
+  - type: input
+    id: cite
+    attributes:
+      label: Citation
+      description: Authors, year, title, venue.
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: DOI or link
+    validations:
+      required: true
+  - type: textarea
+    id: supports
+    attributes:
+      label: What it supports or contradicts
+      description: The page, claim or number id it bears on, and what the source says, ideally with a quotation and page number.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [data, paper, book, report, news, law, web]
