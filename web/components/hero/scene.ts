@@ -40,6 +40,8 @@ export interface SceneOptions {
   onDay: (day: number) => void;
   /** Called when the browser takes the GPU away; the page falls back to its still picture. */
   onLost: () => void;
+  /** Called when playback reaches the deadline. The finished planet keeps turning. */
+  onEnd: () => void;
   autoplay: boolean;
   startDay: number;
 }
@@ -165,14 +167,15 @@ export function createScene(
           uLife: u(0),
           cRockLow: u(linear("#2b211a")),
           cRockHigh: u(linear("#74614c")),
-          cCO2: u(linear("#3b4954")),
-          cDryIce: u(linear("#eef2f7", 0.85)),
-          cSealed: u(linear("#9a978f")),
+          cCO2: u(linear("#24465e")),
+          cDryIce: u(linear("#f7f9fd", 1.05)),
+          cSealed: u(linear("#cfc8b8", 0.95)),
           cDeep: u(linear("#0a3768")),
           cShallow: u(linear("#1f84a3")),
-          cWaterIce: u(linear("#dce8f2", 0.62)),
-          cLife: u(linear("#2c6a2a")),
-          cLifeDry: u(linear("#7b8040")),
+          cWaterIce: u(linear("#b9d3ea", 0.62)),
+          cLife: u(linear("#3b8a34")),
+          cLifeDry: u(linear("#8f9147")),
+          cBloom: u(linear("#2a9f86")),
           cGlowLow: u(linear("#6a1203")),
           cGlowHigh: u(linear("#ff5c18")),
         },
@@ -649,6 +652,8 @@ export function createScene(
     data.end,
   );
   let playing = opts.autoplay;
+  /** The story reached the deadline by playing: the finished planet keeps turning. */
+  let resting = false;
   let visible = true;
   let day = opts.startDay;
   let clock = timeline.secondsAt(day);
@@ -662,13 +667,19 @@ export function createScene(
     last = now;
     if (playing) {
       clock += dt;
-      motion += dt;
       day = timeline.dayAt(clock);
+      if (clock >= timeline.duration) {
+        day = data.end;
+        playing = false;
+        resting = true;
+        opts.onEnd();
+      }
     }
+    if (playing || resting) motion += dt;
     apply(stageAt(day, data), motion);
     composer.render();
     opts.onDay(day);
-    if (playing && visible) raf = requestAnimationFrame(draw);
+    if ((playing || resting) && visible) raf = requestAnimationFrame(draw);
   }
   function request() {
     if (!raf && visible) {
@@ -689,16 +700,19 @@ export function createScene(
 
   return {
     play() {
-      // Play from the last day starts the story again rather than sitting through the end's hold.
+      // Play from the last day tells the story again from the start.
       if (day >= data.end - 0.5) day = data.start;
       clock = timeline.secondsAt(day);
       playing = true;
+      resting = false;
       request();
     },
     pause() {
       playing = false;
+      resting = false;
     },
     setDay(d: number) {
+      resting = false;
       day = Math.min(data.end, Math.max(data.start, d));
       clock = timeline.secondsAt(day);
       request();

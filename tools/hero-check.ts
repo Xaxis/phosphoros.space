@@ -103,10 +103,39 @@ const live = (page: Page) =>
   await page.keyboard.press("End");
   const h = await read(page);
   check(h.valuetext.startsWith("December 2036"), "End shows the deadline", h.valuetext);
+  check(
+    h.play === "Replay the animation from 2027",
+    "at the deadline the button offers replay",
+    h.play,
+  );
   await page.click(".vision-play");
   await page.waitForTimeout(1200);
   const i = await read(page);
   check(i.day < 400, "play from the end starts again", `day ${i.day}`);
+
+  // Play the last weeks for real: it must stop on the deadline, offer replay, keep the finished
+  // planet turning, and never rewind on its own.
+  await page.click(".vision-play");
+  await page.locator(".vision-track input").fill(String(Number(h.day) - 30));
+  await page.click(".vision-play");
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".vision-play")?.getAttribute("aria-label") ===
+      "Replay the animation from 2027",
+    undefined,
+    { timeout: 180_000 },
+  );
+  const j = await read(page);
+  const planet = page.locator(".vision-planet");
+  const shotA = await planet.screenshot({ timeout: 180_000 });
+  await page.waitForTimeout(4000);
+  const shotB = await planet.screenshot({ timeout: 180_000 });
+  const k = await read(page);
+  check(
+    j.day === h.day && k.day === h.day && !shotA.equals(shotB),
+    "playing ends on the deadline and the finished planet keeps turning",
+    `day ${j.day} then ${k.day}, frames ${shotA.equals(shotB) ? "frozen" : "moving"}`,
+  );
 
   if (shots) {
     await page.click(".vision-play");

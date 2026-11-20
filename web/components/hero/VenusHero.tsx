@@ -70,9 +70,12 @@ export function VenusHero({
   const whenRef = useRef<HTMLSpanElement>(null);
   const sceneRef = useRef<SceneController | null>(null);
   const indexRef = useRef(0);
+  const atEndRef = useRef(false);
   const [mode, setMode] = useState<Mode>("still");
   const [playing, setPlaying] = useState(false);
   const [index, setIndex] = useState(0);
+  /** Showing the deadline: the play button replays the story from the start. */
+  const [atEnd, setAtEnd] = useState(false);
 
   const show = useCallback(
     (day: number) => {
@@ -87,6 +90,11 @@ export function VenusHero({
       if (i !== indexRef.current) {
         indexRef.current = i;
         setIndex(i);
+      }
+      const end = day >= data.end - 0.5;
+      if (end !== atEndRef.current) {
+        atEndRef.current = end;
+        setAtEnd(end);
       }
     },
     [data],
@@ -123,6 +131,7 @@ export function VenusHero({
           }
         },
         onLost: () => setMode("none"),
+        onEnd: () => setPlaying(false),
       });
       sceneRef.current = scene;
       setPlaying(!reduced);
@@ -200,12 +209,22 @@ export function VenusHero({
               type="button"
               className="vision-play"
               onClick={toggle}
-              aria-label={playing ? "Pause the animation" : "Play the animation"}
+              aria-label={
+                playing
+                  ? "Pause the animation"
+                  : atEnd
+                    ? "Replay the animation from 2027"
+                    : "Play the animation"
+              }
             >
               {playing ? (
                 <svg viewBox="0 0 16 16" aria-hidden="true">
                   <rect x="3.5" y="2.5" width="3" height="11" rx="1" />
                   <rect x="9.5" y="2.5" width="3" height="11" rx="1" />
+                </svg>
+              ) : atEnd ? (
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M8 2.2a5.8 5.8 0 1 1-5.6 4.3.9.9 0 1 1 1.7.5A4 4 0 1 0 8 4h-.6l1.1 1.1a.9.9 0 0 1-1.3 1.3L4.6 3.8a.9.9 0 0 1 0-1.3l2.6-2.6a.9.9 0 0 1 1.3 1.3L7.4 2.2Z" />
                 </svg>
               ) : (
                 <svg viewBox="0 0 16 16" aria-hidden="true">

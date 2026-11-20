@@ -11,7 +11,8 @@
     "dev": "next dev --port 3417",
     "build": "next build",
     "start": "next start --port 3417",
-    "typecheck": "next typegen && tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "node --test test/*.test.ts"
   },
   "dependencies": {
     "@phosphoros/calc": "workspace:*",

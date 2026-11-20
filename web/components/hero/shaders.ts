@@ -158,11 +158,32 @@ uniform vec3 cShallow;
 uniform vec3 cWaterIce;
 uniform vec3 cLife;
 uniform vec3 cLifeDry;
+uniform vec3 cBloom;
 uniform vec3 cGlowLow;
 uniform vec3 cGlowHigh;
 varying vec3 vObj;
 varying vec3 vPosW;
 ${UV}
+// Distance to the nearest seam between cells of a 3D cell pattern: the sealed lids' joints.
+vec3 cellHash(vec3 p) {
+  p = vec3(dot(p, vec3(127.1, 311.7, 74.7)), dot(p, vec3(269.5, 183.3, 246.1)), dot(p, vec3(113.5, 271.9, 124.6)));
+  return fract(sin(p) * 43758.5453);
+}
+float seam(vec3 p) {
+  vec3 i = floor(p);
+  vec3 f = fract(p);
+  float f1 = 8.0;
+  float f2 = 8.0;
+  for (int x = -1; x <= 1; x++)
+    for (int y = -1; y <= 1; y++)
+      for (int z = -1; z <= 1; z++) {
+        vec3 g = vec3(float(x), float(y), float(z));
+        vec3 r = g + cellHash(i + g) - f;
+        float d = dot(r, r);
+        if (d < f1) { f2 = f1; f1 = d; } else if (d < f2) { f2 = d; }
+      }
+  return sqrt(f2) - sqrt(f1);
+}
 void main() {
   vec3 n = normalize(vObj);
   vec2 uv = uvOf(n);
@@ -176,25 +197,38 @@ void main() {
   vec3 bumped = normalize(n - (hx / max(0.15, length(n.xz)) * east + hy * north) * 5.0);
 
   float lat = abs(n.y);
-  float co2Basin = smoothstep(0.52, 0.64, t.g) * smoothstep(0.42, 0.7, lat);
+  // The CO2 basins: wide mid- and high-latitude lowlands, since the frozen air outweighs the oceans.
+  float co2Basin = smoothstep(0.46, 0.56, t.g) * smoothstep(0.28, 0.52, lat);
   float waterBasin = 1.0 - co2Basin;
 
   vec3 col = mix(cRockLow, cRockHigh, smoothstep(0.4, 0.78, h)) * (0.8 + 0.4 * t.b);
 
-  float co2Line = mix(0.26, 0.45, uCO2Level);
+  float co2Line = mix(0.28, 0.52, uCO2Level);
   float co2Sea = co2Basin * smoothstep(0.012, -0.012, h - co2Line) * step(0.001, uCO2Level);
-  vec3 co2Col = mix(mix(cCO2, cDryIce, uDryIce), cSealed, uSealed);
+  // Liquid CO2, then dry ice, then the sealed lids: pale plates with dark joints between cells.
+  vec3 co2Col = mix(cCO2, cDryIce, uDryIce);
+  if (uSealed > 0.0 && co2Sea > 0.0) {
+    float joint = 1.0 - smoothstep(0.02, 0.13, seam(n * 22.0));
+    co2Col = mix(co2Col, cSealed * (1.0 - 0.78 * joint), uSealed);
+  }
 
-  float wet = max(uOcean, uWaterIce);
-  float waterLine = mix(0.26, 0.53, wet);
+  // Ice and liquid water are the same water: the seas only ever rise as the ice melts.
+  float wet = uOcean + uWaterIce;
+  float waterLine = mix(0.26, 0.53, clamp(wet, 0.0, 1.0));
   float water = waterBasin * smoothstep(0.012, -0.012, h - waterLine) * step(0.001, wet);
   float depth = clamp((waterLine - h) / 0.14, 0.0, 1.0);
   float frozen = uWaterIce / max(wet, 1e-3);
   vec3 waterCol = mix(mix(cShallow, cDeep, depth), cWaterIce, frozen);
+  // Genesis: blooms tint the sunlit shallows first.
+  waterCol = mix(waterCol, cBloom, uLife * 0.45 * (1.0 - depth) * (1.0 - frozen));
 
-  float green = uLife * smoothstep(0.42, 0.7, t.b) * smoothstep(0.78, 0.5, h) * (1.0 - water) * (1.0 - co2Sea);
-  col = mix(col, mix(cLifeDry, cLife, smoothstep(0.5, 0.8, t.b)), green * 0.9);
+  // Genesis greens the shores, the moist lowlands and the black loam spread on the lids.
+  float shore = smoothstep(waterLine + 0.07, waterLine + 0.005, h) * step(0.001, wet);
+  float lush = smoothstep(0.36, 0.62, t.b) * smoothstep(0.82, 0.52, h);
+  float land = max(lush, shore) * (1.0 - water) * (1.0 - co2Sea);
+  float green = uLife * clamp(land + co2Sea * uSealed * 0.85, 0.0, 1.0);
   col = mix(col, co2Col, co2Sea);
+  col = mix(col, mix(cLifeDry, cLife, smoothstep(0.45, 0.75, max(t.b, shore))), green * 0.92);
   col = mix(col, waterCol, water);
 
   float liquid = water * (1.0 - frozen) + co2Sea * (1.0 - uDryIce);

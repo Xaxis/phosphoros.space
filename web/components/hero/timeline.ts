@@ -1,6 +1,7 @@
 /**
  * The animation's clock. Playback slows into every captioned event, so each caption stays on screen
- * long enough to read, and covers quiet years quickly. After the deadline it holds, then rewinds.
+ * long enough to read, and covers quiet years quickly. It never stops dead between events, and it
+ * plays the decade once: at the deadline the story is over and the finished planet stays.
  * Pure: a time in seconds always maps to the same day.
  */
 
@@ -12,17 +13,18 @@ interface Segment {
 }
 
 export interface Timeline {
-  /** Seconds in one loop: play, hold, rewind. */
-  period: number;
+  /** Seconds from the first day to the deadline. */
+  duration: number;
   dayAt(seconds: number): number;
   /** The playback time that shows a day, for resuming after the reader scrubs. */
   secondsAt(day: number): number;
 }
 
-const HOLD_SECONDS = 7;
-const REWIND_SECONDS = 2.6;
-
-const smooth = (t: number) => t * t * (3 - 2 * t);
+/**
+ * Slow near both ends of a segment, but still moving: at an event the speed falls to 55% of the
+ * segment's mean rather than to zero, so the planet never seems to stall.
+ */
+const ease = (t: number) => 0.55 * t + 0.45 * t * t * (3 - 2 * t);
 
 /** Each gap between captions takes 2.8 to 5 seconds, longer for longer gaps. */
 export function makeTimeline(eventDays: number[], start: number, end: number): Timeline {
@@ -34,18 +36,13 @@ export function makeTimeline(eventDays: number[], start: number, end: number): T
     const years = (to - from) / 365.25;
     segments.push({ from, to, seconds: Math.min(5, Math.max(2.8, 2.2 + years * 1.1)) });
   }
-  const play = segments.reduce((s, x) => s + x.seconds, 0);
-  const period = play + HOLD_SECONDS + REWIND_SECONDS;
+  const duration = segments.reduce((s, x) => s + x.seconds, 0);
 
   function dayAt(seconds: number): number {
-    let t = ((seconds % period) + period) % period;
-    if (t >= play + HOLD_SECONDS) {
-      const back = (t - play - HOLD_SECONDS) / REWIND_SECONDS;
-      return end - (end - start) * smooth(back);
-    }
-    if (t >= play) return end;
+    if (seconds <= 0) return start;
+    let t = seconds;
     for (const s of segments) {
-      if (t <= s.seconds) return s.from + (s.to - s.from) * smooth(t / s.seconds);
+      if (t <= s.seconds) return s.from + (s.to - s.from) * ease(t / s.seconds);
       t -= s.seconds;
     }
     return end;
@@ -61,15 +58,15 @@ export function makeTimeline(eventDays: number[], start: number, end: number): T
         let hi = 1;
         for (let i = 0; i < 30; i++) {
           const mid = (lo + hi) / 2;
-          if (smooth(mid) < target) lo = mid;
+          if (ease(mid) < target) lo = mid;
           else hi = mid;
         }
         return t + s.seconds * Math.max(0, lo);
       }
       t += s.seconds;
     }
-    return play;
+    return duration;
   }
 
-  return { period, dayAt, secondsAt };
+  return { duration, dayAt, secondsAt };
 }
