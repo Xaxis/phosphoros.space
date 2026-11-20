@@ -8,6 +8,7 @@ import { formatNumber, formatQuantity } from "../src/format.ts";
 import { loadInputs, ROOT, readYaml, run, sourceLines } from "../src/load.ts";
 import { compute } from "../src/model/index.ts";
 import { simulate } from "../src/model/trajectory.ts";
+import { lambert } from "../src/physics.ts";
 import { NUMBER_LINK, refsIn, stringsIn } from "../src/template.ts";
 import { dayOf, isoOf } from "../src/time.ts";
 
@@ -56,8 +57,13 @@ test("every number in the brief is reproduced, corrected on purpose, or explaine
   for (const c of results) if (c.correction) assert.ok(corrections.has(c.correction), c.correction);
 });
 
-test("the energy budget closes and the heat pump obeys the second law", () => {
-  assert.ok(v("helios-supply") >= v("budget-demand"));
+test("the energy budget closes with the Ring, and the heat pump obeys the second law", () => {
+  assert.ok(v("helios-supply") >= v("budget-demand-with-ring"));
+  assert.ok(v("ring-recovered-energy") >= v("budget-ring-launch"));
+  // A Lattice-only shortfall is never hidden: its check fails and names the open problem.
+  const lattice = r.checks.get("energy-closes");
+  assert.equal(lattice?.pass, v("helios-supply") >= v("budget-demand"));
+  if (!lattice?.pass) assert.ok(lattice?.issue, "a failing energy check carries its open problem");
   // Never better than Carnot from the hottest point on the path.
   assert.ok(
     v("exhaust-work") / v("atmosphere-heat") >
@@ -87,6 +93,19 @@ test("the classic L1 distance comes out of the force balance", () => {
   const mu = v("venus-gm") / (v("sun-mu") + v("venus-gm"));
   const approx = v("venus-orbit") * Math.cbrt(mu / 3);
   assert.ok(Math.abs(v("venus-l1-distance") / approx - 1) < 0.01);
+});
+
+test("Lambert's problem reproduces the Hohmann transfer, and off-window shots cost more", () => {
+  const mu = v("sun-mu");
+  const [r1, r2] = [v("ceres-orbit"), v("venus-orbit")];
+  // Almost half a turn in the Hohmann time is almost the Hohmann orbit.
+  const sol = lambert(mu, r1, r2, Math.PI * 0.999, v("ice-transfer-days") * 86_400);
+  assert.ok(sol);
+  const dv = Math.hypot(sol.v1[0], sol.v1[1] - Math.sqrt(mu / r1));
+  assert.ok(Math.abs(dv / v("ice-departure-dv") - 1) < 0.01, `Lambert Δv ${dv}`);
+  assert.ok(v("launch-offwindow-mean") > 0.01);
+  assert.ok(v("launch-offwindow-max") > v("launch-offwindow-mean"));
+  assert.ok(v("ice-launch-energy") > v("ice-launch-energy-window"));
 });
 
 test("the Hohmann transfer from Ceres matches the textbook numbers", () => {

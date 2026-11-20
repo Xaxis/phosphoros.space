@@ -1,10 +1,11 @@
 /**
  * Aegis Shield: the coil at the Veil's station and the magnetic bubble it holds in the solar wind,
- * seen along the Sun-Venus line, with the bubble and Venus to scale; under it the coil magnified, its
- * open problem, and the Mini-Aegis test that comes first.
+ * seen along the Sun-Venus line, with the bubble, the coil and Venus to scale; under it the coil
+ * magnified with the forces that hold it together, and the Mini-Aegis test that comes first.
  *
  * The bubble's outline is schematic: the standard magnetopause form r = r₀ √(2 / (1 + cos θ)), with
- * r₀ the model's bubble radius. Only that nose distance and Venus's radius are the model's.
+ * r₀ the model's bubble radius. Only that nose distance and the coil's and Venus's radii are the
+ * model's.
  */
 import { fill, refsIn } from "@phosphoros/calc/template";
 import { Art, Frame, Link, midSentence, path, show, textWidth, W } from "./kit.tsx";
@@ -21,8 +22,9 @@ interface Step {
 }
 
 interface Props {
-  /** Venus's radius over the bubble's: the two are drawn to the same scale. */
+  /** Venus's and the coil's radii over the bubble's: all three are drawn to the same scale. */
   venusOverBubble: number;
+  coilOverBubble: number;
   steps: Step[];
   /** Numbers the Mini-Aegis experiment's own text refers to. */
   refs: string[];
@@ -38,7 +40,13 @@ interface Props {
     ampereTurns: string;
     turns: string;
     current: string;
+    pack: string;
     temp: string;
+    tension: string;
+    structure: string;
+    veilMass: string;
+    energy: string;
+    windForce: string;
     distance: string;
     l1: string;
     venus: string;
@@ -46,7 +54,7 @@ interface Props {
   };
 }
 
-const H = 662;
+const H = 680;
 const Y0 = 200; // the Sun-Venus line
 const CX = 200; // the coil
 const R0 = 50; // the bubble's nose, from the coil
@@ -145,35 +153,6 @@ function Question({ x, y, notes }: { x: number; y: number; notes: string[] }) {
   );
 }
 
-/** An open problem, marked as on the Braking Ring figure: a danger dot with a "!". */
-function Problem({ x, y, notes }: { x: number; y: number; notes: string[] }) {
-  return (
-    <g>
-      <circle className="f-danger" cx={x} cy={y - 4} r={7} />
-      <text
-        x={x}
-        y={y - 4}
-        dy="0.35em"
-        textAnchor="middle"
-        className="f-surface"
-        fontWeight={700}
-        fontSize={11}
-      >
-        !
-      </text>
-      <Lines
-        x={x + 12}
-        y={y}
-        halo
-        lines={[
-          { text: "Open problem", kind: "label" },
-          ...notes.map((text) => ({ text, kind: "note" as const })),
-        ]}
-      />
-    </g>
-  );
-}
-
 /** Words into lines of at most `max` characters. */
 function wrap(text: string, max: number): string[] {
   const out: string[] = [];
@@ -188,7 +167,7 @@ function wrap(text: string, max: number): string[] {
   return out;
 }
 
-function AegisShield({ venusOverBubble, steps, text: t }: Props) {
+function AegisShield({ venusOverBubble, coilOverBubble, steps, text: t }: Props) {
   const lower = UPPER.map(([x, y]): [number, number] => [x, 2 * Y0 - y]);
   const last = UPPER[UPPER.length - 1] ?? [TAIL_END, Y0];
   const bubble = `${path(UPPER)}L${last[0]},${2 * Y0 - last[1]}${path([...lower].reverse()).replace(/^M/, "L")}Z`;
@@ -206,6 +185,7 @@ function AegisShield({ venusOverBubble, steps, text: t }: Props) {
     Y0 - rr * Math.cos(TILT + a),
   ];
   const rv = R0 * venusOverBubble;
+  const rc = R0 * coilOverBubble;
   const station = `Coil beside the Veil, just sunward of L1: ${t.distance} from Venus`;
   const stationBox = {
     x: CX + 4,
@@ -217,7 +197,7 @@ function AegisShield({ venusOverBubble, steps, text: t }: Props) {
   const KX = 112;
   const KY = IN_TOP + 86;
   const KR = 62;
-  const KRy = 21;
+  const KRy = 25;
   // The timeline.
   const TX = 412;
   const stepY = [IN_TOP + 46, IN_TOP + 128, IN_TOP + 180, IN_TOP + 232];
@@ -225,7 +205,7 @@ function AegisShield({ venusOverBubble, steps, text: t }: Props) {
     <Frame
       id="aegis-shield"
       title="Aegis Shield: a magnetic bubble against the solar wind"
-      desc={`Along the Sun-Venus line, bubble and Venus to scale, distance not. The solar wind, ${t.density} at ${t.speed}, flows round a magnetic bubble whose nose is ${t.bubble} from the coil, where the field of ${t.field} balances the wind's ${t.pressure}. The coil sits beside the Veil, ${t.distance} from Venus. Whether the sheltered region reaches Venus is an open question; holding the coil together against its own field is an open problem.`}
+      desc={`Along the Sun-Venus line, the bubble, the coil and Venus to scale, the distance not. The solar wind, ${t.density} at ${t.speed}, flows round a magnetic bubble whose nose is ${t.bubble} from the coil, where the field of ${t.field} balances the wind's ${t.pressure}. The coil, ${t.coil} in radius, sits beside the Veil, ${t.distance} from Venus; at least ${t.structure} of carbon fibre holds it against its own field. Whether the sheltered region reaches Venus is an open question.`}
       height={H}
       links
     >
@@ -239,12 +219,7 @@ function AegisShield({ venusOverBubble, steps, text: t }: Props) {
             { text: `pushing with ${t.pressure}`, kind: "note" },
           ]}
         />
-        <Tag
-          x={W - 16}
-          y={22}
-          anchor="end"
-          text="Bubble and Venus to scale; coil and distance not"
-        />
+        <Tag x={W - 16} y={22} anchor="end" text="Bubble, coil and Venus to scale; distance not" />
 
         {/* The Sun-Venus line, broken: the true distance is written below. */}
         <line className="f-axis" x1={16} x2={BREAK_X - 8} y1={Y0} y2={Y0} strokeDasharray="2 4" />
@@ -319,16 +294,18 @@ function AegisShield({ venusOverBubble, steps, text: t }: Props) {
           head={6}
           width={1.25}
         />
-        {/* The coil, edge on: drawn far larger than its true size. */}
+        {/* The coil, edge on, to the bubble's scale: its plane is square to the dipole's axis. */}
         <line
           className="f-accent-line"
-          x1={CX - 7 * Math.cos(TILT)}
-          y1={Y0 - 7 * Math.sin(TILT)}
-          x2={CX + 7 * Math.cos(TILT)}
-          y2={Y0 + 7 * Math.sin(TILT)}
+          x1={CX - rc * Math.cos(TILT)}
+          y1={Y0 - rc * Math.sin(TILT)}
+          x2={CX + rc * Math.cos(TILT)}
+          y2={Y0 + rc * Math.sin(TILT)}
           strokeWidth={4}
           strokeLinecap="round"
-        />
+        >
+          <title>{`Aegis coil, radius ${t.coil}, to the bubble's scale`}</title>
+        </line>
 
         {/* Inside the bubble no line crosses a label, so none needs a halo against the wash. */}
         <Lines
@@ -345,14 +322,14 @@ function AegisShield({ venusOverBubble, steps, text: t }: Props) {
           x={272}
           y={Y0 + 36}
           lines={[
-            { text: "Aegis coil", kind: "label" },
-            { text: "its axis turns slowly to follow", kind: "note" },
-            { text: "the wind's own field", kind: "note" },
+            { text: "Aegis coil, to scale", kind: "label" },
+            { text: `radius ${t.coil}; its axis turns`, kind: "note" },
+            { text: "slowly to follow the wind's field", kind: "note" },
           ]}
         />
         <Lines
           x={TAIL_END - 10}
-          y={Y0 + 82}
+          y={Y0 - 78}
           anchor="end"
           lines={[{ text: "sheltered region", kind: "note" }]}
         />
@@ -407,37 +384,37 @@ function AegisShield({ venusOverBubble, steps, text: t }: Props) {
         <Arrow x1={KX + 8} y1={KY - KRy} x2={KX - 7} y2={KY - KRy} tone="ink" width={0} head={8} />
         <line className="f-soft-line" x1={KX} x2={KX + KR} y1={KY} y2={KY} />
         <line className="f-soft-line" x1={KX} x2={KX} y1={KY - 4} y2={KY + 4} />
+        {/* Inside the loop and clear of its stroke: the radius line says what the value is. */}
+        <text className="f-note f-num" x={KX + KR / 2 - 13} y={KY - 6} textAnchor="middle">
+          {t.coil}
+        </text>
         <Lines
-          x={KX + KR / 2}
-          y={KY - 6}
-          anchor="middle"
-          halo
-          lines={[{ text: `radius ${t.coil}`, kind: "note" }]}
-        />
-        <Lines
-          x={196}
+          x={208}
           y={IN_TOP + 60}
           lines={[
             { text: `${t.turns} turns`, kind: "label" },
-            { text: `of ${t.current} each,`, kind: "note" },
-            { text: `${t.ampereTurns} in all.`, kind: "note" },
+            { text: `of ${t.current} each, ${t.ampereTurns}`, kind: "note" },
+            { text: `in all, in a pack ${t.pack}`, kind: "note" },
+            { text: "in radius.", kind: "note" },
             { text: `Cable at ${t.temp}, kept`, kind: "label" },
             { text: "cold behind its sunshield;", kind: "note" },
             { text: "the current persists, so it", kind: "note" },
             { text: "needs almost no power.", kind: "note" },
           ]}
         />
-        <text x={28} y={IN_TOP + 168}>
+        <text x={28} y={IN_TOP + 186}>
           Dipole {t.dipole}, {t.vsEarth} of Earth's
         </text>
-        <Problem
-          x={36}
-          y={IN_TOP + 196}
-          notes={[
-            "its own field pushes its windings apart, and",
-            "the structure to hold them would outweigh",
-            "all the Foundry builds; a far wider loop",
-            "would need much less",
+        {/* The coil's own forces, which the model checks the Foundry can carry (aegis-structure). */}
+        <Lines
+          x={28}
+          y={IN_TOP + 214}
+          lines={[
+            { text: "Holding it together", kind: "label" },
+            { text: `its field puts ${t.tension} of tension in the`, kind: "note" },
+            { text: `winding; at least ${t.structure} of carbon fibre`, kind: "note" },
+            { text: `holds it, less than the Veil's ${t.veilMass}.`, kind: "note" },
+            { text: `The loop stores ${t.energy}.`, kind: "note" },
           ]}
         />
 
@@ -528,6 +505,7 @@ export const aegisShield: FigureDef<Props> = {
     ];
     return {
       venusOverBubble: v("venus-radius") / v("aegis-bubble-radius"),
+      coilOverBubble: v("aegis-coil-radius") / v("aegis-bubble-radius"),
       steps,
       refs: [mini.where, mini.pass, mini.kill].flatMap(refsIn),
       text: {
@@ -542,7 +520,13 @@ export const aegisShield: FigureDef<Props> = {
         ampereTurns: show(r, "aegis-ampere-turns"),
         turns: show(r, "aegis-turns"),
         current: show(r, "aegis-current"),
+        pack: show(r, "aegis-winding-radius"),
         temp: show(r, "aegis-coil-temp"),
+        tension: show(r, "aegis-hoop-tension"),
+        structure: show(r, "aegis-structure-mass"),
+        veilMass: show(r, "veil-mass"),
+        energy: show(r, "aegis-stored-energy"),
+        windForce: show(r, "aegis-wind-force"),
         distance: show(r, "veil-distance", { sig: 3, show: "km" }),
         l1: show(r, "veil-beyond-l1"),
         venus: show(r, "venus-radius", { show: "km", sig: 4 }),
@@ -551,9 +535,9 @@ export const aegisShield: FigureDef<Props> = {
     };
   },
   caption: (p) =>
-    `A coil ${p.text.coil} in radius, carrying ${p.text.ampereTurns}, holds the solar wind off ${p.text.bubble} upstream, where its field of ${p.text.field} balances the wind's push, and Venus lies in the shelter behind. Whether that shelter reaches Venus, ${p.text.distance} away, is the main open question, and holding the coil together against its own field is an open problem.`,
+    `A coil ${p.text.coil} in radius, carrying ${p.text.ampereTurns}, holds the solar wind off ${p.text.bubble} upstream, where its field of ${p.text.field} balances the wind's push, and Venus lies in the shelter behind. At least ${p.text.structure} of carbon fibre holds the coil against its own field; whether the shelter reaches Venus, ${p.text.distance} away, is the main open question.`,
   describe: (p) => ({
-    summary: `Along the Sun-Venus line, with the bubble and Venus to scale and the distance between them not. The solar wind, ${p.text.density} at ${p.text.speed}, pushes with ${p.text.pressure}. The Aegis coil, beside the Veil just sunward of L1 and ${p.text.distance} from Venus, makes a dipole of ${p.text.dipole}, ${p.text.vsEarth} of Earth's. Its field falls to ${p.text.field} at ${p.text.bubble}, where it balances the wind, so the wind flows round a bubble whose nose is that far upstream, leaving a sheltered region behind it. The dipole's axis turns slowly to follow the wind's own field. Open question: whether the shelter still covers Venus that far downstream. Magnified: a loop ${p.text.coil} in radius of ${p.text.turns} turns carrying ${p.text.current} each, ${p.text.ampereTurns} in all, in cable at ${p.text.temp} behind its own sunshield; the persistent current needs almost no power. Open problem: the coil's field pushes its windings apart, and the structure to hold them would outweigh everything the Foundry builds; a far wider loop would need much less. Before it, ${p.steps.map((s) => `${s.when}: ${s.label} (${s.note.join(" ")})`).join("; ")}.`,
+    summary: `Along the Sun-Venus line, with the bubble, the coil and Venus to scale and the distance between them not. The solar wind, ${p.text.density} at ${p.text.speed}, pushes with ${p.text.pressure}. The Aegis coil, ${p.text.coil} in radius, beside the Veil just sunward of L1 and ${p.text.distance} from Venus, makes a dipole of ${p.text.dipole}, ${p.text.vsEarth} of Earth's. Its field falls to ${p.text.field} at ${p.text.bubble}, where it balances the wind, so the wind flows round a bubble whose nose is that far upstream, leaving a sheltered region behind it; the wind pushes on the bubble with ${p.text.windForce}. The dipole's axis turns slowly to follow the wind's own field. Open question: whether the shelter still covers Venus that far downstream. Magnified: ${p.text.turns} turns carrying ${p.text.current} each, ${p.text.ampereTurns} in all, in a winding pack ${p.text.pack} in radius, in cable at ${p.text.temp} behind its own sunshield; the persistent current needs almost no power. The coil's field puts ${p.text.tension} of tension in the winding, and at least ${p.text.structure} of carbon fibre holds it, less than the Veil's ${p.text.veilMass}; the loop stores ${p.text.energy}. Before it, ${p.steps.map((s) => `${s.when}: ${s.label} (${s.note.join(" ")})`).join("; ")}.`,
     head: ["Quantity", "Value"],
     rows: [
       ["Solar wind at Venus", `${p.text.density} at ${p.text.speed}`],
@@ -563,7 +547,13 @@ export const aegisShield: FigureDef<Props> = {
       ["Dipole moment", `${p.text.dipole}, ${p.text.vsEarth} of Earth's`],
       ["Coil radius", p.text.coil],
       ["Current", `${p.text.turns} turns of ${p.text.current}, ${p.text.ampereTurns} in all`],
+      ["Winding pack radius", p.text.pack],
       ["Cable temperature", p.text.temp],
+      ["Hoop tension in the winding", p.text.tension],
+      ["Least carbon fibre to hold it", p.text.structure],
+      ["Veil mass, for comparison", p.text.veilMass],
+      ["Stored energy", p.text.energy],
+      ["Solar wind push on the bubble", p.text.windForce],
       ["Coil to Venus", p.text.distance],
       ["Switched on", p.text.online],
     ],
@@ -581,7 +571,13 @@ export const aegisShield: FigureDef<Props> = {
     "aegis-ampere-turns",
     "aegis-turns",
     "aegis-current",
+    "aegis-winding-radius",
     "aegis-coil-temp",
+    "aegis-hoop-tension",
+    "aegis-structure-mass",
+    "veil-mass",
+    "aegis-stored-energy",
+    "aegis-wind-force",
     "veil-distance",
     "veil-beyond-l1",
     "venus-radius",

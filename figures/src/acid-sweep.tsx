@@ -452,7 +452,7 @@ export const acidSweep: FigureDef<Props> = {
         rain: show(r, "traj-clear-rain", { date: "month" }),
         forges: show(r, "forge-start", { date: "month" }),
         warming: show(r, "traj-warming", { date: "month" }),
-        genesis: show(r, "forge-end", { date: "month" }),
+        genesis: show(r, "genesis-start", { date: "month" }),
       },
     };
   },
@@ -489,7 +489,7 @@ export const acidSweep: FigureDef<Props> = {
     "traj-clear-rain",
     "forge-start",
     "traj-warming",
-    "forge-end",
+    "genesis-start",
   ],
   Component: AcidSweep,
 };

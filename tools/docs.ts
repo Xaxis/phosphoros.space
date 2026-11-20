@@ -176,10 +176,10 @@ const BLOCKS: Record<string, Block> = {
   },
   experiments(_arg, p) {
     return table(
-      ["Experiment", "Proves", "Pass by the end of 2028", "Kill signal"],
+      ["Experiment", "Proves", `Pass by ${md("{experiments-end|date=day}", p)}`, "Kill signal"],
       content.experiments.experiments.map((e) => [
         e.tech ? `[${e.name}](${p}technologies/${e.tech}.md)` : `**${e.name}**`,
-        e.proves,
+        md(e.proves, p),
         md(e.pass, p),
         md(e.kill, p),
       ]),
@@ -254,7 +254,7 @@ const BLOCKS: Record<string, Block> = {
       ]),
     );
   },
-  corrections(_arg, _p) {
+  corrections(_arg, p) {
     return content.corrections
       .map((c) => {
         const tag = {
@@ -268,8 +268,8 @@ const BLOCKS: Record<string, Block> = {
         const head =
           c.kind === "version"
             ? `### Version ${c.version}: ${c.title}`
-            : `- **${tag} (v${c.version}): ${c.title}.** ${c.text.trim()}${issue}`;
-        return c.kind === "version" ? `${head}\n\n${c.text.trim()}\n` : head;
+            : `- **${tag} (v${c.version}): ${c.title}.** ${md(c.text.trim(), p)}${issue}`;
+        return c.kind === "version" ? `${head}\n\n${md(c.text.trim(), p)}\n` : head;
       })
       .join("\n");
   },
@@ -539,6 +539,12 @@ function sync(file: string): void {
       return `[${formatRef(r.get(id), opts)}](${up}numbers.md${q ? `?${q}` : ""}#${id})`;
     },
   );
+  // A template that reached the output unfilled: the page would show "{id}" to readers.
+  for (const m of text
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`[^`\n]*`/g, "")
+    .matchAll(/\{([a-z][a-z0-9-]*)(\|[^}\n]*)?\}/g))
+    if (known(m[1] as string)) problems.push(`${rel}: unfilled template ${m[0]}`);
   for (const m of text.matchAll(SOURCE_LINK))
     if (!sourceIds.has(m[2] as string)) problems.push(`${rel}: link to unknown source #${m[2]}`);
   for (const m of text.matchAll(DOC_LINK)) {

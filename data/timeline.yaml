@@ -122,9 +122,9 @@ rows:
     end: forge-end
     tech: forges
   - id: genesis
-    label: Genesis seeding
+    label: Genesis seeding, oceans green
     lane: venus
-    start: forge-end
+    start: genesis-start
     end: genesis-end
     tech: genesis
   - id: earth-like

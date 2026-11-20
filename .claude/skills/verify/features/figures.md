@@ -8,7 +8,7 @@ Charts and diagrams drawn from the model, rendered live on the site and exported
 
 - registry: `FIGURES` in `figures/src/index.ts`, filled from `set-charts.ts`, `set-space.ts`, `set-structure.ts` plus `foundry-growth.tsx`, `acid-sweep.tsx` and `aegis-shield.tsx` (17 figures).
 - acid-sweep: the Acid Sweep page's figure. Three cross-sections (grind and dust, the Clear Rain, the oceans with the pH gate) over the SO₂, lime and basalt masses to scale. Links to Exhaust, Genesis and Cryo.
-- aegis-shield: the Aegis page's figure. The bubble in the solar wind along the Sun-Venus line (bubble and Venus to scale), the coil magnified with its open problem (issue #6, a danger "!" like the Ring's), and the Mini-Aegis to switch-on steps. Links to the Veil, the Research Agenda and the Ice Train.
+- aegis-shield: the Aegis page's figure. The bubble in the solar wind along the Sun-Venus line (bubble, coil and Venus to scale), the grey "?" on whether the shelter reaches Venus, the coil magnified with its hoop tension, structure mass and stored energy from the model, and the Mini-Aegis to switch-on steps. Links to the Veil, the Research Agenda and the Ice Train.
 - export: `pnpm figures` writes `figures/svg/<id>.svg` with the theme stylesheet and a surface, so each SVG follows light or dark on GitHub.
 - check: `pnpm figures --check` (`pnpm figures:check`) fails on a missing or stale SVG.
 - look: `node tools/look.ts DIR ID...` renders each SVG in both themes to PNGs.

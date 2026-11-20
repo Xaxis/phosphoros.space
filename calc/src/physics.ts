@@ -134,3 +134,116 @@ export function conductedHeat(k: number, dT: number, kappa: number, t: number): 
 export function conductedFlux(k: number, dT: number, kappa: number, t: number): number {
   return (k * dT) / Math.sqrt(Math.PI * kappa * t);
 }
+
+/** Stumpff functions C(z) and S(z) of the universal-variable Kepler problem. */
+function stumpff(z: number): { c: number; s: number } {
+  if (z > 1e-8) {
+    const q = Math.sqrt(z);
+    return { c: (1 - Math.cos(q)) / z, s: (q - Math.sin(q)) / q ** 3 };
+  }
+  if (z < -1e-8) {
+    const q = Math.sqrt(-z);
+    return { c: (Math.cosh(q) - 1) / -z, s: (Math.sinh(q) - q) / q ** 3 };
+  }
+  return { c: 1 / 2, s: 1 / 6 };
+}
+
+/**
+ * Lambert's problem in a plane: the prograde, single-revolution orbit from radius r1 (on the x axis)
+ * to radius r2 at angle theta (0 to 2π) in time t. Returns the velocity at both ends, or null when
+ * no such orbit exists. Universal variables, solved for z by bisection (Curtis, algorithm 5.2).
+ */
+export function lambert(
+  mu: number,
+  r1: number,
+  r2: number,
+  theta: number,
+  t: number,
+): { v1: [number, number]; v2: [number, number] } | null {
+  const A = Math.sin(theta) * Math.sqrt((r1 * r2) / (1 - Math.cos(theta)));
+  const y = (z: number, c: number, s: number) => r1 + r2 + (A * (z * s - 1)) / Math.sqrt(c);
+  const f = (z: number) => {
+    const { c, s } = stumpff(z);
+    const yz = y(z, c, s);
+    if (yz < 0) return Number.NEGATIVE_INFINITY;
+    return (yz / c) ** 1.5 * s + A * Math.sqrt(yz) - Math.sqrt(mu) * t;
+  };
+  let lo = -100;
+  let hi = 4 * Math.PI ** 2 * 0.9999;
+  if (!(f(lo) < 0 && f(hi) > 0)) return null;
+  for (let i = 0; i < 40; i++) {
+    const m = (lo + hi) / 2;
+    if (f(m) < 0) lo = m;
+    else hi = m;
+  }
+  const z = (lo + hi) / 2;
+  const { c, s } = stumpff(z);
+  const yz = y(z, c, s);
+  const F = 1 - yz / r1;
+  const G = A * Math.sqrt(yz / mu);
+  const Gdot = 1 - yz / r2;
+  const x2 = r2 * Math.cos(theta);
+  const y2 = r2 * Math.sin(theta);
+  return {
+    v1: [(x2 - F * r1) / G, y2 / G],
+    v2: [(Gdot * x2 - r1) / G, (Gdot * y2) / G],
+  };
+}
+
+const offWindowCache = new Map<string, { max: number; mean: number }>();
+
+/**
+ * How much more a launch costs away from the Hohmann window. Circular, coplanar orbits r1 to r2,
+ * as the Hohmann transfer assumes. For each launch phase (where the target planet is at launch) the
+ * cheapest single-revolution transfer that meets the planet is found by trying every transfer angle;
+ * the cost is the launch energy per kilogram, ½ (Δv² + v_esc²), against the Hohmann minimum. Returns
+ * the worst phase and the average over all phases (a launcher that fires all the time). Pure; cached,
+ * because it is the slowest sum in the model and its inputs are constants.
+ */
+export function offWindowPenalty(
+  mu: number,
+  r1: number,
+  r2: number,
+  vEscape: number,
+): { max: number; mean: number } {
+  const key = `${mu}|${r1}|${r2}|${vEscape}`;
+  const hit = offWindowCache.get(key);
+  if (hit) return hit;
+  const v1 = circularSpeed(mu, r1);
+  const n2 = Math.sqrt(mu / r2 ** 3);
+  const P2 = (2 * Math.PI) / n2;
+  const best = hohmann(mu, r1, r2).departDv ** 2 + vEscape ** 2;
+  const longest = 2 * hohmann(mu, r1, r2).time;
+  // The cheapest launch energy per kilogram over every transfer that leaves at this phase and
+  // crosses the arrival angle when the target does.
+  const cost = (phase: number, angle: number) => {
+    const theta = (angle * Math.PI) / 180;
+    const lead =
+      (((theta - (phase * Math.PI) / 180) % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+    let least = Number.POSITIVE_INFINITY;
+    for (let t = lead / n2; t <= longest; t += P2) {
+      const sol = t > 0 ? lambert(mu, r1, r2, theta, t) : null;
+      if (sol) least = Math.min(least, sol.v1[0] ** 2 + (sol.v1[1] - v1) ** 2 + vEscape ** 2);
+    }
+    return least;
+  };
+  const costs: number[] = [];
+  for (let phase = 0; phase < 360; phase += 5) {
+    // A coarse sweep of transfer angles, then a fine one around the best.
+    let at = 180;
+    let least = Number.POSITIVE_INFINITY;
+    for (let angle = 20; angle <= 340; angle += 4) {
+      const c = cost(phase, angle);
+      if (c < least) [least, at] = [c, angle];
+    }
+    for (let angle = at - 4; angle <= at + 4; angle += 0.5)
+      least = Math.min(least, cost(phase, angle));
+    costs.push(least / best - 1);
+  }
+  const out = {
+    max: Math.max(...costs),
+    mean: costs.reduce((a, b) => a + b, 0) / costs.length,
+  };
+  offWindowCache.set(key, out);
+  return out;
+}

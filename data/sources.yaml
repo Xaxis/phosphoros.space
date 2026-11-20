@@ -272,6 +272,14 @@
   note: Light pressure moves a sunshade's equilibrium sunward of L1.
 
 # --- Precedents for the inventions -------------------------------------------------------------------
+- id: toray-t1100g
+  kind: data
+  title: "TORAYCA T1100G Intermediate Modulus Carbon Fiber, technical data sheet (Rev. 11/24/2025)"
+  authors: Toray Composite Materials America
+  year: 2025
+  url: https://www.toraycma.com/wp-content/uploads/T1100G-Data-Sheet.pdf
+  checked: 2026-11-20
+  note: Tensile strength 7,000 MPa and density 1.79 g/cm³; sizes the Aegis coil's structure.
 - id: nasa-cp-2255
   kind: book
   title: "Advanced Automation for Space Missions, Chapter 5: Replicating Systems Concepts: Self-Replicating Lunar Factory and Demonstration"
@@ -489,3 +497,10 @@
   url: https://en.wikipedia.org/wiki/Atmosphere_of_Venus
   checked: 2026-11-20
   note: An overview with references; the cloud layers and the Earth-like conditions at 50 to 65 km.
+- id: wikipedia-synechococcus
+  kind: web
+  title: Synechococcus
+  authors: Wikipedia
+  url: https://en.wikipedia.org/wiki/Synechococcus
+  checked: 2026-11-20
+  note: Abundant in well-lit surface water, generally 1,000 to 200,000 cells per millilitre.

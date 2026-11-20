@@ -16,20 +16,20 @@ chart moves with it.
 | Cloud-life survey | [1 June 2027](numbers.md?date=day#survey-start) | [1 December 2028](numbers.md?date=day#survey-end) |
 | **Gate: no native life** (gate) | [15 December 2028](numbers.md?date=day#life-gate) |  |
 | **Seed foundry launches** | [1 October 2028](numbers.md?date=day#foundry-seed-launch) |  |
-| Ouroboros growth | [14 January 2029](numbers.md?date=day#foundry-landing) | [22 June 2033](numbers.md?date=day#foundry-full-scale) |
-| Helios Lattice built | [1 June 2030](numbers.md?date=day#helios-first-petals) | [22 June 2033](numbers.md?date=day#helios-full-power) |
-| Hesperus Veil built | [1 June 2030](numbers.md?date=day#veil-build-start) | [30 June 2032](numbers.md?date=day#veil-close) |
+| Ouroboros growth | [14 January 2029](numbers.md?date=day#foundry-landing) | [3 May 2033](numbers.md?date=day#foundry-full-scale) |
+| Helios Lattice built | [1 June 2030](numbers.md?date=day#helios-first-petals) | [22 July 2033](numbers.md?date=day#helios-full-power) |
+| Hesperus Veil built | [1 June 2030](numbers.md?date=day#veil-build-start) | [1 December 2032](numbers.md?date=day#veil-close) |
 | Braking Ring built | [1 June 2032](numbers.md?date=day#ring-build-start) | [31 December 2033](numbers.md?date=day#ring-complete) |
 | **Aegis Shield online** | [15 June 2034](numbers.md?date=day#aegis-online) |  |
-| Ceres ice launches | [22 June 2033](numbers.md?date=day#ice-launch-start) | [21 October 2035](numbers.md?date=day#ice-launch-end) |
-| **The Ring powers the Railheads** | [17 August 2034](numbers.md?date=day#ring-pays-from) |  |
-| Active cooling | [1 January 2033](numbers.md?date=day#cooling-start) | [30 June 2036](numbers.md?date=day#cooling-end) |
-| **The Clear Rain** | [19 January 2034](numbers.md?date=day#traj-clear-rain) |  |
-| CO₂ rain-out and sealing | [19 January 2034](numbers.md?date=day#traj-clear-rain) | [30 June 2036](numbers.md?date=day#sealing-end) |
-| Ice caught and parked | [17 August 2034](numbers.md?date=day#first-catch) | [15 December 2036](numbers.md?date=day#last-arrival) |
+| Ceres ice launches | [22 July 2033](numbers.md?date=day#ice-launch-start) | [21 October 2035](numbers.md?date=day#ice-launch-end) |
+| **The Ring powers the Railheads** | [16 September 2034](numbers.md?date=day#ring-pays-from) |  |
+| Active cooling | [3 May 2033](numbers.md?date=day#cooling-start) | [1 September 2036](numbers.md?date=day#cooling-end) |
+| **The Clear Rain** | [13 July 2034](numbers.md?date=day#traj-clear-rain) |  |
+| CO₂ rain-out and sealing | [13 July 2034](numbers.md?date=day#traj-clear-rain) | [1 September 2036](numbers.md?date=day#sealing-end) |
+| Ice caught and parked | [16 September 2034](numbers.md?date=day#first-catch) | [15 December 2036](numbers.md?date=day#last-arrival) |
 | Ice lowered, oceans fill | [30 June 2035](numbers.md?date=day#lowering-start) | [15 December 2036](numbers.md?date=day#lowering-end) |
 | Oxygen forging, acid sweep | [1 January 2035](numbers.md?date=day#forge-start) | [30 September 2036](numbers.md?date=day#forge-end) |
-| Genesis seeding | [30 September 2036](numbers.md?date=day#forge-end) | [15 December 2036](numbers.md?date=day#genesis-end) |
+| Genesis seeding, oceans green | [1 December 2036](numbers.md?date=day#genesis-start) | [12 December 2036](numbers.md?date=day#genesis-end) |
 | **Earth-like Venus (simulated)** | [30 September 2036](numbers.md?date=day#traj-earth-like) |  |
 | **Deadline** | [31 December 2036](numbers.md?date=day#deadline) |  |
 <!-- /table -->
@@ -38,12 +38,12 @@ chart moves with it.
 
 The critical path runs through the Foundry. The seed must launch by
 [1 October 2028](numbers.md?date=day#foundry-seed-launch) so the Lattice reaches full power by
-[22 June 2033](numbers.md?date=day#helios-full-power). Ice launched after
+[22 July 2033](numbers.md?date=day#helios-full-power). Ice launched after
 [21 October 2035](numbers.md?date=day#ice-launch-end) cannot arrive before the deadline, so any slip in the
 doubling time comes straight out of the water.
 
 Link by link: the seed spends [105 d](numbers.md#foundry-transfer-days) in transit and lands on
-[14 January 2029](numbers.md?date=day#foundry-landing). It needs [27](numbers.md#foundry-doublings) doublings
+[14 January 2029](numbers.md?date=day#foundry-landing). It needs [26](numbers.md#foundry-doublings) doublings
 of [60 d](numbers.md#foundry-doubling-days) to reach full scale. The day it does, the Lattice reaches full
 power and the first Bricks leave Ceres, because only then is there power to throw them. At the other end,
 a Brick takes [1.15 yr](numbers.md#ice-transfer-years) to fall to Venus, and the last one must arrive by
@@ -52,10 +52,10 @@ deadline. That fixes the last launch. The ice campaign is whatever time is left 
 Railheads must throw [1.0 × 10²⁰ kg](numbers.md#ice-mass) in it.
 
 Two other links are close behind. The Veil must close before active cooling starts on
-[1 January 2033](numbers.md?date=day#cooling-start): the Foundry could build it in one doubling from
+[3 May 2033](numbers.md?date=day#cooling-start): the Foundry could build it in one doubling from
 [March 2032](numbers.md?date=month#veil-affordable), and it closes in
-[June 2032](numbers.md?date=month#veil-close). The Ring must be finished before the first Brick arrives on
-[17 August 2034](numbers.md?date=day#first-catch); it is complete by
+[December 2032](numbers.md?date=month#veil-close). The Ring must be finished before the first Brick arrives on
+[16 September 2034](numbers.md?date=day#first-catch); it is complete by
 [31 December 2033](numbers.md?date=day#ring-complete).
 
 ## Phase by phase
@@ -72,7 +72,7 @@ credible sign of native life stops the program before the Foundry touches Mercur
 ### Growth: 2029 to 2033
 
 The Foundry grows from [14 January 2029](numbers.md?date=day#foundry-landing) to
-[22 June 2033](numbers.md?date=day#foundry-full-scale). Its output goes first into itself, then into the
+[3 May 2033](numbers.md?date=day#foundry-full-scale). Its output goes first into itself, then into the
 first Lattice Petals from [June 2030](numbers.md?date=month#helios-first-petals), the Veil's slats from
 [June 2030](numbers.md?date=month#veil-build-start) and the Ring from
 [June 2032](numbers.md?date=month#ring-build-start). The atmosphere simulation has not started yet; what
@@ -80,24 +80,23 @@ governs this phase is the Foundry's growth curve and the dates on which it can a
 
 ### Cooling: 2033 to 2036
 
-Active cooling runs from [1 January 2033](numbers.md?date=day#cooling-start) to
-[30 June 2036](numbers.md?date=day#cooling-end), and here the day-by-day
+Active cooling runs from [3 May 2033](numbers.md?date=day#cooling-start) to
+[1 September 2036](numbers.md?date=day#cooling-end), and here the day-by-day
 [simulation](plan.md#the-simulated-atmosphere) takes over. Until the Ring takes over the Railheads, they
-draw [5.6 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [7.0 × 10¹⁹ W](numbers.md#helios-power),
-and cooling is starved of power. Even so, the Clear Rain begins on
-[19 January 2034](numbers.md?date=day#traj-clear-rain). From
-[17 August 2034](numbers.md?date=day#ring-pays-from) power is plentiful and the Exhaust runs at its limit,
-[5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The seas start to freeze on
-[14 March 2036](numbers.md?date=day#traj-freeze), all the CO₂ is down by
-[20 April 2036](numbers.md?date=day#traj-cold), the Frost Towers reach their target on
-[9 May 2036](numbers.md?date=day#traj-scavenged), and the last caps are sealed by
-[30 June 2036](numbers.md?date=day#sealing-end).
+draw [6.7 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [8.5 × 10¹⁹ W](numbers.md#helios-power),
+and cooling is starved of power. From [16 September 2034](numbers.md?date=day#ring-pays-from) power is
+plentiful and the Exhaust runs at its limit, [5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The Clear Rain begins
+on [13 July 2034](numbers.md?date=day#traj-clear-rain). The seas start to freeze on
+[23 June 2036](numbers.md?date=day#traj-freeze), all the CO₂ is down by
+[3 August 2036](numbers.md?date=day#traj-cold), the Frost Towers reach their target on
+[22 August 2036](numbers.md?date=day#traj-scavenged), and the last caps are sealed by
+[1 September 2036](numbers.md?date=day#sealing-end).
 
 ### Water: 2033 to 2036
 
-Bricks leave Ceres from [22 June 2033](numbers.md?date=day#ice-launch-start) to
+Bricks leave Ceres from [22 July 2033](numbers.md?date=day#ice-launch-start) to
 [21 October 2035](numbers.md?date=day#ice-launch-end). The Ring catches the first on
-[17 August 2034](numbers.md?date=day#first-catch) and the last on
+[16 September 2034](numbers.md?date=day#first-catch) and the last on
 [15 December 2036](numbers.md?date=day#last-arrival). Lowering to the surface is planned from
 [30 June 2035](numbers.md?date=day#lowering-start) to [15 December 2036](numbers.md?date=day#lowering-end).
 In the simulation, ice that lands while the air is below freezing stays frozen until the caps are sealed
@@ -108,33 +107,35 @@ and the air is warmed. How that ice gets down at all is still [open](risks.md#th
 The Forges run from [1 January 2035](numbers.md?date=day#forge-start) to
 [30 September 2036](numbers.md?date=day#forge-end), and the Aegis Shield has been on since
 [15 June 2034](numbers.md?date=day#aegis-online). Once the caps are sealed the Veil opens and the simulated
-air warms to [285 K](numbers.md#earth-like-temp) by [4 July 2036](numbers.md?date=day#traj-warm). It is
-Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like), the day the oxygen is complete, and
-Genesis seeding runs from then to [15 December 2036](numbers.md?date=day#genesis-end). That leaves
-[92 d](numbers.md#traj-slack-days) before the deadline.
+air warms to [285 K](numbers.md#earth-like-temp) by [6 September 2036](numbers.md?date=day#traj-warm). It is
+Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like), the day the oxygen is complete,
+[92 d](numbers.md#traj-slack-days) before the deadline. Genesis seeding waits for the oceans to hold their pH
+as well, so it begins on [1 December 2036](numbers.md?date=day#genesis-start), and the sunlit water is green
+by [12 December 2036](numbers.md?date=day#genesis-end) ([check](numbers.md#check-genesis-by-deadline)).
 
 ## What slips if the Foundry is slow
 
-Full scale arrives at the landing date plus [27](numbers.md#foundry-doublings) doubling times. So every day
+Full scale arrives at the landing date plus [26](numbers.md#foundry-doublings) doubling times. So every day
 added to the doubling time pushes the Foundry's full scale, the Lattice's full power and the first ice
-launch back by [27](numbers.md#foundry-doublings) days. A late seed launch does the same, day for day. What
+launch back by [26](numbers.md#foundry-doublings) days. A late seed launch does the same, day for day. What
 does not move is the deadline, and with it the last useful ice launch. The slip lands in three places.
 
 - **The water.** The ice campaign shrinks from the front, so the Railheads must throw faster to deliver
   the same [1.0 × 10²⁰ kg](numbers.md#ice-mass), or the ocean comes out shallower.
-- **The energy.** The Lattice has fewer full-power years before the deadline. With only
-  [1.7%](numbers.md#budget-spare) spare on its own, a doubling time only a little longer than
-  [60 d](numbers.md#foundry-doubling-days) uses that up: the Lattice alone no longer covers the demand,
-  and the plan then depends on the Ring's recovered energy, which still leaves a margin.
-- **The schedule.** The simulated Earth-like date at first holds, because it is set by when the Forges
-  finish. A much slower Foundry cannot afford the Veil by its close date, and the simulated air misses the
-  deadline.
+- **The energy.** The Lattice has fewer full-power years before the deadline. Every day of slip comes out of
+  the [9.3%](numbers.md#budget-spare) it has to spare on its own, then out of the
+  [34%](numbers.md#budget-spare-with-ring) spare the Ring's recovered energy adds.
+- **The schedule.** There is almost no slack. Half a day more per doubling, under two weeks in all, and the
+  Frost Towers finish after the caps are due to be sealed, the oceans melt later, and the seeded life no
+  longer greens them by the deadline. Two days more per doubling and the air itself is Earth-like only in
+  2037. A much slower Foundry cannot build the Veil in time either.
 
 To see the size of each effect, move the doubling time in the [Explorer](https://phosphoros.space/explore),
 or run:
 
 ```sh
-pnpm calc --set foundry-doubling-days=62
+pnpm calc --set foundry-doubling-days=60.5   # the first checks fail
+pnpm calc --set foundry-doubling-days=62     # the air misses the deadline
 ```
 
 If the Foundry cannot approach its doubling time at all, the decade is out of reach and the plan falls back

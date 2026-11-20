@@ -4,7 +4,7 @@ A shade of [3.8 × 10⁸](../numbers.md#veil-slats) light-bending slats holds 
 [1.11 × 10⁶ km](../numbers.md?sig=3&show=km#veil-distance) sunward of Venus, just beyond the Sun-Venus L1 point,
 and turns away [99.9%](../numbers.md#veil-block-fraction) of the sunlight. It is
 [5.4 × 10¹⁴ m²](../numbers.md#veil-area) of film weighing [5.4 × 10¹¹ kg](../numbers.md#veil-mass), and it closes
-on [30 June 2032](../numbers.md?date=day#veil-close). Once Venus is cool it becomes the planet's dimmer switch
+on [1 December 2032](../numbers.md?date=day#veil-close). Once Venus is cool it becomes the planet's dimmer switch
 and day clock.
 
 <!-- figure:veil-geometry -->
@@ -71,9 +71,12 @@ version 2 statite's [1.5 × 10¹⁴ m²](../numbers.md#veil-v2-area), and the
 L1 would need [4.9 × 10¹⁴ m²](../numbers.md#veil-l1-area).
 
 That is the version 3 correction: a shade that can actually stay put, at the cost of more film. The Foundry can
-afford it by [2 March 2032](../numbers.md?date=day#veil-affordable), so the Veil closes later than version 2
-planned, on [30 June 2032](../numbers.md?date=day#veil-close), still well before active cooling begins in
-[January 2033](../numbers.md?date=month#cooling-start).
+afford it by [2 March 2032](../numbers.md?date=day#veil-affordable), but every kilogram of Veil is a kilogram the
+Foundry does not add to itself, so the Veil is built later, when the Foundry is larger and stops growing for only
+[9.8 d](../numbers.md#veil-diversion-days). Its last parts leave Mercury on
+[16 September 2032](../numbers.md?date=day#veil-build-end) and coast [76 d](../numbers.md#mercury-venus-transfer-days)
+to L1, and the Veil closes on [1 December 2032](../numbers.md?date=day#veil-close), months before active cooling
+begins in [May 2033](../numbers.md?date=month#cooling-start).
 
 ## Design
 
@@ -119,7 +122,7 @@ The Veil stays after 2036 as the planet's thermostat.
 | Transmission | Set per slat, from [99.9%](../numbers.md#veil-block-fraction) blocked to [60%](../numbers.md#veil-open-transmission) open |
 | Day mode | [52%](../numbers.md#veil-day-transmission) open for Earth-strength daylight |
 | Light time to Venus | [3.7 s](../numbers.md#veil-light-delay) |
-| Closes | [30 June 2032](../numbers.md?date=day#veil-close) |
+| Closes | [1 December 2032](../numbers.md?date=day#veil-close) |
 <!-- /table -->
 
 ## What is invented
@@ -144,14 +147,15 @@ The Veil stays after 2036 as the planet's thermostat.
   in orbit that dims on command and holds its attitude.
 - **[15 December 2028](../numbers.md?date=day#life-gate):** The [cloud-life gate](../research.md#the-cloud-life-gate).
   No Veil goes up unless the survey finds no native life to harm.
-- **[June 2030](../numbers.md?date=month#veil-build-start):** Slat production begins on Mercury, as a small
-  diversion from the growing Foundry.
+- **[June 2030](../numbers.md?date=month#veil-build-start):** Test slats are made on Mercury, too few to slow the
+  growing Foundry.
 - **[2 March 2032](../numbers.md?date=day#veil-affordable):** The Foundry can build the whole Veil in one doubling.
-- **[30 June 2032](../numbers.md?date=day#veil-close):** The Veil closes over Venus. Building it at this date costs
-  the Foundry [19 d](../numbers.md#veil-diversion-days) of growth.
-- **[January 2033](../numbers.md?date=month#cooling-start):** Active cooling begins under the closed Veil.
+- **[16 September 2032](../numbers.md?date=day#veil-build-end):** The last slats leave Mercury, after the Foundry
+  stops growing for [9.8 d](../numbers.md#veil-diversion-days) to make them.
+- **[1 December 2032](../numbers.md?date=day#veil-close):** The Veil closes over Venus.
+- **[May 2033](../numbers.md?date=month#cooling-start):** Active cooling begins under the closed Veil.
 - **[June 2034](../numbers.md?date=month#aegis-online):** The Aegis coil switches on beside it.
-- **[30 June 2036](../numbers.md?date=day#traj-warming):** The caps are sealed and the Veil opens to its day setting.
+- **[2 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed and the Veil opens to its day setting.
   The air warms to Earth-like temperatures within days.
 
 ## Failure modes and safeguards

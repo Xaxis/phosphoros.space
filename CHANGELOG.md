@@ -18,11 +18,14 @@ corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the 
   [`data/claims.yaml`](data/claims.yaml); each difference is explained or corrected.
 - Corrections: the Veil returns to L1 as a light-bending film, because a version 2 statite cannot
   hover; the Exhaust is sized for the simulated peak; oxygen is a little above Earth's, not a match;
-  seeding life waits for the oxygen; the precursor mission dates were checked again.
+  seeding life waits for the oxygen and for the oceans' pH; launches fired between windows are
+  charged, so cooling and sealing end later; the precursor mission dates were checked again.
 - Open problems: the Braking Ring cannot lower the caught ice on tethers as version 2 describes
   ([#2](https://github.com/Xaxis/phosphoros.space/issues/2)), and catching half the ice eastbound
   and half westbound cancels the twist on the Ring, not its braking force
-  ([#3](https://github.com/Xaxis/phosphoros.space/issues/3)). Each is carried as a failing check
+  ([#3](https://github.com/Xaxis/phosphoros.space/issues/3)). Once launches between windows are
+  charged, the Lattice alone no longer covers the energy demand, and the plan closes only with the
+  Ring's recovered energy ([#12](https://github.com/Xaxis/phosphoros.space/issues/12)). Each is carried as a failing check
   until a design closes it. Other gaps found while rebuilding the numbers are open as
   [issues](https://github.com/Xaxis/phosphoros.space/issues).
 - The site, phosphoros.space, renders every page from the docs in this repository, and the

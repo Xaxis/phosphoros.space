@@ -124,6 +124,7 @@
   experiments: [lightpipe]
   figures: [energy-sankey, lattice-budget]
   modules: [helios.ts]
+  open: [budget-offwindow]
 
 - id: veil
   name: Hesperus Veil
@@ -179,6 +180,7 @@
     - { label: Flow speed, value: "{chimney-flow-speed}" }
     - { label: Mass flow, value: "{chimney-mass-flow} each" }
     - { label: Heat delivered, value: "{chimney-heat} each, cooling the gas by {chimney-gas-cooling}" }
+    - { label: Fans, value: "{chimney-fan-power} in all, {chimney-fan-share} of the heat carried" }
     - { label: Total capacity, value: "{chimney-capacity}, {chimney-vs-peak} times the {deep-heat-peak} peak deep heat flow" }
   invented:
     - Silicon-carbide and graphene composite walls stable at 750 K in CO₂, SO₂ and acid for four years
@@ -221,6 +223,7 @@
   experiments: [exhaust-1]
   figures: [heat-path, co2-phase, trajectory]
   modules: [exhaust.ts, trajectory.ts]
+  open: [exhaust-entropy]
   correction: exhaust-capacity
 
 - id: cryo
@@ -312,6 +315,8 @@
   experiments: [railhead]
   figures: [ice-orbits]
   modules: [ice.ts]
+  correction: offwindow-launch
+  open: [budget-offwindow]
 
 - id: ring
   name: Braking Ring
@@ -383,10 +388,12 @@
     - { label: Bubble radius, value: "{aegis-bubble-radius}" }
     - { label: Dipole moment, value: "{aegis-dipole}, {aegis-vs-earth} of Earth's" }
     - { label: Coil, value: "{aegis-coil-radius} radius, {aegis-ampere-turns} ({aegis-turns} turns of {aegis-current})" }
+    - { label: Structure, value: "At least {aegis-structure-mass} of carbon fibre against a hoop tension of {aegis-hoop-tension}" }
+    - { label: Stored energy, value: "{aegis-stored-energy}" }
     - { label: Position, value: "Beside the Veil, {veil-distance} sunward" }
     - { label: Online, value: "{aegis-online|date=day}" }
   invented:
-    - Cable carrying {aegis-current} per strand at {aegis-coil-temp}, behind its own sunshield
+    - A superconducting loop {aegis-coil-radius} in radius, assembled in deep space and kept at {aegis-coil-temp} behind its own sunshield
   precedent:
     - text: NASA's 2017 study placed a magnetic dipole at Mars's L1 point to shield the planet.
       source: nasa-mars-magnetic-2017
@@ -397,10 +404,10 @@
 - id: genesis
   name: Genesis Biota
   place: venus
-  online: forge-end
+  online: genesis-start
   summary: >-
-    Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in, so oceans
-    and shores are visibly alive by the end of 2036.
+    Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in and the
+    oceans hold their pH, so the sunlit water is green by {genesis-end|date=month}.
   job: Start an ecosystem
   scale: Engineered cyanobacteria, lichens and plankton
   breakthrough: Organisms tuned to cold, fresh, nitrogen-rich water
@@ -408,7 +415,8 @@
     - { label: Air, value: "{final-pressure}: {n2-pressure} nitrogen, {o2-target-pressure} oxygen, {final-co2-ppm} CO₂" }
     - { label: Oceans, value: "{ocean-depth} deep on average, fresh to brackish and sulfate-rich" }
     - { label: Light, value: "{day-length} days at Earth strength" }
-    - { label: Seeding, value: "{forge-end|date=day} to {genesis-end|date=day}" }
+    - { label: Seeding, value: "From {genesis-start|date=day}, the later of the oxygen ({forge-end|date=day}) and the pH gate ({genesis-ph-clear|date=day})" }
+    - { label: Living oceans, value: "{genesis-seed-density} seeded, {genesis-bloom-density} by {genesis-end|date=day}, doubling every {genesis-doubling-days}" }
   groups:
     - { group: Ocean cyanobacteria, from: Synechococcus-type, traits: Stronger carbon-concentrating pumps; sulfate tolerance, job: First oxygen and food web }
     - { group: Nitrogen fixers, from: Anabaena and Trichodesmium-type, traits: Faster fixation under a nitrogen-rich sky, job: Nutrients from the air }

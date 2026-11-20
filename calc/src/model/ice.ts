@@ -1,7 +1,8 @@
 /** Ceres Ice Train: coilguns on Ceres throw water ice onto transfer orbits to Venus. */
-import { circularSpeed, hohmann, period } from "../physics.ts";
+import { circularSpeed, hohmann, offWindowPenalty, period } from "../physics.ts";
 import type { Registry } from "../registry.ts";
-import { DAY_S, YEAR_S } from "../time.ts";
+import { DAY_S } from "../time.ts";
+import { fmt } from "./text.ts";
 
 export function iceTrain(r: Registry) {
   const { v } = r.in("model/ice.ts");
@@ -195,7 +196,7 @@ export function iceTrain(r: Registry) {
   r.q(
     "launch-energy-per-kg",
     {
-      label: "Energy drawn per kilogram launched",
+      label: "Energy drawn per kilogram launched in a window",
       unit: "J/kg",
       show: "MJ/kg",
       sig: 2,
@@ -204,15 +205,76 @@ export function iceTrain(r: Registry) {
     },
     () => (0.5 * v("ice-launch-speed") ** 2) / v("railhead-efficiency"),
   );
+  const offWindow = () =>
+    offWindowPenalty(v("sun-mu"), v("ceres-orbit"), v("venus-orbit"), v("ceres-escape"));
+  r.q(
+    "launch-offwindow-max",
+    {
+      label: "Extra launch energy for a shot at the worst time between windows",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula:
+        "max over launch phase of the cheapest transfer that meets Venus, (Δv² + v_esc²) / (Δv_H² + v_esc²) − 1",
+      basis: "physics",
+      note: "Lambert transfers between circular, coplanar orbits, as the Hohmann transfer assumes, trying every transfer angle for each launch phase.",
+    },
+    () => offWindow().max,
+  );
+  r.q(
+    "launch-offwindow-mean",
+    {
+      label: "Average extra launch energy, firing all the time",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "mean over launch phase of the same penalty",
+      basis: "physics",
+      note: "The Railheads fire at a steady rate through every phase of the synodic cycle, so each phase gets an equal share of the ice.",
+    },
+    () => offWindow().mean,
+  );
+  r.q(
+    "launch-energy-per-kg-avg",
+    {
+      label: "Energy drawn per kilogram launched, averaged over the campaign",
+      unit: "J/kg",
+      show: "MJ/kg",
+      sig: 3,
+      formula: "½ v² / η × (1 + mean off-window penalty)",
+      basis: "invented",
+    },
+    () => v("launch-energy-per-kg") * (1 + v("launch-offwindow-mean")),
+  );
   r.q(
     "ice-launch-energy",
     {
       label: "Energy to launch all the ice",
       unit: "J",
+      formula: "M_ice × e_avg",
+      basis: "invented",
+    },
+    () => v("ice-mass") * v("launch-energy-per-kg-avg"),
+  );
+  r.q(
+    "ice-launch-energy-window",
+    {
+      label: "Energy to launch all the ice if every shot left in a window",
+      unit: "J",
       formula: "M_ice ½ v² / η",
       basis: "invented",
     },
     () => v("ice-mass") * v("launch-energy-per-kg"),
+  );
+  r.q(
+    "ice-launch-offwindow-energy",
+    {
+      label: "Extra energy for the shots fired between windows",
+      unit: "J",
+      formula: "E_launch − E_window",
+      basis: "physics",
+    },
+    () => v("ice-launch-energy") - v("ice-launch-energy-window"),
   );
   r.q(
     "ice-launch-motion",
@@ -236,8 +298,8 @@ export function iceTrain(r: Registry) {
   );
   r.q(
     "railhead-power",
-    { label: "Power all Railheads draw", unit: "W", formula: "ṁ × e", basis: "invented" },
-    () => v("ice-throughput") * v("launch-energy-per-kg"),
+    { label: "Power all Railheads draw", unit: "W", formula: "ṁ × e_avg", basis: "invented" },
+    () => v("ice-throughput") * v("launch-energy-per-kg-avg"),
   );
   r.q(
     "railhead-power-each",
@@ -403,7 +465,7 @@ export function iceTrain(r: Registry) {
     { label: "The last Brick arrives before the deadline", kind: "schedule" },
     () => ({
       pass: v("last-arrival") <= v("deadline"),
-      detail: `Last launch ${(2027 + v("ice-launch-end") / 365.25).toFixed(2)}, transfer ${((v("ice-transfer-days") * DAY_S) / YEAR_S).toFixed(2)} yr, last arrival ${(2027 + v("last-arrival") / 365.25).toFixed(2)}.`,
+      detail: `Last launch ${fmt(r, "ice-launch-end", { date: "day" })}, a ${fmt(r, "ice-transfer-days", { show: "yr" })} transfer, last arrival ${fmt(r, "last-arrival", { date: "day" })}.`,
     }),
   );
 }

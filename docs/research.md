@@ -10,14 +10,14 @@ in advance. A kill signal stops the line it tests; one of them stops everything.
 <!-- /figure -->
 
 <!-- table:experiments -->
-| Experiment | Proves | Pass by the end of 2028 | Kill signal |
+| Experiment | Proves | Pass by [31 December 2028](numbers.md?date=day#experiments-end) | Kill signal |
 | --- | --- | --- | --- |
 | [Ouroboros-0](technologies/ouroboros.md) | A factory that builds itself from simulated Mercury regolith | 95% mass closure, doubling in under 120 days | Under 70% closure |
 | [Exhaust-1](technologies/exhaust.md) | Electroluminescent cooling at useful power | 10 kW/m² of net cooling, within 50% of the Carnot limit | No net cooling above 100 W/m² |
-| [Lightpipe](technologies/helios.md) | Coherent power beaming | 1 MW over 1,000 km between satellites at 30% end to end | Phase lock fails beyond 100 emitters |
+| [Lightpipe](technologies/helios.md) | Coherent power beaming | 1 MW over a thousand kilometres between satellites at 30% end to end | Phase lock fails beyond 100 emitters |
 | [Veil-1](technologies/veil.md) | An electrochromic slat | A 1 km² slat in orbit dims from 0 to 99% and holds its attitude | The film degrades within 6 months |
 | [Railhead](technologies/ice-train.md) | An ice mass driver | 1 t of ice at 3 km/s, 10 shots an hour | Under 1 km/s, or under 1 shot an hour |
-| [Cryo-seal](technologies/cryo.md) | Dry-ice storage under a {earth-like-temp} sky | Under 0.1 W/m² of heat leak for 12 months | The cap cracks under thermal cycling |
+| [Cryo-seal](technologies/cryo.md) | Dry-ice storage under a [288 K](numbers.md#earth-surface-temp) sky | Under 0.1 W/m² of heat leak for 12 months | The cap cracks under thermal cycling |
 | [Mini-Aegis](technologies/aegis.md) | A magnetic shield | A 10 m coil's bubble deflects the solar wind | Repeated quenches |
 | **Cloud-life survey** | No native life will be harmed | Balloon and droplet sample return show no biology | A credible biosignature: the whole program stops |
 | [Choir-sim](technologies/choir.md) | Fleet autonomy | 10,000 robots run a factory for 90 days unattended | More than 1 human intervention a day |
@@ -48,9 +48,10 @@ removes heat from Venus faster than a plain radiator at the cloud tops can shed 
 electricity ([Santhanam 2012](sources.md#santhanam-2012)). The kill signal sits at the level a plain radiator already
 reaches: a tile that cannot beat passive radiation is not a heat pump worth building. The pass bar is well
 above that, and names a distance from the Carnot limit, because the model charges the pump work at the
-Carnot minimum, [5.4](numbers.md#exhaust-work-ratio) joules per joule. A real tile will do worse. The budget
-has [1.7%](numbers.md#budget-spare) to spare on the Lattice alone and [28%](numbers.md#budget-spare-with-ring)
-once the Ring powers the Railheads, so it can absorb a tile somewhat short of ideal, not one far short. The
+Carnot minimum, [5.5](numbers.md#exhaust-work-ratio) joules per joule. A real tile will do worse. The Lattice
+alone leaves [9.3%](numbers.md#budget-spare) spare, and once the Ring powers the Railheads the spare is
+[34%](numbers.md#budget-spare-with-ring), so the plan can absorb a tile somewhat short of ideal, not one far
+short, and not yet the full cost of its narrow beam ([open problem](budget.md#physics-checks)). The
 production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by 2031.
 
 ### Lightpipe
@@ -66,14 +67,14 @@ cannot be met.
 
 One electrochromic, light-bending slat in orbit ([Hesperus Veil](technologies/veil.md)). The Veil must
 keep [99.9%](numbers.md#veil-block-fraction) of the sunlight off Venus from
-[June 2032](numbers.md?date=month#veil-close) to the end of the cooling, and then serve forever as the
+[December 2032](numbers.md?date=month#veil-close) to the end of the cooling, and then serve forever as the
 planet's thermostat. A film that degrades within months cannot do that, and a Veil that fails after cooling
 lets sunlight boil the CO₂ back out. So the kill signal is about lifetime, not performance.
 
 ### Railhead
 
 An ice mass driver on Earth. The Ice Train fires Bricks at [6.4 km/s](numbers.md#ice-launch-speed) every
-[7.4 s](numbers.md#railhead-interval) from each of its [10,000](numbers.md#railhead-count) coilguns
+[7.1 s](numbers.md#railhead-interval) from each of its [10,000](numbers.md#railhead-count) coilguns
 ([Ceres Ice Train](technologies/ice-train.md)). The test asks for a fraction of that speed at a modest
 rate; the kill signal marks a speed and a rate so low that the scale-up would be a new invention. The test
 must also show that ice survives being thrown: a Brick feels [190 MPa](numbers.md#brick-launch-stress) at
@@ -89,8 +90,8 @@ gets back into the air.
 ### Mini-Aegis
 
 A small superconducting coil at the Sun-Earth L1 point that inflates a magnetic bubble against the solar
-wind ([Aegis Shield](technologies/aegis.md)). The full coil is [10 km](numbers.md#aegis-coil-radius) in
-radius and carries [3 × 10⁶ A](numbers.md#aegis-current) per strand. If a small coil cannot stay
+wind ([Aegis Shield](technologies/aegis.md)). The full coil is [1,000 km](numbers.md#aegis-coil-radius) in
+radius and carries [300 A](numbers.md#aegis-current) per strand. If a small coil cannot stay
 superconducting in deep space without repeated quenches, a large one will not either.
 
 ### Choir-sim

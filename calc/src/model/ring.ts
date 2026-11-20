@@ -1,6 +1,7 @@
 /** Braking Ring: an orbital ring that catches the ice, turns its speed into electricity and lowers it. */
 import type { Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
+import { fmt } from "./text.ts";
 
 export function ring(r: Registry) {
   const { v } = r.in("model/ring.ts");
@@ -387,7 +388,7 @@ export function ring(r: Registry) {
     { label: "The Ring recovers more power than the Railheads draw", kind: "conservation" },
     () => ({
       pass: v("ring-power") >= v("railhead-power"),
-      detail: `Ring ${v("ring-power").toExponential(2)} W recovered against ${v("railhead-power").toExponential(2)} W drawn by the Railheads.`,
+      detail: `The Ring recovers ${fmt(r, "ring-power")} against the ${fmt(r, "railhead-power")} the Railheads draw.`,
     }),
   );
   r.c(
@@ -399,7 +400,7 @@ export function ring(r: Registry) {
     },
     () => ({
       pass: v("ring-net-braking-force") <= v("ring-lift"),
-      detail: `Catching half the Bricks eastbound and half westbound cancels the twist, not the force: ${v("ring-net-braking-force").toExponential(1)} N remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; its spare lift is ${v("ring-lift").toExponential(1)} N, ${Math.round(v("ring-net-overload"))} times too little.`,
+      detail: `Catching half the Bricks eastbound and half westbound cancels the twist, not the force: ${fmt(r, "ring-net-braking-force")} remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; its spare lift is ${fmt(r, "ring-lift")}, ${fmt(r, "ring-net-overload")} times too little.`,
     }),
   );
   r.c(
@@ -411,7 +412,7 @@ export function ring(r: Registry) {
     },
     () => ({
       pass: v("lowering-support") <= v("ring-lift"),
-      detail: `Lowering ${v("lowering-rate").toExponential(2)} kg/s needs at least ${v("lowering-support").toExponential(1)} N; the rotor's spare lift is ${v("ring-lift").toExponential(1)} N, ${Math.round(v("lowering-overload"))} times too little.`,
+      detail: `Lowering ${fmt(r, "lowering-rate")} needs at least ${fmt(r, "lowering-support")}; the rotor's spare lift is ${fmt(r, "ring-lift")}, ${fmt(r, "lowering-overload")} times too little.`,
     }),
   );
 }

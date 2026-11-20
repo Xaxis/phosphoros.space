@@ -128,7 +128,7 @@ export function stageAt(day: number, data: HeroData): Stage {
     sealed: ramp(d("traj-cold"), d("traj-warming"), day),
     waterIce: lowered * (1 - melt),
     ocean: lowered * melt,
-    life: ramp(d("forge-end"), d("genesis-end"), day),
+    life: ramp(d("genesis-start"), d("genesis-end"), day),
     sky: clamp(o2 / 21_000),
     waterClouds: ramp(d("traj-warming") + 10, d("traj-earth-like"), day),
     air: clamp((Math.log10(pressure) - 5) / (Math.log10(startPressure) - 5)),
