@@ -66,9 +66,7 @@ export async function generateMetadata({
 function Glance({ t }: { t: Technology }) {
   const { content } = model();
   const experiments = experimentsOf(t);
-  const correction = t.correction
-    ? content.corrections.find((c) => c.id === t.correction)
-    : undefined;
+  const corrections = content.corrections.filter((c) => t.corrections?.includes(c.id));
   const open = content.corrections.filter((c) => t.open?.includes(c.id));
   return (
     <div className="glance">
@@ -114,12 +112,14 @@ function Glance({ t }: { t: Technology }) {
             ))}
           </div>
         )}
-        {correction && (
+        {corrections.length > 0 && (
           <div>
             <dt>Changed in version 3</dt>
-            <dd>
-              <a href="/about#corrections">{correction.title}</a>
-            </dd>
+            {corrections.map((c) => (
+              <dd key={c.id}>
+                <a href="/about#corrections">{c.title}</a>
+              </dd>
+            ))}
           </div>
         )}
         {open.length > 0 && (

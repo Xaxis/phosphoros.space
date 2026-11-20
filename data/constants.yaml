@@ -752,3 +752,12 @@ howe-water-mass:
   basis: precedent
   source: [howe-2022]
   note: 500 kg per square metre of Venus.
+mercury-surface-fe-max:
+  value: 0.04
+  unit: "1"
+  show: "%"
+  sig: 1
+  label: Most iron in Mercury's surface rock, by mass
+  basis: physics
+  source: [weider-2012-xrs]
+  note: MESSENGER found the surface poor in iron and aluminium and rich in sulfur, carbon and magnesium.

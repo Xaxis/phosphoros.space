@@ -433,3 +433,14 @@
     cryo-leak-total: 1.14e13
     cryo-cap-mass: 3.00e17
     graphite-stockpile: 1.87e17
+- id: mercury-iron
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Mercury's surface is poor in iron
+  text: >-
+    Version 2 described Mercury's surface as rich in iron, silicon, aluminium, magnesium and sulfur.
+    MESSENGER found it rich in sulfur, carbon and magnesium but poor in aluminium, calcium and
+    iron: under {mercury-surface-fe-max} iron by mass, held mostly in sulfides and metal grains.
+    The Foundry's iron cores and rails need more rock dug per kilogram than version 2 implied; the
+    model does not yet size the Foundry's diggers by element.

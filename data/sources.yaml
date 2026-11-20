@@ -563,3 +563,26 @@
   note: >-
     "For a density of 82 kg m−3 a thermal conductivity of 0.029 W m−1 K−1 in air and 0.018 W m−1
     K−1 after evacuation was found."
+- id: weider-2012-xrs
+  kind: paper
+  title: "Chemical heterogeneity on Mercury's surface revealed by the MESSENGER X-Ray Spectrometer"
+  authors: Weider, S. Z., Nittler, L. R., Starr, R. D., et al.
+  year: 2012
+  venue: European Planetary Science Congress 2012, abstract EPSC2012-713
+  url: https://meetingorganizer.copernicus.org/EPSC2012/EPSC2012-713.pdf
+  checked: 2026-11-20
+  note: >-
+    "Mercury's surface has a low Fe content (<4 wt% [1])", citing Nittler and colleagues, Science
+    333, 1847 to 1850 (2011).
+- id: nittler-weider-2019
+  kind: paper
+  title: The Surface Composition of Mercury
+  authors: Nittler, L. R., and Weider, S. Z.
+  year: 2019
+  venue: Elements 15, 33 to 38
+  doi: 10.2138/gselements.15.1.33
+  url: https://carnegiescience.edu/surface-composition-mercury
+  checked: 2026-11-20
+  note: >-
+    The surface "is enriched in S and C, and depleted in Fe", and "also enriched in Mg and
+    depleted in Al and Ca".

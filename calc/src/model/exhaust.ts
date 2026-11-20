@@ -607,7 +607,8 @@ export function exhaust(r: Registry) {
   );
 
   // Beam safety: where the tiles must stay dark, and how far out each cone is still bright.
-  const halfCone = (v("exhaust-cone") * Math.PI) / 360;
+  // Read inside each formula, so the ledger lists the cone among its inputs.
+  const halfCone = () => (v("exhaust-cone") * Math.PI) / 360;
   r.q(
     "exhaust-dark-strip",
     {
@@ -619,7 +620,7 @@ export function exhaust(r: Registry) {
       basis: "physics",
       note: "A tile whose cone would reach the Ring must stay dark: any tile closer to the Ring's ground track than the cone's half-width at the Ring's height.",
     },
-    () => 2 * (v("ring-altitude") - v("chimney-top")) * Math.tan(halfCone),
+    () => 2 * (v("ring-altitude") - v("chimney-top")) * Math.tan(halfCone()),
   );
   r.q(
     "exhaust-dark-strip-share",
@@ -642,7 +643,7 @@ export function exhaust(r: Registry) {
       formula: "2π (1 − cos(θ / 2))",
       basis: "physics",
     },
-    () => 2 * Math.PI * (1 - Math.cos(halfCone)),
+    () => 2 * Math.PI * (1 - Math.cos(halfCone())),
   );
   r.q(
     "exhaust-cone-safe-distance",

@@ -117,6 +117,7 @@ Basis: **Physics** is measurement or established physics. **Precedent** is shown
 | <a id="lunar-factory-replication-time"></a>**Time the 1980 NASA lunar factory was designed to take to copy itself**<br>`lunar-factory-replication-time` | 1 yr | [nasa-cp-2255](sources.md#nasa-cp-2255) | Precedent | [data/constants.yaml:734](../data/constants.yaml#L734) |
 | <a id="howe-tiles"></a>**Floating tiles, 100 m across, that Cloud Continents needs to cover Venus at 50 km**<br>`howe-tiles` | 7.2 × 10¹⁰ | [howe-2022](sources.md#howe-2022) | Precedent | [data/constants.yaml:742](../data/constants.yaml#L742) |
 | <a id="howe-water-mass"></a>**Water Cloud Continents imports, enough for arable soil over the whole planet**<br>`howe-water-mass` | 2.3 × 10¹⁷ kg | [howe-2022](sources.md#howe-2022) | Precedent | [data/constants.yaml:748](../data/constants.yaml#L748) |
+| <a id="mercury-surface-fe-max"></a>**Most iron in Mercury's surface rock, by mass**<br>`mercury-surface-fe-max` | 4% | [weider-2012-xrs](sources.md#weider-2012-xrs) | Physics | [data/constants.yaml:755](../data/constants.yaml#L755) |
 
 ### [data/assumptions.yaml](../data/assumptions.yaml)
 
@@ -268,6 +269,8 @@ Basis: **Physics** is measurement or established physics. **Precedent** is shown
 | <a id="choir-sim-robots"></a>**Robots in the Choir-sim test factory**<br>`choir-sim-robots` | 10,000 |  | Design choice | [data/assumptions.yaml:882](../data/assumptions.yaml#L882) |
 | <a id="choir-sim-days"></a>**How long Choir-sim must run unattended**<br>`choir-sim-days` | 90 d |  | Design choice | [data/assumptions.yaml:887](../data/assumptions.yaml#L887) |
 | <a id="choir-sim-kill-interventions"></a>**Choir-sim is killed above this many human interventions a day**<br>`choir-sim-kill-interventions` | 1 |  | Design choice | [data/assumptions.yaml:892](../data/assumptions.yaml#L892) |
+| <a id="foundry-closure-seed"></a>**Share of each copy's mass the seed Foundry makes from Mercury rock**<br>`foundry-closure-seed` | 99.99% |  | Invented | [data/assumptions.yaml:898](../data/assumptions.yaml#L898) |
+| <a id="foundry-trace-refining"></a>**Trace-element refining runs, closing the Foundry's loop completely**<br>`foundry-trace-refining` | 1 January 2030 |  | Design choice | [data/assumptions.yaml:906](../data/assumptions.yaml#L906) |
 
 ## Derived
 
@@ -468,10 +471,10 @@ Basis: **Physics** is measurement or established physics. **Precedent** is shown
 | <a id="exhaust-band-sunlight"></a>**Share of sunlight in the Exhaust's band**<br>`exhaust-band-sunlight` | 1.9% | π ∫ B_λ(T_☉) dλ / σT_☉⁴ over λ ± Δλ / 2<br>from [sun-temp](#sun-temp), [exhaust-wavelength](#exhaust-wavelength), [exhaust-band](#exhaust-band), [planck-constant](#planck-constant), [speed-of-light](#speed-of-light), [boltzmann-constant](#boltzmann-constant), [stefan-boltzmann](#stefan-boltzmann) | Physics | [model/exhaust.ts:553](../calc/src/model/exhaust.ts#L553) |
 | <a id="exhaust-band-vs-veil-leak"></a>**Sunlight in the Exhaust's band compared with all the closed Veil may let through**<br>`exhaust-band-vs-veil-leak` | 19 | band share / (1 − block)<br>from [exhaust-band-sunlight](#exhaust-band-sunlight), [veil-leak-budget](#veil-leak-budget) | Physics | [model/exhaust.ts:575](../calc/src/model/exhaust.ts#L575) |
 | <a id="exhaust-veil-tilt"></a>**How far tiles near the subsolar point tilt their cones off the Sun line to miss the Veil**<br>`exhaust-veil-tilt` | 13° | θ / 2 + Veil angular radius<br>from [exhaust-cone](#exhaust-cone), [veil-angular-radius](#veil-angular-radius) | Physics | [model/exhaust.ts:586](../calc/src/model/exhaust.ts#L586) |
-| <a id="exhaust-dark-strip"></a>**Width of the strip under the Ring's path where tiles stay dark**<br>`exhaust-dark-strip` | 150 km | 2 (h_Ring − h_canopy) tan(θ / 2)<br>from [ring-altitude](#ring-altitude), [chimney-top](#chimney-top) | Physics | [model/exhaust.ts:612](../calc/src/model/exhaust.ts#L612) |
-| <a id="exhaust-dark-strip-share"></a>**Share of Venus's surface under the dark strip**<br>`exhaust-dark-strip-share` | 1.2% | w 2π R_V / A_V<br>from [exhaust-dark-strip](#exhaust-dark-strip), [venus-radius](#venus-radius), [venus-area](#venus-area) | Physics | [model/exhaust.ts:625](../calc/src/model/exhaust.ts#L625) |
-| <a id="exhaust-cone-solid-angle"></a>**Solid angle of one canopy's beam cone**<br>`exhaust-cone-solid-angle` | 0.15 sr | 2π (1 − cos(θ / 2))<br>from  | Physics | [model/exhaust.ts:637](../calc/src/model/exhaust.ts#L637) |
-| <a id="exhaust-cone-safe-distance"></a>**Distance beyond which one canopy's cone, at peak power, is dimmer than the far-field limit**<br>`exhaust-cone-safe-distance` | 58,000 km | √(P_peak / (N Ω F_limit))<br>from [exhaust-peak](#exhaust-peak), [exhaust-canopies](#exhaust-canopies), [exhaust-cone-solid-angle](#exhaust-cone-solid-angle), [exhaust-far-limit](#exhaust-far-limit) | Physics | [model/exhaust.ts:648](../calc/src/model/exhaust.ts#L648) |
+| <a id="exhaust-dark-strip"></a>**Width of the strip under the Ring's path where tiles stay dark**<br>`exhaust-dark-strip` | 150 km | 2 (h_Ring − h_canopy) tan(θ / 2)<br>from [ring-altitude](#ring-altitude), [chimney-top](#chimney-top), [exhaust-cone](#exhaust-cone) | Physics | [model/exhaust.ts:613](../calc/src/model/exhaust.ts#L613) |
+| <a id="exhaust-dark-strip-share"></a>**Share of Venus's surface under the dark strip**<br>`exhaust-dark-strip-share` | 1.2% | w 2π R_V / A_V<br>from [exhaust-dark-strip](#exhaust-dark-strip), [venus-radius](#venus-radius), [venus-area](#venus-area) | Physics | [model/exhaust.ts:626](../calc/src/model/exhaust.ts#L626) |
+| <a id="exhaust-cone-solid-angle"></a>**Solid angle of one canopy's beam cone**<br>`exhaust-cone-solid-angle` | 0.15 sr | 2π (1 − cos(θ / 2))<br>from [exhaust-cone](#exhaust-cone) | Physics | [model/exhaust.ts:638](../calc/src/model/exhaust.ts#L638) |
+| <a id="exhaust-cone-safe-distance"></a>**Distance beyond which one canopy's cone, at peak power, is dimmer than the far-field limit**<br>`exhaust-cone-safe-distance` | 58,000 km | √(P_peak / (N Ω F_limit))<br>from [exhaust-peak](#exhaust-peak), [exhaust-canopies](#exhaust-canopies), [exhaust-cone-solid-angle](#exhaust-cone-solid-angle), [exhaust-far-limit](#exhaust-far-limit) | Physics | [model/exhaust.ts:649](../calc/src/model/exhaust.ts#L649) |
 
 ### [model/cryo.ts](../calc/src/model/cryo.ts)
 

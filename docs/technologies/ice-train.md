@@ -164,6 +164,8 @@ water, and comets from the outer belt become the fallback.
 | Power | [6.7 × 10¹⁹ W](../numbers.md#railhead-power) in all, [6.7 × 10¹⁵ W](../numbers.md#railhead-power-each) each |
 | Transfer | [1.15 yr](../numbers.md#ice-transfer-years); arrives at [9.08 km/s](../numbers.md#ice-vinf) relative to Venus |
 | Launch windows | Every [8.5 months](../numbers.md#launch-window-period), about [3.2](../numbers.md#launch-windows) in the campaign |
+| Launches between windows | Up to [46%](../numbers.md#launch-offwindow-max) more energy than in a window, [16%](../numbers.md#launch-offwindow-mean) more on average |
+| Ceres factories | The first leave Earth to build the Railheads; their mass, launch and growth are not yet modelled |
 | Ceres's recoil | [0.76 km/s](../numbers.md#ceres-recoil); its aphelion moves to [3.29 AU](../numbers.md#ceres-new-aphelion) |
 <!-- /table -->
 

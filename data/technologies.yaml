@@ -8,6 +8,7 @@
 #   invented: what does not exist yet, in a phrase
 #   precedent: what does, with its source
 #   modules: the calc/src/model files that compute its numbers
+#   corrections: the version 3 corrections that changed it; open: its open problems
 #   figures: the figures that show it
 #   machines: for a self-copying factory, its machine types in loop order: name, makes (a short
 #     label for the figure), does (the full description for the table) and feeds
@@ -34,7 +35,8 @@
     - { label: Mercury's escape speed, value: "{mercury-escape}, so parts reach orbit by mass driver" }
     - { label: Machinery in January 2030, value: "{foundry-mass-2030}" }
     - { label: Machinery in January 2032, value: "{foundry-mass-2032}" }
-    - { label: Material closure, value: 99.99% at seed; 100% once trace-element refining runs in 2030 }
+    - { label: Material closure, value: "{foundry-closure-seed} at seed; complete once trace-element refining runs, from {foundry-trace-refining|date=year}" }
+    - { label: Mercury's surface rock, value: "Rich in sulfur, carbon and magnesium; poor in aluminium, calcium and iron, under {mercury-surface-fe-max} by mass" }
   invented:
     - Lithocell chip fabs that write circuits with a million parallel electron beams, no masks
     - A {foundry-doubling-days} doubling time for a factory that makes everything, including its chips
@@ -44,6 +46,7 @@
   experiments: [ouroboros-0]
   figures: [foundry-growth, foundry-loop]
   modules: [foundry.ts]
+  corrections: [mercury-iron]
   # In loop order: each feeds the next, except that the mass drivers' parts leave for orbit, and
   # the Assemblers close the loop by building every type.
   machines:
@@ -126,7 +129,7 @@
   experiments: [lightpipe]
   figures: [energy-sankey, lattice-budget]
   modules: [helios.ts]
-  open: [budget-offwindow]
+  corrections: [budget-offwindow, helios-orbits]
 
 - id: veil
   name: Hesperus Veil
@@ -165,7 +168,7 @@
   experiments: [veil-1]
   figures: [veil-geometry]
   modules: [veil.ts]
-  correction: veil-l1
+  corrections: [veil-l1, veil-opaque]
 
 - id: chimneys
   name: Thermal Chimneys
@@ -232,7 +235,7 @@
   figures: [heat-path, co2-phase, trajectory]
   modules: [exhaust.ts, trajectory.ts]
   open: [exhaust-entropy]
-  correction: exhaust-capacity
+  corrections: [exhaust-capacity, exhaust-safety]
 
 - id: cryo
   name: Cryo-continents
@@ -263,6 +266,7 @@
   experiments: [cryo-seal]
   figures: [co2-phase, heat-path]
   modules: [cryo.ts]
+  corrections: [aerogel-measured]
 
 - id: forges
   name: Graphite Forges
@@ -317,6 +321,8 @@
     - { label: Power, value: "{railhead-power} in all, {railhead-power-each} each" }
     - { label: Transfer, value: "{ice-transfer-years}; arrives at {ice-vinf} relative to Venus" }
     - { label: Launch windows, value: "Every {launch-window-period}, about {launch-windows} in the campaign" }
+    - { label: Launches between windows, value: "Up to {launch-offwindow-max} more energy than in a window, {launch-offwindow-mean} more on average" }
+    - { label: Ceres factories, value: "The first leave Earth to build the Railheads; their mass, launch and growth are not yet modelled" }
     - { label: Ceres's recoil, value: "{ceres-recoil}; its aphelion moves to {ceres-new-aphelion}" }
   invented:
     - Ten-kilometre coilguns firing megatonne ice blocks every few seconds
@@ -325,8 +331,7 @@
   experiments: [railhead]
   figures: [ice-orbits]
   modules: [ice.ts]
-  correction: offwindow-launch
-  open: [budget-offwindow]
+  corrections: [offwindow-launch]
 
 - id: ring
   name: Braking Ring
@@ -438,7 +443,7 @@
   experiments: [cloud-life]
   figures: []
   modules: []
-  correction: genesis-gate
+  corrections: [genesis-gate, genesis-ph]
 
 - id: choir
   name: Choir
@@ -467,4 +472,4 @@
   experiments: [choir-sim]
   figures: [tech-stack]
   modules: [outcome.ts]
-  correction: choir-count
+  corrections: [choir-count]

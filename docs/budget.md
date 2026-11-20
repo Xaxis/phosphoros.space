@@ -165,7 +165,7 @@ a rounding error. Once the Foundry runs, matter is cheap. Energy is the cost.
 <!-- /table -->
 
 The Foundry makes every piece of hardware from Mercury rock; only the seed and the first Ceres factories
-leave Earth. The largest mass the plan moves is Venus's own CO₂, which never leaves the planet: it is frozen
+leave Earth. The model sizes the seed but not yet the Ceres factories ([issue #7](https://github.com/Xaxis/phosphoros.space/issues/7)). The largest mass the plan moves is Venus's own CO₂, which never leaves the planet: it is frozen
 in place. The largest mass it imports is the water.
 
 ## Physics checks
@@ -370,6 +370,7 @@ its basis says whether it is a design choice, an invention or a demonstrated pre
 | Robots in the Choir-sim test factory | [10,000](numbers.md#choir-sim-robots) | Design choice |  | [data/assumptions.yaml:882](../data/assumptions.yaml#L882) |
 | How long Choir-sim must run unattended | [90 d](numbers.md#choir-sim-days) | Design choice |  | [data/assumptions.yaml:887](../data/assumptions.yaml#L887) |
 | Choir-sim is killed above this many human interventions a day | [1](numbers.md#choir-sim-kill-interventions) | Design choice |  | [data/assumptions.yaml:892](../data/assumptions.yaml#L892) |
+| Share of each copy's mass the seed Foundry makes from Mercury rock | [99.99%](numbers.md#foundry-closure-seed) | Invented |  | [data/assumptions.yaml:898](../data/assumptions.yaml#L898) |
 <!-- /table -->
 
 Every assumption with a range is a slider in the [Explorer](https://phosphoros.space/explore), which runs

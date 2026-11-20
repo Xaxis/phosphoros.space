@@ -809,6 +809,14 @@
       "basis": "precedent",
       "source": "data/constants.yaml#L748"
     },
+    "mercury-surface-fe-max": {
+      "value": 0.04,
+      "unit": "1",
+      "shown": "4%",
+      "label": "Most iron in Mercury's surface rock, by mass",
+      "basis": "physics",
+      "source": "data/constants.yaml#L755"
+    },
     "program-start": {
       "value": "2027-01-01",
       "unit": "date",
@@ -1976,6 +1984,22 @@
       "label": "Choir-sim is killed above this many human interventions a day",
       "basis": "design",
       "source": "data/assumptions.yaml#L892"
+    },
+    "foundry-closure-seed": {
+      "value": 0.9999,
+      "unit": "1",
+      "shown": "99.99%",
+      "label": "Share of each copy's mass the seed Foundry makes from Mercury rock",
+      "basis": "invented",
+      "source": "data/assumptions.yaml#L898"
+    },
+    "foundry-trace-refining": {
+      "value": "2030-01-01",
+      "unit": "date",
+      "shown": "1 January 2030",
+      "label": "Trace-element refining runs, closing the Foundry's loop completely",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L906"
     },
     "venus-area": {
       "value": 460234000000000,
@@ -4178,11 +4202,12 @@
       "shown": "150 km",
       "label": "Width of the strip under the Ring's path where tiles stay dark",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L612",
+      "source": "calc/src/model/exhaust.ts#L613",
       "formula": "2 (h_Ring − h_canopy) tan(θ / 2)",
       "inputs": [
         "ring-altitude",
-        "chimney-top"
+        "chimney-top",
+        "exhaust-cone"
       ]
     },
     "exhaust-dark-strip-share": {
@@ -4191,7 +4216,7 @@
       "shown": "1.2%",
       "label": "Share of Venus's surface under the dark strip",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L625",
+      "source": "calc/src/model/exhaust.ts#L626",
       "formula": "w 2π R_V / A_V",
       "inputs": [
         "exhaust-dark-strip",
@@ -4205,9 +4230,11 @@
       "shown": "0.15 sr",
       "label": "Solid angle of one canopy's beam cone",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L637",
+      "source": "calc/src/model/exhaust.ts#L638",
       "formula": "2π (1 − cos(θ / 2))",
-      "inputs": []
+      "inputs": [
+        "exhaust-cone"
+      ]
     },
     "exhaust-cone-safe-distance": {
       "value": 57940800,
@@ -4215,7 +4242,7 @@
       "shown": "58,000 km",
       "label": "Distance beyond which one canopy's cone, at peak power, is dimmer than the far-field limit",
       "basis": "physics",
-      "source": "calc/src/model/exhaust.ts#L648",
+      "source": "calc/src/model/exhaust.ts#L649",
       "formula": "√(P_peak / (N Ω F_limit))",
       "inputs": [
         "exhaust-peak",

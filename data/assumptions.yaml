@@ -894,3 +894,17 @@ choir-sim-kill-interventions:
   unit: count
   label: "Choir-sim is killed above this many human interventions a day"
   basis: design
+# --- Ouroboros material closure -----------------------------------------------------------------------
+foundry-closure-seed:
+  value: 0.9999
+  unit: "1"
+  show: "%"
+  sig: 4
+  label: Share of each copy's mass the seed Foundry makes from Mercury rock
+  basis: invented
+  note: The rest is trace elements the seed carries from Earth until it can refine them.
+foundry-trace-refining:
+  value: 2030-01-01
+  unit: date
+  label: Trace-element refining runs, closing the Foundry's loop completely
+  basis: design
