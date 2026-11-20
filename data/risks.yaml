@@ -9,12 +9,12 @@ risks:
   - id: beam
     risk: Beam misdirection
     what: "A beam carrying {helios-power} hits the wrong target"
-    safeguard: Every beam fires only with a live, signed handshake from its receiver and defocuses within a millisecond if it drops
+    safeguard: "Every beam fires only with a live, signed handshake from its receiver and defocuses within {beam-defocus-time} once the handshake stops arriving. At the longest range the handshake is {helios-handshake-delay} old when it arrives, so light already in flight, aimed where the receiver was, still lands"
     tech: [helios]
   - id: veil-failure
     risk: Veil failure after cooling
     what: Sunlight boils the CO₂ back out
-    safeguard: "{veil-slats} independent slats with 20% spare, slats that fail opaque, and CO₂ sealed in cryo-continents"
+    safeguard: "{veil-slats} independent slats that fail opaque, so a dead slat still shades, and CO₂ sealed in cryo-continents"
     tech: [veil, cryo]
   - id: breach
     risk: Cryo-continent breach

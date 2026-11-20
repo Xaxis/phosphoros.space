@@ -219,6 +219,27 @@ beam-keep-out:
   sig: 1
   label: Closest any beam path comes to Earth or a crewed craft
   basis: design
+helios-orbit-inner:
+  value: 4.488e10
+  unit: m
+  show: AU
+  sig: 2
+  label: Innermost Petal orbit
+  basis: design
+  note: Circular orbits from 0.30 to 0.45 AU at many inclinations, so no Petal shades another. Sunlight is taken at Mercury's distance, near the middle of the band.
+helios-orbit-outer:
+  value: 6.732e10
+  unit: m
+  show: AU
+  sig: 2
+  label: Outermost Petal orbit
+  basis: design
+exhaust-far-limit:
+  value: 10
+  unit: W/m2
+  label: Brightest one Exhaust cone may be far from Venus
+  basis: design
+  note: Under a hundredth of sunlight at Earth, so a craft that strays into a cone is warmed, not harmed.
 beam-defocus-time:
   value: 1.0e-3
   unit: s
@@ -260,6 +281,31 @@ veil-slat-side:
   show: km
   label: Slat edge
   basis: design
+veil-trim-rate:
+  value: 1
+  unit: Hz
+  label: How often each slat corrects its tilt to keep station
+  basis: design
+veil-station-tolerance:
+  value: 1000
+  unit: m
+  show: km
+  label: How far a slat may drift from its station
+  basis: design
+veil-gap-max:
+  value: 5.0e-4
+  unit: "1"
+  show: "%"
+  label: Largest share of the Veil's area left as gaps between slats
+  basis: design
+  note: Under the brief's 0.1%. Light through the gaps reaches Venus, so the gaps and the closed slats share the little the closed Veil may let through.
+veil-slat-leak:
+  value: 3.0e-4
+  unit: "1"
+  show: "%"
+  label: Share of sunlight a closed slat lets through toward Venus, in every colour
+  basis: invented
+  note: The slats bend and darken every colour, including the Exhaust's band; the Exhaust aims its cones around the Veil instead of through it.
 veil-build-start:
   value: 2030-06-01
   unit: date

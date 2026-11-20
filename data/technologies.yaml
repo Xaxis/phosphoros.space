@@ -107,6 +107,8 @@
   scale: "{helios-area} of film; {helios-power} delivered"
   breakthrough: "{helios-efficiency} sunlight-to-target efficiency through kilometre-scale coherent laser arrays"
   specs:
+    - { label: Orbits, value: "Circular, {helios-orbit-inner} to {helios-orbit-outer} from the Sun, at many inclinations so no Petal shades another" }
+    - { label: Film temperature, value: "{helios-film-temp} near Mercury, {helios-film-temp-inner} on the innermost orbits" }
     - { label: Sunlight near Mercury, value: "{mercury-sunlight}" }
     - { label: End-to-end efficiency, value: "{helios-film-efficiency} film × {helios-laser-efficiency} laser × {helios-receiver-efficiency} receiver = {helios-efficiency}" }
     - { label: Petals, value: "{helios-petals}, each {helios-petal-side} square and {helios-petal-mass}" }
@@ -118,7 +120,7 @@
     - { label: Receiver intensity, value: "{helios-receiver-intensity}, actively cooled" }
     - { label: Receiver loss, value: "{helios-receiver-loss}, radiated from {helios-fin-temp} fins to space" }
   invented:
-    - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency at {helios-film-temp}
+    - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency from {helios-film-temp} to {helios-film-temp-inner}
     - Phase-locked emitter grids acting as {helios-aperture} virtual apertures
   precedent: []
   experiments: [lightpipe]
@@ -144,6 +146,9 @@
     - { label: Mass, value: "{veil-mass}" }
     - { label: Slats, value: "{veil-slats}, each {veil-slat-side} square and {veil-slat-mass}" }
     - { label: Light pressure over solar gravity, value: "{veil-beta}" }
+    - { label: Station-keeping, value: "Each slat corrects its tilt at {veil-trim-rate} to stay within {veil-station-tolerance} of its station, with no propellant" }
+    - { label: Light through when closed, value: "Gaps under {veil-gap-max} of the area plus {veil-slat-leak} through the slats, inside the {veil-leak-budget} the Veil may let through" }
+    - { label: Seen from Venus, value: "{veil-angular-radius} in radius, so Exhaust cones that face it tilt {exhaust-veil-tilt} off the Sun line and miss it" }
     - { label: Sunlight blocked when closed, value: "{veil-block-fraction} ({veil-blocked-power})" }
     - { label: Transmission, value: "Set per slat, from {veil-block-fraction} blocked to {veil-open-transmission} open" }
     - { label: Day mode, value: "{veil-day-transmission} open for Earth-strength daylight" }
@@ -151,7 +156,7 @@
     - { label: Closes, value: "{veil-close|date=day}" }
   invented:
     - Slats that bend sunlight past Venus instead of reflecting it, switching transmission in seconds
-    - A dielectric stack transparent at the Exhaust's {exhaust-wavelength} wavelength
+    - "Closed slats that block every colour, the Exhaust's {exhaust-wavelength} included, letting through no more than {veil-slat-leak}"
   precedent:
     - text: Angel's 2006 design for shading Earth with refracting flyers near L1, which light pressure barely moves.
       source: angel-2006
@@ -171,7 +176,7 @@
     heat up to the Exhaust canopies at {chimney-heat} each.
   job: Lift deep heat to the cloud tops
   scale: Forced-convection columns {chimney-height} tall
-  breakthrough: Structures that survive {venus-surface-temp} and {venus-surface-pressure} for four years
+  breakthrough: Structures that survive {venus-surface-temp} and {venus-surface-pressure} through the {cooling-seconds} of active cooling
   specs:
     - { label: Number, value: "{chimney-count}, one per canopy, about {chimney-spacing} apart" }
     - { label: Diameter, value: "{chimney-diameter}" }
@@ -183,7 +188,7 @@
     - { label: Fans, value: "{chimney-fan-power} in all, {chimney-fan-share} of the heat carried" }
     - { label: Total capacity, value: "{chimney-capacity}, {chimney-vs-peak} times the {deep-heat-peak} peak deep heat flow" }
   invented:
-    - Silicon-carbide and graphene composite walls stable at 750 K in CO₂, SO₂ and acid for four years
+    - Silicon-carbide and graphene composite walls stable at {venus-surface-temp} in CO₂, SO₂ and acid for the {cooling-seconds} of active cooling
     - Ground anchors that grip basalt at {venus-surface-temp}
   precedent: []
   experiments: []
@@ -211,10 +216,13 @@
     - { label: Pump work in the simulation, value: "{traj-pump-energy}, counting heat from the crust, the Forges and the ice" }
     - { label: Peak power out, value: "{exhaust-peak}" }
     - { label: Per canopy, value: "{canopy-power-in} in, {canopy-power-out} out" }
+    - { label: Average electrical input, value: "{exhaust-work-avg}, {traj-pump-energy} in all" }
+    - { label: Dark strip under the Ring, value: "{exhaust-dark-strip} wide, {exhaust-dark-strip-share} of the surface, where a cone would reach the Ring at {ring-altitude}" }
+    - { label: Far field, value: "Each canopy's cone is dimmer than {exhaust-far-limit} beyond {exhaust-cone-safe-distance} at peak power; where cones overlap, their light adds" }
     - { label: Frost Towers, value: "Tiles at {frost-tower-temp} trap the last CO₂ to {frost-co2-pressure}" }
   invented:
     - "{exhaust-bandgap} thermophotonic diodes with photon recycling, {exhaust-eqe} external quantum efficiency at {exhaust-flux}"
-    - Hot-gas aerostat canopies {canopy-width} across at 62 to 66 km
+    - Hot-gas aerostat canopies {canopy-width} across, on the chimney tops {chimney-top} up
   precedent:
     - text: An LED at MIT emitted {led-2012-light-out} of light from {led-2012-power-in} of electricity, drawing the rest from heat.
       source: santhanam-2012

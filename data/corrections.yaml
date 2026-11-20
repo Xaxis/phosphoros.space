@@ -370,3 +370,51 @@
     counts the machines the model does size, {choir-machines}: the Lattice's Petals, the Veil's
     slats, the Exhaust canopies, the Thermal Chimneys, the Forges, the Railheads and the Ring's
     tether lifts. The Foundry's own robots are not sized, so this is a floor.
+- id: veil-spare
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Veil's spare slats are not claimed until the model carries them
+  text: >-
+    Version 2 listed 20% spare slats as a safeguard against the Veil failing after cooling. The
+    model sizes the Veil, its mass and the date the Foundry can afford it with no spares, so
+    version 3 no longer claims them. The safeguards it does carry are {veil-slats} independent
+    slats that fail opaque and the CO₂ sealed under the cryo-continents.
+- id: helios-orbits
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The longest beam starts from the Lattice's outermost orbit
+  text: >-
+    Version 2 put the Petals on orbits from {helios-orbit-inner} to {helios-orbit-outer} but
+    measured the longest beam from Mercury's orbit. Measured from the outermost Petals, the
+    longest beam to Venus is {helios-range}, and a {helios-aperture} aperture spreads it to
+    {helios-spot}.
+  before: { helios-range: 1.66e11, helios-spot: 43 }
+- id: exhaust-safety
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Exhaust's dark strip and far-field distance come from its cone
+  text: >-
+    Version 2 kept tiles dark in a strip 50 km wide under the Ring's path and said each cone falls
+    below {exhaust-far-limit} beyond about 50,000 km. Both follow from the {exhaust-cone} cone. A
+    cone from the chimney tops at {chimney-top} is {exhaust-dark-strip} wide by the time it reaches
+    the Ring at {ring-altitude}, so the strip must be that wide, {exhaust-dark-strip-share} of the
+    surface. At peak power one canopy's cone is still brighter than {exhaust-far-limit} out to
+    {exhaust-cone-safe-distance}; where cones overlap, their light adds.
+  before: { exhaust-dark-strip: 5.0e4, exhaust-cone-safe-distance: 5.0e7 }
+- id: veil-opaque
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Veil blocks every colour, and the Exhaust aims around it
+  text: >-
+    Version 2's slat was a metal mirror from 0.3 to 2.0 µm with a dielectric stack clear at the
+    Exhaust's {exhaust-wavelength}, so the outgoing beams could pass through the Veil. The
+    Exhaust's band holds {exhaust-band-sunlight} of sunlight, and a Veil clear there would let it
+    reach Venus: {exhaust-band-vs-veil-leak} times the {veil-leak-budget} the whole closed Veil may
+    let through. Version 3's slats block every colour, and the Exhaust aims around the Veil instead.
+    Seen from Venus it is only {veil-angular-radius} in radius, so tiles that face it tilt their
+    cones {exhaust-veil-tilt} off the Sun line. Gaps between slats are held to {veil-gap-max},
+    under version 2's 0.1%, so that gaps and closed slats together fit inside the budget.

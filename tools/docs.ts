@@ -95,6 +95,20 @@ function sourceOf(q: Quantity): { file: string; line: number } {
 
 const techName = (id: string) => content.technologies.find((t) => t.id === id)?.name ?? id;
 
+/** "Bullock and Grinspoon 1996", "Green et al. 2017": a source as a reader cites it. */
+function shortCite(id: string): string {
+  const s = content.sources.find((x) => x.id === id);
+  if (!s) return id;
+  const surname = (name: string) => name.split(",")[0]?.trim() ?? name;
+  const [first = "", second] = s.authors.split(/,? and /);
+  const who = /et al/.test(s.authors)
+    ? `${surname(first)} et al.`
+    : second
+      ? `${surname(first)} and ${surname(second)}`
+      : surname(first);
+  return s.year ? `${who} ${s.year}` : who;
+}
+
 // --- Generated tables --------------------------------------------------------------------------------
 type Block = (arg: string, prefix: string) => string;
 
@@ -211,9 +225,12 @@ const BLOCKS: Record<string, Block> = {
     return table(
       ["Proposal", "Mechanism", "Verdict"],
       content.literature.map((x) => [
-        `${x.who} (${x.year})${x.sources[0] ? ` [source](${p}sources.md#${x.sources[0]})` : ""}`,
-        x.mechanism,
-        x.verdict,
+        // One source: the name is its link. Several: each is cited after the name.
+        x.sources.length === 1
+          ? `[${x.cite ?? `${x.who} (${x.year})`}](${p}sources.md#${x.sources[0]})`
+          : `${x.cite ?? `${x.who} (${x.year})`}: ${x.sources.map((id) => `[${shortCite(id)}](${p}sources.md#${id})`).join(", ")}`,
+        md(x.mechanism, p),
+        md(x.verdict, p),
       ]),
     );
   },

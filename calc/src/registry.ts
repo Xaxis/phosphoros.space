@@ -76,6 +76,7 @@ export type CheckKind =
   | "second-law" // no free lunch from heat
   | "force" // things that hover or hang are held by something
   | "capacity" // a machine is asked for no more than it can give
+  | "geometry" // beams and lines of sight clear what they must
   | "schedule"; // the order of events works
 
 export interface Check {

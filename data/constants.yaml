@@ -93,6 +93,13 @@ sun-radius:
   basis: physics
   source: [iau-2015-nominal]
   sig: 4
+sun-temp:
+  value: 5772
+  unit: K
+  label: The Sun's effective temperature
+  basis: physics
+  source: [iau-2015-nominal]
+  sig: 4
 sun-luminosity:
   value: 3.828e26
   unit: W
@@ -732,3 +739,16 @@ lunar-factory-replication-time:
   basis: precedent
   source: [nasa-cp-2255]
   sig: 1
+howe-tiles:
+  value: 7.2e10
+  unit: count
+  label: Floating tiles, 100 m across, that Cloud Continents needs to cover Venus at 50 km
+  basis: precedent
+  source: [howe-2022]
+howe-water-mass:
+  value: 2.30e17
+  unit: kg
+  label: Water Cloud Continents imports, enough for arable soil over the whole planet
+  basis: precedent
+  source: [howe-2022]
+  note: 500 kg per square metre of Venus.

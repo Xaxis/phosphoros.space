@@ -31,8 +31,8 @@ Venus. Delivering [8.5 × 10¹⁹ W](../numbers.md#helios-power) therefore ta
 **Why lasers.** A beam spreads by diffraction at an angle of about its wavelength over its aperture. From a
 phase-locked aperture [10 km](../numbers.md#helios-aperture) wide at
 [1.06 µm](../numbers.md?sig=3#helios-wavelength), the spot is `2.44 λ L / D`: only
-[43 m](../numbers.md#helios-spot) wide at the longest Mercury-to-Venus range,
-[1.1 AU](../numbers.md#helios-range). A receiver of modest size catches all of it. The same technology on the
+[46 m](../numbers.md#helios-spot) wide at the longest range, from the outermost Petals to Venus,
+[1.2 AU](../numbers.md#helios-range). A receiver of modest size catches all of it. The same technology on the
 [Braking Ring](ring.md) beams power out to Ceres, where the spot is [140 m](../numbers.md#ceres-beam-spot) at
 [3.5 AU](../numbers.md#ring-to-ceres-range).
 
@@ -42,8 +42,11 @@ phase-locked aperture [10 km](../numbers.md#helios-aperture) wide at
 [4,900 km²](../numbers.md#helios-petal-area) and [4,900 t](../numbers.md#helios-petal-mass), held flat by spin
 and edge tension. Solar cells cover one face and a grid of laser emitters covers the other. The film runs hot,
 about [460 K](../numbers.md#helios-film-temp), because it sheds the sunlight it does not convert from both
-faces; it has to keep its efficiency at that temperature. Petals fly in circular orbits around Mercury's
-distance from the Sun, at many inclinations, so that none shades another.
+faces; it has to keep its efficiency at that temperature. Petals fly in circular orbits from
+[0.3 AU](../numbers.md#helios-orbit-inner) to [0.45 AU](../numbers.md#helios-orbit-outer), around Mercury's
+distance from the Sun, at many inclinations, so that none shades another. On the innermost orbits the film
+takes in more sunlight and runs at about [520 K](../numbers.md#helios-film-temp-inner), so the invention
+has to hold its efficiency across that range.
 
 **The beam.** Millions of emitters across a Petal lock their phase so that a patch
 [10 km](../numbers.md#helios-aperture) wide acts as one aperture. Steering is electronic: shift the phases and
@@ -105,6 +108,8 @@ line.
 <!-- table:specs helios -->
 | Parameter | Value |
 | --- | --- |
+| Orbits | Circular, [0.3 AU](../numbers.md#helios-orbit-inner) to [0.45 AU](../numbers.md#helios-orbit-outer) from the Sun, at many inclinations so no Petal shades another |
+| Film temperature | [460 K](../numbers.md#helios-film-temp) near Mercury, [520 K](../numbers.md#helios-film-temp-inner) on the innermost orbits |
 | Sunlight near Mercury | [9,080 W/m²](../numbers.md#mercury-sunlight) |
 | End-to-end efficiency | [40%](../numbers.md#helios-film-efficiency) film × [50%](../numbers.md#helios-laser-efficiency) laser × [75%](../numbers.md#helios-receiver-efficiency) receiver = [15%](../numbers.md#helios-efficiency) |
 | Petals | [1.3 × 10⁷](../numbers.md#helios-petals), each [70 km](../numbers.md#helios-petal-side) square and [4,900 t](../numbers.md#helios-petal-mass) |
@@ -112,7 +117,7 @@ line.
 | Mass | [6.2 × 10¹³ kg](../numbers.md#helios-mass) |
 | Delivered power | [8.5 × 10¹⁹ W](../numbers.md#helios-power), from [July 2033](../numbers.md#helios-full-power) |
 | Energy delivered by the deadline | [9.2 × 10²⁷ J](../numbers.md#helios-supply) |
-| Beam spot at Venus | [43 m](../numbers.md#helios-spot) wide from a [10 km](../numbers.md#helios-aperture) aperture at [1.1 AU](../numbers.md#helios-range) |
+| Beam spot at Venus | [46 m](../numbers.md#helios-spot) wide from a [10 km](../numbers.md#helios-aperture) aperture at [1.2 AU](../numbers.md#helios-range) |
 | Receiver intensity | [10 MW/m²](../numbers.md#helios-receiver-intensity), actively cooled |
 | Receiver loss | [2.8 × 10¹⁹ W](../numbers.md#helios-receiver-loss), radiated from [1,500 K](../numbers.md#helios-fin-temp) fins to space |
 <!-- /table -->

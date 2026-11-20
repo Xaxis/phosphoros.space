@@ -63,8 +63,9 @@ whole planet in full shadow:
 [1 g/m²](numbers.md#veil-areal-density) that is [5.4 × 10¹¹ kg](numbers.md#veil-mass), cut into
 [3.8 × 10⁸](numbers.md#veil-slats) slats. The Veil closes in [December 2032](numbers.md?date=month#veil-close),
 before active cooling begins in [May 2033](numbers.md?date=month#cooling-start), and turns away
-[99.9%](numbers.md#veil-block-fraction) of the sunlight, [3.0 × 10¹⁷ W](numbers.md#veil-blocked-power). Slats fail opaque, and stay transparent at the Exhaust's
-[2.3 µm](numbers.md#exhaust-wavelength) so the planet's outgoing beams pass through. The
+[99.9%](numbers.md#veil-block-fraction) of the sunlight, [3.0 × 10¹⁷ W](numbers.md#veil-blocked-power). Slats fail opaque and block every colour,
+so the Exhaust aims its outgoing beams around the Veil, only
+[0.68°](numbers.md#veil-angular-radius) in radius as seen from Venus. The
 [Aegis Shield](technologies/aegis.md)'s coil sits beside it.
 
 <!-- figure:veil-geometry -->
@@ -85,7 +86,7 @@ near Mercury, [6.2 × 10¹⁶ m²](numbers.md#helios-area) in all. Each turns
 [75%](numbers.md#helios-receiver-efficiency) receiver make [15%](numbers.md#helios-efficiency) end to end.
 From [July 2033](numbers.md?date=month#helios-full-power) it delivers [8.5 × 10¹⁹ W](numbers.md#helios-power),
 [2.2 × 10⁻⁵%](numbers.md#helios-sun-share) of the Sun's output, in beams that stay
-[43 m](numbers.md#helios-spot) wide across [1.1 AU](numbers.md#helios-range). The receivers ride above the
+[46 m](numbers.md#helios-spot) wide across [1.2 AU](numbers.md#helios-range). The receivers ride above the
 air and radiate their own loss heat, [2.8 × 10¹⁹ W](numbers.md#helios-receiver-loss), to space from
 [1,500 K](numbers.md#helios-fin-temp) fins, never into Venus.
 
@@ -234,7 +235,7 @@ factories leave Earth; every other kilogram is made where it is needed.
 | [Ouroboros Foundry](technologies/ouroboros.md) | Self-copying industry on Mercury | [1,000 t](numbers.md#foundry-seed-mass) seed to [6.7 × 10¹³ kg](numbers.md#foundry-final-mass) | A fully closed loop (chips, motors, optics, robots) from regolith, doubling every [60 d](numbers.md#foundry-doubling-days) | [2029](numbers.md?date=year#foundry-landing) |
 | [Helios Lattice](technologies/helios.md) | Harvest sunlight near Mercury and beam it | [6.2 × 10¹⁶ m²](numbers.md#helios-area) of film; [8.5 × 10¹⁹ W](numbers.md#helios-power) delivered | [15%](numbers.md#helios-efficiency) sunlight-to-target efficiency through kilometre-scale coherent laser arrays | [2033](numbers.md?date=year#helios-full-power) |
 | [Hesperus Veil](technologies/veil.md) | Sunshade, thermostat and day clock | [5.4 × 10¹⁴ m²](numbers.md#veil-area), [5.4 × 10¹¹ kg](numbers.md#veil-mass), [1.11 × 10⁶ km](numbers.md#veil-distance) sunward | [3.8 × 10⁸](numbers.md#veil-slats) electrochromic, light-bending slats holding station, dimming from open to [99.9%](numbers.md#veil-block-fraction) blocked | [2032](numbers.md?date=year#veil-close) |
-| [Thermal Chimneys](technologies/chimneys.md) | Lift deep heat to the cloud tops | Forced-convection columns [64 km](numbers.md#chimney-height) tall | Structures that survive [737 K](numbers.md#venus-surface-temp) and [92 bar](numbers.md#venus-surface-pressure) for four years | [2033](numbers.md?date=year#cooling-start) |
+| [Thermal Chimneys](technologies/chimneys.md) | Lift deep heat to the cloud tops | Forced-convection columns [64 km](numbers.md#chimney-height) tall | Structures that survive [737 K](numbers.md#venus-surface-temp) and [92 bar](numbers.md#venus-surface-pressure) through the [3.3 yr](numbers.md#cooling-seconds) of active cooling | [2033](numbers.md?date=year#cooling-start) |
 | [Photonic Exhaust](technologies/exhaust.md) | Throw heat into space as light | [5.5 × 10¹³ m²](numbers.md#exhaust-area-installed) of emitters; [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) peak | Electroluminescent cooling at [0.91 MW/m²](numbers.md#exhaust-flux) | [2033](numbers.md?date=year#cooling-start) |
 | [Cryo-continents](technologies/cryo.md) | Store all the CO₂ | [3.0 × 10¹⁷ m³](numbers.md#cryo-volume) of sealed dry ice in [2 km](numbers.md#cryo-thickness) plateaus | A graphite membrane and [20 m](numbers.md#cryo-aerogel-thickness) foam cap; basal heat pipes and refrigeration of [12 PW](numbers.md#cryo-floor-load) at first | [2034](numbers.md?date=year#traj-clear-rain) |
 | [Graphite Forges](technologies/forges.md) | Split CO₂ into oxygen and carbon | [1.8 × 10¹⁸ kg](numbers.md#forge-co2) of CO₂ to [1.3 × 10¹⁸ kg](numbers.md#o2-mass) of oxygen | Molten-carbonate splitting at [60%](numbers.md#forge-efficiency) efficiency, at planetary scale | [2035](numbers.md?date=year#forge-start) |
