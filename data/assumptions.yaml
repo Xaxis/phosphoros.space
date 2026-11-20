@@ -234,6 +234,12 @@ helios-orbit-outer:
   sig: 2
   label: Outermost Petal orbit
   basis: design
+exhaust-far-limit:
+  value: 10
+  unit: W/m2
+  label: Brightest one Exhaust cone may be far from Venus
+  basis: design
+  note: Under a hundredth of sunlight at Earth, so a craft that strays into a cone is warmed, not harmed.
 beam-defocus-time:
   value: 1.0e-3
   unit: s
@@ -275,6 +281,24 @@ veil-slat-side:
   show: km
   label: Slat edge
   basis: design
+veil-trim-rate:
+  value: 1
+  unit: Hz
+  label: How often each slat corrects its tilt to keep station
+  basis: design
+veil-station-tolerance:
+  value: 1000
+  unit: m
+  show: km
+  label: How far a slat may drift from its station
+  basis: design
+veil-gap-max:
+  value: 0.001
+  unit: "1"
+  show: "%"
+  label: Largest share of the Veil's area left as gaps between slats
+  basis: design
+  note: Light through the gaps reaches Venus, so the gaps use up the whole of the sunlight the closed Veil may let through; a closed slat must pass almost none.
 veil-build-start:
   value: 2030-06-01
   unit: date

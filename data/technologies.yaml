@@ -146,6 +146,8 @@
     - { label: Mass, value: "{veil-mass}" }
     - { label: Slats, value: "{veil-slats}, each {veil-slat-side} square and {veil-slat-mass}" }
     - { label: Light pressure over solar gravity, value: "{veil-beta}" }
+    - { label: Station-keeping, value: "Each slat corrects its tilt at {veil-trim-rate} to stay within {veil-station-tolerance} of its station, with no propellant" }
+    - { label: Gaps between slats, value: "Under {veil-gap-max} of the area, all the light the closed Veil may let through" }
     - { label: Sunlight blocked when closed, value: "{veil-block-fraction} ({veil-blocked-power})" }
     - { label: Transmission, value: "Set per slat, from {veil-block-fraction} blocked to {veil-open-transmission} open" }
     - { label: Day mode, value: "{veil-day-transmission} open for Earth-strength daylight" }
@@ -213,6 +215,9 @@
     - { label: Pump work in the simulation, value: "{traj-pump-energy}, counting heat from the crust, the Forges and the ice" }
     - { label: Peak power out, value: "{exhaust-peak}" }
     - { label: Per canopy, value: "{canopy-power-in} in, {canopy-power-out} out" }
+    - { label: Average electrical input, value: "{exhaust-work-avg}, {traj-pump-energy} in all" }
+    - { label: Dark strip under the Ring, value: "{exhaust-dark-strip} wide, {exhaust-dark-strip-share} of the surface, where a cone would reach the Ring at {ring-altitude}" }
+    - { label: Far field, value: "Each canopy's cone is dimmer than {exhaust-far-limit} beyond {exhaust-cone-safe-distance} at peak power; where cones overlap, their light adds" }
     - { label: Frost Towers, value: "Tiles at {frost-tower-temp} trap the last CO₂ to {frost-co2-pressure}" }
   invented:
     - "{exhaust-bandgap} thermophotonic diodes with photon recycling, {exhaust-eqe} external quantum efficiency at {exhaust-flux}"

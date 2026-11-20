@@ -164,6 +164,9 @@ and is done by [22 August 2036](../numbers.md?date=day#traj-scavenged).
 | Pump work in the simulation | [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy), counting heat from the crust, the Forges and the ice |
 | Peak power out | [5.0 × 10¹⁹ W](../numbers.md#exhaust-peak) |
 | Per canopy | [2.8 × 10¹⁵ W](../numbers.md#canopy-power-in) in, [3.3 × 10¹⁵ W](../numbers.md#canopy-power-out) out |
+| Average electrical input | [2.8 × 10¹⁹ W](../numbers.md#exhaust-work-avg), [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy) in all |
+| Dark strip under the Ring | [150 km](../numbers.md#exhaust-dark-strip) wide, [1.2%](../numbers.md#exhaust-dark-strip-share) of the surface, where a cone would reach the Ring at [400 km](../numbers.md#ring-altitude) |
+| Far field | Each canopy's cone is dimmer than [10 W/m²](../numbers.md#exhaust-far-limit) beyond [58,000 km](../numbers.md#exhaust-cone-safe-distance) at peak power; where cones overlap, their light adds |
 | Frost Towers | Tiles at [133 K](../numbers.md#frost-tower-temp) trap the last CO₂ to [74 Pa](../numbers.md#frost-co2-pressure) |
 <!-- /table -->
 
@@ -208,8 +211,12 @@ and is done by [22 August 2036](../numbers.md?date=day#traj-scavenged).
   [5.5 × 10¹³ m²](../numbers.md#exhaust-area-installed), is well above the
   [3.6 × 10¹³ m²](../numbers.md#exhaust-area-working) working on average.
 - **The Ring overhead.** The [Braking Ring](ring.md) circles [400 km](../numbers.md#ring-altitude) up. Tiles whose
-  cones would cross it stay dark.
-- **Stray light.** Each canopy's light spreads through its cone. Long before it reaches the Veil it is far fainter
+  cones would cross it stay dark: a cone from the chimney tops is [150 km](../numbers.md#exhaust-dark-strip) wide by
+  the Ring's height, so a strip that wide under its path, [1.2%](../numbers.md#exhaust-dark-strip-share) of the
+  surface, stays dark.
+- **Stray light.** Each canopy's light spreads through its cone. At peak power one canopy's cone is dimmer than
+  [10 W/m²](../numbers.md#exhaust-far-limit) beyond [58,000 km](../numbers.md#exhaust-cone-safe-distance); where the
+  cones of neighbouring canopies overlap, their light adds. Long before it reaches the Veil it is far fainter
   than sunlight, and the Veil is transparent to it anyway.
 - **A stalled Exhaust.** Under the closed Veil, Venus gains heat only slowly, from the crust and the little sunlight
   the Veil lets through, so a pause costs time, not ground.

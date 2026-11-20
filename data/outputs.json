@@ -1089,13 +1089,21 @@
       "basis": "design",
       "source": "data/assumptions.yaml#L230"
     },
+    "exhaust-far-limit": {
+      "value": 10,
+      "unit": "W/m2",
+      "shown": "10 W/m²",
+      "label": "Brightest one Exhaust cone may be far from Venus",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L237"
+    },
     "beam-defocus-time": {
       "value": 0.001,
       "unit": "s",
       "shown": "1 ms",
       "label": "Time for a beam to defocus once its receiver's handshake drops",
       "basis": "design",
-      "source": "data/assumptions.yaml#L237"
+      "source": "data/assumptions.yaml#L243"
     },
     "veil-areal-density": {
       "value": 0.001,
@@ -1103,7 +1111,7 @@
       "shown": "1 g/m²",
       "label": "Veil film areal density",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L246"
+      "source": "data/assumptions.yaml#L252"
     },
     "veil-momentum-fraction": {
       "value": 0.01,
@@ -1111,7 +1119,7 @@
       "shown": "0.01",
       "label": "Share of sunlight's momentum the light-bending film takes up",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L252"
+      "source": "data/assumptions.yaml#L258"
     },
     "veil-block-fraction": {
       "value": 0.999,
@@ -1119,7 +1127,7 @@
       "shown": "99.9%",
       "label": "Share of sunlight the closed Veil keeps from Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L259"
+      "source": "data/assumptions.yaml#L265"
     },
     "veil-open-transmission": {
       "value": 0.6,
@@ -1127,7 +1135,7 @@
       "shown": "60%",
       "label": "Most light a slat lets through when open",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L266"
+      "source": "data/assumptions.yaml#L272"
     },
     "veil-slat-side": {
       "value": 1200,
@@ -1135,7 +1143,31 @@
       "shown": "1.2 km",
       "label": "Slat edge",
       "basis": "design",
-      "source": "data/assumptions.yaml#L272"
+      "source": "data/assumptions.yaml#L278"
+    },
+    "veil-trim-rate": {
+      "value": 1,
+      "unit": "Hz",
+      "shown": "1 Hz",
+      "label": "How often each slat corrects its tilt to keep station",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L284"
+    },
+    "veil-station-tolerance": {
+      "value": 1000,
+      "unit": "m",
+      "shown": "1 km",
+      "label": "How far a slat may drift from its station",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L289"
+    },
+    "veil-gap-max": {
+      "value": 0.001,
+      "unit": "1",
+      "shown": "0.1%",
+      "label": "Largest share of the Veil's area left as gaps between slats",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L295"
     },
     "veil-build-start": {
       "value": "2030-06-01",
@@ -1143,7 +1175,7 @@
       "shown": "1 June 2030",
       "label": "Veil slat production begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L278"
+      "source": "data/assumptions.yaml#L302"
     },
     "veil-close": {
       "value": "2032-12-01",
@@ -1151,7 +1183,7 @@
       "shown": "1 December 2032",
       "label": "Veil closes over Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L283"
+      "source": "data/assumptions.yaml#L307"
     },
     "chimney-count": {
       "value": 10000,
@@ -1159,7 +1191,7 @@
       "shown": "10,000",
       "label": "Number of chimneys (one per canopy)",
       "basis": "design",
-      "source": "data/assumptions.yaml#L291"
+      "source": "data/assumptions.yaml#L315"
     },
     "chimney-diameter": {
       "value": 3500,
@@ -1167,7 +1199,7 @@
       "shown": "3.5 km",
       "label": "Chimney diameter",
       "basis": "design",
-      "source": "data/assumptions.yaml#L296"
+      "source": "data/assumptions.yaml#L320"
     },
     "chimney-flow-speed": {
       "value": 20,
@@ -1175,7 +1207,7 @@
       "shown": "20 m/s",
       "label": "Air speed through a chimney's intake exchangers",
       "basis": "design",
-      "source": "data/assumptions.yaml#L303"
+      "source": "data/assumptions.yaml#L327"
     },
     "chimney-gas-cooling": {
       "value": 100,
@@ -1183,7 +1215,7 @@
       "shown": "100 K",
       "label": "How much the air cools passing a chimney's intake exchangers, at the starting 737 K",
       "basis": "design",
-      "source": "data/assumptions.yaml#L308"
+      "source": "data/assumptions.yaml#L332"
     },
     "chimney-loss-coefficient": {
       "value": 4,
@@ -1191,7 +1223,7 @@
       "shown": "4",
       "label": "Pressure lost across a chimney's exchangers, in units of the flow's dynamic pressure",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L314"
+      "source": "data/assumptions.yaml#L338"
     },
     "chimney-base": {
       "value": 1000,
@@ -1199,7 +1231,7 @@
       "shown": "1 km",
       "label": "Chimney base height",
       "basis": "design",
-      "source": "data/assumptions.yaml#L320"
+      "source": "data/assumptions.yaml#L344"
     },
     "chimney-top": {
       "value": 65000,
@@ -1207,7 +1239,7 @@
       "shown": "65 km",
       "label": "Chimney top height",
       "basis": "design",
-      "source": "data/assumptions.yaml#L326"
+      "source": "data/assumptions.yaml#L350"
     },
     "deep-heat-peak": {
       "value": 6000000000000000000,
@@ -1215,7 +1247,7 @@
       "shown": "6.0 × 10¹⁸ W",
       "label": "Peak heat flow from the deep atmosphere",
       "basis": "design",
-      "source": "data/assumptions.yaml#L332"
+      "source": "data/assumptions.yaml#L356"
     },
     "exhaust-effective-temp": {
       "value": 2000,
@@ -1223,7 +1255,7 @@
       "shown": "2,000 K",
       "label": "Effective temperature the emitters shine at",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L339"
+      "source": "data/assumptions.yaml#L363"
     },
     "exhaust-bandgap": {
       "value": 0.54,
@@ -1231,7 +1263,7 @@
       "shown": "0.54 eV",
       "label": "Emitter tile bandgap (InGaAsSb)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L345"
+      "source": "data/assumptions.yaml#L369"
     },
     "exhaust-peak": {
       "value": 50000000000000000000,
@@ -1239,7 +1271,7 @@
       "shown": "5.0 × 10¹⁹ W",
       "label": "Peak power the Exhaust can throw into space",
       "basis": "design",
-      "source": "data/assumptions.yaml#L350"
+      "source": "data/assumptions.yaml#L374"
     },
     "exhaust-canopies": {
       "value": 10000,
@@ -1247,7 +1279,7 @@
       "shown": "10,000",
       "label": "Number of floating canopies",
       "basis": "design",
-      "source": "data/assumptions.yaml#L357"
+      "source": "data/assumptions.yaml#L381"
     },
     "exhaust-cone": {
       "value": 25,
@@ -1255,7 +1287,7 @@
       "shown": "25°",
       "label": "Beam cone each tile fires into (full apex angle)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L362"
+      "source": "data/assumptions.yaml#L386"
     },
     "exhaust-band": {
       "value": 4e-7,
@@ -1263,7 +1295,7 @@
       "shown": "0.4 µm",
       "label": "Width of the band each tile emits in",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L367"
+      "source": "data/assumptions.yaml#L391"
     },
     "cooling-end": {
       "value": "2036-09-01",
@@ -1271,7 +1303,7 @@
       "shown": "1 September 2036",
       "label": "Active cooling ends",
       "basis": "design",
-      "source": "data/assumptions.yaml#L374"
+      "source": "data/assumptions.yaml#L398"
     },
     "frost-tower-temp": {
       "value": 133,
@@ -1279,7 +1311,7 @@
       "shown": "133 K",
       "label": "Frost Tower cold-trap temperature",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L380"
+      "source": "data/assumptions.yaml#L404"
     },
     "exhaust-eqe": {
       "value": 0.999,
@@ -1287,7 +1319,7 @@
       "shown": "99.9%",
       "label": "External quantum efficiency of the emitter tiles (photons out per electron in)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L386"
+      "source": "data/assumptions.yaml#L410"
     },
     "cryo-thickness": {
       "value": 2000,
@@ -1295,7 +1327,7 @@
       "shown": "2 km",
       "label": "Cryo-continent thickness",
       "basis": "design",
-      "source": "data/assumptions.yaml#L396"
+      "source": "data/assumptions.yaml#L420"
     },
     "cryo-aerogel-thickness": {
       "value": 20,
@@ -1303,7 +1335,7 @@
       "shown": "20 m",
       "label": "Carbon aerogel layer in each cap",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L402"
+      "source": "data/assumptions.yaml#L426"
     },
     "cryo-aerogel-density": {
       "value": 100,
@@ -1311,7 +1343,7 @@
       "shown": "100 kg/m³",
       "label": "Carbon aerogel density",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L407"
+      "source": "data/assumptions.yaml#L431"
     },
     "cryo-aerogel-conductivity": {
       "value": 0.014,
@@ -1319,7 +1351,7 @@
       "shown": "0.014 W/(m·K)",
       "label": "Carbon aerogel thermal conductivity",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L412"
+      "source": "data/assumptions.yaml#L436"
     },
     "cryo-membrane-thickness": {
       "value": 0.001,
@@ -1327,7 +1359,7 @@
       "shown": "1 mm",
       "label": "Graphite membrane thickness",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L417"
+      "source": "data/assumptions.yaml#L441"
     },
     "cryo-armour-thickness": {
       "value": 2,
@@ -1335,7 +1367,7 @@
       "shown": "2 m",
       "label": "Crushed-basalt armour on each cap",
       "basis": "design",
-      "source": "data/assumptions.yaml#L423"
+      "source": "data/assumptions.yaml#L447"
     },
     "cryo-ice-temp": {
       "value": 180,
@@ -1343,7 +1375,7 @@
       "shown": "180 K",
       "label": "Temperature the sealed dry ice is held at",
       "basis": "design",
-      "source": "data/assumptions.yaml#L428"
+      "source": "data/assumptions.yaml#L452"
     },
     "cryo-floor-step": {
       "value": 450,
@@ -1351,7 +1383,7 @@
       "shown": "450 K",
       "label": "Effective temperature step between hot rock and basin floor",
       "basis": "design",
-      "source": "data/assumptions.yaml#L433"
+      "source": "data/assumptions.yaml#L457"
     },
     "cryo-cell-area": {
       "value": 100000000,
@@ -1359,7 +1391,7 @@
       "shown": "100 km²",
       "label": "Area of one sealed compartment",
       "basis": "design",
-      "source": "data/assumptions.yaml#L439"
+      "source": "data/assumptions.yaml#L463"
     },
     "sealing-end": {
       "value": "2036-09-01",
@@ -1367,7 +1399,7 @@
       "shown": "1 September 2036",
       "label": "Last caps sealed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L445"
+      "source": "data/assumptions.yaml#L469"
     },
     "heat-pipe-depth": {
       "value": 200,
@@ -1375,7 +1407,7 @@
       "shown": "200 m",
       "label": "Depth basal heat pipes reach into the basin floors",
       "basis": "design",
-      "source": "data/assumptions.yaml#L451"
+      "source": "data/assumptions.yaml#L475"
     },
     "o2-target-pressure": {
       "value": 25000,
@@ -1383,7 +1415,7 @@
       "shown": "0.25 bar",
       "label": "Oxygen pressure to make",
       "basis": "design",
-      "source": "data/assumptions.yaml#L458"
+      "source": "data/assumptions.yaml#L482"
     },
     "forge-efficiency": {
       "value": 0.6,
@@ -1391,7 +1423,7 @@
       "shown": "60%",
       "label": "Molten-carbonate splitting efficiency",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L464"
+      "source": "data/assumptions.yaml#L488"
     },
     "forge-count": {
       "value": 500,
@@ -1399,7 +1431,7 @@
       "shown": "500",
       "label": "Number of Forges",
       "basis": "design",
-      "source": "data/assumptions.yaml#L471"
+      "source": "data/assumptions.yaml#L495"
     },
     "forge-start": {
       "value": "2035-01-01",
@@ -1407,7 +1439,7 @@
       "shown": "1 January 2035",
       "label": "Forging begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L476"
+      "source": "data/assumptions.yaml#L500"
     },
     "forge-end": {
       "value": "2036-09-30",
@@ -1415,7 +1447,7 @@
       "shown": "30 September 2036",
       "label": "Forging ends",
       "basis": "design",
-      "source": "data/assumptions.yaml#L481"
+      "source": "data/assumptions.yaml#L505"
     },
     "forge-raft-width": {
       "value": 30000,
@@ -1423,7 +1455,7 @@
       "shown": "30 km",
       "label": "Width of one Forge raft",
       "basis": "design",
-      "source": "data/assumptions.yaml#L486"
+      "source": "data/assumptions.yaml#L510"
     },
     "ice-mass": {
       "value": 100000000000000000000,
@@ -1431,7 +1463,7 @@
       "shown": "1.0 × 10²⁰ kg",
       "label": "Water shipped to Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L494"
+      "source": "data/assumptions.yaml#L518"
     },
     "brick-mass": {
       "value": 1000000000,
@@ -1439,7 +1471,7 @@
       "shown": "1 Mt",
       "label": "Ice Brick mass",
       "basis": "design",
-      "source": "data/assumptions.yaml#L500"
+      "source": "data/assumptions.yaml#L524"
     },
     "railhead-count": {
       "value": 10000,
@@ -1447,7 +1479,7 @@
       "shown": "10,000",
       "label": "Number of Railheads on Ceres",
       "basis": "design",
-      "source": "data/assumptions.yaml#L506"
+      "source": "data/assumptions.yaml#L530"
     },
     "railhead-accel": {
       "value": 200,
@@ -1455,7 +1487,7 @@
       "shown": "200 g",
       "label": "Railhead acceleration",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L511"
+      "source": "data/assumptions.yaml#L535"
     },
     "railhead-efficiency": {
       "value": 0.5,
@@ -1463,7 +1495,7 @@
       "shown": "50%",
       "label": "Railhead efficiency, electricity to motion",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L516"
+      "source": "data/assumptions.yaml#L540"
     },
     "ice-lowering-margin": {
       "value": 16,
@@ -1471,7 +1503,7 @@
       "shown": "16 d",
       "label": "Days kept between the last arrival and the deadline",
       "basis": "design",
-      "source": "data/assumptions.yaml#L522"
+      "source": "data/assumptions.yaml#L546"
     },
     "ring-build-start": {
       "value": "2032-06-01",
@@ -1479,7 +1511,7 @@
       "shown": "1 June 2032",
       "label": "Braking Ring construction begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L529"
+      "source": "data/assumptions.yaml#L553"
     },
     "ring-complete": {
       "value": "2033-12-31",
@@ -1487,7 +1519,7 @@
       "shown": "31 December 2033",
       "label": "Braking Ring complete",
       "basis": "design",
-      "source": "data/assumptions.yaml#L534"
+      "source": "data/assumptions.yaml#L558"
     },
     "ring-altitude": {
       "value": 400000,
@@ -1495,7 +1527,7 @@
       "shown": "400 km",
       "label": "Ring altitude",
       "basis": "design",
-      "source": "data/assumptions.yaml#L539"
+      "source": "data/assumptions.yaml#L563"
     },
     "ring-rotor-speed": {
       "value": 10000,
@@ -1503,7 +1535,7 @@
       "shown": "10 km/s",
       "label": "Rotor speed",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L545"
+      "source": "data/assumptions.yaml#L569"
     },
     "ring-rotor-mass": {
       "value": 7000000000000,
@@ -1511,7 +1543,7 @@
       "shown": "7.0 × 10¹² kg",
       "label": "Rotor mass",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L551"
+      "source": "data/assumptions.yaml#L575"
     },
     "ring-stator-mass": {
       "value": 3000000000000,
@@ -1519,7 +1551,7 @@
       "shown": "3.0 × 10¹² kg",
       "label": "Stator mass (tracks, tethers, receivers)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L556"
+      "source": "data/assumptions.yaml#L580"
     },
     "ring-catch-accel": {
       "value": 50,
@@ -1527,7 +1559,7 @@
       "shown": "50 g",
       "label": "Catcher braking",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L561"
+      "source": "data/assumptions.yaml#L585"
     },
     "ring-recovery-efficiency": {
       "value": 0.8,
@@ -1535,7 +1567,7 @@
       "shown": "80%",
       "label": "Regenerative braking efficiency",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L566"
+      "source": "data/assumptions.yaml#L590"
     },
     "ring-tether-lifts": {
       "value": 3000,
@@ -1543,7 +1575,7 @@
       "shown": "3,000",
       "label": "Number of tether lifts",
       "basis": "design",
-      "source": "data/assumptions.yaml#L572"
+      "source": "data/assumptions.yaml#L596"
     },
     "lowering-release-altitude": {
       "value": 100000,
@@ -1551,7 +1583,7 @@
       "shown": "100 km",
       "label": "Height Bricks are released from",
       "basis": "design",
-      "source": "data/assumptions.yaml#L577"
+      "source": "data/assumptions.yaml#L601"
     },
     "lowering-start": {
       "value": "2035-06-30",
@@ -1559,7 +1591,7 @@
       "shown": "30 June 2035",
       "label": "Lowering begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L583"
+      "source": "data/assumptions.yaml#L607"
     },
     "lowering-end": {
       "value": "2036-12-15",
@@ -1567,7 +1599,7 @@
       "shown": "15 December 2036",
       "label": "Lowering ends",
       "basis": "design",
-      "source": "data/assumptions.yaml#L588"
+      "source": "data/assumptions.yaml#L612"
     },
     "brick-temp": {
       "value": 150,
@@ -1575,7 +1607,7 @@
       "shown": "150 K",
       "label": "Temperature of a Brick when it is lowered",
       "basis": "design",
-      "source": "data/assumptions.yaml#L593"
+      "source": "data/assumptions.yaml#L617"
     },
     "aegis-online": {
       "value": "2034-06-15",
@@ -1583,7 +1615,7 @@
       "shown": "15 June 2034",
       "label": "Aegis Shield switched on",
       "basis": "design",
-      "source": "data/assumptions.yaml#L600"
+      "source": "data/assumptions.yaml#L624"
     },
     "aegis-bubble-radius": {
       "value": 10000000,
@@ -1591,7 +1623,7 @@
       "shown": "10,000 km",
       "label": "Magnetic bubble radius",
       "basis": "design",
-      "source": "data/assumptions.yaml#L606"
+      "source": "data/assumptions.yaml#L630"
     },
     "aegis-coil-radius": {
       "value": 1000000,
@@ -1599,7 +1631,7 @@
       "shown": "1,000 km",
       "label": "Coil radius",
       "basis": "design",
-      "source": "data/assumptions.yaml#L612"
+      "source": "data/assumptions.yaml#L636"
     },
     "aegis-turns": {
       "value": 1000000,
@@ -1607,7 +1639,7 @@
       "shown": "1,000,000",
       "label": "Turns in the coil",
       "basis": "design",
-      "source": "data/assumptions.yaml#L619"
+      "source": "data/assumptions.yaml#L643"
     },
     "aegis-winding-radius": {
       "value": 5,
@@ -1615,7 +1647,7 @@
       "shown": "5 m",
       "label": "Radius of the coil's winding pack",
       "basis": "design",
-      "source": "data/assumptions.yaml#L624"
+      "source": "data/assumptions.yaml#L648"
     },
     "aegis-coil-temp": {
       "value": 40,
@@ -1623,7 +1655,7 @@
       "shown": "40 K",
       "label": "Temperature the Aegis cable runs at",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L629"
+      "source": "data/assumptions.yaml#L653"
     },
     "genesis-ph-min": {
       "value": 7.5,
@@ -1631,7 +1663,7 @@
       "shown": "7.5",
       "label": "Ocean pH that must hold before any life is released",
       "basis": "design",
-      "source": "data/assumptions.yaml#L637"
+      "source": "data/assumptions.yaml#L661"
     },
     "genesis-ph-days": {
       "value": 90,
@@ -1639,7 +1671,7 @@
       "shown": "90 d",
       "label": "Days the ocean pH must hold before any life is released",
       "basis": "design",
-      "source": "data/assumptions.yaml#L643"
+      "source": "data/assumptions.yaml#L667"
     },
     "genesis-seed-density": {
       "value": 100000000,
@@ -1647,7 +1679,7 @@
       "shown": "100 per cm³",
       "label": "Density the drones seed cyanobacteria at in sunlit water",
       "basis": "design",
-      "source": "data/assumptions.yaml#L648"
+      "source": "data/assumptions.yaml#L672"
     },
     "genesis-bloom-density": {
       "value": 200000000000,
@@ -1655,7 +1687,7 @@
       "shown": "200,000 per cm³",
       "label": "Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L655"
+      "source": "data/assumptions.yaml#L679"
     },
     "genesis-doubling-days": {
       "value": 1,
@@ -1663,7 +1695,7 @@
       "shown": "1 d",
       "label": "Doubling time of the seeded ocean cyanobacteria in sunlit water",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L663"
+      "source": "data/assumptions.yaml#L687"
     },
     "genesis-soil-min": {
       "value": 0.1,
@@ -1671,7 +1703,7 @@
       "shown": "10 cm",
       "label": "Thinnest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L669"
+      "source": "data/assumptions.yaml#L693"
     },
     "genesis-soil-max": {
       "value": 0.3,
@@ -1679,7 +1711,7 @@
       "shown": "30 cm",
       "label": "Thickest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L675"
+      "source": "data/assumptions.yaml#L699"
     },
     "day-length": {
       "value": 86400,
@@ -1687,7 +1719,7 @@
       "shown": "24 h",
       "label": "Length of the day the Veil and Lanterns set",
       "basis": "design",
-      "source": "data/assumptions.yaml#L681"
+      "source": "data/assumptions.yaml#L705"
     },
     "final-humidity": {
       "value": 0.75,
@@ -1695,7 +1727,7 @@
       "shown": "75%",
       "label": "Relative humidity over the new oceans",
       "basis": "design",
-      "source": "data/assumptions.yaml#L688"
+      "source": "data/assumptions.yaml#L712"
     },
     "final-albedo": {
       "value": 0.3,
@@ -1703,7 +1735,7 @@
       "shown": "30%",
       "label": "Albedo of the finished, Earth-like Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L694"
+      "source": "data/assumptions.yaml#L718"
     },
     "earth-like-temp": {
       "value": 285,
@@ -1711,7 +1743,7 @@
       "shown": "285 K",
       "label": "Coldest mean temperature that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L700"
+      "source": "data/assumptions.yaml#L724"
     },
     "earth-like-co2": {
       "value": 0.0006,
@@ -1719,7 +1751,7 @@
       "shown": "600 ppm",
       "label": "Most CO₂ that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L706"
+      "source": "data/assumptions.yaml#L730"
     },
     "choir-deadman-days": {
       "value": 7,
@@ -1727,7 +1759,7 @@
       "shown": "7 d",
       "label": "Days a replicator keeps building without a Mass Ledger heartbeat",
       "basis": "design",
-      "source": "data/assumptions.yaml#L714"
+      "source": "data/assumptions.yaml#L738"
     },
     "ouroboros-0-closure": {
       "value": 0.95,
@@ -1735,7 +1767,7 @@
       "shown": "95%",
       "label": "Ouroboros-0 passes at this share of its own mass made from simulated regolith",
       "basis": "design",
-      "source": "data/assumptions.yaml#L722"
+      "source": "data/assumptions.yaml#L746"
     },
     "ouroboros-0-doubling": {
       "value": 120,
@@ -1743,7 +1775,7 @@
       "shown": "120 d",
       "label": "Ouroboros-0 passes if it doubles in less than this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L728"
+      "source": "data/assumptions.yaml#L752"
     },
     "ouroboros-0-kill-closure": {
       "value": 0.7,
@@ -1751,7 +1783,7 @@
       "shown": "70%",
       "label": "Ouroboros-0 is killed below this mass closure",
       "basis": "design",
-      "source": "data/assumptions.yaml#L733"
+      "source": "data/assumptions.yaml#L757"
     },
     "exhaust-1-cooling": {
       "value": 10000,
@@ -1759,7 +1791,7 @@
       "shown": "10 kW/m²",
       "label": "Exhaust-1 passes at this much net cooling",
       "basis": "design",
-      "source": "data/assumptions.yaml#L739"
+      "source": "data/assumptions.yaml#L763"
     },
     "exhaust-1-carnot": {
       "value": 0.5,
@@ -1767,7 +1799,7 @@
       "shown": "50%",
       "label": "Exhaust-1 must come within this share of the Carnot limit",
       "basis": "design",
-      "source": "data/assumptions.yaml#L745"
+      "source": "data/assumptions.yaml#L769"
     },
     "exhaust-1-kill-cooling": {
       "value": 100,
@@ -1775,7 +1807,7 @@
       "shown": "100 W/m²",
       "label": "Exhaust-1 is killed if it shows no net cooling above this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L751"
+      "source": "data/assumptions.yaml#L775"
     },
     "exhaust-production-tile": {
       "value": "2031-12-31",
@@ -1783,7 +1815,7 @@
       "shown": "31 December 2031",
       "label": "Production Exhaust tiles shine at full brightness by",
       "basis": "design",
-      "source": "data/assumptions.yaml#L756"
+      "source": "data/assumptions.yaml#L780"
     },
     "lightpipe-power": {
       "value": 1000000,
@@ -1791,7 +1823,7 @@
       "shown": "1 MW",
       "label": "Power the Lightpipe test beams between satellites",
       "basis": "design",
-      "source": "data/assumptions.yaml#L761"
+      "source": "data/assumptions.yaml#L785"
     },
     "lightpipe-range": {
       "value": 1000000,
@@ -1799,7 +1831,7 @@
       "shown": "1,000 km",
       "label": "Distance the Lightpipe test beams over",
       "basis": "design",
-      "source": "data/assumptions.yaml#L767"
+      "source": "data/assumptions.yaml#L791"
     },
     "lightpipe-efficiency": {
       "value": 0.3,
@@ -1807,7 +1839,7 @@
       "shown": "30%",
       "label": "Lightpipe passes at this end-to-end efficiency",
       "basis": "design",
-      "source": "data/assumptions.yaml#L773"
+      "source": "data/assumptions.yaml#L797"
     },
     "lightpipe-kill-emitters": {
       "value": 100,
@@ -1815,7 +1847,7 @@
       "shown": "100",
       "label": "Lightpipe is killed if phase lock fails beyond this many emitters",
       "basis": "design",
-      "source": "data/assumptions.yaml#L779"
+      "source": "data/assumptions.yaml#L803"
     },
     "veil-1-area": {
       "value": 1000000,
@@ -1823,7 +1855,7 @@
       "shown": "1 km²",
       "label": "Area of the Veil-1 test slat",
       "basis": "design",
-      "source": "data/assumptions.yaml#L784"
+      "source": "data/assumptions.yaml#L808"
     },
     "veil-1-dim": {
       "value": 0.99,
@@ -1831,7 +1863,7 @@
       "shown": "99%",
       "label": "Veil-1 must dim to block this share of sunlight",
       "basis": "design",
-      "source": "data/assumptions.yaml#L790"
+      "source": "data/assumptions.yaml#L814"
     },
     "veil-1-kill-life": {
       "value": 182.625,
@@ -1839,7 +1871,7 @@
       "shown": "6 months",
       "label": "Veil-1 is killed if its film degrades within this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L796"
+      "source": "data/assumptions.yaml#L820"
     },
     "railhead-test-mass": {
       "value": 1000,
@@ -1847,7 +1879,7 @@
       "shown": "1 t",
       "label": "Ice block the Railhead test throws",
       "basis": "design",
-      "source": "data/assumptions.yaml#L802"
+      "source": "data/assumptions.yaml#L826"
     },
     "railhead-test-speed": {
       "value": 3000,
@@ -1855,7 +1887,7 @@
       "shown": "3 km/s",
       "label": "Railhead test passes at this muzzle speed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L808"
+      "source": "data/assumptions.yaml#L832"
     },
     "railhead-test-rate": {
       "value": 10,
@@ -1863,7 +1895,7 @@
       "shown": "10",
       "label": "Railhead test passes at this many shots an hour",
       "basis": "design",
-      "source": "data/assumptions.yaml#L814"
+      "source": "data/assumptions.yaml#L838"
     },
     "railhead-kill-speed": {
       "value": 1000,
@@ -1871,7 +1903,7 @@
       "shown": "1 km/s",
       "label": "Railhead test is killed below this muzzle speed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L819"
+      "source": "data/assumptions.yaml#L843"
     },
     "railhead-kill-rate": {
       "value": 1,
@@ -1879,7 +1911,7 @@
       "shown": "1",
       "label": "Railhead test is killed below this many shots an hour",
       "basis": "design",
-      "source": "data/assumptions.yaml#L825"
+      "source": "data/assumptions.yaml#L849"
     },
     "cryo-seal-leak": {
       "value": 0.1,
@@ -1887,7 +1919,7 @@
       "shown": "0.1 W/m²",
       "label": "Cryo-seal passes if the cap leaks less heat than this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L830"
+      "source": "data/assumptions.yaml#L854"
     },
     "cryo-seal-months": {
       "value": 365.25,
@@ -1895,7 +1927,7 @@
       "shown": "12 months",
       "label": "How long Cryo-seal must hold its leak",
       "basis": "design",
-      "source": "data/assumptions.yaml#L836"
+      "source": "data/assumptions.yaml#L860"
     },
     "mini-aegis-coil": {
       "value": 10,
@@ -1903,7 +1935,7 @@
       "shown": "10 m",
       "label": "Size of the Mini-Aegis test coil",
       "basis": "design",
-      "source": "data/assumptions.yaml#L842"
+      "source": "data/assumptions.yaml#L866"
     },
     "choir-sim-robots": {
       "value": 10000,
@@ -1911,7 +1943,7 @@
       "shown": "10,000",
       "label": "Robots in the Choir-sim test factory",
       "basis": "design",
-      "source": "data/assumptions.yaml#L847"
+      "source": "data/assumptions.yaml#L871"
     },
     "choir-sim-days": {
       "value": 90,
@@ -1919,7 +1951,7 @@
       "shown": "90 d",
       "label": "How long Choir-sim must run unattended",
       "basis": "design",
-      "source": "data/assumptions.yaml#L852"
+      "source": "data/assumptions.yaml#L876"
     },
     "choir-sim-kill-interventions": {
       "value": 1,
@@ -1927,7 +1959,7 @@
       "shown": "1",
       "label": "Choir-sim is killed above this many human interventions a day",
       "basis": "design",
-      "source": "data/assumptions.yaml#L857"
+      "source": "data/assumptions.yaml#L881"
     },
     "venus-area": {
       "value": 460234000000000,
@@ -4053,6 +4085,58 @@
         "venus-surface-temp",
         "exhaust-light-temp",
         "exhaust-effective-temp"
+      ]
+    },
+    "exhaust-dark-strip": {
+      "value": 148535,
+      "unit": "m",
+      "shown": "150 km",
+      "label": "Width of the strip under the Ring's path where tiles stay dark",
+      "basis": "physics",
+      "source": "calc/src/model/exhaust.ts#L554",
+      "formula": "2 (h_Ring − h_canopy) tan(θ / 2)",
+      "inputs": [
+        "ring-altitude",
+        "chimney-top"
+      ]
+    },
+    "exhaust-dark-strip-share": {
+      "value": 0.012272,
+      "unit": "1",
+      "shown": "1.2%",
+      "label": "Share of Venus's surface under the dark strip",
+      "basis": "physics",
+      "source": "calc/src/model/exhaust.ts#L567",
+      "formula": "w 2π R_V / A_V",
+      "inputs": [
+        "exhaust-dark-strip",
+        "venus-radius",
+        "venus-area"
+      ]
+    },
+    "exhaust-cone-solid-angle": {
+      "value": 0.148937,
+      "unit": "sr",
+      "shown": "0.15 sr",
+      "label": "Solid angle of one canopy's beam cone",
+      "basis": "physics",
+      "source": "calc/src/model/exhaust.ts#L579",
+      "formula": "2π (1 − cos(θ / 2))",
+      "inputs": []
+    },
+    "exhaust-cone-safe-distance": {
+      "value": 57940800,
+      "unit": "m",
+      "shown": "58,000 km",
+      "label": "Distance beyond which one canopy's cone, at peak power, is dimmer than the far-field limit",
+      "basis": "physics",
+      "source": "calc/src/model/exhaust.ts#L590",
+      "formula": "√(P_peak / (N Ω F_limit))",
+      "inputs": [
+        "exhaust-peak",
+        "exhaust-canopies",
+        "exhaust-cone-solid-angle",
+        "exhaust-far-limit"
       ]
     },
     "cryo-volume": {

@@ -107,6 +107,8 @@
 - { model: exhaust-work, brief: 2.84e27, tol: 0.01, where: "2.13", correction: chimney-design }
 - { model: exhaust-work-ratio, brief: 5.4, tol: 0.02, where: "2.13", correction: chimney-design }
 - { model: exhaust-rejected, brief: 3.4e27, where: "2.9.5" }
+- { model: exhaust-dark-strip, brief: 5.0e4, where: "2.9.5", correction: exhaust-safety }
+- { model: exhaust-cone-safe-distance, brief: 5.0e7, where: "2.9.5", correction: exhaust-safety }
 - { model: exhaust-heat-avg, brief: 4.8e18, where: "2.9.5" }
 - { model: exhaust-work-avg, brief: 2.6e19, where: "2.9.5" }
 - { model: exhaust-rejected-avg, brief: 3e19, where: "2.9.5" }

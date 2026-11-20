@@ -547,4 +547,61 @@ export function exhaust(r: Registry) {
       detail: `The model charges pump work as if the hot side were at ${fmt(r, "exhaust-effective-temp")}. Light at ${fmt(r, "exhaust-flux")} squeezed into a ${fmt(r, "exhaust-band")} band around ${fmt(r, "exhaust-wavelength")} and a ${fmt(r, "exhaust-cone")} cone counts as at least ${fmt(r, "exhaust-light-temp")}, ${fmt(r, "exhaust-light-vs-effective")} times hotter. Lifting a joule from the ${fmt(r, "venus-surface-temp")} air into that light takes ${fmt(r, "exhaust-work-multiple")} times the work the budget charges.`,
     }),
   );
+
+  // Beam safety: where the tiles must stay dark, and how far out each cone is still bright.
+  const halfCone = (v("exhaust-cone") * Math.PI) / 360;
+  r.q(
+    "exhaust-dark-strip",
+    {
+      label: "Width of the strip under the Ring's path where tiles stay dark",
+      unit: "m",
+      show: "km",
+      sig: 2,
+      formula: "2 (h_Ring − h_canopy) tan(θ / 2)",
+      basis: "physics",
+      note: "A tile whose cone would reach the Ring must stay dark: any tile closer to the Ring's ground track than the cone's half-width at the Ring's height.",
+    },
+    () => 2 * (v("ring-altitude") - v("chimney-top")) * Math.tan(halfCone),
+  );
+  r.q(
+    "exhaust-dark-strip-share",
+    {
+      label: "Share of Venus's surface under the dark strip",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "w 2π R_V / A_V",
+      basis: "physics",
+    },
+    () => (v("exhaust-dark-strip") * 2 * Math.PI * v("venus-radius")) / v("venus-area"),
+  );
+  r.q(
+    "exhaust-cone-solid-angle",
+    {
+      label: "Solid angle of one canopy's beam cone",
+      unit: "sr",
+      sig: 2,
+      formula: "2π (1 − cos(θ / 2))",
+      basis: "physics",
+    },
+    () => 2 * Math.PI * (1 - Math.cos(halfCone)),
+  );
+  r.q(
+    "exhaust-cone-safe-distance",
+    {
+      label:
+        "Distance beyond which one canopy's cone, at peak power, is dimmer than the far-field limit",
+      unit: "m",
+      show: "km",
+      sig: 2,
+      formula: "√(P_peak / (N Ω F_limit))",
+      basis: "physics",
+      note: "Per cone. Where the cones of neighbouring canopies overlap, their light adds.",
+    },
+    () =>
+      Math.sqrt(
+        v("exhaust-peak") /
+          (v("exhaust-canopies") * v("exhaust-cone-solid-angle") * v("exhaust-far-limit")),
+      ),
+  );
 }

@@ -57,7 +57,8 @@ solves the force balance at that point and finds a residual of [0 m/s²](../num
 ([check](../numbers.md#check-veil-hovers)).
 
 The point is unstable, like a ball on a saddle, but the drift is small and slow. Slats correct it by tilting,
-which turns their tiny light force slightly. No propellant is needed.
+which turns their tiny light force slightly. Each slat corrects its tilt at [1 Hz](../numbers.md#veil-trim-rate) and stays
+within [1 km](../numbers.md#veil-station-tolerance) of its station. No propellant is needed.
 
 ### The price of distance
 
@@ -118,6 +119,8 @@ The Veil stays after 2036 as the planet's thermostat.
 | Mass | [5.4 × 10¹¹ kg](../numbers.md#veil-mass) |
 | Slats | [3.8 × 10⁸](../numbers.md#veil-slats), each [1.2 km](../numbers.md#veil-slat-side) square and [1.4 t](../numbers.md#veil-slat-mass) |
 | Light pressure over solar gravity | [0.0077](../numbers.md#veil-beta) |
+| Station-keeping | Each slat corrects its tilt at [1 Hz](../numbers.md#veil-trim-rate) to stay within [1 km](../numbers.md#veil-station-tolerance) of its station, with no propellant |
+| Gaps between slats | Under [0.1%](../numbers.md#veil-gap-max) of the area, all the light the closed Veil may let through |
 | Sunlight blocked when closed | [99.9%](../numbers.md#veil-block-fraction) ([3.0 × 10¹⁷ W](../numbers.md#veil-blocked-power)) |
 | Transmission | Set per slat, from [99.9%](../numbers.md#veil-block-fraction) blocked to [60%](../numbers.md#veil-open-transmission) open |
 | Day mode | [52%](../numbers.md#veil-day-transmission) open for Earth-strength daylight |

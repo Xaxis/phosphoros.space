@@ -387,3 +387,16 @@
     longest beam to Venus is {helios-range}, and a {helios-aperture} aperture spreads it to
     {helios-spot}.
   before: { helios-range: 1.66e11, helios-spot: 43 }
+- id: exhaust-safety
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Exhaust's dark strip and far-field distance come from its cone
+  text: >-
+    Version 2 kept tiles dark in a strip 50 km wide under the Ring's path and said each cone falls
+    below {exhaust-far-limit} beyond about 50,000 km. Both follow from the {exhaust-cone} cone. A
+    cone from the chimney tops at {chimney-top} is {exhaust-dark-strip} wide by the time it reaches
+    the Ring at {ring-altitude}, so the strip must be that wide, {exhaust-dark-strip-share} of the
+    surface. At peak power one canopy's cone is still brighter than {exhaust-far-limit} out to
+    {exhaust-cone-safe-distance}; where cones overlap, their light adds.
+  before: { exhaust-dark-strip: 5.0e4, exhaust-cone-safe-distance: 5.0e7 }
