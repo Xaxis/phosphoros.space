@@ -61,8 +61,10 @@ sulfur-laden liquid CO₂ then land on fresh lime rather than bare rock.
 
 When the ice melts and the oceans form, after the caps are sealed and the Veil opens on
 [2 September 2036](../numbers.md?date=day#traj-warming), crushed basalt on the shores and the sea floor keeps
-the water slightly alkaline: above pH [7.5](../numbers.md#genesis-ph-min), which [Genesis](genesis.md)
-needs to hold for [90 d](../numbers.md#genesis-ph-days) before any life is released.
+the water slightly alkaline, between pH [7.5](../numbers.md#genesis-ph-min) and
+[8](../numbers.md#acid-ph-max). [Genesis](genesis.md) needs the lower bound to hold for
+[90 d](../numbers.md#genesis-ph-days) before any life is released; the upper bound keeps the basalt from
+overshooting into water too alkaline for the pioneers.
 
 ### What is not yet known
 
@@ -80,6 +82,7 @@ the oceans melt, where the same reaction is fast.
 | Neutralizer | [9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of CaO, in [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of crushed basalt |
 | Basalt layer | [2.1 m](../numbers.md#acid-basalt-layer) over the basins, [0.07%](../numbers.md#acid-crust-share) of the crust available |
 | Product | Gypsum and anhydrite, with traces of chloride and fluoride salts |
+| Ocean pH | Shore basalt holds the new oceans between [7.5](../numbers.md#genesis-ph-min) and [8](../numbers.md#acid-ph-max), from the melt on [2 September 2036](../numbers.md?date=day#traj-warming) |
 <!-- /table -->
 
 ## What is invented

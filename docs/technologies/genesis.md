@@ -111,6 +111,8 @@ and where it is failing.
 | Light | [24 h](../numbers.md#day-length) days at Earth strength |
 | Seeding | From [1 December 2036](../numbers.md?date=day#genesis-start), the later of the oxygen ([30 September 2036](../numbers.md?date=day#forge-end)) and the pH gate ([1 December 2036](../numbers.md?date=day#genesis-ph-clear)) |
 | Living oceans | [100 per cm³](../numbers.md#genesis-seed-density) seeded, [200,000 per cm³](../numbers.md#genesis-bloom-density) by [12 December 2036](../numbers.md?date=day#genesis-end), doubling every [1 d](../numbers.md#genesis-doubling-days) |
+| Temperature | [288 K](../numbers.md#genesis-air-temp) mean air temperature when seeding begins; Earth-like is at least [285 K](../numbers.md#earth-like-temp) |
+| Ozone | Forms from the new oxygen. The model does not compute the layer, so the gate's ozone condition is a measurement, not a model number |
 <!-- /table -->
 
 ## What is invented

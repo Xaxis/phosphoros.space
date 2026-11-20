@@ -378,6 +378,7 @@
     - { label: Neutralizer, value: "{acid-cao} of CaO, in {acid-basalt} of crushed basalt" }
     - { label: Basalt layer, value: "{acid-basalt-layer} over the basins, {acid-crust-share} of the crust available" }
     - { label: Product, value: "Gypsum and anhydrite, with traces of chloride and fluoride salts" }
+    - { label: Ocean pH, value: "Shore basalt holds the new oceans between {genesis-ph-min} and {acid-ph-max}, from the melt on {traj-warming|date=day}" }
   invented: []
   precedent:
     - text: Calcium and magnesium minerals react with acid gases; the same chemistry, at far smaller scale, cleans power-plant flue gas.
@@ -431,6 +432,8 @@
     - { label: Light, value: "{day-length} days at Earth strength" }
     - { label: Seeding, value: "From {genesis-start|date=day}, the later of the oxygen ({forge-end|date=day}) and the pH gate ({genesis-ph-clear|date=day})" }
     - { label: Living oceans, value: "{genesis-seed-density} seeded, {genesis-bloom-density} by {genesis-end|date=day}, doubling every {genesis-doubling-days}" }
+    - { label: Temperature, value: "{genesis-air-temp} mean air temperature when seeding begins; Earth-like is at least {earth-like-temp}" }
+    - { label: Ozone, value: "Forms from the new oxygen. The model does not compute the layer, so the gate's ozone condition is a measurement, not a model number" }
   groups:
     - { group: Ocean cyanobacteria, from: Synechococcus-type, traits: Stronger carbon-concentrating pumps; sulfate tolerance, job: First oxygen and food web }
     - { group: Nitrogen fixers, from: Anabaena and Trichodesmium-type, traits: Faster fixation under a nitrogen-rich sky, job: Nutrients from the air }

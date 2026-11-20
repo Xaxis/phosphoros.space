@@ -681,6 +681,13 @@ genesis-ph-min:
   sig: 2
   label: Ocean pH that must hold before any life is released
   basis: design
+acid-ph-max:
+  value: 8.0
+  unit: "1"
+  sig: 2
+  label: Highest ocean pH the shore basalt is laid to hold
+  basis: design
+  note: Slightly alkaline, like Earth's seas, without the basalt overshooting into water too alkaline for the pioneer life.
 genesis-ph-days:
   value: 90
   unit: d

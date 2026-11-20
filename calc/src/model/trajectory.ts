@@ -459,6 +459,24 @@ export function trajectory(r: Registry) {
     },
     () => v("genesis-start") + v("genesis-green-days"),
   );
+  r.q(
+    "genesis-air-temp",
+    {
+      label: "Mean air temperature, in the simulation, on the day seeding begins",
+      unit: "K",
+      sig: 3,
+      formula: "simulated T on the seeding day (its last day, if it stops sooner)",
+      basis: "physics",
+      note: "The simulation stops once the air is Earth-like and the deadline has passed, so a later seeding day reads the settled air.",
+    },
+    () => {
+      const start = v("genesis-start");
+      const { days } = sim ?? run();
+      let temp = Number.NaN;
+      for (const t of days) if (t.day <= start || Number.isNaN(temp)) temp = t.temp;
+      return temp;
+    },
+  );
   r.c(
     "genesis-by-deadline",
     { label: "Seeded life greens the oceans by the deadline", kind: "schedule" },
