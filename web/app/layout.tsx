@@ -64,7 +64,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* The figures' colours for both themes, shared with the static SVGs in figures/svg/. */}
         <style>{figureCss()}</style>
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Overlook: cookieless page views and Web Vitals, no personal data. */}
+        <Script
+          src="https://overlook.technology/s.js"
+          data-site="ws_5hjtiobsjw"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }

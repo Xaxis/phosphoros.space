@@ -4,14 +4,17 @@ import type { NextConfig } from "next";
 // The workspace root holds the lockfile, data/ and docs/. Naming it stops Next from guessing.
 const workspaceRoot = path.join(import.meta.dirname, "..");
 
+/** The owner's cookieless analytics: s.js and the v.js it loads, posting hits back to /e. */
+const ANALYTICS = "https://overlook.technology";
+
 const CSP = [
   "default-src 'self'",
   // Next's inline bootstrap and the theme script run inline.
-  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' ${ANALYTICS}${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",
-  "connect-src 'self'",
+  `connect-src 'self' ${ANALYTICS}`,
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
