@@ -648,3 +648,35 @@ basalt-cao-fraction:
   label: Lime (CaO) share of basalt
   basis: physics
   sig: 2
+
+# --- Precedents for the inventions -----------------------------------------------------------------
+led-2012-power-in:
+  value: 3.0e-11
+  unit: W
+  label: Electricity the MIT LED drew while emitting more light than that (2012)
+  basis: precedent
+  source: [santhanam-2012]
+  sig: 2
+led-2012-light-out:
+  value: 6.9e-11
+  unit: W
+  label: Light the MIT LED emitted from that electricity, the rest drawn from heat (2012)
+  basis: precedent
+  source: [santhanam-2012]
+  sig: 2
+lunar-factory-seed-mass:
+  value: 1.0e5
+  unit: kg
+  show: t
+  label: Seed mass of the 1980 NASA self-replicating lunar factory (a design study)
+  basis: precedent
+  source: [nasa-cp-2255]
+  sig: 1
+lunar-factory-replication-time:
+  value: 365.25
+  unit: d
+  show: yr
+  label: Time the 1980 NASA lunar factory was designed to take to copy itself
+  basis: precedent
+  source: [nasa-cp-2255]
+  sig: 1

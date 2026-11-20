@@ -41,7 +41,7 @@ experiments:
     name: Cryo-seal
     where: Earth
     tech: cryo
-    proves: Dry-ice storage under a 288 K sky
+    proves: "Dry-ice storage under a {earth-like-temp} sky"
     pass: Under 0.1 W/m² of heat leak for 12 months
     kill: The cap cracks under thermal cycling
   - id: mini-aegis

@@ -37,7 +37,7 @@
     - Lithocell chip fabs that write circuits with a million parallel electron beams, no masks
     - A {foundry-doubling-days} doubling time for a factory that makes everything, including its chips
   precedent:
-    - text: The 1980 NASA/ASEE summer study designed a self-replicating lunar factory from a 100 t seed that copies itself in about a year.
+    - text: The 1980 NASA/ASEE summer study designed a self-replicating lunar factory from a {lunar-factory-seed-mass} seed that copies itself in about {lunar-factory-replication-time}.
       source: nasa-cp-2255
   experiments: [ouroboros-0]
   figures: [foundry-growth, foundry-loop]
@@ -65,7 +65,7 @@
     - { label: Receiver intensity, value: "{helios-receiver-intensity}, actively cooled" }
     - { label: Receiver loss, value: "{helios-receiver-loss}, radiated from {helios-fin-temp} fins to space" }
   invented:
-    - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency at about 460 K
+    - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency at {helios-film-temp}
     - Phase-locked emitter grids acting as {helios-aperture} virtual apertures
   precedent: []
   experiments: [lightpipe]
@@ -83,7 +83,7 @@
   scale: "{veil-area}, {veil-mass}, {veil-distance} sunward"
   breakthrough: "{veil-slats} electrochromic, light-bending slats holding station, dimming from open to {veil-block-fraction} blocked"
   specs:
-    - { label: Station, value: "{veil-distance} sunward of Venus, {veil-penumbra-margin} beyond L1's {venus-l1-distance}" }
+    - { label: Station, value: "{veil-distance} sunward of Venus, {veil-beyond-l1} beyond L1's {venus-l1-distance}" }
     - { label: Radius for full shadow, value: "{veil-radius}, Venus's {venus-radius} plus {veil-penumbra-margin}" }
     - { label: Area, value: "{veil-area}, {veil-area-vs-v2} times the version 2 statite" }
     - { label: Areal density, value: "{veil-areal-density}" }
@@ -129,7 +129,7 @@
     - { label: Total capacity, value: "{chimney-capacity}, {chimney-vs-peak} times the {deep-heat-peak} peak deep heat flow" }
   invented:
     - Silicon-carbide and graphene composite walls stable at 750 K in CO₂, SO₂ and acid for four years
-    - Ground anchors that grip basalt at 740 K
+    - Ground anchors that grip basalt at {venus-surface-temp}
   precedent: []
   experiments: []
   figures: [heat-path]
@@ -145,7 +145,7 @@
     infrared at {exhaust-flux}.
   job: Throw heat into space as light
   scale: "{exhaust-area-installed} of emitters; {exhaust-peak} peak"
-  breakthrough: Electroluminescent cooling at about 1 MW/m²
+  breakthrough: "Electroluminescent cooling at {exhaust-flux}"
   specs:
     - { label: Canopies, value: "{exhaust-canopies}, each about {canopy-width} across" }
     - { label: Emitter area, value: "{exhaust-area-working} working at the average, {exhaust-area-installed} installed for the peak" }
@@ -158,10 +158,10 @@
     - { label: Per canopy, value: "{canopy-power-in} in, {canopy-power-out} out" }
     - { label: Frost Towers, value: "Tiles at {frost-tower-temp} trap the last CO₂ to {frost-co2-pressure}" }
   invented:
-    - "{exhaust-bandgap} thermophotonic diodes with photon recycling, 99.9% external quantum efficiency at {exhaust-flux}"
+    - "{exhaust-bandgap} thermophotonic diodes with photon recycling, {exhaust-eqe} external quantum efficiency at {exhaust-flux}"
     - Hot-gas aerostat canopies {canopy-width} across at 62 to 66 km
   precedent:
-    - text: An LED at MIT emitted 69 pW of light from 30 pW of electricity, drawing the rest from heat.
+    - text: An LED at MIT emitted {led-2012-light-out} of light from {led-2012-power-in} of electricity, drawing the rest from heat.
       source: santhanam-2012
     - text: Thermophotonic energy transfer measured in intracavity structures at Aalto.
       source: casado-2019
@@ -304,7 +304,7 @@
     - { label: SO₂, value: "{venus-so2-fraction|show=ppm}, {venus-so2-mass}" }
     - { label: Neutralizer, value: "{acid-cao} of CaO, in {acid-basalt} of crushed basalt" }
     - { label: Basalt layer, value: "{acid-basalt-layer} over the basins, {acid-crust-share} of the crust available" }
-    - { label: Product, value: Gypsum and anhydrite, with traces of chloride and fluoride salts }
+    - { label: Product, value: "Gypsum and anhydrite, with traces of chloride and fluoride salts" }
   invented: []
   precedent:
     - text: Calcium and magnesium minerals react with acid gases; the same chemistry, at far smaller scale, cleans power-plant flue gas.
@@ -332,7 +332,7 @@
     - { label: Position, value: "Beside the Veil, {veil-distance} sunward" }
     - { label: Online, value: "{aegis-online|date=day}" }
   invented:
-    - Cable carrying {aegis-current} per strand at about 40 K, behind its own sunshield
+    - Cable carrying {aegis-current} per strand at {aegis-coil-temp}, behind its own sunshield
   precedent:
     - text: NASA's 2017 study placed a magnetic dipole at Mars's L1 point to shield the planet.
       source: nasa-mars-magnetic-2017
@@ -360,7 +360,7 @@
     - { group: Nitrogen fixers, from: Anabaena and Trichodesmium-type, traits: Faster fixation under a nitrogen-rich sky, job: Nutrients from the air }
     - { group: Diatoms, from: Marine diatoms, traits: Silica from basalt-rich water, job: Productivity and carbon burial }
     - { group: Lichens and mosses, from: Arctic and volcanic-field species, traits: UV and cold tolerance, job: Colonize rock and caps }
-    - { group: Soil consortium, from: Rock-weathering bacteria and fungi, traits: Fast basalt weathering, job: Release phosphorus and potassium, build soil }
+    - { group: Soil consortium, from: Rock-weathering bacteria and fungi, traits: Fast basalt weathering, job: "Release phosphorus and potassium, build soil" }
   invented:
     - Organisms engineered for cold, fresh, sulfate-rich water under {final-pressure}
   precedent: []
@@ -384,9 +384,9 @@
     - { label: Veil to Venus, value: "{veil-light-delay}" }
   tiers:
     - { tier: Cell, scope: One machine, decides: Its own actions, reacts: Milliseconds }
-    - { tier: Guild, scope: About 10,000 machines, decides: Tasks and repairs, reacts: Seconds }
+    - { tier: Guild, scope: "About 10,000 machines", decides: Tasks and repairs, reacts: Seconds }
     - { tier: Works, scope: One site, decides: Production schedules, reacts: Minutes }
-    - { tier: Council, scope: All worlds, with human oversight, decides: Campaign plans and mass budgets, reacts: Hours to days }
+    - { tier: Council, scope: "All worlds, with human oversight", decides: Campaign plans and mass budgets, reacts: Hours to days }
   invented:
     - A formally verified replication controller
     - A Venus digital twin that forecasts phase changes weeks ahead

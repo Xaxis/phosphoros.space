@@ -166,6 +166,19 @@ export function veil(r: Registry) {
     () => v("veil-radius") - v("venus-radius"),
   );
   r.q(
+    "veil-beyond-l1",
+    {
+      label: "How far the Veil sits sunward of L1",
+      unit: "m",
+      show: "km",
+      sig: 2,
+      formula: "x − x_L1",
+      basis: "physics",
+      note: "Light pressure pushes the film outward, so its balance point lies sunward of the plain L1.",
+    },
+    () => v("veil-distance") - v("venus-l1-distance"),
+  );
+  r.q(
     "veil-area",
     { label: "Veil area", unit: "m2", formula: "π R²", basis: "invented" },
     () => Math.PI * v("veil-radius") ** 2,

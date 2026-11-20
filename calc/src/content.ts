@@ -174,6 +174,19 @@ export function checkContent(r: Registry, c: Content): string[] {
     const { data } = readYaml(file);
     for (const s of stringsIn(data))
       for (const id of refsIn(s)) if (!known(id)) problems.push(`${file}: unknown number {${id}}`);
+    // In a flow mapping, { a: x, y z } makes "y z" a key with no value: an unquoted comma cut the
+    // text short. Nothing in content is ever legitimately empty, so an empty value is that bug.
+    const walk = (x: unknown, at: string): void => {
+      if (Array.isArray(x)) {
+        for (const [i, y] of x.entries()) walk(y, `${at}[${i}]`);
+      } else if (x && typeof x === "object")
+        for (const [k, y] of Object.entries(x)) {
+          if (y === null)
+            problems.push(`${file}: ${at}: "${k}" has no value (quote text with commas)`);
+          else walk(y, `${at}.${k}`);
+        }
+    };
+    walk(data, "");
   }
   const techs = new Set(c.technologies.map((t) => t.id));
   const sources = new Set(c.sources.map((s) => s.id));

@@ -15,7 +15,7 @@ baseline:
     venus: "{venus-sidereal-day}, retrograde; a solar day lasts {venus-solar-day}"
     earth: "{earth-day}"
   - { property: Sunlight at the top of the atmosphere, venus: "{venus-sunlight}", earth: "{solar-constant-earth}" }
-  - { property: Water, venus: Nearly none, with an extreme deuterium to hydrogen ratio, earth: "{earth-water-mass}" }
+  - { property: Water, venus: "Nearly none, with an extreme deuterium to hydrogen ratio", earth: "{earth-water-mass}" }
   - { property: Magnetic field, venus: None of its own, earth: "Dipole of {earth-dipole}" }
   - { property: Clouds, venus: "Sulfuric acid, {venus-cloud-base|sig=2} to {venus-cloud-top|sig=2} up", earth: Water }
 

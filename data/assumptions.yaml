@@ -30,7 +30,7 @@ life-gate:
   show: day
   label: "Gate: no native life found"
   basis: design
-  note: Two weeks after the survey reports, before the seed foundry is committed to Mercury.
+  note: Two weeks after the survey reports. The seed foundry is already in flight by then; the gate falls before it lands on Mercury, so a find stops the landing.
 experiments-end:
   value: 2028-12-31
   unit: date
@@ -56,6 +56,7 @@ freeze-target-temp:
   value: 195
   unit: K
   label: Temperature the air is cooled to, freezing out its CO₂
+  sig: 3
   basis: design
   note: Just above CO₂'s frost point at one atmosphere, 194.7 K.
 crust-cooling-step:
@@ -99,6 +100,7 @@ foundry-transfer-days:
   value: 105
   unit: d
   label: Earth-to-Mercury transfer
+  sig: 3
   basis: design
 foundry-doubling-days:
   value: 60
@@ -119,6 +121,20 @@ foundry-energy-per-kg:
   label: Energy to make a kilogram of machinery from regolith
   basis: invented
   range: [3.0e7, 3.0e8]
+foundry-complex-share:
+  value: 0.02
+  unit: "1"
+  show: "%"
+  label: Share of each copy's mass in complex parts (chips, bearings, optics)
+  basis: invented
+  note: The rest is simple, fast-to-make mass (film, beams, rail, wire). This is how the loop doubles in 60 days.
+lithocell-feature-size:
+  value: 9.0e-8
+  unit: m
+  show: nm
+  label: Smallest feature a Lithocell chip fab writes
+  basis: invented
+  note: Written directly by a million parallel electron beams, with no masks.
 
 # --- Helios Lattice --------------------------------------------------------------------------------
 helios-power:
@@ -187,6 +203,26 @@ helios-first-petals:
   value: 2030-06-01
   unit: date
   label: First Helios Petals fly
+  basis: design
+helios-film-temp:
+  value: 460
+  unit: K
+  label: Temperature the Petal film runs at near Mercury
+  basis: design
+  note: About where a film that absorbs sunlight near Mercury, turns 40% into electricity and sheds the rest from both faces comes to rest.
+beam-keep-out:
+  value: 1.496e9
+  unit: m
+  show: AU
+  sig: 1
+  label: Closest any beam path comes to Earth or a crewed craft
+  basis: design
+beam-defocus-time:
+  value: 1.0e-3
+  unit: s
+  show: ms
+  sig: 1
+  label: Time for a beam to defocus once its receiver's handshake drops
   basis: design
 
 # --- Hesperus Veil ---------------------------------------------------------------------------------
@@ -319,6 +355,14 @@ frost-tower-temp:
   label: Frost Tower cold-trap temperature
   basis: invented
   sig: 3
+exhaust-eqe:
+  value: 0.999
+  unit: "1"
+  show: "%"
+  sig: 3
+  label: External quantum efficiency of the emitter tiles (photons out per electron in)
+  basis: invented
+  note: Every electron that recombines without emitting dumps its energy into the tile as heat, so net cooling at high power needs almost every electron to make a photon.
 
 # --- Cryo-continents -------------------------------------------------------------------------------
 cryo-thickness:
@@ -375,6 +419,11 @@ sealing-end:
   unit: date
   label: Last caps sealed
   basis: design
+heat-pipe-depth:
+  value: 200
+  unit: m
+  label: Depth basal heat pipes reach into the basin floors
+  basis: design
 
 # --- Graphite Forges -------------------------------------------------------------------------------
 o2-target-pressure:
@@ -404,6 +453,12 @@ forge-end:
   value: 2036-09-30
   unit: date
   label: Forging ends
+  basis: design
+forge-raft-width:
+  value: 3.0e4
+  unit: m
+  show: km
+  label: Width of one Forge raft
   basis: design
 
 # --- Ceres Ice Train -------------------------------------------------------------------------------
@@ -536,12 +591,47 @@ aegis-turns:
   unit: count
   label: Turns in the coil
   basis: design
+aegis-coil-temp:
+  value: 40
+  unit: K
+  label: Temperature the Aegis cable runs at
+  basis: invented
+  note: Kept cold by radiating to space from behind its own small sunshield; no cable today carries megaamperes per strand at this temperature.
 
 # --- Venus in 2036 ---------------------------------------------------------------------------------
 genesis-end:
   value: 2036-12-15
   unit: date
   label: Genesis seeding complete
+  basis: design
+genesis-ph-min:
+  value: 7.5
+  unit: "1"
+  sig: 2
+  label: Ocean pH that must hold before any life is released
+  basis: design
+genesis-ph-days:
+  value: 90
+  unit: d
+  label: Days the ocean pH must hold before any life is released
+  basis: design
+genesis-doubling-days:
+  value: 1
+  unit: d
+  label: Doubling time of the seeded ocean cyanobacteria in sunlit water
+  basis: invented
+  note: Fast cyanobacteria double in about a day in culture; the engineered strains must keep that pace in cold, fresh, sulfate-rich water.
+genesis-soil-min:
+  value: 0.1
+  unit: m
+  show: cm
+  label: Thinnest black-loam soil laid on caps and shores
+  basis: design
+genesis-soil-max:
+  value: 0.3
+  unit: m
+  show: cm
+  label: Thickest black-loam soil laid on caps and shores
   basis: design
 day-length:
   value: 86400
@@ -574,3 +664,11 @@ earth-like-co2:
   show: ppm
   label: Most CO₂ that counts as Earth-like
   basis: design
+
+# --- Choir -----------------------------------------------------------------------------------------
+choir-deadman-days:
+  value: 7
+  unit: d
+  label: Days a replicator keeps building without a Mass Ledger heartbeat
+  basis: design
+  note: The dead-man switch. Longer than any light delay or routine outage, short enough that a cut-off site cannot grow far.

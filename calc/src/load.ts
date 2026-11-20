@@ -2,20 +2,33 @@
  * Reads data/ into the model's inputs, keeping the file and line each value came from so every
  * number on the site can link to the exact line that defines it. Node only.
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { isMap, isScalar, LineCounter, parseDocument } from "yaml";
 import { compute } from "./model/index.ts";
 import type { Basis, Input, Registry } from "./registry.ts";
 import { dayOf } from "./time.ts";
 
-export const ROOT = path.resolve(import.meta.dirname, "../..");
+/** The workspace root: the nearest folder up holding pnpm-workspace.yaml. Starts from this file under
+ * Node, and from the working directory when a bundler (the site's build) hides where it lives. */
+function findRoot(): string {
+  let dir = import.meta.dirname ?? process.cwd();
+  while (!existsSync(path.join(/*turbopackIgnore: true*/ dir, "pnpm-workspace.yaml"))) {
+    const up = path.dirname(dir);
+    if (up === dir)
+      throw new Error("load: no pnpm-workspace.yaml above the model; run from the repository");
+    dir = up;
+  }
+  return dir;
+}
+
+export const ROOT = findRoot();
 export const INPUT_FILES = ["data/constants.yaml", "data/assumptions.yaml"];
 const BASES: Basis[] = ["physics", "precedent", "invented", "design"];
 
 /** Parse a YAML file, returning its plain value and the line each top-level key is on. */
 export function readYaml(rel: string): { data: unknown; lines: Map<string, number> } {
-  const text = readFileSync(path.join(ROOT, rel), "utf8");
+  const text = readFileSync(path.join(/*turbopackIgnore: true*/ ROOT, rel), "utf8");
   const counter = new LineCounter();
   const doc = parseDocument(text, { lineCounter: counter, prettyErrors: true });
   if (doc.errors.length) throw new Error(`${rel}: ${doc.errors.map((e) => e.message).join("; ")}`);
@@ -93,7 +106,7 @@ export function sourceLines(r: Registry): Map<string, { file: string; line: numb
     const file = `calc/src/${module}`;
     let lines = cache.get(file);
     if (!lines) {
-      lines = readFileSync(path.join(ROOT, file), "utf8").split("\n");
+      lines = readFileSync(path.join(/*turbopackIgnore: true*/ ROOT, file), "utf8").split("\n");
       cache.set(file, lines);
     }
     // Ids built in loops ("passive-power") are found by their stem.

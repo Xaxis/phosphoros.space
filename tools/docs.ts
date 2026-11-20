@@ -3,6 +3,7 @@
  *
  *   node tools/docs.ts           rewrite generated files and every number link's text
  *   node tools/docs.ts --check   change nothing; fail if anything is stale or a link is broken
+ *   node tools/docs.ts FILE...   sync only these documents (and the generated files)
  *
  * Docs write numbers as links to the ledger: [5.3 × 10²⁶ J](numbers.md#atmosphere-heat). This
  * script rewrites the link text from the model, so a changed assumption updates every document.
@@ -29,6 +30,11 @@ import {
 import { isoOf } from "../calc/src/time.ts";
 
 const CHECK = process.argv.includes("--check");
+/** Documents named on the command line; with none, every document. Lets writers sync only their own. */
+const ONLY = process.argv
+  .slice(2)
+  .filter((a) => !a.startsWith("--"))
+  .map((a) => path.resolve(a));
 const REPO = "https://github.com/Xaxis/phosphoros.space";
 const DOCS = path.join(ROOT, "docs");
 
@@ -265,9 +271,11 @@ const BLOCKS: Record<string, Block> = {
     return table(
       ["Number", "Version 2", "Model", "Why"],
       results.map((c) => [
-        `[${c.label}](${p}numbers.md#${c.model})`,
+        // The label stays plain text: a ledger link's text is always rewritten to the value, so
+        // the link to the ledger goes on the model's value instead.
+        c.label,
         c.shown.brief,
-        c.shown.model,
+        `[${c.shown.model}](${p}numbers.md${r.get(c.model).unit === "date" ? "?date=day" : ""}#${c.model})`,
         c.correction
           ? `Corrected in version 3 ([${c.correction}](${p}about.md#corrections))`
           : (c.note ?? ""),
@@ -455,8 +463,12 @@ function walk(dir: string): string[] {
 }
 
 /** Figure titles, for alt text in docs. Kept here until the figures package exports its registry. */
-const FIGURE_BLOCK = /(<!-- figure:([a-z0-9-]+) -->\n)([\s\S]*?)(<!-- \/figure -->)/g;
-const BLOCK = /(<!-- table:([a-z]+)(?: ([a-z0-9-]+))? -->\n)([\s\S]*?)(\n<!-- \/table -->)/g;
+// A block's body never crosses another block's opener, so an empty block ("opener" then "closer" on
+// the next line) can never swallow the text up to a later block's closer.
+const FIGURE_BLOCK =
+  /(<!-- figure:([a-z0-9-]+) -->)\n?((?:(?!<!-- figure:)[\s\S])*?)(<!-- \/figure -->)/g;
+const BLOCK =
+  /(<!-- table:([a-z]+)(?: ([a-z0-9-]+))? -->)\n?((?:(?!<!-- table:)[\s\S])*?)\n?(<!-- \/table -->)/g;
 const SOURCE_LINK = /\]\(((?:\.\.\/)*)sources\.md#([a-z0-9-]+)\)/g;
 const DOC_LINK = /\]\((?!https?:|#|mailto:)([^)#?\s]+\.md)(?:[?#][^)]*)?\)/g;
 const FIGURE = /!\[[^\]]*\]\(((?:\.\.\/)*)figures\/svg\/([a-z0-9-]+)\.svg\)/g;
@@ -475,18 +487,20 @@ function sync(file: string): void {
         problems.push(`${rel}: unknown table "${kind}"`);
         return _m;
       }
-      return `${open}${block(arg ?? "", prefix)}${close}`;
+      return `${open}\n${block(arg ?? "", prefix)}\n${close}`;
     },
   );
   text = text.replace(FIGURE_BLOCK, (_m, open: string, id: string, _old, close: string) => {
     const svg = path.join(ROOT, "figures", "svg", `${id}.svg`);
-    if (!existsSync(svg)) return `${open}${close}`;
+    if (!existsSync(svg)) return `${open}\n${close}`;
     const title = /<title[^>]*>([^<]*)<\/title>/.exec(readFileSync(svg, "utf8"))?.[1] ?? id;
-    return `${open}![${title}](${prefix}../figures/svg/${id}.svg)\n${close}`;
+    return `${open}\n![${title}](${prefix}../figures/svg/${id}.svg)\n${close}`;
   });
   text = text.replace(
     NUMBER_LINK,
     (m, _text: string, up: string, q: string | undefined, id: string) => {
+      // Links to a physics check's row in the ledger are not numbers.
+      if (id.startsWith("check-") && r.checks.has(id.slice(6))) return m;
       if (!known(id)) {
         problems.push(`${rel}: link to unknown number #${id}`);
         return m;
@@ -518,7 +532,7 @@ function sync(file: string): void {
 write("docs/numbers.md", ledger());
 write("docs/sources.md", bibliography(content));
 write("data/outputs.json", outputs());
-for (const file of walk(DOCS)) {
+for (const file of ONLY.length ? ONLY : walk(DOCS)) {
   const rel = path.relative(ROOT, file);
   if (rel === "docs/numbers.md" || rel === "docs/sources.md") continue;
   sync(file);
