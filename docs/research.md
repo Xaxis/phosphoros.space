@@ -7,10 +7,12 @@ in advance. A kill signal stops the line it tests; one of them stops everything.
 
 The seed foundry cannot wait for all of them: to land on Mercury in
 [January 2029](numbers.md?date=month#foundry-landing) it launches on
-[1 October 2028](numbers.md?date=day#foundry-seed-launch), three months before the other gates close. So
-[Ouroboros-0](#ouroboros-0) must show its closure before that launch, and the rest, the cloud-life survey
-included, are decided while the seed is in flight. A gate that fails then halts the seed on arrival: it lands, and
-does not start to copy itself.
+[1 October 2028](numbers.md?date=day#foundry-seed-launch), three months before the other gates close. The
+seed of the Ceres factories, which build the Ice Train's Railheads, leaves the same day
+([1 October 2028](numbers.md?date=day#ceres-seed-launch)). So [Ouroboros-0](#ouroboros-0) must show its
+closure before that launch, and the rest, the cloud-life survey and the Railhead test included, are decided
+while the seeds are in flight. A gate that fails then halts a seed on arrival: it lands, and does not start to
+copy itself.
 
 <!-- figure:research-gates -->
 ![The proof experiments and their gates, 2027 and 2028](../figures/svg/research-gates.svg)
@@ -19,7 +21,7 @@ does not start to copy itself.
 <!-- table:experiments -->
 | Experiment | Proves | Pass by [31 December 2028](numbers.md?date=day#experiments-end) | Kill signal |
 | --- | --- | --- | --- |
-| [Ouroboros-0](technologies/ouroboros.md) | A factory that builds itself from simulated Mercury regolith | [95%](numbers.md#ouroboros-0-closure) mass closure, doubling in under [120 d](numbers.md#ouroboros-0-doubling) | Under [70%](numbers.md#ouroboros-0-kill-closure) closure |
+| [Ouroboros-0](technologies/ouroboros.md) | A factory that builds itself from simulated Mercury regolith, and from Ceres's | [95%](numbers.md#ouroboros-0-closure) mass closure, doubling in under [120 d](numbers.md#ouroboros-0-doubling) | Under [70%](numbers.md#ouroboros-0-kill-closure) closure |
 | [Exhaust-1](technologies/exhaust.md) | Electroluminescent cooling at useful power | [10 kW/m²](numbers.md#exhaust-1-cooling) of net cooling, within [50%](numbers.md#exhaust-1-carnot) of the Carnot limit. Then: The production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by [2031](numbers.md?date=year#exhaust-production-tile) | No net cooling above [100 W/m²](numbers.md#exhaust-1-kill-cooling) |
 | [Lightpipe](technologies/helios.md) | Coherent power beaming | [1 MW](numbers.md#lightpipe-power) over [1,000 km](numbers.md#lightpipe-range) between satellites at [30%](numbers.md#lightpipe-efficiency) end to end | Phase lock fails beyond [100](numbers.md#lightpipe-kill-emitters) emitters |
 | [Veil-1](technologies/veil.md) | An electrochromic slat | A [1 km²](numbers.md#veil-1-area) slat in orbit dims from clear to [99%](numbers.md#veil-1-dim) blocked and holds its attitude | The film degrades within [6 months](numbers.md#veil-1-kill-life) |
@@ -38,10 +40,12 @@ far short that no amount of scaling will close the gap in time.
 
 ### Ouroboros-0
 
-A factory on Earth that builds itself from simulated Mercury regolith. It tests the one invention the
-whole plan depends on: a machine that makes every one of its own parts, chips included, from rock
-([Ouroboros Foundry](technologies/ouroboros.md)). The pass bar is looser than the plan's
-[60 d](numbers.md#foundry-doubling-days) doubling, because a first loop only has to show it can close; speed
+A factory on Earth that builds itself from simulated Mercury regolith, and a copy that does the same from
+simulated Ceres rock. It tests the one invention the whole plan depends on: a machine that makes every one of
+its own parts, chips included, from rock ([Ouroboros Foundry](technologies/ouroboros.md)), on both worlds
+whose seeds leave Earth ([Ceres factories](technologies/ice-train.md#ceres-factories)). The pass bar is looser
+than the plan's [60 d](numbers.md#foundry-doubling-days) doubling on Mercury and
+[45 d](numbers.md#ceres-doubling-days) on Ceres, because a first loop only has to show it can close; speed
 is engineering. The kill signal is about closure, not speed. On Mercury there is nothing to import, and a
 factory that needs a large share of its own mass sent from Earth does not grow exponentially at all. Closure
 cannot be engineered in later. Speed can.

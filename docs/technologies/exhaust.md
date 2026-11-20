@@ -118,8 +118,8 @@ three different phases:
    [8.5 × 10¹⁹ W](../numbers.md#helios-power), more than a launch in a window would need, because they fire between
    windows too. Cooling crawls.
 3. **From [September 2034](../numbers.md?date=month#ring-pays-from).** The Ring recovers
-   [7.5 × 10¹⁹ W](../numbers.md#ring-power) from the arriving ice and powers the Railheads. Power is now plentiful,
-   and the emitters, not the supply, set the pace. The Clear Rain begins on
+   [7.5 × 10¹⁹ W](../numbers.md#ring-power) from the arriving ice and runs Venus, so the Lattice's beams can stay
+   on the Railheads. Power is now plentiful, and the emitters, not the supply, set the pace. The Clear Rain begins on
    [13 July 2034](../numbers.md?date=day#traj-clear-rain).
 
 So the emitters must be sized for the peak of the third phase. With version 2's smaller Exhaust the simulated air

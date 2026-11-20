@@ -26,6 +26,14 @@ corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the 
   every colour and the Exhaust aims its cones around it; the Veil's spare slats are not claimed; the
   Choir's machine count is the model's; the cryo caps use measured aerogel; and Mercury's surface is
   poor in iron, as MESSENGER found.
+- The Ceres end of the Ice Train is sized
+  ([#7](https://github.com/Xaxis/phosphoros.space/issues/7)). Ceres cannot radiate the Ice Train's
+  heat from its surface, so the receivers fly in the Crown, a ring at Ceres's synchronous orbit whose
+  fins shed the receivers' loss and most of the Railheads'; the barrels must be nearly lossless. The
+  Railheads' mass, the Crown and the Ceres factories that build them are modelled; the factories are
+  seeded with the Foundry and must double faster than it to finish before the first launch. The
+  longest beam to Ceres is measured from the Lattice, not the Ring. Ceres's new orbit stays clear of
+  Jupiter by the Hill-radius and Tisserand tests; resonances are not modelled.
 - Open problems: the Braking Ring cannot lower the caught ice on tethers as version 2 describes
   ([#2](https://github.com/Xaxis/phosphoros.space/issues/2)), and catching half the ice eastbound
   and half westbound cancels the twist on the Ring, not its braking force

@@ -121,27 +121,28 @@ export function helios(r: Registry) {
     () => v("helios-film-temp") * Math.sqrt(v("mercury-orbit") / v("helios-orbit-inner")),
   );
   r.q(
-    "ring-to-ceres-range",
+    "lattice-to-ceres-range",
     {
-      label: "Longest Venus-to-Ceres beam range",
+      label: "Longest Lattice-to-Ceres beam range, from the outermost Petal orbit",
       unit: "m",
       show: "AU",
       sig: 2,
-      formula: "a_V + a_Ceres",
+      formula: "a_outer + a_Ceres",
       basis: "physics",
+      note: "The Lattice beams the Railheads' power to Ceres itself; the Ring sends none back.",
     },
-    () => v("venus-orbit") + v("ceres-orbit"),
+    () => v("helios-orbit-outer") + v("ceres-orbit"),
   );
   r.q(
     "ceres-beam-spot",
     {
-      label: "Beam spot at the longest Venus-to-Ceres range",
+      label: "Beam spot at the longest Lattice-to-Ceres range",
       unit: "m",
       sig: 2,
       formula: "2.44 λ L / D",
       basis: "physics",
     },
-    () => (2.44 * v("helios-wavelength") * v("ring-to-ceres-range")) / v("helios-aperture"),
+    () => (2.44 * v("helios-wavelength") * v("lattice-to-ceres-range")) / v("helios-aperture"),
   );
   r.q(
     "lattice-build-days",

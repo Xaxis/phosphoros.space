@@ -107,7 +107,7 @@ export function budget(r: Registry) {
   r.q(
     "budget-demand-with-ring",
     {
-      label: "Energy the Lattice delivers once the Ring powers the Railheads",
+      label: "Energy the Lattice delivers once the Ring pays for the Railheads",
       unit: "J",
       formula: "demand − launch energy + Lattice-paid launch energy",
       basis: "invented",
@@ -117,7 +117,7 @@ export function budget(r: Registry) {
   r.q(
     "budget-spare-with-ring",
     {
-      label: "Spare supply once the Ring powers the Railheads",
+      label: "Spare supply once the Ring pays for the Railheads",
       unit: "1",
       show: "%",
       sig: 2,
@@ -129,7 +129,7 @@ export function budget(r: Registry) {
   r.q(
     "budget-lattice-spare",
     {
-      label: "Lattice energy left over once the Ring powers the Railheads",
+      label: "Lattice energy left over once the Ring pays for the Railheads",
       unit: "J",
       formula: "E_Lattice − demand_with_Ring",
       basis: "invented",
@@ -139,7 +139,7 @@ export function budget(r: Registry) {
   r.q(
     "budget-ring-launch",
     {
-      label: "Launch energy the Ring pays once it powers the Railheads",
+      label: "Launch energy the Ring pays for, from the first catch",
       unit: "J",
       formula: "E_launch − Lattice-paid launch energy",
       basis: "invented",
@@ -174,7 +174,7 @@ export function budget(r: Registry) {
     },
     () => ({
       pass: v("helios-supply") >= v("budget-demand"),
-      detail: `Lattice supply ${fmt(r, "helios-supply")} against demand ${fmt(r, "budget-demand")}: ${fmt(r, "budget-spare")} spare before the Ring's recovered energy, ${fmt(r, "budget-spare-with-ring")} once the Ring powers the Railheads.`,
+      detail: `Lattice supply ${fmt(r, "helios-supply")} against demand ${fmt(r, "budget-demand")}: ${fmt(r, "budget-spare")} spare before the Ring's recovered energy, ${fmt(r, "budget-spare-with-ring")} once the Ring pays for the Railheads.`,
     }),
   );
   const show = (id: string) => formatQuantity({ ...r.get(id), value: v(id) });
@@ -188,7 +188,7 @@ export function budget(r: Registry) {
       pass:
         v("helios-supply") >= v("budget-demand-with-ring") &&
         v("ring-recovered-energy") >= v("budget-ring-launch"),
-      detail: `The Lattice delivers ${show("helios-supply")} against ${show("budget-demand-with-ring")} once the Ring powers the Railheads, and the Ring recovers ${show("ring-recovered-energy")} against the ${show("budget-ring-launch")} of launches it pays for.`,
+      detail: `The Lattice delivers ${show("helios-supply")} against ${show("budget-demand-with-ring")} once the Ring pays for the Railheads, and the Ring recovers ${show("ring-recovered-energy")} against the ${show("budget-ring-launch")} of launches it pays for.`,
     }),
   );
 }

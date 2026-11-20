@@ -159,7 +159,8 @@ stator aloft. Magnetic sleds brake each Brick from [13.5 km/s](numbers.md#ring-
 speed and turn [53 MJ/kg](numbers.md#ring-recovered-per-kg) of its motion into electricity:
 [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) in all, [7.5 × 10¹⁹ W](numbers.md#ring-power) at full rate.
 That is more than the coilguns draw, so from [16 September 2034](numbers.md?date=day#ring-pays-from) the Ring
-powers the Railheads and the Lattice is free to cool Venus. The surplus is not free energy: gravity
+pays for the launches. It does so by swapping customers: the Ring's electricity runs Venus's own systems, and
+the Lattice's beams stay on the Railheads at Ceres. The surplus is not free energy: gravity
 adds it as the ice falls from Ceres's orbit into the Sun's well and then into Venus's
 ([budget](budget.md#ring-recovery-and-gravity)).
 
@@ -223,9 +224,9 @@ Not delivered by 2036: trees, crops and animals. Those are the work of the follo
 
 ## The technology stack
 
-Thirteen inventions, on four worlds and the space between them. Only the seed foundry and the first Ceres
-factories leave Earth; every other kilogram is made where it is needed. The Ceres factories' mass, launch and
-growth are not yet modelled ([issue #7](https://github.com/Xaxis/phosphoros.space/issues/7)).
+Thirteen inventions, on four worlds and the space between them. Only the seed foundry and the seed of the
+Ceres factories leave Earth, [1,000 t](numbers.md#ceres-seed-mass) each; every other kilogram is made where it is
+needed.
 
 <!-- figure:tech-stack -->
 ![The Phosphoros technology stack](../figures/svg/tech-stack.svg)
@@ -306,7 +307,7 @@ What it finds:
 | Deadline | [31 December 2036](numbers.md?date=day#deadline) |
 
 Venus is Earth-like [92 d](numbers.md#traj-slack-days) before the deadline. Three things stand out.
-Until the Ring takes over the Railheads in [September 2034](numbers.md?date=month#ring-pays-from), cooling is
+Until the Ring pays for the Railheads in [September 2034](numbers.md?date=month#ring-pays-from), cooling is
 starved of power; after that, power is plentiful and the emitters are the limit, which is why the Exhaust
 is sized for the peak and not the average ([correction](about.md#corrections)). The long stretch between
 the Clear Rain and the freeze is the CO₂ condensing: its latent heat,

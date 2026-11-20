@@ -77,6 +77,24 @@ rows:
     kind: milestone
     start: aegis-online
     tech: aegis
+  - id: ceres-seed-launch
+    label: Ceres seed launches
+    lane: ceres
+    kind: milestone
+    start: ceres-seed-launch
+    tech: ice-train
+  - id: ceres-growth
+    label: Ceres factories grow
+    lane: ceres
+    start: ceres-landing
+    end: ceres-full-scale
+    tech: ice-train
+  - id: railhead-build
+    label: Railheads and Crown built
+    lane: ceres
+    start: ceres-full-scale
+    end: ceres-ready
+    tech: ice-train
   - id: ice-launches
     label: Ceres ice launches
     lane: ceres
@@ -85,7 +103,7 @@ rows:
     tech: ice-train
     critical: true
   - id: ring-pays
-    label: The Ring powers the Railheads
+    label: The Ring pays for the launches
     lane: ceres
     kind: milestone
     start: ring-pays-from
@@ -156,3 +174,4 @@ critical_path: >-
   The critical path runs through the Foundry. The seed must launch by {foundry-seed-launch} so the
   Lattice reaches full power by {helios-full-power}. Ice launched after {ice-launch-end} cannot
   arrive before the deadline, so any slip in the doubling time comes straight out of the water.
+  Ceres's factories, launched the same day, finish the Railheads {ceres-slack} before the first launch.

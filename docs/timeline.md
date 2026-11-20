@@ -22,8 +22,11 @@ redraws this chart for your variant.
 | Hesperus Veil built | [7 September 2032](numbers.md?date=day#veil-build-begin) | [1 December 2032](numbers.md?date=day#veil-close) |
 | Braking Ring built | [22 July 2033](numbers.md?date=day#ring-build-begin) | [31 December 2033](numbers.md?date=day#ring-complete) |
 | **Aegis Shield online** | [15 June 2034](numbers.md?date=day#aegis-online) |  |
+| **Ceres seed launches** | [1 October 2028](numbers.md?date=day#ceres-seed-launch) |  |
+| Ceres factories grow | [16 January 2030](numbers.md?date=day#ceres-landing) | [31 March 2033](numbers.md?date=day#ceres-full-scale) |
+| Railheads and Crown built | [31 March 2033](numbers.md?date=day#ceres-full-scale) | [10 June 2033](numbers.md?date=day#ceres-ready) |
 | Ceres ice launches | [22 July 2033](numbers.md?date=day#ice-launch-start) | [21 October 2035](numbers.md?date=day#ice-launch-end) |
-| **The Ring powers the Railheads** | [16 September 2034](numbers.md?date=day#ring-pays-from) |  |
+| **The Ring pays for the launches** | [16 September 2034](numbers.md?date=day#ring-pays-from) |  |
 | Active cooling | [3 May 2033](numbers.md?date=day#cooling-start) | [1 September 2036](numbers.md?date=day#cooling-end) |
 | **The Clear Rain** | [13 July 2034](numbers.md?date=day#traj-clear-rain) |  |
 | CO₂ rain-out and sealing | [13 July 2034](numbers.md?date=day#traj-clear-rain) | [1 September 2036](numbers.md?date=day#sealing-end) |
@@ -59,7 +62,10 @@ Two other links are close behind. The Veil must close before active cooling star
 [9.8 d](numbers.md#veil-diversion-days) from [7 September 2032](numbers.md?date=day#veil-build-begin) to build it,
 and it closes in [December 2032](numbers.md?date=month#veil-close). The Ring must be finished before the first Brick
 arrives on [16 September 2034](numbers.md?date=day#first-catch); the Foundry builds it once the Lattice is done,
-and it is complete by [31 December 2033](numbers.md?date=day#ring-complete).
+and it is complete by [31 December 2033](numbers.md?date=day#ring-complete). And the Railheads and the Crown
+must be ready for the first launch: the Ceres factories, seeded the same day as the Foundry, finish them on
+[10 June 2033](numbers.md?date=day#ceres-ready), [42 d](numbers.md#ceres-slack) early, but only if they double
+every [45 d](numbers.md#ceres-doubling-days) ([Ice Train](technologies/ice-train.md#ceres-factories)).
 
 ## Phase by phase
 
@@ -80,13 +86,16 @@ spent early costs all the growth it would have compounded into. The first Lattic
 [June 2030](numbers.md?date=month#helios-first-petals), are tests. It stops growing once, for
 [9.8 d](numbers.md#veil-diversion-days) in [September 2032](numbers.md?date=month#veil-build-begin), to build the
 Veil; at full scale it builds the Lattice, then from [July 2033](numbers.md?date=month#ring-build-begin) the Ring.
-The atmosphere simulation has not started yet; what governs this phase is the Foundry's growth curve.
+On Ceres a second set of factories grows from [16 January 2030](numbers.md?date=day#ceres-landing) to
+[31 March 2033](numbers.md?date=day#ceres-full-scale), then builds the Railheads and the Crown that receives the
+Lattice's beams. The atmosphere simulation has not started yet; what governs this phase is the factories'
+growth curves.
 
 ### Cooling: 2033 to 2036
 
 Active cooling runs from [3 May 2033](numbers.md?date=day#cooling-start) to
 [1 September 2036](numbers.md?date=day#cooling-end), and here the day-by-day
-[simulation](plan.md#the-simulated-atmosphere) takes over. Until the Ring takes over the Railheads, they
+[simulation](plan.md#the-simulated-atmosphere) takes over. Until the Ring pays for the Railheads, they
 draw [6.7 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [8.5 × 10¹⁹ W](numbers.md#helios-power),
 and cooling is starved of power. From [16 September 2034](numbers.md?date=day#ring-pays-from) power is
 plentiful and the Exhaust runs at its limit, [5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The Clear Rain begins

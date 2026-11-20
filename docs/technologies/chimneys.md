@@ -133,7 +133,7 @@ because they describe the air drawn through the intake and the heat taken from i
   power; cooling slows until the Ring pays for them.
 - **[13 July 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
   critical temperature and the exchangers start condensing liquid CO₂.
-- **[16 September 2034](../numbers.md?date=day#ring-pays-from):** The Ring powers the Railheads and the Exhaust runs at
+- **[16 September 2034](../numbers.md?date=day#ring-pays-from):** The Ring pays for the Railheads and the Exhaust runs at
   its limit, with the chimneys lifting heat well above the design peak.
 - **[3 August 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
   apart.

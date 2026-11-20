@@ -53,6 +53,13 @@ asteroid belt, farther from Earth than before, but the change is permanent: the 
 is not a decision one program, or one country, can make. The safeguard is agreement in advance, with comets
 from the outer Solar System as the fallback source of water.
 
+The new orbit stays clear of Jupiter: its farthest point is [1.66 AU](numbers.md#ceres-jupiter-gap) inside
+Jupiter's nearest, [4.7](numbers.md#ceres-jupiter-gap-hill) of Jupiter's Hill radii, and its Tisserand
+parameter stays above 3 ([3.21](numbers.md#ceres-tisserand)), so Jupiter cannot capture or scatter it in
+one pass. The model does not follow resonances. The new orbit sits on Jupiter's weak 9:4 resonance, and
+only a long numerical integration can show it stays stable for millions of years; that must be done before
+the first shot ([Ice Train](technologies/ice-train.md#clear-of-jupiter)).
+
 ### Weaponization
 
 Everything that makes Phosphoros work could be used to hurt people. The Helios Lattice delivers

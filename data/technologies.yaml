@@ -322,16 +322,21 @@
     - { label: Transfer, value: "{ice-transfer-years}; arrives at {ice-vinf} relative to Venus" }
     - { label: Launch windows, value: "Every {launch-window-period}, about {launch-windows} in the campaign" }
     - { label: Launches between windows, value: "Up to {launch-offwindow-max} more energy than in a window, {launch-offwindow-mean} more on average" }
-    - { label: Ceres factories, value: "The first leave Earth to build the Railheads; their mass, launch and growth are not yet modelled" }
-    - { label: Ceres's recoil, value: "{ceres-recoil}; its aphelion moves to {ceres-new-aphelion}" }
+    - { label: Railhead mass, value: "At least {railhead-mass} each, {railheads-mass} in all: carbon fibre holding {railhead-field} coils" }
+    - { label: The Crown, value: "Receivers at {ceres-receiver-intensity} on a ring {crown-altitude} up, at Ceres's synchronous orbit; {crown-fin-area} of fins shed {crown-heat}; {crown-mass}" }
+    - { label: Heat left on Ceres, value: "{railhead-barrel-heat} from the barrels, radiators over {railhead-ground-share} of the surface" }
+    - { label: Ceres factories, value: "A {ceres-seed-mass} seed leaves Earth {ceres-seed-launch|date=day} and doubles every {ceres-doubling-days} to {ceres-final-mass}; Railheads and Crown finished {ceres-ready|date=day}, {ceres-slack} before the first launch" }
+    - { label: Ceres's recoil, value: "{ceres-recoil}; its aphelion moves to {ceres-new-aphelion}, {ceres-jupiter-gap-hill} of Jupiter's Hill radii inside Jupiter's perihelion" }
   invented:
     - Ten-kilometre coilguns firing megatonne ice blocks every few seconds
     - Bricks steered in flight by Lattice laser ablation
+    - Superconducting barrels that leave almost none of their loss on Ceres
+    - Factories on Ceres that copy themselves faster than the Foundry
   precedent: []
-  experiments: [railhead]
+  experiments: [railhead, ouroboros-0]
   figures: [ice-orbits]
-  modules: [ice.ts]
-  corrections: [offwindow-launch]
+  modules: [ice.ts, ceres.ts]
+  corrections: [offwindow-launch, lattice-to-ceres, ceres-heat, ceres-factories]
 
 - id: ring
   name: Braking Ring

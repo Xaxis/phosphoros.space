@@ -5,6 +5,7 @@
  */
 import { type Input, Registry } from "../registry.ts";
 import { budget } from "./budget.ts";
+import { ceres } from "./ceres.ts";
 import { conventional } from "./conventional.ts";
 import { cryo } from "./cryo.ts";
 import { chimneys, exhaust } from "./exhaust.ts";
@@ -32,6 +33,7 @@ export const MODULES = [
   cryo,
   forges,
   iceTrain,
+  ceres,
   ring,
   foundryProducts,
   acid,
