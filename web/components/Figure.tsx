@@ -19,9 +19,14 @@ export function Figure({ id }: { id: string }) {
   const { Component } = def;
   return (
     <figure className="figure" id={`figure-${id}`}>
-      <div className="figure-art">
+      {/* Focusable so a keyboard can scroll it sideways where it is wider than the screen. */}
+      {/* biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling region must take focus to scroll by keys */}
+      <section className="figure-art" tabIndex={0} aria-label={`Figure: ${def.title}`}>
         <Component {...props} />
-      </div>
+      </section>
+      <p className="figure-hint" aria-hidden="true">
+        Swipe sideways to see the whole figure.
+      </p>
       <figcaption>
         <span className="figure-title">{def.title}.</span> {def.caption(props)}
         <span className="figure-links">

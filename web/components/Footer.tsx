@@ -21,7 +21,7 @@ export function Footer({ doc }: { doc?: string }) {
       )}
       <div className="footer-inner">
         <div className="footer-brand">
-          <Mark size={22} />
+          <Mark size={22} id="mark-footer" />
           <div>
             <p className="footer-name">Phosphoros</p>
             <p className="footer-tag">{TAGLINE}</p>

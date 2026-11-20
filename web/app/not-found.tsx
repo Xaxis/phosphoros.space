@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+
+export const metadata: Metadata = { title: "Page not found" };
 
 export default function NotFound() {
   return (

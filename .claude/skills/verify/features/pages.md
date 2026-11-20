@@ -35,6 +35,14 @@ pnpm calc --only veil-distance | sed -n 2p
 
 Proves it when: every path answers 200; the Veil page has a number button for `veil-distance`; the ledger has its row; the value on the page matches `pnpm calc --only`.
 
+Layout and keyboard (Chromium, under `heavy`):
+
+```sh
+~/.claude/claude-core/bin/heavy node tools/layout-check.ts http://localhost:$PORT /tmp/layout
+```
+
+Proves it when: it ends `layout checks pass`: no sitemap page is wider than 320 or 390 px, the Explorer table fits a phone, the "All pages" menu closes on Escape, a tap outside and tabbing past its last link, the late-Lattice variant explains itself, ids are unique, the 404 has its own title.
+
 Home hero (Chromium on SwiftShader, so run it under `heavy`):
 
 ```sh
@@ -51,3 +59,5 @@ Proves it when: it ends `hero checks pass` (autoplay, pause, arrow keys, End, re
 - The hero only draws after hydration, and SwiftShader manages a few frames a second: wait for `[data-scene="live"]` plus the 1.2 s fade before judging a screenshot, or the CSS still planet shows through.
 - Anything brighter than about 0.82 (linear) blooms. A white blob on the planet is usually a cloud or ice colour set too bright, not a stray object: hide layers one at a time to find it.
 - The hero is dark in both themes on purpose (`.hero-space` carries the dark tokens).
+- Nothing clips the page sideways (`body` has no `overflow-x`), so anything too wide shows up as a wider page; `tools/layout-check.ts` names the page. Wide content belongs in its own scroller (`.table-wrap`, `.figure-art`, `pre`), each focusable so a keyboard can scroll it.
+- `--faint` is the lightest text allowed: it measures at least 4.5:1 on every surface in both themes. Do not go lighter. The hero block redefines it too.

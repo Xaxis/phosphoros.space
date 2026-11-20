@@ -15,12 +15,14 @@ export function ThemeToggle() {
     return () => device.removeEventListener("change", read);
   }, []);
   const next = dark ? "light" : "dark";
+  // Until it has read the page, the button names no theme rather than the wrong one.
+  const label = dark === null ? "Switch theme" : `Switch to ${next} theme`;
   return (
     <button
       type="button"
       className="icon-button"
-      aria-label={`Switch to ${next} theme`}
-      title={`Switch to ${next} theme`}
+      aria-label={label}
+      title={label}
       onClick={() => {
         document.documentElement.dataset.theme = next;
         try {

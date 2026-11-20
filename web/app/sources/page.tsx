@@ -72,7 +72,7 @@ export default function SourcesPage() {
                               </>
                             )}
                           </p>
-                          {s.note && <p className="source-note">{s.note}</p>}
+                          {s.note && <p className="source-note">{linked(s.note)}</p>}
                           <p className="source-meta">
                             {s.checked && <span>Checked {s.checked}</span>}
                             {numbers.length > 0 && (
@@ -106,5 +106,18 @@ export default function SourcesPage() {
       </main>
       <Footer doc="data/sources.yaml" />
     </>
+  );
+}
+
+/** A note's text with any web address in it made a link. */
+function linked(note: string) {
+  return note.split(/(https?:\/\/\S+)/).map((part, i) =>
+    i % 2 ? (
+      <a key={part} href={part} rel="noopener">
+        {part}
+      </a>
+    ) : (
+      part
+    ),
   );
 }

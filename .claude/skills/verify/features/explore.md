@@ -41,3 +41,5 @@ Proves it when: with a 120-day doubling the verdict reads "Venus misses the dead
 
 - The model runs in the browser, so `@phosphoros/calc` (index) must stay free of Node imports; file access lives in `@phosphoros/calc/load`.
 - A run takes 30 to 160 ms; slider changes are deferred with `useDeferredValue`.
+- A variant the model cannot compute shows "The model cannot run with these assumptions" and the model's reason, e.g. `?set=foundry-doubling-days:120` (the Lattice finishes after the deadline). The model throws rather than report a meaningless budget share.
+- Screen readers hear only the verdict sentence, half a second after the last slider move (`role="status"`); the results panel is not a live region, or every step would read the whole table.

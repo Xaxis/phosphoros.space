@@ -1,4 +1,5 @@
 import { NAV, REPO } from "../lib/site";
+import { AllPagesMenu } from "./AllPagesMenu";
 import { Mark } from "./Mark";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -10,7 +11,7 @@ export function Header({ current }: { current?: string }) {
       </a>
       <div className="header-inner">
         <a className="brand" href="/">
-          <Mark size={26} />
+          <Mark size={26} id="mark-header" />
           <span>Phosphoros</span>
         </a>
         <nav aria-label="Main" className="nav">
@@ -31,19 +32,22 @@ export function Header({ current }: { current?: string }) {
             </svg>
           </a>
           <ThemeToggle />
-          <details className="menu">
-            <summary className="icon-button" aria-label="All pages">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
-                <path
-                  d="M4 7h16M4 12h16M4 17h16"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </summary>
-            <MenuLinks />
-          </details>
+          <button
+            type="button"
+            className="icon-button"
+            popoverTarget="all-pages"
+            aria-label="All pages"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <path
+                d="M4 7h16M4 12h16M4 17h16"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+          <AllPagesMenu pages={ALL_PAGES} />
         </div>
       </div>
     </header>
@@ -65,15 +69,3 @@ export const ALL_PAGES: { href: string; label: string }[] = [
   { href: "/contribute", label: "Contribute" },
   { href: "/about", label: "About and Changelog" },
 ];
-
-function MenuLinks() {
-  return (
-    <nav aria-label="All pages" className="menu-panel">
-      {ALL_PAGES.map((p) => (
-        <a key={p.href} href={p.href}>
-          {p.label}
-        </a>
-      ))}
-    </nav>
-  );
-}

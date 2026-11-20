@@ -108,6 +108,10 @@ export function Markdown({ text, doc }: { text: string; doc: string }) {
     h2: ({ children }) => <Heading level={2}>{children}</Heading>,
     h3: ({ children }) => <Heading level={3}>{children}</Heading>,
     h4: ({ children }) => <Heading level={4}>{children}</Heading>,
+    pre: ({ children }) => (
+      // biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling block must take focus to scroll by keys
+      <pre tabIndex={0}>{children}</pre>
+    ),
     table: ({ children }) => (
       <div className="table-wrap">
         <table>{children}</table>

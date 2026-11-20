@@ -83,6 +83,15 @@ export function Explorer({
   const base = useMemo(() => run(inputs, {}), [inputs]);
   const now = useMemo(() => run(inputs, deferred), [inputs, deferred]);
   const [copied, setCopied] = useState(false);
+  const [said, setSaid] = useState("");
+  // A screen reader hears only the verdict, once the slider settles, not the whole table each step.
+  useEffect(() => {
+    const t = setTimeout(
+      () => setSaid(now.r ? verdict(now.r).sentence : `The model cannot run: ${now.error}`),
+      500,
+    );
+    return () => clearTimeout(t);
+  }, [now]);
 
   useEffect(() => {
     const fromUrl = readUrl();
@@ -186,7 +195,10 @@ export function Explorer({
           </button>
         </div>
       </section>
-      <section className="explorer-results" aria-label="Consequences" aria-live="polite">
+      <p className="visually-hidden" role="status">
+        {said}
+      </p>
+      <section className="explorer-results" aria-label="Consequences">
         {now.error || !now.r || !base.r ? (
           <p className="explorer-error">The model cannot run with these assumptions: {now.error}</p>
         ) : (
@@ -195,6 +207,18 @@ export function Explorer({
       </section>
     </div>
   );
+}
+
+/** Whether the variant still makes the deadline, in numbers and as one sentence. */
+function verdict(now: Registry) {
+  const checks = [...now.checks.values()];
+  const passing = checks.filter((c) => c.pass).length;
+  const earthLike = now.get("traj-earth-like").value;
+  const deadline = now.get("deadline").value;
+  const onTime = earthLike <= deadline;
+  const when = formatQuantity(now.get("traj-earth-like"), { date: "day" });
+  const sentence = `${onTime ? "Venus is Earth-like in time" : "Venus misses the deadline"}: Earth-like air on ${when}. ${passing} of ${checks.length} physics checks pass.`;
+  return { onTime, earthLike, deadline, passing, total: checks.length, sentence };
 }
 
 function Results({
@@ -208,11 +232,8 @@ function Results({
   outcomes: Outcome[];
   changed: boolean;
 }) {
+  const { onTime, earthLike, deadline, passing, total } = verdict(now);
   const checks = [...now.checks.values()];
-  const passing = checks.filter((c) => c.pass).length;
-  const earthLike = now.get("traj-earth-like").value;
-  const deadline = now.get("deadline").value;
-  const onTime = earthLike <= deadline;
   return (
     <>
       <div className={`explorer-verdict ${onTime ? "ok" : "late"}`}>
@@ -226,43 +247,50 @@ function Results({
           {onTime
             ? `${Math.round(deadline - earthLike)} days before the deadline.`
             : `${formatQuantity(now.get("deadline"), { date: "day" })}.`}{" "}
-          {passing} of {checks.length} physics checks pass.
+          {passing} of {total} physics checks pass.
         </p>
       </div>
-      <table className="explorer-table">
-        <thead>
-          <tr>
-            <th>Consequence</th>
-            <th>Plan</th>
-            <th>This variant</th>
-          </tr>
-        </thead>
-        <tbody>
-          {outcomes.map((o) => {
-            const b = base.get(o.id);
-            const n = now.get(o.id);
-            const differs = Math.abs(n.value - b.value) > Math.abs(b.value) * 1e-6 + 1e-9;
-            const up = n.value > b.value;
-            const good =
-              o.better === "none" ? null : (o.better === "higher" || o.better === "later") === up;
-            return (
-              <tr
-                key={o.id}
-                className={
-                  differs ? (good === null ? "diff" : good ? "diff good" : "diff bad") : ""
-                }
-              >
-                <td>
-                  {n.label}
-                  {o.against && <span className="explorer-against"> {o.against}</span>}
-                </td>
-                <td className="explorer-num">{formatQuantity(b, { date: "day" })}</td>
-                <td className="explorer-num">{formatQuantity(n, { date: "day" })}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <section
+        className="explorer-table"
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling region must take focus to scroll by keys
+        tabIndex={0}
+        aria-label="Consequences: the plan and this variant"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th>Consequence</th>
+              <th>Plan</th>
+              <th>This variant</th>
+            </tr>
+          </thead>
+          <tbody>
+            {outcomes.map((o) => {
+              const b = base.get(o.id);
+              const n = now.get(o.id);
+              const differs = Math.abs(n.value - b.value) > Math.abs(b.value) * 1e-6 + 1e-9;
+              const up = n.value > b.value;
+              const good =
+                o.better === "none" ? null : (o.better === "higher" || o.better === "later") === up;
+              return (
+                <tr
+                  key={o.id}
+                  className={
+                    differs ? (good === null ? "diff" : good ? "diff good" : "diff bad") : ""
+                  }
+                >
+                  <td>
+                    {n.label}
+                    {o.against && <span className="explorer-against"> {o.against}</span>}
+                  </td>
+                  <td className="explorer-num">{formatQuantity(b, { date: "day" })}</td>
+                  <td className="explorer-num">{formatQuantity(n, { date: "day" })}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
       <h2 className="explorer-h">Physics checks</h2>
       <ul className="check-list">
         {checks.map((c) => {

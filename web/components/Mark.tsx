@@ -1,5 +1,6 @@
 /** The morning star: Venus with the light it brings. */
-export function Mark({ size = 28 }: { size?: number }) {
+/** `id` keeps the gradient unique when the mark appears twice on a page. */
+export function Mark({ size = 28, id = "mark" }: { size?: number; id?: string }) {
   return (
     <svg
       viewBox="0 0 32 32"
@@ -10,7 +11,7 @@ export function Mark({ size = 28 }: { size?: number }) {
       className="mark"
     >
       <defs>
-        <radialGradient id="mark-g" cx="38%" cy="34%" r="70%">
+        <radialGradient id={`${id}-g`} cx="38%" cy="34%" r="70%">
           <stop offset="0" stopColor="#fff4d6" />
           <stop offset="0.45" stopColor="#f3c463" />
           <stop offset="1" stopColor="#d9792f" />
@@ -21,7 +22,7 @@ export function Mark({ size = 28 }: { size?: number }) {
         fill="currentColor"
         opacity="0.35"
       />
-      <circle cx="16" cy="16" r="7.2" fill="url(#mark-g)" />
+      <circle cx="16" cy="16" r="7.2" fill={`url(#${id}-g)`} />
     </svg>
   );
 }
