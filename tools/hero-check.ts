@@ -158,6 +158,8 @@ const live = (page: Page) =>
     }
     console.log(`     shots in ${shots}`);
   }
+  const dpr = await page.evaluate(() => document.querySelector("canvas")?.dataset.dpr);
+  console.log(`     pixel ratio after playing: ${dpr} (lower on a slow renderer)`);
   check(errors.length === 0, "no console errors", errors.join(" | "));
   await ctx.close();
 }

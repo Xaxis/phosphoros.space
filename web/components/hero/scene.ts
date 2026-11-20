@@ -570,17 +570,20 @@ export function createScene(
   // --- Layout: put the planet where the page's planet box is -----------------------------------------
   let width = 0;
   let height = 0;
-  function layout() {
+  /** Lowered while frames run slow, so a weak GPU drops resolution rather than smoothness. */
+  let dprCap = 2;
+  function resize() {
     const rect = frame.getBoundingClientRect();
     const box = planetBox.getBoundingClientRect();
     width = Math.max(1, Math.round(rect.width));
     height = Math.max(1, Math.round(rect.height));
-    const dpr = Math.min(window.devicePixelRatio || 1, width < 800 ? 1.5 : 1.75);
+    const dpr = Math.min(window.devicePixelRatio || 1, width < 800 ? 1.5 : 1.75, dprCap);
     renderer.setPixelRatio(dpr);
     renderer.setSize(width, height, false);
     composer.setPixelRatio(dpr);
     composer.setSize(width, height);
     shared.uPixel.value = dpr;
+    canvas.dataset.dpr = String(dpr);
     const cx = box.left + box.width / 2 - rect.left;
     const cy = box.top + box.height / 2 - rect.top;
     // Leave room round the planet for the Ring and the glow of the air.
@@ -596,6 +599,9 @@ export function createScene(
     camera.lookAt(0, 0, 0);
     camera.setViewOffset(width, height, width / 2 - cx, height / 2 - cy, width, height);
     camera.updateProjectionMatrix();
+  }
+  function layout() {
+    resize();
     request();
   }
 
@@ -660,6 +666,23 @@ export function createScene(
   let motion = 0;
   let raf = 0;
   let last = 0;
+  let frameTime = 1 / 60;
+  let sinceResize = 0;
+
+  /** Below about 30 frames a second, step the resolution down (to half density at worst). */
+  function adapt(dt: number) {
+    if (!dt) return;
+    frameTime += (dt - frameTime) * 0.08;
+    sinceResize++;
+    const dpr = renderer.getPixelRatio();
+    if (frameTime > 1 / 30 && sinceResize > 45 && dpr > 0.5) {
+      dprCap = Math.max(0.5, dpr - 0.25);
+      sinceResize = 0;
+      frameTime = 1 / 40;
+      // Inside a frame: resize only, the loop already asks for the next one.
+      resize();
+    }
+  }
 
   function draw(now: number) {
     raf = 0;
@@ -675,7 +698,10 @@ export function createScene(
         opts.onEnd();
       }
     }
-    if (playing || resting) motion += dt;
+    if (playing || resting) {
+      motion += dt;
+      adapt(dt);
+    }
     apply(stageAt(day, data), motion);
     composer.render();
     opts.onDay(day);
