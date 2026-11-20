@@ -11,15 +11,152 @@ export function acid(r: Registry) {
     { label: "Moles of SO₂", unit: "mol", formula: "M_SO₂ / μ_SO₂", basis: "physics" },
     () => v("venus-so2-mass") / v("so2-molar-mass"),
   );
+  // --- Where the SO₂ goes: into the CO₂ seas, which freeze and are sealed --------------------------
+  r.q(
+    "so2-margules",
+    {
+      label: "How much SO₂ and liquid CO₂ dislike mixing: the regular-solution parameter at 263 K",
+      unit: "1",
+      sig: 3,
+      formula: "ln(y P / (x p_SO₂)) / (1 − x)²",
+      basis: "physics",
+      note: "From the measured CO₂ + SO₂ equilibrium nearest pure CO₂. Above zero, SO₂ in liquid CO₂ is more volatile than Raoult's law says; the vapour's departure from an ideal gas is folded in.",
+    },
+    () => {
+      const x = v("co2-so2-vle-liquid");
+      const ratio =
+        (v("co2-so2-vle-vapour") * v("co2-so2-vle-pressure")) / (x * v("co2-so2-vle-pure-so2"));
+      return Math.log(ratio) / (1 - x) ** 2;
+    },
+  );
+  r.q(
+    "so2-dilute-activity",
+    {
+      label: "Activity coefficient of a trace of SO₂ in liquid CO₂ at the triple point",
+      unit: "1",
+      sig: 2,
+      formula: "exp(A T_measured / T_t)",
+      basis: "physics",
+      note: "A regular solution's parameter scales as one over temperature, which carries the 263 K measurement down to the triple point.",
+    },
+    () => Math.exp((v("so2-margules") * v("co2-so2-vle-temp")) / v("co2-triple-temp")),
+  );
+  r.q(
+    "so2-vapour-pressure-triple",
+    {
+      label: "Pure SO₂'s vapour pressure at CO₂'s triple point",
+      unit: "Pa",
+      show: "bar",
+      sig: 2,
+      formula: "10^(A − B / (T_t + C)) bar",
+      basis: "physics",
+    },
+    () =>
+      1e5 *
+      10 ** (v("so2-antoine-a") - v("so2-antoine-b") / (v("co2-triple-temp") + v("so2-antoine-c"))),
+  );
+  r.q(
+    "so2-partition",
+    {
+      label: "SO₂'s share of the air over its share of the CO₂ seas, as they start to freeze",
+      unit: "1",
+      sig: 2,
+      formula: "y / x = γ p_SO₂ / (p_t + p_N₂)",
+      basis: "physics",
+    },
+    () =>
+      (v("so2-dilute-activity") * v("so2-vapour-pressure-triple")) /
+      (v("co2-triple-pressure") + v("n2-pressure")),
+  );
+  r.q(
+    "so2-sealed-share",
+    {
+      label: "Share of the SO₂ dissolved in the CO₂ seas when they start to freeze",
+      unit: "1",
+      show: "%",
+      sig: 3,
+      formula: "L / (L + K G), in moles of liquid and of gas",
+      basis: "physics",
+      note: "At the triple point most of the CO₂ is liquid and the air is thin, so the seas hold almost all of the SO₂ and freeze with it into the cryo-continents.",
+    },
+    () => {
+      const co2 = v("venus-co2-mass") / v("co2-molar-mass");
+      const n2 = v("venus-n2-mass") / v("n2-molar-mass");
+      const vapour = v("co2-triple-vapour-share");
+      const liquid = (1 - vapour) * co2;
+      const gas = vapour * co2 + n2;
+      return liquid / (liquid + v("so2-partition") * gas);
+    },
+  );
+  r.q(
+    "so2-sealed",
+    {
+      label: "SO₂ frozen into the cryo-continents with the CO₂ seas",
+      unit: "kg",
+      sig: 2,
+      formula: "M_SO₂ × sealed share",
+      basis: "physics",
+    },
+    () => v("venus-so2-mass") * v("so2-sealed-share"),
+  );
+  r.q(
+    "so2-airborne-at-freeze",
+    {
+      label: "SO₂ still in the air when the seas start to freeze",
+      unit: "kg",
+      sig: 2,
+      formula: "M_SO₂ − sealed",
+      basis: "physics",
+      note: "Most of it freezes out with the last CO₂ frost and in the Frost Towers, both sealed too; the Sweep counts all of it anyway.",
+    },
+    () => v("venus-so2-mass") - v("so2-sealed"),
+  );
+  r.q(
+    "venus-cloud-acid",
+    {
+      label: "Sulfuric acid in Venus's clouds",
+      unit: "kg",
+      sig: 2,
+      formula: "column × A",
+      basis: "physics",
+      note: "It rains out onto the ground once cooling stops the droplets evaporating below the clouds, before the CO₂ condenses.",
+    },
+    () => v("venus-cloud-column") * v("venus-area"),
+  );
+  r.q(
+    "acid-sulfur-swept",
+    {
+      label: "Sulfur the Acid Sweep must take up: the cloud acid and the SO₂ left in the air",
+      unit: "mol",
+      sig: 2,
+      formula: "M_acid / μ_H₂SO₄ + M_airborne / μ_SO₂",
+      basis: "physics",
+    },
+    () =>
+      v("venus-cloud-acid") / v("h2so4-molar-mass") +
+      v("so2-airborne-at-freeze") / v("so2-molar-mass"),
+  );
+  r.q(
+    "acid-swept-share",
+    {
+      label: "That sulfur as a share of the SO₂ in Venus's air",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "n_swept / n_SO₂",
+      basis: "physics",
+    },
+    () => v("acid-sulfur-swept") / v("so2-moles"),
+  );
   r.q(
     "acid-cao",
     {
-      label: "Lime (CaO equivalent) to neutralize the sulfur",
+      label: "Lime (CaO equivalent) to neutralize the sulfur that is not sealed",
       unit: "kg",
-      formula: "n_SO₂ μ_CaO",
+      formula: "n_swept μ_CaO",
       basis: "physics",
     },
-    () => v("so2-moles") * v("cao-molar-mass"),
+    () => v("acid-sulfur-swept") * v("cao-molar-mass"),
   );
   r.q(
     "acid-basalt",
@@ -35,20 +172,21 @@ export function acid(r: Registry) {
   r.q(
     "acid-basalt-layer",
     {
-      label: "Basalt layer if spread over the basins",
+      label: "Basalt layer if spread over the land outside the basins",
       unit: "m",
+      show: "mm",
       sig: 2,
-      formula: "M_basalt / (ρ_rock A_basins)",
+      formula: "M_basalt / (ρ_rock (A − A_basins))",
       basis: "physics",
     },
-    () => v("acid-basalt") / (v("rock-density") * v("cryo-footprint")),
+    () => v("acid-basalt") / (v("rock-density") * (v("venus-area") - v("cryo-footprint"))),
   );
   r.q(
     "acid-crust-share",
     {
       label: "That basalt as a share of the top kilometre of crust",
       unit: "1",
-      show: "%",
+      show: "ppm",
       sig: 1,
       formula: "M_basalt / (ρ A × 1 km)",
       basis: "physics",
@@ -211,5 +349,21 @@ export function aegis(r: Registry) {
         detail: `The coil's field pulls on its winding with ${fmt(r, "aegis-hoop-tension")}; holding it takes at least ${fmt(r, "aegis-structure-mass")} of carbon fibre at full strength, ${formatNumber(days, 2)} days of the full Foundry's output against the ${fmt(r, "foundry-doubling-days")} of one doubling.`,
       };
     },
+  );
+  r.q(
+    "acid-crust-share-all",
+    {
+      label: "Basalt to neutralize every molecule of SO₂, as a share of the top kilometre of crust",
+      unit: "1",
+      show: "%",
+      sig: 1,
+      formula: "n_SO₂ μ_CaO / (f_CaO ρ A × 1 km)",
+      basis: "physics",
+      note: "What the Sweep would grind if none of the SO₂ were sealed: the ceiling on how wrong the split can make it.",
+    },
+    () =>
+      (v("so2-moles") * v("cao-molar-mass")) /
+      v("basalt-cao-fraction") /
+      (v("rock-density") * v("venus-area") * 1000),
   );
 }

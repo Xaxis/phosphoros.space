@@ -375,15 +375,17 @@
   place: venus
   online: traj-clear-rain
   summary: >-
-    Cooling makes the sulfur rain out; {venus-so2-mass} of SO₂ is neutralized with crushed basalt
-    before the oceans arrive.
+    Cooling makes the sulfur rain out. The SO₂ dissolves in the CO₂ seas and freezes into the
+    cryo-continents; the {venus-cloud-acid} of cloud acid and the SO₂ left in the air are neutralized
+    with crushed basalt before the oceans arrive.
   job: Remove the sulfuric-acid clouds
   scale: Rain-out plus basalt neutralization
   breakthrough: None but scale
   specs:
-    - { label: SO₂, value: "{venus-so2-fraction|show=ppm}, {venus-so2-mass}" }
+    - { label: SO₂, value: "{venus-so2-fraction|show=ppm}, {venus-so2-mass}; {so2-sealed-share} sealed in the cryo-continents" }
+    - { label: Swept, value: "{venus-cloud-acid} of cloud acid and {so2-airborne-at-freeze} of SO₂, {acid-swept-share} of the sulfur" }
     - { label: Neutralizer, value: "{acid-cao} of CaO, in {acid-basalt} of crushed basalt" }
-    - { label: Basalt layer, value: "{acid-basalt-layer} over the basins, {acid-crust-share} of the crust available" }
+    - { label: Basalt layer, value: "{acid-basalt-layer} over the land outside the basins, {acid-crust-share} of the crust available" }
     - { label: Product, value: "Gypsum and anhydrite, with traces of chloride and fluoride salts" }
     - { label: Ocean buffer, value: "Shore basalt holds pH {genesis-ph-min} to {acid-ocean-ph-max}; no life until it holds above {genesis-ph-min} for {genesis-ph-days}" }
   invented: []

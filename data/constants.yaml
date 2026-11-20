@@ -561,6 +561,78 @@ cao-molar-mass:
   label: Molar mass of CaO
   basis: physics
   sig: 4
+h2so4-molar-mass:
+  value: 0.098079
+  unit: kg/mol
+  label: Molar mass of H₂SO₄
+  basis: physics
+  sig: 4
+so2-antoine-a:
+  value: 3.48586
+  unit: "1"
+  label: "SO₂ vapour pressure, Antoine A (log₁₀ of bar), 177.7 K to 263 K"
+  basis: physics
+  source: [stull-1947]
+  sig: 6
+so2-antoine-b:
+  value: 668.225
+  unit: K
+  label: SO₂ vapour pressure, Antoine B
+  basis: physics
+  source: [stull-1947]
+  sig: 6
+so2-antoine-c:
+  value: -72.252
+  unit: K
+  label: SO₂ vapour pressure, Antoine C
+  basis: physics
+  source: [stull-1947]
+  sig: 5
+co2-so2-vle-temp:
+  value: 263.15
+  unit: K
+  label: Temperature of the coldest measured CO₂ + SO₂ phase equilibrium
+  basis: physics
+  source: [coquelet-2014]
+  sig: 5
+co2-so2-vle-pressure:
+  value: 2.3495e6
+  unit: Pa
+  show: bar
+  label: Pressure of the measured CO₂ + SO₂ equilibrium nearest pure CO₂
+  basis: physics
+  source: [coquelet-2014]
+  sig: 3
+co2-so2-vle-liquid:
+  value: 0.103
+  unit: "1"
+  label: SO₂ share of the liquid, by mole, in that equilibrium
+  basis: physics
+  source: [coquelet-2014]
+  sig: 3
+co2-so2-vle-vapour:
+  value: 0.0147
+  unit: "1"
+  label: SO₂ share of the vapour, by mole, in that equilibrium
+  basis: physics
+  source: [coquelet-2014]
+  sig: 3
+co2-so2-vle-pure-so2:
+  value: 1.041e5
+  unit: Pa
+  show: bar
+  label: Pure SO₂'s vapour pressure at that temperature, measured with it
+  basis: physics
+  source: [coquelet-2014]
+  sig: 4
+venus-cloud-column:
+  value: 0.22
+  unit: kg/m2
+  label: Mass of Venus's cloud droplets above each square metre, 46 to 70 km
+  basis: physics
+  source: [baines-2021]
+  sig: 2
+  note: Pioneer Venus particle data (Knollenberg and Hunten 1980). The droplets are sulfuric acid at 70% to 99% by weight; the model counts all of it as acid.
 h2-molar-mass:
   value: 0.002016
   unit: kg/mol

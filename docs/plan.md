@@ -192,9 +192,11 @@ split [1.8 × 10¹⁸ kg](numbers.md#forge-co2) of CO₂, [0.4%](numbers.md#f
 > ([Licht 2025](sources.md#licht-2025-c2cnt)), and sulfur gases do not poison it
 > ([Licht 2015](sources.md#licht-2015)).
 
-The [Acid Sweep](technologies/acid.md) handles the sulfur: as the air cools,
-[1.1 × 10¹⁷ kg](numbers.md#venus-so2-mass) of SO₂ rains out and is neutralized by
-[9 × 10¹⁷ kg](numbers.md#acid-basalt) of crushed basalt spread over the basins. The
+The [Acid Sweep](technologies/acid.md) handles the sulfur. As the air cools, the
+[1.1 × 10¹⁷ kg](numbers.md#venus-so2-mass) of SO₂ dissolves in the liquid CO₂, and
+[99.4%](numbers.md#so2-sealed-share) of it freezes with the seas into the cryo-continents. The cloud acid and
+the SO₂ left in the air are neutralized by [6 × 10¹⁵ kg](numbers.md#acid-basalt) of crushed basalt spread on the
+land outside the basins. The
 [Aegis Shield](technologies/aegis.md), a superconducting coil switched on in
 [June 2034](numbers.md?date=month#aegis-online), inflates a [10,000 km](numbers.md#aegis-bubble-radius)
 magnetic bubble so the solar wind cannot strip the new water. The Veil opens to

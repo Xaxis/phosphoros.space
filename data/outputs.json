@@ -585,13 +585,93 @@
       "basis": "physics",
       "source": "data/constants.yaml#L558"
     },
+    "h2so4-molar-mass": {
+      "value": 0.098079,
+      "unit": "kg/mol",
+      "shown": "0.09808 kg/mol",
+      "label": "Molar mass of H₂SO₄",
+      "basis": "physics",
+      "source": "data/constants.yaml#L564"
+    },
+    "so2-antoine-a": {
+      "value": 3.48586,
+      "unit": "1",
+      "shown": "3.48586",
+      "label": "SO₂ vapour pressure, Antoine A (log₁₀ of bar), 177.7 K to 263 K",
+      "basis": "physics",
+      "source": "data/constants.yaml#L570"
+    },
+    "so2-antoine-b": {
+      "value": 668.225,
+      "unit": "K",
+      "shown": "668.225 K",
+      "label": "SO₂ vapour pressure, Antoine B",
+      "basis": "physics",
+      "source": "data/constants.yaml#L577"
+    },
+    "so2-antoine-c": {
+      "value": -72.252,
+      "unit": "K",
+      "shown": "−72.252 K",
+      "label": "SO₂ vapour pressure, Antoine C",
+      "basis": "physics",
+      "source": "data/constants.yaml#L584"
+    },
+    "co2-so2-vle-temp": {
+      "value": 263.15,
+      "unit": "K",
+      "shown": "263.15 K",
+      "label": "Temperature of the coldest measured CO₂ + SO₂ phase equilibrium",
+      "basis": "physics",
+      "source": "data/constants.yaml#L591"
+    },
+    "co2-so2-vle-pressure": {
+      "value": 2349500,
+      "unit": "Pa",
+      "shown": "23.5 bar",
+      "label": "Pressure of the measured CO₂ + SO₂ equilibrium nearest pure CO₂",
+      "basis": "physics",
+      "source": "data/constants.yaml#L598"
+    },
+    "co2-so2-vle-liquid": {
+      "value": 0.103,
+      "unit": "1",
+      "shown": "0.103",
+      "label": "SO₂ share of the liquid, by mole, in that equilibrium",
+      "basis": "physics",
+      "source": "data/constants.yaml#L606"
+    },
+    "co2-so2-vle-vapour": {
+      "value": 0.0147,
+      "unit": "1",
+      "shown": "0.0147",
+      "label": "SO₂ share of the vapour, by mole, in that equilibrium",
+      "basis": "physics",
+      "source": "data/constants.yaml#L613"
+    },
+    "co2-so2-vle-pure-so2": {
+      "value": 104100,
+      "unit": "Pa",
+      "shown": "1.041 bar",
+      "label": "Pure SO₂'s vapour pressure at that temperature, measured with it",
+      "basis": "physics",
+      "source": "data/constants.yaml#L620"
+    },
+    "venus-cloud-column": {
+      "value": 0.22,
+      "unit": "kg/m2",
+      "shown": "0.22 kg/m²",
+      "label": "Mass of Venus's cloud droplets above each square metre, 46 to 70 km",
+      "basis": "physics",
+      "source": "data/constants.yaml#L628"
+    },
     "h2-molar-mass": {
       "value": 0.002016,
       "unit": "kg/mol",
       "shown": "0.002016 kg/mol",
       "label": "Molar mass of H₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L564"
+      "source": "data/constants.yaml#L636"
     },
     "h2o-molar-mass": {
       "value": 0.018015,
@@ -599,7 +679,7 @@
       "shown": "0.01802 kg/mol",
       "label": "Molar mass of H₂O",
       "basis": "physics",
-      "source": "data/constants.yaml#L570"
+      "source": "data/constants.yaml#L642"
     },
     "c-molar-mass": {
       "value": 0.012011,
@@ -607,7 +687,7 @@
       "shown": "0.01201 kg/mol",
       "label": "Molar mass of carbon",
       "basis": "physics",
-      "source": "data/constants.yaml#L576"
+      "source": "data/constants.yaml#L648"
     },
     "o-o2-rate-o2": {
       "value": 6e-46,
@@ -615,7 +695,7 @@
       "shown": "6.0 × 10⁻³⁴ cm⁶/s",
       "label": "Rate of O + O₂ + M → O₃ + M at 300 K, with O₂ as M",
       "basis": "physics",
-      "source": "data/constants.yaml#L583"
+      "source": "data/constants.yaml#L655"
     },
     "o-o2-rate-n2": {
       "value": 5.6e-46,
@@ -623,7 +703,7 @@
       "shown": "5.6 × 10⁻³⁴ cm⁶/s",
       "label": "Rate of O + O₂ + M → O₃ + M at 300 K, with N₂ as M",
       "basis": "physics",
-      "source": "data/constants.yaml#L591"
+      "source": "data/constants.yaml#L663"
     },
     "o-o2-rate-exponent": {
       "value": 2.6,
@@ -631,7 +711,7 @@
       "shown": "2.6",
       "label": "How that rate rises as the air cools, as a power of 300 K over the temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L599"
+      "source": "data/constants.yaml#L671"
     },
     "o-o3-rate": {
       "value": 8e-18,
@@ -639,7 +719,7 @@
       "shown": "8.0 × 10⁻¹² cm³/s",
       "label": "Rate of O + O₃ → 2 O₂, before its temperature factor",
       "basis": "physics",
-      "source": "data/constants.yaml#L606"
+      "source": "data/constants.yaml#L678"
     },
     "o-o3-activation-temp": {
       "value": 2060,
@@ -647,7 +727,7 @@
       "shown": "2,060 K",
       "label": "Activation temperature of O + O₃ → 2 O₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L614"
+      "source": "data/constants.yaml#L686"
     },
     "co2-cp": {
       "value": 1000,
@@ -655,7 +735,7 @@
       "shown": "1,000 J/(kg·K)",
       "label": "Heat capacity of Venus's air (CO₂), averaged over the cooling",
       "basis": "physics",
-      "source": "data/constants.yaml#L621"
+      "source": "data/constants.yaml#L693"
     },
     "air-cp": {
       "value": 1040,
@@ -663,7 +743,7 @@
       "shown": "1,040 J/(kg·K)",
       "label": "Heat capacity of nitrogen-oxygen air",
       "basis": "physics",
-      "source": "data/constants.yaml#L629"
+      "source": "data/constants.yaml#L701"
     },
     "co2-deposition-heat": {
       "value": 571000,
@@ -671,7 +751,7 @@
       "shown": "571 kJ/kg",
       "label": "Heat CO₂ releases freezing straight from gas (deposition)",
       "basis": "physics",
-      "source": "data/constants.yaml#L635"
+      "source": "data/constants.yaml#L707"
     },
     "co2-sublimation-a1": {
       "value": -14.7408,
@@ -679,7 +759,7 @@
       "shown": "−14.740846",
       "label": "CO₂ sublimation curve, first coefficient (ln(p/p_t) = (T_t/T) [a₁ θ + a₂ θ^1.9 + a₃ θ^2.9], θ = 1 − T/T_t)",
       "basis": "physics",
-      "source": "data/constants.yaml#L643"
+      "source": "data/constants.yaml#L715"
     },
     "co2-sublimation-a2": {
       "value": 2.4327,
@@ -687,7 +767,7 @@
       "shown": "2.4327015",
       "label": "CO₂ sublimation curve, second coefficient",
       "basis": "physics",
-      "source": "data/constants.yaml#L651"
+      "source": "data/constants.yaml#L723"
     },
     "co2-sublimation-a3": {
       "value": -5.30618,
@@ -695,7 +775,7 @@
       "shown": "−5.3061778",
       "label": "CO₂ sublimation curve, third coefficient",
       "basis": "physics",
-      "source": "data/constants.yaml#L658"
+      "source": "data/constants.yaml#L730"
     },
     "co2-critical-temp": {
       "value": 304.13,
@@ -703,7 +783,7 @@
       "shown": "304.1 K",
       "label": "CO₂ critical temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L665"
+      "source": "data/constants.yaml#L737"
     },
     "co2-critical-pressure": {
       "value": 7377300,
@@ -711,7 +791,7 @@
       "shown": "73.8 bar",
       "label": "CO₂ critical pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L672"
+      "source": "data/constants.yaml#L744"
     },
     "co2-triple-temp": {
       "value": 216.592,
@@ -719,7 +799,7 @@
       "shown": "216.6 K",
       "label": "CO₂ triple-point temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L680"
+      "source": "data/constants.yaml#L752"
     },
     "co2-triple-pressure": {
       "value": 517950,
@@ -727,7 +807,7 @@
       "shown": "5.2 bar",
       "label": "CO₂ triple-point pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L687"
+      "source": "data/constants.yaml#L759"
     },
     "co2-melting-a1": {
       "value": 1955.54,
@@ -735,7 +815,7 @@
       "shown": "1,955.539",
       "label": "CO₂ melting curve, linear coefficient (p/p_t = 1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)²)",
       "basis": "physics",
-      "source": "data/constants.yaml#L695"
+      "source": "data/constants.yaml#L767"
     },
     "co2-melting-a2": {
       "value": 2055.46,
@@ -743,7 +823,7 @@
       "shown": "2,055.4593",
       "label": "CO₂ melting curve, quadratic coefficient",
       "basis": "physics",
-      "source": "data/constants.yaml#L703"
+      "source": "data/constants.yaml#L775"
     },
     "dry-ice-density": {
       "value": 1562,
@@ -751,7 +831,7 @@
       "shown": "1,562 kg/m³",
       "label": "Density of dry ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L710"
+      "source": "data/constants.yaml#L782"
     },
     "co2-split-enthalpy": {
       "value": 393500,
@@ -759,7 +839,7 @@
       "shown": "394 kJ/mol",
       "label": "Least energy to split CO₂ into carbon and oxygen",
       "basis": "physics",
-      "source": "data/constants.yaml#L716"
+      "source": "data/constants.yaml#L788"
     },
     "bosch-reaction-heat": {
       "value": 90100,
@@ -767,7 +847,7 @@
       "shown": "90.1 kJ/mol",
       "label": "Heat the Bosch reaction releases per mole of CO₂ (water as vapour)",
       "basis": "physics",
-      "source": "data/constants.yaml#L724"
+      "source": "data/constants.yaml#L796"
     },
     "ice-density": {
       "value": 917,
@@ -775,7 +855,7 @@
       "shown": "917 kg/m³",
       "label": "Density of water ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L732"
+      "source": "data/constants.yaml#L804"
     },
     "water-density": {
       "value": 1000,
@@ -783,7 +863,7 @@
       "shown": "1,000 kg/m³",
       "label": "Density of water",
       "basis": "physics",
-      "source": "data/constants.yaml#L738"
+      "source": "data/constants.yaml#L810"
     },
     "ice-melt-heat": {
       "value": 334000,
@@ -791,7 +871,7 @@
       "shown": "334 kJ/kg",
       "label": "Heat to melt ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L744"
+      "source": "data/constants.yaml#L816"
     },
     "ice-cp": {
       "value": 1750,
@@ -799,7 +879,7 @@
       "shown": "1,800 J/(kg·K)",
       "label": "Heat capacity of cold ice (average from 150 K to 273 K)",
       "basis": "physics",
-      "source": "data/constants.yaml#L751"
+      "source": "data/constants.yaml#L823"
     },
     "water-cp": {
       "value": 4184,
@@ -807,7 +887,7 @@
       "shown": "4,180 J/(kg·K)",
       "label": "Heat capacity of water",
       "basis": "physics",
-      "source": "data/constants.yaml#L757"
+      "source": "data/constants.yaml#L829"
     },
     "graphite-density": {
       "value": 2200,
@@ -815,7 +895,7 @@
       "shown": "2,200 kg/m³",
       "label": "Density of graphite",
       "basis": "physics",
-      "source": "data/constants.yaml#L763"
+      "source": "data/constants.yaml#L835"
     },
     "rock-conductivity": {
       "value": 2.5,
@@ -823,7 +903,7 @@
       "shown": "2.5 W/(m·K)",
       "label": "Thermal conductivity of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L771"
+      "source": "data/constants.yaml#L843"
     },
     "rock-diffusivity": {
       "value": 0.000001,
@@ -831,7 +911,7 @@
       "shown": "1.0 × 10⁻⁶ m²/s",
       "label": "Thermal diffusivity of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L778"
+      "source": "data/constants.yaml#L850"
     },
     "rock-density": {
       "value": 3000,
@@ -839,7 +919,7 @@
       "shown": "3,000 kg/m³",
       "label": "Density of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L785"
+      "source": "data/constants.yaml#L857"
     },
     "basalt-cao-fraction": {
       "value": 0.1,
@@ -847,7 +927,7 @@
       "shown": "10%",
       "label": "Lime (CaO) share of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L792"
+      "source": "data/constants.yaml#L864"
     },
     "led-2012-power-in": {
       "value": 3e-11,
@@ -855,7 +935,7 @@
       "shown": "3.0 × 10⁻¹¹ W",
       "label": "Electricity the MIT LED drew while emitting more light than that (2012)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L801"
+      "source": "data/constants.yaml#L873"
     },
     "led-2012-light-out": {
       "value": 6.9e-11,
@@ -863,7 +943,7 @@
       "shown": "6.9 × 10⁻¹¹ W",
       "label": "Light the MIT LED emitted from that electricity, the rest drawn from heat (2012)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L808"
+      "source": "data/constants.yaml#L880"
     },
     "carbon-fibre-strength": {
       "value": 7000000000,
@@ -871,7 +951,7 @@
       "shown": "7 GPa",
       "label": "Tensile strength of Toray T1100G, the strongest carbon fibre on general sale",
       "basis": "precedent",
-      "source": "data/constants.yaml#L815"
+      "source": "data/constants.yaml#L887"
     },
     "carbon-fibre-density": {
       "value": 1790,
@@ -879,7 +959,7 @@
       "shown": "1,790 kg/m³",
       "label": "Density of Toray T1100G carbon fibre",
       "basis": "precedent",
-      "source": "data/constants.yaml#L823"
+      "source": "data/constants.yaml#L895"
     },
     "lunar-factory-seed-mass": {
       "value": 100000,
@@ -887,7 +967,7 @@
       "shown": "100 t",
       "label": "Seed mass of the 1980 NASA self-replicating lunar factory (a design study)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L830"
+      "source": "data/constants.yaml#L902"
     },
     "lunar-factory-replication-time": {
       "value": 365.25,
@@ -895,7 +975,7 @@
       "shown": "1 yr",
       "label": "Time the 1980 NASA lunar factory was designed to take to copy itself",
       "basis": "precedent",
-      "source": "data/constants.yaml#L838"
+      "source": "data/constants.yaml#L910"
     },
     "howe-tiles": {
       "value": 72000000000,
@@ -903,7 +983,7 @@
       "shown": "7.2 × 10¹⁰",
       "label": "Floating tiles, 100 m across, that Cloud Continents needs to cover Venus at 50 km",
       "basis": "precedent",
-      "source": "data/constants.yaml#L846"
+      "source": "data/constants.yaml#L918"
     },
     "howe-water-mass": {
       "value": 230000000000000000,
@@ -911,7 +991,7 @@
       "shown": "2.3 × 10¹⁷ kg",
       "label": "Water Cloud Continents imports, enough for arable soil over the whole planet",
       "basis": "precedent",
-      "source": "data/constants.yaml#L852"
+      "source": "data/constants.yaml#L924"
     },
     "divertor-steady-flux": {
       "value": 10000000,
@@ -919,7 +999,7 @@
       "shown": "10 MW/m²",
       "label": "Steady heat flux ITER's divertor targets are built to carry",
       "basis": "precedent",
-      "source": "data/constants.yaml#L859"
+      "source": "data/constants.yaml#L931"
     },
     "mercury-surface-fe-max": {
       "value": 0.04,
@@ -927,7 +1007,7 @@
       "shown": "4%",
       "label": "Most iron in Mercury's surface rock, by mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L868"
+      "source": "data/constants.yaml#L940"
     },
     "program-start": {
       "value": "2027-01-01",
@@ -7114,26 +7194,169 @@
         "so2-molar-mass"
       ]
     },
-    "acid-cao": {
-      "value": 92923700000000000,
-      "unit": "kg",
-      "shown": "9.3 × 10¹⁶ kg",
-      "label": "Lime (CaO equivalent) to neutralize the sulfur",
+    "so2-margules": {
+      "value": 1.45378,
+      "unit": "1",
+      "shown": "1.45",
+      "label": "How much SO₂ and liquid CO₂ dislike mixing: the regular-solution parameter at 263 K",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L15",
-      "formula": "n_SO₂ μ_CaO",
+      "source": "calc/src/model/shield.ts#L16",
+      "formula": "ln(y P / (x p_SO₂)) / (1 − x)²",
       "inputs": [
-        "so2-moles",
+        "co2-so2-vle-liquid",
+        "co2-so2-vle-vapour",
+        "co2-so2-vle-pressure",
+        "co2-so2-vle-pure-so2"
+      ]
+    },
+    "so2-dilute-activity": {
+      "value": 5.84906,
+      "unit": "1",
+      "shown": "5.8",
+      "label": "Activity coefficient of a trace of SO₂ in liquid CO₂ at the triple point",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L33",
+      "formula": "exp(A T_measured / T_t)",
+      "inputs": [
+        "so2-margules",
+        "co2-so2-vle-temp",
+        "co2-triple-temp"
+      ]
+    },
+    "so2-vapour-pressure-triple": {
+      "value": 7183.56,
+      "unit": "Pa",
+      "shown": "0.072 bar",
+      "label": "Pure SO₂'s vapour pressure at CO₂'s triple point",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L45",
+      "formula": "10^(A − B / (T_t + C)) bar",
+      "inputs": [
+        "so2-antoine-a",
+        "so2-antoine-b",
+        "co2-triple-temp",
+        "so2-antoine-c"
+      ]
+    },
+    "so2-partition": {
+      "value": 0.057819,
+      "unit": "1",
+      "shown": "0.058",
+      "label": "SO₂'s share of the air over its share of the CO₂ seas, as they start to freeze",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L59",
+      "formula": "y / x = γ p_SO₂ / (p_t + p_N₂)",
+      "inputs": [
+        "so2-dilute-activity",
+        "so2-vapour-pressure-triple",
+        "co2-triple-pressure",
+        "n2-pressure"
+      ]
+    },
+    "so2-sealed-share": {
+      "value": 0.994295,
+      "unit": "1",
+      "shown": "99.4%",
+      "label": "Share of the SO₂ dissolved in the CO₂ seas when they start to freeze",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L72",
+      "formula": "L / (L + K G), in moles of liquid and of gas",
+      "inputs": [
+        "venus-co2-mass",
+        "co2-molar-mass",
+        "venus-n2-mass",
+        "n2-molar-mass",
+        "co2-triple-vapour-share",
+        "so2-partition"
+      ]
+    },
+    "so2-sealed": {
+      "value": 105556000000000000,
+      "unit": "kg",
+      "shown": "1.1 × 10¹⁷ kg",
+      "label": "SO₂ frozen into the cryo-continents with the CO₂ seas",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L72",
+      "formula": "M_SO₂ × sealed share",
+      "inputs": [
+        "venus-so2-mass",
+        "so2-sealed-share"
+      ]
+    },
+    "so2-airborne-at-freeze": {
+      "value": 605648000000000,
+      "unit": "kg",
+      "shown": "6.1 × 10¹⁴ kg",
+      "label": "SO₂ still in the air when the seas start to freeze",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L103",
+      "formula": "M_SO₂ − sealed",
+      "inputs": [
+        "venus-so2-mass",
+        "so2-sealed"
+      ]
+    },
+    "venus-cloud-acid": {
+      "value": 101252000000000,
+      "unit": "kg",
+      "shown": "1.0 × 10¹⁴ kg",
+      "label": "Sulfuric acid in Venus's clouds",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L115",
+      "formula": "column × A",
+      "inputs": [
+        "venus-cloud-column",
+        "venus-area"
+      ]
+    },
+    "acid-sulfur-swept": {
+      "value": 10485900000000000,
+      "unit": "mol",
+      "shown": "1.0 × 10¹⁶ mol",
+      "label": "Sulfur the Acid Sweep must take up: the cloud acid and the SO₂ left in the air",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L127",
+      "formula": "M_acid / μ_H₂SO₄ + M_airborne / μ_SO₂",
+      "inputs": [
+        "venus-cloud-acid",
+        "h2so4-molar-mass",
+        "so2-airborne-at-freeze",
+        "so2-molar-mass"
+      ]
+    },
+    "acid-swept-share": {
+      "value": 0.00632794,
+      "unit": "1",
+      "shown": "0.63%",
+      "label": "That sulfur as a share of the SO₂ in Venus's air",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L140",
+      "formula": "n_swept / n_SO₂",
+      "inputs": [
+        "acid-sulfur-swept",
+        "so2-moles"
+      ]
+    },
+    "acid-cao": {
+      "value": 588015000000000,
+      "unit": "kg",
+      "shown": "5.9 × 10¹⁴ kg",
+      "label": "Lime (CaO equivalent) to neutralize the sulfur that is not sealed",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L152",
+      "formula": "n_swept μ_CaO",
+      "inputs": [
+        "acid-sulfur-swept",
         "cao-molar-mass"
       ]
     },
     "acid-basalt": {
-      "value": 929237000000000000,
+      "value": 5880150000000000,
       "unit": "kg",
-      "shown": "9 × 10¹⁷ kg",
+      "shown": "6 × 10¹⁵ kg",
       "label": "Crushed basalt carrying that lime",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L25",
+      "source": "calc/src/model/shield.ts#L162",
       "formula": "M_CaO / f_CaO",
       "inputs": [
         "acid-cao",
@@ -7141,26 +7364,27 @@
       ]
     },
     "acid-basalt-layer": {
-      "value": 2.06247,
+      "value": 0.00632168,
       "unit": "m",
-      "shown": "2.1 m",
-      "label": "Basalt layer if spread over the basins",
+      "shown": "6.3 mm",
+      "label": "Basalt layer if spread over the land outside the basins",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L36",
-      "formula": "M_basalt / (ρ_rock A_basins)",
+      "source": "calc/src/model/shield.ts#L173",
+      "formula": "M_basalt / (ρ_rock (A − A_basins))",
       "inputs": [
         "acid-basalt",
         "rock-density",
+        "venus-area",
         "cryo-footprint"
       ]
     },
     "acid-crust-share": {
-      "value": 0.000673017,
+      "value": 0.00000425881,
       "unit": "1",
-      "shown": "0.07%",
+      "shown": "4 ppm",
       "label": "That basalt as a share of the top kilometre of crust",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L47",
+      "source": "calc/src/model/shield.ts#L185",
       "formula": "M_basalt / (ρ A × 1 km)",
       "inputs": [
         "acid-basalt",
@@ -7174,7 +7398,7 @@
       "shown": "3.6 × 10⁻⁹ Pa",
       "label": "Solar wind pressure at Venus",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L63",
+      "source": "calc/src/model/shield.ts#L201",
       "formula": "n m_p v²",
       "inputs": [
         "solar-wind-density",
@@ -7188,7 +7412,7 @@
       "shown": "95 nT",
       "label": "Field that balances the solar wind at the bubble's edge",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L74",
+      "source": "calc/src/model/shield.ts#L212",
       "formula": "√(2 μ₀ p)",
       "inputs": [
         "vacuum-permeability",
@@ -7201,7 +7425,7 @@
       "shown": "9.5 × 10²⁰ A·m²",
       "label": "Aegis dipole moment",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L86",
+      "source": "calc/src/model/shield.ts#L224",
       "formula": "B r³ / (μ₀ / 4π)",
       "inputs": [
         "aegis-field",
@@ -7215,7 +7439,7 @@
       "shown": "1%",
       "label": "Aegis dipole compared with Earth's",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L99",
+      "source": "calc/src/model/shield.ts#L237",
       "formula": "m / m_⊕",
       "inputs": [
         "aegis-dipole",
@@ -7228,7 +7452,7 @@
       "shown": "3 × 10⁸ A",
       "label": "Ampere-turns in the coil",
       "basis": "invented",
-      "source": "calc/src/model/shield.ts#L111",
+      "source": "calc/src/model/shield.ts#L249",
       "formula": "m / (π r_coil²)",
       "inputs": [
         "aegis-dipole",
@@ -7241,7 +7465,7 @@
       "shown": "300 A",
       "label": "Current per turn",
       "basis": "invented",
-      "source": "calc/src/model/shield.ts#L122",
+      "source": "calc/src/model/shield.ts#L260",
       "formula": "NI / N",
       "inputs": [
         "aegis-ampere-turns",
@@ -7254,7 +7478,7 @@
       "shown": "7.1 × 10¹⁷ J",
       "label": "Magnetic energy stored in the Aegis coil",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L130",
+      "source": "calc/src/model/shield.ts#L268",
       "formula": "½ μ₀ a (ln(8a/b) − 2) (NI)²",
       "inputs": [
         "vacuum-permeability",
@@ -7269,7 +7493,7 @@
       "shown": "1.2 × 10¹¹ N",
       "label": "Tension the coil's own field puts in its winding",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L146",
+      "source": "calc/src/model/shield.ts#L284",
       "formula": "μ₀ (NI)² (ln(8a/b) − 1) / 4π",
       "inputs": [
         "vacuum-permeability",
@@ -7284,7 +7508,7 @@
       "shown": "2.0 × 10¹¹ kg",
       "label": "Least carbon fibre that holds the coil together",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L157",
+      "source": "calc/src/model/shield.ts#L295",
       "formula": "2π a × (T / σ) × ρ",
       "inputs": [
         "aegis-coil-radius",
@@ -7299,7 +7523,7 @@
       "shown": "10⁶ N",
       "label": "Solar wind push on the magnetic bubble",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L174",
+      "source": "calc/src/model/shield.ts#L312",
       "formula": "p π R²",
       "inputs": [
         "solar-wind-pressure",
@@ -7312,7 +7536,7 @@
       "shown": "5 × 10⁻⁴",
       "label": "The wind's push on the coil over the Sun's pull on it",
       "basis": "physics",
-      "source": "calc/src/model/shield.ts#L185",
+      "source": "calc/src/model/shield.ts#L323",
       "formula": "(F / M) / (μ☉ / r²)",
       "inputs": [
         "aegis-wind-force",
@@ -7320,6 +7544,22 @@
         "sun-mu",
         "venus-orbit",
         "veil-distance"
+      ]
+    },
+    "acid-crust-share-all": {
+      "value": 0.000673017,
+      "unit": "1",
+      "shown": "0.07%",
+      "label": "Basalt to neutralize every molecule of SO₂, as a share of the top kilometre of crust",
+      "basis": "physics",
+      "source": "calc/src/model/shield.ts#L354",
+      "formula": "n_SO₂ μ_CaO / (f_CaO ρ A × 1 km)",
+      "inputs": [
+        "so2-moles",
+        "cao-molar-mass",
+        "basalt-cao-fraction",
+        "rock-density",
+        "venus-area"
       ]
     },
     "final-water-vapour": {

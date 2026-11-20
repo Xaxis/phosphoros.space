@@ -209,6 +209,27 @@ test("the seas freeze at the triple point, and the simulation's heat books balan
   );
 });
 
+test("the SO₂ goes into the CO₂ seas, and the Sweep is sized for what is left", () => {
+  // The regular-solution parameter, fitted to one measured equilibrium at 263.15 K, reproduces the
+  // others Coquelet and Arpentinier (2014) measured there: [x SO₂, P in Pa, y SO₂].
+  const A = v("so2-margules");
+  const pure = v("co2-so2-vle-pure-so2");
+  for (const [x, P, y] of [
+    [0.212, 2.082e6, 0.0262],
+    [0.313, 1.8632e6, 0.0365],
+  ] as const) {
+    const predicted = (Math.exp(A * (1 - x) ** 2) * x * pure) / P;
+    assert.ok(Math.abs(predicted / y - 1) < 0.1, `x ${x}: ${predicted} against ${y}`);
+  }
+  assert.ok(v("so2-sealed-share") > 0.99 && v("so2-sealed-share") < 1);
+  assert.ok(Math.abs(v("so2-sealed") + v("so2-airborne-at-freeze") - v("venus-so2-mass")) < 1);
+  assert.ok(Math.abs(v("acid-cao") / (v("acid-sulfur-swept") * v("cao-molar-mass")) - 1) < 1e-12);
+  // A more volatile SO₂ leaves more in the air, and the Sweep grows with it.
+  const volatile = compute(loadInputs({ "co2-so2-vle-vapour": 0.03 }));
+  assert.ok(volatile.get("so2-sealed-share").value < v("so2-sealed-share"));
+  assert.ok(volatile.get("acid-cao").value > v("acid-cao"));
+});
+
 test("the first launch waits for the Ceres factories, solved with the Railheads they build", () => {
   // In the plan the factories finish first, and launches start at the Lattice's full power.
   assert.ok(v("ceres-ready") < v("helios-full-power"));

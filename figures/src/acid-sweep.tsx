@@ -1,7 +1,7 @@
 /**
  * Acid Sweep: the sulfur's path out of the air and into rock, as three schematic cross-sections of a
- * highland and a lowland basin (grind and dust, the Clear Rain, the oceans), over the masses of SO₂,
- * lime and basalt drawn to scale.
+ * highland and a lowland basin (grind and dust, the Clear Rain, the oceans), over the masses drawn to
+ * scale: the SO₂, the share the CO₂ seas seal away, the sulfur left to sweep, and the lime and basalt.
  */
 import { Art, Frame, Link, path, show, textWidth, W } from "./kit.tsx";
 import { CurvedArrow, Lines, Tag } from "./space-kit.tsx";
@@ -21,6 +21,8 @@ interface Props {
   bars: Bar[];
   text: {
     so2: string;
+    sealed: string;
+    swept: string;
     ppm: string;
     moles: string;
     cao: string;
@@ -40,7 +42,7 @@ interface Props {
   };
 }
 
-const H = 560;
+const H = 664;
 const PW = 234; // panel width
 const GAP = 13;
 const PANEL_X = [16, 16 + PW + GAP, 16 + 2 * (PW + GAP)];
@@ -130,11 +132,12 @@ function AcidSweep({ bars, text: t }: Props) {
   const can0 = a + 112;
   const can1 = a + PW - 14;
   const canY = 112;
-  // Over the basin floor, so their dust lands on it.
+  // Over the highland and the shore, where the cloud acid would wash into the oceans. The basin floor
+  // needs no dust: what lands there is sealed under the caps.
   const drones: [number, number][] = [
-    [a + 112, 146],
-    [a + 140, 156],
-    [a + 168, 146],
+    [a + 50, 150],
+    [a + PW - 38, 158],
+    [a + PW - 14, 150],
   ];
   const canopyName = "Exhaust canopy";
   const canopyBox = {
@@ -144,14 +147,13 @@ function AcidSweep({ bars, text: t }: Props) {
     h: 17,
   };
   const dust = (x0: number) => (
-    <rect
-      className="f-soft"
-      x={x0 + 94}
-      y={Y_FLOOR - 5}
-      width={PW - 56 - 94 + 2}
-      height={5}
-      rx={1}
-    />
+    <g>
+      <rect className="f-soft" x={x0 + 42} y={Y_HIGH - 5} width={18} height={5} rx={1} />
+      <path
+        className="f-soft"
+        d={`M${x0 + PW - 56},${Y_FLOOR}L${x0 + PW - 24},${Y_SHORE}H${x0 + PW - 1}v-5H${x0 + PW - 26}L${x0 + PW - 60},${Y_FLOOR - 5}Z`}
+      />
+    </g>
   );
   // Panel 2: acid rain onto the dust; liquid CO₂ pooling over it.
   const rain = Array.from({ length: 8 }, (_, k) => b + 18 + k * 28);
@@ -168,13 +170,13 @@ function AcidSweep({ bars, text: t }: Props) {
   ];
   const gateW = Math.max(...gate.map((l, k) => textWidth(l.text, k ? 11.5 : 13)));
   const gateBox = { x: c + 26, y: 96, w: gateW + 12, h: 14.5 * 2 + 21 };
-  const cryo = "An upper bound: sulfur sealed in the cryo-continents needs no lime.";
+  const cryo = `The sealed ${t.sealed} needs no lime: the cryo-continents hold it under the caps.`;
   const cryoY = BAR_TOP + bars.length * BAR_ROW + 18;
   return (
     <Frame
       id="acid-sweep"
       title="Acid Sweep: the sulfur's path out of the air and the oceans"
-      desc={`Three schematic cross-sections of a highland and a lowland basin. From ${t.cooling}, mills grind ${t.basalt} of basalt and canopy drones lay it ${t.layer} deep on the basin floors. By ${t.rain} the acid clouds have rained out onto it and liquid CO₂ washes the SO₂ down, where lime turns it to gypsum. From ${t.warming}, shore basalt holds the oceans between pH ${t.phMin} and ${t.phMax}; no life is released until they stay above ${t.phMin} for ${t.phDays}. Below, the masses of SO₂, lime and basalt to scale.`}
+      desc={`Three schematic cross-sections of a highland and a lowland basin. From ${t.cooling}, mills grind ${t.basalt} of basalt and canopy drones lay it ${t.layer} deep on the land outside the basins. By ${t.rain} the acid clouds have rained out onto it and lime turns the acid to gypsum, while the SO₂ dissolves in the liquid CO₂ and freezes with it under the caps: ${t.sealed} of it. From ${t.warming}, shore basalt holds the oceans between pH ${t.phMin} and ${t.phMax}; no life is released until they stay above ${t.phMin} for ${t.phDays}. Below, the masses to scale.`}
       height={H}
       links
     >
@@ -205,7 +207,7 @@ function AcidSweep({ bars, text: t }: Props) {
                 x1={x}
                 y1={y + 5}
                 x2={x + dx}
-                y2={Y_FLOOR - 7}
+                y2={groundAt(a, x + dx) - 7}
                 strokeDasharray="1 3"
               />
             ))}
@@ -229,15 +231,15 @@ function AcidSweep({ bars, text: t }: Props) {
         />
         <CurvedArrow
           from={[a + 42, Y_HIGH - 16]}
-          via={[a + 66, 150]}
-          to={[a + 102, 147]}
+          via={[a + 110, 140]}
+          to={[a + PW - 48, 156]}
           tone="soft"
           head={6}
         />
       </Art>
       <Link
         href="/technologies/exhaust"
-        label={`${canopyName}: its drones dust the basin floors`}
+        label={`${canopyName}: its drones dust the highlands and the shores`}
         box={canopyBox}
       >
         <path
@@ -256,8 +258,8 @@ function AcidSweep({ bars, text: t }: Props) {
             { text: `${t.basalt} of highland basalt,`, kind: "note" },
             { text: `${t.crust} of the crust's top km,`, kind: "note" },
             { text: "ground to dust. Drones lay it", kind: "note" },
-            { text: `${t.layer} deep on the basin floors,`, kind: "note" },
-            { text: `${t.basins} of Venus.`, kind: "note" },
+            { text: `${t.layer} deep on the land`, kind: "note" },
+            { text: "outside the basins.", kind: "note" },
           ]}
         />
 
@@ -303,9 +305,9 @@ function AcidSweep({ bars, text: t }: Props) {
           y={NOTES_Y}
           lines={[
             { text: "Acid rain falls on the dust, and", kind: "note" },
-            { text: "liquid CO₂ washes the SO₂ down.", kind: "note" },
-            { text: "Each CaO takes up one SO₂,", kind: "note" },
-            { text: "leaving gypsum and anhydrite.", kind: "note" },
+            { text: "lime turns it to gypsum. The SO₂", kind: "note" },
+            { text: "dissolves in the liquid CO₂ and", kind: "note" },
+            { text: "freezes with it under the caps.", kind: "note" },
           ]}
         />
 
@@ -363,7 +365,7 @@ function AcidSweep({ bars, text: t }: Props) {
         </text>
         {bars.map((bar, k) => {
           const y = BAR_TOP + k * BAR_ROW;
-          const w = (bar.value / max) * BAR_W;
+          const w = Math.max(1.5, (bar.value / max) * BAR_W);
           return (
             <g key={bar.id}>
               <text className="f-label" x={BAR_X - 12} y={y + 4} textAnchor="end">
@@ -374,7 +376,11 @@ function AcidSweep({ bars, text: t }: Props) {
               </text>
               <path
                 className={`f-${bar.tone}`}
-                d={`M${BAR_X},${y}h${w - 4}a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h${-(w - 4)}Z`}
+                d={
+                  w > 8
+                    ? `M${BAR_X},${y}h${w - 4}a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h${-(w - 4)}Z`
+                    : `M${BAR_X},${y}h${w}v16h${-w}Z`
+                }
               >
                 <title>{`${bar.label}: ${bar.text}`}</title>
               </path>
@@ -427,16 +433,26 @@ export const acidSweep: FigureDef<Props> = {
           `${show(r, "venus-so2-fraction", { show: "ppm" })}, ${show(r, "so2-moles")}`,
           "s4",
         ),
-        bar("acid-cao", "Lime to take it up", "one CaO for each SO₂", "muted"),
+        bar(
+          "so2-sealed",
+          "Sealed with the CO₂",
+          `${show(r, "so2-sealed-share")}, frozen with the seas`,
+          "cool",
+        ),
+        bar("so2-airborne-at-freeze", "SO₂ left in the air", "as the seas start to freeze", "s4"),
+        bar("venus-cloud-acid", "Cloud acid", "sulfuric acid, rains out first", "s4"),
         bar(
           "acid-basalt",
-          "Basalt carrying it",
+          "Basalt for the rest",
           `${show(r, "basalt-cao-fraction")} of basalt is lime`,
           "soft",
         ),
+        bar("acid-cao", "Lime in it", "one CaO for each sulfur", "muted"),
       ],
       text: {
         so2: show(r, "venus-so2-mass"),
+        sealed: show(r, "so2-sealed"),
+        swept: show(r, "acid-swept-share"),
         ppm: show(r, "venus-so2-fraction", { show: "ppm" }),
         moles: show(r, "so2-moles"),
         cao: show(r, "acid-cao"),
@@ -457,13 +473,17 @@ export const acidSweep: FigureDef<Props> = {
     };
   },
   caption: (p) =>
-    `Highland mills grind ${p.text.basalt} of basalt, ${p.text.crust} of the crust's top kilometre, and drones lay it ${p.text.layer} deep on the basin floors before the Clear Rain, so the acid lands on lime. Shore basalt then holds the oceans between pH ${p.text.phMin} and ${p.text.phMax}, and no life is released until they stay above ${p.text.phMin} for ${p.text.phDays}.`,
+    `The SO₂ dissolves in the liquid CO₂ and ${p.text.sealed} of it freezes into the cryo-continents, leaving ${p.text.swept} of the sulfur for the Sweep. Highland mills grind ${p.text.basalt} of basalt, ${p.text.crust} of the crust's top kilometre, and drones lay it ${p.text.layer} deep on the land outside the basins before the Clear Rain, so the cloud acid lands on lime. Shore basalt then holds the oceans between pH ${p.text.phMin} and ${p.text.phMax}, and no life is released until they stay above ${p.text.phMin} for ${p.text.phDays}.`,
   describe: (p) => ({
-    summary: `Three schematic cross-sections of a highland beside a lowland basin, not to scale. First, from ${p.text.cooling}: rock mills on the highland grind ${p.text.basalt} of basalt, ${p.text.crust} of the top kilometre of Venus's crust, and drones from the Exhaust canopies lay the dust ${p.text.layer} deep on the basin floors, the ${p.text.basins} of Venus where the CO₂ will pool. Second, by ${p.text.rain}: the acid clouds have rained out onto the dust and the liquid CO₂ of the Clear Rain washes the SO₂ down into the basins. Each molecule of lime (CaO) takes up one of SO₂, making calcium sulfite, then gypsum and anhydrite once the Forges add oxygen from ${p.text.forges}. Third, from ${p.text.warming}: the ice melts into oceans, and basalt on the shores and sea floor holds the water between pH ${p.text.phMin} and ${p.text.phMax}. The gate: no organism is released until the pH has stayed above ${p.text.phMin} for ${p.text.phDays}; Genesis seeding starts in ${p.text.genesis}. Below, the masses to scale. The basalt is an upper bound: sulfur sealed in the cryo-continents with the CO₂ needs no lime.`,
+    summary: `Three schematic cross-sections of a highland beside a lowland basin, not to scale. First, from ${p.text.cooling}: rock mills on the highland grind ${p.text.basalt} of basalt, ${p.text.crust} of the top kilometre of Venus's crust, and drones from the Exhaust canopies lay the dust ${p.text.layer} deep on the highlands and the shores; the basins, ${p.text.basins} of Venus where the CO₂ will pool, need none. Second, by ${p.text.rain}: the acid clouds have rained out onto the dust, and each molecule of lime (CaO) takes up one of acid, making gypsum and anhydrite; any SO₂ makes calcium sulfite, which turns to sulfate once the Forges add oxygen from ${p.text.forges}. The SO₂ dissolves in the liquid CO₂ of the Clear Rain and runs with it into the basins, where ${p.text.sealed} of it freezes with the seas under the caps. Third, from ${p.text.warming}: the ice melts into oceans, and basalt on the shores and sea floor holds the water between pH ${p.text.phMin} and ${p.text.phMax}. The gate: no organism is released until the pH has stayed above ${p.text.phMin} for ${p.text.phDays}; Genesis seeding starts in ${p.text.genesis}. Below, the masses to scale: the Sweep takes up only ${p.text.swept} of the sulfur, because the sealed SO₂ needs no lime.`,
     head: ["Mass", "Value", "Note"],
     rows: [
       ...p.bars.map((b) => [b.label, b.text, b.sub]),
-      ["Basalt layer over the basins", p.text.layer, `the basins are ${p.text.basins} of Venus`],
+      [
+        "Basalt layer on the land outside the basins",
+        p.text.layer,
+        `the basins are ${p.text.basins} of Venus`,
+      ],
       ["Share of the crust's top kilometre", p.text.crust, "the basalt the Sweep grinds"],
       [
         "Ocean pH",
@@ -476,6 +496,11 @@ export const acidSweep: FigureDef<Props> = {
     "venus-so2-mass",
     "venus-so2-fraction",
     "so2-moles",
+    "so2-sealed",
+    "so2-sealed-share",
+    "so2-airborne-at-freeze",
+    "venus-cloud-acid",
+    "acid-swept-share",
     "acid-cao",
     "acid-basalt",
     "basalt-cao-fraction",

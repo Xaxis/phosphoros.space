@@ -634,6 +634,21 @@
     the oceans are green on {genesis-end|date=day}. It costs little energy, because a faster freeze
     lets less heat in: the Lattice still has {budget-spare} to spare on its own.
   before: { exhaust-peak: 5.0e19 }
+- id: so2-sealed
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The SO₂ freezes into the cryo-continents, so the Acid Sweep takes up only what is left
+  issue: 8
+  text: >-
+    Version 2 sized the lime to neutralize every molecule of Venus's SO₂. But SO₂ is far less
+    volatile than CO₂, and measured CO₂ + SO₂ equilibria put it in the liquid when the CO₂ condenses.
+    When the seas start to freeze at the triple point, they hold {so2-sealed-share} of it, and it
+    freezes with them under the caps. What reaches the oceans is the {venus-cloud-acid} of cloud acid
+    that rains out first and, counted in full, the {so2-airborne-at-freeze} of SO₂ still in the air:
+    {acid-swept-share} of the sulfur. The lime falls to {acid-cao} and the basalt to {acid-basalt},
+    spread {acid-basalt-layer} deep on the land outside the basins.
+  before: { acid-cao: 9.29e16, acid-basalt: 9.29e17, acid-basalt-layer: 2.06, acid-crust-share: 6.73e-4 }
 - id: lattice-to-ceres
   kind: correction
   version: "3"

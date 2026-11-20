@@ -187,6 +187,36 @@
   url: https://www.energyinst.org/statistical-review
   checked: 2026-11-20
   note: Global primary energy of about 590 EJ in 2024, an average of 1.9 × 10¹³ W.
+- id: stull-1947
+  kind: paper
+  title: "Vapor Pressure of Pure Substances. Organic and Inorganic Compounds"
+  authors: Stull, D. R.
+  year: 1947
+  venue: Industrial and Engineering Chemistry 39, 517 to 540
+  doi: 10.1021/ie50448a022
+  url: https://webbook.nist.gov/cgi/cbook.cgi?ID=C7446095&Mask=4
+  checked: 2026-11-20
+  note: Sulfur dioxide's vapour pressure, as Antoine coefficients the NIST Chemistry WebBook fits to Stull's data from 177.7 K to 263 K (A = 3.48586, B = 668.225 K, C = −72.252 K, pressure in bar).
+- id: coquelet-2014
+  kind: paper
+  title: "Thermodynamic study of binary and ternary systems containing CO2 + impurities in the context of CO2 transportation"
+  authors: Coquelet, C., and Arpentinier, P.
+  year: 2014
+  venue: Fluid Phase Equilibria 382, 205 to 211
+  doi: 10.1016/j.fluid.2014.08.031
+  url: https://trc.nist.gov/ThermoML/10.1016/j.fluid.2014.08.031.html
+  checked: 2026-11-20
+  note: Measured vapour-liquid equilibrium of CO₂ + SO₂ at 263.15 K and 333.21 K. At 263.15 K the pure SO₂ boils at 104.1 kPa, and a liquid with 0.103 SO₂ by mole is in equilibrium at 2349.5 kPa with a vapour holding 0.0147 SO₂.
+- id: baines-2021
+  kind: paper
+  title: "Investigation of Venus Cloud Aerosol and Gas Composition Including Potential Biogenic Materials via an Aerosol-Sampling Instrument Package"
+  authors: Baines, K. H., Nikolić, D., Cutts, J. A., and others
+  year: 2021
+  venue: Astrobiology 21, 1316 to 1323
+  doi: 10.1089/ast.2021.0001
+  url: https://ora.ox.ac.uk/objects/uuid:be4638a6-adf7-41a3-ab15-26ef6cce2d38/files/rkh04dq22w
+  checked: 2026-11-20
+  note: "From Knollenberg and Hunten's Pioneer Venus particle data: over the cloud column from 46 to 70 km the aerosol burden is 22 mg/cm² (0.22 kg/m²), droplets of sulfuric acid from 70% to 99% by weight."
 
 # --- Terraforming literature ----------------------------------------------------------------------
 - id: sagan-1961

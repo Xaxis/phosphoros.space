@@ -211,9 +211,9 @@
 - { model: melt-energy, brief: 6.5e5, where: "2.9.9" }
 
 # --- 2.9.10 Acid Sweep, 2.9.11 Aegis -------------------------------------------------------------------------
-- { model: acid-cao, brief: 9e16, where: "2.9.10" }
-- { model: acid-basalt, brief: 1e18, where: "2.9.10" }
-- { model: acid-basalt-layer, brief: 2, where: "2.9.10" }
+- { model: acid-cao, brief: 9e16, where: "2.9.10", correction: so2-sealed }
+- { model: acid-basalt, brief: 1e18, where: "2.9.10", correction: so2-sealed }
+- { model: acid-basalt-layer, brief: 2, where: "2.9.10", correction: so2-sealed }
 - { model: solar-wind-pressure, brief: 3.6e-9, tol: 0.02, where: "2.9.11" }
 - { model: aegis-field, brief: 9.5e-8, tol: 0.02, where: "2.9.11" }
 - { model: aegis-dipole, brief: 9.5e20, tol: 0.02, where: "2.9.11" }

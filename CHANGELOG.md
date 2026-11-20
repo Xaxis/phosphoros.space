@@ -32,7 +32,10 @@ corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the 
   are sealed; and unrefrigerated floor heat melts the base of the cryo ice rather than turning it
   to gas ([#10](https://github.com/Xaxis/phosphoros.space/issues/10)). The ozone layer is computed
   from sunlight and its chemistry, and land life waits for it
-  ([#13](https://github.com/Xaxis/phosphoros.space/issues/13)). The Budget shows how far each
+  ([#13](https://github.com/Xaxis/phosphoros.space/issues/13)). Measured CO₂ + SO₂ equilibria put
+  almost all of the SO₂ into the CO₂ seas, which freeze it into the cryo-continents, so the Acid
+  Sweep takes up only the cloud acid and the SO₂ left in the air, a small fraction of the lime
+  version 2 planned ([#8](https://github.com/Xaxis/phosphoros.space/issues/8)). The Budget shows how far each
   assumption can move before the plan breaks
   ([#9](https://github.com/Xaxis/phosphoros.space/issues/9)).
 - The Ceres end of the Ice Train is sized

@@ -80,8 +80,8 @@ experiments that must prove them by the end of 2028 are on the [Research Agenda]
   sealed as new land over [33%](../numbers.md#cryo-footprint-share) of Venus.
 - [Graphite Forges](forges.md): [500](../numbers.md#forge-count) molten-salt plants that split CO₂ into
   [0.25 bar](../numbers.md#o2-target-pressure) of oxygen and the graphite for the caps.
-- [Acid Sweep](acid.md): [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of crushed basalt that takes up the
-  sulfur before the oceans arrive.
+- [Acid Sweep](acid.md): [6 × 10¹⁵ kg](../numbers.md#acid-basalt) of crushed basalt that takes up the
+  sulfur the cryo-continents do not seal away before the oceans arrive.
 - [Genesis Biota](genesis.md): engineered microbes, algae, lichens and mosses, seeded from
   [1 December 2036](../numbers.md?date=day#genesis-start) once the oxygen is in and the oceans hold their pH.
 
