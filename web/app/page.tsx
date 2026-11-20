@@ -2,9 +2,11 @@ import { Legend } from "../components/Basis";
 import { DocBody, docNumbers } from "../components/DocPage";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { VenusHero } from "../components/hero/VenusHero";
 import { Markdown } from "../components/Markdown";
 import { Num, NumberCards } from "../components/Num";
 import { hasDoc, loadDoc } from "../lib/docs";
+import { heroData } from "../lib/hero";
 import { model } from "../lib/model";
 import { HOME, REPO, TAGLINE } from "../lib/site";
 
@@ -25,30 +27,9 @@ export default function Home() {
     <>
       <Header current="/" />
       <main id="content">
-        <section className="hero">
-          <div className="hero-sky" aria-hidden="true">
-            <span className="orb orb-today" />
-            <span className="orb orb-future" />
-          </div>
-          <div className="hero-inner">
-            <p className="eyebrow">Phosphoros · the light-bringer plan</p>
-            <h1 className="hero-title">{TAGLINE}</h1>
-            {doc?.lead && (
-              <div className="hero-lead">
-                <Markdown text={doc.lead} doc={HOME.doc} />
-              </div>
-            )}
-            <div className="hero-actions">
-              <a className="button button-primary" href="/plan">
-                Read the plan
-              </a>
-              <a className="button" href="/explore">
-                Change an assumption
-              </a>
-              <a className="button" href={REPO}>
-                Every number on GitHub
-              </a>
-            </div>
+        <VenusHero
+          data={heroData()}
+          footer={
             <dl className="hero-stats">
               <div>
                 <dt>Energy the plan needs</dt>
@@ -89,8 +70,27 @@ export default function Home() {
                 </dd>
               </div>
             </dl>
+          }
+        >
+          <p className="eyebrow">Phosphoros · the light-bringer plan</p>
+          <h1 className="hero-title">{TAGLINE}</h1>
+          {doc?.lead && (
+            <div className="hero-lead">
+              <Markdown text={doc.lead} doc={HOME.doc} />
+            </div>
+          )}
+          <div className="hero-actions">
+            <a className="button button-primary" href="/plan">
+              Read the plan
+            </a>
+            <a className="button" href="/explore">
+              Change an assumption
+            </a>
+            <a className="button" href={REPO}>
+              Every number on GitHub
+            </a>
           </div>
-        </section>
+        </VenusHero>
         <div className="page">
           <div className="home-legend">
             <Legend />

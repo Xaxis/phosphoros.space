@@ -11,6 +11,8 @@ node_modules/
 .next/
 out/
 next-env.d.ts
+# written by `next dev` on every start; Next's text, not ours
+web/AGENTS.md
 *.tsbuildinfo
 *.log
 
