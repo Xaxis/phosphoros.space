@@ -68,6 +68,10 @@ keys must sign it together. Machines check the signature in hardware, so an unsi
 order is refused before any software sees it. Blueprints are checksummed every generation, so copying
 errors cannot pile up.
 
+> **Precedent:** Threshold schemes are old, proved mathematics. Shamir showed how to split a key into
+> pieces so that any chosen number of them rebuild it and fewer reveal nothing
+> ([Shamir 1979](../sources.md#shamir-1979)). The board's seven-of-ten kill code below is the same scheme.
+
 ### The kill code
 
 The kill code is a key split among ten holders on an international board; any seven together can halt
@@ -88,6 +92,10 @@ The part of each replicator that decides whether to build another is small and f
 mathematically to obey the Ledger, the signatures, the kill code and the dead-man switch, whatever the rest
 of the machine's software does. Everything clever (planning, learning, optimizing) runs outside it and
 can only ask.
+
+> **Precedent:** Proving software correct at this scale has been done. The seL4 microkernel, a whole
+> operating-system kernel, was proved in 2009 to do exactly what its specification says
+> ([Klein et al. 2009](../sources.md#klein-2009-sel4)). A replication controller is a far smaller program.
 
 ### The digital twin
 

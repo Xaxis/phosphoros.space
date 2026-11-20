@@ -154,6 +154,12 @@ of its articles bear directly on Phosphoros.
 - **Article XI:** states should inform the United Nations, the public and scientists of what they do and
   find.
 
+The Environmental Modification Convention, ENMOD ([United Nations](sources.md#enmod)), is the other
+treaty that names what Phosphoros does. It bans the hostile use of any technique that changes "the dynamics,
+composition or structure of the earth" or "of outer space", and protects peaceful use. It was written
+against weather warfare on Earth, but its words cover a Lattice, an Ice Train and a Veil turned on another
+state, and so it is a starting point for the oversight the weaponization safeguards need.
+
 Planetary protection is governed in practice by COSPAR's policy ([COSPAR](sources.md#cospar-pp)), which sets
 requirements by target and mission type to keep spacecraft from contaminating the places scientists want to
 study, and Earth from returned samples. It was written for probes. Nothing in the treaty or the policy

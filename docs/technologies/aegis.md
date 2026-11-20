@@ -65,7 +65,9 @@ The coil is a loop [1,000 km](../numbers.md#aegis-coil-radius) in radius wound 
 [1,000,000](../numbers.md#aegis-turns) turns of superconducting cable, each carrying
 [300 A](../numbers.md#aegis-current): [3 × 10⁸ A](../numbers.md#aegis-ampere-turns) in all, in a winding pack
 [5 m](../numbers.md#aegis-winding-radius) in radius. The cable runs at [40 K](../numbers.md#aegis-coil-temp), cooled by
-radiating to space from behind its own small sunshield. Once charged, the current flows without resistance and needs
+radiating to space from behind its own small sunshield, as the James Webb Space Telescope cools its
+instruments to about the same temperature with no refrigerator
+([NASA](../sources.md#nasa-webb-sunshield)). Once charged, the current flows without resistance and needs
 nearly no power to keep running. The loop stores [7.1 × 10¹⁷ J](../numbers.md#aegis-stored-energy).
 
 ### Steering the field

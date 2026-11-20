@@ -369,6 +369,43 @@
   checked: 2026-11-20
   note: Company goals from SpaceX's October 2026 earnings call, not a schedule. Used for the 100 t heavy-launch payload.
 
+- id: birch-1982-rings
+  kind: paper
+  title: "Orbital Ring Systems and Jacob's Ladders, Part I"
+  authors: Birch, P.
+  year: 1982
+  venue: Journal of the British Interplanetary Society 35, 475 to 497
+  url: https://www.orionsarm.com/fm_store/OrbitalRings-I.pdf
+  checked: 2026-11-20
+  note: The orbital ring, a rotor moving faster than orbital speed that holds up a stator through magnetic bearings; the Braking Ring's design.
+- id: klein-2009-sel4
+  kind: paper
+  title: "seL4: Formal Verification of an OS Kernel"
+  authors: Klein, G., Elphinstone, K., Heiser, G., et al.
+  year: 2009
+  venue: Proceedings of the 22nd ACM Symposium on Operating Systems Principles (SOSP), 207 to 220
+  url: https://doi.org/10.1145/1629575.1629596
+  also: https://www.sigops.org/s/conferences/sosp/2009/papers/klein-sosp09.pdf
+  checked: 2026-11-20
+  note: A whole operating-system kernel, about 8,700 lines of C, proved to match its specification; precedent for the Choir's verified replication controller.
+- id: shamir-1979
+  kind: paper
+  title: How to Share a Secret
+  authors: Shamir, A.
+  year: 1979
+  venue: Communications of the ACM 22(11), 612 to 613
+  url: https://doi.org/10.1145/359168.359176
+  also: https://web.mit.edu/6.857/OldStuff/Fall03/ref/Shamir-HowToShareASecret.pdf
+  checked: 2026-11-20
+  note: Splitting a key into n pieces so that any k of them rebuild it and k − 1 reveal nothing; the Choir's kill code, seven of ten.
+- id: nasa-webb-sunshield
+  kind: web
+  title: Webb's Sunshield
+  authors: NASA
+  year: 2024
+  url: https://science.nasa.gov/mission/webb/webbs-sunshield/
+  checked: 2026-11-20
+  note: A five-layer sunshield passively cools the telescope below 50 K and its near-infrared instruments to about 39 K; precedent for the Aegis coil at 40 K.
 # --- Precursor missions -------------------------------------------------------------------------------
 - id: ars-2026-venus
   kind: news
@@ -491,6 +528,15 @@
   url: https://cosparhq.cnes.fr/cospar-policy-on-planetary-protection/
   checked: 2026-11-20
 
+- id: enmod
+  kind: law
+  title: Convention on the Prohibition of Military or Any Other Hostile Use of Environmental Modification Techniques (ENMOD)
+  authors: United Nations
+  year: 1976
+  url: https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVI-1&chapter=26&clang=_en
+  also: https://treaties.unoda.org/t/enmod
+  checked: 2026-11-20
+  note: Adopted on 10 December 1976, in force since 5 October 1978. Article II covers any technique that changes the dynamics, composition or structure of the earth or of outer space; Article I bans their hostile use, and Article III leaves peaceful use free.
 # --- Background reading ------------------------------------------------------------------------------------
 - id: wikipedia-venus-atmosphere
   kind: web

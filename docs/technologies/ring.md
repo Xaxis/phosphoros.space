@@ -24,7 +24,8 @@ The stator holds it: a ring of tracks, tethers and receivers, [3.0 × 10¹² 
 that rides on the rotor through magnetic bearings. The rotor presses up on the stator and the stator's
 weight holds the rotor down. Nothing in the stator orbits, so its tracks and tethers can stand still over
 Venus without rockets. Venus turns so slowly that standing still over the ground and standing still in
-space are nearly the same thing.
+space are nearly the same thing. Paul Birch worked out the orbital ring, rotor, stator and bearings, for
+Earth in 1982 ([Birch 1982](../sources.md#birch-1982-rings)); the Braking Ring is his design put to a new use.
 
 > **Physics:** To follow its circle, each kilogram of rotor needs an inward pull of its speed squared
 > over the Ring's radius. At [10 km/s](../numbers.md#ring-rotor-speed) that is more than gravity
