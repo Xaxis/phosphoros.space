@@ -8,6 +8,34 @@
 # range: the span the Explorer lets a reader try.
 
 # --- The program -----------------------------------------------------------------------------------
+program-start:
+  value: 2027-01-01
+  unit: date
+  show: day
+  label: Program start
+  basis: design
+survey-start:
+  value: 2027-06-01
+  unit: date
+  label: Cloud-life survey begins
+  basis: design
+survey-end:
+  value: 2028-12-01
+  unit: date
+  label: Cloud-life survey reports
+  basis: design
+life-gate:
+  value: 2028-12-15
+  unit: date
+  show: day
+  label: "Gate: no native life found"
+  basis: design
+  note: Two weeks after the survey reports, before the seed foundry is committed to Mercury.
+experiments-end:
+  value: 2028-12-31
+  unit: date
+  label: Proof experiments must pass by
+  basis: design
 deadline:
   value: 2036-12-31
   unit: date
@@ -181,6 +209,7 @@ veil-block-fraction:
   show: "%"
   label: Share of sunlight the closed Veil keeps from Venus
   basis: design
+  sig: 3
 veil-open-transmission:
   value: 0.60
   unit: "1"
@@ -192,6 +221,11 @@ veil-slat-side:
   unit: m
   show: km
   label: Slat edge
+  basis: design
+veil-build-start:
+  value: 2030-06-01
+  unit: date
+  label: Veil slat production begins
   basis: design
 veil-close:
   value: 2032-06-30
@@ -284,6 +318,7 @@ frost-tower-temp:
   unit: K
   label: Frost Tower cold-trap temperature
   basis: invented
+  sig: 3
 
 # --- Cryo-continents -------------------------------------------------------------------------------
 cryo-thickness:
@@ -407,6 +442,16 @@ ice-lowering-margin:
   basis: design
 
 # --- Braking Ring ----------------------------------------------------------------------------------
+ring-build-start:
+  value: 2032-06-01
+  unit: date
+  label: Braking Ring construction begins
+  basis: design
+ring-complete:
+  value: 2033-12-31
+  unit: date
+  label: Braking Ring complete
+  basis: design
 ring-altitude:
   value: 4.0e5
   unit: m
@@ -468,6 +513,12 @@ brick-temp:
   basis: design
 
 # --- Aegis Shield ----------------------------------------------------------------------------------
+aegis-online:
+  value: 2034-06-15
+  unit: date
+  label: Aegis Shield switched on
+  basis: design
+  note: Before the first ice arrives in August 2034, so the new water is shielded from the start.
 aegis-bubble-radius:
   value: 1.0e7
   unit: m
@@ -487,6 +538,18 @@ aegis-turns:
   basis: design
 
 # --- Venus in 2036 ---------------------------------------------------------------------------------
+genesis-end:
+  value: 2036-12-15
+  unit: date
+  label: Genesis seeding complete
+  basis: design
+day-length:
+  value: 86400
+  unit: s
+  show: h
+  label: Length of the day the Veil and Lanterns set
+  basis: design
+  note: Twelve hours of light, twelve of dark, on both hemispheres.
 final-humidity:
   value: 0.75
   unit: "1"
@@ -504,6 +567,7 @@ earth-like-temp:
   unit: K
   label: Coldest mean temperature that counts as Earth-like
   basis: design
+  sig: 3
 earth-like-co2:
   value: 6.0e-4
   unit: "1"

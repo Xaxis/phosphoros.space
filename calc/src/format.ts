@@ -20,6 +20,9 @@ const SUP: Record<string, string> = {
 
 /** Display names for units: SI strings in data/ become typographic ones. */
 const UNIT_TEXT: Record<string, string> = {
+  "N/A2": "N/A²",
+  "J/mol/K": "J/(mol·K)",
+  "J s": "J·s",
   m2: "m²",
   m3: "m³",
   "m/s2": "m/s²",
@@ -77,6 +80,7 @@ export function unitText(unit: string): string {
 /** Convert an SI value to its display unit. */
 export function toDisplay(value: number, unit: string, show?: string): number {
   if (!show || show === unit) return value;
+  if (unit === "K" && show === "°C") return value - 273.15;
   const f = SCALE[unit]?.[show];
   if (f === undefined) throw new Error(`format: no conversion from ${unit} to ${show}`);
   return value * f;
@@ -136,6 +140,8 @@ export function formatPlain(x: number, sig = 3): string {
   return String(r);
 }
 
+export type DateStyle = "year" | "month" | "day" | "iso";
+
 export interface Formattable {
   value: number;
   unit: string;
@@ -146,11 +152,12 @@ export interface Formattable {
 /** A quantity as people read it: "5.3 × 10²⁶ J", "137,000 km", "July 2033", "60%". */
 export function formatQuantity(
   q: Formattable,
-  opts: { sig?: number; date?: "month" | "day" | "iso" } = {},
+  opts: { sig?: number; date?: DateStyle } = {},
 ): string {
   if (q.unit === "date") {
     const style = opts.date ?? (q.show === "day" ? "day" : q.show === "iso" ? "iso" : "month");
     if (style === "iso") return isoOf(q.value);
+    if (style === "year") return isoOf(q.value).slice(0, 4);
     if (style === "day") return longDateOf(q.value);
     return monthOf(q.value);
   }

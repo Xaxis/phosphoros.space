@@ -32,6 +32,17 @@ export function venus(r: Registry) {
     () => v("grav-constant") * v("venus-mass"),
   );
   r.q(
+    "venus-mass-vs-earth",
+    {
+      label: "Venus's mass compared with Earth's",
+      unit: "1",
+      sig: 3,
+      formula: "M_V / M_⊕",
+      basis: "physics",
+    },
+    () => v("venus-mass") / v("earth-mass"),
+  );
+  r.q(
     "venus-gravity",
     {
       label: "Venus surface gravity",

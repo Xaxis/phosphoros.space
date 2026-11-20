@@ -1,0 +1,56 @@
+# Earlier proposals for terraforming Venus, and what Phosphoros takes from each.
+
+- id: sagan
+  who: Sagan
+  year: 1961
+  mechanism: Seed the clouds with algae to turn CO₂ into oxygen and organic matter
+  verdict: Leaves tens of bars of oxygen and the carbon still in the air; not viable alone
+  sources: [sagan-1961]
+- id: adelman
+  who: Adelman
+  year: 1982
+  mechanism: Strip the atmosphere with asteroid impacts
+  verdict: Needs more impactor mass than the atmosphere it removes; rejected
+  sources: [adelman-1982]
+- id: birch
+  who: Birch
+  year: 1991
+  title: Terraforming Venus Quickly
+  mechanism: A sunshade near L1, freeze out the CO₂, bury or export it, import water from an icy moon, mirrors (solettas) for daylight, heat pipes, and a 24 h day made by the shade's orbit
+  verdict: About 200 years. The backbone of every later plan, including this one
+  takes: Freeze and bury the CO₂; a shade as the planet's thermostat and day clock
+  sources: [birch-1991]
+- id: bullock-grinspoon
+  who: Bullock and Grinspoon
+  year: 1996
+  mechanism: React CO₂ with calcium and magnesium minerals in the crust
+  verdict: Takes 10 to 100 million years naturally
+  takes: Basalt as a neutralizer, in the Acid Sweep
+  sources: [bullock-grinspoon-1996]
+- id: landis
+  who: Landis; NASA HAVOC
+  year: 2011
+  mechanism: Aerostat cities floating at about 50 km, where pressure and temperature are Earth-like
+  verdict: Feasible habitats, not a planet
+  takes: Floating canopies, for the Photonic Exhaust
+  sources: [landis-2003, landis-2011, havoc-2015]
+- id: howe
+  who: Howe, Cloud Continents
+  year: 2022
+  mechanism: A floating artificial surface at 50 km of about 7 × 10¹⁰ tiles 100 m across, with imported water
+  verdict: About 200 years, limited by energy
+  sources: [howe-2022]
+- id: green
+  who: Green and colleagues (NASA)
+  year: 2017
+  mechanism: A magnetic dipole at Mars's L1 point deflects the solar wind so an atmosphere can build up
+  verdict: Adapted here as the Aegis Shield
+  takes: The Aegis Shield
+  sources: [nasa-mars-magnetic-2017, nasa-mars-magnetic-2017-news]
+- id: angel
+  who: Angel
+  year: 2006
+  mechanism: A cloud of thin flyers near Earth's L1 that bend sunlight a few degrees to shade the planet
+  verdict: A serious design for cooling Earth; light pressure barely moves a refracting shade
+  takes: The version 3 Hesperus Veil
+  sources: [angel-2006]

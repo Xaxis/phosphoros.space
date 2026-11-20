@@ -1,0 +1,140 @@
+# The decade, as rows for the Gantt chart. `start` and `end` name a date in the model (an input in
+# assumptions.yaml or a date the model derives), so moving an assumption moves the chart. A row
+# with no end is a milestone; kind gate marks a go or no-go decision.
+#
+#   lane: science | mercury | space | ceres | venus
+#   tech: the technology page the row belongs to
+
+lanes:
+  - { id: science, label: Science and proof }
+  - { id: mercury, label: Mercury }
+  - { id: space, label: Near Venus }
+  - { id: ceres, label: Ceres }
+  - { id: venus, label: Venus }
+
+rows:
+  - id: experiments
+    label: Proof experiments
+    lane: science
+    start: program-start
+    end: experiments-end
+    link: research
+  - id: survey
+    label: Cloud-life survey
+    lane: science
+    start: survey-start
+    end: survey-end
+    link: research
+  - id: life-gate
+    label: "Gate: no native life"
+    lane: science
+    kind: gate
+    start: life-gate
+    link: risks
+  - id: seed-launch
+    label: Seed foundry launches
+    lane: mercury
+    kind: milestone
+    start: foundry-seed-launch
+    tech: ouroboros
+  - id: foundry-growth
+    label: Ouroboros growth
+    lane: mercury
+    start: foundry-landing
+    end: foundry-full-scale
+    tech: ouroboros
+  - id: helios-build
+    label: Helios Lattice built
+    lane: mercury
+    start: helios-first-petals
+    end: helios-full-power
+    tech: helios
+  - id: veil-build
+    label: Hesperus Veil built
+    lane: space
+    start: veil-build-start
+    end: veil-close
+    tech: veil
+  - id: ring-build
+    label: Braking Ring built
+    lane: space
+    start: ring-build-start
+    end: ring-complete
+    tech: ring
+  - id: aegis-online
+    label: Aegis Shield online
+    lane: space
+    kind: milestone
+    start: aegis-online
+    tech: aegis
+  - id: ice-launches
+    label: Ceres ice launches
+    lane: ceres
+    start: ice-launch-start
+    end: ice-launch-end
+    tech: ice-train
+  - id: ring-pays
+    label: The Ring powers the Railheads
+    lane: ceres
+    kind: milestone
+    start: ring-pays-from
+    tech: ring
+  - id: cooling
+    label: Active cooling
+    lane: venus
+    start: cooling-start
+    end: cooling-end
+    tech: exhaust
+  - id: clear-rain
+    label: The Clear Rain
+    lane: venus
+    kind: milestone
+    start: traj-clear-rain
+    tech: cryo
+  - id: sealing
+    label: CO₂ rain-out and sealing
+    lane: venus
+    start: traj-clear-rain
+    end: sealing-end
+    tech: cryo
+  - id: ice-catch
+    label: Ice caught and parked
+    lane: space
+    start: first-catch
+    end: last-arrival
+    tech: ring
+  - id: ice-lowering
+    label: Ice lowered, oceans fill
+    lane: venus
+    start: lowering-start
+    end: lowering-end
+    tech: ring
+  - id: forging
+    label: Oxygen forging, acid sweep
+    lane: venus
+    start: forge-start
+    end: forge-end
+    tech: forges
+  - id: genesis
+    label: Genesis seeding
+    lane: venus
+    start: forge-end
+    end: genesis-end
+    tech: genesis
+  - id: earth-like
+    label: Earth-like Venus (simulated)
+    lane: venus
+    kind: milestone
+    start: traj-earth-like
+    accent: true
+  - id: deadline
+    label: Deadline
+    lane: venus
+    kind: milestone
+    start: deadline
+    accent: true
+
+critical_path: >-
+  The critical path runs through the Foundry. The seed must launch by {foundry-seed-launch} so the
+  Lattice reaches full power by {helios-full-power}. Ice launched after {ice-launch-end} cannot
+  arrive before the deadline, so any slip in the doubling time comes straight out of the water.

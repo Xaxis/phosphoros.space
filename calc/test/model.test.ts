@@ -1,37 +1,44 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { test } from "node:test";
 import { type Claim, checkClaims } from "../src/claims.ts";
+import { CONTENT_FILES, checkContent, loadContent } from "../src/content.ts";
 import { formatNumber, formatQuantity } from "../src/format.ts";
 import { loadInputs, ROOT, readYaml, run, sourceLines } from "../src/load.ts";
 import { compute } from "../src/model/index.ts";
 import { simulate } from "../src/model/trajectory.ts";
+import { NUMBER_LINK, refsIn, stringsIn } from "../src/template.ts";
 import { dayOf, isoOf } from "../src/time.ts";
 
 const r = run();
+const docFiles = (dir = path.join(ROOT, "docs")): string[] =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory()
+      ? docFiles(path.join(dir, e.name))
+      : e.name.endsWith(".md")
+        ? [path.join(dir, e.name)]
+        : [],
+  );
 const v = (id: string) => r.get(id).value;
 
-test("every input in data/ is read by the model or shown on the site", () => {
+test("every input in data/ is read by the model or shown in the content", () => {
   const read = new Set<string>();
   for (const d of r.derived.values()) for (const i of d.inputs) read.add(i);
   for (const s of r.series.values()) for (const i of s.inputs) read.add(i);
   for (const c of r.checks.values()) for (const i of c.inputs) read.add(i);
-  // Inputs the model does not compute with but the site shows in specs tables and tables.
-  const shown = new Set([
-    "venus-sidereal-day",
-    "venus-solar-day",
-    "earth-mass",
-    "earth-radius",
-    "earth-day",
-    "mercury-escape",
-    "veil-open-transmission",
-    "exhaust-cone",
-    "foundry-seed-launch",
-    "venus-surface-pressure",
-  ]);
-  const unused = [...r.inputs.keys()].filter((id) => !read.has(id) && !shown.has(id));
-  assert.deepEqual(unused, [], `inputs nobody reads: ${unused.join(", ")}`);
+  for (const f of CONTENT_FILES)
+    for (const s of stringsIn(readYaml(f).data)) for (const id of refsIn(s)) read.add(id);
+  for (const t of loadContent().timeline.rows) for (const d of [t.start, t.end]) if (d) read.add(d);
+  for (const t of loadContent().technologies) read.add(t.online);
+  for (const f of docFiles())
+    for (const m of readFileSync(f, "utf8").matchAll(NUMBER_LINK)) read.add(m[4] as string);
+  const unused = [...r.inputs.keys()].filter((id) => !read.has(id));
+  assert.deepEqual(unused, [], `inputs nobody reads or shows: ${unused.join(", ")}`);
+});
+
+test("every number the content refers to exists, and every cross-reference resolves", () => {
+  assert.deepEqual(checkContent(r, loadContent()), []);
 });
 
 test("every number in the brief is reproduced, corrected on purpose, or explained", () => {

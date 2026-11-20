@@ -1,0 +1,396 @@
+# The thirteen inventions. Each has a page on the site and a document in docs/technologies/.
+# This file holds the structured parts: the one-line summary, the specs table and what is invented
+# or borrowed. Prose (principle, design, build sequence, failure modes) lives in the document.
+#
+#   place:   where it works: earth | mercury | space | ceres | venus | everywhere
+#   online:  a date id from the model, or text
+#   specs:   rows of { label, value } where value is text with {id} references
+#   invented: what does not exist yet, in a phrase
+#   precedent: what does, with its source
+#   modules: the calc/src/model files that compute its numbers
+#   figures: the figures that show it
+
+- id: ouroboros
+  name: Ouroboros Foundry
+  place: mercury
+  online: foundry-landing
+  summary: >-
+    A {foundry-seed-mass} seed of twelve machine types rebuilds itself from Mercury rock every
+    {foundry-doubling-days} and reaches {foundry-final-mass} of machinery by {foundry-full-scale}.
+  job: Self-copying industry on Mercury
+  scale: "{foundry-seed-mass} seed to {foundry-final-mass}"
+  breakthrough: A fully closed loop (chips, motors, optics, robots) from regolith, doubling every {foundry-doubling-days}
+  specs:
+    - { label: Seed mass, value: "{foundry-seed-mass}, launched {foundry-seed-launch|date=day}, landed {foundry-landing|date=day}" }
+    - { label: Doubling time, value: "{foundry-doubling-days}" }
+    - { label: Doublings to full scale, value: "{foundry-doublings}, giving {foundry-final-mass}" }
+    - { label: Full scale, value: "{foundry-full-scale|date=day}" }
+    - { label: Energy per kilogram built, value: "{foundry-energy-per-kg}" }
+    - { label: Power per kilogram of machinery, value: "{foundry-power-per-kg}" }
+    - { label: Peak power, value: "{foundry-peak-power}, from its own film" }
+    - { label: Share of Mercury used, value: "{foundry-mercury-share} of its mass" }
+    - { label: Mercury's escape speed, value: "{mercury-escape}, so parts reach orbit by mass driver" }
+    - { label: Machinery in January 2030, value: "{foundry-mass-2030}" }
+    - { label: Machinery in January 2032, value: "{foundry-mass-2032}" }
+    - { label: Material closure, value: 99.99% at seed; 100% once trace-element refining runs in 2030 }
+  invented:
+    - Lithocell chip fabs that write circuits with a million parallel electron beams, no masks
+    - A {foundry-doubling-days} doubling time for a factory that makes everything, including its chips
+  precedent:
+    - text: The 1980 NASA/ASEE summer study designed a self-replicating lunar factory from a 100 t seed that copies itself in about a year.
+      source: nasa-cp-2255
+  experiments: [ouroboros-0]
+  figures: [foundry-growth, foundry-loop]
+  modules: [foundry.ts]
+
+- id: helios
+  name: Helios Lattice
+  place: mercury
+  online: helios-full-power
+  summary: >-
+    {helios-petals} film Petals orbiting near Mercury turn sunlight into laser beams and deliver
+    {helios-power}, {helios-sun-share} of the Sun's output.
+  job: Harvest sunlight near Mercury and beam it
+  scale: "{helios-area} of film; {helios-power} delivered"
+  breakthrough: "{helios-efficiency} sunlight-to-target efficiency through kilometre-scale coherent laser arrays"
+  specs:
+    - { label: Sunlight near Mercury, value: "{mercury-sunlight}" }
+    - { label: End-to-end efficiency, value: "{helios-film-efficiency} film × {helios-laser-efficiency} laser × {helios-receiver-efficiency} receiver = {helios-efficiency}" }
+    - { label: Petals, value: "{helios-petals}, each {helios-petal-side} square and {helios-petal-mass}" }
+    - { label: Film area, value: "{helios-area}" }
+    - { label: Mass, value: "{helios-mass}" }
+    - { label: Delivered power, value: "{helios-power}, from {helios-full-power}" }
+    - { label: Energy delivered by the deadline, value: "{helios-supply}" }
+    - { label: Beam spot at Venus, value: "{helios-spot} wide from a {helios-aperture} aperture at {helios-range}" }
+    - { label: Receiver intensity, value: "{helios-receiver-intensity}, actively cooled" }
+    - { label: Receiver loss, value: "{helios-receiver-loss}, radiated from {helios-fin-temp} fins to space" }
+  invented:
+    - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency at about 460 K
+    - Phase-locked emitter grids acting as {helios-aperture} virtual apertures
+  precedent: []
+  experiments: [lightpipe]
+  figures: [energy-sankey, lattice-budget]
+  modules: [helios.ts]
+
+- id: veil
+  name: Hesperus Veil
+  place: space
+  online: veil-close
+  summary: >-
+    A light-bending shade of {veil-slats} slats held just sunward of the Sun-Venus L1 point turns
+    away {veil-block-fraction} of the sunlight, then becomes the planet's dimmer switch and day clock.
+  job: Sunshade, thermostat and day clock
+  scale: "{veil-area}, {veil-mass}, {veil-distance} sunward"
+  breakthrough: "{veil-slats} electrochromic, light-bending slats holding station, dimming from open to {veil-block-fraction} blocked"
+  specs:
+    - { label: Station, value: "{veil-distance} sunward of Venus, {veil-penumbra-margin} beyond L1's {venus-l1-distance}" }
+    - { label: Radius for full shadow, value: "{veil-radius}, Venus's {venus-radius} plus {veil-penumbra-margin}" }
+    - { label: Area, value: "{veil-area}, {veil-area-vs-v2} times the version 2 statite" }
+    - { label: Areal density, value: "{veil-areal-density}" }
+    - { label: Mass, value: "{veil-mass}" }
+    - { label: Slats, value: "{veil-slats}, each {veil-slat-side} square and {veil-slat-mass}" }
+    - { label: Light pressure over solar gravity, value: "{veil-beta}" }
+    - { label: Sunlight blocked when closed, value: "{veil-block-fraction} ({veil-blocked-power})" }
+    - { label: Transmission, value: "Set per slat, from {veil-block-fraction} blocked to {veil-open-transmission} open" }
+    - { label: Day mode, value: "{veil-day-transmission} open for Earth-strength daylight" }
+    - { label: Light time to Venus, value: "{veil-light-delay}" }
+    - { label: Closes, value: "{veil-close|date=day}" }
+  invented:
+    - Slats that bend sunlight past Venus instead of reflecting it, switching transmission in seconds
+    - A dielectric stack transparent at the Exhaust's {exhaust-wavelength} wavelength
+  precedent:
+    - text: Angel's 2006 design for shading Earth with refracting flyers near L1, which light pressure barely moves.
+      source: angel-2006
+    - text: Light pressure moves a sunshade's balance point sunward of L1.
+      source: sanchez-mcinnes-2015
+  experiments: [veil-1]
+  figures: [veil-geometry]
+  modules: [veil.ts]
+  correction: veil-l1
+
+- id: chimneys
+  name: Thermal Chimneys
+  place: venus
+  online: cooling-start
+  summary: >-
+    {chimney-count} fan-driven columns, {chimney-diameter} wide and {chimney-height} tall, carry deep
+    heat up to the Exhaust canopies at {chimney-heat} each.
+  job: Lift deep heat to the cloud tops
+  scale: Forced-convection columns {chimney-height} tall
+  breakthrough: Structures that survive {venus-surface-temp} and {venus-surface-pressure} for four years
+  specs:
+    - { label: Number, value: "{chimney-count}, one per canopy, about {chimney-spacing} apart" }
+    - { label: Diameter, value: "{chimney-diameter}" }
+    - { label: Height, value: "{chimney-base} above the surface to {chimney-top}" }
+    - { label: Gas at the base, value: "{venus-surface-temp}, {venus-surface-density}, {venus-surface-pressure}" }
+    - { label: Flow speed, value: "{chimney-flow-speed}" }
+    - { label: Mass flow, value: "{chimney-mass-flow} each" }
+    - { label: Heat delivered, value: "{chimney-heat} each, cooling the gas by {chimney-gas-cooling}" }
+    - { label: Total capacity, value: "{chimney-capacity}, {chimney-vs-peak} times the {deep-heat-peak} peak deep heat flow" }
+  invented:
+    - Silicon-carbide and graphene composite walls stable at 750 K in CO₂, SO₂ and acid for four years
+    - Ground anchors that grip basalt at 740 K
+  precedent: []
+  experiments: []
+  figures: [heat-path]
+  modules: [exhaust.ts]
+
+- id: exhaust
+  name: Photonic Exhaust
+  place: venus
+  online: cooling-start
+  summary: >-
+    {exhaust-canopies} floating canopies with {exhaust-area-installed} of emitters
+    ({exhaust-area-share} of Venus) fire the planet's heat into space as {exhaust-wavelength}
+    infrared at {exhaust-flux}.
+  job: Throw heat into space as light
+  scale: "{exhaust-area-installed} of emitters; {exhaust-peak} peak"
+  breakthrough: Electroluminescent cooling at about 1 MW/m²
+  specs:
+    - { label: Canopies, value: "{exhaust-canopies}, each about {canopy-width} across" }
+    - { label: Emitter area, value: "{exhaust-area-working} working at the average, {exhaust-area-installed} installed for the peak" }
+    - { label: Emission, value: "{exhaust-wavelength} at {exhaust-flux}, in a {exhaust-cone} cone" }
+    - { label: Effective emitter temperature, value: "{exhaust-effective-temp}" }
+    - { label: Heat removed from Venus's air, value: "{atmosphere-heat} (average {exhaust-heat-avg})" }
+    - { label: Pump work for that heat, value: "{exhaust-work}, {exhaust-work-ratio} J per joule moved" }
+    - { label: Pump work in the simulation, value: "{traj-pump-energy}, counting heat from the crust, the Forges and the ice" }
+    - { label: Peak power out, value: "{exhaust-peak}" }
+    - { label: Per canopy, value: "{canopy-power-in} in, {canopy-power-out} out" }
+    - { label: Frost Towers, value: "Tiles at {frost-tower-temp} trap the last CO₂ to {frost-co2-pressure}" }
+  invented:
+    - "{exhaust-bandgap} thermophotonic diodes with photon recycling, 99.9% external quantum efficiency at {exhaust-flux}"
+    - Hot-gas aerostat canopies {canopy-width} across at 62 to 66 km
+  precedent:
+    - text: An LED at MIT emitted 69 pW of light from 30 pW of electricity, drawing the rest from heat.
+      source: santhanam-2012
+    - text: Thermophotonic energy transfer measured in intracavity structures at Aalto.
+      source: casado-2019
+  experiments: [exhaust-1]
+  figures: [heat-path, co2-phase, trajectory]
+  modules: [exhaust.ts, trajectory.ts]
+  correction: exhaust-capacity
+
+- id: cryo
+  name: Cryo-continents
+  place: venus
+  online: traj-clear-rain
+  summary: >-
+    All {venus-co2-mass} of CO₂ rains out, freezes into {cryo-thickness} plateaus over
+    {cryo-footprint-share} of Venus, and is sealed to become new land.
+  job: Store all the CO₂
+  scale: "{cryo-volume} of sealed dry ice in {cryo-thickness} plateaus"
+  breakthrough: A graphite membrane and {cryo-aerogel-thickness} foam cap; basal heat pipes and refrigeration of {cryo-floor-load} at first
+  specs:
+    - { label: CO₂ stored, value: "{venus-co2-mass}, {cryo-volume} of dry ice" }
+    - { label: Footprint, value: "{cryo-footprint}, {cryo-footprint-share} of Venus, {cryo-thickness} thick" }
+    - { label: Cap, value: "{cryo-membrane-thickness} graphite membrane, {cryo-aerogel-thickness} carbon aerogel, {cryo-armour-thickness} basalt" }
+    - { label: Cap mass, value: "{cryo-cap-mass} of Forge graphite" }
+    - { label: Heat leaking down through the cap, value: "{cryo-leak-flux}, {cryo-leak-total} in all" }
+    - { label: Heat up from the rock, value: "{cryo-floor-flux-2} after 2 years, {cryo-floor-flux-10} after 10, {cryo-floor-flux-100} after 100, {cryo-floor-flux-1000} after 1,000" }
+    - { label: Floor load, value: "{cryo-floor-load} at first, {cryo-floor-load-century} within a century" }
+    - { label: Refrigeration, value: "{cryo-refrigeration-share} of the Lattice at first" }
+    - { label: Compartments, value: "{cryo-cells} cells of {cryo-cell-area}, at most {cryo-cell-co2} each" }
+  invented:
+    - Sodium and ammonia heat pipes drilled into basin floors before the CO₂ arrives
+    - Crawler-rafts that lay a gas-tight cap over a frozen sea
+  precedent: []
+  experiments: [cryo-seal]
+  figures: [co2-phase, heat-path]
+  modules: [cryo.ts]
+
+- id: forges
+  name: Graphite Forges
+  place: venus
+  online: forge-start
+  summary: >-
+    {forge-count} molten-salt plants split {forge-co2} of CO₂ into {o2-target-pressure} of oxygen and
+    {forge-graphite} of graphite, using {forge-energy}.
+  job: Split CO₂ into oxygen and carbon
+  scale: "{forge-co2} of CO₂ to {o2-mass} of oxygen"
+  breakthrough: Molten-carbonate splitting at {forge-efficiency} efficiency, at planetary scale
+  specs:
+    - { label: CO₂ split, value: "{forge-co2}, {forge-co2-share} of Venus's CO₂" }
+    - { label: Oxygen, value: "{o2-mass}, {o2-target-pressure}" }
+    - { label: Graphite, value: "{forge-graphite}" }
+    - { label: Energy per mole, value: "{co2-split-enthalpy} minimum, {forge-energy-per-mol} at {forge-efficiency}" }
+    - { label: Energy per kilogram of CO₂, value: "{forge-energy-per-kg}" }
+    - { label: Energy, value: "{forge-energy}, {forge-power} for {forge-seconds}" }
+    - { label: Plants, value: "{forge-count} at about {forge-plant-power} each" }
+    - { label: Throughput per Forge, value: "{forge-throughput} of CO₂" }
+    - { label: Graphite use, value: "{cryo-cap-mass} for caps, {graphite-stockpile} stockpiled" }
+    - { label: Running, value: "{forge-start|date=month} to {forge-end|date=month}" }
+  invented:
+    - Thirty-kilometre floating electrolysis rafts on liquid-CO₂ seas
+  precedent:
+    - text: The C2CNT process splits CO₂ dissolved in molten carbonate into graphene nanocarbons and oxygen in one step.
+      source: licht-2025-c2cnt
+    - text: Sulfur gases are reduced to sulfur in the melt and do not poison the electrolysis.
+      source: licht-2015
+  experiments: []
+  figures: [lattice-budget]
+  modules: [forges.ts]
+
+- id: ice-train
+  name: Ceres Ice Train
+  place: ceres
+  online: ice-launch-start
+  summary: >-
+    {railhead-count} coilguns on Ceres fire {ice-bricks-per-second} one-megatonne ice Bricks a second,
+    delivering {ice-mass} of water from {ice-launch-start} to {ice-launch-end}.
+  job: Ship the water
+  scale: "{ice-mass} of ice at {ice-launch-speed}, {ice-transfer-years} in transit"
+  breakthrough: Mass drivers throwing {ice-throughput} in all
+  specs:
+    - { label: Water shipped, value: "{ice-mass}, {ice-ceres-water-share} of Ceres's water" }
+    - { label: Campaign, value: "{ice-launch-start} to {ice-launch-end} ({ice-campaign})" }
+    - { label: Throughput, value: "{ice-throughput}, {ice-bricks-per-second} Bricks a second" }
+    - { label: Railheads, value: "{railhead-count}, each firing every {railhead-interval}" }
+    - { label: Railhead, value: "{railhead-length} long, {railhead-accel}, {ice-launch-speed} in {railhead-shot-time}" }
+    - { label: Brick, value: "{brick-mass}, a cube {brick-side} on a side" }
+    - { label: Energy per shot, value: "{shot-energy} ({shot-energy-drawn} drawn at {railhead-efficiency})" }
+    - { label: Power, value: "{railhead-power} in all, {railhead-power-each} each" }
+    - { label: Transfer, value: "{ice-transfer-years}; arrives at {ice-vinf} relative to Venus" }
+    - { label: Launch windows, value: "Every {launch-window-period}, about {launch-windows} in the campaign" }
+    - { label: Ceres's recoil, value: "{ceres-recoil}; its aphelion moves to {ceres-new-aphelion}" }
+  invented:
+    - Ten-kilometre coilguns firing megatonne ice blocks every few seconds
+    - Bricks steered in flight by Lattice laser ablation
+  precedent: []
+  experiments: [railhead]
+  figures: [ice-orbits]
+  modules: [ice.ts]
+
+- id: ring
+  name: Braking Ring
+  place: space
+  online: first-catch
+  summary: >-
+    A {ring-circumference} orbital ring at {ring-altitude} catches every Brick, turns its speed into
+    electricity, and parks the ice.
+  job: Catch the ice without heating Venus
+  scale: Orbital ring of {ring-mass}
+  breakthrough: Regenerative magnetic braking recovering {ring-recovered-energy}
+  specs:
+    - { label: Altitude and circumference, value: "{ring-altitude}, {ring-circumference}" }
+    - { label: Rotor speed, value: "{ring-rotor-speed} (orbital speed {ring-orbital-speed})" }
+    - { label: Mass, value: "{ring-mass} (rotor {ring-rotor-mass}, stator {ring-stator-mass})" }
+    - { label: Catcher tracks, value: "About {ring-track-length} long, braking at {ring-catch-accel}" }
+    - { label: Brick arrival, value: "{ring-arrival-speed}" }
+    - { label: Energy recovered, value: "{ring-catch-energy-per-kg} of motion, {ring-recovered-per-kg} as electricity" }
+    - { label: Recovered power, value: "{ring-power} at full rate" }
+    - { label: Braking force, value: "{ring-braking-force}, cancelled by catching half the Bricks eastbound and half westbound" }
+    - { label: Without the Ring, value: "Ice would hit at {ring-free-fall-speed} and dump {ring-free-fall-impact} of heat, {ring-free-fall-vs-atmosphere} times the air's" }
+    - { label: Tether lifts, value: "{ring-tether-lifts}, each lowering a Brick every {tether-interval}" }
+  invented:
+    - A rotor carrying {ring-rotor-mass} at {ring-rotor-speed}
+    - Sleds that brake megatonne blocks at {ring-catch-accel}
+  precedent: []
+  experiments: []
+  figures: [braking-ring, energy-sankey]
+  modules: [ring.ts]
+  open: ring-lowering
+
+- id: acid
+  name: Acid Sweep
+  place: venus
+  online: traj-clear-rain
+  summary: >-
+    Cooling makes the sulfur rain out; {venus-so2-mass} of SO₂ is neutralized with crushed basalt
+    before the oceans arrive.
+  job: Remove the sulfuric-acid clouds
+  scale: Rain-out plus basalt neutralization
+  breakthrough: None but scale
+  specs:
+    - { label: SO₂, value: "{venus-so2-fraction|show=ppm}, {venus-so2-mass}" }
+    - { label: Neutralizer, value: "{acid-cao} of CaO, in {acid-basalt} of crushed basalt" }
+    - { label: Basalt layer, value: "{acid-basalt-layer} over the basins, {acid-crust-share} of the crust available" }
+    - { label: Product, value: Gypsum and anhydrite, with traces of chloride and fluoride salts }
+  invented: []
+  precedent:
+    - text: Calcium and magnesium minerals react with acid gases; the same chemistry, at far smaller scale, cleans power-plant flue gas.
+      source: bullock-grinspoon-1996
+  experiments: []
+  figures: []
+  modules: [shield.ts]
+
+- id: aegis
+  name: Aegis Shield
+  place: space
+  online: aegis-online
+  summary: >-
+    A superconducting coil {aegis-coil-radius} in radius beside the Veil inflates a
+    {aegis-bubble-radius} magnetic bubble against the solar wind.
+  job: Stop the solar wind stripping the new water
+  scale: Superconducting dipole beside the Veil
+  breakthrough: Large deep-space superconducting coils
+  specs:
+    - { label: Solar wind at Venus, value: "{solar-wind-density} at {solar-wind-speed}, {solar-wind-pressure}" }
+    - { label: Field at the bubble's edge, value: "{aegis-field}" }
+    - { label: Bubble radius, value: "{aegis-bubble-radius}" }
+    - { label: Dipole moment, value: "{aegis-dipole}, {aegis-vs-earth} of Earth's" }
+    - { label: Coil, value: "{aegis-coil-radius} radius, {aegis-ampere-turns} ({aegis-turns} turns of {aegis-current})" }
+    - { label: Position, value: "Beside the Veil, {veil-distance} sunward" }
+    - { label: Online, value: "{aegis-online|date=day}" }
+  invented:
+    - Cable carrying {aegis-current} per strand at about 40 K, behind its own sunshield
+  precedent:
+    - text: NASA's 2017 study placed a magnetic dipole at Mars's L1 point to shield the planet.
+      source: nasa-mars-magnetic-2017
+  experiments: [mini-aegis]
+  figures: []
+  modules: [shield.ts]
+
+- id: genesis
+  name: Genesis Biota
+  place: venus
+  online: forge-end
+  summary: >-
+    Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in, so oceans
+    and shores are visibly alive by the end of 2036.
+  job: Start an ecosystem
+  scale: Engineered cyanobacteria, lichens and plankton
+  breakthrough: Organisms tuned to cold, fresh, nitrogen-rich water
+  specs:
+    - { label: Air, value: "{final-pressure}: {n2-pressure} nitrogen, {o2-target-pressure} oxygen, {final-co2-ppm} CO₂" }
+    - { label: Oceans, value: "{ocean-depth} deep on average, fresh to brackish and sulfate-rich" }
+    - { label: Light, value: "{day-length} days at Earth strength" }
+    - { label: Seeding, value: "{forge-end|date=day} to {genesis-end|date=day}" }
+  groups:
+    - { group: Ocean cyanobacteria, from: Synechococcus-type, traits: Stronger carbon-concentrating pumps; sulfate tolerance, job: First oxygen and food web }
+    - { group: Nitrogen fixers, from: Anabaena and Trichodesmium-type, traits: Faster fixation under a nitrogen-rich sky, job: Nutrients from the air }
+    - { group: Diatoms, from: Marine diatoms, traits: Silica from basalt-rich water, job: Productivity and carbon burial }
+    - { group: Lichens and mosses, from: Arctic and volcanic-field species, traits: UV and cold tolerance, job: Colonize rock and caps }
+    - { group: Soil consortium, from: Rock-weathering bacteria and fungi, traits: Fast basalt weathering, job: Release phosphorus and potassium, build soil }
+  invented:
+    - Organisms engineered for cold, fresh, sulfate-rich water under {final-pressure}
+  precedent: []
+  experiments: [cloud-life]
+  figures: []
+  modules: []
+  correction: genesis-gate
+
+- id: choir
+  name: Choir
+  place: everywhere
+  online: foundry-landing
+  summary: >-
+    A four-tier autonomous control system for a trillion machines across three worlds, planning
+    around up to {delay-earth-ceres-max} of light delay, with hard limits no machine can override.
+  job: Run a trillion machines as one system
+  scale: Autonomy across three worlds
+  breakthrough: Self-correcting swarm control with a verified safety core
+  specs:
+    - { label: Light delay, value: "Mercury to Venus {delay-mercury-venus-min} to {delay-mercury-venus-max}; Venus to Ceres {delay-venus-ceres-min} to {delay-venus-ceres-max}; Earth to Ceres up to {delay-earth-ceres-max}" }
+    - { label: Veil to Venus, value: "{veil-light-delay}" }
+  tiers:
+    - { tier: Cell, scope: One machine, decides: Its own actions, reacts: Milliseconds }
+    - { tier: Guild, scope: About 10,000 machines, decides: Tasks and repairs, reacts: Seconds }
+    - { tier: Works, scope: One site, decides: Production schedules, reacts: Minutes }
+    - { tier: Council, scope: All worlds, with human oversight, decides: Campaign plans and mass budgets, reacts: Hours to days }
+  invented:
+    - A formally verified replication controller
+    - A Venus digital twin that forecasts phase changes weeks ahead
+  precedent: []
+  experiments: [choir-sim]
+  figures: [tech-stack]
+  modules: [outcome.ts]

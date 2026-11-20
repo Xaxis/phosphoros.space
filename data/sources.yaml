@@ -1,0 +1,481 @@
+# Every source Phosphoros cites. Ids are referenced by `source:` in constants.yaml and assumptions.yaml,
+# by `sources:` in the other data files, and as [label](sources.md#id) in docs/.
+#
+#   kind:     data | paper | book | report | news | law | web
+#   checked:  the date someone last opened the link and confirmed it says what we cite it for
+#   note:     what we use it for, and any caveat a reader should know
+#
+# A link that is dead or wrong goes here with a note, never silently. Open an "add a source" issue
+# to propose one.
+
+# --- Planetary and physical data ------------------------------------------------------------------
+- id: nasa-venus-factsheet
+  kind: data
+  title: Venus Fact Sheet
+  authors: Williams, D. R. (NASA Goddard Space Flight Center, NSSDCA)
+  year: 2024
+  url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html
+  checked: 2026-11-20
+  note: Mass, radius, orbit, atmosphere mass and composition, surface temperature and pressure, rotation.
+- id: nasa-earth-factsheet
+  kind: data
+  title: Earth Fact Sheet
+  authors: Williams, D. R. (NASA Goddard Space Flight Center, NSSDCA)
+  year: 2024
+  url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html
+  checked: 2026-11-20
+- id: nasa-mercury-factsheet
+  kind: data
+  title: Mercury Fact Sheet
+  authors: Williams, D. R. (NASA Goddard Space Flight Center, NSSDCA)
+  year: 2024
+  url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html
+  checked: 2026-11-20
+- id: nasa-sun-factsheet
+  kind: data
+  title: Sun Fact Sheet
+  authors: Williams, D. R. (NASA Goddard Space Flight Center, NSSDCA)
+  year: 2024
+  url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html
+  checked: 2026-11-20
+- id: iau-2015-nominal
+  kind: paper
+  title: "IAU 2015 Resolution B3 on Recommended Nominal Conversion Constants for Selected Solar and Planetary Properties"
+  authors: Mamajek, E. E., Prsa, A., Torres, G., et al.
+  year: 2015
+  url: https://arxiv.org/abs/1510.07674
+  checked: 2026-11-20
+  note: Nominal solar radius and luminosity.
+- id: iau-2012-au
+  kind: law
+  title: "IAU 2012 Resolution B2: re-definition of the astronomical unit of length"
+  authors: International Astronomical Union
+  year: 2012
+  url: https://www.iau.org/administration/resolutions/general_assemblies/
+  checked: 2026-11-20
+  note: The astronomical unit is exactly 149,597,870,700 m.
+- id: kopp-lean-2011
+  kind: paper
+  title: "A new, lower value of total solar irradiance: Evidence and climate significance"
+  authors: Kopp, G., and Lean, J. L.
+  year: 2011
+  venue: Geophysical Research Letters 38, L01706
+  doi: 10.1029/2010GL045777
+  checked: 2026-11-20
+  note: The solar constant at Earth, 1,361 W/m².
+- id: codata-2018
+  kind: paper
+  title: "CODATA recommended values of the fundamental physical constants: 2018"
+  authors: Tiesinga, E., Mohr, P. J., Newell, D. B., and Taylor, B. N.
+  year: 2021
+  venue: Reviews of Modern Physics 93, 025010
+  doi: 10.1103/RevModPhys.93.025010
+  url: https://physics.nist.gov/cuu/Constants/archive2018.html
+  checked: 2026-11-20
+  note: The 2022 adjustment leaves every constant we use unchanged at the precision we use.
+- id: nist-co2
+  kind: data
+  title: "NIST Chemistry WebBook, SRD 69: Carbon dioxide, phase change data"
+  authors: National Institute of Standards and Technology
+  url: https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Mask=4
+  checked: 2026-11-20
+  note: Triple point 216.58 K and 5.185 bar, critical point 304.13 K and 73.77 bar, sublimation enthalpy.
+- id: jpl-sbdb-ceres
+  kind: data
+  title: "JPL Small-Body Database: 1 Ceres"
+  authors: NASA Jet Propulsion Laboratory, Solar System Dynamics
+  url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=1
+  checked: 2026-11-20
+  note: Ceres's semi-major axis and aphelion.
+- id: park-2016-ceres
+  kind: paper
+  title: "A partially differentiated interior for (1) Ceres deduced from its gravity field and shape"
+  authors: Park, R. S., Konopliv, A. S., Bills, B. G., et al.
+  year: 2016
+  venue: Nature 537, 515 to 517
+  doi: 10.1038/nature18955
+  checked: 2026-11-20
+  note: Ceres's mass and mean radius from Dawn.
+- id: ceres-water
+  kind: paper
+  title: "Ceres: Evolution and current state"
+  authors: McCord, T. B., and Sotin, C.
+  year: 2005
+  venue: "Journal of Geophysical Research: Planets 110, E05009"
+  doi: 10.1029/2004JE002244
+  checked: 2026-11-20
+  note: >-
+    Ceres's density suggests 17 to 27% water by mass. This estimate predates the Dawn mission; the
+    model's 27% is the top of that range and the program's "40% of Ceres's water" depends on it.
+    Post-Dawn interior models (Ermakov et al. 2017, doi:10.1002/2017JE005302) are the next source to check.
+- id: basalt-thermal
+  kind: report
+  title: Thermal properties of rocks
+  authors: Robertson, E. C.
+  year: 1988
+  venue: U.S. Geological Survey Open-File Report 88-441
+  doi: 10.3133/ofr88441
+  checked: 2026-11-20
+  note: >-
+    Dense basalt conducts about 2.0 W/(m·K) by extrapolated measurement and 2.55 W/(m·K) calculated from
+    its minerals. The model uses 2.5, the upper value, which slightly overstates crust heat flow.
+- id: smrekar-2023-heatflow
+  kind: paper
+  title: Earth-like lithospheric thickness and heat flow on Venus consistent with active rifting
+  authors: Smrekar, S. E., Ostberg, C., and O'Rourke, J. G.
+  year: 2023
+  venue: Nature Geoscience 16, 13 to 18
+  doi: 10.1038/s41561-022-01068-0
+  checked: 2026-11-20
+- id: usgs-water
+  kind: web
+  title: How Much Water is There on Earth?
+  authors: U.S. Geological Survey, Water Science School
+  url: https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth
+  checked: 2026-11-20
+  note: About 1.386 billion km³ of water, 1.4 × 10²¹ kg.
+- id: ei-statistical-review
+  kind: report
+  title: Statistical Review of World Energy 2025
+  authors: Energy Institute
+  year: 2025
+  url: https://www.energyinst.org/statistical-review
+  checked: 2026-11-20
+  note: Global primary energy of about 590 EJ in 2024, an average of 1.9 × 10¹³ W.
+
+# --- Terraforming literature ----------------------------------------------------------------------
+- id: sagan-1961
+  kind: paper
+  title: The Planet Venus
+  authors: Sagan, C.
+  year: 1961
+  venue: Science 133, 849 to 858
+  doi: 10.1126/science.133.3456.849
+  checked: 2026-11-20
+- id: adelman-1982
+  kind: paper
+  title: Can Venus be transformed into an Earth-like planet?
+  authors: Adelman, S. J.
+  year: 1982
+  venue: Journal of the British Interplanetary Society 35, 3
+  url: https://ui.adsabs.harvard.edu/abs/1982JBIS...35....3A/abstract
+  checked: 2026-11-20
+  note: End page not confirmed; no DOI exists.
+- id: birch-1991
+  kind: paper
+  title: Terraforming Venus Quickly
+  authors: Birch, P.
+  year: 1991
+  venue: Journal of the British Interplanetary Society 44, 157 to 167
+  url: https://www.orionsarm.com/fm_store/TerraformingVenusQuickly.pdf
+  checked: 2026-11-20
+  note: >-
+    The author's own site no longer resolves; an archived copy is at
+    https://web.archive.org/web/20201204191839/http://www.paulbirch.net/TerraformingVenusQuickly.pdf
+- id: bullock-grinspoon-1996
+  kind: paper
+  title: The stability of climate on Venus
+  authors: Bullock, M. A., and Grinspoon, D. H.
+  year: 1996
+  venue: "Journal of Geophysical Research: Planets 101, 7521 to 7529"
+  doi: 10.1029/95JE03862
+  checked: 2026-11-20
+- id: landis-2003
+  kind: paper
+  title: Colonization of Venus
+  authors: Landis, G. A.
+  year: 2003
+  venue: AIP Conference Proceedings 654, 1193 to 1198
+  doi: 10.1063/1.1541418
+  checked: 2026-11-20
+- id: landis-2011
+  kind: paper
+  title: "Terraforming Venus: A Challenging Project for Future Colonization"
+  authors: Landis, G. A.
+  year: 2011
+  venue: AIAA SPACE 2011 Conference and Exposition, AIAA 2011-7215
+  doi: 10.2514/6.2011-7215
+  checked: 2026-11-20
+- id: havoc-2015
+  kind: paper
+  title: "High Altitude Venus Operational Concept (HAVOC): An Exploration Strategy for Venus"
+  authors: Arney, D. C., and Jones, C. A.
+  year: 2015
+  venue: AIAA SPACE 2015, AIAA 2015-4612
+  doi: 10.2514/6.2015-4612
+  url: https://ntrs.nasa.gov/citations/20160006329
+  checked: 2026-11-20
+- id: howe-2022
+  kind: paper
+  title: "Cloud Continents: Terraforming Venus Efficiently by Means of a Floating Artificial Surface"
+  authors: Howe, A. R.
+  year: 2022
+  venue: Journal of the British Interplanetary Society 75, 42 to 47
+  url: https://arxiv.org/abs/2203.06722
+  checked: 2026-11-20
+- id: nasa-mars-magnetic-2017
+  kind: paper
+  title: A Future Mars Environment for Science and Exploration
+  authors: Green, J. L., Hollingsworth, J., Brain, D., et al.
+  year: 2017
+  venue: Planetary Science Vision 2050 Workshop, LPI Contribution 1989, abstract 8250
+  url: https://www.hou.usra.edu/meetings/V2050/pdf/8250.pdf
+  checked: 2026-11-20
+  note: A magnetic dipole at Mars L1 to shield the planet from the solar wind; the model for Aegis.
+- id: nasa-mars-magnetic-2017-news
+  kind: news
+  title: How to Give Mars an Atmosphere, Maybe
+  authors: Kaufman, M. (NASA Astrobiology)
+  year: 2017
+  url: https://astrobiology.nasa.gov/news/how-to-give-mars-an-atmosphere-maybe/
+  checked: 2026-11-20
+
+# --- Sunshades and statites -------------------------------------------------------------------------
+- id: angel-2006
+  kind: paper
+  title: Feasibility of cooling the Earth with a cloud of small spacecraft near the inner Lagrange point (L1)
+  authors: Angel, R.
+  year: 2006
+  venue: PNAS 103, 17184 to 17189
+  doi: 10.1073/pnas.0608163103
+  checked: 2026-11-20
+  note: >-
+    A shade of thin refracting flyers that bend sunlight a few degrees rather than reflect it, so light
+    pressure barely moves them, holding station near L1. The model for the version 3 Veil.
+- id: forward-1991
+  kind: paper
+  title: "Statite: A spacecraft that does not orbit"
+  authors: Forward, R. L.
+  year: 1991
+  venue: Journal of Spacecraft and Rockets 28, 606 to 611
+  doi: 10.2514/3.26287
+  checked: 2026-11-20
+  note: A statite hovers where light pressure pushes it away from the body whose gravity pulls it.
+- id: sanchez-mcinnes-2015
+  kind: paper
+  title: Optimal Sunshade Configurations for Space-Based Geoengineering near the Sun-Earth L1 Point
+  authors: Sanchez, J.-P., and McInnes, C. R.
+  year: 2015
+  venue: PLOS ONE 10, e0136648
+  doi: 10.1371/journal.pone.0136648
+  checked: 2026-11-20
+  note: Light pressure moves a sunshade's equilibrium sunward of L1.
+
+# --- Precedents for the inventions -------------------------------------------------------------------
+- id: nasa-cp-2255
+  kind: book
+  title: "Advanced Automation for Space Missions, Chapter 5: Replicating Systems Concepts: Self-Replicating Lunar Factory and Demonstration"
+  authors: Freitas, R. A., Jr., and Gilbreath, W. P. (eds.)
+  year: 1982
+  venue: NASA Conference Publication 2255 (1980 NASA/ASEE Summer Study), pp. 189 to 335
+  url: https://nss.org/wp-content/uploads/2017/07/1982-Self-Replicating-Lunar-Factory.pdf
+  also: https://ntrs.nasa.gov/citations/19830007077
+  checked: 2026-11-20
+  note: A 100 t seed factory on the Moon that copies itself in about a year.
+- id: jensen-2024
+  kind: paper
+  title: Design Limits on Large Space Stations
+  authors: Jensen, D. W.
+  year: 2024
+  url: https://arxiv.org/abs/2408.00152
+  checked: 2026-11-20
+  note: Summarizes the 1980 lunar factory in one paragraph (section 4.1); cite CP-2255 for detail.
+- id: santhanam-2012
+  kind: paper
+  title: Thermoelectrically Pumped Light-Emitting Diodes Operating above Unity Efficiency
+  authors: Santhanam, P., Gray, D. J., and Ram, R. J.
+  year: 2012
+  venue: Physical Review Letters 108, 097403
+  doi: 10.1103/PhysRevLett.108.097403
+  checked: 2026-11-20
+  note: An LED that emits 69 pW of light from 30 pW of electricity, drawing the rest from heat.
+- id: physorg-2012-led
+  kind: news
+  title: "LED's efficiency exceeds 100%"
+  authors: Zyga, L. (Phys.org)
+  year: 2012
+  url: https://phys.org/news/2012-03-efficiency.html
+  checked: 2026-11-20
+- id: casado-2019
+  kind: paper
+  title: Temperature dependence of thermophotonic energy transfer in intracavity structures
+  authors: Casado, A., Radevici, I., Sadi, T., and Oksanen, J.
+  year: 2019
+  venue: "Proc. SPIE 10936, Photonic Heat Engines: Science and Applications, 109360U"
+  doi: 10.1117/12.2506227
+  url: https://acris.aalto.fi/ws/portalfiles/portal/38407803/109360U.pdf
+  checked: 2026-11-20
+- id: licht-2025-c2cnt
+  kind: paper
+  title: Large-scale electrolytic molten carbonate carbon capture and transformation to carbon nanotubes and other graphene nanocarbons
+  authors: Licht, G., Hofstetter, K., and Licht, S.
+  year: 2025
+  venue: "Cambridge Prisms: Carbon Technologies 1, e6"
+  doi: 10.1017/cat.2025.10007
+  checked: 2026-11-20
+  note: The C2CNT process splits CO₂ dissolved in molten carbonate into graphene nanocarbons and oxygen in one step.
+- id: licht-2015
+  kind: paper
+  title: "Carbon nanofibers, precious commodities from sunlight & CO2 to ameliorate global warming"
+  authors: Licht, S.
+  year: 2015
+  url: https://arxiv.org/abs/1503.06727
+  checked: 2026-11-20
+  note: >-
+    Notes that sulfur gases are reduced to sulfur in the electrolysis chamber and do not poison it,
+    citing Kaplan, Wachtel and Lubomirsky (2013). The paper does not use the name C2CNT.
+- id: ren-2015
+  kind: paper
+  title: One-Pot Synthesis of Carbon Nanofibers from CO2
+  authors: Ren, J., Li, F.-F., Lau, J., Gonzalez-Urbina, L., and Licht, S.
+  year: 2015
+  venue: Nano Letters 15, 6142 to 6148
+  doi: 10.1021/acs.nanolett.5b02427
+  checked: 2026-11-20
+- id: kaplan-2013
+  kind: paper
+  title: Carbonate melt regeneration for efficient capture of SO2 from coal combustion
+  authors: Kaplan, V., Wachtel, E., and Lubomirsky, I.
+  year: 2013
+  venue: RSC Advances 3, 15842
+  doi: 10.1039/c3ra42654h
+  checked: 2026-11-20
+- id: newspace-starship-2026
+  kind: news
+  title: SpaceX Targets Weekly Starship Launches in 2027 and Early Orbital Refueling Tests
+  authors: NewSpace Economy
+  year: 2026
+  url: https://newspaceeconomy.ca/2026/10/21/spacex-targets-weekly-starship-launches-in-2027-and-early-orbital-refueling-tests/
+  checked: 2026-11-20
+  note: Company goals from SpaceX's October 2026 earnings call, not a schedule. Used for the 100 t heavy-launch payload.
+
+# --- Precursor missions -------------------------------------------------------------------------------
+- id: ars-2026-venus
+  kind: news
+  title: Things are finally looking up for NASA's first missions to Venus in a generation
+  authors: Clark, S. (Ars Technica)
+  year: 2026
+  date: 2026-10-14
+  url: https://arstechnica.com/space/2026/10/nasas-embattled-venus-missions-are-back-on-track-after-cancellation-threat/
+  checked: 2026-11-20
+  note: DAVINCI's launch brought forward 54 weeks to December 2030; VERITAS in November 2032.
+- id: mezha-2026-venus
+  kind: news
+  title: NASA will continue preparations for the DAVINCI and VERITAS missions to Venus
+  authors: Demkivskyi, Y. (Mezha)
+  year: 2026
+  date: 2026-10-15
+  url: https://mezha.ua/en/news/nasa-davinci-veritas-venus-316207/
+  checked: 2026-11-20
+  note: >-
+    Cited in version 2. It says DAVINCI was "pushed back 54 weeks"; its own source, Ars Technica, says
+    the launch was brought forward 54 weeks. We cite Ars Technica instead.
+- id: spacecom-2026-decade
+  kind: news
+  title: "NASA's ambitious 'decade of Venus' exploration may bank on 1 probe: 'Not everything can move forward'"
+  authors: Kuthunur, S. (Space.com)
+  year: 2026
+  date: 2026-03-27
+  url: https://www.space.com/space-exploration/missions/nasas-ambitious-decade-of-venus-exploration-may-bank-on-1-probe-not-everything-can-move-forward
+  checked: 2026-11-20
+- id: ars-2026-envision
+  kind: news
+  title: Europe will go it alone on Venus mission after NASA yanks radar instrument
+  authors: Clark, S. (Ars Technica)
+  year: 2026
+  date: 2026-09-10
+  url: https://arstechnica.com/space/2026/09/europe-will-go-it-alone-on-venus-mission-after-nasa-yanks-radar-instrument/
+  checked: 2026-11-20
+  note: EnVision delayed one year, to 2032, to fit a European radar.
+- id: esa-envision
+  kind: web
+  title: EnVision
+  authors: European Space Agency
+  url: https://www.esa.int/missions/about-us/directorates/science/envision
+  checked: 2026-11-20
+  note: >-
+    Still says November 2031, which ESA's project scientist has since moved to 2032. The version 2 link
+    (esa.int/Science_Exploration/Space_Science/Envision/Envision_factsheet) is dead.
+- id: spacecom-2026-vlf
+  kind: news
+  title: "Rocket issues delay 1st-ever private mission to Venus: 'We are awaiting Neutron readiness'"
+  authors: David, L. (Space.com)
+  year: 2026
+  date: 2026-09-03
+  url: https://www.space.com/astronomy/venus/rocket-issues-delay-1st-ever-private-mission-to-venus-we-are-awaiting-neutron-readiness
+  checked: 2026-11-20
+- id: rocketlab-2026-neutron
+  kind: report
+  title: Rocket Lab Form 8-K, exhibit 99.1 (Neutron first launch moved to 2027)
+  authors: Rocket Lab USA
+  year: 2026
+  date: 2026-10-14
+  url: https://www.sec.gov/Archives/edgar/data/0001819994/000181999426000067/rklb-10142026ex991.htm
+  checked: 2026-11-20
+- id: ras-2025-verve
+  kind: news
+  title: "Life on Venus? UK probe could reveal the answer"
+  authors: Royal Astronomical Society
+  year: 2025
+  date: 2025-07-09
+  url: https://ras.ac.uk/news-and-press/research-highlights/life-venus-uk-probe-could-reveal-answer
+  checked: 2026-11-20
+- id: astrobiology-2025-verve
+  kind: news
+  title: The Venus Explorer for Reduced Vapours in the Environment (VERVE)
+  authors: Cowing, K. (Astrobiology.com)
+  year: 2025
+  date: 2025-07-10
+  url: https://astrobiology.com/2025/07/10/the-venus-explorer-for-reduced-vapours-in-the-environment-verve/
+  checked: 2026-11-20
+- id: planetary-2026-fy2027
+  kind: news
+  title: Analyzing the FY 2027 NASA budget request
+  authors: The Planetary Society
+  year: 2026
+  date: 2026-04-23
+  url: https://www.planetary.org/articles/analyzing-the-fy-2027-nasa-budget-request
+  checked: 2026-11-20
+  note: The request again proposes ending DAVINCI, VERITAS and the US contribution to EnVision.
+- id: planetary-2026-fy2026
+  kind: news
+  title: Advocacy success in the FY2026 budget
+  authors: The Planetary Society
+  year: 2026
+  date: 2026-01-15
+  url: https://www.planetary.org/articles/advocacy-success-fy2026-budget
+  checked: 2026-11-20
+- id: spacepolicy-2026-senate
+  kind: news
+  title: Senate appropriators' FY2027 mark for NASA
+  authors: SpacePolicyOnline
+  year: 2026
+  date: 2026-11-12
+  url: https://spacepolicyonline.com/?p=91762
+  checked: 2026-11-20
+  note: Directs $263M for DAVINCI and $49M for VERITAS. No FY2027 bill is enacted yet.
+
+# --- Law and governance ---------------------------------------------------------------------------------
+- id: outer-space-treaty
+  kind: law
+  title: Treaty on Principles Governing the Activities of States in the Exploration and Use of Outer Space, including the Moon and Other Celestial Bodies
+  authors: United Nations Office for Outer Space Affairs
+  year: 1967
+  url: https://www.unoosa.org/unoosa/en/ourwork/spacelaw/treaties/outerspacetreaty.html
+  checked: 2026-11-20
+  note: Article II bars national appropriation; Article IX requires avoiding harmful contamination.
+- id: cospar-pp
+  kind: law
+  title: COSPAR Policy on Planetary Protection
+  authors: Committee on Space Research
+  url: https://cosparhq.cnes.fr/cospar-policy-on-planetary-protection/
+  checked: 2026-11-20
+
+# --- Background reading ------------------------------------------------------------------------------------
+- id: wikipedia-venus-atmosphere
+  kind: web
+  title: Atmosphere of Venus
+  authors: Wikipedia
+  url: https://en.wikipedia.org/wiki/Atmosphere_of_Venus
+  checked: 2026-11-20
+  note: An overview with references; the cloud layers and the Earth-like conditions at 50 to 65 km.

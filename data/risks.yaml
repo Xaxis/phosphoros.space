@@ -1,0 +1,51 @@
+# Risks, what goes wrong, and the safeguard. Shown on the Risks and Governance page.
+
+risks:
+  - id: runaway
+    risk: Runaway replication
+    what: Copies grow past their mandate
+    safeguard: A hard mass budget in the Choir Mass Ledger, signed build orders, and an international kill code
+    tech: [ouroboros, choir]
+  - id: beam
+    risk: Beam misdirection
+    what: "A beam carrying {helios-power} hits the wrong target"
+    safeguard: Every beam fires only with a live, signed handshake from its receiver and defocuses within a millisecond if it drops
+    tech: [helios]
+  - id: veil-failure
+    risk: Veil failure after cooling
+    what: Sunlight boils the CO₂ back out
+    safeguard: "{veil-slats} independent slats with 20% spare, slats that fail opaque, and CO₂ sealed in cryo-continents"
+    tech: [veil, cryo]
+  - id: breach
+    risk: Cryo-continent breach
+    what: CO₂ escapes back into the air
+    safeguard: "{cryo-cells} compartments of {cryo-cell-area}, each with its own seal and refrigeration"
+    tech: [cryo]
+  - id: ceres
+    risk: Ceres depletion
+    what: "{ice-ceres-water-share} of Ceres's water is used and its orbit is changed for good"
+    safeguard: Agreed internationally in advance; comets from the outer belt as the fallback
+    tech: [ice-train]
+  - id: native-life
+    risk: Native life on Venus
+    what: Cooling the planet would destroy it
+    safeguard: The 2027 to 2028 cloud-life survey gates the Veil; a credible biosignature stops the program
+    tech: [veil, genesis]
+  - id: weapons
+    risk: Weaponization
+    what: Mass drivers and power beams are also weapons
+    safeguard: Open telemetry, inspection, and treaty oversight beyond the Outer Space Treaty
+    tech: [ice-train, helios, ring]
+  - id: ring-lowering
+    risk: The Ring cannot lower the ice as designed
+    what: Tether lowering needs {lowering-overload} times the lift the rotor has to spare (an open problem in version 3)
+    safeguard: Drop the ice from rest at the Ring and pump out the extra heat; the energy budget never counted lowering's recovered energy
+    tech: [ring]
+    open: true
+
+governance: >-
+  The 1967 Outer Space Treaty bars national appropriation of celestial bodies (Article II) and
+  requires states to avoid their harmful contamination (Article IX). Nothing in it contemplates
+  rebuilding a planet, moving a dwarf planet's orbit or aiming beams of {helios-power} across the inner Solar
+  System. Phosphoros needs a new international framework, starting from COSPAR's planetary
+  protection policy, agreed before the seed launches.

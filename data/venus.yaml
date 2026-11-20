@@ -1,0 +1,65 @@
+# Venus today against Earth, and Venus at the 2036 finish line. Cells are text with {id} references
+# to numbers in the model; `{id|show=g}` picks a display unit, `{id|sig=2}` the precision.
+
+baseline:
+  - { property: Mass, venus: "{venus-mass} ({venus-mass-vs-earth} of Earth's)", earth: "{earth-mass}" }
+  - { property: Radius, venus: "{venus-radius}", earth: "{earth-radius}" }
+  - { property: Surface gravity, venus: "{venus-gravity|show=g} ({venus-gravity})", earth: "{standard-gravity|show=g}" }
+  - { property: Atmosphere mass, venus: "{venus-atmosphere-mass}", earth: "{earth-atmosphere-mass}" }
+  - { property: Surface pressure, venus: "{venus-surface-pressure}", earth: "{earth-sea-level-pressure}" }
+  - property: Composition
+    venus: "{venus-co2-fraction} CO₂, {venus-n2-fraction} N₂, {venus-so2-fraction|show=ppm} SO₂, traces"
+    earth: "{earth-n2-fraction} N₂, {earth-o2-fraction} O₂"
+  - { property: Mean surface temperature, venus: "{venus-surface-temp} ({venus-surface-temp|show=°C})", earth: "{earth-surface-temp}" }
+  - property: Rotation
+    venus: "{venus-sidereal-day}, retrograde; a solar day lasts {venus-solar-day}"
+    earth: "{earth-day}"
+  - { property: Sunlight at the top of the atmosphere, venus: "{venus-sunlight}", earth: "{solar-constant-earth}" }
+  - { property: Water, venus: Nearly none, with an extreme deuterium to hydrogen ratio, earth: "{earth-water-mass}" }
+  - { property: Magnetic field, venus: None of its own, earth: "Dipole of {earth-dipole}" }
+  - { property: Clouds, venus: "Sulfuric acid, {venus-cloud-base|sig=2} to {venus-cloud-top|sig=2} up", earth: Water }
+
+facts:
+  - "Between {venus-temperate-low|sig=2} and {venus-temperate-high|sig=2} up, Venus's air already has Earth-like pressure and temperature."
+  - "Venus's nitrogen alone, {venus-n2-mass}, would press down with {n2-pressure} once the CO₂ is gone: {n2-vs-earth} times as much nitrogen as Earth has."
+
+# The 2036 finish line. `today` and `target` are text; `id` names the model number the simulation
+# reaches, shown beside the target.
+finish:
+  - measure: Mean surface temperature
+    today: "{venus-surface-temp}"
+    target: "{earth-surface-temp}, Earth's mean (Earth-like from {earth-like-temp})"
+    by: [veil, exhaust]
+  - measure: Surface pressure
+    today: "{venus-surface-pressure}"
+    target: "{final-pressure}"
+    by: [cryo]
+  - measure: Nitrogen
+    today: "{venus-n2-fraction} of the air"
+    target: "{n2-pressure} (kept)"
+    by: []
+    note: Already there.
+  - measure: Oxygen
+    today: Trace
+    target: "{o2-target-pressure}"
+    by: [forges]
+  - measure: CO₂
+    today: "{venus-co2-fraction}"
+    target: "{final-co2-ppm}"
+    by: [cryo, forges, exhaust]
+  - measure: Water
+    today: Nearly none
+    target: "{ice-mass}, a {ocean-depth} global ocean"
+    by: [ice-train, ring]
+  - measure: Light cycle
+    today: "A {venus-solar-day} solar day"
+    target: "A {day-length} day"
+    by: [veil]
+  - measure: Clouds
+    today: Sulfuric acid
+    target: Water
+    by: [acid]
+
+breathing: >-
+  {o2-target-pressure} of oxygen is {o2-vs-earth} times Earth's sea-level oxygen. The whole
+  {final-pressure} of air feels like breathing {dive-depth} under the sea.

@@ -1,0 +1,69 @@
+# The nine proof experiments. All start in 2027 and run in parallel; each must pass by the end of
+# 2028 or the plan falls back to the multi-century route. A kill signal stops the line it tests.
+
+experiments:
+  - id: ouroboros-0
+    name: Ouroboros-0
+    where: Earth
+    tech: ouroboros
+    proves: A factory that builds itself from simulated Mercury regolith
+    pass: 95% mass closure, doubling in under 120 days
+    kill: Under 70% closure
+  - id: exhaust-1
+    name: Exhaust-1
+    where: Laboratory
+    tech: exhaust
+    proves: Electroluminescent cooling at useful power
+    pass: 10 kW/m² of net cooling, within 50% of the Carnot limit
+    kill: No net cooling above 100 W/m²
+  - id: lightpipe
+    name: Lightpipe
+    where: Low Earth orbit
+    tech: helios
+    proves: Coherent power beaming
+    pass: 1 MW over 1,000 km between satellites at 30% end to end
+    kill: Phase lock fails beyond 100 emitters
+  - id: veil-1
+    name: Veil-1
+    where: Orbit
+    tech: veil
+    proves: An electrochromic slat
+    pass: A 1 km² slat in orbit dims from 0 to 99% and holds its attitude
+    kill: The film degrades within 6 months
+  - id: railhead
+    name: Railhead
+    where: Earth
+    tech: ice-train
+    proves: An ice mass driver
+    pass: 1 t of ice at 3 km/s, 10 shots an hour
+    kill: Under 1 km/s, or under 1 shot an hour
+  - id: cryo-seal
+    name: Cryo-seal
+    where: Earth
+    tech: cryo
+    proves: Dry-ice storage under a 288 K sky
+    pass: Under 0.1 W/m² of heat leak for 12 months
+    kill: The cap cracks under thermal cycling
+  - id: mini-aegis
+    name: Mini-Aegis
+    where: Sun-Earth L1
+    tech: aegis
+    proves: A magnetic shield
+    pass: A 10 m coil's bubble deflects the solar wind
+    kill: Repeated quenches
+  - id: cloud-life
+    name: Cloud-life survey
+    where: Venus
+    gate: true
+    proves: No native life will be harmed
+    pass: Balloon and droplet sample return show no biology
+    kill: "A credible biosignature: the whole program stops"
+  - id: choir-sim
+    name: Choir-sim
+    where: Earth
+    tech: choir
+    proves: Fleet autonomy
+    pass: 10,000 robots run a factory for 90 days unattended
+    kill: More than 1 human intervention a day
+
+fallback: If Ouroboros or the Photonic Exhaust fails, the plan falls back to the multi-century route.

@@ -226,6 +226,34 @@ venus-solar-day:
   basis: physics
   source: [nasa-venus-factsheet]
   sig: 3
+venus-cloud-base:
+  value: 4.8e4
+  unit: m
+  show: km
+  label: Base of Venus's sulfuric-acid clouds
+  basis: physics
+  source: [wikipedia-venus-atmosphere]
+venus-cloud-top:
+  value: 7.0e4
+  unit: m
+  show: km
+  label: Top of Venus's sulfuric-acid clouds
+  basis: physics
+  source: [wikipedia-venus-atmosphere]
+venus-temperate-low:
+  value: 5.0e4
+  unit: m
+  show: km
+  label: Lowest altitude where Venus's air has Earth-like pressure and temperature
+  basis: physics
+  source: [wikipedia-venus-atmosphere, landis-2003]
+venus-temperate-high:
+  value: 6.5e4
+  unit: m
+  show: km
+  label: Highest altitude where Venus's air has Earth-like pressure and temperature
+  basis: physics
+  source: [wikipedia-venus-atmosphere, landis-2003]
 cloudtop-temp:
   value: 230
   unit: K
@@ -258,6 +286,22 @@ earth-day:
   basis: physics
   source: [nasa-earth-factsheet]
   sig: 3
+earth-n2-fraction:
+  value: 0.7808
+  unit: "1"
+  show: "%"
+  sig: 2
+  label: Nitrogen share of Earth's air, by volume
+  basis: physics
+  source: [nasa-earth-factsheet]
+earth-o2-fraction:
+  value: 0.2095
+  unit: "1"
+  show: "%"
+  sig: 2
+  label: Oxygen share of Earth's air, by volume
+  basis: physics
+  source: [nasa-earth-factsheet]
 earth-atmosphere-mass:
   value: 5.15e18
   unit: kg
