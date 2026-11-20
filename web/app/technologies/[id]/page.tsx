@@ -6,6 +6,7 @@ import { BasisTag } from "../../../components/Basis";
 import { DocPage } from "../../../components/DocPage";
 import { Num } from "../../../components/Num";
 import { hasDoc } from "../../../lib/docs";
+import { pageMeta } from "../../../lib/meta";
 import { model, quantity } from "../../../lib/model";
 import { REPO, repoUrl } from "../../../lib/site";
 
@@ -37,11 +38,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const t = tech((await params).id);
   if (!t) return {};
-  return {
+  return pageMeta({
+    href: `/technologies/${t.id}`,
     title: t.name,
     description: fill(t.summary, quantity).replace(/\s+/g, " ").trim(),
-    alternates: { canonical: `/technologies/${t.id}` },
-  };
+  });
 }
 
 function Glance({ t }: { t: Technology }) {

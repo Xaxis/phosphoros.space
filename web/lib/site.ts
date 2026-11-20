@@ -124,6 +124,32 @@ export const TECH_INDEX = {
     "Thirteen inventions, each of which may assume engineering we do not have but none of which breaks a law of physics.",
 };
 
+/** Pages that render no document, with what their metadata and share cards say. */
+export const EXPLORE = {
+  href: "/explore",
+  title: "Explorer",
+  description:
+    "Change any of the plan's key assumptions and watch every consequence, the simulated atmosphere and the physics checks recompute in your browser.",
+};
+
+export const NUMBERS = {
+  href: "/numbers",
+  title: "Every number",
+  description:
+    "Every number Phosphoros publishes: its value, basis, formula, inputs and the line of code or data that defines it.",
+};
+
+export const SOURCES = {
+  href: "/sources",
+  title: "Sources",
+  description: "Every source Phosphoros cites, with the date its link was last checked.",
+};
+
+/** The share card of a page, rendered by tools/assets.ts into web/public/og/. */
+export function cardFor(href: string): string {
+  return `/og/${href.replace(/^\//, "").replaceAll("/", "-") || "home"}.jpg`;
+}
+
 /** The header's links, in order. */
 export const NAV: { href: string; label: string }[] = [
   { href: "/plan", label: "Plan" },

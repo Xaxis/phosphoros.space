@@ -2,14 +2,11 @@ import type { Source } from "@phosphoros/calc/content";
 import type { Metadata } from "next";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { pageMeta } from "../../lib/meta";
 import { model } from "../../lib/model";
-import { REPO } from "../../lib/site";
+import { REPO, SOURCES } from "../../lib/site";
 
-export const metadata: Metadata = {
-  title: "Sources",
-  description: "Every source Phosphoros cites, with the date its link was last checked.",
-  alternates: { canonical: "/sources" },
-};
+export const metadata: Metadata = pageMeta(SOURCES);
 
 const GROUPS: [string, Source["kind"][]][] = [
   ["Data", ["data"]],

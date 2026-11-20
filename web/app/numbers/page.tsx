@@ -6,15 +6,11 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { LedgerFilter } from "../../components/LedgerFilter";
 import { basisOf } from "../../components/Num";
+import { pageMeta } from "../../lib/meta";
 import { definedAt, model } from "../../lib/model";
-import { REPO, repoUrl } from "../../lib/site";
+import { NUMBERS, REPO, repoUrl } from "../../lib/site";
 
-export const metadata: Metadata = {
-  title: "Every number",
-  description:
-    "Every number Phosphoros publishes: its value, basis, formula, inputs and the line of code or data that defines it.",
-  alternates: { canonical: "/numbers" },
-};
+export const metadata: Metadata = pageMeta(NUMBERS);
 
 function Row({ q }: { q: Quantity }) {
   const { r } = model();

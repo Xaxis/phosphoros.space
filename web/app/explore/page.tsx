@@ -2,15 +2,11 @@ import type { Metadata } from "next";
 import { Explorer, type ExplorerGroup, type Outcome } from "../../components/Explorer";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { pageMeta } from "../../lib/meta";
 import { model } from "../../lib/model";
-import { REPO } from "../../lib/site";
+import { EXPLORE, REPO } from "../../lib/site";
 
-export const metadata: Metadata = {
-  title: "Explorer",
-  description:
-    "Change any of the plan's key assumptions and watch every consequence, the simulated atmosphere and the physics checks recompute in your browser.",
-  alternates: { canonical: "/explore" },
-};
+export const metadata: Metadata = pageMeta(EXPLORE);
 
 const GROUPS: ExplorerGroup[] = [
   {

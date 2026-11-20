@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DocPage } from "../../components/DocPage";
 import { hasDoc } from "../../lib/docs";
+import { pageMeta } from "../../lib/meta";
 import { SECTIONS } from "../../lib/site";
 
 export const dynamicParams = false;
@@ -17,7 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const s = SECTIONS.find((x) => x.slug === slug);
-  return s ? { title: s.title, description: s.description, alternates: { canonical: s.href } } : {};
+  return s ? pageMeta(s) : {};
 }
 
 export default async function SectionPage({ params }: { params: Promise<{ slug: string }> }) {

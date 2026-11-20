@@ -15,6 +15,7 @@ The site's pages, each rendered at build time from a document in `docs/` and the
 - ledger: `/numbers` lists every number by file and module with a filter box, and every physics check (`#checks`, `#check-<id>`).
 - sources: `/sources` lists every source with the numbers it supports.
 - markers: callouts for Invented, Precedent, Physics and Design choice; basis glyphs on every number.
+- share cards: every page's metadata comes from `pageMeta` (`web/lib/meta.ts`), so it shares its own title, description, URL and card. Cards are `web/public/og/<page>.jpg` (home: `web/app/opengraph-image.png`), rendered by `heavy node tools/assets.ts` from `tools/og-page.html` and the page's own text (`tools/lib/cards.ts`); `node tools/assets.ts --check` (in `pnpm lint`) fails when a title, description or number on a card has changed since it was rendered. `tools/layout-check.ts` proves each page names its own URL and a card that loads.
 - themes: dark by default, light by system setting or the toggle (kept in `localStorage.theme`).
 
 ## How to reach it

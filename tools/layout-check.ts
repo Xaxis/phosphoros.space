@@ -18,6 +18,25 @@ const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
 const paths = [...sitemap.matchAll(/<loc>https?:\/\/[^/]+(\/[^<]*)<\/loc>/g)].map(
   (m) => m[1] || "/",
 );
+{
+  // Each page shares as itself: its own og:url, and a card image that loads.
+  const wrong: string[] = [];
+  for (const path of paths) {
+    const html = await (await fetch(`${base}${path}`)).text();
+    const url = html.match(/property="og:url" content="([^"]*)"/)?.[1] ?? "";
+    const img = html.match(/property="og:image" content="([^"]*)"/)?.[1] ?? "";
+    const local = img.replace(/^https:\/\/phosphoros\.space/, base);
+    const res = img ? await fetch(local) : undefined;
+    const own = path === "/" || new URL(url || "x:/").pathname === path;
+    if (!own || !res?.ok || !/^image\//.test(res.headers.get("content-type") ?? ""))
+      wrong.push(`${path} (${url} ${img} ${res?.status})`);
+  }
+  check(
+    wrong.length === 0,
+    `every page shares its own URL and card (${paths.length})`,
+    wrong.join(", "),
+  );
+}
 for (const width of [320, 390]) {
   const ctx = await b.newContext({ viewport: { width, height: 800 } });
   const p = await ctx.newPage();
