@@ -13,6 +13,7 @@
  * evenly between 304 K and 216.6 K; the Lattice's power grows with the Foundry's mass; receiver loss
  * heat is radiated straight to space by hot receivers above the air.
  */
+import { formatQuantity } from "../format.ts";
 import { co2LiquidPressure, co2SolidPressure, conductedFlux } from "../physics.ts";
 import type { Point, Registry } from "../registry.ts";
 import { DAY_S, isoOf } from "../time.ts";
@@ -365,6 +366,66 @@ export function trajectory(r: Registry) {
     weekly((t) => t.heatOut),
   );
 
+  const day = (id: string) => formatQuantity({ ...r.get(id), value: v(id) }, { date: "day" });
+  r.q(
+    "genesis-ph-clear",
+    {
+      label: "The new oceans have held their pH for the release gate",
+      unit: "date",
+      formula: "ice melts (caps sealed, Veil open) + days the pH must hold",
+      basis: "design",
+    },
+    () => v("traj-warming") + v("genesis-ph-days"),
+  );
+  r.c(
+    "frost-before-sealing",
+    { label: "The Frost Towers finish before the last caps are sealed", kind: "schedule" },
+    () => ({
+      pass: v("traj-scavenged") <= v("sealing-end"),
+      detail: `The simulated Frost Towers finish on ${day("traj-scavenged")}; the last caps are sealed on ${day("sealing-end")}.`,
+    }),
+  );
+  r.q(
+    "genesis-start",
+    {
+      label: "Genesis seeding begins: the later of the oxygen and the ocean pH gate",
+      unit: "date",
+      formula: "max(Forges finish, pH held)",
+      basis: "design",
+    },
+    () => Math.max(v("forge-end"), v("genesis-ph-clear")),
+  );
+  r.q(
+    "genesis-green-days",
+    {
+      label: "Time for seeded cyanobacteria to grow to bloom density",
+      unit: "d",
+      sig: 2,
+      formula: "t_double log₂(n_bloom / n_seed)",
+      basis: "invented",
+    },
+    () =>
+      v("genesis-doubling-days") *
+      Math.log2(v("genesis-bloom-density") / v("genesis-seed-density")),
+  );
+  r.q(
+    "genesis-end",
+    {
+      label: "The sunlit oceans are green with seeded cyanobacteria",
+      unit: "date",
+      formula: "seeding begins + growth to bloom density",
+      basis: "invented",
+    },
+    () => v("genesis-start") + v("genesis-green-days"),
+  );
+  r.c(
+    "genesis-by-deadline",
+    { label: "Seeded life greens the oceans by the deadline", kind: "schedule" },
+    () => ({
+      pass: v("genesis-end") <= v("deadline"),
+      detail: `Seeding waits for the oxygen (${day("forge-end")}) and for the oceans to hold their pH (${day("genesis-ph-clear")}), so it begins on ${day("genesis-start")}; doubling every ${formatQuantity({ ...r.get("genesis-doubling-days"), value: v("genesis-doubling-days") })}, the cells reach bloom density on ${day("genesis-end")}, against a deadline of ${day("deadline")}.`,
+    }),
+  );
   r.c(
     "earth-like-by-deadline",
     { label: "The simulated atmosphere is Earth-like by the deadline", kind: "schedule" },

@@ -124,6 +124,7 @@
   experiments: [lightpipe]
   figures: [energy-sankey, lattice-budget]
   modules: [helios.ts]
+  open: [budget-offwindow]
 
 - id: veil
   name: Hesperus Veil
@@ -312,6 +313,8 @@
   experiments: [railhead]
   figures: [ice-orbits]
   modules: [ice.ts]
+  correction: offwindow-launch
+  open: [budget-offwindow]
 
 - id: ring
   name: Braking Ring
@@ -396,10 +399,10 @@
 - id: genesis
   name: Genesis Biota
   place: venus
-  online: forge-end
+  online: genesis-start
   summary: >-
-    Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in, so oceans
-    and shores are visibly alive by the end of 2036.
+    Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in and the
+    oceans hold their pH, so the sunlit water is green by {genesis-end|date=month}.
   job: Start an ecosystem
   scale: Engineered cyanobacteria, lichens and plankton
   breakthrough: Organisms tuned to cold, fresh, nitrogen-rich water
@@ -407,7 +410,8 @@
     - { label: Air, value: "{final-pressure}: {n2-pressure} nitrogen, {o2-target-pressure} oxygen, {final-co2-ppm} CO₂" }
     - { label: Oceans, value: "{ocean-depth} deep on average, fresh to brackish and sulfate-rich" }
     - { label: Light, value: "{day-length} days at Earth strength" }
-    - { label: Seeding, value: "{forge-end|date=day} to {genesis-end|date=day}" }
+    - { label: Seeding, value: "From {genesis-start|date=day}, the later of the oxygen ({forge-end|date=day}) and the pH gate ({genesis-ph-clear|date=day})" }
+    - { label: Living oceans, value: "{genesis-seed-density} seeded, {genesis-bloom-density} by {genesis-end|date=day}, doubling every {genesis-doubling-days}" }
   groups:
     - { group: Ocean cyanobacteria, from: Synechococcus-type, traits: Stronger carbon-concentrating pumps; sulfate tolerance, job: First oxygen and food web }
     - { group: Nitrogen fixers, from: Anabaena and Trichodesmium-type, traits: Faster fixation under a nitrogen-rich sky, job: Nutrients from the air }

@@ -6,7 +6,7 @@ every [60 d](numbers.md#foundry-doubling-days). Everything else follows from th
 One rule binds every invention: it may assume engineering we do not have yet, but it must obey
 conservation of energy and the second law of thermodynamics. The binding constraint is energy. Venus
 cannot shed its heat fast enough on its own ([The Problem](problem.md)), so the plan brings in
-[7.7 × 10²⁷ J](numbers.md#budget-demand) from outside the planet, almost all of it sunlight harvested near
+[8.3 × 10²⁷ J](numbers.md#budget-demand) from outside the planet, almost all of it sunlight harvested near
 Mercury and beamed across the inner Solar System.
 
 ## The five moves
@@ -114,9 +114,9 @@ emitters, [12%](numbers.md#exhaust-area-share) of Venus's area, enough to throw 
 > at useful power; the [Exhaust-1](research.md#exhaust-1) experiment must show it by 2028.
 
 As the air cools, its CO₂ comes down. The Clear Rain begins on
-[19 January 2034](numbers.md?date=day#traj-clear-rain), when the air drops below
+[7 September 2034](numbers.md?date=day#traj-clear-rain), when the air drops below
 [304 K](numbers.md?sig=3#co2-critical-temp) and liquid CO₂ runs into the lowland basins. The seas start to
-freeze from the top on [14 March 2036](numbers.md?date=day#traj-freeze), below
+freeze from the top on [17 July 2036](numbers.md?date=day#traj-freeze), below
 [216.6 K](numbers.md#co2-triple-temp). Frost Towers, the same emitter tiles on towers at
 [133 K](numbers.md#frost-tower-temp), trap the last vapor down to [74 Pa](numbers.md#frost-co2-pressure).
 Crawler-rafts seal the frozen seas under a [1 mm](numbers.md#cryo-membrane-thickness) graphite membrane,
@@ -194,8 +194,8 @@ The [Acid Sweep](technologies/acid.md) handles the sulfur: as the air cools,
 magnetic bubble so the solar wind cannot strip the new water. The Veil opens to
 [52%](numbers.md#veil-day-transmission) for daylight and closes for night, and mirror swarms light the far
 side, giving a [24 h](numbers.md#day-length) day. [Genesis Biota](technologies/genesis.md), engineered
-microbes, algae, lichens and mosses, are seeded once the oxygen is in, from
-[30 September 2036](numbers.md?date=day#forge-end).
+microbes, algae, lichens and mosses, are seeded once the oxygen is in and the new oceans have held their
+pH, from [14 December 2036](numbers.md?date=day#genesis-start).
 
 The air at the end is [2.4 bar](numbers.md#final-pressure): [2.1 bar](numbers.md#n2-pressure) of nitrogen,
 [0.25 bar](numbers.md#o2-target-pressure) of oxygen ([1.2](numbers.md#o2-vs-earth) times Earth's sea-level
@@ -242,7 +242,7 @@ factories leave Earth; every other kilogram is made where it is needed.
 | [Braking Ring](technologies/ring.md) | Catch the ice without heating Venus | Orbital ring of [1.0 × 10¹³ kg](numbers.md#ring-mass) | Regenerative magnetic braking recovering [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) | [2034](numbers.md?date=year#first-catch) |
 | [Acid Sweep](technologies/acid.md) | Remove the sulfuric-acid clouds | Rain-out plus basalt neutralization | None but scale | [2034](numbers.md?date=year#traj-clear-rain) |
 | [Aegis Shield](technologies/aegis.md) | Stop the solar wind stripping the new water | Superconducting dipole beside the Veil | Large deep-space superconducting coils | [2034](numbers.md?date=year#aegis-online) |
-| [Genesis Biota](technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, fresh, nitrogen-rich water | [2036](numbers.md?date=year#forge-end) |
+| [Genesis Biota](technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, fresh, nitrogen-rich water | [2036](numbers.md?date=year#genesis-start) |
 | [Choir](technologies/choir.md) | Run a trillion machines as one system | Autonomy across three worlds | Self-correcting swarm control with a verified safety core | [2029](numbers.md?date=year#foundry-landing) |
 <!-- /table -->
 
@@ -288,12 +288,12 @@ What it finds:
 
 | Event | Simulated date |
 | --- | --- |
-| The Clear Rain: air below [304 K](numbers.md?sig=3#co2-critical-temp) | [19 January 2034](numbers.md?date=day#traj-clear-rain) |
-| CO₂ seas start to freeze | [14 March 2036](numbers.md?date=day#traj-freeze) |
-| All the CO₂ is down | [20 April 2036](numbers.md?date=day#traj-cold) |
-| Frost Towers reach the CO₂ target | [9 May 2036](numbers.md?date=day#traj-scavenged) |
-| Caps sealed; the Veil opens | [30 June 2036](numbers.md?date=day#traj-warming) |
-| Air reaches [285 K](numbers.md#earth-like-temp) | [4 July 2036](numbers.md?date=day#traj-warm) |
+| The Clear Rain: air below [304 K](numbers.md?sig=3#co2-critical-temp) | [7 September 2034](numbers.md?date=day#traj-clear-rain) |
+| CO₂ seas start to freeze | [17 July 2036](numbers.md?date=day#traj-freeze) |
+| All the CO₂ is down | [23 August 2036](numbers.md?date=day#traj-cold) |
+| Frost Towers reach the CO₂ target | [11 September 2036](numbers.md?date=day#traj-scavenged) |
+| Caps sealed; the Veil opens | [15 September 2036](numbers.md?date=day#traj-warming) |
+| Air reaches [285 K](numbers.md#earth-like-temp) | [19 September 2036](numbers.md?date=day#traj-warm) |
 | **Earth-like** | **[30 September 2036](numbers.md?date=day#traj-earth-like)** |
 | Deadline | [31 December 2036](numbers.md?date=day#deadline) |
 
@@ -307,7 +307,7 @@ air, [2.6 × 10²⁶ J](numbers.md#atmosphere-sensible-heat).
 And the last condition to fall is the oxygen: the air is warm by July, but it is Earth-like only on the day
 the Forges finish.
 
-The simulation's pump work, [3.5 × 10²⁷ J](numbers.md#traj-pump-energy), is what the energy budget charges,
+The simulation's pump work, [3.4 × 10²⁷ J](numbers.md#traj-pump-energy), is what the energy budget charges,
 and it is more than the simple estimate for the air alone ([why](budget.md#why-the-simulation-pumps-more)).
 To see how the dates move, change an assumption in the [Explorer](https://phosphoros.space/explore) or run
 `pnpm calc --set exhaust-peak=3.6e19` to try version 2's smaller Exhaust.

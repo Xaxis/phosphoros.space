@@ -118,9 +118,9 @@
 - { model: canopy-power-out, brief: 3.1e15, where: "2.9.5" }
 - { model: exhaust-vs-passive-light, brief: 400, where: "2.5",
     note: "The Exhaust throws out light 420 times faster than a shaded Venus radiates, but removes Venus's own heat 66 times faster: most of the light is the pump's own work." }
-- { model: exhaust-area-share-1000, brief: 0.58, tol: 0.02, where: "2.13" }
-- { model: exhaust-area-share-1500, brief: 0.17, tol: 0.03, where: "2.13" }
-- { model: exhaust-area-share-2500, brief: 0.037, tol: 0.03, where: "2.13" }
+- { model: exhaust-area-share-1000, brief: 0.58, tol: 0.02, where: "2.13", correction: sealing-follows-frost }
+- { model: exhaust-area-share-1500, brief: 0.17, tol: 0.03, where: "2.13", correction: sealing-follows-frost }
+- { model: exhaust-area-share-2500, brief: 0.037, tol: 0.03, where: "2.13", correction: sealing-follows-frost }
 - { model: frost-co2-pressure, brief: 70, tol: 0.15, where: "2.9.5", note: "Gives 300 ppm of the 2036 air; the brief's range is 300 to 600 ppm." }
 
 # --- 2.9.6 Cryo-continents ------------------------------------------------------------------------------
@@ -175,9 +175,9 @@
 - { model: brick-side, brief: 103, tol: 0.01, where: "2.9.8" }
 - { model: shot-energy, brief: 2.05e16, tol: 0.01, where: "2.9.8" }
 - { model: shot-energy-drawn, brief: 4.1e16, tol: 0.02, where: "2.9.8" }
-- { model: ice-launch-energy, brief: 4.1e27, where: "2.8" }
-- { model: railhead-power, brief: 5.6e19, where: "2.9.8" }
-- { model: railhead-power-each, brief: 5.5e15, where: "2.9.8" }
+- { model: ice-launch-energy, brief: 4.1e27, where: "2.8", correction: offwindow-launch }
+- { model: railhead-power, brief: 5.6e19, where: "2.9.8", correction: offwindow-launch }
+- { model: railhead-power-each, brief: 5.5e15, where: "2.9.8", correction: offwindow-launch }
 - { model: ice-ceres-water-share, brief: 0.40, where: "2.9.8" }
 - { model: ice-ceres-mass-share, brief: 0.11, where: "2.9.8" }
 - { model: ceres-recoil, brief: 760, where: "2.9.8" }
@@ -225,8 +225,8 @@
 - { model: delay-earth-ceres-max, brief: 1980, tol: 0.03, where: "2.9.13" }
 
 # --- 2.8 The energy budget -------------------------------------------------------------------------------------
-- { model: budget-demand, brief: 7.0e27, where: "2.8",
-    note: "Version 3 counts the pump work the day-by-day simulation actually spends, including heat from the crust, the Forges and the falling ice, so the demand rises from 7.0 to 7.7 × 10²⁷ J." }
+- { model: budget-demand, brief: 7.0e27, where: "2.8", correction: offwindow-launch,
+    note: "Version 3 counts the pump work the day-by-day simulation actually spends, including heat from the crust, the Forges and the falling ice, and the extra energy of launches between windows." }
 - { model: traj-pump-energy, brief: 2.84e27, where: "2.8", correction: exhaust-capacity }
 - { model: budget-spare, brief: 0.09, tol: 0.5, where: "2.8", correction: exhaust-capacity }
 - { model: budget-launch-share, brief: 0.9, tol: 0.03, where: "2.8", correction: exhaust-capacity }

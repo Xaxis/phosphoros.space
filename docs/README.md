@@ -41,7 +41,7 @@ film held just sunward of the Sun-Venus L1 point, [1.11 × 10⁶ km](numbers.
 [7.0 × 10¹⁹ W](numbers.md#helios-power) to Venus. Thermal Chimneys lift the deep heat to floating canopies
 above the clouds, where the Photonic Exhaust fires it into space as [2.3 µm](numbers.md#exhaust-wavelength)
 infrared, up to [5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The CO₂ rains out as liquid from
-[January 2034](numbers.md?date=month#traj-clear-rain), freezes, and is sealed under insulated caps as new
+[September 2034](numbers.md?date=month#traj-clear-rain), freezes, and is sealed under insulated caps as new
 land. ([Helios Lattice](technologies/helios.md), [Thermal Chimneys](technologies/chimneys.md),
 [Photonic Exhaust](technologies/exhaust.md), [Cryo-continents](technologies/cryo.md))
 
@@ -85,16 +85,17 @@ The day-by-day [simulation](plan.md#the-simulated-atmosphere) reaches all of it 
 [30 September 2036](numbers.md?date=day#traj-earth-like), [92 d](numbers.md#traj-slack-days) before the
 deadline.
 
-## The energy budget closes
+## The energy budget
 
 <!-- figure:lattice-budget -->
 ![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
-The plan must bring [7.7 × 10²⁷ J](numbers.md#budget-demand) to Venus from outside. The Lattice supplies
-[7.8 × 10²⁷ J](numbers.md#helios-supply) between full power and the deadline: [1.7%](numbers.md#budget-spare)
-to spare on its own, [28%](numbers.md#budget-spare-with-ring) once the Ring's recovered energy powers the
-coilguns. Launching the water and pumping out the heat take [98%](numbers.md#budget-launch-share) of the
+The plan must bring [8.3 × 10²⁷ J](numbers.md#budget-demand) to Venus from outside. The Lattice supplies
+[7.8 × 10²⁷ J](numbers.md#helios-supply) between full power and the deadline. On its own that leaves [−6.3%](numbers.md#budget-spare) spare: it
+falls short, mostly because the coilguns fire between launch windows too and pay
+[16%](numbers.md#launch-offwindow-mean) more for it. Once the Ring's recovered energy powers the coilguns
+the spare is [25%](numbers.md#budget-spare-with-ring), so the plan depends on the Ring. Launching the water and pumping out the heat take [110%](numbers.md#budget-launch-share) of the
 Lattice's output. The walkthrough, and the two physics checks that still fail, are in
 [Energy and Mass Budget](budget.md).
 

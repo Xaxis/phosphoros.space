@@ -151,7 +151,7 @@ The Veil stays after 2036 as the planet's thermostat.
   the Foundry [19 d](../numbers.md#veil-diversion-days) of growth.
 - **[January 2033](../numbers.md?date=month#cooling-start):** Active cooling begins under the closed Veil.
 - **[June 2034](../numbers.md?date=month#aegis-online):** The Aegis coil switches on beside it.
-- **[30 June 2036](../numbers.md?date=day#traj-warming):** The caps are sealed and the Veil opens to its day setting.
+- **[15 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed and the Veil opens to its day setting.
   The air warms to Earth-like temperatures within days.
 
 ## Failure modes and safeguards

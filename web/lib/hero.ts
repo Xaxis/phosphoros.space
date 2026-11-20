@@ -32,6 +32,7 @@ const DAY_IDS = [
   "lowering-end",
   "forge-start",
   "forge-end",
+  "genesis-start",
   "genesis-end",
   "traj-earth-like",
   "deadline",
@@ -61,11 +62,8 @@ const EVENTS: { id: (typeof DAY_IDS)[number]; text: string; tech?: string }[] = 
   { id: "lowering-start", text: "Ice comes down and the first seas fill", tech: "ring" },
   { id: "traj-freeze", text: "The CO₂ seas freeze into continents of dry ice", tech: "cryo" },
   { id: "traj-warming", text: "The ice is sealed and the Veil opens to daylight", tech: "veil" },
-  {
-    id: "traj-earth-like",
-    text: "Earth-like: warm air to breathe, and Genesis seeds life",
-    tech: "genesis",
-  },
+  { id: "traj-earth-like", text: "Earth-like: warm air to breathe" },
+  { id: "genesis-start", text: "Genesis seeds the new oceans with life", tech: "genesis" },
 ];
 
 /** Keep about one point a fortnight: plenty for a curve the eye follows, small enough to ship. */

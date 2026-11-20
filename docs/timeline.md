@@ -23,13 +23,13 @@ chart moves with it.
 | **Aegis Shield online** | [15 June 2034](numbers.md?date=day#aegis-online) |  |
 | Ceres ice launches | [22 June 2033](numbers.md?date=day#ice-launch-start) | [21 October 2035](numbers.md?date=day#ice-launch-end) |
 | **The Ring powers the Railheads** | [17 August 2034](numbers.md?date=day#ring-pays-from) |  |
-| Active cooling | [1 January 2033](numbers.md?date=day#cooling-start) | [30 June 2036](numbers.md?date=day#cooling-end) |
-| **The Clear Rain** | [19 January 2034](numbers.md?date=day#traj-clear-rain) |  |
-| CO₂ rain-out and sealing | [19 January 2034](numbers.md?date=day#traj-clear-rain) | [30 June 2036](numbers.md?date=day#sealing-end) |
+| Active cooling | [1 January 2033](numbers.md?date=day#cooling-start) | [15 September 2036](numbers.md?date=day#cooling-end) |
+| **The Clear Rain** | [7 September 2034](numbers.md?date=day#traj-clear-rain) |  |
+| CO₂ rain-out and sealing | [7 September 2034](numbers.md?date=day#traj-clear-rain) | [15 September 2036](numbers.md?date=day#sealing-end) |
 | Ice caught and parked | [17 August 2034](numbers.md?date=day#first-catch) | [15 December 2036](numbers.md?date=day#last-arrival) |
 | Ice lowered, oceans fill | [30 June 2035](numbers.md?date=day#lowering-start) | [15 December 2036](numbers.md?date=day#lowering-end) |
 | Oxygen forging, acid sweep | [1 January 2035](numbers.md?date=day#forge-start) | [30 September 2036](numbers.md?date=day#forge-end) |
-| Genesis seeding | [30 September 2036](numbers.md?date=day#forge-end) | [15 December 2036](numbers.md?date=day#genesis-end) |
+| Genesis seeding, oceans green | [14 December 2036](numbers.md?date=day#genesis-start) | [25 December 2036](numbers.md?date=day#genesis-end) |
 | **Earth-like Venus (simulated)** | [30 September 2036](numbers.md?date=day#traj-earth-like) |  |
 | **Deadline** | [31 December 2036](numbers.md?date=day#deadline) |  |
 <!-- /table -->
@@ -81,17 +81,16 @@ governs this phase is the Foundry's growth curve and the dates on which it can a
 ### Cooling: 2033 to 2036
 
 Active cooling runs from [1 January 2033](numbers.md?date=day#cooling-start) to
-[30 June 2036](numbers.md?date=day#cooling-end), and here the day-by-day
+[15 September 2036](numbers.md?date=day#cooling-end), and here the day-by-day
 [simulation](plan.md#the-simulated-atmosphere) takes over. Until the Ring takes over the Railheads, they
-draw [5.6 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [7.0 × 10¹⁹ W](numbers.md#helios-power),
-and cooling is starved of power. Even so, the Clear Rain begins on
-[19 January 2034](numbers.md?date=day#traj-clear-rain). From
-[17 August 2034](numbers.md?date=day#ring-pays-from) power is plentiful and the Exhaust runs at its limit,
-[5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The seas start to freeze on
-[14 March 2036](numbers.md?date=day#traj-freeze), all the CO₂ is down by
-[20 April 2036](numbers.md?date=day#traj-cold), the Frost Towers reach their target on
-[9 May 2036](numbers.md?date=day#traj-scavenged), and the last caps are sealed by
-[30 June 2036](numbers.md?date=day#sealing-end).
+draw [6.5 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [7.0 × 10¹⁹ W](numbers.md#helios-power),
+and cooling is starved of power. From [17 August 2034](numbers.md?date=day#ring-pays-from) power is
+plentiful and the Exhaust runs at its limit, [5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The Clear Rain begins
+on [7 September 2034](numbers.md?date=day#traj-clear-rain). The seas start to freeze on
+[17 July 2036](numbers.md?date=day#traj-freeze), all the CO₂ is down by
+[23 August 2036](numbers.md?date=day#traj-cold), the Frost Towers reach their target on
+[11 September 2036](numbers.md?date=day#traj-scavenged), and the last caps are sealed by
+[15 September 2036](numbers.md?date=day#sealing-end).
 
 ### Water: 2033 to 2036
 
@@ -108,10 +107,11 @@ and the air is warmed. How that ice gets down at all is still [open](risks.md#th
 The Forges run from [1 January 2035](numbers.md?date=day#forge-start) to
 [30 September 2036](numbers.md?date=day#forge-end), and the Aegis Shield has been on since
 [15 June 2034](numbers.md?date=day#aegis-online). Once the caps are sealed the Veil opens and the simulated
-air warms to [285 K](numbers.md#earth-like-temp) by [4 July 2036](numbers.md?date=day#traj-warm). It is
-Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like), the day the oxygen is complete, and
-Genesis seeding runs from then to [15 December 2036](numbers.md?date=day#genesis-end). That leaves
-[92 d](numbers.md#traj-slack-days) before the deadline.
+air warms to [285 K](numbers.md#earth-like-temp) by [19 September 2036](numbers.md?date=day#traj-warm). It is
+Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like), the day the oxygen is complete,
+[92 d](numbers.md#traj-slack-days) before the deadline. Genesis seeding waits for the oceans to hold their pH
+as well, so it begins on [14 December 2036](numbers.md?date=day#genesis-start), and the sunlit water is green
+by [25 December 2036](numbers.md?date=day#genesis-end) ([check](numbers.md#check-genesis-by-deadline)).
 
 ## What slips if the Foundry is slow
 
@@ -122,10 +122,9 @@ does not move is the deadline, and with it the last useful ice launch. The slip 
 
 - **The water.** The ice campaign shrinks from the front, so the Railheads must throw faster to deliver
   the same [1.0 × 10²⁰ kg](numbers.md#ice-mass), or the ocean comes out shallower.
-- **The energy.** The Lattice has fewer full-power years before the deadline. With only
-  [1.7%](numbers.md#budget-spare) spare on its own, a doubling time only a little longer than
-  [60 d](numbers.md#foundry-doubling-days) uses that up: the Lattice alone no longer covers the demand,
-  and the plan then depends on the Ring's recovered energy, which still leaves a margin.
+- **The energy.** The Lattice has fewer full-power years before the deadline. On its own it already falls
+  short, at [−6.3%](numbers.md#budget-spare) spare, so the plan depends on the Ring's recovered energy, and
+  every day of slip comes out of the [25%](numbers.md#budget-spare-with-ring) spare that leaves.
 - **The schedule.** The simulated Earth-like date at first holds, because it is set by when the Forges
   finish. A much slower Foundry cannot afford the Veil by its close date, and the simulated air misses the
   deadline.

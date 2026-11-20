@@ -345,10 +345,11 @@ cooling-start:
   label: Active cooling begins
   basis: design
 cooling-end:
-  value: 2036-06-30
+  value: 2036-09-15
   unit: date
   label: Active cooling ends
   basis: design
+  note: Set just after the simulated Frost Towers finish. The check that they finish before the caps are sealed fails if the simulation passes this date.
 frost-tower-temp:
   value: 133
   unit: K
@@ -415,10 +416,11 @@ cryo-cell-area:
   label: Area of one sealed compartment
   basis: design
 sealing-end:
-  value: 2036-06-30
+  value: 2036-09-15
   unit: date
   label: Last caps sealed
   basis: design
+  note: The caps go on once the Frost Towers have taken the last CO₂ out of the air, so this follows the simulation.
 heat-pipe-depth:
   value: 200
   unit: m
@@ -599,11 +601,6 @@ aegis-coil-temp:
   note: Kept cold by radiating to space from behind its own small sunshield; no cable today carries megaamperes per strand at this temperature.
 
 # --- Venus in 2036 ---------------------------------------------------------------------------------
-genesis-end:
-  value: 2036-12-15
-  unit: date
-  label: Genesis seeding complete
-  basis: design
 genesis-ph-min:
   value: 7.5
   unit: "1"
@@ -615,6 +612,21 @@ genesis-ph-days:
   unit: d
   label: Days the ocean pH must hold before any life is released
   basis: design
+genesis-seed-density:
+  value: 1.0e8
+  unit: 1/m3
+  show: 1/cm3
+  label: Density the drones seed cyanobacteria at in sunlit water
+  basis: design
+  note: A two-thousandth of the bloom density, so the drones carry little and the cells do the rest.
+genesis-bloom-density:
+  value: 2.0e11
+  unit: 1/m3
+  show: 1/cm3
+  label: Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean
+  basis: precedent
+  source: [wikipedia-synechococcus]
+  note: Synechococcus is generally 1,000 to 200,000 cells per millilitre in well-lit surface water; the plan takes the top of that range.
 genesis-doubling-days:
   value: 1
   unit: d

@@ -110,7 +110,7 @@ This is an open problem in version 3, tracked by a [failing check](budget.md#phy
 - **Build a far heavier, faster rotor.** More mass from the Foundry, and more energy stored in orbit above
   a planet.
 
-The energy budget still closes, because it never counted the energy that lowering would recover. A tether
+The energy budget never counted the energy that lowering would recover, so this problem does not change it. A tether
 that fails drops its Brick, which is the first option for that Brick: safe for Venus, costly in heat. The
 problem is open for [contributions](contribute.md#open-questions).
 

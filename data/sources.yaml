@@ -489,3 +489,10 @@
   url: https://en.wikipedia.org/wiki/Atmosphere_of_Venus
   checked: 2026-11-20
   note: An overview with references; the cloud layers and the Earth-like conditions at 50 to 65 km.
+- id: wikipedia-synechococcus
+  kind: web
+  title: Synechococcus
+  authors: Wikipedia
+  url: https://en.wikipedia.org/wiki/Synechococcus
+  checked: 2026-11-20
+  note: Abundant in well-lit surface water, generally 1,000 to 200,000 cells per millilitre.

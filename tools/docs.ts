@@ -254,7 +254,7 @@ const BLOCKS: Record<string, Block> = {
       ]),
     );
   },
-  corrections(_arg, _p) {
+  corrections(_arg, p) {
     return content.corrections
       .map((c) => {
         const tag = {
@@ -268,8 +268,8 @@ const BLOCKS: Record<string, Block> = {
         const head =
           c.kind === "version"
             ? `### Version ${c.version}: ${c.title}`
-            : `- **${tag} (v${c.version}): ${c.title}.** ${c.text.trim()}${issue}`;
-        return c.kind === "version" ? `${head}\n\n${c.text.trim()}\n` : head;
+            : `- **${tag} (v${c.version}): ${c.title}.** ${md(c.text.trim(), p)}${issue}`;
+        return c.kind === "version" ? `${head}\n\n${md(c.text.trim(), p)}\n` : head;
       })
       .join("\n");
   },

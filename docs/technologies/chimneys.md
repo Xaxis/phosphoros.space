@@ -71,9 +71,9 @@ but within capacity.
 
 **Life cycle.** The chimneys are built from the canopies down in 2032, under the closed Veil, and run hardest from
 [January 2033](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
-[January 2034](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
+[September 2034](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
 CO₂ forms on them and drains to the basins. As the CO₂ rains out the air thins, the canopies float lower and the
-towers are shortened. They retire once the CO₂ is down, in [April 2036](../numbers.md?date=month#traj-cold), and
+towers are shortened. They retire once the CO₂ is down, in [August 2036](../numbers.md?date=month#traj-cold), and
 their carbon goes into the cryo-continent caps.
 
 ## Specifications
@@ -118,13 +118,13 @@ because they describe the air drawn through the intake and the heat taken from i
   fast as the growing Lattice can pay for pumping.
 - **[June 2033](../numbers.md?date=month#ice-launch-start):** The Railheads on Ceres take most of the Lattice's
   power; cooling slows until the Ring pays for them.
-- **[19 January 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
+- **[7 September 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
   critical temperature and the exchangers start condensing liquid CO₂.
 - **[17 August 2034](../numbers.md?date=day#ring-pays-from):** The Ring powers the Railheads and the Exhaust runs at
   its limit, with the chimneys lifting heat well above the design peak.
-- **[20 April 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
+- **[23 August 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
   apart.
-- **[30 June 2036](../numbers.md?date=day#cooling-end):** Active cooling ends.
+- **[15 September 2036](../numbers.md?date=day#cooling-end):** Active cooling ends.
 
 ## Failure modes and safeguards
 

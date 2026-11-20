@@ -62,10 +62,10 @@ an in-plane force to the planet, so the model's `ring-net-force` check fails unt
 ### The energy loop
 
 The Ring recovers [7.2 × 10¹⁹ W](../numbers.md#ring-power), more than the
-[5.6 × 10¹⁹ W](../numbers.md#railhead-power) the Railheads draw on Ceres. The model checks this on every
+[6.5 × 10¹⁹ W](../numbers.md#railhead-power) the Railheads draw on Ceres. The model checks this on every
 run (the `ring-energy-loop` check in [calc/src/model/ring.ts](../../calc/src/model/ring.ts)). The surplus
 is not free: it is gravity's work on the falling ice,
-[4.6 × 10²⁷ J](../numbers.md#ice-solar-gain), explained in
+[4.3 × 10²⁷ J](../numbers.md#ice-solar-gain), explained in
 [the Ice Train](ice-train.md#why-the-ring-gets-back-more-than-the-railheads-spend).
 
 <!-- figure:energy-sankey -->
@@ -163,7 +163,7 @@ Three options are under study, and none is free.
    ever builds ([1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass)); by speed alone, a rotor many times
    faster, storing many times the energy.
 
-A mix of the three may do better than any one. Meanwhile the energy budget still closes, because it never
+A mix of the three may do better than any one. Meanwhile the energy budget is unchanged, because it never
 counted the lowering's recovered energy. The [simulation](../plan.md#the-simulated-atmosphere) does assume
 the tethers work: the heat it counts from the falling ice is the fall from
 [100 km](../numbers.md#lowering-release-altitude).

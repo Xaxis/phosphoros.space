@@ -48,9 +48,10 @@ removes heat from Venus faster than a plain radiator at the cloud tops can shed 
 electricity ([Santhanam 2012](sources.md#santhanam-2012)). The kill signal sits at the level a plain radiator already
 reaches: a tile that cannot beat passive radiation is not a heat pump worth building. The pass bar is well
 above that, and names a distance from the Carnot limit, because the model charges the pump work at the
-Carnot minimum, [5.4](numbers.md#exhaust-work-ratio) joules per joule. A real tile will do worse. The budget
-has [1.7%](numbers.md#budget-spare) to spare on the Lattice alone and [28%](numbers.md#budget-spare-with-ring)
-once the Ring powers the Railheads, so it can absorb a tile somewhat short of ideal, not one far short. The
+Carnot minimum, [5.4](numbers.md#exhaust-work-ratio) joules per joule. A real tile will do worse. The Lattice
+alone already falls short of the demand ([−6.3%](numbers.md#budget-spare) spare), and once the Ring powers the
+Railheads the spare is [25%](numbers.md#budget-spare-with-ring), so the plan can absorb a tile somewhat short of
+ideal, not one far short. The
 production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by 2031.
 
 ### Lightpipe

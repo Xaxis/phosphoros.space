@@ -90,8 +90,8 @@ can only ask.
 ### The digital twin
 
 At the Council tier, a digital twin of Venus and of every machine forecasts phase changes weeks ahead,
-such as the Clear Rain of [January 2034](../numbers.md?date=month#traj-clear-rain) and the freezing of
-the CO₂ seas from [March 2036](../numbers.md?date=month#traj-freeze). The Works then move canopies, Forges
+such as the Clear Rain of [September 2034](../numbers.md?date=month#traj-clear-rain) and the freezing of
+the CO₂ seas from [July 2036](../numbers.md?date=month#traj-freeze). The Works then move canopies, Forges
 and crawlers before conditions change rather than after.
 
 ### What it coordinates

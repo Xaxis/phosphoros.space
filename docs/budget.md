@@ -10,27 +10,28 @@ gives each one's formula and inputs.
 <!-- table:budget -->
 | Task | Energy the Lattice delivers |
 | --- | --- |
-| Launch 10²⁰ kg of ice from Ceres | [4.1 × 10²⁷ J](numbers.md#ice-launch-energy) |
-| Heat-pump work to cool Venus | [3.5 × 10²⁷ J](numbers.md#traj-pump-energy) |
-| Warm the air and melt the last ice | [3.8 × 10²⁵ J](numbers.md#traj-warm-energy) |
+| Launch 10²⁰ kg of ice from Ceres | [4.8 × 10²⁷ J](numbers.md#ice-launch-energy) |
+| Heat-pump work to cool Venus | [3.4 × 10²⁷ J](numbers.md#traj-pump-energy) |
+| Warm the air and melt the last ice | [4.5 × 10²⁵ J](numbers.md#traj-warm-energy) |
 | Forge 0.25 bar of oxygen | [2.7 × 10²⁵ J](numbers.md#forge-energy) |
 | Build all hardware | [10²² J](numbers.md#hardware-energy) |
-| **Total demand** | **[7.7 × 10²⁷ J](numbers.md#budget-demand)** |
+| **Total demand** | **[8.3 × 10²⁷ J](numbers.md#budget-demand)** |
 | Supply: the Lattice from full power to the deadline | [7.8 × 10²⁷ J](numbers.md#helios-supply) |
-| Spare | [1.7%](numbers.md#budget-spare) |
-| Spare once the Ring powers the Railheads | [28%](numbers.md#budget-spare-with-ring) |
+| Spare | [−6.3%](numbers.md#budget-spare) |
+| Spare once the Ring powers the Railheads | [25%](numbers.md#budget-spare-with-ring) |
 <!-- /table -->
 
 <!-- figure:lattice-budget -->
 ![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
-The plan must deliver [7.7 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Helios
+The plan must deliver [8.3 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Helios
 Lattice supplies [7.8 × 10²⁷ J](numbers.md#helios-supply): [7.0 × 10¹⁹ W](numbers.md#helios-power) for the
 [3.5 yr](numbers.md#helios-supply-years) from full power in [June 2033](numbers.md?date=month#helios-full-power)
-to the deadline. That leaves [1.7%](numbers.md#budget-spare) spare on the Lattice alone, and
-[28%](numbers.md#budget-spare-with-ring) once the Braking Ring's recovered energy powers the Railheads.
-Launching the water and pumping out the heat take [98%](numbers.md#budget-launch-share) of the Lattice's
+to the deadline. That leaves [−6.3%](numbers.md#budget-spare) spare on the Lattice alone, which does not
+cover the demand ([open problem](#physics-checks)), and [25%](numbers.md#budget-spare-with-ring) once the
+Braking Ring's recovered energy powers the Railheads.
+Launching the water and pumping out the heat take [110%](numbers.md#budget-launch-share) of the Lattice's
 output; oxygen and hardware are small change.
 
 The supply side is conservative. It counts only the full-power years, while the simulation also uses the
@@ -71,19 +72,19 @@ cold and each joule is dearest: [2.83 × 10²⁷ J](numbers.md#exhaust-work) 
 [5.4](numbers.md#exhaust-work-ratio) joules of work per joule of heat moved.
 
 The effective temperature is a trade. Cooler emitters need less work per joule but far more area: at the
-coolest option the model tries, emitters would cover [58%](numbers.md#exhaust-area-share-1000) of Venus; at
-the hottest, [3.7%](numbers.md#exhaust-area-share-2500), for more work. The ledger lists each option's
+coolest option the model tries, emitters would cover [55%](numbers.md#exhaust-area-share-1000) of Venus; at
+the hottest, [3.5%](numbers.md#exhaust-area-share-2500), for more work. The ledger lists each option's
 temperature. The Exhaust throws the heat and the work into space together,
-[3.4 × 10²⁷ J](numbers.md#exhaust-rejected), an average of [3.0 × 10¹⁹ W](numbers.md#exhaust-rejected-avg)
-over the [3.5 yr](numbers.md#cooling-seconds) campaign.
+[3.4 × 10²⁷ J](numbers.md#exhaust-rejected), an average of [2.9 × 10¹⁹ W](numbers.md#exhaust-rejected-avg)
+over the [3.7 yr](numbers.md#cooling-seconds) campaign.
 
 ### Why the simulation pumps more
 
 The budget does not charge [2.83 × 10²⁷ J](numbers.md#exhaust-work). It charges what the day-by-day
-[simulation](plan.md#the-simulated-atmosphere) actually spends, [3.5 × 10²⁷ J](numbers.md#traj-pump-energy).
+[simulation](plan.md#the-simulated-atmosphere) actually spends, [3.4 × 10²⁷ J](numbers.md#traj-pump-energy).
 The difference has three causes.
 
-- **Heat keeps arriving.** During the campaign [7.5 × 10²⁵ J](numbers.md#traj-heat-added) enters the air
+- **Heat keeps arriving.** During the campaign [8.0 × 10²⁵ J](numbers.md#traj-heat-added) enters the air
   from the crust, from the Forges' waste heat, from ice falling the last
   [100 km](numbers.md#lowering-release-altitude), and from the sunlight the closed Veil lets through.
 - **It arrives when pumping is dearest.** Much of that heat comes late, when the air is near
@@ -93,7 +94,7 @@ The difference has three causes.
   [133 K](numbers.md#frost-tower-temp) takes about [4.3 × 10²⁵ J](numbers.md#frost-work) more.
 
 After the caps are sealed, the beamed power also warms the air and melts the ice that was lowered while the
-air was below freezing: [3.8 × 10²⁵ J](numbers.md#traj-warm-energy). Version 2 charged only the simple
+air was below freezing: [4.5 × 10²⁵ J](numbers.md#traj-warm-energy). Version 2 charged only the simple
 estimate; counting the simulation is most of why the demand rose
 ([correction](about.md#corrections)).
 
@@ -101,9 +102,13 @@ estimate; counting the simulation is most of why the demand rose
 
 Each Brick leaves Ceres at [6.4 km/s](numbers.md#ice-launch-speed). Its motion energy is ½v² per kilogram,
 and the Railheads turn electricity into motion at [50%](numbers.md#railhead-efficiency), so each kilogram
-draws [41 MJ/kg](numbers.md#launch-energy-per-kg). For [1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice that is
-[4.1 × 10²⁷ J](numbers.md#ice-launch-energy), drawn at [5.6 × 10¹⁹ W](numbers.md#railhead-power) while the
-campaign runs.
+draws [41 MJ/kg](numbers.md#launch-energy-per-kg) in a launch window. The Railheads fire all the time, though,
+and a shot between windows needs a faster orbit to meet Venus: up to
+[46%](numbers.md#launch-offwindow-max) more energy at the worst time, [16%](numbers.md#launch-offwindow-mean)
+more on average. So each kilogram draws [47.7 MJ/kg](numbers.md#launch-energy-per-kg-avg) on average, and
+[1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice takes [4.8 × 10²⁷ J](numbers.md#ice-launch-energy), drawn at
+[6.5 × 10¹⁹ W](numbers.md#railhead-power) while the campaign runs. Of that,
+[6.7 × 10²⁶ J](numbers.md#ice-launch-offwindow-energy) is the price of firing between windows.
 
 ### Ring recovery and gravity
 
@@ -112,20 +117,20 @@ The ice reaches Venus at [9.08 km/s](numbers.md#ice-vinf) relative to the plane
 [7.1 km/s](numbers.md#ring-orbital-speed), frees [66.4 MJ/kg](numbers.md#ring-catch-energy-per-kg), of which
 [80%](numbers.md#ring-recovery-efficiency) becomes electricity: [53 MJ/kg](numbers.md#ring-recovered-per-kg),
 or [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) for all the ice. That is
-[1.3](numbers.md#ring-vs-launch) times what the launches drew.
+[1.3](numbers.md#ring-vs-launch) times what a launch in a window draws, and still more than the average launch.
 
 > **Physics:** This is not free energy. The ice falls from Ceres's orbit at
 > [2.77 AU](numbers.md#ceres-orbit) to Venus's at [0.723 AU](numbers.md#venus-orbit), deep into the Sun's
 > gravity well, then into Venus's own well down to the Ring. Gravity adds
-> [4.6 × 10²⁷ J](numbers.md#ice-solar-gain) to its motion between launch and catch. The Ring harvests
+> [4.3 × 10²⁷ J](numbers.md#ice-solar-gain) to its motion between launch and catch. The Ring harvests
 > energy gravity gave the ice.
 
 The budget counts it like this. Until the first Brick is caught on
 [17 August 2034](numbers.md?date=day#ring-pays-from), the Lattice powers the Railheads, which costs it
-[2.0 × 10²⁷ J](numbers.md#budget-lattice-launch). After that the Ring powers them, so the Lattice delivers
-only [5.6 × 10²⁷ J](numbers.md#budget-demand-with-ring), leaving [28%](numbers.md#budget-spare-with-ring)
+[2.4 × 10²⁷ J](numbers.md#budget-lattice-launch). After that the Ring powers them, so the Lattice delivers
+only [5.9 × 10²⁷ J](numbers.md#budget-demand-with-ring), leaving [25%](numbers.md#budget-spare-with-ring)
 spare. Counted instead as extra supply, the Ring brings the total to
-[1.3 × 10²⁸ J](numbers.md#budget-supply-total) and the spare to [42%](numbers.md#budget-spare-total). The
+[1.3 × 10²⁸ J](numbers.md#budget-supply-total) and the spare to [37%](numbers.md#budget-spare-total). The
 budget never counts the further [2.0 × 10²⁷ J](numbers.md#ring-lowering-recovery) that slowing the parked
 ice to rest would recover, because lowering the ice is an [open problem](#physics-checks).
 
@@ -173,15 +178,18 @@ Every run of the model tests these. A check is a law of physics or a requirement
 | [Version 2: a statite Veil 137,000 km sunward of Venus can hover](numbers.md#check-veil-v2-hovers) | **Fails (open issue)** | Light pressure (0.0174 m/s²) and Venus's gravity both point toward Venus; the shade falls with 0.0347 m/s² and reaches Venus in about 1 day. |
 | [The Veil's station balances gravity, light pressure and orbital motion](numbers.md#check-veil-hovers) | Pass | At 1.110 million km sunward the residual is 0.0e+0 m/s², nil; slats trim the small, slow drift of this unstable point by tilting. |
 | [The heat pump never beats Carnot](numbers.md#check-second-law) | Pass | Pump work 2.83e+27 J for 5.28e+26 J of heat, at least the 9.05e+26 J Carnot demands even if every joule left from 737 K. |
-| [The Forges make the cap graphite before sealing ends](numbers.md#check-graphite-for-caps) | Pass | 4.17e+17 kg of graphite by the end of sealing; the caps need 3.00e+17 kg. |
+| [The Forges make the cap graphite before sealing ends](numbers.md#check-graphite-for-caps) | Pass | 4.75e+17 kg of graphite by the end of sealing; the caps need 3.00e+17 kg. |
 | [The last Brick arrives before the deadline](numbers.md#check-ice-arrives) | Pass | Last launch 2035.80, transfer 1.15 yr, last arrival 2036.95. |
-| [The Ring recovers more power than the Railheads draw](numbers.md#check-ring-energy-loop) | Pass | Ring 7.22e+19 W recovered against 5.57e+19 W drawn by the Railheads. |
+| [The Ring recovers more power than the Railheads draw](numbers.md#check-ring-energy-loop) | Pass | Ring 7.22e+19 W recovered against 6.48e+19 W drawn by the Railheads. |
 | [The Ring can pass the catch's net braking force to Venus](numbers.md#check-ring-net-force) | **Fails (open issue)** | Catching half the Bricks eastbound and half westbound cancels the twist, not the force: 8.1e+15 N remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; its spare lift is 3.0e+13 N, 266 times too little. |
 | [The Ring can carry the force of lowering the ice on tethers](numbers.md#check-ring-lowering-load) | **Fails (open issue)** | Lowering 2.17e+12 kg/s needs at least 4.7e+15 N; the rotor's spare lift is 3.0e+13 N, 154 times too little. |
 | [The Foundry can afford the Veil by the date it must close](numbers.md#check-foundry-affords-veil) | Pass | Foundry machinery at the Veil's close date: 2.17e+12 kg; Veil: 5.41e+11 kg. |
 | [The Foundry can afford the Helios Lattice by the date it reaches full power](numbers.md#check-foundry-affords-lattice) | Pass | Foundry at full power date: 1.34e+14 kg; Lattice: 5.14e+13 kg. |
+| [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) | Pass | The simulated Frost Towers finish on 11 September 2036; the last caps are sealed on 15 September 2036. |
+| [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline) | Pass | Seeding waits for the oxygen (30 September 2036) and for the oceans to hold their pH (14 December 2036), so it begins on 14 December 2036; doubling every 1 d, the cells reach bloom density on 25 December 2036, against a deadline of 31 December 2036. |
 | [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline) | Pass | The day-by-day simulation reaches Earth-like conditions on 2036-09-30; the deadline is 2036-12-31. |
-| [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) | Pass | Lattice supply 7.79e+27 J against demand 7.66e+27 J: 2% spare before the Ring's recovered energy, 28% once the Ring powers the Railheads. |
+| [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) | **Fails (open issue)** | Lattice supply 7.79e+27 J against demand 8.28e+27 J: -6% spare before the Ring's recovered energy, 25% once the Ring powers the Railheads. |
+| [With the Ring's recovered energy, supply covers demand](numbers.md#check-energy-closes-with-ring) | Pass | The Lattice delivers 7.8 × 10²⁷ J against 5.9 × 10²⁷ J once the Ring powers the Railheads, and the Ring recovers 5.3 × 10²⁷ J against the 2.4 × 10²⁷ J of launches it pays for. |
 <!-- /table -->
 
 Two checks fail, and both are shown on purpose.
@@ -197,10 +205,19 @@ Venus, hovering on light pressure. But sunlight pushes away from the Sun, toward
 [2.2 × 10¹² kg/s](numbers.md#lowering-rate) of parked ice to rest and down the tethers needs at least
 [4.7 × 10¹⁵ N](numbers.md#lowering-support), but the Ring's rotor has only
 [3.0 × 10¹³ N](numbers.md#ring-lift) of lift to spare, [150](numbers.md#lowering-overload) times too little.
-Catching works; lowering this way does not. The energy budget still closes, because it never counted the
-lowering's recovered energy. But the likeliest fix, dropping the Bricks from rest at the Ring, adds
+Catching works; lowering this way does not. The energy budget never counted the lowering's recovered energy,
+so this problem does not change it. But the likeliest fix, dropping the Bricks from rest at the Ring, adds
 [2.5 × 10²⁶ J](numbers.md#ring-drop-extra-heat) of heat that the simulation does not yet pump out. The
 options are on [Risks and Governance](risks.md#the-ring-cannot-yet-lower-the-ice).
+
+**The Lattice alone.** The Lattice delivers [7.8 × 10²⁷ J](numbers.md#helios-supply) against a demand of
+[8.3 × 10²⁷ J](numbers.md#budget-demand), so on its own it falls short. The Railheads fire through every
+part of the [8.5 months](numbers.md#launch-window-period) between launch windows, and the shots between windows
+cost [6.7 × 10²⁶ J](numbers.md#ice-launch-offwindow-energy) more than the Hohmann minimum. The plan closes only
+with the Ring's recovered energy, which leaves [25%](numbers.md#budget-spare-with-ring) spare
+([check](numbers.md#check-energy-closes-with-ring)). So the Ring is no longer a margin: the plan depends on
+it. Firing harder near each window would cost less energy but needs more Railheads, and a longer campaign
+does not fit before the deadline.
 
 ## Every assumption
 
@@ -253,52 +270,54 @@ its basis says whether it is a design choice, an invention or a demonstrated pre
 | Peak power the Exhaust can throw into space | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Design choice | 3.0 × 10¹⁹ W to 7.0 × 10¹⁹ W | [data/assumptions.yaml:325](../data/assumptions.yaml#L325) |
 | Number of floating canopies | [10,000](numbers.md#exhaust-canopies) | Design choice |  | [data/assumptions.yaml:332](../data/assumptions.yaml#L332) |
 | Beam cone each tile fires into | [25°](numbers.md#exhaust-cone) | Invented |  | [data/assumptions.yaml:337](../data/assumptions.yaml#L337) |
-| Frost Tower cold-trap temperature | [133 K](numbers.md#frost-tower-temp) | Invented |  | [data/assumptions.yaml:352](../data/assumptions.yaml#L352) |
-| External quantum efficiency of the emitter tiles (photons out per electron in) | [99.9%](numbers.md#exhaust-eqe) | Invented |  | [data/assumptions.yaml:358](../data/assumptions.yaml#L358) |
-| Cryo-continent thickness | [2 km](numbers.md#cryo-thickness) | Design choice |  | [data/assumptions.yaml:368](../data/assumptions.yaml#L368) |
-| Carbon aerogel layer in each cap | [20 m](numbers.md#cryo-aerogel-thickness) | Invented |  | [data/assumptions.yaml:374](../data/assumptions.yaml#L374) |
-| Carbon aerogel density | [100 kg/m³](numbers.md#cryo-aerogel-density) | Precedent |  | [data/assumptions.yaml:379](../data/assumptions.yaml#L379) |
-| Carbon aerogel thermal conductivity | [0.014 W/(m·K)](numbers.md#cryo-aerogel-conductivity) | Precedent |  | [data/assumptions.yaml:384](../data/assumptions.yaml#L384) |
-| Graphite membrane thickness | [1 mm](numbers.md#cryo-membrane-thickness) | Invented |  | [data/assumptions.yaml:389](../data/assumptions.yaml#L389) |
-| Crushed-basalt armour on each cap | [2 m](numbers.md#cryo-armour-thickness) | Design choice |  | [data/assumptions.yaml:395](../data/assumptions.yaml#L395) |
-| Temperature the sealed dry ice is held at | [180 K](numbers.md#cryo-ice-temp) | Design choice |  | [data/assumptions.yaml:400](../data/assumptions.yaml#L400) |
-| Effective temperature step between hot rock and basin floor | [450 K](numbers.md#cryo-floor-step) | Design choice |  | [data/assumptions.yaml:405](../data/assumptions.yaml#L405) |
-| Area of one sealed compartment | [100 km²](numbers.md#cryo-cell-area) | Design choice |  | [data/assumptions.yaml:411](../data/assumptions.yaml#L411) |
-| Depth basal heat pipes reach into the basin floors | [200 m](numbers.md#heat-pipe-depth) | Design choice |  | [data/assumptions.yaml:422](../data/assumptions.yaml#L422) |
-| Oxygen pressure to make | [0.25 bar](numbers.md#o2-target-pressure) | Design choice |  | [data/assumptions.yaml:429](../data/assumptions.yaml#L429) |
-| Molten-carbonate splitting efficiency | [60%](numbers.md#forge-efficiency) | Precedent |  | [data/assumptions.yaml:435](../data/assumptions.yaml#L435) |
-| Number of Forges | [500](numbers.md#forge-count) | Design choice |  | [data/assumptions.yaml:442](../data/assumptions.yaml#L442) |
-| Width of one Forge raft | [30 km](numbers.md#forge-raft-width) | Design choice |  | [data/assumptions.yaml:457](../data/assumptions.yaml#L457) |
-| Water shipped to Venus | [1.0 × 10²⁰ kg](numbers.md#ice-mass) | Design choice | 3.0 × 10¹⁹ kg to 2.0 × 10²⁰ kg | [data/assumptions.yaml:465](../data/assumptions.yaml#L465) |
-| Ice Brick mass | [1 Mt](numbers.md#brick-mass) | Design choice |  | [data/assumptions.yaml:471](../data/assumptions.yaml#L471) |
-| Number of Railheads on Ceres | [10,000](numbers.md#railhead-count) | Design choice |  | [data/assumptions.yaml:477](../data/assumptions.yaml#L477) |
-| Railhead acceleration | [200 g](numbers.md#railhead-accel) | Invented |  | [data/assumptions.yaml:482](../data/assumptions.yaml#L482) |
-| Railhead efficiency, electricity to motion | [50%](numbers.md#railhead-efficiency) | Invented |  | [data/assumptions.yaml:487](../data/assumptions.yaml#L487) |
-| Days kept between the last arrival and the deadline | [16 d](numbers.md#ice-lowering-margin) | Design choice |  | [data/assumptions.yaml:493](../data/assumptions.yaml#L493) |
-| Ring altitude | [400 km](numbers.md#ring-altitude) | Design choice |  | [data/assumptions.yaml:510](../data/assumptions.yaml#L510) |
-| Rotor speed | [10 km/s](numbers.md#ring-rotor-speed) | Invented |  | [data/assumptions.yaml:516](../data/assumptions.yaml#L516) |
-| Rotor mass | [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) | Invented |  | [data/assumptions.yaml:522](../data/assumptions.yaml#L522) |
-| Stator mass (tracks, tethers, receivers) | [3.0 × 10¹² kg](numbers.md#ring-stator-mass) | Invented |  | [data/assumptions.yaml:527](../data/assumptions.yaml#L527) |
-| Catcher braking | [50 g](numbers.md#ring-catch-accel) | Invented |  | [data/assumptions.yaml:532](../data/assumptions.yaml#L532) |
-| Regenerative braking efficiency | [80%](numbers.md#ring-recovery-efficiency) | Invented |  | [data/assumptions.yaml:537](../data/assumptions.yaml#L537) |
-| Number of tether lifts | [3,000](numbers.md#ring-tether-lifts) | Design choice |  | [data/assumptions.yaml:543](../data/assumptions.yaml#L543) |
-| Height Bricks are released from | [100 km](numbers.md#lowering-release-altitude) | Design choice |  | [data/assumptions.yaml:548](../data/assumptions.yaml#L548) |
-| Temperature of a Brick when it is lowered | [150 K](numbers.md#brick-temp) | Design choice |  | [data/assumptions.yaml:564](../data/assumptions.yaml#L564) |
-| Magnetic bubble radius | [10,000 km](numbers.md#aegis-bubble-radius) | Design choice |  | [data/assumptions.yaml:577](../data/assumptions.yaml#L577) |
-| Coil radius | [10 km](numbers.md#aegis-coil-radius) | Design choice |  | [data/assumptions.yaml:583](../data/assumptions.yaml#L583) |
-| Turns in the coil | [1,000,000](numbers.md#aegis-turns) | Design choice |  | [data/assumptions.yaml:589](../data/assumptions.yaml#L589) |
-| Temperature the Aegis cable runs at | [40 K](numbers.md#aegis-coil-temp) | Invented |  | [data/assumptions.yaml:594](../data/assumptions.yaml#L594) |
-| Ocean pH that must hold before any life is released | [7.5](numbers.md#genesis-ph-min) | Design choice |  | [data/assumptions.yaml:607](../data/assumptions.yaml#L607) |
-| Days the ocean pH must hold before any life is released | [90 d](numbers.md#genesis-ph-days) | Design choice |  | [data/assumptions.yaml:613](../data/assumptions.yaml#L613) |
-| Doubling time of the seeded ocean cyanobacteria in sunlit water | [1 d](numbers.md#genesis-doubling-days) | Invented |  | [data/assumptions.yaml:618](../data/assumptions.yaml#L618) |
-| Thinnest black-loam soil laid on caps and shores | [10 cm](numbers.md#genesis-soil-min) | Design choice |  | [data/assumptions.yaml:624](../data/assumptions.yaml#L624) |
-| Thickest black-loam soil laid on caps and shores | [30 cm](numbers.md#genesis-soil-max) | Design choice |  | [data/assumptions.yaml:630](../data/assumptions.yaml#L630) |
-| Length of the day the Veil and Lanterns set | [24 h](numbers.md#day-length) | Design choice |  | [data/assumptions.yaml:636](../data/assumptions.yaml#L636) |
-| Relative humidity over the new oceans | [75%](numbers.md#final-humidity) | Design choice |  | [data/assumptions.yaml:643](../data/assumptions.yaml#L643) |
-| Albedo of the finished, Earth-like Venus | [30%](numbers.md#final-albedo) | Design choice |  | [data/assumptions.yaml:649](../data/assumptions.yaml#L649) |
-| Coldest mean temperature that counts as Earth-like | [285 K](numbers.md#earth-like-temp) | Design choice |  | [data/assumptions.yaml:655](../data/assumptions.yaml#L655) |
-| Most CO₂ that counts as Earth-like | [600 ppm](numbers.md#earth-like-co2) | Design choice |  | [data/assumptions.yaml:661](../data/assumptions.yaml#L661) |
-| Days a replicator keeps building without a Mass Ledger heartbeat | [7 d](numbers.md#choir-deadman-days) | Design choice |  | [data/assumptions.yaml:669](../data/assumptions.yaml#L669) |
+| Frost Tower cold-trap temperature | [133 K](numbers.md#frost-tower-temp) | Invented |  | [data/assumptions.yaml:353](../data/assumptions.yaml#L353) |
+| External quantum efficiency of the emitter tiles (photons out per electron in) | [99.9%](numbers.md#exhaust-eqe) | Invented |  | [data/assumptions.yaml:359](../data/assumptions.yaml#L359) |
+| Cryo-continent thickness | [2 km](numbers.md#cryo-thickness) | Design choice |  | [data/assumptions.yaml:369](../data/assumptions.yaml#L369) |
+| Carbon aerogel layer in each cap | [20 m](numbers.md#cryo-aerogel-thickness) | Invented |  | [data/assumptions.yaml:375](../data/assumptions.yaml#L375) |
+| Carbon aerogel density | [100 kg/m³](numbers.md#cryo-aerogel-density) | Precedent |  | [data/assumptions.yaml:380](../data/assumptions.yaml#L380) |
+| Carbon aerogel thermal conductivity | [0.014 W/(m·K)](numbers.md#cryo-aerogel-conductivity) | Precedent |  | [data/assumptions.yaml:385](../data/assumptions.yaml#L385) |
+| Graphite membrane thickness | [1 mm](numbers.md#cryo-membrane-thickness) | Invented |  | [data/assumptions.yaml:390](../data/assumptions.yaml#L390) |
+| Crushed-basalt armour on each cap | [2 m](numbers.md#cryo-armour-thickness) | Design choice |  | [data/assumptions.yaml:396](../data/assumptions.yaml#L396) |
+| Temperature the sealed dry ice is held at | [180 K](numbers.md#cryo-ice-temp) | Design choice |  | [data/assumptions.yaml:401](../data/assumptions.yaml#L401) |
+| Effective temperature step between hot rock and basin floor | [450 K](numbers.md#cryo-floor-step) | Design choice |  | [data/assumptions.yaml:406](../data/assumptions.yaml#L406) |
+| Area of one sealed compartment | [100 km²](numbers.md#cryo-cell-area) | Design choice |  | [data/assumptions.yaml:412](../data/assumptions.yaml#L412) |
+| Depth basal heat pipes reach into the basin floors | [200 m](numbers.md#heat-pipe-depth) | Design choice |  | [data/assumptions.yaml:424](../data/assumptions.yaml#L424) |
+| Oxygen pressure to make | [0.25 bar](numbers.md#o2-target-pressure) | Design choice |  | [data/assumptions.yaml:431](../data/assumptions.yaml#L431) |
+| Molten-carbonate splitting efficiency | [60%](numbers.md#forge-efficiency) | Precedent |  | [data/assumptions.yaml:437](../data/assumptions.yaml#L437) |
+| Number of Forges | [500](numbers.md#forge-count) | Design choice |  | [data/assumptions.yaml:444](../data/assumptions.yaml#L444) |
+| Width of one Forge raft | [30 km](numbers.md#forge-raft-width) | Design choice |  | [data/assumptions.yaml:459](../data/assumptions.yaml#L459) |
+| Water shipped to Venus | [1.0 × 10²⁰ kg](numbers.md#ice-mass) | Design choice | 3.0 × 10¹⁹ kg to 2.0 × 10²⁰ kg | [data/assumptions.yaml:467](../data/assumptions.yaml#L467) |
+| Ice Brick mass | [1 Mt](numbers.md#brick-mass) | Design choice |  | [data/assumptions.yaml:473](../data/assumptions.yaml#L473) |
+| Number of Railheads on Ceres | [10,000](numbers.md#railhead-count) | Design choice |  | [data/assumptions.yaml:479](../data/assumptions.yaml#L479) |
+| Railhead acceleration | [200 g](numbers.md#railhead-accel) | Invented |  | [data/assumptions.yaml:484](../data/assumptions.yaml#L484) |
+| Railhead efficiency, electricity to motion | [50%](numbers.md#railhead-efficiency) | Invented |  | [data/assumptions.yaml:489](../data/assumptions.yaml#L489) |
+| Days kept between the last arrival and the deadline | [16 d](numbers.md#ice-lowering-margin) | Design choice |  | [data/assumptions.yaml:495](../data/assumptions.yaml#L495) |
+| Ring altitude | [400 km](numbers.md#ring-altitude) | Design choice |  | [data/assumptions.yaml:512](../data/assumptions.yaml#L512) |
+| Rotor speed | [10 km/s](numbers.md#ring-rotor-speed) | Invented |  | [data/assumptions.yaml:518](../data/assumptions.yaml#L518) |
+| Rotor mass | [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) | Invented |  | [data/assumptions.yaml:524](../data/assumptions.yaml#L524) |
+| Stator mass (tracks, tethers, receivers) | [3.0 × 10¹² kg](numbers.md#ring-stator-mass) | Invented |  | [data/assumptions.yaml:529](../data/assumptions.yaml#L529) |
+| Catcher braking | [50 g](numbers.md#ring-catch-accel) | Invented |  | [data/assumptions.yaml:534](../data/assumptions.yaml#L534) |
+| Regenerative braking efficiency | [80%](numbers.md#ring-recovery-efficiency) | Invented |  | [data/assumptions.yaml:539](../data/assumptions.yaml#L539) |
+| Number of tether lifts | [3,000](numbers.md#ring-tether-lifts) | Design choice |  | [data/assumptions.yaml:545](../data/assumptions.yaml#L545) |
+| Height Bricks are released from | [100 km](numbers.md#lowering-release-altitude) | Design choice |  | [data/assumptions.yaml:550](../data/assumptions.yaml#L550) |
+| Temperature of a Brick when it is lowered | [150 K](numbers.md#brick-temp) | Design choice |  | [data/assumptions.yaml:566](../data/assumptions.yaml#L566) |
+| Magnetic bubble radius | [10,000 km](numbers.md#aegis-bubble-radius) | Design choice |  | [data/assumptions.yaml:579](../data/assumptions.yaml#L579) |
+| Coil radius | [10 km](numbers.md#aegis-coil-radius) | Design choice |  | [data/assumptions.yaml:585](../data/assumptions.yaml#L585) |
+| Turns in the coil | [1,000,000](numbers.md#aegis-turns) | Design choice |  | [data/assumptions.yaml:591](../data/assumptions.yaml#L591) |
+| Temperature the Aegis cable runs at | [40 K](numbers.md#aegis-coil-temp) | Invented |  | [data/assumptions.yaml:596](../data/assumptions.yaml#L596) |
+| Ocean pH that must hold before any life is released | [7.5](numbers.md#genesis-ph-min) | Design choice |  | [data/assumptions.yaml:604](../data/assumptions.yaml#L604) |
+| Days the ocean pH must hold before any life is released | [90 d](numbers.md#genesis-ph-days) | Design choice |  | [data/assumptions.yaml:610](../data/assumptions.yaml#L610) |
+| Density the drones seed cyanobacteria at in sunlit water | [100 per cm³](numbers.md#genesis-seed-density) | Design choice |  | [data/assumptions.yaml:615](../data/assumptions.yaml#L615) |
+| Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean | [200,000 per cm³](numbers.md#genesis-bloom-density) | Precedent |  | [data/assumptions.yaml:622](../data/assumptions.yaml#L622) |
+| Doubling time of the seeded ocean cyanobacteria in sunlit water | [1 d](numbers.md#genesis-doubling-days) | Invented |  | [data/assumptions.yaml:630](../data/assumptions.yaml#L630) |
+| Thinnest black-loam soil laid on caps and shores | [10 cm](numbers.md#genesis-soil-min) | Design choice |  | [data/assumptions.yaml:636](../data/assumptions.yaml#L636) |
+| Thickest black-loam soil laid on caps and shores | [30 cm](numbers.md#genesis-soil-max) | Design choice |  | [data/assumptions.yaml:642](../data/assumptions.yaml#L642) |
+| Length of the day the Veil and Lanterns set | [24 h](numbers.md#day-length) | Design choice |  | [data/assumptions.yaml:648](../data/assumptions.yaml#L648) |
+| Relative humidity over the new oceans | [75%](numbers.md#final-humidity) | Design choice |  | [data/assumptions.yaml:655](../data/assumptions.yaml#L655) |
+| Albedo of the finished, Earth-like Venus | [30%](numbers.md#final-albedo) | Design choice |  | [data/assumptions.yaml:661](../data/assumptions.yaml#L661) |
+| Coldest mean temperature that counts as Earth-like | [285 K](numbers.md#earth-like-temp) | Design choice |  | [data/assumptions.yaml:667](../data/assumptions.yaml#L667) |
+| Most CO₂ that counts as Earth-like | [600 ppm](numbers.md#earth-like-co2) | Design choice |  | [data/assumptions.yaml:673](../data/assumptions.yaml#L673) |
+| Days a replicator keeps building without a Mass Ledger heartbeat | [7 d](numbers.md#choir-deadman-days) | Design choice |  | [data/assumptions.yaml:681](../data/assumptions.yaml#L681) |
 <!-- /table -->
 
 Every assumption with a range is a slider in the [Explorer](https://phosphoros.space/explore), which runs

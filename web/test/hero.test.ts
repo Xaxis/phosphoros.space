@@ -63,6 +63,7 @@ test("the seas only grow while the ice melts", () => {
       "lowering-start",
       "lowering-end",
       "forge-end",
+      "genesis-start",
       "genesis-end",
       "traj-earth-like",
       "deadline",

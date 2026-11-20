@@ -4,7 +4,8 @@
 
 Phosphoros is a speculative but honest engineering plan. It asks what it would take to make Venus
 Earth-like in ten years, from 2027 to 2036, and answers with a complete, internally consistent design:
-thirteen inventions, a decade of dates, and an energy budget that closes. It is a design review of an
+thirteen inventions, a decade of dates, and an energy budget that shows where it closes and where it
+does not. It is a design review of an
 impossible-sounding idea, carried out in public.
 
 Three rules make it honest rather than merely bold:
@@ -78,6 +79,10 @@ Every number in the plan now comes from data/ through the model in calc/. Rebuil
 - **Correction (v3): 0.25 bar of oxygen is a little more than Earth's, not a match.** Earth's sea-level oxygen is 0.21 bar. 0.25 bar is about 18% more.
 - **Correction (v3): Seeding waits for the oxygen.** Version 2 seeded life from mid-2036 behind a gate that needs 0.25 bar of oxygen, but the Forges finish only at the end of September 2036. Seeding now starts when the gate opens; one-day doubling still greens the sunlit water by December.
 - **Correction (v3): Precursor mission dates checked.** EnVision has slipped from November 2031 to 2032; Venus Life Finder waits on Neutron, now due in 2027. DAVINCI (December 2030) and VERITAS (November 2032) are confirmed, but NASA's 2027 budget request again proposes ending both.
+- **Correction (v3): Launches between windows cost more, and the budget now charges them.** Version 2 priced every Ice Train shot at the Hohmann minimum, but the Railheads fire all the time. A shot between launch windows needs a faster orbit to meet Venus: up to [46%](numbers.md#launch-offwindow-max) more energy at the worst moment, [16%](numbers.md#launch-offwindow-mean) more on average. Charging the average raises the launch energy to [4.8 × 10²⁷ J](numbers.md#ice-launch-energy) and the Railheads' power to [6.5 × 10¹⁹ W](numbers.md#railhead-power). Until the Ring takes over, cooling gets less of the Lattice, so the Clear Rain moves to [September 2034](numbers.md?date=month#traj-clear-rain) and all the CO₂ is down on [23 August 2036](numbers.md?date=day#traj-cold). The air is Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like).
+- **Correction (v3): Cooling and sealing end once the Frost Towers finish.** The end of active cooling and the last cap were both planned for 30 June 2036. With launches between windows charged, the simulated Frost Towers finish only on [11 September 2036](numbers.md?date=day#traj-scavenged), so both move to [15 September 2036](numbers.md?date=day#sealing-end), and a new check keeps them after the Frost Towers. The Exhaust's campaign averages are taken over the longer campaign, so they fall a little.
+- **Correction (v3): Seeding waits for the ocean pH gate as well as the oxygen.** Seeding began the day the oxygen was in, [30 September 2036](numbers.md?date=day#forge-end), which met the pH gate (oceans above pH [7.5](numbers.md#genesis-ph-min) for [90 d](numbers.md#genesis-ph-days)) with almost nothing to spare. With the later melt the pH gate opens on [14 December 2036](numbers.md?date=day#genesis-ph-clear), so seeding now begins at the later of the two gates, [14 December 2036](numbers.md?date=day#genesis-start). Seeded at [100 per cm³](numbers.md#genesis-seed-density) and doubling every [1 d](numbers.md#genesis-doubling-days), the cyanobacteria reach the density of rich Earth seawater on [25 December 2036](numbers.md?date=day#genesis-end), and a new check holds that to the deadline. That date used to mark the end of seeding; it now marks green water.
+- **Open problem (v3): From the Lattice alone, the energy budget does not close.** Charging the launches fired between windows adds [6.7 × 10²⁶ J](numbers.md#ice-launch-offwindow-energy) to the demand. The Lattice delivers [7.8 × 10²⁷ J](numbers.md#helios-supply) against [8.3 × 10²⁷ J](numbers.md#budget-demand), so it falls short: [−6.3%](numbers.md#budget-spare) spare. The plan closes only with the Ring's recovered energy, which leaves [25%](numbers.md#budget-spare-with-ring) spare, so the Ring is no longer a margin but a necessity. Options under study: fire harder near each window (more Railheads, less energy), a larger Lattice, or less water. ([issue #12](https://github.com/Xaxis/phosphoros.space/issues/12))
 <!-- /table -->
 
 ## Version 2's numbers, checked
@@ -101,11 +106,18 @@ that do not: some version 3 changed on purpose, and the rest differ for reasons 
 | Peak power the Exhaust can throw into space | 3.6 × 10¹⁹ W | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
 | Emitter area installed (sized for the peak) | 4.0 × 10¹³ m² | [5.5 × 10¹³ m²](numbers.md#exhaust-area-installed) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
 | Installed emitter area as a share of Venus | 9% | [12%](numbers.md#exhaust-area-share) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Working emitter area as a share of Venus at an effective 1,000 K | 58% | [55%](numbers.md#exhaust-area-share-1000) | Corrected in version 3 ([sealing-follows-frost](about.md#corrections)) |
+| Working emitter area as a share of Venus at an effective 1,500 K | 17% | [16%](numbers.md#exhaust-area-share-1500) | Corrected in version 3 ([sealing-follows-frost](about.md#corrections)) |
+| Working emitter area as a share of Venus at an effective 2,500 K | 3.7% | [3.5%](numbers.md#exhaust-area-share-2500) | Corrected in version 3 ([sealing-follows-frost](about.md#corrections)) |
 | Lattice share to pump the floor heat away at first (worst case, from 200 K) | 1% | [0.2%](numbers.md#cryo-refrigeration-share) | The brief budgets about 1% of the Lattice to refrigerate the basin floors. Pumping the first 12 PW from 200 K to an effective 2,000 K takes 0.2%, and far less once the rock cools; 1% is a generous allowance. |
 | Power of one Forge | 1 TW | [960 TW](numbers.md#forge-plant-power) | The brief lists 500 plants of about 1 TW, but 4.9 × 10¹⁷ W shared by 500 Forges is about 1 PW (10¹⁵ W) each, a thousand times more. The total is right; the per-plant figure was a unit slip. |
-| Heat-pump work to cool Venus, day by day, Frost Towers included | 2.8 × 10²⁷ J | [3.5 × 10²⁷ J](numbers.md#traj-pump-energy) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
-| Spare supply, before counting the Ring's recovered energy | 9% | [1.7%](numbers.md#budget-spare) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
-| Share of the Lattice's output that water and cooling take | 90% | [98%](numbers.md#budget-launch-share) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Energy to launch all the ice | 4.1 × 10²⁷ J | [4.8 × 10²⁷ J](numbers.md#ice-launch-energy) | Corrected in version 3 ([offwindow-launch](about.md#corrections)) |
+| Power all Railheads draw | 5.6 × 10¹⁹ W | [6.5 × 10¹⁹ W](numbers.md#railhead-power) | Corrected in version 3 ([offwindow-launch](about.md#corrections)) |
+| Power one Railhead draws | 5.5 × 10¹⁵ W | [6.5 × 10¹⁵ W](numbers.md#railhead-power-each) | Corrected in version 3 ([offwindow-launch](about.md#corrections)) |
+| Energy delivered from outside Venus | 7.0 × 10²⁷ J | [8.3 × 10²⁷ J](numbers.md#budget-demand) | Corrected in version 3 ([offwindow-launch](about.md#corrections)) |
+| Heat-pump work to cool Venus, day by day, Frost Towers included | 2.8 × 10²⁷ J | [3.4 × 10²⁷ J](numbers.md#traj-pump-energy) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Spare supply, before counting the Ring's recovered energy | 9% | [−6.3%](numbers.md#budget-spare) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Share of the Lattice's output that water and cooling take | 90% | [110%](numbers.md#budget-launch-share) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
 <!-- /table -->
 
 ## License

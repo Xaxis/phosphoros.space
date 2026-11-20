@@ -4,7 +4,7 @@
 deliver [7.0 × 10¹⁹ W](../numbers.md#helios-power) from [June 2033](../numbers.md?date=month#helios-full-power),
 [1.8 × 10⁻⁵%](../numbers.md#helios-sun-share) of the Sun's output. By the deadline that is
 [7.8 × 10²⁷ J](../numbers.md#helios-supply), the energy the whole plan runs on. Water and cooling take
-[98%](../numbers.md#budget-launch-share) of it.
+[110%](../numbers.md#budget-launch-share) of it.
 
 <!-- figure:energy-sankey -->
 ![Energy flows of the Phosphoros campaign, to the deadline](../../figures/svg/energy-sankey.svg)
@@ -66,7 +66,7 @@ proportion to the Foundry's mass until then.
 
 **The customers.** Three users share the output, and the order matters:
 
-1. **The Ceres Railheads** draw [5.6 × 10¹⁹ W](../numbers.md#railhead-power) from the first launch in
+1. **The Ceres Railheads** draw [6.5 × 10¹⁹ W](../numbers.md#railhead-power) from the first launch in
    [June 2033](../numbers.md?date=month#ice-launch-start) until the Ring starts recovering energy from the
    arriving ice in [August 2034](../numbers.md?date=month#ring-pays-from) and takes them over.
 2. **The Photonic Exhaust** gets the rest, and after August 2034 nearly all of it.
@@ -76,20 +76,20 @@ proportion to the Foundry's mass until then.
 <!-- table:budget -->
 | Task | Energy the Lattice delivers |
 | --- | --- |
-| Launch 10²⁰ kg of ice from Ceres | [4.1 × 10²⁷ J](../numbers.md#ice-launch-energy) |
-| Heat-pump work to cool Venus | [3.5 × 10²⁷ J](../numbers.md#traj-pump-energy) |
-| Warm the air and melt the last ice | [3.8 × 10²⁵ J](../numbers.md#traj-warm-energy) |
+| Launch 10²⁰ kg of ice from Ceres | [4.8 × 10²⁷ J](../numbers.md#ice-launch-energy) |
+| Heat-pump work to cool Venus | [3.4 × 10²⁷ J](../numbers.md#traj-pump-energy) |
+| Warm the air and melt the last ice | [4.5 × 10²⁵ J](../numbers.md#traj-warm-energy) |
 | Forge 0.25 bar of oxygen | [2.7 × 10²⁵ J](../numbers.md#forge-energy) |
 | Build all hardware | [10²² J](../numbers.md#hardware-energy) |
-| **Total demand** | **[7.7 × 10²⁷ J](../numbers.md#budget-demand)** |
+| **Total demand** | **[8.3 × 10²⁷ J](../numbers.md#budget-demand)** |
 | Supply: the Lattice from full power to the deadline | [7.8 × 10²⁷ J](../numbers.md#helios-supply) |
-| Spare | [1.7%](../numbers.md#budget-spare) |
-| Spare once the Ring powers the Railheads | [28%](../numbers.md#budget-spare-with-ring) |
+| Spare | [−6.3%](../numbers.md#budget-spare) |
+| Spare once the Ring powers the Railheads | [25%](../numbers.md#budget-spare-with-ring) |
 <!-- /table -->
 
-The Lattice alone covers the demand with [1.7%](../numbers.md#budget-spare) to spare. Counting the Ring's
-recovered energy, which pays for most of the launches, the spare is
-[28%](../numbers.md#budget-spare-with-ring). The [budget](../budget.md#the-energy-budget) walks through each
+The Lattice alone leaves [−6.3%](../numbers.md#budget-spare) spare: it falls short of the demand, an
+[open problem](../budget.md#physics-checks). Counting the Ring's recovered energy, which pays for most of the
+launches, the spare is [25%](../numbers.md#budget-spare-with-ring). The [budget](../budget.md#the-energy-budget) walks through each
 line.
 
 <!-- figure:lattice-budget -->
@@ -164,8 +164,8 @@ line.
   a ten-millionth of the output.
 - **Geometry.** A Petal whose line to Venus crosses the [Hesperus Veil](veil.md) hands its customers to another
   Petal. Only Petals that sit almost in front of the Sun, as seen from Venus, are affected.
-- **A thin margin.** From the Lattice alone the budget closes with only [1.7%](../numbers.md#budget-spare) to
-  spare, and the model charges the heat pumps the least work the second law allows. The real margin is the
+- **No margin on its own.** From the Lattice alone the budget leaves [−6.3%](../numbers.md#budget-spare)
+  spare, and the model charges the heat pumps the least work the second law allows. The plan depends on the
   Ring's recovered energy. If the Ring is late, the Railheads keep the Lattice's power longer and cooling slips.
 
 ## Reproduce these numbers

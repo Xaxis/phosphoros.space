@@ -45,27 +45,34 @@ round once every synodic period, [8.5 months](../numbers.md#launch-window-perio
 [3.3](../numbers.md#launch-windows) windows in the campaign.
 
 The Railheads fire all the time anyway, because the Lattice's power is steady and the deadline is fixed.
-Shots between windows need faster orbits, timed to meet Venus, and they cost more energy. The model
-prices every shot at the Hohmann minimum and does not yet compute the off-window penalty. Faster arrivals
-also bring more energy for the Ring to recover, which offsets part of the cost after the first catch;
-before it, the Lattice pays.
+Shots between windows need faster orbits, timed to meet Venus, and they cost more energy. The model finds
+the cheapest such orbit for every moment of the cycle, trying every transfer angle (Lambert's problem, on
+the same circular, flat orbits as the Hohmann transfer). At the worst moment a shot costs
+[46%](../numbers.md#launch-offwindow-max) more than one in a window; fired steadily through the whole cycle,
+[16%](../numbers.md#launch-offwindow-mean) more on average. The budget charges that average:
+[6.7 × 10²⁶ J](../numbers.md#ice-launch-offwindow-energy) more than every shot in a window would cost, enough
+on its own to tip the Lattice-only budget into deficit ([open problem](../budget.md#physics-checks)). Faster
+arrivals also bring more energy for the Ring to recover; the model does not count that, so its recovered
+energy is a floor.
 
 ### Energy per kilogram
 
 A Railhead turns electricity into motion at [50%](../numbers.md#railhead-efficiency), so each kilogram
-launched draws [41 MJ/kg](../numbers.md#launch-energy-per-kg), half of which leaves with the ice as motion.
-One Brick carries [2.05 × 10¹⁶ J](../numbers.md#shot-energy) and draws
-[4.1 × 10¹⁶ J](../numbers.md#shot-energy-drawn). Launching all the water takes
-[4.1 × 10²⁷ J](../numbers.md#ice-launch-energy), the largest single item in the
-[energy budget](../budget.md), and the Railheads together draw [5.6 × 10¹⁹ W](../numbers.md#railhead-power).
+launched in a window draws [41 MJ/kg](../numbers.md#launch-energy-per-kg), half of which leaves with the ice
+as motion. One Brick fired in a window carries [2.05 × 10¹⁶ J](../numbers.md#shot-energy) and draws
+[4.1 × 10¹⁶ J](../numbers.md#shot-energy-drawn). Averaged over shots between windows, each kilogram draws
+[47.7 MJ/kg](../numbers.md#launch-energy-per-kg-avg). Launching all the water takes
+[4.8 × 10²⁷ J](../numbers.md#ice-launch-energy), the largest single item in the
+[energy budget](../budget.md), and the Railheads together draw [6.5 × 10¹⁹ W](../numbers.md#railhead-power).
 
 ### Why the Ring gets back more than the Railheads spend
 
 The [Braking Ring](ring.md) recovers [53 MJ/kg](../numbers.md#ring-recovered-per-kg) of electricity from
 each kilogram it catches: [1.3](../numbers.md#ring-vs-launch) times the
-[41 MJ/kg](../numbers.md#launch-energy-per-kg) the Railhead drew to launch it. Nothing is free here. The
+[41 MJ/kg](../numbers.md#launch-energy-per-kg) a Railhead draws to launch it in a window, and more than the
+[47.7 MJ/kg](../numbers.md#launch-energy-per-kg-avg) it draws on average. Nothing is free here. The
 ice falls from Ceres's orbit down the Sun's gravity well to Venus's, then into Venus's own well. Between
-launch and catch, gravity adds [4.6 × 10²⁷ J](../numbers.md#ice-solar-gain) to its motion, more than the
+launch and catch, gravity adds [4.3 × 10²⁷ J](../numbers.md#ice-solar-gain) to its motion, more than the
 Railheads put in. Neither well alone would be enough: the Sun's gives the arrival speed, Venus's pull to
 the Ring's height adds the rest.
 
@@ -95,7 +102,7 @@ Either way Ceres moves away from Earth, never toward it, and the change is perma
 Each Railhead is a coilgun [10.4 km](../numbers.md#railhead-length) long that accelerates a Brick at
 [200 g](../numbers.md#railhead-accel) to [6.4 km/s](../numbers.md#ice-launch-speed) in
 [3.3 s](../numbers.md#railhead-shot-time), then fires again [7.4 s](../numbers.md#railhead-interval) later
-on average. It draws [5.6 × 10¹⁵ W](../numbers.md#railhead-power-each) and stores energy between shots,
+on average. It draws [6.5 × 10¹⁵ W](../numbers.md#railhead-power-each) and stores energy between shots,
 so the power in the barrel during a shot is higher still.
 
 Every shot kicks the Railhead back as hard as it pushes the Brick forward. The coilguns are anchored in
@@ -124,7 +131,7 @@ Brick must meet its catcher track at the Ring's height, on time, on the side of 
 ### Power
 
 Until the first catch the [Helios Lattice](helios.md) beams the Railheads their
-[5.6 × 10¹⁹ W](../numbers.md#railhead-power). Even at the plan's longest beam range,
+[6.5 × 10¹⁹ W](../numbers.md#railhead-power). Even at the plan's longest beam range,
 [3.5 AU](../numbers.md#ring-to-ceres-range), a beam focuses to [140 m](../numbers.md#ceres-beam-spot).
 Receiving that much power is a design problem of its own. At the Lattice's receiver intensity of
 [10 MW/m²](../numbers.md#helios-receiver-intensity), the receivers would need more area than Ceres's
@@ -153,7 +160,7 @@ water, and comets from the outer belt become the fallback.
 | Railhead | [10.4 km](../numbers.md#railhead-length) long, [200 g](../numbers.md#railhead-accel), [6.4 km/s](../numbers.md#ice-launch-speed) in [3.3 s](../numbers.md#railhead-shot-time) |
 | Brick | [1 Mt](../numbers.md#brick-mass), a cube [103 m](../numbers.md#brick-side) on a side |
 | Energy per shot | [2.05 × 10¹⁶ J](../numbers.md#shot-energy) ([4.1 × 10¹⁶ J](../numbers.md#shot-energy-drawn) drawn at [50%](../numbers.md#railhead-efficiency)) |
-| Power | [5.6 × 10¹⁹ W](../numbers.md#railhead-power) in all, [5.6 × 10¹⁵ W](../numbers.md#railhead-power-each) each |
+| Power | [6.5 × 10¹⁹ W](../numbers.md#railhead-power) in all, [6.5 × 10¹⁵ W](../numbers.md#railhead-power-each) each |
 | Transfer | [1.15 yr](../numbers.md#ice-transfer-years); arrives at [9.08 km/s](../numbers.md#ice-vinf) relative to Venus |
 | Launch windows | Every [8.5 months](../numbers.md#launch-window-period), about [3.3](../numbers.md#launch-windows) in the campaign |
 | Ceres's recoil | [0.76 km/s](../numbers.md#ceres-recoil); its aphelion moves to [3.29 AU](../numbers.md#ceres-new-aphelion) |

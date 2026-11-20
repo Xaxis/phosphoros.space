@@ -1,4 +1,5 @@
 /** The energy and mass budget: what the plan must bring in from outside Venus, and whether it closes. */
+import { formatQuantity } from "../format.ts";
 import type { Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
 
@@ -77,7 +78,7 @@ export function budget(r: Registry) {
       unit: "J",
       formula: "caught motion energy − launch motion energy",
       basis: "physics",
-      note: "The ice falls from 2.77 AU to 0.72 AU, deep into the Sun's gravity well, and then into Venus's own well down to the Ring. That is why the Ring recovers more than the Railheads spend.",
+      note: "The ice falls from 2.77 AU to 0.72 AU, deep into the Sun's gravity well, and then into Venus's own well down to the Ring. That is why the Ring recovers more than the Railheads spend. The launch motion includes shots between windows, but the catch is counted at the Hohmann arrival speed, so this is a floor.",
     },
     () => v("ring-catch-energy") - v("ice-launch-energy") * v("railhead-efficiency"),
   );
@@ -165,10 +166,28 @@ export function budget(r: Registry) {
   );
   r.c(
     "energy-closes",
-    { label: "The energy budget closes: supply covers demand", kind: "conservation" },
+    {
+      label: "The energy budget closes: supply covers demand",
+      kind: "conservation",
+      issue: "budget-offwindow",
+    },
     () => ({
       pass: v("helios-supply") >= v("budget-demand"),
       detail: `Lattice supply ${v("helios-supply").toExponential(2)} J against demand ${v("budget-demand").toExponential(2)} J: ${(v("budget-spare") * 100).toFixed(0)}% spare before the Ring's recovered energy, ${(v("budget-spare-with-ring") * 100).toFixed(0)}% once the Ring powers the Railheads.`,
+    }),
+  );
+  const show = (id: string) => formatQuantity({ ...r.get(id), value: v(id) });
+  r.c(
+    "energy-closes-with-ring",
+    {
+      label: "With the Ring's recovered energy, supply covers demand",
+      kind: "conservation",
+    },
+    () => ({
+      pass:
+        v("helios-supply") >= v("budget-demand-with-ring") &&
+        v("ring-recovered-energy") >= v("budget-ring-launch"),
+      detail: `The Lattice delivers ${show("helios-supply")} against ${show("budget-demand-with-ring")} once the Ring powers the Railheads, and the Ring recovers ${show("ring-recovered-energy")} against the ${show("budget-ring-launch")} of launches it pays for.`,
     }),
   );
 }

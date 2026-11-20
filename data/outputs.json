@@ -1202,9 +1202,9 @@
       "source": "data/assumptions.yaml#L342"
     },
     "cooling-end": {
-      "value": "2036-06-30",
+      "value": "2036-09-15",
       "unit": "date",
-      "shown": "30 June 2036",
+      "shown": "15 September 2036",
       "label": "Active cooling ends",
       "basis": "design",
       "source": "data/assumptions.yaml#L347"
@@ -1215,7 +1215,7 @@
       "shown": "133 K",
       "label": "Frost Tower cold-trap temperature",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L352"
+      "source": "data/assumptions.yaml#L353"
     },
     "exhaust-eqe": {
       "value": 0.999,
@@ -1223,7 +1223,7 @@
       "shown": "99.9%",
       "label": "External quantum efficiency of the emitter tiles (photons out per electron in)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L358"
+      "source": "data/assumptions.yaml#L359"
     },
     "cryo-thickness": {
       "value": 2000,
@@ -1231,7 +1231,7 @@
       "shown": "2 km",
       "label": "Cryo-continent thickness",
       "basis": "design",
-      "source": "data/assumptions.yaml#L368"
+      "source": "data/assumptions.yaml#L369"
     },
     "cryo-aerogel-thickness": {
       "value": 20,
@@ -1239,7 +1239,7 @@
       "shown": "20 m",
       "label": "Carbon aerogel layer in each cap",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L374"
+      "source": "data/assumptions.yaml#L375"
     },
     "cryo-aerogel-density": {
       "value": 100,
@@ -1247,7 +1247,7 @@
       "shown": "100 kg/m³",
       "label": "Carbon aerogel density",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L379"
+      "source": "data/assumptions.yaml#L380"
     },
     "cryo-aerogel-conductivity": {
       "value": 0.014,
@@ -1255,7 +1255,7 @@
       "shown": "0.014 W/(m·K)",
       "label": "Carbon aerogel thermal conductivity",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L384"
+      "source": "data/assumptions.yaml#L385"
     },
     "cryo-membrane-thickness": {
       "value": 0.001,
@@ -1263,7 +1263,7 @@
       "shown": "1 mm",
       "label": "Graphite membrane thickness",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L389"
+      "source": "data/assumptions.yaml#L390"
     },
     "cryo-armour-thickness": {
       "value": 2,
@@ -1271,7 +1271,7 @@
       "shown": "2 m",
       "label": "Crushed-basalt armour on each cap",
       "basis": "design",
-      "source": "data/assumptions.yaml#L395"
+      "source": "data/assumptions.yaml#L396"
     },
     "cryo-ice-temp": {
       "value": 180,
@@ -1279,7 +1279,7 @@
       "shown": "180 K",
       "label": "Temperature the sealed dry ice is held at",
       "basis": "design",
-      "source": "data/assumptions.yaml#L400"
+      "source": "data/assumptions.yaml#L401"
     },
     "cryo-floor-step": {
       "value": 450,
@@ -1287,7 +1287,7 @@
       "shown": "450 K",
       "label": "Effective temperature step between hot rock and basin floor",
       "basis": "design",
-      "source": "data/assumptions.yaml#L405"
+      "source": "data/assumptions.yaml#L406"
     },
     "cryo-cell-area": {
       "value": 100000000,
@@ -1295,15 +1295,15 @@
       "shown": "100 km²",
       "label": "Area of one sealed compartment",
       "basis": "design",
-      "source": "data/assumptions.yaml#L411"
+      "source": "data/assumptions.yaml#L412"
     },
     "sealing-end": {
-      "value": "2036-06-30",
+      "value": "2036-09-15",
       "unit": "date",
-      "shown": "30 June 2036",
+      "shown": "15 September 2036",
       "label": "Last caps sealed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L417"
+      "source": "data/assumptions.yaml#L418"
     },
     "heat-pipe-depth": {
       "value": 200,
@@ -1311,7 +1311,7 @@
       "shown": "200 m",
       "label": "Depth basal heat pipes reach into the basin floors",
       "basis": "design",
-      "source": "data/assumptions.yaml#L422"
+      "source": "data/assumptions.yaml#L424"
     },
     "o2-target-pressure": {
       "value": 25000,
@@ -1319,7 +1319,7 @@
       "shown": "0.25 bar",
       "label": "Oxygen pressure to make",
       "basis": "design",
-      "source": "data/assumptions.yaml#L429"
+      "source": "data/assumptions.yaml#L431"
     },
     "forge-efficiency": {
       "value": 0.6,
@@ -1327,7 +1327,7 @@
       "shown": "60%",
       "label": "Molten-carbonate splitting efficiency",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L435"
+      "source": "data/assumptions.yaml#L437"
     },
     "forge-count": {
       "value": 500,
@@ -1335,7 +1335,7 @@
       "shown": "500",
       "label": "Number of Forges",
       "basis": "design",
-      "source": "data/assumptions.yaml#L442"
+      "source": "data/assumptions.yaml#L444"
     },
     "forge-start": {
       "value": "2035-01-01",
@@ -1343,7 +1343,7 @@
       "shown": "1 January 2035",
       "label": "Forging begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L447"
+      "source": "data/assumptions.yaml#L449"
     },
     "forge-end": {
       "value": "2036-09-30",
@@ -1351,7 +1351,7 @@
       "shown": "30 September 2036",
       "label": "Forging ends",
       "basis": "design",
-      "source": "data/assumptions.yaml#L452"
+      "source": "data/assumptions.yaml#L454"
     },
     "forge-raft-width": {
       "value": 30000,
@@ -1359,7 +1359,7 @@
       "shown": "30 km",
       "label": "Width of one Forge raft",
       "basis": "design",
-      "source": "data/assumptions.yaml#L457"
+      "source": "data/assumptions.yaml#L459"
     },
     "ice-mass": {
       "value": 100000000000000000000,
@@ -1367,7 +1367,7 @@
       "shown": "1.0 × 10²⁰ kg",
       "label": "Water shipped to Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L465"
+      "source": "data/assumptions.yaml#L467"
     },
     "brick-mass": {
       "value": 1000000000,
@@ -1375,7 +1375,7 @@
       "shown": "1 Mt",
       "label": "Ice Brick mass",
       "basis": "design",
-      "source": "data/assumptions.yaml#L471"
+      "source": "data/assumptions.yaml#L473"
     },
     "railhead-count": {
       "value": 10000,
@@ -1383,7 +1383,7 @@
       "shown": "10,000",
       "label": "Number of Railheads on Ceres",
       "basis": "design",
-      "source": "data/assumptions.yaml#L477"
+      "source": "data/assumptions.yaml#L479"
     },
     "railhead-accel": {
       "value": 200,
@@ -1391,7 +1391,7 @@
       "shown": "200 g",
       "label": "Railhead acceleration",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L482"
+      "source": "data/assumptions.yaml#L484"
     },
     "railhead-efficiency": {
       "value": 0.5,
@@ -1399,7 +1399,7 @@
       "shown": "50%",
       "label": "Railhead efficiency, electricity to motion",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L487"
+      "source": "data/assumptions.yaml#L489"
     },
     "ice-lowering-margin": {
       "value": 16,
@@ -1407,7 +1407,7 @@
       "shown": "16 d",
       "label": "Days kept between the last arrival and the deadline",
       "basis": "design",
-      "source": "data/assumptions.yaml#L493"
+      "source": "data/assumptions.yaml#L495"
     },
     "ring-build-start": {
       "value": "2032-06-01",
@@ -1415,7 +1415,7 @@
       "shown": "1 June 2032",
       "label": "Braking Ring construction begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L500"
+      "source": "data/assumptions.yaml#L502"
     },
     "ring-complete": {
       "value": "2033-12-31",
@@ -1423,7 +1423,7 @@
       "shown": "31 December 2033",
       "label": "Braking Ring complete",
       "basis": "design",
-      "source": "data/assumptions.yaml#L505"
+      "source": "data/assumptions.yaml#L507"
     },
     "ring-altitude": {
       "value": 400000,
@@ -1431,7 +1431,7 @@
       "shown": "400 km",
       "label": "Ring altitude",
       "basis": "design",
-      "source": "data/assumptions.yaml#L510"
+      "source": "data/assumptions.yaml#L512"
     },
     "ring-rotor-speed": {
       "value": 10000,
@@ -1439,7 +1439,7 @@
       "shown": "10 km/s",
       "label": "Rotor speed",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L516"
+      "source": "data/assumptions.yaml#L518"
     },
     "ring-rotor-mass": {
       "value": 7000000000000,
@@ -1447,7 +1447,7 @@
       "shown": "7.0 × 10¹² kg",
       "label": "Rotor mass",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L522"
+      "source": "data/assumptions.yaml#L524"
     },
     "ring-stator-mass": {
       "value": 3000000000000,
@@ -1455,7 +1455,7 @@
       "shown": "3.0 × 10¹² kg",
       "label": "Stator mass (tracks, tethers, receivers)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L527"
+      "source": "data/assumptions.yaml#L529"
     },
     "ring-catch-accel": {
       "value": 50,
@@ -1463,7 +1463,7 @@
       "shown": "50 g",
       "label": "Catcher braking",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L532"
+      "source": "data/assumptions.yaml#L534"
     },
     "ring-recovery-efficiency": {
       "value": 0.8,
@@ -1471,7 +1471,7 @@
       "shown": "80%",
       "label": "Regenerative braking efficiency",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L537"
+      "source": "data/assumptions.yaml#L539"
     },
     "ring-tether-lifts": {
       "value": 3000,
@@ -1479,7 +1479,7 @@
       "shown": "3,000",
       "label": "Number of tether lifts",
       "basis": "design",
-      "source": "data/assumptions.yaml#L543"
+      "source": "data/assumptions.yaml#L545"
     },
     "lowering-release-altitude": {
       "value": 100000,
@@ -1487,7 +1487,7 @@
       "shown": "100 km",
       "label": "Height Bricks are released from",
       "basis": "design",
-      "source": "data/assumptions.yaml#L548"
+      "source": "data/assumptions.yaml#L550"
     },
     "lowering-start": {
       "value": "2035-06-30",
@@ -1495,7 +1495,7 @@
       "shown": "30 June 2035",
       "label": "Lowering begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L554"
+      "source": "data/assumptions.yaml#L556"
     },
     "lowering-end": {
       "value": "2036-12-15",
@@ -1503,7 +1503,7 @@
       "shown": "15 December 2036",
       "label": "Lowering ends",
       "basis": "design",
-      "source": "data/assumptions.yaml#L559"
+      "source": "data/assumptions.yaml#L561"
     },
     "brick-temp": {
       "value": 150,
@@ -1511,7 +1511,7 @@
       "shown": "150 K",
       "label": "Temperature of a Brick when it is lowered",
       "basis": "design",
-      "source": "data/assumptions.yaml#L564"
+      "source": "data/assumptions.yaml#L566"
     },
     "aegis-online": {
       "value": "2034-06-15",
@@ -1519,7 +1519,7 @@
       "shown": "15 June 2034",
       "label": "Aegis Shield switched on",
       "basis": "design",
-      "source": "data/assumptions.yaml#L571"
+      "source": "data/assumptions.yaml#L573"
     },
     "aegis-bubble-radius": {
       "value": 10000000,
@@ -1527,7 +1527,7 @@
       "shown": "10,000 km",
       "label": "Magnetic bubble radius",
       "basis": "design",
-      "source": "data/assumptions.yaml#L577"
+      "source": "data/assumptions.yaml#L579"
     },
     "aegis-coil-radius": {
       "value": 10000,
@@ -1535,7 +1535,7 @@
       "shown": "10 km",
       "label": "Coil radius",
       "basis": "design",
-      "source": "data/assumptions.yaml#L583"
+      "source": "data/assumptions.yaml#L585"
     },
     "aegis-turns": {
       "value": 1000000,
@@ -1543,7 +1543,7 @@
       "shown": "1,000,000",
       "label": "Turns in the coil",
       "basis": "design",
-      "source": "data/assumptions.yaml#L589"
+      "source": "data/assumptions.yaml#L591"
     },
     "aegis-coil-temp": {
       "value": 40,
@@ -1551,15 +1551,7 @@
       "shown": "40 K",
       "label": "Temperature the Aegis cable runs at",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L594"
-    },
-    "genesis-end": {
-      "value": "2036-12-15",
-      "unit": "date",
-      "shown": "15 December 2036",
-      "label": "Genesis seeding complete",
-      "basis": "design",
-      "source": "data/assumptions.yaml#L602"
+      "source": "data/assumptions.yaml#L596"
     },
     "genesis-ph-min": {
       "value": 7.5,
@@ -1567,7 +1559,7 @@
       "shown": "7.5",
       "label": "Ocean pH that must hold before any life is released",
       "basis": "design",
-      "source": "data/assumptions.yaml#L607"
+      "source": "data/assumptions.yaml#L604"
     },
     "genesis-ph-days": {
       "value": 90,
@@ -1575,7 +1567,23 @@
       "shown": "90 d",
       "label": "Days the ocean pH must hold before any life is released",
       "basis": "design",
-      "source": "data/assumptions.yaml#L613"
+      "source": "data/assumptions.yaml#L610"
+    },
+    "genesis-seed-density": {
+      "value": 100000000,
+      "unit": "1/m3",
+      "shown": "100 per cm³",
+      "label": "Density the drones seed cyanobacteria at in sunlit water",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L615"
+    },
+    "genesis-bloom-density": {
+      "value": 200000000000,
+      "unit": "1/m3",
+      "shown": "200,000 per cm³",
+      "label": "Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean",
+      "basis": "precedent",
+      "source": "data/assumptions.yaml#L622"
     },
     "genesis-doubling-days": {
       "value": 1,
@@ -1583,7 +1591,7 @@
       "shown": "1 d",
       "label": "Doubling time of the seeded ocean cyanobacteria in sunlit water",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L618"
+      "source": "data/assumptions.yaml#L630"
     },
     "genesis-soil-min": {
       "value": 0.1,
@@ -1591,7 +1599,7 @@
       "shown": "10 cm",
       "label": "Thinnest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L624"
+      "source": "data/assumptions.yaml#L636"
     },
     "genesis-soil-max": {
       "value": 0.3,
@@ -1599,7 +1607,7 @@
       "shown": "30 cm",
       "label": "Thickest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L630"
+      "source": "data/assumptions.yaml#L642"
     },
     "day-length": {
       "value": 86400,
@@ -1607,7 +1615,7 @@
       "shown": "24 h",
       "label": "Length of the day the Veil and Lanterns set",
       "basis": "design",
-      "source": "data/assumptions.yaml#L636"
+      "source": "data/assumptions.yaml#L648"
     },
     "final-humidity": {
       "value": 0.75,
@@ -1615,7 +1623,7 @@
       "shown": "75%",
       "label": "Relative humidity over the new oceans",
       "basis": "design",
-      "source": "data/assumptions.yaml#L643"
+      "source": "data/assumptions.yaml#L655"
     },
     "final-albedo": {
       "value": 0.3,
@@ -1623,7 +1631,7 @@
       "shown": "30%",
       "label": "Albedo of the finished, Earth-like Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L649"
+      "source": "data/assumptions.yaml#L661"
     },
     "earth-like-temp": {
       "value": 285,
@@ -1631,7 +1639,7 @@
       "shown": "285 K",
       "label": "Coldest mean temperature that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L655"
+      "source": "data/assumptions.yaml#L667"
     },
     "earth-like-co2": {
       "value": 0.0006,
@@ -1639,7 +1647,7 @@
       "shown": "600 ppm",
       "label": "Most CO₂ that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L661"
+      "source": "data/assumptions.yaml#L673"
     },
     "choir-deadman-days": {
       "value": 7,
@@ -1647,7 +1655,7 @@
       "shown": "7 d",
       "label": "Days a replicator keeps building without a Mass Ledger heartbeat",
       "basis": "design",
-      "source": "data/assumptions.yaml#L669"
+      "source": "data/assumptions.yaml#L681"
     },
     "venus-area": {
       "value": 460234000000000,
@@ -3275,9 +3283,9 @@
       ]
     },
     "cooling-seconds": {
-      "value": 110246000,
+      "value": 116899000,
       "unit": "s",
-      "shown": "3.5 yr",
+      "shown": "3.7 yr",
       "label": "Length of the active-cooling campaign",
       "basis": "design",
       "source": "calc/src/model/exhaust.ts#L177",
@@ -3288,9 +3296,9 @@
       ]
     },
     "exhaust-heat-avg": {
-      "value": 4789770000000000000,
+      "value": 4517190000000000000,
       "unit": "W",
-      "shown": "4.8 × 10¹⁸ W",
+      "shown": "4.5 × 10¹⁸ W",
       "label": "Average heat removed from Venus",
       "basis": "physics",
       "source": "calc/src/model/exhaust.ts#L189",
@@ -3301,9 +3309,9 @@
       ]
     },
     "exhaust-work-avg": {
-      "value": 25633100000000000000,
+      "value": 24174300000000000000,
       "unit": "W",
-      "shown": "2.6 × 10¹⁹ W",
+      "shown": "2.4 × 10¹⁹ W",
       "label": "Average electrical input",
       "basis": "physics",
       "source": "calc/src/model/exhaust.ts#L190",
@@ -3314,9 +3322,9 @@
       ]
     },
     "exhaust-rejected-avg": {
-      "value": 30422900000000000000,
+      "value": 28691500000000000000,
       "unit": "W",
-      "shown": "3.0 × 10¹⁹ W",
+      "shown": "2.9 × 10¹⁹ W",
       "label": "Average power thrown into space",
       "basis": "physics",
       "source": "calc/src/model/exhaust.ts#L191",
@@ -3340,9 +3348,9 @@
       ]
     },
     "exhaust-area-working": {
-      "value": 33532700000000,
+      "value": 31624300000000,
       "unit": "m2",
-      "shown": "3.4 × 10¹³ m²",
+      "shown": "3.2 × 10¹³ m²",
       "label": "Emitter area working on average",
       "basis": "invented",
       "source": "calc/src/model/exhaust.ts#L210",
@@ -3391,9 +3399,9 @@
       ]
     },
     "canopy-power-in": {
-      "value": 2563310000000000,
+      "value": 2417430000000000,
       "unit": "W",
-      "shown": "2.6 × 10¹⁵ W",
+      "shown": "2.4 × 10¹⁵ W",
       "label": "Electrical power into one canopy",
       "basis": "invented",
       "source": "calc/src/model/exhaust.ts#L249",
@@ -3404,9 +3412,9 @@
       ]
     },
     "canopy-power-out": {
-      "value": 3042290000000000,
+      "value": 2869150000000000,
       "unit": "W",
-      "shown": "3.0 × 10¹⁵ W",
+      "shown": "2.9 × 10¹⁵ W",
       "label": "Power one canopy throws into space",
       "basis": "invented",
       "source": "calc/src/model/exhaust.ts#L259",
@@ -3417,9 +3425,9 @@
       ]
     },
     "exhaust-vs-passive-heat": {
-      "value": 65.5863,
+      "value": 61.8537,
       "unit": "1",
-      "shown": "66",
+      "shown": "62",
       "label": "Exhaust heat removal compared with a shaded Venus radiating alone",
       "basis": "physics",
       "source": "calc/src/model/exhaust.ts#L269",
@@ -3430,9 +3438,9 @@
       ]
     },
     "exhaust-vs-passive-light": {
-      "value": 416.58,
+      "value": 392.872,
       "unit": "1",
-      "shown": "420",
+      "shown": "390",
       "label": "Exhaust light output compared with a shaded Venus radiating alone",
       "basis": "physics",
       "source": "calc/src/model/exhaust.ts#L280",
@@ -3443,9 +3451,9 @@
       ]
     },
     "exhaust-area-share-1000": {
-      "value": 0.58288,
+      "value": 0.549708,
       "unit": "1",
-      "shown": "58%",
+      "shown": "55%",
       "label": "Working emitter area as a share of Venus at an effective 1,000 K",
       "basis": "physics",
       "source": "calc/src/model/exhaust.ts#L220",
@@ -3465,9 +3473,9 @@
       ]
     },
     "exhaust-area-share-1500": {
-      "value": 0.172705,
+      "value": 0.162877,
       "unit": "1",
-      "shown": "17%",
+      "shown": "16%",
       "label": "Working emitter area as a share of Venus at an effective 1,500 K",
       "basis": "physics",
       "source": "calc/src/model/exhaust.ts#L220",
@@ -3487,9 +3495,9 @@
       ]
     },
     "exhaust-area-share-2500": {
-      "value": 0.0373043,
+      "value": 0.0351813,
       "unit": "1",
-      "shown": "3.7%",
+      "shown": "3.5%",
       "label": "Working emitter area as a share of Venus at an effective 2,500 K",
       "basis": "physics",
       "source": "calc/src/model/exhaust.ts#L220",
@@ -4044,9 +4052,9 @@
       ]
     },
     "graphite-by-sealing": {
-      "value": 416699000000000000,
+      "value": 475464000000000000,
       "unit": "kg",
-      "shown": "4.2 × 10¹⁷ kg",
+      "shown": "4.8 × 10¹⁷ kg",
       "label": "Graphite made by the end of sealing",
       "basis": "design",
       "source": "calc/src/model/forges.ts#L131",
@@ -4303,7 +4311,7 @@
       "value": 40944900,
       "unit": "J/kg",
       "shown": "41 MJ/kg",
-      "label": "Energy drawn per kilogram launched",
+      "label": "Energy drawn per kilogram launched in a window",
       "basis": "invented",
       "source": "calc/src/model/ice.ts#L196",
       "formula": "½ v² / η",
@@ -4312,26 +4320,95 @@
         "railhead-efficiency"
       ]
     },
+    "launch-offwindow-max": {
+      "value": 0.460662,
+      "unit": "1",
+      "shown": "46%",
+      "label": "Extra launch energy for a shot at the worst time between windows",
+      "basis": "physics",
+      "source": "calc/src/model/ice.ts#L210",
+      "formula": "max over launch phase of the cheapest transfer that meets Venus, (Δv² + v_esc²) / (Δv_H² + v_esc²) − 1",
+      "inputs": [
+        "sun-mu",
+        "ceres-orbit",
+        "venus-orbit",
+        "ceres-escape"
+      ]
+    },
+    "launch-offwindow-mean": {
+      "value": 0.164167,
+      "unit": "1",
+      "shown": "16%",
+      "label": "Average extra launch energy, firing all the time",
+      "basis": "physics",
+      "source": "calc/src/model/ice.ts#L224",
+      "formula": "mean over launch phase of the same penalty",
+      "inputs": [
+        "sun-mu",
+        "ceres-orbit",
+        "venus-orbit",
+        "ceres-escape"
+      ]
+    },
+    "launch-energy-per-kg-avg": {
+      "value": 47666700,
+      "unit": "J/kg",
+      "shown": "47.7 MJ/kg",
+      "label": "Energy drawn per kilogram launched, averaged over the campaign",
+      "basis": "invented",
+      "source": "calc/src/model/ice.ts#L237",
+      "formula": "½ v² / η × (1 + mean off-window penalty)",
+      "inputs": [
+        "launch-energy-per-kg",
+        "launch-offwindow-mean"
+      ]
+    },
     "ice-launch-energy": {
+      "value": 4.76667e+27,
+      "unit": "J",
+      "shown": "4.8 × 10²⁷ J",
+      "label": "Energy to launch all the ice",
+      "basis": "invented",
+      "source": "calc/src/model/ice.ts#L249",
+      "formula": "M_ice × e_avg",
+      "inputs": [
+        "ice-mass",
+        "launch-energy-per-kg-avg"
+      ]
+    },
+    "ice-launch-energy-window": {
       "value": 4.09449e+27,
       "unit": "J",
       "shown": "4.1 × 10²⁷ J",
-      "label": "Energy to launch all the ice",
+      "label": "Energy to launch all the ice if every shot left in a window",
       "basis": "invented",
-      "source": "calc/src/model/ice.ts#L208",
+      "source": "calc/src/model/ice.ts#L259",
       "formula": "M_ice ½ v² / η",
       "inputs": [
         "ice-mass",
         "launch-energy-per-kg"
       ]
     },
-    "ice-launch-motion": {
-      "value": 2.04724e+27,
+    "ice-launch-offwindow-energy": {
+      "value": 6.7218e+26,
       "unit": "J",
-      "shown": "2.0 × 10²⁷ J",
+      "shown": "6.7 × 10²⁶ J",
+      "label": "Extra energy for the shots fired between windows",
+      "basis": "physics",
+      "source": "calc/src/model/ice.ts#L269",
+      "formula": "E_launch − E_window",
+      "inputs": [
+        "ice-launch-energy",
+        "ice-launch-energy-window"
+      ]
+    },
+    "ice-launch-motion": {
+      "value": 2.38333e+27,
+      "unit": "J",
+      "shown": "2.4 × 10²⁷ J",
       "label": "Motion energy the Railheads give all the ice",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L218",
+      "source": "calc/src/model/ice.ts#L279",
       "formula": "E_launch × η",
       "inputs": [
         "ice-launch-energy",
@@ -4339,12 +4416,12 @@
       ]
     },
     "railhead-loss-energy": {
-      "value": 2.04724e+27,
+      "value": 2.38333e+27,
       "unit": "J",
-      "shown": "2.0 × 10²⁷ J",
+      "shown": "2.4 × 10²⁷ J",
       "label": "Heat the Railheads shed at Ceres launching all the ice",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L228",
+      "source": "calc/src/model/ice.ts#L289",
       "formula": "E_launch − E_motion",
       "inputs": [
         "ice-launch-energy",
@@ -4352,25 +4429,25 @@
       ]
     },
     "railhead-power": {
-      "value": 55690300000000000000,
+      "value": 64832800000000000000,
       "unit": "W",
-      "shown": "5.6 × 10¹⁹ W",
+      "shown": "6.5 × 10¹⁹ W",
       "label": "Power all Railheads draw",
       "basis": "invented",
-      "source": "calc/src/model/ice.ts#L238",
-      "formula": "ṁ × e",
+      "source": "calc/src/model/ice.ts#L299",
+      "formula": "ṁ × e_avg",
       "inputs": [
         "ice-throughput",
-        "launch-energy-per-kg"
+        "launch-energy-per-kg-avg"
       ]
     },
     "railhead-power-each": {
-      "value": 5569030000000000,
+      "value": 6483280000000000,
       "unit": "W",
-      "shown": "5.6 × 10¹⁵ W",
+      "shown": "6.5 × 10¹⁵ W",
       "label": "Power one Railhead draws",
       "basis": "invented",
-      "source": "calc/src/model/ice.ts#L243",
+      "source": "calc/src/model/ice.ts#L304",
       "formula": "P / N",
       "inputs": [
         "railhead-power",
@@ -4383,7 +4460,7 @@
       "shown": "190 MPa",
       "label": "Stress at the back of a Brick under launch acceleration",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L248",
+      "source": "calc/src/model/ice.ts#L309",
       "formula": "ρ_ice a L",
       "inputs": [
         "ice-density",
@@ -4398,7 +4475,7 @@
       "shown": "2.5 × 10²⁰ kg",
       "label": "Water in Ceres",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L261",
+      "source": "calc/src/model/ice.ts#L322",
       "formula": "f_water M_C",
       "inputs": [
         "ceres-water-fraction",
@@ -4411,7 +4488,7 @@
       "shown": "39%",
       "label": "Share of Ceres's water shipped",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L266",
+      "source": "calc/src/model/ice.ts#L327",
       "formula": "M_ice / M_water",
       "inputs": [
         "ice-mass",
@@ -4424,7 +4501,7 @@
       "shown": "11%",
       "label": "Share of Ceres's mass shipped",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L278",
+      "source": "calc/src/model/ice.ts#L339",
       "formula": "M_ice / M_C",
       "inputs": [
         "ice-mass",
@@ -4437,7 +4514,7 @@
       "shown": "0.76 km/s",
       "label": "Speed Ceres gains from throwing the ice",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L290",
+      "source": "calc/src/model/ice.ts#L351",
       "formula": "M_ice v / (M_C − M_ice)",
       "inputs": [
         "ice-mass",
@@ -4451,7 +4528,7 @@
       "shown": "3.29 AU",
       "label": "Ceres's new aphelion",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L303",
+      "source": "calc/src/model/ice.ts#L364",
       "formula": "2a − r, a from vis-viva with v_C + Δv",
       "inputs": [
         "ceres-orbit",
@@ -4465,7 +4542,7 @@
       "shown": "8.5 months",
       "label": "Time between the cheapest launch windows (Venus-Ceres synodic period)",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L320",
+      "source": "calc/src/model/ice.ts#L381",
       "formula": "1 / (1/P_V − 1/P_C)",
       "inputs": [
         "sun-mu",
@@ -4479,7 +4556,7 @@
       "shown": "3.3",
       "label": "Cheap launch windows in the campaign",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L336",
+      "source": "calc/src/model/ice.ts#L397",
       "formula": "campaign / synodic period",
       "inputs": [
         "ice-campaign",
@@ -4492,7 +4569,7 @@
       "shown": "217 m",
       "label": "Global-average ocean depth",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L347",
+      "source": "calc/src/model/ice.ts#L408",
       "formula": "M_ice / (ρ_water A)",
       "inputs": [
         "ice-mass",
@@ -4506,7 +4583,7 @@
       "shown": "7.1%",
       "label": "Water delivered compared with Earth's",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L358",
+      "source": "calc/src/model/ice.ts#L419",
       "formula": "M_ice / M_water,⊕",
       "inputs": [
         "ice-mass",
@@ -4519,7 +4596,7 @@
       "shown": "17 August 2034",
       "label": "First Bricks reach Venus",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L370",
+      "source": "calc/src/model/ice.ts#L431",
       "formula": "first launch + transfer",
       "inputs": [
         "ice-launch-start",
@@ -4532,7 +4609,7 @@
       "shown": "15 December 2036",
       "label": "Last Bricks reach Venus",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L380",
+      "source": "calc/src/model/ice.ts#L441",
       "formula": "last launch + transfer",
       "inputs": [
         "ice-launch-end",
@@ -4545,7 +4622,7 @@
       "shown": "1.15 yr",
       "label": "Transfer time in years",
       "basis": "physics",
-      "source": "calc/src/model/ice.ts#L390",
+      "source": "calc/src/model/ice.ts#L451",
       "formula": "days × 86,400 s",
       "inputs": [
         "ice-transfer-days"
@@ -5420,12 +5497,12 @@
       ]
     },
     "traj-clear-rain": {
-      "value": "2034-01-19",
+      "value": "2034-09-07",
       "unit": "date",
-      "shown": "19 January 2034",
+      "shown": "7 September 2034",
       "label": "The Clear Rain begins: near-surface air below 304 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L278",
+      "source": "calc/src/model/trajectory.ts#L279",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": [
         "venus-atmosphere-mass",
@@ -5467,10 +5544,10 @@
         "final-water-vapour",
         "ice-launch-end",
         "railhead-power",
-        "co2-triple-pressure",
-        "co2-critical-pressure",
         "last-arrival",
         "ring-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
         "forge-power",
         "forge-efficiency",
         "lowering-end",
@@ -5498,52 +5575,52 @@
       ]
     },
     "traj-freeze": {
-      "value": "2036-03-14",
+      "value": "2036-07-17",
       "unit": "date",
-      "shown": "14 March 2036",
+      "shown": "17 July 2036",
       "label": "CO₂ seas start to freeze: air below 216.6 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L278",
+      "source": "calc/src/model/trajectory.ts#L279",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
     "traj-cold": {
-      "value": "2036-04-20",
+      "value": "2036-08-23",
       "unit": "date",
-      "shown": "20 April 2036",
+      "shown": "23 August 2036",
       "label": "All the CO₂ is down: air at 195 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L278",
+      "source": "calc/src/model/trajectory.ts#L279",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
     "traj-scavenged": {
-      "value": "2036-05-09",
+      "value": "2036-09-11",
       "unit": "date",
-      "shown": "9 May 2036",
+      "shown": "11 September 2036",
       "label": "Frost Towers bring CO₂ down to the target",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L278",
+      "source": "calc/src/model/trajectory.ts#L384",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
     "traj-warming": {
-      "value": "2036-06-30",
+      "value": "2036-09-15",
       "unit": "date",
-      "shown": "30 June 2036",
+      "shown": "15 September 2036",
       "label": "Caps sealed; the Veil opens and the air warms",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L278",
+      "source": "calc/src/model/trajectory.ts#L378",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
     "traj-warm": {
-      "value": "2036-07-04",
+      "value": "2036-09-19",
       "unit": "date",
-      "shown": "4 July 2036",
+      "shown": "19 September 2036",
       "label": "Air reaches 285 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L320",
+      "source": "calc/src/model/trajectory.ts#L321",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
@@ -5553,65 +5630,65 @@
       "shown": "30 September 2036",
       "label": "Earth-like: warm, 0.25 bar of oxygen, CO₂ under 600 ppm",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L278",
+      "source": "calc/src/model/trajectory.ts#L279",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": []
     },
     "traj-pump-energy": {
-      "value": 3.5018e+27,
+      "value": 3.44342e+27,
       "unit": "J",
-      "shown": "3.5 × 10²⁷ J",
+      "shown": "3.4 × 10²⁷ J",
       "label": "Heat-pump work to cool Venus, day by day, Frost Towers included",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L278",
+      "source": "calc/src/model/trajectory.ts#L279",
       "formula": "Σ pump power × 1 day, to the deadline",
       "inputs": [
         "deadline"
       ]
     },
     "traj-heat-added": {
-      "value": 7.46305e+25,
+      "value": 8.01459e+25,
       "unit": "J",
-      "shown": "7.5 × 10²⁵ J",
+      "shown": "8.0 × 10²⁵ J",
       "label": "Heat that enters the air during the campaign from other sources",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L289",
+      "source": "calc/src/model/trajectory.ts#L290",
       "formula": "Σ (crust + Forges + falling ice + residual sunlight) × 1 day",
       "inputs": [
         "deadline"
       ]
     },
     "traj-heat-lifted": {
-      "value": 6.04433e+26,
+      "value": 6.06981e+26,
       "unit": "J",
-      "shown": "6.0 × 10²⁶ J",
+      "shown": "6.1 × 10²⁶ J",
       "label": "Heat the Exhaust lifts out of the air, day by day, Frost Towers included",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L299",
+      "source": "calc/src/model/trajectory.ts#L300",
       "formula": "Σ heat leaving the air × 1 day, to the deadline",
       "inputs": [
         "deadline"
       ]
     },
     "traj-exhaust-light": {
-      "value": 4.10624e+27,
+      "value": 4.0504e+27,
       "unit": "J",
       "shown": "4.1 × 10²⁷ J",
       "label": "Light the Exhaust throws into space: the heat it lifts plus the work that lifts it",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L310",
+      "source": "calc/src/model/trajectory.ts#L311",
       "formula": "Σ (heat out + pump work) × 1 day, to the deadline",
       "inputs": [
         "deadline"
       ]
     },
     "traj-warm-energy": {
-      "value": 3.75002e+25,
+      "value": 4.51756e+25,
       "unit": "J",
-      "shown": "3.8 × 10²⁵ J",
+      "shown": "4.5 × 10²⁵ J",
       "label": "Beamed power spent warming the air and melting the cold ice after sealing",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L320",
+      "source": "calc/src/model/trajectory.ts#L321",
       "formula": "Σ warming power × 1 day",
       "inputs": [
         "deadline"
@@ -5623,19 +5700,72 @@
       "shown": "92 d",
       "label": "Days to spare between Earth-like conditions and the deadline",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L330",
+      "source": "calc/src/model/trajectory.ts#L331",
       "formula": "deadline − Earth-like date",
       "inputs": [
         "deadline"
       ]
     },
+    "genesis-ph-clear": {
+      "value": "2036-12-14",
+      "unit": "date",
+      "shown": "14 December 2036",
+      "label": "The new oceans have held their pH for the release gate",
+      "basis": "design",
+      "source": "calc/src/model/trajectory.ts#L371",
+      "formula": "ice melts (caps sealed, Veil open) + days the pH must hold",
+      "inputs": [
+        "traj-warming",
+        "genesis-ph-days"
+      ]
+    },
+    "genesis-start": {
+      "value": "2036-12-14",
+      "unit": "date",
+      "shown": "14 December 2036",
+      "label": "Genesis seeding begins: the later of the oxygen and the ocean pH gate",
+      "basis": "design",
+      "source": "calc/src/model/trajectory.ts#L389",
+      "formula": "max(Forges finish, pH held)",
+      "inputs": [
+        "forge-end",
+        "genesis-ph-clear"
+      ]
+    },
+    "genesis-green-days": {
+      "value": 10.9658,
+      "unit": "d",
+      "shown": "11 d",
+      "label": "Time for seeded cyanobacteria to grow to bloom density",
+      "basis": "invented",
+      "source": "calc/src/model/trajectory.ts#L399",
+      "formula": "t_double log₂(n_bloom / n_seed)",
+      "inputs": [
+        "genesis-doubling-days",
+        "genesis-bloom-density",
+        "genesis-seed-density"
+      ]
+    },
+    "genesis-end": {
+      "value": "2036-12-25",
+      "unit": "date",
+      "shown": "25 December 2036",
+      "label": "The sunlit oceans are green with seeded cyanobacteria",
+      "basis": "invented",
+      "source": "calc/src/model/trajectory.ts#L412",
+      "formula": "seeding begins + growth to bloom density",
+      "inputs": [
+        "genesis-start",
+        "genesis-green-days"
+      ]
+    },
     "budget-demand": {
-      "value": 7.66039e+27,
+      "value": 8.28186e+27,
       "unit": "J",
-      "shown": "7.7 × 10²⁷ J",
+      "shown": "8.3 × 10²⁷ J",
       "label": "Energy delivered from outside Venus",
       "basis": "physics",
-      "source": "calc/src/model/budget.ts#L18",
+      "source": "calc/src/model/budget.ts#L19",
       "formula": "launch + pump work + warming + forging + hardware",
       "inputs": [
         "ice-launch-energy",
@@ -5646,12 +5776,12 @@
       ]
     },
     "budget-spare": {
-      "value": 0.0166159,
+      "value": -0.0631639,
       "unit": "1",
-      "shown": "1.7%",
+      "shown": "−6.3%",
       "label": "Spare supply, before counting the Ring's recovered energy",
       "basis": "physics",
-      "source": "calc/src/model/budget.ts#L28",
+      "source": "calc/src/model/budget.ts#L29",
       "formula": "1 − demand / supply",
       "inputs": [
         "budget-demand",
@@ -5659,12 +5789,12 @@
       ]
     },
     "budget-launch-share": {
-      "value": 0.975156,
+      "value": 1.05395,
       "unit": "1",
-      "shown": "98%",
+      "shown": "110%",
       "label": "Share of the Lattice's output that water and cooling take",
       "basis": "physics",
-      "source": "calc/src/model/budget.ts#L40",
+      "source": "calc/src/model/budget.ts#L41",
       "formula": "(launch + pump work) / supply",
       "inputs": [
         "ice-launch-energy",
@@ -5678,7 +5808,7 @@
       "shown": "1.3 × 10²⁸ J",
       "label": "Energy available from outside Venus: the Lattice plus the Ring's recovered energy",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L52",
+      "source": "calc/src/model/budget.ts#L53",
       "formula": "E_Lattice + E_Ring",
       "inputs": [
         "helios-supply",
@@ -5686,12 +5816,12 @@
       ]
     },
     "budget-spare-total": {
-      "value": 0.415199,
+      "value": 0.367756,
       "unit": "1",
-      "shown": "42%",
+      "shown": "37%",
       "label": "Spare, counting the Ring's recovered energy as supply",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L62",
+      "source": "calc/src/model/budget.ts#L63",
       "formula": "1 − demand / (E_Lattice + E_Ring)",
       "inputs": [
         "budget-demand",
@@ -5699,12 +5829,12 @@
       ]
     },
     "ice-solar-gain": {
-      "value": 4.58941e+27,
+      "value": 4.25332e+27,
       "unit": "J",
-      "shown": "4.6 × 10²⁷ J",
+      "shown": "4.3 × 10²⁷ J",
       "label": "Energy gravity adds to the ice between launch and catch",
       "basis": "physics",
-      "source": "calc/src/model/budget.ts#L74",
+      "source": "calc/src/model/budget.ts#L75",
       "formula": "caught motion energy − launch motion energy",
       "inputs": [
         "ring-catch-energy",
@@ -5718,19 +5848,19 @@
       "shown": "17 August 2034",
       "label": "The Ring takes over powering the Railheads",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L85",
+      "source": "calc/src/model/budget.ts#L86",
       "formula": "first catch",
       "inputs": [
         "first-catch"
       ]
     },
     "budget-lattice-launch": {
-      "value": 2.02592e+27,
+      "value": 2.3585e+27,
       "unit": "J",
-      "shown": "2.0 × 10²⁷ J",
+      "shown": "2.4 × 10²⁷ J",
       "label": "Launch energy the Lattice still pays, before the Ring takes over",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L95",
+      "source": "calc/src/model/budget.ts#L96",
       "formula": "P_Railheads × (first catch − first launch)",
       "inputs": [
         "railhead-power",
@@ -5739,12 +5869,12 @@
       ]
     },
     "budget-demand-with-ring": {
-      "value": 5.59182e+27,
+      "value": 5.87369e+27,
       "unit": "J",
-      "shown": "5.6 × 10²⁷ J",
+      "shown": "5.9 × 10²⁷ J",
       "label": "Energy the Lattice delivers once the Ring powers the Railheads",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L105",
+      "source": "calc/src/model/budget.ts#L106",
       "formula": "demand − launch energy + Lattice-paid launch energy",
       "inputs": [
         "budget-demand",
@@ -5753,12 +5883,12 @@
       ]
     },
     "budget-spare-with-ring": {
-      "value": 0.282164,
+      "value": 0.245979,
       "unit": "1",
-      "shown": "28%",
+      "shown": "25%",
       "label": "Spare supply once the Ring powers the Railheads",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L115",
+      "source": "calc/src/model/budget.ts#L116",
       "formula": "1 − demand_with_Ring / supply",
       "inputs": [
         "budget-demand-with-ring",
@@ -5766,12 +5896,12 @@
       ]
     },
     "budget-lattice-spare": {
-      "value": 2.19801e+27,
+      "value": 1.91613e+27,
       "unit": "J",
-      "shown": "2.2 × 10²⁷ J",
+      "shown": "1.9 × 10²⁷ J",
       "label": "Lattice energy left over once the Ring powers the Railheads",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L127",
+      "source": "calc/src/model/budget.ts#L128",
       "formula": "E_Lattice − demand_with_Ring",
       "inputs": [
         "helios-supply",
@@ -5779,12 +5909,12 @@
       ]
     },
     "budget-ring-launch": {
-      "value": 2.06857e+27,
+      "value": 2.40817e+27,
       "unit": "J",
-      "shown": "2.1 × 10²⁷ J",
+      "shown": "2.4 × 10²⁷ J",
       "label": "Launch energy the Ring pays once it powers the Railheads",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L137",
+      "source": "calc/src/model/budget.ts#L138",
       "formula": "E_launch − Lattice-paid launch energy",
       "inputs": [
         "ice-launch-energy",
@@ -5792,12 +5922,12 @@
       ]
     },
     "budget-ring-surplus": {
-      "value": 3.24075e+27,
+      "value": 2.90116e+27,
       "unit": "J",
-      "shown": "3.2 × 10²⁷ J",
+      "shown": "2.9 × 10²⁷ J",
       "label": "Ring energy left over after powering the Railheads",
       "basis": "invented",
-      "source": "calc/src/model/budget.ts#L147",
+      "source": "calc/src/model/budget.ts#L148",
       "formula": "E_Ring − Ring-paid launch energy",
       "inputs": [
         "ring-recovered-energy",
@@ -5810,7 +5940,7 @@
       "shown": "5.3 × 10²⁶ J",
       "label": "Heat that leaves Venus itself as light",
       "basis": "physics",
-      "source": "calc/src/model/budget.ts#L157",
+      "source": "calc/src/model/budget.ts#L158",
       "formula": "E_atm",
       "inputs": [
         "atmosphere-heat"
@@ -5832,7 +5962,7 @@
     },
     "graphite-for-caps": {
       "pass": true,
-      "detail": "4.17e+17 kg of graphite by the end of sealing; the caps need 3.00e+17 kg."
+      "detail": "4.75e+17 kg of graphite by the end of sealing; the caps need 3.00e+17 kg."
     },
     "ice-arrives": {
       "pass": true,
@@ -5840,7 +5970,7 @@
     },
     "ring-energy-loop": {
       "pass": true,
-      "detail": "Ring 7.22e+19 W recovered against 5.57e+19 W drawn by the Railheads."
+      "detail": "Ring 7.22e+19 W recovered against 6.48e+19 W drawn by the Railheads."
     },
     "ring-net-force": {
       "pass": false,
@@ -5858,13 +5988,25 @@
       "pass": true,
       "detail": "Foundry at full power date: 1.34e+14 kg; Lattice: 5.14e+13 kg."
     },
+    "frost-before-sealing": {
+      "pass": true,
+      "detail": "The simulated Frost Towers finish on 11 September 2036; the last caps are sealed on 15 September 2036."
+    },
+    "genesis-by-deadline": {
+      "pass": true,
+      "detail": "Seeding waits for the oxygen (30 September 2036) and for the oceans to hold their pH (14 December 2036), so it begins on 14 December 2036; doubling every 1 d, the cells reach bloom density on 25 December 2036, against a deadline of 31 December 2036."
+    },
     "earth-like-by-deadline": {
       "pass": true,
       "detail": "The day-by-day simulation reaches Earth-like conditions on 2036-09-30; the deadline is 2036-12-31."
     },
     "energy-closes": {
+      "pass": false,
+      "detail": "Lattice supply 7.79e+27 J against demand 8.28e+27 J: -6% spare before the Ring's recovered energy, 25% once the Ring powers the Railheads."
+    },
+    "energy-closes-with-ring": {
       "pass": true,
-      "detail": "Lattice supply 7.79e+27 J against demand 7.66e+27 J: 2% spare before the Ring's recovered energy, 28% once the Ring powers the Railheads."
+      "detail": "The Lattice delivers 7.8 × 10²⁷ J against 5.9 × 10²⁷ J once the Ring powers the Railheads, and the Ring recovers 5.3 × 10²⁷ J against the 2.4 × 10²⁷ J of launches it pays for."
     }
   }
 }
