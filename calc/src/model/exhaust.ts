@@ -607,7 +607,7 @@ export function exhaust(r: Registry) {
   );
 
   // Beam safety: where the tiles must stay dark, and how far out each cone is still bright.
-  // Read inside each formula, so the ledger lists the cone among its inputs.
+  // A function, not a constant, so each quantity that uses the cone records it as an input.
   const halfCone = () => (v("exhaust-cone") * Math.PI) / 360;
   r.q(
     "exhaust-dark-strip",

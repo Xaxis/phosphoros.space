@@ -309,8 +309,9 @@ veil-slat-leak:
 veil-build-start:
   value: 2030-06-01
   unit: date
-  label: Veil slat production begins
+  label: First test Veil slats made
   basis: design
+  note: Test articles, too few to shade Venus. The Veil itself is built late in 2032; see veil-build-begin.
 veil-close:
   value: 2032-12-01
   unit: date
@@ -567,11 +568,6 @@ ice-lowering-margin:
   basis: design
 
 # --- Braking Ring ----------------------------------------------------------------------------------
-ring-build-start:
-  value: 2032-06-01
-  unit: date
-  label: Braking Ring construction begins
-  basis: design
 ring-complete:
   value: 2033-12-31
   unit: date
@@ -681,18 +677,18 @@ genesis-ph-min:
   sig: 2
   label: Ocean pH that must hold before any life is released
   basis: design
-acid-ph-max:
-  value: 8.0
-  unit: "1"
-  sig: 2
-  label: Highest ocean pH the shore basalt is laid to hold
-  basis: design
-  note: Slightly alkaline, like Earth's seas, without the basalt overshooting into water too alkaline for the pioneer life.
 genesis-ph-days:
   value: 90
   unit: d
   label: Days the ocean pH must hold before any life is released
   basis: design
+acid-ocean-ph-max:
+  value: 8
+  unit: "1"
+  sig: 2
+  label: Top of the ocean pH the shore basalt is laid to hold
+  basis: design
+  note: The Acid Sweep aims for slightly alkaline water, between the Genesis gate and this. More basalt raises the pH; less lets it fall.
 genesis-seed-density:
   value: 1.0e8
   unit: 1/m3

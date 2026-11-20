@@ -32,7 +32,7 @@ export function foundryParams(v: (id: string) => number): FoundryParams {
     landing: v("foundry-landing"),
     doubling: v("foundry-doubling-days"),
     final: v("foundry-final-mass"),
-    holdStart: v("veil-build-end") - v("veil-diversion-days"),
+    holdStart: v("veil-build-begin"),
     holdDays: v("veil-diversion-days"),
   };
 }
@@ -127,6 +127,16 @@ export function foundry(r: Registry) {
       }
       return hi;
     },
+  );
+  r.q(
+    "veil-build-begin",
+    {
+      label: "The Foundry starts building the Veil",
+      unit: "date",
+      formula: "last parts leave − Veil hold",
+      basis: "invented",
+    },
+    () => v("veil-build-end") - v("veil-diversion-days"),
   );
   r.q(
     "foundry-full-scale",
@@ -262,6 +272,17 @@ export function foundryProducts(r: Registry) {
     () => (v("ring-mass") * v("foundry-doubling-days")) / (v("foundry-final-mass") * Math.LN2),
   );
   r.q(
+    "ring-build-begin",
+    {
+      label: "The Foundry starts building the Braking Ring",
+      unit: "date",
+      formula: "Lattice at full power",
+      basis: "invented",
+      note: "The Foundry builds the Lattice first, then the Ring.",
+    },
+    () => v("helios-full-power"),
+  );
+  r.q(
     "ring-delivered",
     {
       label: "The Ring's last parts reach Venus",
@@ -270,7 +291,7 @@ export function foundryProducts(r: Registry) {
       basis: "invented",
       note: "The Foundry builds the Lattice first, then the Ring.",
     },
-    () => v("helios-full-power") + v("ring-build-days") + v("mercury-venus-transfer-days"),
+    () => v("ring-build-begin") + v("ring-build-days") + v("mercury-venus-transfer-days"),
   );
 
   r.s(

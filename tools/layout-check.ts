@@ -3,6 +3,8 @@
 // against a built site (Chromium on SwiftShader, so under heavy):
 //
 //   heavy node tools/layout-check.ts http://localhost:3417 /tmp/layout
+
+import { readFileSync } from "node:fs";
 import { chromium, type Page } from "playwright-core";
 import { CHROMIUM_ARGS } from "./lib/chromium.ts";
 
@@ -158,6 +160,11 @@ for (const width of [390, 1440]) {
   check(a === 1, "the archive URL in a source note is a link", String(a));
 
   // The interactive timeline: every row of data/timeline.yaml, filters, the date cursor, a selection.
+  // The selected row must show the model's own dates, read from the ledger.
+  const ledger = JSON.parse(readFileSync("data/outputs.json", "utf8")) as {
+    quantities: Record<string, { shown: string }>;
+  };
+  const shown = (id: string) => (ledger.quantities[id]?.shown ?? id).replace(/\s+/g, " ");
   await p.goto(`${base}/timeline`, { waitUntil: "load" });
   const rows = () => p.locator(".tl-row").count();
   const all = await rows();
@@ -180,7 +187,8 @@ for (const width of [390, 1440]) {
       when === "April 2030" &&
       under.some((t) => t.includes("Ouroboros growth")) &&
       /Mercury/.test(pick ?? "") &&
-      /2030/.test(pick ?? ""),
+      (pick ?? "").replace(/\s+/g, " ").includes(shown("foundry-full-scale")) &&
+      (pick ?? "").replace(/\s+/g, " ").includes(shown("helios-full-power")),
     "timeline filters lanes and the critical path, moves its date and shows a selected row",
     JSON.stringify({ all, noVenus, critical, when, under, pick }),
   );

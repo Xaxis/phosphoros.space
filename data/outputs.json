@@ -1197,7 +1197,7 @@
       "value": "2030-06-01",
       "unit": "date",
       "shown": "1 June 2030",
-      "label": "Veil slat production begins",
+      "label": "First test Veil slats made",
       "basis": "design",
       "source": "data/assumptions.yaml#L309"
     },
@@ -1207,7 +1207,7 @@
       "shown": "1 December 2032",
       "label": "Veil closes over Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L314"
+      "source": "data/assumptions.yaml#L315"
     },
     "chimney-count": {
       "value": 10000,
@@ -1215,7 +1215,7 @@
       "shown": "10,000",
       "label": "Number of chimneys (one per canopy)",
       "basis": "design",
-      "source": "data/assumptions.yaml#L322"
+      "source": "data/assumptions.yaml#L323"
     },
     "chimney-diameter": {
       "value": 3500,
@@ -1223,7 +1223,7 @@
       "shown": "3.5 km",
       "label": "Chimney diameter",
       "basis": "design",
-      "source": "data/assumptions.yaml#L327"
+      "source": "data/assumptions.yaml#L328"
     },
     "chimney-flow-speed": {
       "value": 20,
@@ -1231,7 +1231,7 @@
       "shown": "20 m/s",
       "label": "Air speed through a chimney's intake exchangers",
       "basis": "design",
-      "source": "data/assumptions.yaml#L334"
+      "source": "data/assumptions.yaml#L335"
     },
     "chimney-gas-cooling": {
       "value": 100,
@@ -1239,7 +1239,7 @@
       "shown": "100 K",
       "label": "How much the air cools passing a chimney's intake exchangers, at the starting 737 K",
       "basis": "design",
-      "source": "data/assumptions.yaml#L339"
+      "source": "data/assumptions.yaml#L340"
     },
     "chimney-loss-coefficient": {
       "value": 4,
@@ -1247,7 +1247,7 @@
       "shown": "4",
       "label": "Pressure lost across a chimney's exchangers, in units of the flow's dynamic pressure",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L345"
+      "source": "data/assumptions.yaml#L346"
     },
     "chimney-base": {
       "value": 1000,
@@ -1255,7 +1255,7 @@
       "shown": "1 km",
       "label": "Chimney base height",
       "basis": "design",
-      "source": "data/assumptions.yaml#L351"
+      "source": "data/assumptions.yaml#L352"
     },
     "chimney-top": {
       "value": 65000,
@@ -1263,7 +1263,7 @@
       "shown": "65 km",
       "label": "Chimney top height",
       "basis": "design",
-      "source": "data/assumptions.yaml#L357"
+      "source": "data/assumptions.yaml#L358"
     },
     "deep-heat-peak": {
       "value": 6000000000000000000,
@@ -1271,7 +1271,7 @@
       "shown": "6.0 × 10¹⁸ W",
       "label": "Peak heat flow from the deep atmosphere",
       "basis": "design",
-      "source": "data/assumptions.yaml#L363"
+      "source": "data/assumptions.yaml#L364"
     },
     "exhaust-effective-temp": {
       "value": 2000,
@@ -1279,7 +1279,7 @@
       "shown": "2,000 K",
       "label": "Effective temperature the emitters shine at",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L370"
+      "source": "data/assumptions.yaml#L371"
     },
     "exhaust-bandgap": {
       "value": 0.54,
@@ -1287,7 +1287,7 @@
       "shown": "0.54 eV",
       "label": "Emitter tile bandgap (InGaAsSb)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L376"
+      "source": "data/assumptions.yaml#L377"
     },
     "exhaust-peak": {
       "value": 50000000000000000000,
@@ -1295,7 +1295,7 @@
       "shown": "5.0 × 10¹⁹ W",
       "label": "Peak power the Exhaust can throw into space",
       "basis": "design",
-      "source": "data/assumptions.yaml#L381"
+      "source": "data/assumptions.yaml#L382"
     },
     "exhaust-canopies": {
       "value": 10000,
@@ -1303,7 +1303,7 @@
       "shown": "10,000",
       "label": "Number of floating canopies",
       "basis": "design",
-      "source": "data/assumptions.yaml#L388"
+      "source": "data/assumptions.yaml#L389"
     },
     "exhaust-cone": {
       "value": 25,
@@ -1311,7 +1311,7 @@
       "shown": "25°",
       "label": "Beam cone each tile fires into (full apex angle)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L393"
+      "source": "data/assumptions.yaml#L394"
     },
     "exhaust-band": {
       "value": 4e-7,
@@ -1319,7 +1319,7 @@
       "shown": "0.4 µm",
       "label": "Width of the band each tile emits in",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L398"
+      "source": "data/assumptions.yaml#L399"
     },
     "cooling-end": {
       "value": "2036-09-01",
@@ -1327,7 +1327,7 @@
       "shown": "1 September 2036",
       "label": "Active cooling ends",
       "basis": "design",
-      "source": "data/assumptions.yaml#L405"
+      "source": "data/assumptions.yaml#L406"
     },
     "frost-tower-temp": {
       "value": 133,
@@ -1335,7 +1335,7 @@
       "shown": "133 K",
       "label": "Frost Tower cold-trap temperature",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L411"
+      "source": "data/assumptions.yaml#L412"
     },
     "exhaust-eqe": {
       "value": 0.999,
@@ -1343,7 +1343,7 @@
       "shown": "99.9%",
       "label": "External quantum efficiency of the emitter tiles (photons out per electron in)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L417"
+      "source": "data/assumptions.yaml#L418"
     },
     "cryo-thickness": {
       "value": 2000,
@@ -1351,7 +1351,7 @@
       "shown": "2 km",
       "label": "Cryo-continent thickness",
       "basis": "design",
-      "source": "data/assumptions.yaml#L427"
+      "source": "data/assumptions.yaml#L428"
     },
     "cryo-aerogel-thickness": {
       "value": 20,
@@ -1359,7 +1359,7 @@
       "shown": "20 m",
       "label": "Carbon aerogel layer in each cap",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L433"
+      "source": "data/assumptions.yaml#L434"
     },
     "cryo-aerogel-density": {
       "value": 82,
@@ -1367,7 +1367,7 @@
       "shown": "82 kg/m³",
       "label": "Carbon aerogel density",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L438"
+      "source": "data/assumptions.yaml#L439"
     },
     "cryo-aerogel-conductivity": {
       "value": 0.029,
@@ -1375,7 +1375,7 @@
       "shown": "0.029 W/(m·K)",
       "label": "Carbon aerogel thermal conductivity",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L444"
+      "source": "data/assumptions.yaml#L445"
     },
     "cryo-reseal-time": {
       "value": 7,
@@ -1383,7 +1383,7 @@
       "shown": "7 d",
       "label": "Time for the crawlers that laid a cell to reseal a tear in it",
       "basis": "design",
-      "source": "data/assumptions.yaml#L453"
+      "source": "data/assumptions.yaml#L454"
     },
     "cryo-membrane-thickness": {
       "value": 0.001,
@@ -1391,7 +1391,7 @@
       "shown": "1 mm",
       "label": "Graphite membrane thickness",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L458"
+      "source": "data/assumptions.yaml#L459"
     },
     "cryo-armour-thickness": {
       "value": 2,
@@ -1399,7 +1399,7 @@
       "shown": "2 m",
       "label": "Crushed-basalt armour on each cap",
       "basis": "design",
-      "source": "data/assumptions.yaml#L464"
+      "source": "data/assumptions.yaml#L465"
     },
     "cryo-ice-temp": {
       "value": 180,
@@ -1407,7 +1407,7 @@
       "shown": "180 K",
       "label": "Temperature the sealed dry ice is held at",
       "basis": "design",
-      "source": "data/assumptions.yaml#L469"
+      "source": "data/assumptions.yaml#L470"
     },
     "cryo-floor-step": {
       "value": 450,
@@ -1415,7 +1415,7 @@
       "shown": "450 K",
       "label": "Effective temperature step between hot rock and basin floor",
       "basis": "design",
-      "source": "data/assumptions.yaml#L474"
+      "source": "data/assumptions.yaml#L475"
     },
     "cryo-cell-area": {
       "value": 100000000,
@@ -1423,7 +1423,7 @@
       "shown": "100 km²",
       "label": "Area of one sealed compartment",
       "basis": "design",
-      "source": "data/assumptions.yaml#L480"
+      "source": "data/assumptions.yaml#L481"
     },
     "sealing-end": {
       "value": "2036-09-01",
@@ -1431,7 +1431,7 @@
       "shown": "1 September 2036",
       "label": "Last caps sealed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L486"
+      "source": "data/assumptions.yaml#L487"
     },
     "heat-pipe-depth": {
       "value": 200,
@@ -1439,7 +1439,7 @@
       "shown": "200 m",
       "label": "Depth basal heat pipes reach into the basin floors",
       "basis": "design",
-      "source": "data/assumptions.yaml#L492"
+      "source": "data/assumptions.yaml#L493"
     },
     "o2-target-pressure": {
       "value": 25000,
@@ -1447,7 +1447,7 @@
       "shown": "0.25 bar",
       "label": "Oxygen pressure to make",
       "basis": "design",
-      "source": "data/assumptions.yaml#L499"
+      "source": "data/assumptions.yaml#L500"
     },
     "forge-efficiency": {
       "value": 0.6,
@@ -1455,7 +1455,7 @@
       "shown": "60%",
       "label": "Molten-carbonate splitting efficiency",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L505"
+      "source": "data/assumptions.yaml#L506"
     },
     "forge-count": {
       "value": 500,
@@ -1463,7 +1463,7 @@
       "shown": "500",
       "label": "Number of Forges",
       "basis": "design",
-      "source": "data/assumptions.yaml#L512"
+      "source": "data/assumptions.yaml#L513"
     },
     "forge-start": {
       "value": "2035-01-01",
@@ -1471,7 +1471,7 @@
       "shown": "1 January 2035",
       "label": "Forging begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L517"
+      "source": "data/assumptions.yaml#L518"
     },
     "forge-end": {
       "value": "2036-09-30",
@@ -1479,7 +1479,7 @@
       "shown": "30 September 2036",
       "label": "Forging ends",
       "basis": "design",
-      "source": "data/assumptions.yaml#L522"
+      "source": "data/assumptions.yaml#L523"
     },
     "forge-raft-width": {
       "value": 30000,
@@ -1487,7 +1487,7 @@
       "shown": "30 km",
       "label": "Width of one Forge raft",
       "basis": "design",
-      "source": "data/assumptions.yaml#L527"
+      "source": "data/assumptions.yaml#L528"
     },
     "ice-mass": {
       "value": 100000000000000000000,
@@ -1495,7 +1495,7 @@
       "shown": "1.0 × 10²⁰ kg",
       "label": "Water shipped to Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L535"
+      "source": "data/assumptions.yaml#L536"
     },
     "brick-mass": {
       "value": 1000000000,
@@ -1503,7 +1503,7 @@
       "shown": "1 Mt",
       "label": "Ice Brick mass",
       "basis": "design",
-      "source": "data/assumptions.yaml#L541"
+      "source": "data/assumptions.yaml#L542"
     },
     "railhead-count": {
       "value": 10000,
@@ -1511,7 +1511,7 @@
       "shown": "10,000",
       "label": "Number of Railheads on Ceres",
       "basis": "design",
-      "source": "data/assumptions.yaml#L547"
+      "source": "data/assumptions.yaml#L548"
     },
     "railhead-accel": {
       "value": 200,
@@ -1519,7 +1519,7 @@
       "shown": "200 g",
       "label": "Railhead acceleration",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L552"
+      "source": "data/assumptions.yaml#L553"
     },
     "railhead-efficiency": {
       "value": 0.5,
@@ -1527,7 +1527,7 @@
       "shown": "50%",
       "label": "Railhead efficiency, electricity to motion",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L557"
+      "source": "data/assumptions.yaml#L558"
     },
     "ice-lowering-margin": {
       "value": 16,
@@ -1535,15 +1535,7 @@
       "shown": "16 d",
       "label": "Days kept between the last arrival and the deadline",
       "basis": "design",
-      "source": "data/assumptions.yaml#L563"
-    },
-    "ring-build-start": {
-      "value": "2032-06-01",
-      "unit": "date",
-      "shown": "1 June 2032",
-      "label": "Braking Ring construction begins",
-      "basis": "design",
-      "source": "data/assumptions.yaml#L570"
+      "source": "data/assumptions.yaml#L564"
     },
     "ring-complete": {
       "value": "2033-12-31",
@@ -1551,7 +1543,7 @@
       "shown": "31 December 2033",
       "label": "Braking Ring complete",
       "basis": "design",
-      "source": "data/assumptions.yaml#L575"
+      "source": "data/assumptions.yaml#L571"
     },
     "ring-altitude": {
       "value": 400000,
@@ -1559,7 +1551,7 @@
       "shown": "400 km",
       "label": "Ring altitude",
       "basis": "design",
-      "source": "data/assumptions.yaml#L580"
+      "source": "data/assumptions.yaml#L576"
     },
     "ring-rotor-speed": {
       "value": 10000,
@@ -1567,7 +1559,7 @@
       "shown": "10 km/s",
       "label": "Rotor speed",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L586"
+      "source": "data/assumptions.yaml#L582"
     },
     "ring-rotor-mass": {
       "value": 7000000000000,
@@ -1575,7 +1567,7 @@
       "shown": "7.0 × 10¹² kg",
       "label": "Rotor mass",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L592"
+      "source": "data/assumptions.yaml#L588"
     },
     "ring-stator-mass": {
       "value": 3000000000000,
@@ -1583,7 +1575,7 @@
       "shown": "3.0 × 10¹² kg",
       "label": "Stator mass (tracks, tethers, receivers)",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L597"
+      "source": "data/assumptions.yaml#L593"
     },
     "ring-catch-accel": {
       "value": 50,
@@ -1591,7 +1583,7 @@
       "shown": "50 g",
       "label": "Catcher braking",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L602"
+      "source": "data/assumptions.yaml#L598"
     },
     "ring-recovery-efficiency": {
       "value": 0.8,
@@ -1599,7 +1591,7 @@
       "shown": "80%",
       "label": "Regenerative braking efficiency",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L607"
+      "source": "data/assumptions.yaml#L603"
     },
     "ring-tether-lifts": {
       "value": 3000,
@@ -1607,7 +1599,7 @@
       "shown": "3,000",
       "label": "Number of tether lifts",
       "basis": "design",
-      "source": "data/assumptions.yaml#L613"
+      "source": "data/assumptions.yaml#L609"
     },
     "lowering-release-altitude": {
       "value": 100000,
@@ -1615,7 +1607,7 @@
       "shown": "100 km",
       "label": "Height Bricks are released from",
       "basis": "design",
-      "source": "data/assumptions.yaml#L618"
+      "source": "data/assumptions.yaml#L614"
     },
     "lowering-start": {
       "value": "2035-06-30",
@@ -1623,7 +1615,7 @@
       "shown": "30 June 2035",
       "label": "Lowering begins",
       "basis": "design",
-      "source": "data/assumptions.yaml#L624"
+      "source": "data/assumptions.yaml#L620"
     },
     "lowering-end": {
       "value": "2036-12-15",
@@ -1631,7 +1623,7 @@
       "shown": "15 December 2036",
       "label": "Lowering ends",
       "basis": "design",
-      "source": "data/assumptions.yaml#L629"
+      "source": "data/assumptions.yaml#L625"
     },
     "brick-temp": {
       "value": 150,
@@ -1639,7 +1631,7 @@
       "shown": "150 K",
       "label": "Temperature of a Brick when it is lowered",
       "basis": "design",
-      "source": "data/assumptions.yaml#L634"
+      "source": "data/assumptions.yaml#L630"
     },
     "aegis-online": {
       "value": "2034-06-15",
@@ -1647,7 +1639,7 @@
       "shown": "15 June 2034",
       "label": "Aegis Shield switched on",
       "basis": "design",
-      "source": "data/assumptions.yaml#L641"
+      "source": "data/assumptions.yaml#L637"
     },
     "aegis-bubble-radius": {
       "value": 10000000,
@@ -1655,7 +1647,7 @@
       "shown": "10,000 km",
       "label": "Magnetic bubble radius",
       "basis": "design",
-      "source": "data/assumptions.yaml#L647"
+      "source": "data/assumptions.yaml#L643"
     },
     "aegis-coil-radius": {
       "value": 1000000,
@@ -1663,7 +1655,7 @@
       "shown": "1,000 km",
       "label": "Coil radius",
       "basis": "design",
-      "source": "data/assumptions.yaml#L653"
+      "source": "data/assumptions.yaml#L649"
     },
     "aegis-turns": {
       "value": 1000000,
@@ -1671,7 +1663,7 @@
       "shown": "1,000,000",
       "label": "Turns in the coil",
       "basis": "design",
-      "source": "data/assumptions.yaml#L660"
+      "source": "data/assumptions.yaml#L656"
     },
     "aegis-winding-radius": {
       "value": 5,
@@ -1679,7 +1671,7 @@
       "shown": "5 m",
       "label": "Radius of the coil's winding pack",
       "basis": "design",
-      "source": "data/assumptions.yaml#L665"
+      "source": "data/assumptions.yaml#L661"
     },
     "aegis-coil-temp": {
       "value": 40,
@@ -1687,7 +1679,7 @@
       "shown": "40 K",
       "label": "Temperature the Aegis cable runs at",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L670"
+      "source": "data/assumptions.yaml#L666"
     },
     "genesis-ph-min": {
       "value": 7.5,
@@ -1695,15 +1687,7 @@
       "shown": "7.5",
       "label": "Ocean pH that must hold before any life is released",
       "basis": "design",
-      "source": "data/assumptions.yaml#L678"
-    },
-    "acid-ph-max": {
-      "value": 8,
-      "unit": "1",
-      "shown": "8",
-      "label": "Highest ocean pH the shore basalt is laid to hold",
-      "basis": "design",
-      "source": "data/assumptions.yaml#L684"
+      "source": "data/assumptions.yaml#L674"
     },
     "genesis-ph-days": {
       "value": 90,
@@ -1711,7 +1695,15 @@
       "shown": "90 d",
       "label": "Days the ocean pH must hold before any life is released",
       "basis": "design",
-      "source": "data/assumptions.yaml#L691"
+      "source": "data/assumptions.yaml#L680"
+    },
+    "acid-ocean-ph-max": {
+      "value": 8,
+      "unit": "1",
+      "shown": "8",
+      "label": "Top of the ocean pH the shore basalt is laid to hold",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L685"
     },
     "genesis-seed-density": {
       "value": 100000000,
@@ -1719,7 +1711,7 @@
       "shown": "100 per cm³",
       "label": "Density the drones seed cyanobacteria at in sunlit water",
       "basis": "design",
-      "source": "data/assumptions.yaml#L696"
+      "source": "data/assumptions.yaml#L692"
     },
     "genesis-bloom-density": {
       "value": 200000000000,
@@ -1727,7 +1719,7 @@
       "shown": "200,000 per cm³",
       "label": "Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean",
       "basis": "precedent",
-      "source": "data/assumptions.yaml#L703"
+      "source": "data/assumptions.yaml#L699"
     },
     "genesis-doubling-days": {
       "value": 1,
@@ -1735,7 +1727,7 @@
       "shown": "1 d",
       "label": "Doubling time of the seeded ocean cyanobacteria in sunlit water",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L711"
+      "source": "data/assumptions.yaml#L707"
     },
     "genesis-soil-min": {
       "value": 0.1,
@@ -1743,7 +1735,7 @@
       "shown": "10 cm",
       "label": "Thinnest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L717"
+      "source": "data/assumptions.yaml#L713"
     },
     "genesis-soil-max": {
       "value": 0.3,
@@ -1751,7 +1743,7 @@
       "shown": "30 cm",
       "label": "Thickest black-loam soil laid on caps and shores",
       "basis": "design",
-      "source": "data/assumptions.yaml#L723"
+      "source": "data/assumptions.yaml#L719"
     },
     "day-length": {
       "value": 86400,
@@ -1759,7 +1751,7 @@
       "shown": "24 h",
       "label": "Length of the day the Veil and Lanterns set",
       "basis": "design",
-      "source": "data/assumptions.yaml#L729"
+      "source": "data/assumptions.yaml#L725"
     },
     "final-humidity": {
       "value": 0.75,
@@ -1767,7 +1759,7 @@
       "shown": "75%",
       "label": "Relative humidity over the new oceans",
       "basis": "design",
-      "source": "data/assumptions.yaml#L736"
+      "source": "data/assumptions.yaml#L732"
     },
     "final-albedo": {
       "value": 0.3,
@@ -1775,7 +1767,7 @@
       "shown": "30%",
       "label": "Albedo of the finished, Earth-like Venus",
       "basis": "design",
-      "source": "data/assumptions.yaml#L742"
+      "source": "data/assumptions.yaml#L738"
     },
     "earth-like-temp": {
       "value": 285,
@@ -1783,7 +1775,7 @@
       "shown": "285 K",
       "label": "Coldest mean temperature that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L748"
+      "source": "data/assumptions.yaml#L744"
     },
     "earth-like-co2": {
       "value": 0.0006,
@@ -1791,7 +1783,7 @@
       "shown": "600 ppm",
       "label": "Most CO₂ that counts as Earth-like",
       "basis": "design",
-      "source": "data/assumptions.yaml#L754"
+      "source": "data/assumptions.yaml#L750"
     },
     "choir-deadman-days": {
       "value": 7,
@@ -1799,7 +1791,7 @@
       "shown": "7 d",
       "label": "Days a replicator keeps building without a Mass Ledger heartbeat",
       "basis": "design",
-      "source": "data/assumptions.yaml#L762"
+      "source": "data/assumptions.yaml#L758"
     },
     "ouroboros-0-closure": {
       "value": 0.95,
@@ -1807,7 +1799,7 @@
       "shown": "95%",
       "label": "Ouroboros-0 passes at this share of its own mass made from simulated regolith",
       "basis": "design",
-      "source": "data/assumptions.yaml#L770"
+      "source": "data/assumptions.yaml#L766"
     },
     "ouroboros-0-doubling": {
       "value": 120,
@@ -1815,7 +1807,7 @@
       "shown": "120 d",
       "label": "Ouroboros-0 passes if it doubles in less than this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L776"
+      "source": "data/assumptions.yaml#L772"
     },
     "ouroboros-0-kill-closure": {
       "value": 0.7,
@@ -1823,7 +1815,7 @@
       "shown": "70%",
       "label": "Ouroboros-0 is killed below this mass closure",
       "basis": "design",
-      "source": "data/assumptions.yaml#L781"
+      "source": "data/assumptions.yaml#L777"
     },
     "exhaust-1-cooling": {
       "value": 10000,
@@ -1831,7 +1823,7 @@
       "shown": "10 kW/m²",
       "label": "Exhaust-1 passes at this much net cooling",
       "basis": "design",
-      "source": "data/assumptions.yaml#L787"
+      "source": "data/assumptions.yaml#L783"
     },
     "exhaust-1-carnot": {
       "value": 0.5,
@@ -1839,7 +1831,7 @@
       "shown": "50%",
       "label": "Exhaust-1 must come within this share of the Carnot limit",
       "basis": "design",
-      "source": "data/assumptions.yaml#L793"
+      "source": "data/assumptions.yaml#L789"
     },
     "exhaust-1-kill-cooling": {
       "value": 100,
@@ -1847,7 +1839,7 @@
       "shown": "100 W/m²",
       "label": "Exhaust-1 is killed if it shows no net cooling above this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L799"
+      "source": "data/assumptions.yaml#L795"
     },
     "exhaust-production-tile": {
       "value": "2031-12-31",
@@ -1855,7 +1847,7 @@
       "shown": "31 December 2031",
       "label": "Production Exhaust tiles shine at full brightness by",
       "basis": "design",
-      "source": "data/assumptions.yaml#L804"
+      "source": "data/assumptions.yaml#L800"
     },
     "lightpipe-power": {
       "value": 1000000,
@@ -1863,7 +1855,7 @@
       "shown": "1 MW",
       "label": "Power the Lightpipe test beams between satellites",
       "basis": "design",
-      "source": "data/assumptions.yaml#L809"
+      "source": "data/assumptions.yaml#L805"
     },
     "lightpipe-range": {
       "value": 1000000,
@@ -1871,7 +1863,7 @@
       "shown": "1,000 km",
       "label": "Distance the Lightpipe test beams over",
       "basis": "design",
-      "source": "data/assumptions.yaml#L815"
+      "source": "data/assumptions.yaml#L811"
     },
     "lightpipe-efficiency": {
       "value": 0.3,
@@ -1879,7 +1871,7 @@
       "shown": "30%",
       "label": "Lightpipe passes at this end-to-end efficiency",
       "basis": "design",
-      "source": "data/assumptions.yaml#L821"
+      "source": "data/assumptions.yaml#L817"
     },
     "lightpipe-kill-emitters": {
       "value": 100,
@@ -1887,7 +1879,7 @@
       "shown": "100",
       "label": "Lightpipe is killed if phase lock fails beyond this many emitters",
       "basis": "design",
-      "source": "data/assumptions.yaml#L827"
+      "source": "data/assumptions.yaml#L823"
     },
     "veil-1-area": {
       "value": 1000000,
@@ -1895,7 +1887,7 @@
       "shown": "1 km²",
       "label": "Area of the Veil-1 test slat",
       "basis": "design",
-      "source": "data/assumptions.yaml#L832"
+      "source": "data/assumptions.yaml#L828"
     },
     "veil-1-dim": {
       "value": 0.99,
@@ -1903,7 +1895,7 @@
       "shown": "99%",
       "label": "Veil-1 must dim to block this share of sunlight",
       "basis": "design",
-      "source": "data/assumptions.yaml#L838"
+      "source": "data/assumptions.yaml#L834"
     },
     "veil-1-kill-life": {
       "value": 182.625,
@@ -1911,7 +1903,7 @@
       "shown": "6 months",
       "label": "Veil-1 is killed if its film degrades within this",
       "basis": "design",
-      "source": "data/assumptions.yaml#L844"
+      "source": "data/assumptions.yaml#L840"
     },
     "railhead-test-mass": {
       "value": 1000,
@@ -1919,7 +1911,7 @@
       "shown": "1 t",
       "label": "Ice block the Railhead test throws",
       "basis": "design",
-      "source": "data/assumptions.yaml#L850"
+      "source": "data/assumptions.yaml#L846"
     },
     "railhead-test-speed": {
       "value": 3000,
@@ -1927,7 +1919,7 @@
       "shown": "3 km/s",
       "label": "Railhead test passes at this muzzle speed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L856"
+      "source": "data/assumptions.yaml#L852"
     },
     "railhead-test-rate": {
       "value": 10,
@@ -1935,7 +1927,7 @@
       "shown": "10",
       "label": "Railhead test passes at this many shots an hour",
       "basis": "design",
-      "source": "data/assumptions.yaml#L862"
+      "source": "data/assumptions.yaml#L858"
     },
     "railhead-kill-speed": {
       "value": 1000,
@@ -1943,7 +1935,7 @@
       "shown": "1 km/s",
       "label": "Railhead test is killed below this muzzle speed",
       "basis": "design",
-      "source": "data/assumptions.yaml#L867"
+      "source": "data/assumptions.yaml#L863"
     },
     "railhead-kill-rate": {
       "value": 1,
@@ -1951,7 +1943,7 @@
       "shown": "1",
       "label": "Railhead test is killed below this many shots an hour",
       "basis": "design",
-      "source": "data/assumptions.yaml#L873"
+      "source": "data/assumptions.yaml#L869"
     },
     "cryo-seal-months": {
       "value": 365.25,
@@ -1959,7 +1951,7 @@
       "shown": "12 months",
       "label": "How long Cryo-seal must hold its leak",
       "basis": "design",
-      "source": "data/assumptions.yaml#L878"
+      "source": "data/assumptions.yaml#L874"
     },
     "mini-aegis-coil": {
       "value": 10,
@@ -1967,7 +1959,7 @@
       "shown": "10 m",
       "label": "Size of the Mini-Aegis test coil",
       "basis": "design",
-      "source": "data/assumptions.yaml#L884"
+      "source": "data/assumptions.yaml#L880"
     },
     "choir-sim-robots": {
       "value": 10000,
@@ -1975,7 +1967,7 @@
       "shown": "10,000",
       "label": "Robots in the Choir-sim test factory",
       "basis": "design",
-      "source": "data/assumptions.yaml#L889"
+      "source": "data/assumptions.yaml#L885"
     },
     "choir-sim-days": {
       "value": 90,
@@ -1983,7 +1975,7 @@
       "shown": "90 d",
       "label": "How long Choir-sim must run unattended",
       "basis": "design",
-      "source": "data/assumptions.yaml#L894"
+      "source": "data/assumptions.yaml#L890"
     },
     "choir-sim-kill-interventions": {
       "value": 1,
@@ -1991,7 +1983,7 @@
       "shown": "1",
       "label": "Choir-sim is killed above this many human interventions a day",
       "basis": "design",
-      "source": "data/assumptions.yaml#L899"
+      "source": "data/assumptions.yaml#L895"
     },
     "foundry-closure-seed": {
       "value": 0.9999,
@@ -1999,7 +1991,7 @@
       "shown": "99.99%",
       "label": "Share of each copy's mass the seed Foundry makes from Mercury rock",
       "basis": "invented",
-      "source": "data/assumptions.yaml#L905"
+      "source": "data/assumptions.yaml#L901"
     },
     "foundry-trace-refining": {
       "value": "2030-01-01",
@@ -2007,7 +1999,7 @@
       "shown": "1 January 2030",
       "label": "Trace-element refining runs, closing the Foundry's loop completely",
       "basis": "design",
-      "source": "data/assumptions.yaml#L913"
+      "source": "data/assumptions.yaml#L909"
     },
     "venus-area": {
       "value": 460234000000000,
@@ -3126,7 +3118,7 @@
       "shown": "16 September 2032",
       "label": "The Veil's last parts leave Mercury",
       "basis": "design",
-      "source": "calc/src/model/foundry.ts#L35",
+      "source": "calc/src/model/foundry.ts#L89",
       "formula": "Veil close date − Mercury-to-Venus transfer",
       "inputs": [
         "veil-close",
@@ -3139,7 +3131,7 @@
       "shown": "9.8 d",
       "label": "Days the Foundry stops growing to build the Veil",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L35",
+      "source": "calc/src/model/foundry.ts#L36",
       "formula": "D = M_Veil T / (M_Foundry ln 2), ending when the last parts leave",
       "inputs": [
         "foundry-doubling-days",
@@ -3150,13 +3142,26 @@
         "veil-mass"
       ]
     },
+    "veil-build-begin": {
+      "value": "2032-09-07",
+      "unit": "date",
+      "shown": "7 September 2032",
+      "label": "The Foundry starts building the Veil",
+      "basis": "invented",
+      "source": "calc/src/model/foundry.ts#L35",
+      "formula": "last parts leave − Veil hold",
+      "inputs": [
+        "veil-build-end",
+        "veil-diversion-days"
+      ]
+    },
     "foundry-full-scale": {
       "value": "2033-05-03",
       "unit": "date",
       "shown": "3 May 2033",
       "label": "Foundry reaches full scale",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L132",
+      "source": "calc/src/model/foundry.ts#L142",
       "formula": "landing + n × doubling time + the Veil's hold",
       "inputs": [
         "foundry-landing",
@@ -3171,7 +3176,7 @@
       "shown": "4.3 yr",
       "label": "Time from landing to full scale",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L145",
+      "source": "calc/src/model/foundry.ts#L155",
       "formula": "n × doubling time + the Veil's hold",
       "inputs": [
         "foundry-full-scale",
@@ -3184,7 +3189,7 @@
       "shown": "13 W/kg",
       "label": "Power each kilogram of machinery draws while doubling",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L157",
+      "source": "calc/src/model/foundry.ts#L167",
       "formula": "e × ln 2 / T",
       "inputs": [
         "foundry-energy-per-kg",
@@ -3197,7 +3202,7 @@
       "shown": "9.0 × 10¹⁴ W",
       "label": "Foundry power at full scale",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L168",
+      "source": "calc/src/model/foundry.ts#L178",
       "formula": "M_final × p",
       "inputs": [
         "foundry-final-mass",
@@ -3210,7 +3215,7 @@
       "shown": "2 × 10⁻¹⁰",
       "label": "Share of Mercury's mass the Foundry uses",
       "basis": "physics",
-      "source": "calc/src/model/foundry.ts#L178",
+      "source": "calc/src/model/foundry.ts#L188",
       "formula": "M_final / M_Mercury",
       "inputs": [
         "foundry-final-mass",
@@ -5764,7 +5769,7 @@
       "shown": "5.8 × 10⁷ kg",
       "label": "Foundry machinery in January 2030",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L196",
+      "source": "calc/src/model/foundry.ts#L206",
       "formula": "seed × 2^((t − landing) / T)",
       "inputs": [
         "date-2030",
@@ -5772,7 +5777,7 @@
         "foundry-landing",
         "foundry-doubling-days",
         "foundry-final-mass",
-        "veil-build-end",
+        "veil-build-begin",
         "veil-diversion-days"
       ]
     },
@@ -5782,7 +5787,7 @@
       "shown": "2.7 × 10¹¹ kg",
       "label": "Foundry machinery in January 2032",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L197",
+      "source": "calc/src/model/foundry.ts#L207",
       "formula": "seed × 2^((t − landing) / T)",
       "inputs": [
         "date-2032",
@@ -5790,7 +5795,7 @@
         "foundry-landing",
         "foundry-doubling-days",
         "foundry-final-mass",
-        "veil-build-end",
+        "veil-build-begin",
         "veil-diversion-days"
       ]
     },
@@ -5800,7 +5805,7 @@
       "shown": "2 March 2032",
       "label": "Foundry can build the Hesperus Veil in one doubling period",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L216",
+      "source": "calc/src/model/foundry.ts#L226",
       "formula": "landing + T log₂(M_product / seed)",
       "inputs": [
         "veil-mass",
@@ -5815,7 +5820,7 @@
       "shown": "17 April 2033",
       "label": "Foundry can build the Helios Lattice in one doubling period",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L217",
+      "source": "calc/src/model/foundry.ts#L227",
       "formula": "landing + T log₂(M_product / seed)",
       "inputs": [
         "helios-mass",
@@ -5830,7 +5835,7 @@
       "shown": "9 November 2032",
       "label": "Foundry can build the Braking Ring in one doubling period",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L218",
+      "source": "calc/src/model/foundry.ts#L228",
       "formula": "landing + T log₂(M_product / seed)",
       "inputs": [
         "ring-mass",
@@ -5845,7 +5850,7 @@
       "shown": "1.4 × 10¹⁴ kg",
       "label": "Everything the Foundry builds: itself, the Veil, the Lattice and the Ring",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L233",
+      "source": "calc/src/model/foundry.ts#L243",
       "formula": "M_Foundry + M_Veil + M_Lattice + M_Ring",
       "inputs": [
         "foundry-final-mass",
@@ -5860,7 +5865,7 @@
       "shown": "10²² J",
       "label": "Energy to build the Foundry and everything it makes",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L243",
+      "source": "calc/src/model/foundry.ts#L253",
       "formula": "M_built × e",
       "inputs": [
         "foundry-built-mass",
@@ -5873,12 +5878,24 @@
       "shown": "13 d",
       "label": "Days the full Foundry takes to build the Braking Ring",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L254",
+      "source": "calc/src/model/foundry.ts#L264",
       "formula": "M_Ring T / (M_Foundry ln 2)",
       "inputs": [
         "ring-mass",
         "foundry-doubling-days",
         "foundry-final-mass"
+      ]
+    },
+    "ring-build-begin": {
+      "value": "2033-07-22",
+      "unit": "date",
+      "shown": "22 July 2033",
+      "label": "The Foundry starts building the Braking Ring",
+      "basis": "invented",
+      "source": "calc/src/model/foundry.ts#L275",
+      "formula": "Lattice at full power",
+      "inputs": [
+        "helios-full-power"
       ]
     },
     "ring-delivered": {
@@ -5887,10 +5904,10 @@
       "shown": "19 October 2033",
       "label": "The Ring's last parts reach Venus",
       "basis": "invented",
-      "source": "calc/src/model/foundry.ts#L265",
+      "source": "calc/src/model/foundry.ts#L286",
       "formula": "Lattice finished + Ring build + Mercury-to-Venus transfer",
       "inputs": [
-        "helios-full-power",
+        "ring-build-begin",
         "ring-build-days",
         "mercury-venus-transfer-days"
       ]
@@ -6333,7 +6350,7 @@
       "shown": "13 July 2034",
       "label": "The Clear Rain begins: near-surface air below 304 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L289",
+      "source": "calc/src/model/trajectory.ts#L296",
       "formula": "day-by-day simulation (model/trajectory.ts)",
       "inputs": [
         "venus-atmosphere-mass",
@@ -6409,9 +6426,75 @@
       "shown": "23 June 2036",
       "label": "CO₂ seas start to freeze: air below 216.6 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L289",
+      "source": "calc/src/model/trajectory.ts#L296",
       "formula": "day-by-day simulation (model/trajectory.ts)",
-      "inputs": []
+      "inputs": [
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
+      ]
     },
     "traj-cold": {
       "value": "2036-08-03",
@@ -6419,9 +6502,75 @@
       "shown": "3 August 2036",
       "label": "All the CO₂ is down: air at 195 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L289",
+      "source": "calc/src/model/trajectory.ts#L296",
       "formula": "day-by-day simulation (model/trajectory.ts)",
-      "inputs": []
+      "inputs": [
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
+      ]
     },
     "traj-scavenged": {
       "value": "2036-08-22",
@@ -6429,9 +6578,75 @@
       "shown": "22 August 2036",
       "label": "Frost Towers bring CO₂ down to the target",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L425",
+      "source": "calc/src/model/trajectory.ts#L432",
       "formula": "day-by-day simulation (model/trajectory.ts)",
-      "inputs": []
+      "inputs": [
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
+      ]
     },
     "traj-warming": {
       "value": "2036-09-02",
@@ -6439,9 +6654,75 @@
       "shown": "2 September 2036",
       "label": "Caps sealed; the Veil opens and the air warms",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L419",
+      "source": "calc/src/model/trajectory.ts#L426",
       "formula": "day-by-day simulation (model/trajectory.ts)",
-      "inputs": []
+      "inputs": [
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
+      ]
     },
     "traj-warm": {
       "value": "2036-09-06",
@@ -6449,9 +6730,75 @@
       "shown": "6 September 2036",
       "label": "Air reaches 285 K",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L341",
+      "source": "calc/src/model/trajectory.ts#L348",
       "formula": "day-by-day simulation (model/trajectory.ts)",
-      "inputs": []
+      "inputs": [
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
+      ]
     },
     "traj-earth-like": {
       "value": "2036-09-30",
@@ -6459,9 +6806,75 @@
       "shown": "30 September 2036",
       "label": "Earth-like: warm, 0.25 bar of oxygen, CO₂ under 600 ppm",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L495",
+      "source": "calc/src/model/trajectory.ts#L502",
       "formula": "day-by-day simulation (model/trajectory.ts)",
-      "inputs": []
+      "inputs": [
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
+      ]
     },
     "traj-pump-energy": {
       "value": 3.52817e+27,
@@ -6469,10 +6882,74 @@
       "shown": "3.5 × 10²⁷ J",
       "label": "Heat-pump work to cool Venus, day by day, Frost Towers included",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L289",
+      "source": "calc/src/model/trajectory.ts#L296",
       "formula": "Σ pump power × 1 day, to the deadline",
       "inputs": [
-        "deadline"
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
       ]
     },
     "traj-heat-added": {
@@ -6481,10 +6958,74 @@
       "shown": "7.9 × 10²⁵ J",
       "label": "Heat that enters the air during the campaign from other sources",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L300",
+      "source": "calc/src/model/trajectory.ts#L307",
       "formula": "Σ (crust + Forges + falling ice + residual sunlight) × 1 day",
       "inputs": [
-        "deadline"
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
       ]
     },
     "traj-heat-lifted": {
@@ -6493,10 +7034,74 @@
       "shown": "6.1 × 10²⁶ J",
       "label": "Heat the Exhaust lifts out of the air, day by day, Frost Towers included",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L310",
+      "source": "calc/src/model/trajectory.ts#L317",
       "formula": "Σ heat leaving the air × 1 day, to the deadline",
       "inputs": [
-        "deadline"
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
       ]
     },
     "traj-exhaust-light": {
@@ -6505,10 +7110,74 @@
       "shown": "4.1 × 10²⁷ J",
       "label": "Light the Exhaust throws into space: the heat it lifts plus the work that lifts it",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L321",
+      "source": "calc/src/model/trajectory.ts#L328",
       "formula": "Σ (heat out + pump work) × 1 day, to the deadline",
       "inputs": [
-        "deadline"
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
       ]
     },
     "traj-fan-energy": {
@@ -6517,10 +7186,74 @@
       "shown": "1.0 × 10²⁵ J",
       "label": "Energy the chimney fans use while the pumps run",
       "basis": "invented",
-      "source": "calc/src/model/trajectory.ts#L331",
+      "source": "calc/src/model/trajectory.ts#L338",
       "formula": "Σ fan power × 1 day",
       "inputs": [
-        "deadline"
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
       ]
     },
     "traj-warm-energy": {
@@ -6529,10 +7262,74 @@
       "shown": "4.4 × 10²⁵ J",
       "label": "Beamed power spent warming the air and melting the cold ice after sealing",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L341",
+      "source": "calc/src/model/trajectory.ts#L348",
       "formula": "Σ warming power × 1 day",
       "inputs": [
-        "deadline"
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
       ]
     },
     "traj-chimney-days": {
@@ -6541,9 +7338,75 @@
       "shown": "56 d",
       "label": "Days the chimneys, not the power, limit how fast the air cools",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L351",
+      "source": "calc/src/model/trajectory.ts#L358",
       "formula": "days the simulation caps heat removal at the chimneys' capacity",
-      "inputs": []
+      "inputs": [
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
+      ]
     },
     "traj-heat-peak": {
       "value": 12552600000000000000,
@@ -6551,9 +7414,75 @@
       "shown": "1.3 × 10¹⁹ W",
       "label": "Fastest heat removal in the simulation",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L362",
+      "source": "calc/src/model/trajectory.ts#L369",
       "formula": "max over days of heat leaving the air",
-      "inputs": []
+      "inputs": [
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "deadline",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
+      ]
     },
     "traj-slack-days": {
       "value": 92.2419,
@@ -6561,10 +7490,74 @@
       "shown": "92 d",
       "label": "Days to spare between Earth-like conditions and the deadline",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L372",
+      "source": "calc/src/model/trajectory.ts#L379",
       "formula": "deadline − Earth-like date",
       "inputs": [
-        "deadline"
+        "deadline",
+        "venus-atmosphere-mass",
+        "co2-cp",
+        "venus-surface-temp",
+        "co2-critical-temp",
+        "co2-triple-temp",
+        "freeze-target-temp",
+        "exhaust-effective-temp",
+        "frost-tower-temp",
+        "co2-deposition-heat",
+        "atmosphere-latent-heat",
+        "venus-area",
+        "venus-gravity",
+        "n2-pressure",
+        "venus-column-pressure",
+        "cooling-start",
+        "helios-full-power",
+        "helios-power",
+        "ice-launch-start",
+        "first-catch",
+        "forge-start",
+        "chimney-fan-power",
+        "rock-conductivity",
+        "crust-cooling-step",
+        "rock-diffusivity",
+        "cryo-footprint-share",
+        "veil-block-fraction",
+        "venus-absorbed",
+        "lowering-start",
+        "o2-target-pressure",
+        "forge-end",
+        "chimney-cold-factor",
+        "exhaust-peak",
+        "chimney-capacity",
+        "final-water-vapour",
+        "ice-launch-end",
+        "railhead-power",
+        "co2-triple-pressure",
+        "co2-critical-pressure",
+        "last-arrival",
+        "ring-power",
+        "forge-power",
+        "forge-efficiency",
+        "lowering-end",
+        "lowering-rate",
+        "fall-energy",
+        "ice-cp",
+        "brick-temp",
+        "co2-sublimation-ref-temp",
+        "co2-sublimation-ref-pressure",
+        "co2-sublimation-enthalpy",
+        "gas-constant",
+        "frost-residual-co2",
+        "frost-residual-target",
+        "sealing-end",
+        "earth-like-temp",
+        "veil-day-transmission",
+        "venus-intercepted",
+        "final-albedo",
+        "melt-energy",
+        "venus-n2-mass",
+        "o2-mass",
+        "air-cp",
+        "earth-surface-temp",
+        "earth-like-co2"
       ]
     },
     "genesis-ph-clear": {
@@ -6573,7 +7566,7 @@
       "shown": "1 December 2036",
       "label": "The new oceans have held their pH for the release gate",
       "basis": "design",
-      "source": "calc/src/model/trajectory.ts#L412",
+      "source": "calc/src/model/trajectory.ts#L419",
       "formula": "ice melts (caps sealed, Veil open) + days the pH must hold",
       "inputs": [
         "traj-warming",
@@ -6586,7 +7579,7 @@
       "shown": "1 December 2036",
       "label": "Genesis seeding begins: the later of the oxygen and the ocean pH gate",
       "basis": "design",
-      "source": "calc/src/model/trajectory.ts#L430",
+      "source": "calc/src/model/trajectory.ts#L437",
       "formula": "max(Forges finish, pH held)",
       "inputs": [
         "forge-end",
@@ -6599,7 +7592,7 @@
       "shown": "11 d",
       "label": "Time for seeded cyanobacteria to grow to bloom density",
       "basis": "invented",
-      "source": "calc/src/model/trajectory.ts#L440",
+      "source": "calc/src/model/trajectory.ts#L447",
       "formula": "t_double log₂(n_bloom / n_seed)",
       "inputs": [
         "genesis-doubling-days",
@@ -6613,7 +7606,7 @@
       "shown": "12 December 2036",
       "label": "The sunlit oceans are green with seeded cyanobacteria",
       "basis": "invented",
-      "source": "calc/src/model/trajectory.ts#L453",
+      "source": "calc/src/model/trajectory.ts#L460",
       "formula": "seeding begins + growth to bloom density",
       "inputs": [
         "genesis-start",
@@ -6626,7 +7619,7 @@
       "shown": "288 K",
       "label": "Mean air temperature, in the simulation, on the day seeding begins",
       "basis": "physics",
-      "source": "calc/src/model/trajectory.ts#L463",
+      "source": "calc/src/model/trajectory.ts#L470",
       "formula": "simulated T on the seeding day (its last day, if it stops sooner)",
       "inputs": [
         "genesis-start"

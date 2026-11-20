@@ -144,10 +144,11 @@ line.
   between two satellites with phase lock across many emitters. It gates the design.
 - **[June 2030](../numbers.md?date=month#helios-first-petals):** The first Petals fly, built from the Foundry's
   film lines.
-- **[May 2033](../numbers.md?date=month#cooling-start):** Active cooling begins. The Lattice is still
-  growing, and everything it delivers goes to the Exhaust.
-- **[April 2033](../numbers.md?date=month#helios-affordable):** The Foundry can build the whole Lattice in one
-  doubling.
+- **[April 2033](../numbers.md?date=month#helios-affordable):** The Foundry could build the whole Lattice in one
+  doubling. It grows a little longer, to finish sooner.
+- **[3 May 2033](../numbers.md?date=day#foundry-full-scale):** The Foundry reaches full scale and turns to the
+  Petals. Active cooling begins with the first of their power, and everything the Lattice delivers goes to the
+  Exhaust while it grows.
 - **[22 July 2033](../numbers.md?date=day#helios-full-power):** Full power,
   [8.5 × 10¹⁹ W](../numbers.md#helios-power). The Ceres Railheads start firing and take most of it.
 - **[16 September 2034](../numbers.md?date=day#ring-pays-from):** The first Bricks reach Venus and the Ring powers

@@ -1,9 +1,16 @@
 # Research Agenda
 
-Phosphoros rests on breakthroughs nobody has shown. Before anything flies to Mercury, nine experiments test
+Phosphoros rests on breakthroughs nobody has shown. Before anything is built at scale, nine experiments test
 the riskiest of them. All start in [2027](numbers.md?date=year#program-start), run in parallel and must pass
 by [31 December 2028](numbers.md?date=day#experiments-end). Each has a pass criterion and a kill signal, set
 in advance. A kill signal stops the line it tests; one of them stops everything.
+
+The seed foundry cannot wait for all of them: to land on Mercury in
+[January 2029](numbers.md?date=month#foundry-landing) it launches on
+[1 October 2028](numbers.md?date=day#foundry-seed-launch), three months before the other gates close. So
+[Ouroboros-0](#ouroboros-0) must show its closure before that launch, and the rest, the cloud-life survey
+included, are decided while the seed is in flight. A gate that fails then halts the seed on arrival: it lands, and
+does not start to copy itself.
 
 <!-- figure:research-gates -->
 ![The proof experiments and their gates, 2027 and 2028](../figures/svg/research-gates.svg)

@@ -46,23 +46,29 @@ rows:
     end: foundry-full-scale
     tech: ouroboros
     critical: true
+  - id: first-petals
+    label: First Petals and test slats fly
+    lane: mercury
+    kind: milestone
+    start: helios-first-petals
+    tech: helios
   - id: helios-build
     label: Helios Lattice built
     lane: mercury
-    start: helios-first-petals
+    start: foundry-full-scale
     end: helios-full-power
     tech: helios
     critical: true
   - id: veil-build
     label: Hesperus Veil built
     lane: space
-    start: veil-build-start
+    start: veil-build-begin
     end: veil-close
     tech: veil
   - id: ring-build
     label: Braking Ring built
     lane: space
-    start: ring-build-start
+    start: ring-build-begin
     end: ring-complete
     tech: ring
   - id: aegis-online

@@ -46,10 +46,10 @@ test("the seas only grow while the ice melts", () => {
   const r = run();
   const days = Object.fromEntries(
     [
-      "veil-build-start",
+      "veil-build-begin",
       "veil-close",
       "aegis-online",
-      "ring-build-start",
+      "ring-build-begin",
       "ring-complete",
       "cooling-start",
       "ice-launch-start",

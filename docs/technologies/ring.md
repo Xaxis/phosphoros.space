@@ -203,10 +203,12 @@ the tethers work: the heat it counts from the falling ice is the fall from
 
 ## Build sequence
 
-- **[June 2032](../numbers.md?date=month#ring-build-start):** Construction begins, from parts the
-  [Ouroboros Foundry](ouroboros.md) ships from Mercury.
-- **[November 2032](../numbers.md?date=month#ring-affordable):** The Foundry's growing output now covers
-  the Ring's whole mass.
+- **[November 2032](../numbers.md?date=month#ring-affordable):** The growing
+  [Ouroboros Foundry](ouroboros.md) could now build the whole Ring in one doubling, but every kilogram it spends
+  on the Ring it does not add to itself, so it keeps growing.
+- **[22 July 2033](../numbers.md?date=day#ring-build-begin):** With the Lattice finished, the full Foundry turns to
+  the Ring and builds it in [13 d](../numbers.md#ring-build-days). The parts coast from Mercury, and the last reach
+  Venus on [19 October 2033](../numbers.md?date=day#ring-delivered) ([check](../numbers.md#check-foundry-builds-ring)).
 - **[December 2033](../numbers.md?date=month#ring-complete):** The Ring is complete and takes the Lattice's
   receivers from the canopies.
 - **[September 2034](../numbers.md?date=month#first-catch):** The first Bricks arrive and the Ring starts

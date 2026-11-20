@@ -247,8 +247,12 @@
     the mass of what it must build next finishes soonest, so it stops at {foundry-doublings}
     doublings, {foundry-final-mass}, instead of 27. Active cooling starts with the Lattice's first
     power, {cooling-start|date=day}, instead of January 2033, and the ice launches with full power
-    on {ice-launch-start|date=day}.
+    on {ice-launch-start|date=day}. The Timeline and the animation drew the Veil, the Lattice and the
+    Ring as built from 2030 and 2032; they now follow the Foundry, with the Veil from
+    {veil-build-begin|date=day}, the Lattice from {foundry-full-scale|date=day} and the Ring from
+    {ring-build-begin|date=day}.
   before:
+    ring-build-start: 2032-06-01
     foundry-target-mass: 1.0e14
     foundry-doublings: 27
     foundry-final-mass: 1.34e14
