@@ -194,6 +194,40 @@ test("the seas freeze at the triple point, and the simulation's heat books balan
   const books = v("atmosphere-heat") - v("traj-heat-left-airborne") + v("traj-heat-added");
   assert.ok(Math.abs(v("traj-heat-lifted") / books - 1) < 1e-9);
   assert.ok(v("sealing-window") > 0 && v("cap-laying-rate") > 0);
+  // The books balance in a variant that runs past the deadline too: no day the pumps run is dropped.
+  const late = compute(
+    loadInputs({
+      "foundry-seed-launch": v("experiments-end"),
+      "ceres-seed-launch": v("experiments-end"),
+    }),
+  );
+  assert.ok(late.get("traj-scavenged").value > v("deadline"));
+  assert.equal(
+    late.checks.get("traj-heat-books")?.pass,
+    true,
+    late.checks.get("traj-heat-books")?.detail,
+  );
+});
+
+test("the first launch waits for the Ceres factories, solved with the Railheads they build", () => {
+  // In the plan the factories finish first, and launches start at the Lattice's full power.
+  assert.ok(v("ceres-ready") < v("helios-full-power"));
+  assert.equal(v("ice-launch-start"), v("helios-full-power"));
+  // A faster Foundry does not launch before the Railheads exist: it waits, and the plan holds.
+  const fast = compute(loadInputs({ "foundry-doubling-days": 55 }));
+  assert.ok(fast.get("helios-full-power").value < fast.get("ceres-ready").value);
+  assert.ok(Math.abs(fast.get("ice-launch-start").value - fast.get("ceres-ready").value) < 1e-3);
+  assert.equal(fast.checks.get("ceres-ready-in-time")?.pass, true);
+  assert.equal(fast.checks.get("frost-before-sealing")?.pass, true);
+  // Slower factories push the launches back, and waiting shortens the campaign, so the Railheads
+  // grow: the solved start is later than the finish of the Railheads the plan would have built.
+  const slow = compute(loadInputs({ "ceres-doubling-days": 55 }));
+  const start = slow.get("ice-launch-start").value;
+  assert.ok(start > v("helios-full-power") + 100);
+  assert.ok(Math.abs(start - slow.get("ceres-ready").value) < 1e-3);
+  assert.ok(slow.get("railhead-power").value > v("railhead-power"));
+  assert.ok(slow.get("crown-mass").value > v("crown-mass"));
+  assert.equal(slow.checks.get("ceres-ready-in-time")?.pass, true);
 });
 
 test("changing an assumption changes the consequences", () => {

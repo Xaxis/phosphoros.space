@@ -146,11 +146,12 @@ Stopping at [26](../numbers.md#foundry-doublings) doublings finishes both sooner
 ## Build sequence
 
 - **[2027](../numbers.md?date=year#program-start):** [Ouroboros-0](../research.md#ouroboros-0) starts on
-  Earth: a factory that builds itself from simulated Mercury regolith. It must show mass closure and a
-  doubling time before the seed is committed. Under its kill signal, the plan falls back to the
-  multi-century route.
+  Earth: a factory that builds itself from simulated Mercury regolith, and from Ceres's. It must show mass
+  closure and a doubling time before the seeds are committed. Under its kill signal, the plan falls back to
+  the multi-century route.
 - **[1 October 2028](../numbers.md?date=day#foundry-seed-launch):** The seed launches, one of the very few
-  things in the plan that leaves Earth. The transfer to Mercury takes
+  things in the plan that leaves Earth; the seed of the [Ceres factories](ice-train.md#ceres-factories) leaves
+  the same day. The transfer to Mercury takes
   [105 d](../numbers.md?sig=3#foundry-transfer-days).
 - **[14 January 2029](../numbers.md?date=day#foundry-landing):** The seed lands at a polar site. The
   [Choir](choir.md) goes live with it.

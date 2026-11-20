@@ -634,3 +634,57 @@
     the oceans are green on {genesis-end|date=day}. It costs little energy, because a faster freeze
     lets less heat in: the Lattice still has {budget-spare} to spare on its own.
   before: { exhaust-peak: 5.0e19 }
+- id: lattice-to-ceres
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The longest beam to Ceres starts from the Lattice, not the Ring
+  issue: 7
+  text: >-
+    Version 2 measured the longest beam to Ceres from Venus, because the Ring beamed the Railheads'
+    power there. Version 3 sends nothing back from the Ring; the Lattice beams Ceres itself, from
+    orbits as far out as {helios-orbit-outer}. The longest range is {lattice-to-ceres-range}, and
+    a {helios-aperture} aperture focuses the beam to {ceres-beam-spot}.
+  before: { ring-to-ceres-range: 5.22e11, ceres-beam-spot: 136 }
+- id: ceres-heat
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Ceres's receivers and the Railheads' loss are shed in space, by the Crown
+  issue: 7
+  text: >-
+    Version 2 said the receivers at Ceres would need more area than its surface and left them
+    unsized. The real limit is heat: the receivers and the Railheads make {ceres-heat-vs-surface}
+    times more than Ceres's whole surface could radiate at {helios-fin-temp}, so almost none of it
+    can be made on the ground. Version 3 puts the receivers on the Crown, a ring at Ceres's
+    synchronous orbit {crown-altitude} up, with tethers carrying the power down. The receivers
+    take {ceres-receiver-intensity}, so each square metre hands its coolant {ceres-receiver-loss-flux},
+    what ITER's divertor is built for. The Railheads' barrels are superconducting and leave only
+    {railhead-barrel-heat} on Ceres; the rest of their loss arises where the power is shaped into
+    pulses, in the Crown, which radiates {crown-heat} from {crown-fin-area} of fins. The Railheads
+    weigh at least {railheads-mass} and the Crown {crown-mass}.
+- id: ceres-factories
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Ceres factories are seeded with the Foundry and must double faster
+  issue: 7
+  text: >-
+    Version 2 sent the first Ceres factories from Earth but never sized them. Version 3 launches a
+    {ceres-seed-mass} seed on {ceres-seed-launch|date=day}, behind the same Ouroboros-0 gate as the
+    Foundry's, which now must close its loop on simulated Ceres rock too. To build the
+    {ceres-build-mass} of Railheads and Crown by the first launch, the factories must double every
+    {ceres-doubling-days}, faster than the Foundry; they finish on {ceres-ready|date=day}. At the
+    Foundry's pace they would finish only in {ceres-ready-foundry-pace|date=month}.
+- id: ceres-jupiter
+  kind: finding
+  version: "3"
+  date: 2026-11-20
+  title: Ceres's new orbit stays clear of Jupiter; resonances are not modelled
+  issue: 7
+  text: >-
+    Ceres's new aphelion stays {ceres-jupiter-gap} inside Jupiter's perihelion,
+    {ceres-jupiter-gap-hill} of Jupiter's Hill radii, and its Tisserand parameter with respect to
+    Jupiter falls from {ceres-tisserand-now} to {ceres-tisserand}, still above 3. The model does not
+    follow resonances: the new orbit sits on Jupiter's weak 9:4 resonance, and a long numerical
+    integration must show it is stable before the first shot.

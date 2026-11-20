@@ -187,7 +187,8 @@ export function simulate(v: (id: string) => number): {
     const launching = d >= v("ice-launch-start") && d < v("ice-launch-end");
     const catching = d >= v("first-catch") && d < v("last-arrival");
     if (launching && !catching) power -= Math.min(power, v("railhead-power"));
-    if (catching) power += v("ring-power") - (launching ? v("railhead-power") : 0);
+    if (catching)
+      power = Math.max(0, power + v("ring-power") - (launching ? v("railhead-power") : 0));
     const forging = d >= v("forge-start") && d < v("forge-end");
     if (forging) power -= Math.min(power, v("forge-power"));
     // The chimney fans run while the pumps do.
@@ -380,15 +381,17 @@ export function trajectory(r: Registry) {
       () => run().events[k] as number,
     );
   }
+  // Over the whole run, not to the deadline: work a late variant still needs is still demand, and
+  // the heat books only balance when every day the pumps run is counted.
   const total = (pick: (t: TrajectoryDay) => number) =>
-    run().days.reduce((sum, t) => (t.day <= v("deadline") ? sum + pick(t) * DAY_S : sum), 0);
+    run().days.reduce((sum, t) => sum + pick(t) * DAY_S, 0);
   const pumping = (t: TrajectoryDay) => t.phase !== "warming" && t.phase !== "earth-like";
   r.q(
     "traj-pump-energy",
     {
       label: "Heat-pump work to cool Venus, day by day, Frost Towers included",
       unit: "J",
-      formula: "Σ pump power × 1 day, to the deadline",
+      formula: "Σ pump power × 1 day",
       basis: "physics",
       note: "More than the work for the air alone, because the pumps also carry away heat from the crust, the Forges, the falling ice and the sunlight the closed Veil lets through.",
     },
@@ -411,7 +414,7 @@ export function trajectory(r: Registry) {
     {
       label: "Heat the Exhaust lifts out of the air, day by day, Frost Towers included",
       unit: "J",
-      formula: "Σ heat leaving the air × 1 day, to the deadline",
+      formula: "Σ heat leaving the air × 1 day",
       basis: "physics",
       note: "Venus's own heat, less the latent heat of the CO₂ the Frost Towers leave airborne, plus the heat that enters the air while the pumps run.",
     },
@@ -445,7 +448,7 @@ export function trajectory(r: Registry) {
     {
       label: "Light the Exhaust throws into space: the heat it lifts plus the work that lifts it",
       unit: "J",
-      formula: "Σ (heat out + pump work) × 1 day, to the deadline",
+      formula: "Σ (heat out + pump work) × 1 day",
       basis: "physics",
     },
     () => total((t) => t.heatOut + t.pumpPower),

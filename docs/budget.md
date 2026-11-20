@@ -30,7 +30,7 @@ The plan must deliver [8.5 × 10²⁷ J](numbers.md#budget-demand) to Venus a
 Lattice supplies [9.2 × 10²⁷ J](numbers.md#helios-supply): [8.5 × 10¹⁹ W](numbers.md#helios-power) for the
 [3.4 yr](numbers.md#helios-supply-years) from full power in [July 2033](numbers.md?date=month#helios-full-power)
 to the deadline. That leaves [8.2%](numbers.md#budget-spare) spare on the Lattice alone, and
-[33%](numbers.md#budget-spare-with-ring) once the Braking Ring's recovered energy powers the Railheads.
+[33%](numbers.md#budget-spare-with-ring) once the Braking Ring's recovered energy pays for the Railheads.
 Launching the water and pumping out the heat take [91%](numbers.md#budget-launch-share) of the Lattice's
 output; oxygen and hardware are small change.
 
@@ -129,7 +129,8 @@ or [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) for all the ice. That
 
 The budget counts it like this. Until the first Brick is caught on
 [16 September 2034](numbers.md?date=day#ring-pays-from), the Lattice powers the Railheads, which costs it
-[2.4 × 10²⁷ J](numbers.md#budget-lattice-launch). After that the Ring powers them, so the Lattice delivers
+[2.4 × 10²⁷ J](numbers.md#budget-lattice-launch). After that the Ring pays for them: its electricity runs Venus
+while the Lattice keeps beaming Ceres, so the Lattice delivers
 only [6.2 × 10²⁷ J](numbers.md#budget-demand-with-ring), leaving [33%](numbers.md#budget-spare-with-ring)
 spare. Counted instead as extra supply, the Ring brings the total to
 [1.5 × 10²⁸ J](numbers.md#budget-supply-total) and the spare to [42%](numbers.md#budget-spare-total). The
@@ -166,8 +167,8 @@ a rounding error. Once the Foundry runs, matter is cheap. Energy is the cost.
 | Graphite made | [4.9 × 10¹⁷ kg](numbers.md#forge-graphite) | Forge by-product |
 <!-- /table -->
 
-The Foundry makes every piece of hardware from Mercury rock; only the seed and the first Ceres factories
-leave Earth. The largest mass the plan moves is Venus's own CO₂, which never leaves the planet: it is frozen
+The Foundry makes every piece of hardware from Mercury rock, and the Ceres factories make the Railheads and
+the Crown from Ceres's; only their two seeds leave Earth. The largest mass the plan moves is Venus's own CO₂, which never leaves the planet: it is frozen
 in place. The largest mass it imports is the water.
 
 ## Physics checks
@@ -185,6 +186,13 @@ Every run of the model tests these. A check is a law of physics or a requirement
 | [An opaque Veil leaves the Exhaust's cones a clear sky](numbers.md#check-exhaust-clears-veil) | Pass | Seen from Venus the Veil is 0.68° in radius. Tiles that face it tilt their 25° cones 13° off the Sun line, which keeps every cone 64° clear of the horizon. |
 | [The Forges make the cap graphite before sealing ends](numbers.md#check-graphite-for-caps) | Pass | 4.6 × 10¹⁷ kg of graphite by the end of sealing; the caps need 2.5 × 10¹⁷ kg. |
 | [The last Brick arrives before the deadline](numbers.md#check-ice-arrives) | Pass | Last launch 21 October 2035, a 1.15 yr transfer, last arrival 15 December 2036. |
+| [Ceres's surface can radiate the heat left on the ground](numbers.md#check-ceres-ground-heat) | Pass | All the heat made at Ceres is 70 times what its whole surface could radiate at 1,500 K (8.0 × 10¹⁷ W), so the Crown sheds it in space; the barrels leave 6.7 × 10¹⁶ W on the ground, radiators over 8.4% of the surface. |
+| [Ceres's receivers shed heat no faster than a cooled surface already does](numbers.md#check-ceres-receiver-cooling) | Pass | At 40 MW/m² each square metre of receiver hands 10 MW/m² to its coolant, against the 10 MW/m² ITER's divertor is built to carry; left to radiate it alone, a receiver would reach 3,100 K. |
+| [The Crown stays deep inside Ceres's Hill sphere, and the recoil cannot shake it off](numbers.md#check-crown-orbit) | Pass | The Crown circles at 1,190 km and its fins reach 5,700 km, well inside half of Ceres's 220,000 km Hill radius, where orbits around a small body stay bound; Ceres's recoil, 1.1 × 10⁻⁵ m/s², is small beside its 0.0019 m/s² pull even at the fins' edge. |
+| [Carbon-fibre tethers can hang from the Crown to Ceres's surface](numbers.md#check-crown-tethers) | Pass | Summed from the surface to the Crown, Ceres's net pull on a tether is 59 kJ/kg, against the 3.9 MJ/kg carbon fibre holds at full strength; hanging the 8.6 × 10¹² kg of cables and holding the beams' 3.0 × 10¹¹ N push takes 1.9 × 10¹¹ kg of fibre. |
+| [Ceres's factories finish the Railheads and the Crown before the first launch](numbers.md#check-ceres-ready-in-time) | Pass | The seed leaves Earth on 1 October 2028, with the Foundry's once Ouroboros-0 has passed, and lands on 16 January 2030; doubling every 45 d, the factories finish the 7.4 × 10¹³ kg of Railheads and Crown on 10 June 2033, against a first launch on 22 July 2033. |
+| [The Lattice can power the Railheads until the Ring pays for them](numbers.md#check-railheads-within-lattice) | Pass | Throwing 1.0 × 10²⁰ kg in 2.2 yr takes 6.7 × 10¹⁹ W, and until the first Brick is caught on 16 September 2034 only the Lattice's 8.5 × 10¹⁹ W can supply it. |
+| [Ceres's new orbit stays clear of Jupiter](numbers.md#check-ceres-clear-of-jupiter) | Pass | At its new aphelion Ceres stays 1.66 AU inside Jupiter's closest approach to the Sun, 4.7 of Jupiter's Hill radii against the 2√3 that keeps two orbits from meeting; its Tisserand parameter falls from 3.31 to 3.21, still above the 3 below which Jupiter takes control. |
 | [The Ring recovers more power than the Railheads draw](numbers.md#check-ring-energy-loop) | Pass | The Ring recovers 7.5 × 10¹⁹ W against the 6.7 × 10¹⁹ W the Railheads draw. |
 | [The Ring can pass the catch's net braking force to Venus](numbers.md#check-ring-net-force) | **Fails (open issue)** | Catching half the Bricks eastbound and half westbound cancels the twist, not the force: 8.4 × 10¹⁵ N remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; its spare lift is 3.0 × 10¹³ N, 280 times too little. |
 | [The Ring can carry the force of lowering the ice on tethers](numbers.md#check-ring-lowering-load) | **Fails (open issue)** | Lowering 2.2 × 10¹² kg/s needs at least 4.7 × 10¹⁵ N; the rotor's spare lift is 3.0 × 10¹³ N, 150 times too little. |
@@ -199,11 +207,11 @@ Every run of the model tests these. A check is a law of physics or a requirement
 | [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline) | Pass | The day-by-day simulation reaches Earth-like conditions on 30 September 2036, 92 d before the 31 December 2036 deadline. The chimneys, not the power, set the pace on 56 d. |
 | [The ozone model, run on Earth's air, gives Earth's ozone column](numbers.md#check-ozone-model-earth) | Pass | 280 DU against 279 DU from a three-dimensional model of the pre-industrial Earth, within a quarter either way, with nothing fitted. |
 | [The ozone shields the land before the deadline](numbers.md#check-ozone-shield-in-time) | Pass | One day of sunlight makes 49.9 DU, easily measured. The column reaches 185 DU on 2 December 2036, 91 d after the Veil opens, so lichens and mosses go onto land from 2 December 2036, against a deadline of 31 December 2036. |
-| [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) | Pass | Lattice supply 9.2 × 10²⁷ J against demand 8.5 × 10²⁷ J: 8.2% spare before the Ring's recovered energy, 33% once the Ring powers the Railheads. |
-| [With the Ring's recovered energy, supply covers demand](numbers.md#check-energy-closes-with-ring) | Pass | The Lattice delivers 9.2 × 10²⁷ J against 6.2 × 10²⁷ J once the Ring powers the Railheads, and the Ring recovers 5.3 × 10²⁷ J against the 2.3 × 10²⁷ J of launches it pays for. |
+| [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) | Pass | Lattice supply 9.2 × 10²⁷ J against demand 8.5 × 10²⁷ J: 8.2% spare before the Ring's recovered energy, 33% once the Ring pays for the Railheads. |
+| [With the Ring's recovered energy, supply covers demand](numbers.md#check-energy-closes-with-ring) | Pass | The Lattice delivers 9.2 × 10²⁷ J against 6.2 × 10²⁷ J once the Ring pays for the Railheads, and the Ring recovers 5.3 × 10²⁷ J against the 2.3 × 10²⁷ J of launches it pays for. |
 <!-- /table -->
 
-[4](numbers.md#checks-failing) of the [24](numbers.md#checks-total) checks fail, and each is shown on purpose.
+[4](numbers.md#checks-failing) of the [31](numbers.md#checks-total) checks fail, and each is shown on purpose.
 
 **The version 2 statite.** This check tests version 2's Veil, not the current one, and it is kept failing
 so the error stays visible. Version 2 put the Veil [137,000 km](numbers.md?sig=3#veil-v2-distance) sunward of
@@ -278,6 +286,8 @@ schedule hangs on one date: the Frost Towers must have the CO₂ down before the
 | Effective temperature the emitters shine at | [2,000 K](numbers.md?sig=3#exhaust-effective-temp) | 1,000 K or less | 2,100 K | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
 | Peak power the Exhaust can throw into space | [5.50 × 10¹⁹ W](numbers.md?sig=3#exhaust-peak) | 5.15 × 10¹⁹ W | 7.00 × 10¹⁹ W or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
 | Water shipped to Venus | [1.00 × 10²⁰ kg](numbers.md?sig=3#ice-mass) | 3.00 × 10¹⁹ kg or less | 1.06 × 10²⁰ kg | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Ceres seed factory mass | [1,000 t](numbers.md?sig=3#ceres-seed-mass) | 253 t | 10,000 t or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Ceres factory doubling time | [45 d](numbers.md?sig=3#ceres-doubling-days) | 30 d or less | 48.2 d | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
 <!-- /table -->
 
 Some changes are not on a slider. The seed launches before its own proof experiment, Ouroboros-0, must
@@ -288,7 +298,7 @@ than the slack:
 | What if | Simulated Earth-like | Against the deadline | Newly failing checks |
 | --- | --- | --- | --- |
 | The plan | 30 September 2036 | 92 d early | None |
-| The seed waits for every proof experiment to pass before it launches | 2 March 2037 | 61 d late | [The Ring's mass reaches Venus before the Ring must be complete](numbers.md#check-foundry-builds-ring); [The simulation's heat books balance](numbers.md#check-traj-heat-books); [The seas are frozen through before the last caps are sealed](numbers.md#check-frozen-before-sealing); [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing); [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline); [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline); [The ozone shields the land before the deadline](numbers.md#check-ozone-shield-in-time) |
+| The seeds wait for every proof experiment to pass before they launch | 2 March 2037 | 61 d late | [The Ring's mass reaches Venus before the Ring must be complete](numbers.md#check-foundry-builds-ring); [The seas are frozen through before the last caps are sealed](numbers.md#check-frozen-before-sealing); [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing); [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline); [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline); [The ozone shields the land before the deadline](numbers.md#check-ozone-shield-in-time); [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) |
 <!-- /table -->
 
 `tools/margins.ts` computes both tables by running the whole model a few hundred times.
@@ -309,21 +319,21 @@ its basis says whether it is a design choice, an invention or a demonstrated pre
 | Payload of one heavy-lift launch from Earth | [100 t](numbers.md#heavy-launch-payload) | Precedent |  | [data/assumptions.yaml:77](../data/assumptions.yaml#L77) | [conventional.ts](../calc/src/model/conventional.ts) |
 | Seed foundry mass | [1,000 t](numbers.md#foundry-seed-mass) | Design choice | 100 t to 10,000 t | [data/assumptions.yaml:87](../data/assumptions.yaml#L87) | [foundry.ts](../calc/src/model/foundry.ts) |
 | Earth-to-Mercury transfer | [105 d](numbers.md#foundry-transfer-days) | Design choice |  | [data/assumptions.yaml:99](../data/assumptions.yaml#L99) | [foundry.ts](../calc/src/model/foundry.ts) |
-| Foundry doubling time | [60 d](numbers.md#foundry-doubling-days) | Invented | 30 d to 120 d | [data/assumptions.yaml:105](../data/assumptions.yaml#L105) | [foundry.ts](../calc/src/model/foundry.ts), [helios.ts](../calc/src/model/helios.ts) |
+| Foundry doubling time | [60 d](numbers.md#foundry-doubling-days) | Invented | 30 d to 120 d | [data/assumptions.yaml:105](../data/assumptions.yaml#L105) | [ceres.ts](../calc/src/model/ceres.ts), [foundry.ts](../calc/src/model/foundry.ts), [helios.ts](../calc/src/model/helios.ts) |
 | Machinery the Foundry grows to before it builds the Lattice and the Ring | [6.0 × 10¹³ kg](numbers.md#foundry-target-mass) | Design choice |  | [data/assumptions.yaml:112](../data/assumptions.yaml#L112) | [foundry.ts](../calc/src/model/foundry.ts) |
-| Energy to make a kilogram of machinery from regolith | [100 MJ/kg](numbers.md#foundry-energy-per-kg) | Invented | 30 MJ/kg to 300 MJ/kg | [data/assumptions.yaml:118](../data/assumptions.yaml#L118) | [foundry.ts](../calc/src/model/foundry.ts) |
+| Energy to make a kilogram of machinery from regolith | [100 MJ/kg](numbers.md#foundry-energy-per-kg) | Invented | 30 MJ/kg to 300 MJ/kg | [data/assumptions.yaml:118](../data/assumptions.yaml#L118) | [ceres.ts](../calc/src/model/ceres.ts), [foundry.ts](../calc/src/model/foundry.ts) |
 | Share of each copy's mass in complex parts (chips, bearings, optics) | [2%](numbers.md#foundry-complex-share) | Invented |  | [data/assumptions.yaml:125](../data/assumptions.yaml#L125) |  |
 | Smallest feature a Lithocell chip fab writes | [90 nm](numbers.md#lithocell-feature-size) | Invented |  | [data/assumptions.yaml:132](../data/assumptions.yaml#L132) |  |
 | Power the Helios Lattice delivers | [8.5 × 10¹⁹ W](numbers.md#helios-power) | Design choice | 4.0 × 10¹⁹ W to 1.0 × 10²⁰ W | [data/assumptions.yaml:141](../data/assumptions.yaml#L141) | [cryo.ts](../calc/src/model/cryo.ts), [helios.ts](../calc/src/model/helios.ts), [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Hot-film solar cell efficiency at about 460 K | [40%](numbers.md#helios-film-efficiency) | Invented | 25% to 50% | [data/assumptions.yaml:148](../data/assumptions.yaml#L148) | [helios.ts](../calc/src/model/helios.ts) |
+| Hot-film solar cell efficiency at about 460 K | [40%](numbers.md#helios-film-efficiency) | Invented | 25% to 50% | [data/assumptions.yaml:148](../data/assumptions.yaml#L148) | [ceres.ts](../calc/src/model/ceres.ts), [helios.ts](../calc/src/model/helios.ts) |
 | Electricity-to-laser efficiency | [50%](numbers.md#helios-laser-efficiency) | Invented | 30% to 70% | [data/assumptions.yaml:155](../data/assumptions.yaml#L155) | [helios.ts](../calc/src/model/helios.ts) |
-| Receiver efficiency, laser light to electricity | [75%](numbers.md#helios-receiver-efficiency) | Invented |  | [data/assumptions.yaml:162](../data/assumptions.yaml#L162) | [helios.ts](../calc/src/model/helios.ts) |
-| Petal film areal density | [1 g/m²](numbers.md#helios-areal-density) | Invented |  | [data/assumptions.yaml:168](../data/assumptions.yaml#L168) | [helios.ts](../calc/src/model/helios.ts) |
+| Receiver efficiency, laser light to electricity | [75%](numbers.md#helios-receiver-efficiency) | Invented |  | [data/assumptions.yaml:162](../data/assumptions.yaml#L162) | [ceres.ts](../calc/src/model/ceres.ts), [helios.ts](../calc/src/model/helios.ts) |
+| Petal film areal density | [1 g/m²](numbers.md#helios-areal-density) | Invented |  | [data/assumptions.yaml:168](../data/assumptions.yaml#L168) | [ceres.ts](../calc/src/model/ceres.ts), [helios.ts](../calc/src/model/helios.ts) |
 | Petal edge | [70 km](numbers.md#helios-petal-side) | Design choice |  | [data/assumptions.yaml:174](../data/assumptions.yaml#L174) | [helios.ts](../calc/src/model/helios.ts) |
 | Beam wavelength | [1.1 µm](numbers.md#helios-wavelength) | Precedent |  | [data/assumptions.yaml:180](../data/assumptions.yaml#L180) | [helios.ts](../calc/src/model/helios.ts) |
 | Phase-locked virtual aperture width | [10 km](numbers.md#helios-aperture) | Invented |  | [data/assumptions.yaml:187](../data/assumptions.yaml#L187) | [helios.ts](../calc/src/model/helios.ts) |
-| Beam intensity at the receivers | [10 MW/m²](numbers.md#helios-receiver-intensity) | Invented |  | [data/assumptions.yaml:193](../data/assumptions.yaml#L193) | [helios.ts](../calc/src/model/helios.ts) |
-| Receiver radiator temperature | [1,500 K](numbers.md#helios-fin-temp) | Design choice |  | [data/assumptions.yaml:199](../data/assumptions.yaml#L199) | [helios.ts](../calc/src/model/helios.ts) |
+| Beam intensity at the receivers | [10 MW/m²](numbers.md#helios-receiver-intensity) | Invented |  | [data/assumptions.yaml:193](../data/assumptions.yaml#L193) | [ceres.ts](../calc/src/model/ceres.ts), [helios.ts](../calc/src/model/helios.ts) |
+| Receiver radiator temperature | [1,500 K](numbers.md#helios-fin-temp) | Design choice |  | [data/assumptions.yaml:199](../data/assumptions.yaml#L199) | [ceres.ts](../calc/src/model/ceres.ts), [helios.ts](../calc/src/model/helios.ts) |
 | Temperature the Petal film runs at near Mercury | [460 K](numbers.md#helios-film-temp) | Design choice |  | [data/assumptions.yaml:209](../data/assumptions.yaml#L209) | [helios.ts](../calc/src/model/helios.ts) |
 | Closest any beam path comes to Earth or a crewed craft | [0.01 AU](numbers.md#beam-keep-out) | Design choice |  | [data/assumptions.yaml:215](../data/assumptions.yaml#L215) |  |
 | Innermost Petal orbit | [0.3 AU](numbers.md#helios-orbit-inner) | Design choice |  | [data/assumptions.yaml:222](../data/assumptions.yaml#L222) | [helios.ts](../calc/src/model/helios.ts) |
@@ -372,64 +382,73 @@ its basis says whether it is a design choice, an invention or a demonstrated pre
 | Number of Forges | [500](numbers.md#forge-count) | Design choice |  | [data/assumptions.yaml:520](../data/assumptions.yaml#L520) | [forges.ts](../calc/src/model/forges.ts), [outcome.ts](../calc/src/model/outcome.ts) |
 | Width of one Forge raft | [30 km](numbers.md#forge-raft-width) | Design choice |  | [data/assumptions.yaml:535](../data/assumptions.yaml#L535) |  |
 | Water shipped to Venus | [1.0 × 10²⁰ kg](numbers.md#ice-mass) | Design choice | 3.0 × 10¹⁹ kg to 2.0 × 10²⁰ kg | [data/assumptions.yaml:543](../data/assumptions.yaml#L543) | [ice.ts](../calc/src/model/ice.ts), [ring.ts](../calc/src/model/ring.ts) |
-| Ice Brick mass | [1 Mt](numbers.md#brick-mass) | Design choice |  | [data/assumptions.yaml:549](../data/assumptions.yaml#L549) | [ice.ts](../calc/src/model/ice.ts), [ring.ts](../calc/src/model/ring.ts) |
-| Number of Railheads on Ceres | [10,000](numbers.md#railhead-count) | Design choice |  | [data/assumptions.yaml:555](../data/assumptions.yaml#L555) | [ice.ts](../calc/src/model/ice.ts), [outcome.ts](../calc/src/model/outcome.ts) |
-| Railhead acceleration | [200 g](numbers.md#railhead-accel) | Invented |  | [data/assumptions.yaml:560](../data/assumptions.yaml#L560) | [ice.ts](../calc/src/model/ice.ts) |
-| Railhead efficiency, electricity to motion | [50%](numbers.md#railhead-efficiency) | Invented |  | [data/assumptions.yaml:565](../data/assumptions.yaml#L565) | [budget.ts](../calc/src/model/budget.ts), [ice.ts](../calc/src/model/ice.ts) |
+| Ice Brick mass | [1 Mt](numbers.md#brick-mass) | Design choice |  | [data/assumptions.yaml:549](../data/assumptions.yaml#L549) | [ceres.ts](../calc/src/model/ceres.ts), [ice.ts](../calc/src/model/ice.ts), [ring.ts](../calc/src/model/ring.ts) |
+| Number of Railheads on Ceres | [10,000](numbers.md#railhead-count) | Design choice |  | [data/assumptions.yaml:555](../data/assumptions.yaml#L555) | [ceres.ts](../calc/src/model/ceres.ts), [ice.ts](../calc/src/model/ice.ts), [outcome.ts](../calc/src/model/outcome.ts) |
+| Railhead acceleration | [200 g](numbers.md#railhead-accel) | Invented |  | [data/assumptions.yaml:560](../data/assumptions.yaml#L560) | [ceres.ts](../calc/src/model/ceres.ts), [ice.ts](../calc/src/model/ice.ts) |
+| Railhead efficiency, electricity to motion | [50%](numbers.md#railhead-efficiency) | Invented |  | [data/assumptions.yaml:565](../data/assumptions.yaml#L565) | [budget.ts](../calc/src/model/budget.ts), [ceres.ts](../calc/src/model/ceres.ts), [ice.ts](../calc/src/model/ice.ts) |
 | Days kept between the last arrival and the deadline | [16 d](numbers.md#ice-lowering-margin) | Design choice |  | [data/assumptions.yaml:571](../data/assumptions.yaml#L571) | [ice.ts](../calc/src/model/ice.ts) |
-| Ring altitude | [400 km](numbers.md#ring-altitude) | Design choice |  | [data/assumptions.yaml:583](../data/assumptions.yaml#L583) | [exhaust.ts](../calc/src/model/exhaust.ts), [ring.ts](../calc/src/model/ring.ts) |
-| Rotor speed | [10 km/s](numbers.md#ring-rotor-speed) | Invented |  | [data/assumptions.yaml:589](../data/assumptions.yaml#L589) | [ring.ts](../calc/src/model/ring.ts) |
-| Rotor mass | [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) | Invented |  | [data/assumptions.yaml:595](../data/assumptions.yaml#L595) | [ring.ts](../calc/src/model/ring.ts) |
-| Stator mass (tracks, tethers, receivers) | [3.0 × 10¹² kg](numbers.md#ring-stator-mass) | Invented |  | [data/assumptions.yaml:600](../data/assumptions.yaml#L600) | [ring.ts](../calc/src/model/ring.ts) |
-| Catcher braking | [50 g](numbers.md#ring-catch-accel) | Invented |  | [data/assumptions.yaml:605](../data/assumptions.yaml#L605) | [ring.ts](../calc/src/model/ring.ts) |
-| Regenerative braking efficiency | [80%](numbers.md#ring-recovery-efficiency) | Invented |  | [data/assumptions.yaml:610](../data/assumptions.yaml#L610) | [ring.ts](../calc/src/model/ring.ts) |
-| Number of tether lifts | [3,000](numbers.md#ring-tether-lifts) | Design choice |  | [data/assumptions.yaml:616](../data/assumptions.yaml#L616) | [outcome.ts](../calc/src/model/outcome.ts), [ring.ts](../calc/src/model/ring.ts) |
-| Height Bricks are released from | [100 km](numbers.md#lowering-release-altitude) | Design choice |  | [data/assumptions.yaml:621](../data/assumptions.yaml#L621) | [ring.ts](../calc/src/model/ring.ts) |
-| Temperature of a Brick when it is lowered | [150 K](numbers.md#brick-temp) | Design choice |  | [data/assumptions.yaml:637](../data/assumptions.yaml#L637) | [ring.ts](../calc/src/model/ring.ts), [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Magnetic bubble radius | [10,000 km](numbers.md#aegis-bubble-radius) | Design choice |  | [data/assumptions.yaml:650](../data/assumptions.yaml#L650) | [shield.ts](../calc/src/model/shield.ts) |
-| Coil radius | [1,000 km](numbers.md#aegis-coil-radius) | Design choice |  | [data/assumptions.yaml:656](../data/assumptions.yaml#L656) | [shield.ts](../calc/src/model/shield.ts) |
-| Turns in the coil | [1,000,000](numbers.md#aegis-turns) | Design choice |  | [data/assumptions.yaml:663](../data/assumptions.yaml#L663) | [shield.ts](../calc/src/model/shield.ts) |
-| Radius of the coil's winding pack | [5 m](numbers.md#aegis-winding-radius) | Design choice |  | [data/assumptions.yaml:668](../data/assumptions.yaml#L668) | [shield.ts](../calc/src/model/shield.ts) |
-| Temperature the Aegis cable runs at | [40 K](numbers.md#aegis-coil-temp) | Invented |  | [data/assumptions.yaml:673](../data/assumptions.yaml#L673) |  |
-| Ocean pH that must hold before any life is released | [7.5](numbers.md#genesis-ph-min) | Design choice |  | [data/assumptions.yaml:681](../data/assumptions.yaml#L681) |  |
-| Days the ocean pH must hold before any life is released | [90 d](numbers.md#genesis-ph-days) | Design choice |  | [data/assumptions.yaml:687](../data/assumptions.yaml#L687) | [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Ozone column that must stand before any life is released | [185 DU](numbers.md#ozone-shield-column) | Design choice |  | [data/assumptions.yaml:692](../data/assumptions.yaml#L692) | [ozone.ts](../calc/src/model/ozone.ts) |
-| Top of the ocean pH the shore basalt is laid to hold | [8](numbers.md#acid-ocean-ph-max) | Design choice |  | [data/assumptions.yaml:701](../data/assumptions.yaml#L701) |  |
-| Density the drones seed cyanobacteria at in sunlit water | [100 per cm³](numbers.md#genesis-seed-density) | Design choice |  | [data/assumptions.yaml:708](../data/assumptions.yaml#L708) | [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean | [200,000 per cm³](numbers.md#genesis-bloom-density) | Precedent |  | [data/assumptions.yaml:715](../data/assumptions.yaml#L715) | [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Doubling time of the seeded ocean cyanobacteria in sunlit water | [1 d](numbers.md#genesis-doubling-days) | Invented |  | [data/assumptions.yaml:723](../data/assumptions.yaml#L723) | [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Thinnest black-loam soil laid on caps and shores | [10 cm](numbers.md#genesis-soil-min) | Design choice |  | [data/assumptions.yaml:729](../data/assumptions.yaml#L729) |  |
-| Thickest black-loam soil laid on caps and shores | [30 cm](numbers.md#genesis-soil-max) | Design choice |  | [data/assumptions.yaml:735](../data/assumptions.yaml#L735) |  |
-| Length of the day the Veil and Lanterns set | [24 h](numbers.md#day-length) | Design choice |  | [data/assumptions.yaml:741](../data/assumptions.yaml#L741) |  |
-| Relative humidity over the new oceans | [75%](numbers.md#final-humidity) | Design choice |  | [data/assumptions.yaml:748](../data/assumptions.yaml#L748) | [outcome.ts](../calc/src/model/outcome.ts) |
-| Albedo of the finished, Earth-like Venus | [30%](numbers.md#final-albedo) | Design choice |  | [data/assumptions.yaml:754](../data/assumptions.yaml#L754) | [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Coldest mean temperature that counts as Earth-like | [285 K](numbers.md#earth-like-temp) | Design choice |  | [data/assumptions.yaml:760](../data/assumptions.yaml#L760) | [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Most CO₂ that counts as Earth-like | [600 ppm](numbers.md#earth-like-co2) | Design choice |  | [data/assumptions.yaml:766](../data/assumptions.yaml#L766) | [trajectory.ts](../calc/src/model/trajectory.ts) |
-| Days a replicator keeps building without a Mass Ledger heartbeat | [7 d](numbers.md#choir-deadman-days) | Design choice |  | [data/assumptions.yaml:774](../data/assumptions.yaml#L774) |  |
-| Ouroboros-0 passes at this share of its own mass made from simulated regolith | [95%](numbers.md#ouroboros-0-closure) | Design choice |  | [data/assumptions.yaml:782](../data/assumptions.yaml#L782) |  |
-| Ouroboros-0 passes if it doubles in less than this | [120 d](numbers.md#ouroboros-0-doubling) | Design choice |  | [data/assumptions.yaml:788](../data/assumptions.yaml#L788) |  |
-| Ouroboros-0 is killed below this mass closure | [70%](numbers.md#ouroboros-0-kill-closure) | Design choice |  | [data/assumptions.yaml:793](../data/assumptions.yaml#L793) |  |
-| Exhaust-1 passes at this much net cooling | [10 kW/m²](numbers.md#exhaust-1-cooling) | Design choice |  | [data/assumptions.yaml:799](../data/assumptions.yaml#L799) |  |
-| Exhaust-1 must come within this share of the Carnot limit | [50%](numbers.md#exhaust-1-carnot) | Design choice |  | [data/assumptions.yaml:805](../data/assumptions.yaml#L805) |  |
-| Exhaust-1 is killed if it shows no net cooling above this | [100 W/m²](numbers.md#exhaust-1-kill-cooling) | Design choice |  | [data/assumptions.yaml:811](../data/assumptions.yaml#L811) |  |
-| Power the Lightpipe test beams between satellites | [1 MW](numbers.md#lightpipe-power) | Design choice |  | [data/assumptions.yaml:821](../data/assumptions.yaml#L821) |  |
-| Distance the Lightpipe test beams over | [1,000 km](numbers.md#lightpipe-range) | Design choice |  | [data/assumptions.yaml:827](../data/assumptions.yaml#L827) |  |
-| Lightpipe passes at this end-to-end efficiency | [30%](numbers.md#lightpipe-efficiency) | Design choice |  | [data/assumptions.yaml:833](../data/assumptions.yaml#L833) |  |
-| Lightpipe is killed if phase lock fails beyond this many emitters | [100](numbers.md#lightpipe-kill-emitters) | Design choice |  | [data/assumptions.yaml:839](../data/assumptions.yaml#L839) |  |
-| Area of the Veil-1 test slat | [1 km²](numbers.md#veil-1-area) | Design choice |  | [data/assumptions.yaml:844](../data/assumptions.yaml#L844) |  |
-| Veil-1 must dim to block this share of sunlight | [99%](numbers.md#veil-1-dim) | Design choice |  | [data/assumptions.yaml:850](../data/assumptions.yaml#L850) |  |
-| Veil-1 is killed if its film degrades within this | [6 months](numbers.md#veil-1-kill-life) | Design choice |  | [data/assumptions.yaml:856](../data/assumptions.yaml#L856) |  |
-| Ice block the Railhead test throws | [1 t](numbers.md#railhead-test-mass) | Design choice |  | [data/assumptions.yaml:862](../data/assumptions.yaml#L862) |  |
-| Railhead test passes at this muzzle speed | [3 km/s](numbers.md#railhead-test-speed) | Design choice |  | [data/assumptions.yaml:868](../data/assumptions.yaml#L868) |  |
-| Railhead test passes at this many shots an hour | [10](numbers.md#railhead-test-rate) | Design choice |  | [data/assumptions.yaml:874](../data/assumptions.yaml#L874) |  |
-| Railhead test is killed below this muzzle speed | [1 km/s](numbers.md#railhead-kill-speed) | Design choice |  | [data/assumptions.yaml:879](../data/assumptions.yaml#L879) |  |
-| Railhead test is killed below this many shots an hour | [1](numbers.md#railhead-kill-rate) | Design choice |  | [data/assumptions.yaml:885](../data/assumptions.yaml#L885) |  |
-| How long Cryo-seal must hold its leak | [12 months](numbers.md#cryo-seal-months) | Design choice |  | [data/assumptions.yaml:890](../data/assumptions.yaml#L890) |  |
-| Size of the Mini-Aegis test coil | [10 m](numbers.md#mini-aegis-coil) | Design choice |  | [data/assumptions.yaml:896](../data/assumptions.yaml#L896) |  |
-| Robots in the Choir-sim test factory | [10,000](numbers.md#choir-sim-robots) | Design choice |  | [data/assumptions.yaml:901](../data/assumptions.yaml#L901) |  |
-| How long Choir-sim must run unattended | [90 d](numbers.md#choir-sim-days) | Design choice |  | [data/assumptions.yaml:906](../data/assumptions.yaml#L906) |  |
-| Choir-sim is killed above this many human interventions a day | [1](numbers.md#choir-sim-kill-interventions) | Design choice |  | [data/assumptions.yaml:911](../data/assumptions.yaml#L911) |  |
-| Share of each copy's mass the seed Foundry makes from Mercury rock | [99.99%](numbers.md#foundry-closure-seed) | Invented |  | [data/assumptions.yaml:917](../data/assumptions.yaml#L917) |  |
+| Share of the power a Railhead draws that its barrel turns into heat on Ceres | [0.1%](numbers.md#railhead-barrel-loss) | Invented |  | [data/assumptions.yaml:576](../data/assumptions.yaml#L576) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Beam intensity at Ceres's receivers | [40 MW/m²](numbers.md#ceres-receiver-intensity) | Invented |  | [data/assumptions.yaml:586](../data/assumptions.yaml#L586) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Mass of Ceres's receivers per square metre, with their coolant channels | [2 kg/m²](numbers.md#ceres-receiver-areal-density) | Invented |  | [data/assumptions.yaml:593](../data/assumptions.yaml#L593) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Mass of the Crown's radiator fins per square metre | [0.1 kg/m²](numbers.md#ceres-fin-areal-density) | Invented |  | [data/assumptions.yaml:598](../data/assumptions.yaml#L598) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Current density in the superconducting cables | [1.0 × 10⁹ A/m²](numbers.md#cable-current-density) | Invented |  | [data/assumptions.yaml:604](../data/assumptions.yaml#L604) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Voltage the cables down the Crown's tethers carry | [100 MV](numbers.md#cable-voltage) | Invented |  | [data/assumptions.yaml:609](../data/assumptions.yaml#L609) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Density of the cables' conductor and its copper stabilizer | [8,900 kg/m³](numbers.md#cable-density) | Design choice |  | [data/assumptions.yaml:616](../data/assumptions.yaml#L616) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Ceres seed factory mass | [1,000 t](numbers.md#ceres-seed-mass) | Design choice | 100 t to 10,000 t | [data/assumptions.yaml:621](../data/assumptions.yaml#L621) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Ceres factory doubling time | [45 d](numbers.md#ceres-doubling-days) | Invented | 30 d to 120 d | [data/assumptions.yaml:634](../data/assumptions.yaml#L634) | [ceres.ts](../calc/src/model/ceres.ts) |
+| Ring altitude | [400 km](numbers.md#ring-altitude) | Design choice |  | [data/assumptions.yaml:651](../data/assumptions.yaml#L651) | [exhaust.ts](../calc/src/model/exhaust.ts), [ring.ts](../calc/src/model/ring.ts) |
+| Rotor speed | [10 km/s](numbers.md#ring-rotor-speed) | Invented |  | [data/assumptions.yaml:657](../data/assumptions.yaml#L657) | [ring.ts](../calc/src/model/ring.ts) |
+| Rotor mass | [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) | Invented |  | [data/assumptions.yaml:663](../data/assumptions.yaml#L663) | [ring.ts](../calc/src/model/ring.ts) |
+| Stator mass (tracks, tethers, receivers) | [3.0 × 10¹² kg](numbers.md#ring-stator-mass) | Invented |  | [data/assumptions.yaml:668](../data/assumptions.yaml#L668) | [ring.ts](../calc/src/model/ring.ts) |
+| Catcher braking | [50 g](numbers.md#ring-catch-accel) | Invented |  | [data/assumptions.yaml:673](../data/assumptions.yaml#L673) | [ring.ts](../calc/src/model/ring.ts) |
+| Regenerative braking efficiency | [80%](numbers.md#ring-recovery-efficiency) | Invented |  | [data/assumptions.yaml:678](../data/assumptions.yaml#L678) | [ring.ts](../calc/src/model/ring.ts) |
+| Number of tether lifts | [3,000](numbers.md#ring-tether-lifts) | Design choice |  | [data/assumptions.yaml:684](../data/assumptions.yaml#L684) | [outcome.ts](../calc/src/model/outcome.ts), [ring.ts](../calc/src/model/ring.ts) |
+| Height Bricks are released from | [100 km](numbers.md#lowering-release-altitude) | Design choice |  | [data/assumptions.yaml:689](../data/assumptions.yaml#L689) | [ring.ts](../calc/src/model/ring.ts) |
+| Temperature of a Brick when it is lowered | [150 K](numbers.md#brick-temp) | Design choice |  | [data/assumptions.yaml:705](../data/assumptions.yaml#L705) | [ring.ts](../calc/src/model/ring.ts), [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Magnetic bubble radius | [10,000 km](numbers.md#aegis-bubble-radius) | Design choice |  | [data/assumptions.yaml:718](../data/assumptions.yaml#L718) | [shield.ts](../calc/src/model/shield.ts) |
+| Coil radius | [1,000 km](numbers.md#aegis-coil-radius) | Design choice |  | [data/assumptions.yaml:724](../data/assumptions.yaml#L724) | [shield.ts](../calc/src/model/shield.ts) |
+| Turns in the coil | [1,000,000](numbers.md#aegis-turns) | Design choice |  | [data/assumptions.yaml:731](../data/assumptions.yaml#L731) | [shield.ts](../calc/src/model/shield.ts) |
+| Radius of the coil's winding pack | [5 m](numbers.md#aegis-winding-radius) | Design choice |  | [data/assumptions.yaml:736](../data/assumptions.yaml#L736) | [shield.ts](../calc/src/model/shield.ts) |
+| Temperature the Aegis cable runs at | [40 K](numbers.md#aegis-coil-temp) | Invented |  | [data/assumptions.yaml:741](../data/assumptions.yaml#L741) |  |
+| Ocean pH that must hold before any life is released | [7.5](numbers.md#genesis-ph-min) | Design choice |  | [data/assumptions.yaml:749](../data/assumptions.yaml#L749) |  |
+| Days the ocean pH must hold before any life is released | [90 d](numbers.md#genesis-ph-days) | Design choice |  | [data/assumptions.yaml:755](../data/assumptions.yaml#L755) | [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Ozone column that must stand before any life is released | [185 DU](numbers.md#ozone-shield-column) | Design choice |  | [data/assumptions.yaml:760](../data/assumptions.yaml#L760) | [ozone.ts](../calc/src/model/ozone.ts) |
+| Top of the ocean pH the shore basalt is laid to hold | [8](numbers.md#acid-ocean-ph-max) | Design choice |  | [data/assumptions.yaml:769](../data/assumptions.yaml#L769) |  |
+| Density the drones seed cyanobacteria at in sunlit water | [100 per cm³](numbers.md#genesis-seed-density) | Design choice |  | [data/assumptions.yaml:776](../data/assumptions.yaml#L776) | [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Cyanobacteria density in rich, well-lit Earth seawater, the mark of a living ocean | [200,000 per cm³](numbers.md#genesis-bloom-density) | Precedent |  | [data/assumptions.yaml:783](../data/assumptions.yaml#L783) | [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Doubling time of the seeded ocean cyanobacteria in sunlit water | [1 d](numbers.md#genesis-doubling-days) | Invented |  | [data/assumptions.yaml:791](../data/assumptions.yaml#L791) | [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Thinnest black-loam soil laid on caps and shores | [10 cm](numbers.md#genesis-soil-min) | Design choice |  | [data/assumptions.yaml:797](../data/assumptions.yaml#L797) |  |
+| Thickest black-loam soil laid on caps and shores | [30 cm](numbers.md#genesis-soil-max) | Design choice |  | [data/assumptions.yaml:803](../data/assumptions.yaml#L803) |  |
+| Length of the day the Veil and Lanterns set | [24 h](numbers.md#day-length) | Design choice |  | [data/assumptions.yaml:809](../data/assumptions.yaml#L809) |  |
+| Relative humidity over the new oceans | [75%](numbers.md#final-humidity) | Design choice |  | [data/assumptions.yaml:816](../data/assumptions.yaml#L816) | [outcome.ts](../calc/src/model/outcome.ts) |
+| Albedo of the finished, Earth-like Venus | [30%](numbers.md#final-albedo) | Design choice |  | [data/assumptions.yaml:822](../data/assumptions.yaml#L822) | [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Coldest mean temperature that counts as Earth-like | [285 K](numbers.md#earth-like-temp) | Design choice |  | [data/assumptions.yaml:828](../data/assumptions.yaml#L828) | [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Most CO₂ that counts as Earth-like | [600 ppm](numbers.md#earth-like-co2) | Design choice |  | [data/assumptions.yaml:834](../data/assumptions.yaml#L834) | [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Days a replicator keeps building without a Mass Ledger heartbeat | [7 d](numbers.md#choir-deadman-days) | Design choice |  | [data/assumptions.yaml:842](../data/assumptions.yaml#L842) |  |
+| Ouroboros-0 passes at this share of its own mass made from simulated regolith | [95%](numbers.md#ouroboros-0-closure) | Design choice |  | [data/assumptions.yaml:850](../data/assumptions.yaml#L850) |  |
+| Ouroboros-0 passes if it doubles in less than this | [120 d](numbers.md#ouroboros-0-doubling) | Design choice |  | [data/assumptions.yaml:856](../data/assumptions.yaml#L856) |  |
+| Ouroboros-0 is killed below this mass closure | [70%](numbers.md#ouroboros-0-kill-closure) | Design choice |  | [data/assumptions.yaml:861](../data/assumptions.yaml#L861) |  |
+| Exhaust-1 passes at this much net cooling | [10 kW/m²](numbers.md#exhaust-1-cooling) | Design choice |  | [data/assumptions.yaml:867](../data/assumptions.yaml#L867) |  |
+| Exhaust-1 must come within this share of the Carnot limit | [50%](numbers.md#exhaust-1-carnot) | Design choice |  | [data/assumptions.yaml:873](../data/assumptions.yaml#L873) |  |
+| Exhaust-1 is killed if it shows no net cooling above this | [100 W/m²](numbers.md#exhaust-1-kill-cooling) | Design choice |  | [data/assumptions.yaml:879](../data/assumptions.yaml#L879) |  |
+| Power the Lightpipe test beams between satellites | [1 MW](numbers.md#lightpipe-power) | Design choice |  | [data/assumptions.yaml:889](../data/assumptions.yaml#L889) |  |
+| Distance the Lightpipe test beams over | [1,000 km](numbers.md#lightpipe-range) | Design choice |  | [data/assumptions.yaml:895](../data/assumptions.yaml#L895) |  |
+| Lightpipe passes at this end-to-end efficiency | [30%](numbers.md#lightpipe-efficiency) | Design choice |  | [data/assumptions.yaml:901](../data/assumptions.yaml#L901) |  |
+| Lightpipe is killed if phase lock fails beyond this many emitters | [100](numbers.md#lightpipe-kill-emitters) | Design choice |  | [data/assumptions.yaml:907](../data/assumptions.yaml#L907) |  |
+| Area of the Veil-1 test slat | [1 km²](numbers.md#veil-1-area) | Design choice |  | [data/assumptions.yaml:912](../data/assumptions.yaml#L912) |  |
+| Veil-1 must dim to block this share of sunlight | [99%](numbers.md#veil-1-dim) | Design choice |  | [data/assumptions.yaml:918](../data/assumptions.yaml#L918) |  |
+| Veil-1 is killed if its film degrades within this | [6 months](numbers.md#veil-1-kill-life) | Design choice |  | [data/assumptions.yaml:924](../data/assumptions.yaml#L924) |  |
+| Ice block the Railhead test throws | [1 t](numbers.md#railhead-test-mass) | Design choice |  | [data/assumptions.yaml:930](../data/assumptions.yaml#L930) |  |
+| Railhead test passes at this muzzle speed | [3 km/s](numbers.md#railhead-test-speed) | Design choice |  | [data/assumptions.yaml:936](../data/assumptions.yaml#L936) |  |
+| Railhead test passes at this many shots an hour | [10](numbers.md#railhead-test-rate) | Design choice |  | [data/assumptions.yaml:942](../data/assumptions.yaml#L942) |  |
+| Railhead test is killed below this muzzle speed | [1 km/s](numbers.md#railhead-kill-speed) | Design choice |  | [data/assumptions.yaml:947](../data/assumptions.yaml#L947) |  |
+| Railhead test is killed below this many shots an hour | [1](numbers.md#railhead-kill-rate) | Design choice |  | [data/assumptions.yaml:953](../data/assumptions.yaml#L953) |  |
+| How long Cryo-seal must hold its leak | [12 months](numbers.md#cryo-seal-months) | Design choice |  | [data/assumptions.yaml:958](../data/assumptions.yaml#L958) |  |
+| Size of the Mini-Aegis test coil | [10 m](numbers.md#mini-aegis-coil) | Design choice |  | [data/assumptions.yaml:964](../data/assumptions.yaml#L964) |  |
+| Robots in the Choir-sim test factory | [10,000](numbers.md#choir-sim-robots) | Design choice |  | [data/assumptions.yaml:969](../data/assumptions.yaml#L969) |  |
+| How long Choir-sim must run unattended | [90 d](numbers.md#choir-sim-days) | Design choice |  | [data/assumptions.yaml:974](../data/assumptions.yaml#L974) |  |
+| Choir-sim is killed above this many human interventions a day | [1](numbers.md#choir-sim-kill-interventions) | Design choice |  | [data/assumptions.yaml:979](../data/assumptions.yaml#L979) |  |
+| Share of each copy's mass the seed Foundry makes from Mercury rock | [99.99%](numbers.md#foundry-closure-seed) | Invented |  | [data/assumptions.yaml:985](../data/assumptions.yaml#L985) |  |
 <!-- /table -->
 
 Every assumption with a range is a slider in the [Explorer](https://phosphoros.space/explore), which runs

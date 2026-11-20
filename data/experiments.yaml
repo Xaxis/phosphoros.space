@@ -9,7 +9,7 @@ experiments:
     where: Earth
     tech: ouroboros
     fallback: true
-    proves: A factory that builds itself from simulated Mercury regolith
+    proves: A factory that builds itself from simulated Mercury regolith, and from Ceres's
     pass: "{ouroboros-0-closure} mass closure, doubling in under {ouroboros-0-doubling}"
     kill: "Under {ouroboros-0-kill-closure} closure"
   - id: exhaust-1

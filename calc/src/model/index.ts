@@ -5,6 +5,7 @@
  */
 import { type Input, Registry } from "../registry.ts";
 import { budget } from "./budget.ts";
+import { ceres, READY_TOLERANCE_DAYS } from "./ceres.ts";
 import { conventional } from "./conventional.ts";
 import { cryo } from "./cryo.ts";
 import { chimneys, exhaust } from "./exhaust.ts";
@@ -33,6 +34,7 @@ export const MODULES = [
   cryo,
   forges,
   iceTrain,
+  ceres,
   ring,
   foundryProducts,
   acid,
@@ -44,8 +46,22 @@ export const MODULES = [
   summary,
 ];
 
-export function compute(inputs: Map<string, Input>): Registry {
-  const r = new Registry(inputs);
+function pass(inputs: Map<string, Input>, solved: Record<string, number>): Registry {
+  const r = new Registry(inputs, solved);
   for (const m of MODULES) m(r);
+  return r;
+}
+
+export function compute(inputs: Map<string, Input>): Registry {
+  // Launches wait for the Ceres factories when they finish after the Lattice reaches full power.
+  // Waiting shortens the campaign, which grows the Crown and makes the factories later still,
+  // so run the model again from the later date until the finish stops moving. If it never settles,
+  // the last pass stands, and its ceres-ready-in-time check fails.
+  let r = pass(inputs, {});
+  for (let i = 0; i < 40; i++) {
+    const ready = r.get("ceres-ready").value;
+    if (ready <= r.get("ice-launch-start").value + READY_TOLERANCE_DAYS) break;
+    r = pass(inputs, { "ceres-ready": ready });
+  }
   return r;
 }

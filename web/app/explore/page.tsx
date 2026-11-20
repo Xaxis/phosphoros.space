@@ -25,6 +25,7 @@ const GROUPS: ExplorerGroup[] = [
   { title: "Hesperus Veil", ids: ["veil-momentum-fraction"] },
   { title: "Photonic Exhaust", ids: ["exhaust-peak", "exhaust-effective-temp"] },
   { title: "Water", ids: ["ice-mass", "ceres-water-fraction"] },
+  { title: "Ceres factories", ids: ["ceres-doubling-days", "ceres-seed-mass"] },
 ];
 
 const OUTCOMES: Outcome[] = [
@@ -43,6 +44,8 @@ const OUTCOMES: Outcome[] = [
   { id: "veil-mass", better: "none" },
   { id: "ocean-depth", better: "none" },
   { id: "ice-ceres-water-share", better: "lower" },
+  { id: "ceres-ready", better: "earlier" },
+  { id: "crown-mass", better: "none" },
 ];
 
 export default function ExplorePage() {

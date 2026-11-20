@@ -1,5 +1,5 @@
 {
-  "hash": "e7187bd0567077bb",
+  "hash": "253f9a443c5f8a2f",
   "inputs": [
     {
       "id": "ceres-water-fraction",
@@ -128,6 +128,30 @@
           "frost-before-sealing"
         ]
       }
+    },
+    {
+      "id": "ceres-seed-mass",
+      "plan": 1000000,
+      "below": {
+        "holds": 252831.99483831596,
+        "breaks": 252547.8932577379,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      },
+      "above": null
+    },
+    {
+      "id": "ceres-doubling-days",
+      "plan": 45,
+      "below": null,
+      "above": {
+        "holds": 48.2080078125,
+        "breaks": 48.22998046875,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      }
     }
   ],
   "scenarios": [
@@ -141,20 +165,21 @@
     },
     {
       "id": "seed-waits",
-      "label": "The seed waits for every proof experiment to pass before it launches",
+      "label": "The seeds wait for every proof experiment to pass before they launch",
       "set": {
-        "foundry-seed-launch": 730
+        "foundry-seed-launch": 730,
+        "ceres-seed-launch": 730
       },
       "earthLike": 3713.25911939883,
       "slack": -61.25911939883008,
       "fails": [
         "foundry-builds-ring",
-        "traj-heat-books",
         "frozen-before-sealing",
         "frost-before-sealing",
         "genesis-by-deadline",
         "earth-like-by-deadline",
-        "ozone-shield-in-time"
+        "ozone-shield-in-time",
+        "energy-closes"
       ]
     }
   ]

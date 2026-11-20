@@ -32,9 +32,9 @@ Venus. Delivering [8.5 × 10¹⁹ W](../numbers.md#helios-power) therefore ta
 phase-locked aperture [10 km](../numbers.md#helios-aperture) wide at
 [1.06 µm](../numbers.md?sig=3#helios-wavelength), the spot is `2.44 λ L / D`: only
 [46 m](../numbers.md#helios-spot) wide at the longest range, from the outermost Petals to Venus,
-[1.2 AU](../numbers.md#helios-range). A receiver of modest size catches all of it. The same technology on the
-[Braking Ring](ring.md) beams power out to Ceres, where the spot is [140 m](../numbers.md#ceres-beam-spot) at
-[3.5 AU](../numbers.md#ring-to-ceres-range).
+[1.2 AU](../numbers.md#helios-range). A receiver of modest size catches all of it. The Lattice also beams the
+[Ice Train](ice-train.md)'s power to Ceres, where at the longest range,
+[3.2 AU](../numbers.md#lattice-to-ceres-range), the spot is [120 m](../numbers.md#ceres-beam-spot).
 
 ## Design
 
@@ -176,8 +176,8 @@ line.
   Petal. Only Petals that sit almost in front of the Sun, as seen from Venus, are affected.
 - **A thin margin.** From the Lattice alone the budget leaves [8.2%](../numbers.md#budget-spare) spare, and the
   model charges the heat pumps the least work the second law allows, far less than the Exhaust's beamed light
-  needs ([open problem](../budget.md#physics-checks)). If the Ring is late, the Railheads keep the Lattice's power
-  longer and cooling slips.
+  needs ([open problem](../budget.md#physics-checks)). If the Ring is late, Venus waits longer for the Ring's
+  power and cooling slips.
 
 ## Reproduce these numbers
 

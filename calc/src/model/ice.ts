@@ -83,11 +83,11 @@ export function iceTrain(r: Registry) {
     {
       label: "First Ice Bricks leave Ceres",
       unit: "date",
-      formula: "the Lattice's full-power date",
+      formula: "the later of the Lattice's full power and the Railheads' finish",
       basis: "design",
-      note: "The Railheads need the Lattice's beams, so launches start when it reaches full power.",
+      note: "The Railheads need the Lattice's beams, so launches start when it reaches full power, unless the Ceres factories are still building the Railheads and the Crown. A later start shortens the campaign, which raises the Railheads' power, grows the Crown that sheds their heat and makes the finish later, so the model solves for the date where the two meet.",
     },
-    () => v("helios-full-power"),
+    () => Math.max(v("helios-full-power"), r.solved["ceres-ready"] ?? Number.NEGATIVE_INFINITY),
   );
   r.q(
     "ice-launch-end",

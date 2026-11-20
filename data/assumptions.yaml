@@ -573,6 +573,74 @@ ice-lowering-margin:
   unit: d
   label: Days kept between the last arrival and the deadline
   basis: design
+railhead-barrel-loss:
+  value: 1.0e-3
+  unit: "1"
+  show: "%"
+  sig: 1
+  label: Share of the power a Railhead draws that its barrel turns into heat on Ceres
+  basis: invented
+  note: >-
+    Counting the work to keep its superconducting coils cold. The rest of the Railheads' loss arises
+    where the power is shaped into pulses, in the Crown, and is shed by its radiators.
+ceres-receiver-intensity:
+  value: 4.0e7
+  unit: W/m2
+  show: MW/m2
+  label: Beam intensity at Ceres's receivers
+  basis: invented
+  note: Higher than at the Lattice's receivers at Venus, so that the receivers fit on a band around Ceres.
+ceres-receiver-areal-density:
+  value: 2.0
+  unit: kg/m2
+  label: Mass of Ceres's receivers per square metre, with their coolant channels
+  basis: invented
+ceres-fin-areal-density:
+  value: 0.1
+  unit: kg/m2
+  label: Mass of the Crown's radiator fins per square metre
+  basis: invented
+  note: Far lighter than any radiator flown; a sheet of hot liquid droplets might come close.
+cable-current-density:
+  value: 1.0e9
+  unit: A/m2
+  label: Current density in the superconducting cables
+  basis: invented
+cable-voltage:
+  value: 1.0e8
+  unit: V
+  show: MV
+  label: Voltage the cables down the Crown's tethers carry
+  basis: invented
+  note: Far above any line on Earth; in vacuum the conductors can be held metres apart.
+cable-density:
+  value: 8900
+  unit: kg/m3
+  label: Density of the cables' conductor and its copper stabilizer
+  basis: design
+ceres-seed-mass:
+  value: 1.0e6
+  unit: kg
+  show: t
+  label: Ceres seed factory mass
+  basis: design
+  range: [1.0e5, 1.0e7]
+ceres-seed-launch:
+  value: 2028-10-01
+  unit: date
+  label: Ceres seed factory launches from Earth
+  basis: design
+  note: The same day as the Foundry's seed, once Ouroboros-0 has shown its closure.
+ceres-doubling-days:
+  value: 45
+  unit: d
+  label: Ceres factory doubling time
+  basis: invented
+  range: [30, 120]
+  note: >-
+    Faster than the Foundry, and a stronger claim. Ceres has the carbon, hydrogen and nitrogen a
+    carbon-fibre industry needs, which Mercury's rock lacks, but far less sunlight. At the Foundry's
+    pace the Railheads would not be ready when the launches must start.
 
 # --- Braking Ring ----------------------------------------------------------------------------------
 ring-complete:

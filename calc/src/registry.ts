@@ -97,14 +97,17 @@ export type Meta = Omit<Derived, "id" | "value" | "inputs" | "module">;
 
 export class Registry {
   readonly inputs: Map<string, Input>;
+  /** Values a previous pass of the model solved for, where two parts of the plan depend on each other. */
+  readonly solved: Readonly<Record<string, number>>;
   readonly derived = new Map<string, Derived>();
   readonly series = new Map<string, Series>();
   readonly checks = new Map<string, Check>();
   private reads: Set<string>[] = [];
   private module = "";
 
-  constructor(inputs: Map<string, Input>) {
+  constructor(inputs: Map<string, Input>, solved: Readonly<Record<string, number>> = {}) {
     this.inputs = inputs;
+    this.solved = solved;
   }
 
   /** Name the calc file the following definitions live in. */

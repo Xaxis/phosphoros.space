@@ -489,6 +489,46 @@ ceres-water-fraction:
   sig: 2
   note: Estimates run from about 17% to 30%; at the low end the Ice Train would need most of Ceres's water.
   range: [0.17, 0.35]
+ceres-rotation-period:
+  value: 32667.012
+  unit: s
+  show: h
+  label: Ceres rotation period (9.07417 h)
+  basis: physics
+  source: [park-2016-ceres]
+  sig: 4
+ceres-inclination:
+  value: 10.59
+  unit: deg
+  label: Ceres orbital inclination to the ecliptic
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 3
+
+# --- Jupiter ---------------------------------------------------------------------------------------
+jupiter-mass:
+  value: 1.89813e27
+  unit: kg
+  label: Jupiter mass
+  basis: physics
+  source: [nasa-jupiter-factsheet]
+  sig: 4
+jupiter-orbit:
+  value: 7.78479e11
+  unit: m
+  show: AU
+  label: Jupiter orbital radius (semi-major axis)
+  basis: physics
+  source: [nasa-jupiter-factsheet]
+  sig: 3
+jupiter-perihelion:
+  value: 7.40595e11
+  unit: m
+  show: AU
+  label: Jupiter perihelion, its closest to the Sun
+  basis: physics
+  source: [nasa-jupiter-factsheet]
+  sig: 3
 
 # --- Chemistry and phase data ---------------------------------------------------------------------
 co2-molar-mass:
@@ -816,6 +856,15 @@ howe-water-mass:
   basis: precedent
   source: [howe-2022]
   note: 500 kg per square metre of Venus.
+divertor-steady-flux:
+  value: 1.0e7
+  unit: W/m2
+  show: MW/m2
+  label: Steady heat flux ITER's divertor targets are built to carry
+  basis: precedent
+  source: [iter-divertor]
+  sig: 2
+  note: The most heat any cooled surface in a working machine is designed to take without pause; slow transients reach twice that.
 mercury-surface-fe-max:
   value: 0.04
   unit: "1"

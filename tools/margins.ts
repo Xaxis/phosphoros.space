@@ -169,8 +169,9 @@ export function computeMargins(): Margins {
   };
   const scenarios: Scenario[] = [
     what("plan", "The plan", {}),
-    what("seed-waits", "The seed waits for every proof experiment to pass before it launches", {
+    what("seed-waits", "The seeds wait for every proof experiment to pass before they launch", {
       "foundry-seed-launch": plan.get("experiments-end").value,
+      "ceres-seed-launch": plan.get("experiments-end").value,
     }),
   ];
   return { hash: marginsHash(), inputs, scenarios };

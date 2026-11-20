@@ -133,7 +133,8 @@ function EnergySankey(p: Props) {
   const w = (f: Flow) => Math.max(1, f.value * k);
   const other = { ...p.warm, value: p.warm.value + p.forge.value + p.hardware.value };
 
-  // The chain: Railheads and Ring side by side; the Ring pays the Railheads back over the top.
+  // The chain: Railheads and Ring side by side; the Ring pays for the Railheads over the top. It
+  // does so by swapping customers (its power runs Venus, the Lattice's beams stay on Ceres).
   const CY = 104;
   const railIn = {
     loop: CY + w(p.ringLaunch) / 2,
@@ -197,7 +198,7 @@ function EnergySankey(p: Props) {
     <Frame
       id="energy-sankey"
       title="Energy flows of the Phosphoros campaign, to the deadline"
-      desc={`Sunlight ${p.sunlight.text} reaches the Lattice; it delivers ${p.supply.text}. The Ring recovers ${p.recovered.text} from the falling ice and pays the Railheads back. The Exhaust throws ${p.light.text} into space as light.`}
+      desc={`Sunlight ${p.sunlight.text} reaches the Lattice; it delivers ${p.supply.text}. The Ring recovers ${p.recovered.text} from the falling ice and pays for the Railheads. The Exhaust throws ${p.light.text} into space as light.`}
       height={H}
       links
     >
@@ -248,7 +249,12 @@ function EnergySankey(p: Props) {
         />
 
         {/* Railheads, the ice's fall, the Ring and its loop back. */}
-        <Band d={loop} w={lw} tone="accent" title={`Ring to the Railheads: ${p.ringLaunch.text}`} />
+        <Band
+          d={loop}
+          w={lw}
+          tone="accent"
+          title={`The Ring pays for the launches: ${p.ringLaunch.text}`}
+        />
         <Band
           d={link(X.rail + NW, railOut.motion, X.ring, ringIn.motion)}
           w={w(p.motion)}

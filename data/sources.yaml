@@ -31,6 +31,14 @@
   year: 2024
   url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html
   checked: 2026-11-20
+- id: nasa-jupiter-factsheet
+  kind: data
+  title: Jupiter Fact Sheet
+  authors: Williams, D. R. (NASA Goddard Space Flight Center, NSSDCA)
+  year: 2024
+  url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html
+  checked: 2026-11-20
+  note: Jupiter's mass, semi-major axis and perihelion.
 - id: nasa-sun-factsheet
   kind: data
   title: Sun Fact Sheet
@@ -98,7 +106,7 @@
   authors: NASA Jet Propulsion Laboratory, Solar System Dynamics
   url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=1
   checked: 2026-11-20
-  note: Ceres's semi-major axis and aphelion.
+  note: Ceres's semi-major axis, aphelion and inclination.
 - id: park-2016-ceres
   kind: paper
   title: "A partially differentiated interior for (1) Ceres deduced from its gravity field and shape"
@@ -107,7 +115,25 @@
   venue: Nature 537, 515 to 517
   doi: 10.1038/nature18955
   checked: 2026-11-20
-  note: Ceres's mass and mean radius from Dawn.
+  note: Ceres's mass, mean radius and rotation period from Dawn.
+- id: gladman-1993
+  kind: paper
+  title: Dynamics of systems of two close planets
+  authors: Gladman, B.
+  year: 1993
+  venue: Icarus 106, 247 to 263
+  doi: 10.1006/icar.1993.1169
+  checked: 2026-11-20
+  note: Two bodies on near-circular orbits never meet if their orbits stay more than 2√3 mutual Hill radii apart, the clearance the model asks of Ceres's new orbit and Jupiter's.
+- id: hamilton-burns-1991
+  kind: paper
+  title: Orbital stability zones about asteroids
+  authors: Hamilton, D. P. and Burns, J. A.
+  year: 1991
+  venue: Icarus 92, 118 to 131
+  doi: 10.1016/0019-1035(91)90039-V
+  checked: 2026-11-20
+  note: Prograde orbits around an asteroid stay bound out to about half its Hill radius, the test the model applies to the Crown.
 - id: ceres-water
   kind: paper
   title: "Ceres: Evolution and current state"
@@ -139,6 +165,13 @@
   venue: Nature Geoscience 16, 13 to 18
   doi: 10.1038/s41561-022-01068-0
   checked: 2026-11-20
+- id: iter-divertor
+  kind: web
+  title: Divertor
+  authors: ITER Organization
+  url: https://www.iter.org/mach/Divertor
+  checked: 2026-11-20
+  note: "The divertor's vertical targets are built for 10 MW/m² in steady state and 20 MW/m² in slow transients."
 - id: usgs-water
   kind: web
   title: How Much Water is There on Earth?
