@@ -108,8 +108,12 @@ Earth-strength light. Because the Veil shades the whole sunlit hemisphere at onc
 place stays on its night side for half of each [117 d](../numbers.md#venus-solar-day) solar day. Lanterns, swarms of
 mirrors totalling [6.0 × 10¹³ m²](../numbers.md#lantern-area), light the night side in matching pulses. They can
 hover where the Veil could not: on the night side, light reflected toward Venus pushes the mirrors away from it,
-the statite balance version 2 wanted, in the one place it works. The model does not yet check the Lanterns'
-stations.
+the statite balance version 2 wanted, in the one place it works. Mirrors of
+[1 g/m²](../numbers.md#lantern-areal-density) hover [140,000 km](../numbers.md#lantern-distance) out. Straight behind
+Venus they would sit in the shadow of Venus and the Veil, so they stand
+[8.8°](../numbers.md#lantern-offset-angle) off the Sun line, where light leaving toward Venus pushes them slightly
+sideways: they spend [7.7%](../numbers.md#lantern-side-share) of their thrust holding station
+([correction](../about.md#corrections)).
 
 The Veil stays after 2036 as the planet's thermostat.
 

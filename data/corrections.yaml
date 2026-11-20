@@ -418,3 +418,90 @@
     Seen from Venus it is only {veil-angular-radius} in radius, so tiles that face it tilt their
     cones {exhaust-veil-tilt} off the Sun line. Gaps between slats are held to {veil-gap-max},
     under version 2's 0.1%, so that gaps and closed slats together fit inside the budget.
+- id: chimney-heat-lift
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The chimneys lift heat in a liquid, not hot air
+  text: >-
+    Version 2's chimneys were ducts: deep air rose inside them, gave up its heat at the canopy and
+    sank outside, driven by fans spaced up the column. Rising air expands and cools, and Venus's
+    lower air already has the temperature profile of air that rose that way, so it would reach the
+    canopy about as cold as the cloud tops, its heat turned into height. Version 3's chimneys take
+    the heat out of the air at depth, through fan-driven intake exchangers, and lift it in sealed
+    liquid loops, whose temperature barely changes with pressure. They work until all the CO₂ is
+    down, {traj-cold|date=month}, not only until 2035, because the simulated cooling runs longer
+    than version 2 planned.
+  issue: 5
+- id: campaign-dates
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The simulation and the flight times set the campaign's dates
+  text: >-
+    Version 2 set the campaign's later dates by hand: rain-out from June 2034, the seas freezing
+    and the caps sealed in 2035, catching from August 2034 and lowering from August 2034, before
+    the Clear Rain had cleared the air. Version 3 takes them from the day-by-day simulation and the
+    Ice Train's flight times: the Clear Rain on {traj-clear-rain|date=day}, the seas freezing on
+    {traj-freeze|date=day}, the last caps sealed by {sealing-end|date=day} and the first Brick
+    caught on {first-catch|date=day}. Lowering is planned from {lowering-start|date=day}, and how to
+    do it is still an open problem.
+  before: { lowering-start: 2034-08-01 }
+- id: ring-energy-swap
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Ring's energy reaches Ceres by swapping customers, not by a second beam
+  text: >-
+    Version 2 beamed the Ring's electricity back to Ceres. A beam keeps only
+    {helios-laser-efficiency} of the power through its lasers and {helios-receiver-efficiency}
+    through its receivers, so version 3 sends none back. The Ring's {ring-power} runs down the tethers to Venus's own
+    systems, and the Helios Lattice, which already beams to Ceres, keeps doing so. The simulation
+    counts it this way from {ring-pays-from|date=month}.
+- id: ring-tracks
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Ring needs more than eight catcher tracks
+  text: >-
+    Version 2 gave the Ring eight catcher tracks. Each Brick brakes for {ring-catch-time}, so at
+    the full rate {ring-bricks-braking} of them are on the tracks at once. Laid end to end, each
+    {brick-side} long, they fill at least {ring-tracks-min} tracks of {ring-track-length}, before
+    any gap between sleds. Version 3 carries as many tracks side by side as the rate needs.
+- id: lanterns-night
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Lanterns hover behind Venus, off the Sun line
+  text: >-
+    Version 2 hovered the Lanterns east and west of Venus, where sunlight pushes across Venus's
+    pull instead of against it, the same flaw as its Veil. Version 3 puts them on the night side,
+    where the sunlight they reflect toward Venus pushes them away from it: mirrors of
+    {lantern-areal-density} hover {lantern-distance} out. Straight behind Venus they would sit in
+    the shadow of Venus and the Veil, so they stand {lantern-offset-angle} off the Sun line and
+    spend {lantern-side-share} of their thrust holding station sideways.
+- id: canopy-size
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Wider canopies carry the larger Exhaust
+  text: >-
+    Version 2's canopies were sized for its smaller Exhaust, with a hot-gas envelope a few hundred
+    metres deep. Version 3's Exhaust peaks at {exhaust-peak}, so each of its {exhaust-canopies}
+    canopies holds {canopy-area} of emitters and is {canopy-width} across, floating at the
+    chimney tops, {chimney-top} up.
+  before: { canopy-width: 7.0e4 }
+- id: online-dates
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Each invention's online date comes from the model
+  text: >-
+    Version 2's table of inventions gave online dates by hand, and some disagreed with its own
+    schedule: Choir was online in 2028 but went live with the seed in 2029. Version 3 reads each
+    from the model. The Chimneys and the Exhaust start with active cooling,
+    {cooling-start|date=year}; the Lattice counts at full power, {helios-full-power|date=year}; the
+    Veil when it closes, {veil-close|date=year}; the Ring at its first catch,
+    {first-catch|date=year}; the Forges when they start, {forge-start|date=year}; the
+    Cryo-continents with the Clear Rain, {traj-clear-rain|date=year}; and Choir with the landing,
+    {foundry-landing|date=year}.

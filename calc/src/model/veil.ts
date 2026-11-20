@@ -335,4 +335,61 @@ export function veil(r: Registry) {
     },
     () => v("veil-day-transmission") * v("venus-disk"),
   );
+  // The Lanterns hover on the night side: sunlight they reflect toward Venus pushes them away from it.
+  r.q(
+    "lantern-distance",
+    {
+      label: "Closest a Lantern can hover behind Venus",
+      unit: "m",
+      show: "km",
+      sig: 2,
+      formula: "√(G M_V σ c / 2 S_V)",
+      basis: "physics",
+      note: "Where a mirror's light pressure, doubled by reflection, matches Venus's pull.",
+    },
+    () =>
+      Math.sqrt(
+        (v("venus-gm") * v("lantern-areal-density") * v("speed-of-light")) /
+          (2 * v("venus-sunlight")),
+      ),
+  );
+  r.q(
+    "lantern-shadow-radius",
+    {
+      label: "Radius of the Veil's partial shadow at the Lanterns",
+      unit: "m",
+      show: "km",
+      sig: 2,
+      formula: "R_Veil + (d_Veil + d) R_☉ / a_V",
+      basis: "physics",
+      note: "Outside it a Lantern sees the whole Sun. It is wider than Venus's own shadow there.",
+    },
+    () =>
+      v("veil-radius") +
+      ((v("veil-distance") + v("lantern-distance")) * v("sun-radius")) / v("venus-orbit"),
+  );
+  r.q(
+    "lantern-offset-angle",
+    {
+      label: "How far off the Sun line the Lanterns stand, seen from Venus",
+      unit: "deg",
+      sig: 2,
+      formula: "atan(r_shadow / d)",
+      basis: "physics",
+    },
+    () => (Math.atan(v("lantern-shadow-radius") / v("lantern-distance")) * 180) / Math.PI,
+  );
+  r.q(
+    "lantern-side-share",
+    {
+      label: "Share of a Lantern's thrust that pushes sideways",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "tan(φ / 2)",
+      basis: "physics",
+      note: "Light arriving along the Sun line and leaving toward Venus pushes a mirror along the sum of the two directions, which leans off the line to Venus by half the offset angle. The Lantern must spend that share of its thrust holding station sideways.",
+    },
+    () => Math.tan((v("lantern-offset-angle") * Math.PI) / 360),
+  );
 }

@@ -255,6 +255,13 @@ veil-areal-density:
   show: g/m2
   label: Veil film areal density
   basis: invented
+lantern-areal-density:
+  value: 1.0e-3
+  unit: kg/m2
+  show: g/m2
+  label: Lantern mirror areal density
+  basis: invented
+  note: The Veil's film, made reflective.
 veil-momentum-fraction:
   value: 0.01
   unit: "1"

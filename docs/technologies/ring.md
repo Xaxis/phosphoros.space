@@ -112,8 +112,11 @@ complete, receivers on the canopies carry the load and the Exhaust removes their
 
 Braking at [50 g](../numbers.md#ring-catch-accel) would load a bare Brick with
 [46 MPa](../numbers.md#brick-catch-stress), more than cold ice can bear, so each sled cradles its Brick
-along its whole length, as the sabot did at launch. At the full rate the tracks hold thousands of Bricks
-at once, so the Ring carries many tracks side by side around its circumference.
+along its whole length, as the sabot did at launch. Each Brick brakes for
+[13 s](../numbers.md#ring-catch-time), so at the full rate [19,000](../numbers.md#ring-bricks-braking) of them are
+on the tracks at once. End to end they would fill [15](../numbers.md#ring-tracks-min) tracks
+([correction](../about.md#corrections)), and sleds need gaps, so the Ring carries more than that side by side
+around its circumference.
 
 ### Parking
 

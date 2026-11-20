@@ -237,6 +237,41 @@ export function ring(r: Registry) {
     },
     () => v("ice-density") * v("ring-catch-accel") * v("standard-gravity") * v("brick-side"),
   );
+  r.q(
+    "ring-catch-time",
+    {
+      label: "Time a Brick spends braking on a catcher track",
+      unit: "s",
+      sig: 2,
+      formula: "(v_arrive − v_orbit) / a",
+      basis: "physics",
+    },
+    () =>
+      (v("ring-arrival-speed") - v("ring-orbital-speed")) /
+      (v("ring-catch-accel") * v("standard-gravity")),
+  );
+  r.q(
+    "ring-bricks-braking",
+    {
+      label: "Bricks braking on the tracks at once, at the full rate",
+      unit: "count",
+      sig: 2,
+      formula: "Bricks per second × braking time",
+      basis: "physics",
+    },
+    () => v("ice-bricks-per-second") * v("ring-catch-time"),
+  );
+  r.q(
+    "ring-tracks-min",
+    {
+      label: "Fewest catcher tracks that hold them, Bricks end to end",
+      unit: "count",
+      formula: "⌈N L_brick / L_track⌉",
+      basis: "physics",
+      note: "A floor: real sleds need gaps between them.",
+    },
+    () => Math.ceil((v("ring-bricks-braking") * v("brick-side")) / v("ring-track-length")),
+  );
   // What holds the Ring up: its rotor moves faster than orbital speed, so it presses outward.
   r.q(
     "ring-lift",

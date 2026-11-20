@@ -203,6 +203,9 @@
 - { model: ring-free-fall-vs-atmosphere, brief: 18, where: "2.7" }
 - { model: ring-braking-force, brief: 1e16, tol: 0.15, where: "2.9.9" }
 - { model: ring-track-length, brief: 1.4e5, tol: 0.05, where: "2.9.9" }
+- { model: ring-tracks-min, brief: 8, where: "2.9.9", correction: ring-tracks }
+- { model: lowering-start, brief: 2034-08-01, tol: 31, where: "3.2", correction: campaign-dates }
+- { model: canopy-width, brief: 7.0e4, tol: 0.05, where: "2.9.5", correction: canopy-size }
 - { model: tether-interval, brief: 1.4, tol: 0.05, where: "2.9.9" }
 - { model: fall-energy, brief: 9e5, where: "2.9.9" }
 - { model: melt-energy, brief: 6.5e5, where: "2.9.9" }
