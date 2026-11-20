@@ -40,8 +40,20 @@ missions:
     informs: [cryo, acid, chimneys]
     status: >-
       Delayed one year, to 2032, after NASA withdrew its VenSAR radar; ESA is studying a European
-      radar instead. ESA's own pages still say November 2031.
-    sources: [ars-2026-envision, esa-envision]
+      radar instead. ESA's own pages still say 2031.
+    sources: [ars-2026-envision, esa-envision, esa-envision-timeline]
+  - id: vom
+    name: Venus Orbiter Mission (Shukrayaan)
+    lead: ISRO
+    launch: 29 March 2028, on LVM3
+    brief: Not in version 2
+    arrives: Expected to enter an elliptical orbit around Venus on 19 July 2028
+    contributes: Nineteen instruments, led by a radar that sees beneath the surface; active volcanism, and how Venus loses its air to space
+    informs: [cryo, chimneys, acid]
+    status: >-
+      Approved by India's cabinet in September 2024. It finished its preliminary design review in
+      April 2026 and is on track for launch. Version 2 left it out.
+    sources: [theweek-2026-vom]
   - id: vlf
     name: Venus Life Finder (Morning Star)
     lead: Rocket Lab with MIT (Sara Seager); privately funded
@@ -65,8 +77,9 @@ missions:
     informs: [genesis]
     gate: true
     status: >-
-      A small probe proposed to ESA's mini-F call. We found no selection decision after July 2025.
-    sources: [ras-2025-verve, astrobiology-2025-verve]
+      A small probe proposed to ESA's first Mini-F call. ESA planned to choose that mission in
+      November 2026; the plan does not count on VERVE either way.
+    sources: [ras-2025-verve, astrobiology-2025-verve, snsa-2026-minif]
 
 note: >-
   None of these missions can rule out life in the clouds by the end of 2028, when Phosphoros's gate

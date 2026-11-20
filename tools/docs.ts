@@ -180,7 +180,7 @@ const BLOCKS: Record<string, Block> = {
       content.experiments.experiments.map((e) => [
         e.tech ? `[${e.name}](${p}technologies/${e.tech}.md)` : `**${e.name}**`,
         md(e.proves, p),
-        md(e.pass, p),
+        e.then ? `${md(e.pass, p)}. Then: ${md(e.then, p)}` : md(e.pass, p),
         md(e.kill, p),
       ]),
     );
@@ -286,7 +286,7 @@ const BLOCKS: Record<string, Block> = {
         c.shown.brief,
         `[${c.shown.model}](${p}numbers.md${r.get(c.model).unit === "date" ? "?date=day" : ""}#${c.model})`,
         c.correction
-          ? `Corrected in version 3 ([${c.correction}](${p}about.md#corrections))`
+          ? `Corrected in version 3: [${content.corrections.find((x) => x.id === c.correction)?.title ?? c.correction}](${p}about.md#corrections)`
           : (c.note ?? ""),
       ]),
     );

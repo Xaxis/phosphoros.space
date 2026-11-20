@@ -62,12 +62,12 @@ A conventional analysis concluded that an Earth-like Venus in ten years is impos
 Invented the technologies needed to finish in ten years.
 
 - **Correction (v2): Helios power raised from 4 to 7 × 10¹⁹ W.** So that the ice launches finish in time.
-- **Correction (v2): Veil moved from L1 to a statite 137,000 km sunward.** Because the Sun's angular size makes an L1 shade about three times larger (area 1.3 to 1.5 × 10¹⁴ m²). Version 3 found this move breaks Newton's laws and reverses it (see veil-l1). ([issue #1](https://github.com/Xaxis/phosphoros.space/issues/1))
+- **Correction (v2): Veil moved from L1 to a statite 137,000 km sunward.** Because the Sun's angular size makes an L1 shade about three times larger (area 1.3 to 1.5 × 10¹⁴ m²). Version 3 found this move breaks Newton's laws and returns the Veil to L1 (see "The Veil goes back to L1" below). ([issue #1](https://github.com/Xaxis/phosphoros.space/issues/1))
 - **Correction (v2): Cooling work raised to about 5.4 joules per joule moved.** From "equal to the heat moved" to the Carnot cost of lifting heat to emitters at an effective 2,000 K. Total delivered energy rose from 4.7 to 7.0 × 10²⁷ J; spare fell from about 40% to about 9%, plus the Ring's recovered energy.
 - **Correction (v2): Exhaust emitter area raised to about 4 × 10¹³ m² (9% of Venus).** To shine the cooling campaign's average power at 0.9 MW/m².
 - **Finding (v2): Cryo-continent floors leak crust heat.** About 12 PW at first, so basal heat pipes and ongoing refrigeration are needed.
 - **Finding (v2): The Ice Train powers itself from late 2034.** The energy the Ring recovers per kilogram caught exceeds the energy spent launching it.
-- **Renamed (v2): Renamed Phosphoros.** The light-bringer, at phosphoros.space.
+- **Renamed (v2): Project Hesperus Ten becomes Phosphoros.** Phosphoros, the light-bringer, is the ancient Greek name for Venus as the morning star.
 ### Version 3: Phosphoros, every number reproducible
 
 Every number in the plan now comes from data/ through the model in calc/. Rebuilding the numbers from first principles reproduced almost all of version 2 and found the corrections below.
@@ -87,6 +87,7 @@ Every number in the plan now comes from data/ through the model in calc/. Rebuil
 - **Correction (v3): The Aegis coil grows to 1,000 km so it can hold itself together.** A magnet's field pulls its own winding outward. Version 2's 10 km coil would have needed about 10¹⁷ kg of the strongest carbon fibre to hold together, far more than the Foundry ever builds. The same dipole from a wider loop needs far less current, and the pull falls with the cube of the radius. At [1,000 km](numbers.md#aegis-coil-radius) the coil carries [3 × 10⁸ A](numbers.md#aegis-ampere-turns) in all, [300 A](numbers.md#aegis-current) per turn, and its structure needs at least [2.0 × 10¹¹ kg](numbers.md#aegis-structure-mass). ([issue #6](https://github.com/Xaxis/phosphoros.space/issues/6))
 - **Open problem (v3): The Exhaust's narrow beams cost far more pump work than the model charges.** The model charges the heat pumps the Carnot work for emitters at [2,000 K](numbers.md#exhaust-effective-temp), right for light spread over colours and directions the way a surface that hot spreads it. The tiles instead put [0.91 MW/m²](numbers.md#exhaust-flux) into a [0.4 µm](numbers.md#exhaust-band) band and a [25°](numbers.md#exhaust-cone) cone, light that counts as at least [16,000 K](numbers.md#exhaust-light-temp) by its entropy. Lifting a joule from the starting air into it takes [12](numbers.md#exhaust-work-multiple) times the work charged. Either the tiles spread their light over far more colours and directions, or the pumps need many times the power. The budget's pump work is a floor until this is solved. ([issue #4](https://github.com/Xaxis/phosphoros.space/issues/4))
 - **Correction (v3): The Lattice grows to 8.5 × 10¹⁹ W so the budget closes without the Ring.** Charging the launches fired between windows added [6.7 × 10²⁶ J](numbers.md#ice-launch-offwindow-energy) to the demand, and the Lattice's power now arrives only once the Foundry stops growing. At 7 × 10¹⁹ W the Lattice alone fell 7% short, and the air was Earth-like only in February 2037. Version 2 raised the Lattice from 4 to 7 × 10¹⁹ W for the same reason: the launches. At [8.5 × 10¹⁹ W](numbers.md#helios-power) the Lattice delivers [9.2 × 10²⁷ J](numbers.md#helios-supply) against [8.4 × 10²⁷ J](numbers.md#budget-demand), [9.3%](numbers.md#budget-spare) spare before the Ring's recovered energy and [34%](numbers.md#budget-spare-with-ring) after, and the plan finishes on time. It takes [6.2 × 10¹³ kg](numbers.md#helios-mass) of petals, which the full Foundry builds in [80 d](numbers.md#lattice-build-days). ([issue #12](https://github.com/Xaxis/phosphoros.space/issues/12))
+- **Correction (v3): Choir's machine count comes from the model.** Version 2 said Choir runs a trillion machines, a number nothing in the plan sized. Version 3 counts the machines the model does size, [3.9 × 10⁸](numbers.md#choir-machines): the Lattice's Petals, the Veil's slats, the Exhaust canopies, the Thermal Chimneys, the Forges, the Railheads and the Ring's tether lifts. The Foundry's own robots are not sized, so this is a floor.
 <!-- /table -->
 
 ## Version 2's numbers, checked
@@ -100,45 +101,45 @@ that do not: some version 3 changed on purpose, and the rest differ for reasons 
 | --- | --- | --- | --- |
 | Heat in the top kilometre of crust, cooled by 400 K | 5.5 × 10²⁶ J | [4.6 × 10²⁶ J](numbers.md#crust-heat-per-km) | The brief's figure uses a rock heat capacity of 1,000 J/(kg·K). Its own rock constants (k 2.5, κ 10⁻⁶, ρ 3,000) imply 833, which gives 4.6 × 10²⁶ J. The model keeps the constants and derives the heat capacity. |
 | Heat conduction can pull from the crust in a 4-year campaign | 7.0 × 10²⁴ J | [5.8 × 10²⁴ J](numbers.md#crust-skin-heat) | Same cause: with the brief's own rock constants conduction pulls 5.8 × 10²⁴ J, not 7 × 10²⁴ J. Either way it is about 1% of the atmosphere's heat. |
-| Doublings from seed to full scale | 27 | [26](numbers.md#foundry-doublings) | Corrected in version 3 ([foundry-products](about.md#corrections)) |
-| Foundry machinery at full scale | 1.3 × 10¹⁴ kg | [6.7 × 10¹³ kg](numbers.md#foundry-final-mass) | Corrected in version 3 ([foundry-products](about.md#corrections)) |
+| Doublings from seed to full scale | 27 | [26](numbers.md#foundry-doublings) | Corrected in version 3: [The Foundry pays for what it builds](about.md#corrections) |
+| Foundry machinery at full scale | 1.3 × 10¹⁴ kg | [6.7 × 10¹³ kg](numbers.md#foundry-final-mass) | Corrected in version 3: [The Foundry pays for what it builds](about.md#corrections) |
 | Foundry power at full scale | 1.3 × 10¹⁵ W | [9.0 × 10¹⁴ W](numbers.md#foundry-peak-power) | The brief multiplies 13 W/kg by 10¹⁴ kg. At the full 1.34 × 10¹⁴ kg the Foundry draws 1.8 × 10¹⁵ W. |
-| Foundry reaches full scale | 30 June 2033 | [3 May 2033](numbers.md?date=day#foundry-full-scale) | Corrected in version 3 ([foundry-products](about.md#corrections)) |
-| Energy to build the Foundry and everything it makes | 10²² J | [10²² J](numbers.md#hardware-energy) | Corrected in version 3 ([foundry-products](about.md#corrections)) |
-| Helios Lattice film area | 5.1 × 10¹⁶ m² | [6.2 × 10¹⁶ m²](numbers.md#helios-area) | Corrected in version 3 ([budget-offwindow](about.md#corrections)) |
-| Helios Lattice mass | 5.1 × 10¹³ kg | [6.2 × 10¹³ kg](numbers.md#helios-mass) | Corrected in version 3 ([budget-offwindow](about.md#corrections)) |
-| Number of Petals | 1.0 × 10⁷ | [1.3 × 10⁷](numbers.md#helios-petals) | Corrected in version 3 ([budget-offwindow](about.md#corrections)) |
-| Share of the Sun's output the Lattice delivers | 2.0 × 10⁻⁵% | [2.2 × 10⁻⁵%](numbers.md#helios-sun-share) | Corrected in version 3 ([budget-offwindow](about.md#corrections)) |
-| Energy the Lattice delivers from full power to the deadline | 7.7 × 10²⁷ J | [9.2 × 10²⁷ J](numbers.md#helios-supply) | Corrected in version 3 ([budget-offwindow](about.md#corrections)) |
-| Veil station, sunward of Venus | 137,000 km | [1.11 × 10⁶ km](numbers.md#veil-distance) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Veil area | 1.5 × 10¹⁴ m² | [5.4 × 10¹⁴ m²](numbers.md#veil-area) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Veil mass | 1.5 × 10¹¹ kg | [5.4 × 10¹¹ kg](numbers.md#veil-mass) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Number of slats | 1.0 × 10⁸ | [3.8 × 10⁸](numbers.md#veil-slats) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Veil closes over Venus | 31 December 2031 | [1 December 2032](numbers.md?date=day#veil-close) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Hot air drawn through one chimney's exchangers | 4.1 × 10⁹ kg/s | [1.3 × 10¹⁰ kg/s](numbers.md#chimney-mass-flow) | Corrected in version 3 ([chimney-design](about.md#corrections)) |
-| Heat-pump work to cool Venus | 2.84 × 10²⁷ J | [2.92 × 10²⁷ J](numbers.md#exhaust-work) | Corrected in version 3 ([chimney-design](about.md#corrections)) |
-| Work per joule of heat moved | 5.4 | [5.5](numbers.md#exhaust-work-ratio) | Corrected in version 3 ([chimney-design](about.md#corrections)) |
-| Peak power the Exhaust can throw into space | 3.6 × 10¹⁹ W | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
-| Emitter area installed (sized for the peak) | 4.0 × 10¹³ m² | [5.5 × 10¹³ m²](numbers.md#exhaust-area-installed) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
-| Installed emitter area as a share of Venus | 9% | [12%](numbers.md#exhaust-area-share) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Foundry reaches full scale | 30 June 2033 | [3 May 2033](numbers.md?date=day#foundry-full-scale) | Corrected in version 3: [The Foundry pays for what it builds](about.md#corrections) |
+| Energy to build the Foundry and everything it makes | 10²² J | [10²² J](numbers.md#hardware-energy) | Corrected in version 3: [The Foundry pays for what it builds](about.md#corrections) |
+| Helios Lattice film area | 5.1 × 10¹⁶ m² | [6.2 × 10¹⁶ m²](numbers.md#helios-area) | Corrected in version 3: [The Lattice grows to 8.5 × 10¹⁹ W so the budget closes without the Ring](about.md#corrections) |
+| Helios Lattice mass | 5.1 × 10¹³ kg | [6.2 × 10¹³ kg](numbers.md#helios-mass) | Corrected in version 3: [The Lattice grows to 8.5 × 10¹⁹ W so the budget closes without the Ring](about.md#corrections) |
+| Number of Petals | 1.0 × 10⁷ | [1.3 × 10⁷](numbers.md#helios-petals) | Corrected in version 3: [The Lattice grows to 8.5 × 10¹⁹ W so the budget closes without the Ring](about.md#corrections) |
+| Share of the Sun's output the Lattice delivers | 2.0 × 10⁻⁵% | [2.2 × 10⁻⁵%](numbers.md#helios-sun-share) | Corrected in version 3: [The Lattice grows to 8.5 × 10¹⁹ W so the budget closes without the Ring](about.md#corrections) |
+| Energy the Lattice delivers from full power to the deadline | 7.7 × 10²⁷ J | [9.2 × 10²⁷ J](numbers.md#helios-supply) | Corrected in version 3: [The Lattice grows to 8.5 × 10¹⁹ W so the budget closes without the Ring](about.md#corrections) |
+| Veil station, sunward of Venus | 137,000 km | [1.11 × 10⁶ km](numbers.md#veil-distance) | Corrected in version 3: [The Veil goes back to L1, as a light-bending film](about.md#corrections) |
+| Veil area | 1.5 × 10¹⁴ m² | [5.4 × 10¹⁴ m²](numbers.md#veil-area) | Corrected in version 3: [The Veil goes back to L1, as a light-bending film](about.md#corrections) |
+| Veil mass | 1.5 × 10¹¹ kg | [5.4 × 10¹¹ kg](numbers.md#veil-mass) | Corrected in version 3: [The Veil goes back to L1, as a light-bending film](about.md#corrections) |
+| Number of slats | 1.0 × 10⁸ | [3.8 × 10⁸](numbers.md#veil-slats) | Corrected in version 3: [The Veil goes back to L1, as a light-bending film](about.md#corrections) |
+| Veil closes over Venus | 31 December 2031 | [1 December 2032](numbers.md?date=day#veil-close) | Corrected in version 3: [The Veil goes back to L1, as a light-bending film](about.md#corrections) |
+| Hot air drawn through one chimney's exchangers | 4.1 × 10⁹ kg/s | [1.3 × 10¹⁰ kg/s](numbers.md#chimney-mass-flow) | Corrected in version 3: [Cooling waits for the chimneys, and the chimneys cool the air less](about.md#corrections) |
+| Heat-pump work to cool Venus | 2.84 × 10²⁷ J | [2.92 × 10²⁷ J](numbers.md#exhaust-work) | Corrected in version 3: [Cooling waits for the chimneys, and the chimneys cool the air less](about.md#corrections) |
+| Work per joule of heat moved | 5.4 | [5.5](numbers.md#exhaust-work-ratio) | Corrected in version 3: [Cooling waits for the chimneys, and the chimneys cool the air less](about.md#corrections) |
+| Peak power the Exhaust can throw into space | 3.6 × 10¹⁹ W | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Corrected in version 3: [The Exhaust is sized for the peak the simulation needs](about.md#corrections) |
+| Emitter area installed (sized for the peak) | 4.0 × 10¹³ m² | [5.5 × 10¹³ m²](numbers.md#exhaust-area-installed) | Corrected in version 3: [The Exhaust is sized for the peak the simulation needs](about.md#corrections) |
+| Installed emitter area as a share of Venus | 9% | [12%](numbers.md#exhaust-area-share) | Corrected in version 3: [The Exhaust is sized for the peak the simulation needs](about.md#corrections) |
 | Exhaust light output compared with a shaded Venus radiating alone | 400 | [450](numbers.md#exhaust-vs-passive-light) | The Exhaust throws out light 420 times faster than a shaded Venus radiates, but removes Venus's own heat 66 times faster: most of the light is the pump's own work. |
-| Working emitter area as a share of Venus at an effective 1,000 K | 58% | [63%](numbers.md#exhaust-area-share-1000) | Corrected in version 3 ([sealing-follows-frost](about.md#corrections)) |
-| Working emitter area as a share of Venus at an effective 1,500 K | 17% | [19%](numbers.md#exhaust-area-share-1500) | Corrected in version 3 ([sealing-follows-frost](about.md#corrections)) |
-| Working emitter area as a share of Venus at an effective 2,500 K | 3.7% | [4%](numbers.md#exhaust-area-share-2500) | Corrected in version 3 ([sealing-follows-frost](about.md#corrections)) |
+| Working emitter area as a share of Venus at an effective 1,000 K | 58% | [63%](numbers.md#exhaust-area-share-1000) | Corrected in version 3: [Cooling and sealing end once the Frost Towers finish](about.md#corrections) |
+| Working emitter area as a share of Venus at an effective 1,500 K | 17% | [19%](numbers.md#exhaust-area-share-1500) | Corrected in version 3: [Cooling and sealing end once the Frost Towers finish](about.md#corrections) |
+| Working emitter area as a share of Venus at an effective 2,500 K | 3.7% | [4%](numbers.md#exhaust-area-share-2500) | Corrected in version 3: [Cooling and sealing end once the Frost Towers finish](about.md#corrections) |
 | Lattice share to pump the floor heat away at first (worst case, from 200 K) | 1% | [0.1%](numbers.md#cryo-refrigeration-share) | The brief budgets about 1% of the Lattice to refrigerate the basin floors. Pumping the first 12 PW from 200 K to an effective 2,000 K takes 0.2%, and far less once the rock cools; 1% is a generous allowance. |
 | Power of one Forge | 1 TW | [960 TW](numbers.md#forge-plant-power) | The brief lists 500 plants of about 1 TW, but 4.9 × 10¹⁷ W shared by 500 Forges is about 1 PW (10¹⁵ W) each, a thousand times more. The total is right; the per-plant figure was a unit slip. |
-| Ice thrown per second | 1.36 × 10¹² kg/s | [1.41 × 10¹² kg/s](numbers.md#ice-throughput) | Corrected in version 3 ([foundry-products](about.md#corrections)) |
-| Ice Bricks per second | 1,360 | [1,410](numbers.md#ice-bricks-per-second) | Corrected in version 3 ([foundry-products](about.md#corrections)) |
-| Seconds between shots at each Railhead | 7.4 s | [7.1 s](numbers.md#railhead-interval) | Corrected in version 3 ([foundry-products](about.md#corrections)) |
-| Energy to launch all the ice | 4.1 × 10²⁷ J | [4.8 × 10²⁷ J](numbers.md#ice-launch-energy) | Corrected in version 3 ([offwindow-launch](about.md#corrections)) |
-| Power all Railheads draw | 5.6 × 10¹⁹ W | [6.7 × 10¹⁹ W](numbers.md#railhead-power) | Corrected in version 3 ([offwindow-launch](about.md#corrections)) |
-| Power one Railhead draws | 5.5 × 10¹⁵ W | [6.7 × 10¹⁵ W](numbers.md#railhead-power-each) | Corrected in version 3 ([offwindow-launch](about.md#corrections)) |
-| First Bricks reach Venus | 15 August 2034 | [16 September 2034](numbers.md?date=day#first-catch) | Corrected in version 3 ([foundry-products](about.md#corrections)) |
-| Ampere-turns in the coil | 3 × 10¹² A | [3 × 10⁸ A](numbers.md#aegis-ampere-turns) | Corrected in version 3 ([aegis-coil](about.md#corrections)) |
-| Energy delivered from outside Venus | 7.0 × 10²⁷ J | [8.4 × 10²⁷ J](numbers.md#budget-demand) | Corrected in version 3 ([offwindow-launch](about.md#corrections)) |
-| Heat-pump work to cool Venus, day by day, Frost Towers included | 2.8 × 10²⁷ J | [3.5 × 10²⁷ J](numbers.md#traj-pump-energy) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
-| Spare supply, before counting the Ring's recovered energy | 9% | [9.3%](numbers.md#budget-spare) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
-| Share of the Lattice's output that water and cooling take | 90% | [90%](numbers.md#budget-launch-share) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Ice thrown per second | 1.36 × 10¹² kg/s | [1.41 × 10¹² kg/s](numbers.md#ice-throughput) | Corrected in version 3: [The Foundry pays for what it builds](about.md#corrections) |
+| Ice Bricks per second | 1,360 | [1,410](numbers.md#ice-bricks-per-second) | Corrected in version 3: [The Foundry pays for what it builds](about.md#corrections) |
+| Seconds between shots at each Railhead | 7.4 s | [7.1 s](numbers.md#railhead-interval) | Corrected in version 3: [The Foundry pays for what it builds](about.md#corrections) |
+| Energy to launch all the ice | 4.1 × 10²⁷ J | [4.8 × 10²⁷ J](numbers.md#ice-launch-energy) | Corrected in version 3: [Launches between windows cost more, and the budget now charges them](about.md#corrections) |
+| Power all Railheads draw | 5.6 × 10¹⁹ W | [6.7 × 10¹⁹ W](numbers.md#railhead-power) | Corrected in version 3: [Launches between windows cost more, and the budget now charges them](about.md#corrections) |
+| Power one Railhead draws | 5.5 × 10¹⁵ W | [6.7 × 10¹⁵ W](numbers.md#railhead-power-each) | Corrected in version 3: [Launches between windows cost more, and the budget now charges them](about.md#corrections) |
+| First Bricks reach Venus | 15 August 2034 | [16 September 2034](numbers.md?date=day#first-catch) | Corrected in version 3: [The Foundry pays for what it builds](about.md#corrections) |
+| Ampere-turns in the coil | 3 × 10¹² A | [3 × 10⁸ A](numbers.md#aegis-ampere-turns) | Corrected in version 3: [The Aegis coil grows to 1,000 km so it can hold itself together](about.md#corrections) |
+| Energy delivered from outside Venus | 7.0 × 10²⁷ J | [8.4 × 10²⁷ J](numbers.md#budget-demand) | Corrected in version 3: [Launches between windows cost more, and the budget now charges them](about.md#corrections) |
+| Heat-pump work to cool Venus, day by day, Frost Towers included | 2.8 × 10²⁷ J | [3.5 × 10²⁷ J](numbers.md#traj-pump-energy) | Corrected in version 3: [The Exhaust is sized for the peak the simulation needs](about.md#corrections) |
+| Spare supply, before counting the Ring's recovered energy | 9% | [9.3%](numbers.md#budget-spare) | Corrected in version 3: [The Exhaust is sized for the peak the simulation needs](about.md#corrections) |
+| Share of the Lattice's output that water and cooling take | 90% | [90%](numbers.md#budget-launch-share) | Corrected in version 3: [The Exhaust is sized for the peak the simulation needs](about.md#corrections) |
 <!-- /table -->
 
 ## License

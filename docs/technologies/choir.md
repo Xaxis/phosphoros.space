@@ -1,6 +1,8 @@
 # Choir
 
-Choir runs a trillion machines on three worlds as one system. It is a four-tier autonomous control
+Choir runs at least [3.9 × 10⁸](../numbers.md#choir-machines) machines on three worlds as one system (the
+Petals, slats, canopies, chimneys, Forges, Railheads and tether lifts the model counts, before the
+Foundry's own robots, which it does not). It is a four-tier autonomous control
 system that plans around light delays of up to [33 min](../numbers.md#delay-earth-ceres-max), and its
 safety core sets hard limits that no machine, and no single person, can override: a Mass Ledger, signed
 build orders, a kill code, a dead-man switch and a formally verified replication controller. It goes live
@@ -115,11 +117,12 @@ and crawlers before conditions change rather than after.
 | --- | --- |
 | Light delay | Mercury to Venus [2.8 min](../numbers.md#delay-mercury-venus-min) to [9.2 min](../numbers.md#delay-mercury-venus-max); Venus to Ceres [17 min](../numbers.md#delay-venus-ceres-min) to [29 min](../numbers.md#delay-venus-ceres-max); Earth to Ceres up to [33 min](../numbers.md#delay-earth-ceres-max) |
 | Veil to Venus | [3.7 s](../numbers.md#veil-light-delay) |
+| Machines counted | [3.9 × 10⁸](../numbers.md#choir-machines), a floor: the Foundry's own robots are not sized |
 <!-- /table -->
 
 ## What is invented
 
-> **Invented:** Self-correcting control of a trillion machines across three worlds, with no human in the
+> **Invented:** Self-correcting control of hundreds of millions of machines across three worlds, with no human in the
 > loop at the fast tiers.
 
 > **Invented:** A formally verified replication controller, small enough to prove and general enough to

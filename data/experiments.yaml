@@ -1,6 +1,7 @@
 # The nine proof experiments. All start in 2027 and run in parallel, and each must pass by the end
 # of 2028. A kill signal stops the line it tests. fallback: true marks a line with no substitute: if
-# it fails, the whole plan falls back to the multi-century route. The others can be replaced.
+# it fails, the whole plan falls back to the multi-century route. The others can be replaced. then:
+# the next mark the line must reach after it passes, if the plan sets one.
 
 experiments:
   - id: ouroboros-0
@@ -9,50 +10,51 @@ experiments:
     tech: ouroboros
     fallback: true
     proves: A factory that builds itself from simulated Mercury regolith
-    pass: 95% mass closure, doubling in under 120 days
-    kill: Under 70% closure
+    pass: "{ouroboros-0-closure} mass closure, doubling in under {ouroboros-0-doubling}"
+    kill: "Under {ouroboros-0-kill-closure} closure"
   - id: exhaust-1
     name: Exhaust-1
     where: Laboratory
     tech: exhaust
     fallback: true
     proves: Electroluminescent cooling at useful power
-    pass: 10 kW/m² of net cooling, within 50% of the Carnot limit
-    kill: No net cooling above 100 W/m²
+    pass: "{exhaust-1-cooling} of net cooling, within {exhaust-1-carnot} of the Carnot limit"
+    then: "The production tile must reach {exhaust-flux} by {exhaust-production-tile|date=year}"
+    kill: "No net cooling above {exhaust-1-kill-cooling}"
   - id: lightpipe
     name: Lightpipe
     where: Low Earth orbit
     tech: helios
     proves: Coherent power beaming
-    pass: 1 MW over a thousand kilometres between satellites at 30% end to end
-    kill: Phase lock fails beyond 100 emitters
+    pass: "{lightpipe-power} over {lightpipe-range} between satellites at {lightpipe-efficiency} end to end"
+    kill: "Phase lock fails beyond {lightpipe-kill-emitters} emitters"
   - id: veil-1
     name: Veil-1
     where: Orbit
     tech: veil
     proves: An electrochromic slat
-    pass: A 1 km² slat in orbit dims from 0 to 99% and holds its attitude
-    kill: The film degrades within 6 months
+    pass: "A {veil-1-area} slat in orbit dims from clear to {veil-1-dim} blocked and holds its attitude"
+    kill: "The film degrades within {veil-1-kill-life}"
   - id: railhead
     name: Railhead
     where: Earth
     tech: ice-train
     proves: An ice mass driver
-    pass: 1 t of ice at 3 km/s, 10 shots an hour
-    kill: Under 1 km/s, or under 1 shot an hour
+    pass: "{railhead-test-mass} of ice at {railhead-test-speed}, {railhead-test-rate} shots an hour"
+    kill: "Under {railhead-kill-speed}, or under {railhead-kill-rate} shot an hour"
   - id: cryo-seal
     name: Cryo-seal
     where: Earth
     tech: cryo
     proves: "Dry-ice storage under a {earth-surface-temp} sky"
-    pass: Under 0.1 W/m² of heat leak for 12 months
+    pass: "Under {cryo-seal-leak} of heat leak for {cryo-seal-months}"
     kill: The cap cracks under thermal cycling
   - id: mini-aegis
     name: Mini-Aegis
     where: Sun-Earth L1
     tech: aegis
     proves: A magnetic shield
-    pass: A 10 m coil's bubble deflects the solar wind
+    pass: "A {mini-aegis-coil} coil's bubble deflects the solar wind"
     kill: Repeated quenches
   - id: cloud-life
     name: Cloud-life survey
@@ -66,7 +68,7 @@ experiments:
     where: Earth
     tech: choir
     proves: Fleet autonomy
-    pass: 10,000 robots run a factory for 90 days unattended
-    kill: More than 1 human intervention a day
+    pass: "{choir-sim-robots} robots run a factory for {choir-sim-days} unattended"
+    kill: "More than {choir-sim-kill-interventions} human intervention a day"
 
 fallback: If Ouroboros or the Photonic Exhaust fails, the plan falls back to the multi-century route.

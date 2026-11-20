@@ -47,6 +47,7 @@ cite it for. To add one, open an ["add a source" issue](https://github.com/Xaxis
 - <a id="ren-2015"></a>Ren, J., Li, F.-F., Lau, J., Gonzalez-Urbina, L., and Licht, S. (2015). [One-Pot Synthesis of Carbon Nanofibers from CO2](https://doi.org/10.1021/acs.nanolett.5b02427). Nano Letters 15, 6142 to 6148. Checked 2026-11-20.
 - <a id="kaplan-2013"></a>Kaplan, V., Wachtel, E., and Lubomirsky, I. (2013). [Carbonate melt regeneration for efficient capture of SO2 from coal combustion](https://doi.org/10.1039/c3ra42654h). RSC Advances 3, 15842. Checked 2026-11-20.
 - <a id="rocketlab-2026-neutron"></a>Rocket Lab USA (2026). [Rocket Lab Form 8-K, exhibit 99.1 (Neutron first launch moved to 2027)](https://www.sec.gov/Archives/edgar/data/0001819994/000181999426000067/rklb-10142026ex991.htm). Checked 2026-11-20.
+- <a id="snsa-2026-minif"></a>Swedish National Space Agency (2026). [Calls available for financial support in 2027 and beyond for mission candidates for M8, F3 and Mini-F](https://www.rymdstyrelsen.se/contentassets/0c8dc7398d324ac580fde1bf2e275b6a/support-to-m8-f3-and-mini-f.pdf). Checked 2026-11-20.<br>"The ESA Science Directorate is preparing for decisions in November 2026", including the "Selection of first Mini-F (to be confirmed)". We found no announcement of the result by the date checked.
 
 ## News
 
@@ -63,6 +64,8 @@ cite it for. To add one, open an ["add a source" issue](https://github.com/Xaxis
 - <a id="planetary-2026-fy2027"></a>The Planetary Society (2026). [Analyzing the FY 2027 NASA budget request](https://www.planetary.org/articles/analyzing-the-fy-2027-nasa-budget-request). Checked 2026-11-20.<br>The request again proposes ending DAVINCI, VERITAS and the US contribution to EnVision.
 - <a id="planetary-2026-fy2026"></a>The Planetary Society (2026). [Advocacy success in the FY2026 budget](https://www.planetary.org/articles/advocacy-success-fy2026-budget). Checked 2026-11-20.
 - <a id="spacepolicy-2026-senate"></a>SpacePolicyOnline (2026). [Senate appropriators' FY2027 mark for NASA](https://spacepolicyonline.com/?p=91762). Checked 2026-11-20.<br>Directs $263M for DAVINCI and $49M for VERITAS. No FY2027 bill is enacted yet.
+- <a id="theweek-2026-vom"></a>Abhinav Singh, The Week (2026). [ISRO's upcoming Venus, Mars missions explained](https://www.theweek.in/theweek/specials/2026/08/28/isros-upcoming-venus-mars-missions-explained.html). Checked 2026-11-20.<br>Cabinet approval in September 2024, preliminary design review finished in April 2026, launch on track for 29 March 2028, likely on LVM3, and orbit insertion on 19 July 2028; 19 payloads, led by a subsurface radar.
+- <a id="planetary-2026-house"></a>The Planetary Society (2026). [House appropriators advance key NASA funding bill](https://www.planetary.org/articles/house-appropriators-advance-key-nasa-funding-bill). Checked 2026-11-20.<br>The House Appropriations Committee advanced its bill on 13 May 2026. VERITAS, DAVINCI and the VenSAR contribution to EnVision "do not get the same protections that other planetary missions receive" and face "cancellation-by-omission".
 
 ## Law and policy
 
@@ -76,3 +79,4 @@ cite it for. To add one, open an ["add a source" issue](https://github.com/Xaxis
 - <a id="esa-envision"></a>European Space Agency. [EnVision](https://www.esa.int/missions/about-us/directorates/science/envision). Checked 2026-11-20.<br>Still says November 2031, which ESA's project scientist has since moved to 2032. The version 2 link (esa.int/Science_Exploration/Space_Science/Envision/Envision_factsheet) is dead.
 - <a id="wikipedia-venus-atmosphere"></a>Wikipedia. [Atmosphere of Venus](https://en.wikipedia.org/wiki/Atmosphere_of_Venus). Checked 2026-11-20.<br>An overview with references; the cloud layers and the Earth-like conditions at 50 to 65 km.
 - <a id="wikipedia-synechococcus"></a>Wikipedia. [Synechococcus](https://en.wikipedia.org/wiki/Synechococcus). Checked 2026-11-20.<br>Abundant in well-lit surface water, generally 1,000 to 200,000 cells per millilitre.
+- <a id="esa-envision-timeline"></a>European Space Agency, EnVision science team. [EnVision timeline](https://www.cosmos.esa.int/web/envision/timeline). Checked 2026-11-20.<br>Gives December 2031 as the baseline launch date, then a 15-month cruise and 11 months of aerobraking.

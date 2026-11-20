@@ -50,8 +50,9 @@ the cheapest such orbit for every moment of the cycle, trying every transfer ang
 the same circular, flat orbits as the Hohmann transfer). At the worst moment a shot costs
 [46%](../numbers.md#launch-offwindow-max) more than one in a window; fired steadily through the whole cycle,
 [16%](../numbers.md#launch-offwindow-mean) more on average. The budget charges that average:
-[6.7 × 10²⁶ J](../numbers.md#ice-launch-offwindow-energy) more than every shot in a window would cost, enough
-on its own to tip the Lattice-only budget into deficit ([open problem](../budget.md#physics-checks)). Faster
+[6.7 × 10²⁶ J](../numbers.md#ice-launch-offwindow-energy) more than every shot in a window would cost. That is
+why the Lattice is sized at [8.5 × 10¹⁹ W](../numbers.md#helios-power), more than version 2 planned
+([correction](../about.md#corrections)). Faster
 arrivals also bring more energy for the Ring to recover; the model does not count that, so its recovered
 energy is a floor.
 
