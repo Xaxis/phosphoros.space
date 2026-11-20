@@ -626,6 +626,13 @@ genesis-ph-days:
   unit: d
   label: Days the ocean pH must hold before any life is released
   basis: design
+acid-ocean-ph-max:
+  value: 8
+  unit: "1"
+  sig: 2
+  label: Top of the ocean pH the shore basalt is laid to hold
+  basis: design
+  note: The Acid Sweep aims for slightly alkaline water, between the Genesis gate and this. More basalt raises the pH; less lets it fall.
 genesis-seed-density:
   value: 1.0e8
   unit: 1/m3
