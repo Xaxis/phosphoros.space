@@ -86,5 +86,5 @@ experiments that must prove them by the end of 2028 are on the [Research Agenda]
 
 ## Everywhere
 
-- [Choir](choir.md): the four-tier control system that runs a trillion machines across three worlds,
+- [Choir](choir.md): the four-tier control system that runs every machine across three worlds,
   with a safety core no machine can override.

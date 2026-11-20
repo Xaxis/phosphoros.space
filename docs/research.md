@@ -52,14 +52,14 @@ Carnot minimum, [5.5](numbers.md#exhaust-work-ratio) joules per joule. A real ti
 alone leaves [9.3%](numbers.md#budget-spare) spare, and once the Ring powers the Railheads the spare is
 [34%](numbers.md#budget-spare-with-ring), so the plan can absorb a tile somewhat short of ideal, not one far
 short, and not yet the full cost of its narrow beam ([open problem](budget.md#physics-checks)). The
-production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by 2031.
+production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by [2031](numbers.md?date=year#exhaust-production-tile).
 
 ### Lightpipe
 
 Coherent power beaming between satellites. The [Helios Lattice](technologies/helios.md) needs emitters
 phase-locked into virtual apertures [10 km](numbers.md#helios-aperture) wide, so a beam stays
 [43 m](numbers.md#helios-spot) across over [1.1 AU](numbers.md#helios-range). Each aperture is millions of
-emitters acting as one. If phase lock fails with only a hundred or so, it will not hold with millions: beams
+emitters acting as one. If phase lock fails with only [100](numbers.md#lightpipe-kill-emitters) or so, it will not hold with millions: beams
 spread, receivers balloon, and the beam-safety rules, which rely on precise pointing and instant defocus,
 cannot be met.
 
@@ -96,8 +96,8 @@ superconducting in deep space without repeated quenches, a large one will not ei
 
 ### Choir-sim
 
-A fleet of robots runs a factory unattended ([Choir](technologies/choir.md)). The plan runs about a
-trillion machines across three worlds, with up to [33 min](numbers.md#delay-earth-ceres-max) of light
+A fleet of robots runs a factory unattended ([Choir](technologies/choir.md)). The plan runs at least
+[3.9 × 10⁸](numbers.md#choir-machines) machines across three worlds, with up to [33 min](numbers.md#delay-earth-ceres-max) of light
 delay between Earth and Ceres. Humans cannot be in that loop. Any need for intervention that grows with the
 number of machines is fatal, so the kill signal is set at a rate a small fleet should never need.
 
