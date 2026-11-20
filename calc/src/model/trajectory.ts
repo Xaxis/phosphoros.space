@@ -187,7 +187,8 @@ export function simulate(v: (id: string) => number): {
       }
       if (phase === "cooling") {
         if (H < HA) pCO2 = pCO2start;
-        else if (H < HA + HB) pCO2 = Math.min(pCO2start * (1 - (H - HA) / HB), liquid(temp));
+        // While liquid seas exist the air's CO₂ sits on the vapour curve, whatever is left to rain.
+        else if (H < HA + HB) pCO2 = Math.min(pCO2start, liquid(temp));
         else pCO2 = solid(temp);
       } else pCO2 = (residual * g) / area;
     } else {
