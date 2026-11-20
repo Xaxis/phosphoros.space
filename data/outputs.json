@@ -2662,7 +2662,7 @@
       "shown": "5.2 × 10²⁸ J",
       "label": "Sunlight the Lattice's film collects from full power to the deadline",
       "basis": "invented",
-      "source": "calc/src/model/helios.ts#L168",
+      "source": "calc/src/model/helios.ts#L176",
       "formula": "E_Lattice / η",
       "inputs": [
         "helios-supply",
@@ -2675,7 +2675,7 @@
       "shown": "4.4 × 10²⁸ J",
       "label": "Heat the film, lasers and receivers shed in that time",
       "basis": "physics",
-      "source": "calc/src/model/helios.ts#L178",
+      "source": "calc/src/model/helios.ts#L186",
       "formula": "E_sunlight − E_Lattice",
       "inputs": [
         "helios-sunlight-energy",
@@ -2688,7 +2688,7 @@
       "shown": "9.3 × 10¹⁹ W",
       "label": "Beam power arriving at the receivers",
       "basis": "invented",
-      "source": "calc/src/model/helios.ts#L188",
+      "source": "calc/src/model/helios.ts#L196",
       "formula": "P / η_receiver",
       "inputs": [
         "helios-power",
@@ -2701,7 +2701,7 @@
       "shown": "9.3 × 10¹² m²",
       "label": "Receiver area at 10 MW/m²",
       "basis": "invented",
-      "source": "calc/src/model/helios.ts#L198",
+      "source": "calc/src/model/helios.ts#L206",
       "formula": "P_in / I",
       "inputs": [
         "helios-receiver-incident",
@@ -2714,7 +2714,7 @@
       "shown": "2.3 × 10¹⁹ W",
       "label": "Heat the receivers shed",
       "basis": "physics",
-      "source": "calc/src/model/helios.ts#L208",
+      "source": "calc/src/model/helios.ts#L216",
       "formula": "P_in − P",
       "inputs": [
         "helios-receiver-incident",
@@ -2727,7 +2727,7 @@
       "shown": "4.1 × 10¹³ m²",
       "label": "Radiator fin area to shed that heat at 1,500 K (both faces)",
       "basis": "physics",
-      "source": "calc/src/model/helios.ts#L218",
+      "source": "calc/src/model/helios.ts#L226",
       "formula": "P_loss / (2 σ T⁴)",
       "inputs": [
         "helios-receiver-loss",

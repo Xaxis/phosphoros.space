@@ -67,6 +67,12 @@ test("the energy budget closes and the heat pump obeys the second law", () => {
   assert.ok(Math.abs(v("exhaust-flux") - 5.670374419e-8 * 2000 ** 4) < 1);
 });
 
+test("a Lattice finished after the deadline is an error, not negative energy", () => {
+  // A 120-day doubling finishes the Foundry after 2036; the Lattice then delivers nothing in time.
+  assert.throws(() => run({ "foundry-doubling-days": 120 }), /full power after the deadline/);
+  assert.ok(run({ "foundry-doubling-days": 70 }).get("helios-supply").value > 0);
+});
+
 test("the version 2 statite cannot hover; the version 3 Veil can", () => {
   assert.equal(r.checks.get("veil-v2-hovers")?.pass, false);
   assert.ok(v("veil-v2-net-accel") > 0.03, "both forces point at Venus");

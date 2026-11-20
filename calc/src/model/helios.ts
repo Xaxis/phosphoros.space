@@ -152,7 +152,15 @@ export function helios(r: Registry) {
       formula: "deadline − full-power date",
       basis: "design",
     },
-    () => v("deadline") - v("helios-full-power"),
+    () => {
+      const years = v("deadline") - v("helios-full-power");
+      // An unfinished Lattice delivers nothing in time, and every share of its output is undefined.
+      if (years <= 0)
+        throw new Error(
+          "the Helios Lattice reaches full power after the deadline, so it delivers no energy in time",
+        );
+      return years;
+    },
   );
   r.q(
     "helios-supply",
