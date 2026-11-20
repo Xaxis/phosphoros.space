@@ -48,6 +48,7 @@ cite it for. To add one, open an ["add a source" issue](https://github.com/Xaxis
 - <a id="kaplan-2013"></a>Kaplan, V., Wachtel, E., and Lubomirsky, I. (2013). [Carbonate melt regeneration for efficient capture of SO2 from coal combustion](https://doi.org/10.1039/c3ra42654h). RSC Advances 3, 15842. Checked 2026-11-20.
 - <a id="rocketlab-2026-neutron"></a>Rocket Lab USA (2026). [Rocket Lab Form 8-K, exhibit 99.1 (Neutron first launch moved to 2027)](https://www.sec.gov/Archives/edgar/data/0001819994/000181999426000067/rklb-10142026ex991.htm). Checked 2026-11-20.
 - <a id="snsa-2026-minif"></a>Swedish National Space Agency (2026). [Calls available for financial support in 2027 and beyond for mission candidates for M8, F3 and Mini-F](https://www.rymdstyrelsen.se/contentassets/0c8dc7398d324ac580fde1bf2e275b6a/support-to-m8-f3-and-mini-f.pdf). Checked 2026-11-20.<br>"The ESA Science Directorate is preparing for decisions in November 2026", including the "Selection of first Mini-F (to be confirmed)". We found no announcement of the result by the date checked.
+- <a id="lu-1993-aerogel"></a>Lu, X., Nilsson, O., Fricke, J., and Pekala, R. W. (1993). [Thermal and electrical conductivity of monolithic carbon aerogels](https://doi.org/10.1063/1.353367). Journal of Applied Physics 73, 581 to 584. [Free copy](https://doi.org/10.1063/1.353367). Checked 2026-11-20.<br>"For a density of 82 kg m−3 a thermal conductivity of 0.029 W m−1 K−1 in air and 0.018 W m−1 K−1 after evacuation was found."
 
 ## News
 

@@ -67,11 +67,11 @@ heat. Each kilogram split leaves several megajoules of heat, many times the
 [1 September 2036](../numbers.md?date=day#sealing-end); the Forges on the last compartments become part of them, drawing dry ice
 up through shafts under gas-tight hoods, and those shafts close when forging ends.
 
-**The graphite budget.** The caps need [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of carbon aerogel and
+**The graphite budget.** The caps need [2.5 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of carbon aerogel and
 [3.3 × 10¹⁴ kg](../numbers.md#cryo-membrane-mass) of graphite membrane, and they need it before the Veil opens. By the end of
 sealing the Forges have made [4.6 × 10¹⁷ kg](../numbers.md#graphite-by-sealing), so the caps are covered with room to
 spare; the model checks it ([check](../numbers.md#check-graphite-for-caps)). In all the Forges make
-[4.9 × 10¹⁷ kg](../numbers.md#forge-graphite), leaving [1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) after the caps for
+[4.9 × 10¹⁷ kg](../numbers.md#forge-graphite), leaving [2.4 × 10¹⁷ kg](../numbers.md#graphite-stockpile) after the caps for
 structures and for the black loam soil of [Genesis](genesis.md).
 
 **The oxygen sets the finish.** In the day-by-day [simulation](../plan.md#the-simulated-atmosphere) the air is warm by
@@ -91,9 +91,9 @@ beginning of a shield for the life that follows.
 | Energy per mole | [394 kJ/mol](../numbers.md#co2-split-enthalpy) minimum, [656 kJ/mol](../numbers.md#forge-energy-per-mol) at [60%](../numbers.md#forge-efficiency) |
 | Energy per kilogram of CO₂ | [15 MJ/kg](../numbers.md#forge-energy-per-kg) |
 | Energy | [2.7 × 10²⁵ J](../numbers.md#forge-energy), [4.8 × 10¹⁷ W](../numbers.md#forge-power) for [21 months](../numbers.md#forge-seconds) |
-| Plants | [500](../numbers.md#forge-count) at about [960 TW](../numbers.md#forge-plant-power) each |
+| Plants | [500](../numbers.md#forge-count) at about [0.96 PW](../numbers.md#forge-plant-power) each |
 | Throughput per Forge | [65,000 t/s](../numbers.md#forge-throughput) of CO₂ |
-| Graphite use | [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) for caps, [1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) stockpiled |
+| Graphite use | [2.5 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) for caps, [2.4 × 10¹⁷ kg](../numbers.md#graphite-stockpile) stockpiled |
 | Running | [January 2035](../numbers.md?date=month#forge-start) to [September 2036](../numbers.md?date=month#forge-end) |
 <!-- /table -->
 

@@ -254,6 +254,8 @@
     - { label: Floor load, value: "{cryo-floor-load} at first, {cryo-floor-load-century} within a century" }
     - { label: Refrigeration, value: "{cryo-refrigeration-share} of the Lattice at first" }
     - { label: Compartments, value: "{cryo-cells} cells of {cryo-cell-area}, at most {cryo-cell-co2} each" }
+    - { label: A torn cell, value: "Releases at most {cryo-cell-co2}, {cryo-cell-release-ppm} of the air; resealed within {cryo-reseal-time}" }
+    - { label: If refrigeration stops, value: "The floor heat would turn {cryo-unrefrigerated-loss} of the CO₂ a year; under a sealed cap it melts the base rather than escaping, which the model does not yet follow" }
   invented:
     - Sodium and ammonia heat pipes drilled into basin floors before the CO₂ arrives
     - Crawler-rafts that lay a gas-tight cap over a frozen sea

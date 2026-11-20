@@ -71,7 +71,7 @@ is thin. The soil consortium weathers basalt to free phosphorus and potassium an
 Shores and caps get a starter soil, "black loam": crushed basalt, graphite from the
 [Graphite Forges](forges.md) and a microbial starter, laid [10 cm](../numbers.md#genesis-soil-min) to
 [30 cm](../numbers.md#genesis-soil-max) deep. The Forges leave
-[1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) of graphite beyond what the caps need.
+[2.4 × 10¹⁷ kg](../numbers.md#graphite-stockpile) of graphite beyond what the caps need.
 
 ### The release gate
 

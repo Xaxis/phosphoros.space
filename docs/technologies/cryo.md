@@ -67,14 +67,15 @@ as one temperature. Real basins will run ahead of or behind these dates by place
 
 The CO₂ as dry ice, at [1,562 kg/m³](../numbers.md#dry-ice-density), fills [3.0 × 10¹⁷ m³](../numbers.md#cryo-volume). At
 [2 km](../numbers.md#cryo-thickness) thick that covers [1.5 × 10¹⁴ m²](../numbers.md#cryo-footprint), a third of the
-planet. The caps take [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of carbon aerogel, at
-[100 kg/m³](../numbers.md#cryo-aerogel-density), [3.3 × 10¹⁴ kg](../numbers.md#cryo-membrane-mass) of graphite membrane
+planet. The caps take [2.5 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of carbon aerogel, at
+[82 kg/m³](../numbers.md#cryo-aerogel-density), [3.3 × 10¹⁴ kg](../numbers.md#cryo-membrane-mass) of graphite membrane
 and [9.0 × 10¹⁷ kg](../numbers.md#cryo-armour-mass) of basalt. All the carbon comes from the Forges.
 
-**Heat from above.** Aerogel conducts only [0.014 W/(m·K)](../numbers.md#cryo-aerogel-conductivity). Across
+**Heat from above.** Carbon aerogel conducts only [0.029 W/(m·K)](../numbers.md#cryo-aerogel-conductivity), as
+measured in air ([Lu 1993](../sources.md#lu-1993-aerogel)). Across
 [20 m](../numbers.md#cryo-aerogel-thickness), between a [288 K](../numbers.md#earth-surface-temp) surface and
-[180 K](../numbers.md#cryo-ice-temp) ice, the leak is `k ΔT / L`: [0.076 W/m²](../numbers.md#cryo-leak-flux),
-[11 TW](../numbers.md#cryo-leak-total) over all the caps. That is the easy part.
+[180 K](../numbers.md#cryo-ice-temp) ice, the leak is `k ΔT / L`: [0.16 W/m²](../numbers.md#cryo-leak-flux),
+[24 TW](../numbers.md#cryo-leak-total) over all the caps. That is the easy part.
 
 **Compartments.** The caps are divided into [1.5 × 10⁶](../numbers.md#cryo-cells) sealed cells of
 [100 km²](../numbers.md#cryo-cell-area), each holding at most [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2). A breach is one
@@ -97,7 +98,7 @@ smaller than the full difference because the floors are cooled before the CO₂ 
 
 Over the whole footprint that is [12 PW](../numbers.md#cryo-floor-load) at first and still
 [1.7 PW](../numbers.md#cryo-floor-load-century) after a century, far more than the
-[11 TW](../numbers.md#cryo-leak-total) leaking down through the caps.
+[24 TW](../numbers.md#cryo-leak-total) leaking down through the caps.
 Unrefrigerated, it is enough heat to sublimate [0.1%](../numbers.md#cryo-unrefrigerated-loss) of all the CO₂ every year.
 Under [2 km](../numbers.md#cryo-thickness) of dry ice the base is far above the triple-point pressure, so in practice the
 heat would melt the base of the sheet into liquid CO₂ that could lubricate it and work its way out.
@@ -118,12 +119,14 @@ year as the rock cools. It never stops entirely: this is a permanent duty, like 
 | CO₂ stored | [4.69 × 10²⁰ kg](../numbers.md#venus-co2-mass), [3.0 × 10¹⁷ m³](../numbers.md#cryo-volume) of dry ice |
 | Footprint | [1.5 × 10¹⁴ m²](../numbers.md#cryo-footprint), [33%](../numbers.md#cryo-footprint-share) of Venus, [2 km](../numbers.md#cryo-thickness) thick |
 | Cap | [1 mm](../numbers.md#cryo-membrane-thickness) graphite membrane, [20 m](../numbers.md#cryo-aerogel-thickness) carbon aerogel, [2 m](../numbers.md#cryo-armour-thickness) basalt |
-| Cap mass | [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of Forge graphite |
-| Heat leaking down through the cap | [0.076 W/m²](../numbers.md#cryo-leak-flux), [11 TW](../numbers.md#cryo-leak-total) in all |
+| Cap mass | [2.5 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of Forge graphite |
+| Heat leaking down through the cap | [0.16 W/m²](../numbers.md#cryo-leak-flux), [24 TW](../numbers.md#cryo-leak-total) in all |
 | Heat up from the rock | [80 W/m²](../numbers.md#cryo-floor-flux-2) after 2 years, [36 W/m²](../numbers.md#cryo-floor-flux-10) after 10, [11 W/m²](../numbers.md#cryo-floor-flux-100) after 100, [3.6 W/m²](../numbers.md#cryo-floor-flux-1000) after 1,000 |
 | Floor load | [12 PW](../numbers.md#cryo-floor-load) at first, [1.7 PW](../numbers.md#cryo-floor-load-century) within a century |
 | Refrigeration | [0.1%](../numbers.md#cryo-refrigeration-share) of the Lattice at first |
 | Compartments | [1.5 × 10⁶](../numbers.md#cryo-cells) cells of [100 km²](../numbers.md#cryo-cell-area), at most [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2) each |
+| A torn cell | Releases at most [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2), [26 ppm](../numbers.md#cryo-cell-release-ppm) of the air; resealed within [7 d](../numbers.md#cryo-reseal-time) |
+| If refrigeration stops | The floor heat would turn [0.1%](../numbers.md#cryo-unrefrigerated-loss) of the CO₂ a year; under a sealed cap it melts the base rather than escaping, which the model does not yet follow |
 <!-- /table -->
 
 ## What is invented
@@ -137,9 +140,9 @@ year as the rock cools. It never stops entirely: this is a permanent duty, like 
 > **Invented:** A graphite membrane only [1 mm](../numbers.md#cryo-membrane-thickness) thick that stays gas-tight over a
 > continent of ice, through thermal cycling and the ice's slow creep.
 
-> **Precedent:** Carbon aerogels are real materials, and the cap's density and conductivity are taken from them; the data
-> does not yet cite a source for those two figures. The [Cryo-seal](../research.md#cryo-seal) experiment must show the
-> cap's leak on Earth before anything is built.
+> **Precedent:** Carbon aerogels are real materials. The cap's density and conductivity are the values Lu and colleagues
+> measured in air ([Lu 1993](../sources.md#lu-1993-aerogel)), and the [Cryo-seal](../research.md#cryo-seal) experiment
+> must show the cap's leak on Earth before anything is built.
 
 ## Build sequence
 
@@ -155,7 +158,7 @@ year as the rock cools. It never stops entirely: this is a permanent duty, like 
 - **[22 August 2036](../numbers.md?date=day#traj-scavenged):** The Frost Towers finish.
 - **[1 September 2036](../numbers.md?date=day#sealing-end):** The last caps are sealed. By then the Forges have made
   [4.6 × 10¹⁷ kg](../numbers.md#graphite-by-sealing) of graphite, more than the
-  [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) the caps need ([check](../numbers.md#check-graphite-for-caps)). The Veil
+  [2.5 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) the caps need ([check](../numbers.md#check-graphite-for-caps)). The Veil
   opens.
 - **[6 September 2036](../numbers.md?date=day#traj-warm):** The air over the caps is warm.
 - **[30 September 2036](../numbers.md?date=day#traj-earth-like):** Venus is Earth-like. The floor refrigeration carries
@@ -163,12 +166,16 @@ year as the rock cools. It never stops entirely: this is a permanent duty, like 
 
 ## Failure modes and safeguards
 
-- **A torn cell.** One cell holds at most [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2) of CO₂, which adds less to the air
-  than the gap between the finished air's [310 ppm](../numbers.md#final-co2-ppm) and the Earth-like limit of
-  [600 ppm](../numbers.md#earth-like-co2). Each cell has its own seal and its own refrigeration, and is resealed by the
-  crawlers that laid it.
+- **A torn cell.** One cell holds at most [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2) of CO₂. Released whole, it
+  would add [26 ppm](../numbers.md?show=ppm#cryo-cell-release-ppm) to the air, far less than the gap between the
+  finished air's [310 ppm](../numbers.md#final-co2-ppm) and the Earth-like limit of
+  [600 ppm](../numbers.md#earth-like-co2). Each cell has its own seal and its own refrigeration, and the crawlers
+  that laid it reseal it within [7 d](../numbers.md#cryo-reseal-time).
 - **Refrigeration stops.** The floor heat works slowly: [0.1%](../numbers.md#cryo-unrefrigerated-loss) of the CO₂ a year at
-  first, less as the rock cools. There is time to repair, but not forever.
+  first, less as the rock cools. Under a sealed cap, [2 km](../numbers.md#cryo-thickness) of ice press the base to
+  [280 bar](../numbers.md#cryo-base-pressure), far above the triple point, so that heat melts the base into a liquid layer rather than sending gas into the air. How long the caps
+  hold the CO₂ in then is not yet modelled
+  ([issue #10](https://github.com/Xaxis/phosphoros.space/issues/10)), so the plan does not claim decades.
 - **The Veil fails open.** Sunlight warms the air and the cap surfaces, not the ice under
   [20 m](../numbers.md#cryo-aerogel-thickness) of aerogel. The caps are the backstop for the [Hesperus Veil](veil.md), not
   the other way round.

@@ -17,7 +17,7 @@ in advance. A kill signal stops the line it tests; one of them stops everything.
 | [Lightpipe](technologies/helios.md) | Coherent power beaming | [1 MW](numbers.md#lightpipe-power) over [1,000 km](numbers.md#lightpipe-range) between satellites at [30%](numbers.md#lightpipe-efficiency) end to end | Phase lock fails beyond [100](numbers.md#lightpipe-kill-emitters) emitters |
 | [Veil-1](technologies/veil.md) | An electrochromic slat | A [1 km²](numbers.md#veil-1-area) slat in orbit dims from clear to [99%](numbers.md#veil-1-dim) blocked and holds its attitude | The film degrades within [6 months](numbers.md#veil-1-kill-life) |
 | [Railhead](technologies/ice-train.md) | An ice mass driver | [1 t](numbers.md#railhead-test-mass) of ice at [3 km/s](numbers.md#railhead-test-speed), [10](numbers.md#railhead-test-rate) shots an hour | Under [1 km/s](numbers.md#railhead-kill-speed), or under [1](numbers.md#railhead-kill-rate) shot an hour |
-| [Cryo-seal](technologies/cryo.md) | Dry-ice storage under a [288 K](numbers.md#earth-surface-temp) sky | Under [0.1 W/m²](numbers.md#cryo-seal-leak) of heat leak for [12 months](numbers.md#cryo-seal-months) | The cap cracks under thermal cycling |
+| [Cryo-seal](technologies/cryo.md) | Dry-ice storage under a [288 K](numbers.md#earth-surface-temp) sky | Under [0.16 W/m²](numbers.md#cryo-leak-flux) of heat leak, what the plan's cap gives, for [12 months](numbers.md#cryo-seal-months) | The cap cracks under thermal cycling |
 | [Mini-Aegis](technologies/aegis.md) | A magnetic shield | A [10 m](numbers.md#mini-aegis-coil) coil's bubble deflects the solar wind | Repeated quenches |
 | **Cloud-life survey** | No native life will be harmed | Balloon and droplet sample return show no biology | A credible biosignature: the whole program stops |
 | [Choir-sim](technologies/choir.md) | Fleet autonomy | [10,000](numbers.md#choir-sim-robots) robots run a factory for [90 d](numbers.md#choir-sim-days) unattended | More than [1](numbers.md#choir-sim-kill-interventions) human intervention a day |
@@ -83,7 +83,7 @@ must also show that ice survives being thrown: a Brick feels [190 MPa](numbers.
 ### Cryo-seal
 
 Dry ice kept frozen under an Earth-warm sky. The [Cryo-continents](technologies/cryo.md) hold all of
-Venus's CO₂ under caps that must leak no more than about [0.076 W/m²](numbers.md#cryo-leak-flux) and last
+Venus's CO₂ under caps that must leak no more than about [0.16 W/m²](numbers.md#cryo-leak-flux) and last
 for decades. The kill signal is cracking under thermal cycling, because a cracked cap is how a sealed sea
 gets back into the air.
 

@@ -551,3 +551,15 @@
   note: >-
     Gives December 2031 as the baseline launch date, then a 15-month cruise and 11 months of
     aerobraking.
+- id: lu-1993-aerogel
+  kind: paper
+  title: Thermal and electrical conductivity of monolithic carbon aerogels
+  authors: Lu, X., Nilsson, O., Fricke, J., and Pekala, R. W.
+  year: 1993
+  venue: Journal of Applied Physics 73, 581 to 584
+  doi: 10.1063/1.353367
+  url: https://doi.org/10.1063/1.353367
+  checked: 2026-11-20
+  note: >-
+    "For a density of 82 kg m−3 a thermal conductivity of 0.029 W m−1 K−1 in air and 0.018 W m−1
+    K−1 after evacuation was found."

@@ -47,7 +47,7 @@ experiments:
     where: Earth
     tech: cryo
     proves: "Dry-ice storage under a {earth-surface-temp} sky"
-    pass: "Under {cryo-seal-leak} of heat leak for {cryo-seal-months}"
+    pass: "Under {cryo-leak-flux} of heat leak, what the plan's cap gives, for {cryo-seal-months}"
     kill: The cap cracks under thermal cycling
   - id: mini-aegis
     name: Mini-Aegis

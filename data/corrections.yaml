@@ -414,3 +414,22 @@
     Seen from Venus it is only {veil-angular-radius} in radius, so tiles that face it tilt their
     cones {exhaust-veil-tilt} off the Sun line. Gaps between slats are held to {veil-gap-max},
     under version 2's 0.1%, so that gaps and closed slats together fit inside the budget.
+- id: aerogel-measured
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The cap's aerogel takes measured values
+  text: >-
+    Version 2 gave the cap's carbon aerogel a density of 100 kg/m³ and a conductivity of 0.014
+    W/(m·K), with no source. Lu and colleagues measured {cryo-aerogel-conductivity} in air at
+    {cryo-aerogel-density} (1993). With the measured aerogel the caps leak {cryo-leak-flux},
+    {cryo-leak-total} in all, still small beside the floor heat, and take {cryo-cap-mass} of
+    graphite. The Cryo-seal experiment now passes at the leak the plan's own cap gives, instead of
+    version 2's 0.1 W/m², which a cap of real aerogel this thick would fail.
+  before:
+    cryo-aerogel-density: 100
+    cryo-aerogel-conductivity: 0.014
+    cryo-leak-flux: 0.0756
+    cryo-leak-total: 1.14e13
+    cryo-cap-mass: 3.00e17
+    graphite-stockpile: 1.87e17
