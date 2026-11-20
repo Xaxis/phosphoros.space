@@ -1,9 +1,9 @@
 # Ouroboros Foundry
 
-A [1,000 t](../numbers.md#foundry-seed-mass) seed factory lands on Mercury and rebuilds itself from local rock and
-sunlight every [60 d](../numbers.md#foundry-doubling-days). After [27](../numbers.md#foundry-doublings) doublings,
-on [22 June 2033](../numbers.md?date=day#foundry-full-scale), it is [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass)
-of machinery, still only [4 × 10⁻¹⁰](../numbers.md#foundry-mercury-share) of Mercury's mass. Every other
+A [1,000 t](../numbers.md#foundry-seed-mass) seed factory lands on Mercury and rebuilds itself from local rock and
+sunlight every [60 d](../numbers.md#foundry-doubling-days). After [27](../numbers.md#foundry-doublings) doublings,
+on [22 June 2033](../numbers.md?date=day#foundry-full-scale), it is [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass)
+of machinery, still only [4 × 10⁻¹⁰](../numbers.md#foundry-mercury-share) of Mercury's mass. Every other
 invention in the plan is built from its output, so its doubling time is the plan's critical path.
 
 <!-- figure:foundry-growth -->
@@ -16,31 +16,31 @@ A factory doubles when it can make every one of its own parts, chips and robots 
 around it. If each kilogram of machinery builds another kilogram in a fixed time T, the mass grows as
 `M(t) = M₀ · 2^(t/T)`. Nothing else about the plan scales like that, and nothing else needs to.
 
-**The doubling arithmetic.** From a [1,000 t](../numbers.md#foundry-seed-mass) seed to the
-[1.0 × 10¹⁴ kg](../numbers.md#foundry-target-mass) the plan needs is log₂ of their ratio, rounded up to a
+**The doubling arithmetic.** From a [1,000 t](../numbers.md#foundry-seed-mass) seed to the
+[1.0 × 10¹⁴ kg](../numbers.md#foundry-target-mass) the plan needs is log₂ of their ratio, rounded up to a
 whole number: [27](../numbers.md#foundry-doublings) doublings, which give
-[1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). At [60 d](../numbers.md#foundry-doubling-days) each, that
-takes [4.4 yr](../numbers.md#foundry-years-to-scale). Two consequences follow from the shape of the curve:
+[1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). At [60 d](../numbers.md#foundry-doubling-days) each, that
+takes [4.4 yr](../numbers.md#foundry-years-to-scale). Two consequences follow from the shape of the curve:
 
 - **Most of the mass arrives at the end.** Each doubling makes as much as all the doublings before it. In
   [January 2030](../numbers.md?date=month#date-2030), a year after landing, the Foundry is only
-  [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030); by [January 2032](../numbers.md?date=month#date-2032) it
-  is [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032); and in the eighteen months after that it grows to
-  [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). Almost everything the plan builds, it builds in the last
+  [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030); by [January 2032](../numbers.md?date=month#date-2032) it
+  is [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032); and in the eighteen months after that it grows to
+  [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). Almost everything the plan builds, it builds in the last
   year.
 - **Every day counts many times over.** Full scale comes [27](../numbers.md#foundry-doublings) doubling periods after
   landing, so each day added to the doubling time moves full scale, the Lattice's full power and the first
   ice launch by [27](../numbers.md#foundry-doublings) days.
 
 **Power follows from the doubling time.** Making a kilogram of machinery from raw regolith takes about
-[100 MJ/kg](../numbers.md#foundry-energy-per-kg). Growing continuously, the machinery adds mass at
-`M · ln 2 / T`, so each kilogram draws `e · ln 2 / T`: [13 W/kg](../numbers.md#foundry-power-per-kg). At full
-scale that is [1.8 × 10¹⁵ W](../numbers.md#foundry-peak-power), all of it from the Foundry's own solar film.
+[100 MJ/kg](../numbers.md#foundry-energy-per-kg). Growing continuously, the machinery adds mass at
+`M · ln 2 / T`, so each kilogram draws `e · ln 2 / T`: [13 W/kg](../numbers.md#foundry-power-per-kg). At full
+scale that is [1.8 × 10¹⁵ W](../numbers.md#foundry-peak-power), all of it from the Foundry's own solar film.
 
-**Why Mercury.** Sunlight there is [9,080 W/m²](../numbers.md#mercury-sunlight) at its mean distance from the
+**Why Mercury.** Sunlight there is [9,080 W/m²](../numbers.md#mercury-sunlight) at its mean distance from the
 Sun. Mercury's axis is almost upright ([NASA](../sources.md#nasa-mercury-factsheet)), so crater rims near its
 poles see the Sun nearly all the time and escape the day side's heat. Its gravity is weak: escape speed is
-[4.25 km/s](../numbers.md#mercury-escape), low enough that mass drivers, not rockets, throw parts to orbit.
+[4.25 km/s](../numbers.md#mercury-escape), low enough that mass drivers, not rockets, throw parts to orbit.
 And its silicate rock yields oxygen, silicon and metals by electrolysis.
 
 ## Design
@@ -58,7 +58,7 @@ every part out) and on energy (film made by the loop powers the loop).
 | Diggers | Mine and sort regolith | Smelters |
 | Smelters | Solar furnaces and molten-regolith electrolysis, splitting rock into oxygen, iron, silicon, aluminum, titanium and magnesium | Every other line |
 | Glass furnaces | Glass, fiber and optics | Film lines, Lithocells, laser emitters |
-| Film lines | Thin solar film at [1 g/m²](../numbers.md#helios-areal-density), the Foundry's own power and the stuff of the Lattice and the Veil | Power for the loop; Petals and slats |
+| Film lines | Thin solar film at [1 g/m²](../numbers.md#helios-areal-density), the Foundry's own power and the stuff of the Lattice and the Veil | Power for the loop; Petals and slats |
 | Lithocells | Chip fabs that write circuits directly with electron beams | Every machine's controller |
 | Choir nodes | Compute and communications for the Choir control system | Coordination, the Mass Ledger |
 | Coil lines | Aluminum wire and iron cores for induction and reluctance motors, with no rare earths | Everything that moves |
@@ -79,17 +79,17 @@ give the closure).
 equals the product's, because one doubling's output is the Foundry's mass. That sets when each piece of the
 plan becomes affordable:
 
-- The [Hesperus Veil](veil.md), [5.4 × 10¹¹ kg](../numbers.md#veil-mass), on
+- The [Hesperus Veil](veil.md), [5.4 × 10¹¹ kg](../numbers.md#veil-mass), on
   [2 March 2032](../numbers.md?date=day#veil-affordable).
-- The [Braking Ring](ring.md), [1.0 × 10¹³ kg](../numbers.md#ring-mass), on
+- The [Braking Ring](ring.md), [1.0 × 10¹³ kg](../numbers.md#ring-mass), on
   [9 November 2032](../numbers.md?date=day#ring-affordable).
-- The [Helios Lattice](helios.md), [5.1 × 10¹³ kg](../numbers.md#helios-mass), on
+- The [Helios Lattice](helios.md), [5.1 × 10¹³ kg](../numbers.md#helios-mass), on
   [31 March 2033](../numbers.md?date=day#helios-affordable).
 
 Building the Veil at its close date, [30 June 2032](../numbers.md?date=day#veil-close), costs the Foundry
-[19 d](../numbers.md#veil-diversion-days) of growth: by then the Veil is a quarter of one doubling's output.
+[19 d](../numbers.md#veil-diversion-days) of growth: by then the Veil is a quarter of one doubling's output.
 Version 2's lighter Veil, built earlier, cost about a whole doubling. Matter is cheap once the loop runs: all
-of the plan's hardware takes about [10²² J](../numbers.md#hardware-energy), less than a millionth of the
+of the plan's hardware takes about [10²² J](../numbers.md#hardware-energy), less than a millionth of the
 energy the plan spends on water and cooling.
 
 ## Specifications
@@ -97,37 +97,37 @@ energy the plan spends on water and cooling.
 <!-- table:specs ouroboros -->
 | Parameter | Value |
 | --- | --- |
-| Seed mass | [1,000 t](../numbers.md#foundry-seed-mass), launched [1 October 2028](../numbers.md?date=day#foundry-seed-launch), landed [14 January 2029](../numbers.md?date=day#foundry-landing) |
-| Doubling time | [60 d](../numbers.md#foundry-doubling-days) |
-| Doublings to full scale | [27](../numbers.md#foundry-doublings), giving [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) |
+| Seed mass | [1,000 t](../numbers.md#foundry-seed-mass), launched [1 October 2028](../numbers.md?date=day#foundry-seed-launch), landed [14 January 2029](../numbers.md?date=day#foundry-landing) |
+| Doubling time | [60 d](../numbers.md#foundry-doubling-days) |
+| Doublings to full scale | [27](../numbers.md#foundry-doublings), giving [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) |
 | Full scale | [22 June 2033](../numbers.md?date=day#foundry-full-scale) |
-| Energy per kilogram built | [100 MJ/kg](../numbers.md#foundry-energy-per-kg) |
-| Power per kilogram of machinery | [13 W/kg](../numbers.md#foundry-power-per-kg) |
-| Peak power | [1.8 × 10¹⁵ W](../numbers.md#foundry-peak-power), from its own film |
-| Share of Mercury used | [4 × 10⁻¹⁰](../numbers.md#foundry-mercury-share) of its mass |
-| Mercury's escape speed | [4.25 km/s](../numbers.md#mercury-escape), so parts reach orbit by mass driver |
-| Machinery in January 2030 | [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030) |
-| Machinery in January 2032 | [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032) |
+| Energy per kilogram built | [100 MJ/kg](../numbers.md#foundry-energy-per-kg) |
+| Power per kilogram of machinery | [13 W/kg](../numbers.md#foundry-power-per-kg) |
+| Peak power | [1.8 × 10¹⁵ W](../numbers.md#foundry-peak-power), from its own film |
+| Share of Mercury used | [4 × 10⁻¹⁰](../numbers.md#foundry-mercury-share) of its mass |
+| Mercury's escape speed | [4.25 km/s](../numbers.md#mercury-escape), so parts reach orbit by mass driver |
+| Machinery in January 2030 | [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030) |
+| Machinery in January 2032 | [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032) |
 | Material closure | 99.99% at seed; 100% once trace-element refining runs in 2030 |
 <!-- /table -->
 
 ## What is invented
 
-> **Invented:** A [60 d](../numbers.md#foundry-doubling-days) doubling time for a factory that makes
+> **Invented:** A [60 d](../numbers.md#foundry-doubling-days) doubling time for a factory that makes
 > everything it is made of, chips included. This is the single most important assumption in the plan.
 
 > **Invented:** Lithocell chip fabs. A million parallel electron beams write
-> [90 nm](../numbers.md#lithocell-feature-size) circuits directly, with no masks, and etching uses chlorine and
+> [90 nm](../numbers.md#lithocell-feature-size) circuits directly, with no masks, and etching uses chlorine and
 > sulfur plasma chemistry from local rock. No mask shop, no clean-room supply chain from Earth.
 
-> **Invented:** Making machinery from raw regolith for about [100 MJ/kg](../numbers.md#foundry-energy-per-kg),
+> **Invented:** Making machinery from raw regolith for about [100 MJ/kg](../numbers.md#foundry-energy-per-kg),
 > with full material closure once trace-element refining runs.
 
 > **Precedent:** The 1980 NASA/ASEE summer study designed a self-replicating lunar factory from a
-> [100 t](../numbers.md#lunar-factory-seed-mass) seed that would copy itself in about
-> [1 yr](../numbers.md#lunar-factory-replication-time) ([NASA CP-2255](../sources.md#nasa-cp-2255); summarized
+> [100 t](../numbers.md#lunar-factory-seed-mass) seed that would copy itself in about
+> [1 yr](../numbers.md#lunar-factory-replication-time) ([NASA CP-2255](../sources.md#nasa-cp-2255); summarized
 > in [Jensen 2024](../sources.md#jensen-2024)). It was a design study, never built. Ouroboros starts from a
-> seed of [1,000 t](../numbers.md#foundry-seed-mass) and must double in [60 d](../numbers.md#foundry-doubling-days).
+> seed of [1,000 t](../numbers.md#foundry-seed-mass) and must double in [60 d](../numbers.md#foundry-doubling-days).
 
 ## Build sequence
 
@@ -137,21 +137,21 @@ energy the plan spends on water and cooling.
   multi-century route.
 - **[1 October 2028](../numbers.md?date=day#foundry-seed-launch):** The seed launches, one of the very few
   things in the plan that leaves Earth. The transfer to Mercury takes
-  [105 d](../numbers.md?sig=3#foundry-transfer-days).
+  [105 d](../numbers.md?sig=3#foundry-transfer-days).
 - **[14 January 2029](../numbers.md?date=day#foundry-landing):** The seed lands at a polar site. The
   [Choir](choir.md) goes live with it.
-- **[January 2030](../numbers.md?date=month#date-2030):** [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030) of
+- **[January 2030](../numbers.md?date=month#date-2030):** [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030) of
   machinery. Trace-element refining closes the loop completely.
 - **[June 2030](../numbers.md?date=month#helios-first-petals):** The first Helios Petals fly and Veil slat
   production begins, small diversions from a growing base.
-- **[January 2032](../numbers.md?date=month#date-2032):** [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032).
+- **[January 2032](../numbers.md?date=month#date-2032):** [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032).
 - **[March 2032](../numbers.md?date=month#veil-affordable):** The Foundry can build the whole Veil in one
   doubling. It closes over Venus on [30 June 2032](../numbers.md?date=day#veil-close).
 - **[November 2032](../numbers.md?date=month#ring-affordable):** The Braking Ring becomes affordable; its
   construction runs to [December 2033](../numbers.md?date=month#ring-complete).
 - **[March 2033](../numbers.md?date=month#helios-affordable):** The Helios Lattice becomes affordable.
 - **[22 June 2033](../numbers.md?date=day#foundry-full-scale):** Full scale,
-  [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). The Lattice reaches full power the same day and the first
+  [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass). The Lattice reaches full power the same day and the first
   Ice Bricks leave Ceres ([June 2033](../numbers.md?date=month#ice-launch-start)).
 
 ## Failure modes and safeguards

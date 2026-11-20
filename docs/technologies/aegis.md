@@ -1,9 +1,9 @@
 # Aegis Shield
 
-A superconducting coil [10 km](../numbers.md#aegis-coil-radius) in radius, holding station beside the
+A superconducting coil [10 km](../numbers.md#aegis-coil-radius) in radius, holding station beside the
 [Hesperus Veil](veil.md) just sunward of the Sun-Venus L1 point,
-[1.11 × 10⁶ km](../numbers.md?show=km#veil-distance) from Venus, inflates a magnetic bubble
-[10,000 km](../numbers.md#aegis-bubble-radius) in radius in the solar wind. The wind flows around the
+[1.11 × 10⁶ km](../numbers.md?show=km#veil-distance) from Venus, inflates a magnetic bubble
+[10,000 km](../numbers.md#aegis-bubble-radius) in radius in the solar wind. The wind flows around the
 bubble, and Venus lies in the sheltered region behind it, so the wind cannot strip away the new air and
 water. It switches on [15 June 2034](../numbers.md?date=day#aegis-online), before the first ice arrives.
 
@@ -12,7 +12,7 @@ water. It switches on [15 June 2034](../numbers.md?date=day#aegis-online), befor
 ### Why Venus needs a shield
 
 Venus has no magnetic field of its own. The solar wind, a stream of protons
-([13.5 per cm³](../numbers.md#solar-wind-density) at [400 km/s](../numbers.md#solar-wind-speed) at
+([13.5 per cm³](../numbers.md#solar-wind-density) at [400 km/s](../numbers.md#solar-wind-speed) at
 Venus), runs straight into its upper air, picks up ions and carries them away. Earth's field holds the
 wind off far above the air. At Mars, which has also lost its field, spacecraft have measured the
 atmosphere being carried off this way
@@ -21,11 +21,11 @@ time; Aegis is there so that the oceans and oxygen the plan delivers are still t
 
 ### How a magnetic bubble works
 
-The solar wind pushes with the pressure of its moving protons, [3.6 × 10⁻⁹ Pa](../numbers.md#solar-wind-pressure)
+The solar wind pushes with the pressure of its moving protons, [3.6 × 10⁻⁹ Pa](../numbers.md#solar-wind-pressure)
 at Venus. A magnetic field pushes back with a pressure that grows with the square of its strength. Where
-the two balance, the wind turns aside: at [95 nT](../numbers.md#aegis-field). A dipole's field fades with
-the cube of distance, so to hold that field [10,000 km](../numbers.md#aegis-bubble-radius) out the coil
-needs a dipole moment of [9.5 × 10²⁰ A·m²](../numbers.md#aegis-dipole), [1%](../numbers.md#aegis-vs-earth)
+the two balance, the wind turns aside: at [95 nT](../numbers.md#aegis-field). A dipole's field fades with
+the cube of distance, so to hold that field [10,000 km](../numbers.md#aegis-bubble-radius) out the coil
+needs a dipole moment of [9.5 × 10²⁰ A·m²](../numbers.md#aegis-dipole), [1%](../numbers.md#aegis-vs-earth)
 of Earth's.
 
 > **Physics:** The edge field is the square root of twice the wind's pressure times the magnetic
@@ -40,7 +40,7 @@ region, its magnetotail, stretches downstream toward the planet. NASA's 2017 stu
 at Mars's own L1 point, about as far from Mars as the Veil is from Venus, and planned to strengthen the
 field until the magnetotail enclosed the whole planet. Aegis takes that design.
 
-Version 2 put the coil beside a Veil hovering [137,000 km](../numbers.md#veil-v2-distance) out. That Veil
+Version 2 put the coil beside a Veil hovering [137,000 km](../numbers.md#veil-v2-distance) out. That Veil
 could not hover: light pressure and Venus's gravity both push it toward Venus. Version 3 moved the Veil to
 L1 and the coil with it ([corrections](../about.md#corrections)).
 
@@ -56,10 +56,10 @@ model does not yet size.
 
 ### The coil
 
-The coil is a loop [10 km](../numbers.md#aegis-coil-radius) in radius wound with
+The coil is a loop [10 km](../numbers.md#aegis-coil-radius) in radius wound with
 [1,000,000](../numbers.md#aegis-turns) turns of superconducting cable, each carrying
-[3 × 10⁶ A](../numbers.md#aegis-current): [3 × 10¹² A](../numbers.md#aegis-ampere-turns) in all. The cable
-runs at [40 K](../numbers.md#aegis-coil-temp), cooled by radiating to space from behind its own small
+[3 × 10⁶ A](../numbers.md#aegis-current): [3 × 10¹² A](../numbers.md#aegis-ampere-turns) in all. The cable
+runs at [40 K](../numbers.md#aegis-coil-temp), cooled by radiating to space from behind its own small
 sunshield. Once charged, the current flows without resistance and needs nearly no power to keep running.
 
 ### Steering the field
@@ -77,7 +77,7 @@ as its stored field energy divided by the strength-to-density of that material. 
 moment, the stored energy falls steeply as the loop grows, roughly with the cube of its radius, because a
 wider loop carries the same moment with far less current.
 
-By our estimate the [10 km](../numbers.md#aegis-coil-radius) coil's structure would outweigh everything
+By our estimate the [10 km](../numbers.md#aegis-coil-radius) coil's structure would outweigh everything
 the Foundry ever builds, many times over, whatever it is made of. A much wider loop gives the same bubble
 at a small fraction of the current, with a structure the Foundry can easily afford. The model does not yet compute the stored energy or the structure, so the specifications
 below still show version 2's coil. Enlarging it is the expected next correction.
@@ -87,21 +87,21 @@ below still show version 2's coil. Enlarging it is the expected next correction.
 <!-- table:specs aegis -->
 | Parameter | Value |
 | --- | --- |
-| Solar wind at Venus | [13.5 per cm³](../numbers.md#solar-wind-density) at [400 km/s](../numbers.md#solar-wind-speed), [3.6 × 10⁻⁹ Pa](../numbers.md#solar-wind-pressure) |
-| Field at the bubble's edge | [95 nT](../numbers.md#aegis-field) |
-| Bubble radius | [10,000 km](../numbers.md#aegis-bubble-radius) |
-| Dipole moment | [9.5 × 10²⁰ A·m²](../numbers.md#aegis-dipole), [1%](../numbers.md#aegis-vs-earth) of Earth's |
-| Coil | [10 km](../numbers.md#aegis-coil-radius) radius, [3 × 10¹² A](../numbers.md#aegis-ampere-turns) ([1,000,000](../numbers.md#aegis-turns) turns of [3 × 10⁶ A](../numbers.md#aegis-current)) |
-| Position | Beside the Veil, [1.11 × 10⁶ km](../numbers.md#veil-distance) sunward |
+| Solar wind at Venus | [13.5 per cm³](../numbers.md#solar-wind-density) at [400 km/s](../numbers.md#solar-wind-speed), [3.6 × 10⁻⁹ Pa](../numbers.md#solar-wind-pressure) |
+| Field at the bubble's edge | [95 nT](../numbers.md#aegis-field) |
+| Bubble radius | [10,000 km](../numbers.md#aegis-bubble-radius) |
+| Dipole moment | [9.5 × 10²⁰ A·m²](../numbers.md#aegis-dipole), [1%](../numbers.md#aegis-vs-earth) of Earth's |
+| Coil | [10 km](../numbers.md#aegis-coil-radius) radius, [3 × 10¹² A](../numbers.md#aegis-ampere-turns) ([1,000,000](../numbers.md#aegis-turns) turns of [3 × 10⁶ A](../numbers.md#aegis-current)) |
+| Position | Beside the Veil, [1.11 × 10⁶ km](../numbers.md#veil-distance) sunward |
 | Online | [15 June 2034](../numbers.md?date=day#aegis-online) |
 <!-- /table -->
 
 ## What is invented
 
-> **Invented:** A superconducting cable carrying [3 × 10⁶ A](../numbers.md#aegis-current) per strand at
-> [40 K](../numbers.md#aegis-coil-temp), wound into a loop kilometres across in deep space.
+> **Invented:** A superconducting cable carrying [3 × 10⁶ A](../numbers.md#aegis-current) per strand at
+> [40 K](../numbers.md#aegis-coil-temp), wound into a loop kilometres across in deep space.
 
-> **Invented:** Steering the axis of a dipole of [9.5 × 10²⁰ A·m²](../numbers.md#aegis-dipole) to follow
+> **Invented:** Steering the axis of a dipole of [9.5 × 10²⁰ A·m²](../numbers.md#aegis-dipole) to follow
 > the solar wind's field.
 
 > **Precedent:** NASA's 2017 study placed a magnetic dipole at Mars's L1 point, to be strengthened until
@@ -132,7 +132,7 @@ below still show version 2's coil. Enlarging it is the expected next correction.
 - **Drifting off station.** L1 is unstable, so the coil drifts if left alone. It trims its position
   continuously, as the Veil's slats do.
 - **The magnetotail falls short.** Whether the sheltered region still covers Venus,
-  [1.11 × 10⁶ km](../numbers.md?show=km#veil-distance) downstream, is the design's main open question. Mini-Aegis tests deflection; the length of the shelter
+  [1.11 × 10⁶ km](../numbers.md?show=km#veil-distance) downstream, is the design's main open question. Mini-Aegis tests deflection; the length of the shelter
   needs simulation, then measurement once the coil is on. A larger bubble is the remedy.
 
 ## Reproduce these numbers

@@ -1,8 +1,8 @@
 # Graphite Forges
 
-[500](../numbers.md#forge-count) floating molten-salt plants split [1.8 × 10¹⁸ kg](../numbers.md#forge-co2) of CO₂, only
-[0.4%](../numbers.md#forge-co2-share) of Venus's, into [0.25 bar](../numbers.md#o2-target-pressure) of oxygen and
-[4.9 × 10¹⁷ kg](../numbers.md#forge-graphite) of graphite. They use [2.7 × 10²⁵ J](../numbers.md#forge-energy) between
+[500](../numbers.md#forge-count) floating molten-salt plants split [1.8 × 10¹⁸ kg](../numbers.md#forge-co2) of CO₂, only
+[0.4%](../numbers.md#forge-co2-share) of Venus's, into [0.25 bar](../numbers.md#o2-target-pressure) of oxygen and
+[4.9 × 10¹⁷ kg](../numbers.md#forge-graphite) of graphite. They use [2.7 × 10²⁵ J](../numbers.md#forge-energy) between
 [January 2035](../numbers.md?date=month#forge-start) and [September 2036](../numbers.md?date=month#forge-end). The graphite
 becomes the caps that seal the cryo-continents, and the day the Forges finish is the day Venus becomes Earth-like.
 
@@ -13,7 +13,7 @@ becomes the caps that seal the cryo-continents, and the day the Forges finish is
 ## Principle
 
 Splitting CO₂ is burning carbon backwards, and it costs at least what burning gave:
-[394 kJ/mol](../numbers.md#co2-split-enthalpy). The Forges pay it with electricity, in a bath of molten carbonate salt.
+[394 kJ/mol](../numbers.md#co2-split-enthalpy). The Forges pay it with electricity, in a bath of molten carbonate salt.
 
 **The chemistry.** CO₂ dissolves in the melt and pairs with oxide ions to make carbonate. At the cathode, carbonate takes
 four electrons, gives up its carbon as solid graphite and releases oxide ions back into the melt. At the anode, oxide ions
@@ -29,28 +29,28 @@ Overall:      CO₂           →  C + O₂
 The melt is not used up; it shuttles oxygen from cathode to anode. One mole of CO₂ makes one mole of oxygen and one mole
 of carbon.
 
-**How much.** Oxygen at [0.25 bar](../numbers.md#o2-target-pressure) over all of Venus weighs `P A / g`:
-[1.3 × 10¹⁸ kg](../numbers.md#o2-mass), [4.1 × 10¹⁹ mol](../numbers.md#o2-moles). That takes
-[1.8 × 10¹⁸ kg](../numbers.md#forge-co2) of CO₂ and leaves [4.9 × 10¹⁷ kg](../numbers.md#forge-graphite) of carbon. All
+**How much.** Oxygen at [0.25 bar](../numbers.md#o2-target-pressure) over all of Venus weighs `P A / g`:
+[1.3 × 10¹⁸ kg](../numbers.md#o2-mass), [4.1 × 10¹⁹ mol](../numbers.md#o2-moles). That takes
+[1.8 × 10¹⁸ kg](../numbers.md#forge-co2) of CO₂ and leaves [4.9 × 10¹⁷ kg](../numbers.md#forge-graphite) of carbon. All
 the rest of the CO₂ stays frozen in the cryo-continents; the Forges only make the air breathable.
 
 **What it costs.** At an efficiency of [60%](../numbers.md#forge-efficiency), each mole takes
-[656 kJ/mol](../numbers.md#forge-energy-per-mol), [15 MJ/kg](../numbers.md#forge-energy-per-kg) of CO₂: in all
-[2.7 × 10²⁵ J](../numbers.md#forge-energy). Over [21 months](../numbers.md#forge-seconds) that is
-[4.8 × 10¹⁷ W](../numbers.md#forge-power), a small share of the plan's [7.7 × 10²⁷ J](../numbers.md#budget-demand)
+[656 kJ/mol](../numbers.md#forge-energy-per-mol), [15 MJ/kg](../numbers.md#forge-energy-per-kg) of CO₂: in all
+[2.7 × 10²⁵ J](../numbers.md#forge-energy). Over [21 months](../numbers.md#forge-seconds) that is
+[4.8 × 10¹⁷ W](../numbers.md#forge-power), a small share of the plan's [7.7 × 10²⁷ J](../numbers.md#budget-demand)
 ([budget](../budget.md#forging-the-oxygen)). The energy the electrolysis
-loses, [1.1 × 10²⁵ J](../numbers.md#forge-waste-heat) of heat, stays on Venus, and the Exhaust pumps it out with the rest.
+loses, [1.1 × 10²⁵ J](../numbers.md#forge-waste-heat) of heat, stays on Venus, and the Exhaust pumps it out with the rest.
 
-**How much oxygen that is.** [0.25 bar](../numbers.md#o2-target-pressure) is [1.2](../numbers.md#o2-vs-earth) times the
-[0.21 bar](../numbers.md#earth-o2-pressure) at Earth's sea level, a little more, not a match. Lungs respond to that partial
+**How much oxygen that is.** [0.25 bar](../numbers.md#o2-target-pressure) is [1.2](../numbers.md#o2-vs-earth) times the
+[0.21 bar](../numbers.md#earth-o2-pressure) at Earth's sea level, a little more, not a match. Lungs respond to that partial
 pressure. Because Venus keeps its nitrogen, oxygen is only [11%](../numbers.md#final-o2-share) of the finished
-[2.4 bar](../numbers.md#final-pressure) air.
+[2.4 bar](../numbers.md#final-pressure) air.
 
 ## Design
 
-**The plants.** Each Forge is a raft [30 km](../numbers.md#forge-raft-width) across drawing about
-[0.96 PW](../numbers.md?show=PW#forge-plant-power) of beamed power and splitting
-[65,000 t/s](../numbers.md#forge-throughput) of CO₂. The melt is a sodium-potassium carbonate with no lithium, so nothing
+**The plants.** Each Forge is a raft [30 km](../numbers.md#forge-raft-width) across drawing about
+[0.96 PW](../numbers.md?show=PW#forge-plant-power) of beamed power and splitting
+[65,000 t/s](../numbers.md#forge-throughput) of CO₂. The melt is a sodium-potassium carbonate with no lithium, so nothing
 scarce has to be found or shipped. The cathodes grow graphite as sheets, which are peeled off and foamed into aerogel for
 the caps. The oxygen is vented to the air.
 
@@ -63,15 +63,15 @@ reduced to sulfur and do not poison the electrolysis ([Licht 2015](../sources.md
 **After the freeze.** On [14 March 2036](../numbers.md?date=day#traj-freeze) the seas start to freeze. Below the triple
 point no open liquid survives, so the Forges change feed: they quarry dry ice and turn it back to gas with their own waste
 heat. Each kilogram split leaves several megajoules of heat, many times the
-[571 kJ/kg](../numbers.md#co2-deposition-heat) it takes to turn a kilogram of dry ice into gas. The caps are complete by
+[571 kJ/kg](../numbers.md#co2-deposition-heat) it takes to turn a kilogram of dry ice into gas. The caps are complete by
 [30 June 2036](../numbers.md?date=day#sealing-end); the Forges on the last compartments become part of them, drawing dry ice
 up through shafts under gas-tight hoods, and those shafts close when forging ends.
 
-**The graphite budget.** The caps need [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of carbon aerogel and
-[3.3 × 10¹⁴ kg](../numbers.md#cryo-membrane-mass) of graphite membrane, and they need it before the Veil opens. By the end of
-sealing the Forges have made [4.2 × 10¹⁷ kg](../numbers.md#graphite-by-sealing), so the caps are covered with room to
+**The graphite budget.** The caps need [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of carbon aerogel and
+[3.3 × 10¹⁴ kg](../numbers.md#cryo-membrane-mass) of graphite membrane, and they need it before the Veil opens. By the end of
+sealing the Forges have made [4.2 × 10¹⁷ kg](../numbers.md#graphite-by-sealing), so the caps are covered with room to
 spare; the model checks it ([check](../numbers.md#check-graphite-for-caps)). In all the Forges make
-[4.9 × 10¹⁷ kg](../numbers.md#forge-graphite), leaving [1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) after the caps for
+[4.9 × 10¹⁷ kg](../numbers.md#forge-graphite), leaving [1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) after the caps for
 structures and for the black loam soil of [Genesis](genesis.md).
 
 **The oxygen sets the finish.** In the day-by-day [simulation](../plan.md#the-simulated-atmosphere) the air is warm by
@@ -85,22 +85,22 @@ beginning of a shield for the life that follows.
 <!-- table:specs forges -->
 | Parameter | Value |
 | --- | --- |
-| CO₂ split | [1.8 × 10¹⁸ kg](../numbers.md#forge-co2), [0.4%](../numbers.md#forge-co2-share) of Venus's CO₂ |
-| Oxygen | [1.3 × 10¹⁸ kg](../numbers.md#o2-mass), [0.25 bar](../numbers.md#o2-target-pressure) |
-| Graphite | [4.9 × 10¹⁷ kg](../numbers.md#forge-graphite) |
-| Energy per mole | [394 kJ/mol](../numbers.md#co2-split-enthalpy) minimum, [656 kJ/mol](../numbers.md#forge-energy-per-mol) at [60%](../numbers.md#forge-efficiency) |
-| Energy per kilogram of CO₂ | [15 MJ/kg](../numbers.md#forge-energy-per-kg) |
-| Energy | [2.7 × 10²⁵ J](../numbers.md#forge-energy), [4.8 × 10¹⁷ W](../numbers.md#forge-power) for [21 months](../numbers.md#forge-seconds) |
-| Plants | [500](../numbers.md#forge-count) at about [960 TW](../numbers.md#forge-plant-power) each |
-| Throughput per Forge | [65,000 t/s](../numbers.md#forge-throughput) of CO₂ |
-| Graphite use | [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) for caps, [1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) stockpiled |
+| CO₂ split | [1.8 × 10¹⁸ kg](../numbers.md#forge-co2), [0.4%](../numbers.md#forge-co2-share) of Venus's CO₂ |
+| Oxygen | [1.3 × 10¹⁸ kg](../numbers.md#o2-mass), [0.25 bar](../numbers.md#o2-target-pressure) |
+| Graphite | [4.9 × 10¹⁷ kg](../numbers.md#forge-graphite) |
+| Energy per mole | [394 kJ/mol](../numbers.md#co2-split-enthalpy) minimum, [656 kJ/mol](../numbers.md#forge-energy-per-mol) at [60%](../numbers.md#forge-efficiency) |
+| Energy per kilogram of CO₂ | [15 MJ/kg](../numbers.md#forge-energy-per-kg) |
+| Energy | [2.7 × 10²⁵ J](../numbers.md#forge-energy), [4.8 × 10¹⁷ W](../numbers.md#forge-power) for [21 months](../numbers.md#forge-seconds) |
+| Plants | [500](../numbers.md#forge-count) at about [960 TW](../numbers.md#forge-plant-power) each |
+| Throughput per Forge | [65,000 t/s](../numbers.md#forge-throughput) of CO₂ |
+| Graphite use | [3.0 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) for caps, [1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) stockpiled |
 | Running | [January 2035](../numbers.md?date=month#forge-start) to [September 2036](../numbers.md?date=month#forge-end) |
 <!-- /table -->
 
 ## What is invented
 
 > **Invented:** Thirty-kilometer floating electrolysis rafts, [500](../numbers.md#forge-count) of them, each drawing about
-> [0.96 PW](../numbers.md?show=PW#forge-plant-power) and splitting [65,000 t/s](../numbers.md#forge-throughput) of CO₂.
+> [0.96 PW](../numbers.md?show=PW#forge-plant-power) and splitting [65,000 t/s](../numbers.md#forge-throughput) of CO₂.
 
 > **Invented:** A lithium-free sodium-potassium carbonate melt at this scale, and graphite harvested as sheets fit to
 > foam into cap aerogel.
@@ -122,8 +122,8 @@ beginning of a shield for the life that follows.
   starts to pile up for the caps.
 - **[14 March 2036](../numbers.md?date=day#traj-freeze):** The seas freeze. The Forges switch to quarrying dry ice.
 - **[30 June 2036](../numbers.md?date=day#sealing-end):** The caps are complete, with
-  [4.2 × 10¹⁷ kg](../numbers.md#graphite-by-sealing) of graphite made so far.
-- **[30 September 2036](../numbers.md?date=day#forge-end):** Forging ends with [0.25 bar](../numbers.md#o2-target-pressure)
+  [4.2 × 10¹⁷ kg](../numbers.md#graphite-by-sealing) of graphite made so far.
+- **[30 September 2036](../numbers.md?date=day#forge-end):** Forging ends with [0.25 bar](../numbers.md#o2-target-pressure)
   of oxygen in the air. Venus is Earth-like the same day, and [Genesis](genesis.md) seeding begins.
 
 ## Failure modes and safeguards
@@ -136,7 +136,7 @@ beginning of a shield for the life that follows.
 - **Rafts caught by the freeze.** The rafts must stop floating before the seas freeze under them. They are moved onto
   their quarrying sites as the surface hardens.
 - **Carbon and oxygen together.** Graphite is fuel in an oxygen-rich air. The cap aerogel lies under
-  [2 m](../numbers.md#cryo-armour-thickness) of basalt armor, which also keeps the air off it, and the stockpile is stored the
+  [2 m](../numbers.md#cryo-armour-thickness) of basalt armor, which also keeps the air off it, and the stockpile is stored the
   same way.
 - **Sulfur.** SO₂ in the air before the [Acid Sweep](acid.md) does not poison the melt; it leaves as sulfur.
 

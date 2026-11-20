@@ -1,7 +1,7 @@
 # Choir
 
 Choir runs a trillion machines on three worlds as one system. It is a four-tier autonomous control
-system that plans around light delays of up to [33 min](../numbers.md#delay-earth-ceres-max), and its
+system that plans around light delays of up to [33 min](../numbers.md#delay-earth-ceres-max), and its
 safety core sets hard limits that no machine, and no single person, can override: a Mass Ledger, signed
 build orders, a kill code, a dead-man switch and a formally verified replication controller. It goes live
 when the seed foundry lands on Mercury on [14 January 2029](../numbers.md?date=day#foundry-landing).
@@ -15,11 +15,11 @@ when the seed foundry lands on Mercury on [14 January 2029](../numbers.md?date=d
 ### Light delay decides the architecture
 
 Signals cross the Solar System at the speed of light, and the plan spans much of the inner Solar System.
-Mercury is [2.8 min](../numbers.md#delay-mercury-venus-min) to
-[9.2 min](../numbers.md#delay-mercury-venus-max) from Venus. Venus is
-[17 min](../numbers.md#delay-venus-ceres-min) to [29 min](../numbers.md#delay-venus-ceres-max) from
-Ceres, and Earth is up to [33 min](../numbers.md#delay-earth-ceres-max) from Ceres. Even the Veil is
-[3.7 s](../numbers.md#veil-light-delay) from Venus. A question and its answer take twice as long.
+Mercury is [2.8 min](../numbers.md#delay-mercury-venus-min) to
+[9.2 min](../numbers.md#delay-mercury-venus-max) from Venus. Venus is
+[17 min](../numbers.md#delay-venus-ceres-min) to [29 min](../numbers.md#delay-venus-ceres-max) from
+Ceres, and Earth is up to [33 min](../numbers.md#delay-earth-ceres-max) from Ceres. Even the Veil is
+[3.7 s](../numbers.md#veil-light-delay) from Venus. A question and its answer take twice as long.
 
 Nobody on Earth can steer a coilgun on Ceres, a sled on the Ring or a slat on the Veil as it happens. So
 each decision is made at the lowest level that can see enough to make it and act fast enough to matter.
@@ -44,7 +44,7 @@ inside its last limits.
 ### Limits that are not up for negotiation
 
 A self-copying industry is the most powerful machine in the plan and the most dangerous. Ouroboros grows
-from [1,000 t](../numbers.md#foundry-seed-mass) to [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) in
+from [1,000 t](../numbers.md#foundry-seed-mass) to [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) in
 [27](../numbers.md#foundry-doublings) doublings, and one unplanned doubling more would double everything.
 So the rules about replication are not left to software that learns or plans. They live in a safety core
 that every replicating machine carries, enforced in hardware and proved by mathematics.
@@ -55,7 +55,7 @@ that every replicating machine carries, enforced in hardware and proved by mathe
 
 The Ledger is an append-only record of every kilogram mined, built, shipped and recycled, copied at every
 site. Each entry carries a digest of the entry before it, so history cannot be edited without breaking
-the chain. The Council sets mass budgets, [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) for the
+the chain. The Council sets mass budgets, [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) for the
 Foundry over the whole campaign, and a machine refuses any order that would take its site past its
 budget.
 
@@ -75,9 +75,9 @@ the Exhaust keep running.
 
 ### The dead-man switch
 
-Every replicator needs a heartbeat from the Ledger. After [7 d](../numbers.md#choir-deadman-days)
+Every replicator needs a heartbeat from the Ledger. After [7 d](../numbers.md#choir-deadman-days)
 without one it stops building. That is longer than any light delay or routine outage, and a small
-fraction of one [60 d](../numbers.md#foundry-doubling-days) doubling, so a site that is cut off cannot
+fraction of one [60 d](../numbers.md#foundry-doubling-days) doubling, so a site that is cut off cannot
 grow far.
 
 ### The verified replication controller
@@ -99,12 +99,12 @@ and crawlers before conditions change rather than after.
 - **On Mercury:** the [Ouroboros Foundry](ouroboros.md)'s twelve machine types and the
   [Helios Lattice](helios.md)'s Petals. A beam fires only while its receiver answers with a live, signed
   handshake, and defocuses the moment the handshake drops.
-- **Near Venus:** the [Hesperus Veil](veil.md)'s [3.8 × 10⁸](../numbers.md#veil-slats) slats, each holding
+- **Near Venus:** the [Hesperus Veil](veil.md)'s [3.8 × 10⁸](../numbers.md#veil-slats) slats, each holding
   station by itself, and the [Braking Ring](ring.md)'s catches.
-- **Between Ceres and Venus:** a Brick is in flight for [1.15 yr](../numbers.md#ice-transfer-years), so
+- **Between Ceres and Venus:** a Brick is in flight for [1.15 yr](../numbers.md#ice-transfer-years), so
   every catch is scheduled when it is launched. Eastbound and westbound catches must balance, so a
   Railhead that stops on Ceres is matched by a change of plan at the Ring, across up to
-  [29 min](../numbers.md#delay-venus-ceres-max) of delay.
+  [29 min](../numbers.md#delay-venus-ceres-max) of delay.
 - **On Venus:** chimneys, canopies, crawler-rafts, Forges, rock mills and, at the end, the seeding drones
   of [Genesis](genesis.md).
 
@@ -113,8 +113,8 @@ and crawlers before conditions change rather than after.
 <!-- table:specs choir -->
 | Parameter | Value |
 | --- | --- |
-| Light delay | Mercury to Venus [2.8 min](../numbers.md#delay-mercury-venus-min) to [9.2 min](../numbers.md#delay-mercury-venus-max); Venus to Ceres [17 min](../numbers.md#delay-venus-ceres-min) to [29 min](../numbers.md#delay-venus-ceres-max); Earth to Ceres up to [33 min](../numbers.md#delay-earth-ceres-max) |
-| Veil to Venus | [3.7 s](../numbers.md#veil-light-delay) |
+| Light delay | Mercury to Venus [2.8 min](../numbers.md#delay-mercury-venus-min) to [9.2 min](../numbers.md#delay-mercury-venus-max); Venus to Ceres [17 min](../numbers.md#delay-venus-ceres-min) to [29 min](../numbers.md#delay-venus-ceres-max); Earth to Ceres up to [33 min](../numbers.md#delay-earth-ceres-max) |
+| Veil to Venus | [3.7 s](../numbers.md#veil-light-delay) |
 <!-- /table -->
 
 ## What is invented
@@ -155,7 +155,7 @@ and crawlers before conditions change rather than after.
 - **Runaway replication.** The Ledger's budgets, signed build orders and the kill code, each enough alone
   to stop it ([Risks and Governance](../risks.md)).
 - **A site goes dark.** It keeps working inside its last limits, and its replicators stop after
-  [7 d](../numbers.md#choir-deadman-days) without a heartbeat.
+  [7 d](../numbers.md#choir-deadman-days) without a heartbeat.
 - **Copying errors.** Blueprints are checksummed every generation; a machine built from a corrupted
   blueprint fails its first signature check.
 - **A stolen key.** One key is never enough. Signatures need several, the kill code needs seven of ten,

@@ -42,14 +42,14 @@ The critical path runs through the Foundry. The seed must launch by
 [21 October 2035](numbers.md?date=day#ice-launch-end) cannot arrive before the deadline, so any slip in the
 doubling time comes straight out of the water.
 
-Link by link: the seed spends [105 d](numbers.md#foundry-transfer-days) in transit and lands on
+Link by link: the seed spends [105 d](numbers.md#foundry-transfer-days) in transit and lands on
 [14 January 2029](numbers.md?date=day#foundry-landing). It needs [27](numbers.md#foundry-doublings) doublings
-of [60 d](numbers.md#foundry-doubling-days) to reach full scale. The day it does, the Lattice reaches full
+of [60 d](numbers.md#foundry-doubling-days) to reach full scale. The day it does, the Lattice reaches full
 power and the first Bricks leave Ceres, because only then is there power to throw them. At the other end,
-a Brick takes [1.15 yr](numbers.md#ice-transfer-years) to fall to Venus, and the last one must arrive by
-[15 December 2036](numbers.md?date=day#last-arrival), [16 d](numbers.md#ice-lowering-margin) before the
+a Brick takes [1.15 yr](numbers.md#ice-transfer-years) to fall to Venus, and the last one must arrive by
+[15 December 2036](numbers.md?date=day#last-arrival), [16 d](numbers.md#ice-lowering-margin) before the
 deadline. That fixes the last launch. The ice campaign is whatever time is left between the two, and the
-Railheads must throw [1.0 × 10²⁰ kg](numbers.md#ice-mass) in it.
+Railheads must throw [1.0 × 10²⁰ kg](numbers.md#ice-mass) in it.
 
 Two other links are close behind. The Veil must close before active cooling starts on
 [1 January 2033](numbers.md?date=day#cooling-start): the Foundry could build it in one doubling from
@@ -83,11 +83,11 @@ governs this phase is the Foundry's growth curve and the dates on which it can a
 Active cooling runs from [1 January 2033](numbers.md?date=day#cooling-start) to
 [30 June 2036](numbers.md?date=day#cooling-end), and here the day-by-day
 [simulation](plan.md#the-simulated-atmosphere) takes over. Until the Ring takes over the Railheads, they
-draw [5.6 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [7.0 × 10¹⁹ W](numbers.md#helios-power),
+draw [5.6 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [7.0 × 10¹⁹ W](numbers.md#helios-power),
 and cooling is starved of power. Even so, the Clear Rain begins on
 [19 January 2034](numbers.md?date=day#traj-clear-rain). From
 [17 August 2034](numbers.md?date=day#ring-pays-from) power is plentiful and the Exhaust runs at its limit,
-[5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The seas start to freeze on
+[5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The seas start to freeze on
 [14 March 2036](numbers.md?date=day#traj-freeze), all the CO₂ is down by
 [20 April 2036](numbers.md?date=day#traj-cold), the Frost Towers reach their target on
 [9 May 2036](numbers.md?date=day#traj-scavenged), and the last caps are sealed by
@@ -108,10 +108,10 @@ and the air is warmed. How that ice gets down at all is still [open](risks.md#th
 The Forges run from [1 January 2035](numbers.md?date=day#forge-start) to
 [30 September 2036](numbers.md?date=day#forge-end), and the Aegis Shield has been on since
 [15 June 2034](numbers.md?date=day#aegis-online). Once the caps are sealed the Veil opens and the simulated
-air warms to [285 K](numbers.md#earth-like-temp) by [4 July 2036](numbers.md?date=day#traj-warm). It is
+air warms to [285 K](numbers.md#earth-like-temp) by [4 July 2036](numbers.md?date=day#traj-warm). It is
 Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like), the day the oxygen is complete, and
 Genesis seeding runs from then to [15 December 2036](numbers.md?date=day#genesis-end). That leaves
-[92 d](numbers.md#traj-slack-days) before the deadline.
+[92 d](numbers.md#traj-slack-days) before the deadline.
 
 ## What slips if the Foundry is slow
 
@@ -121,10 +121,10 @@ launch back by [27](numbers.md#foundry-doublings) days. A late seed launch does 
 does not move is the deadline, and with it the last useful ice launch. The slip lands in three places.
 
 - **The water.** The ice campaign shrinks from the front, so the Railheads must throw faster to deliver
-  the same [1.0 × 10²⁰ kg](numbers.md#ice-mass), or the ocean comes out shallower.
+  the same [1.0 × 10²⁰ kg](numbers.md#ice-mass), or the ocean comes out shallower.
 - **The energy.** The Lattice has fewer full-power years before the deadline. With only
   [1.7%](numbers.md#budget-spare) spare on its own, a doubling time only a little longer than
-  [60 d](numbers.md#foundry-doubling-days) uses that up: the Lattice alone no longer covers the demand,
+  [60 d](numbers.md#foundry-doubling-days) uses that up: the Lattice alone no longer covers the demand,
   and the plan then depends on the Ring's recovered energy, which still leaves a margin.
 - **The schedule.** The simulated Earth-like date at first holds, because it is set by when the Forges
   finish. A much slower Foundry cannot afford the Veil by its close date, and the simulated air misses the

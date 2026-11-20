@@ -27,16 +27,16 @@ clouds since 1985. It will measure the deep air's composition, its noble gases a
 ocean. For Phosphoros that is the ground truth under three technologies. The
 [Photonic Exhaust](technologies/exhaust.md) and its chimneys work on that deep air. The
 [Cryo-continents](technologies/cryo.md) must hold all of its CO₂. The [Acid Sweep](technologies/acid.md)
-is sized from its sulfur, [150 ppm](numbers.md?show=ppm#venus-so2-fraction) of SO₂. Above all, the plan's
+is sized from its sulfur, [150 ppm](numbers.md?show=ppm#venus-so2-fraction) of SO₂. Above all, the plan's
 finish line assumes Venus's nitrogen, [3.5%](numbers.md#venus-n2-fraction) of the air, becomes
-[2.1 bar](numbers.md#n2-pressure) of breathable atmosphere. DAVINCI will check that number directly.
+[2.1 bar](numbers.md#n2-pressure) of breathable atmosphere. DAVINCI will check that number directly.
 
 ### VERITAS
 
 NASA's orbiter reaches Venus in mid-2033 and maps the whole surface in three dimensions, with its
 composition. It tells the plan where the lowland basins are that the Clear Rain will fill, and something of
-how hot the rock under them runs. The cryo-continent floors leak [12 PW](numbers.md#cryo-floor-load) at
-first, an estimate that rests on basalt conducting [2.5 W/(m·K)](numbers.md#rock-conductivity), the top
+how hot the rock under them runs. The cryo-continent floors leak [12 PW](numbers.md#cryo-floor-load) at
+first, an estimate that rests on basalt conducting [2.5 W/(m·K)](numbers.md#rock-conductivity), the top
 of the measured range ([Robertson 1988](sources.md#basalt-thermal)). A recent study already finds
 Earth-like heat flow in places on Venus, consistent with active rifting
 ([Smrekar 2023](sources.md#smrekar-2023-heatflow)).

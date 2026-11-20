@@ -61,23 +61,23 @@ These are the places where the plan is weakest, or least sure of itself. Each is
 
 1. **Lowering the ice.** The [Braking Ring](technologies/ring.md) catches the ice, but lowering it on tethers
    needs [150](numbers.md#lowering-overload) times the lift its rotor has to spare. A solution must bring
-   [1.0 × 10²⁰ kg](numbers.md#ice-mass) to the surface by the deadline without exceeding the Ring's lift, or
-   show how the cooling absorbs the [2.5 × 10²⁶ J](numbers.md#ring-drop-extra-heat) of extra heat if the
+   [1.0 × 10²⁰ kg](numbers.md#ice-mass) to the surface by the deadline without exceeding the Ring's lift, or
+   show how the cooling absorbs the [2.5 × 10²⁶ J](numbers.md#ring-drop-extra-heat) of extra heat if the
    Bricks are simply dropped. The options so far are on [Risks](risks.md#the-ring-cannot-yet-lower-the-ice).
 2. **How much water Ceres has.** The model takes Ceres to be [27%](numbers.md#ceres-water-fraction) water by
    mass, the top of a range estimated before the Dawn mission
    ([McCord and Sotin 2005](sources.md#ceres-water)). Post-Dawn interior models are the next source to
    check. The answer sets how much of Ceres's water the plan uses, now
    [39%](numbers.md#ice-ceres-water-share).
-3. **Basalt's thermal conductivity.** The model uses [2.5 W/(m·K)](numbers.md#rock-conductivity), the upper
+3. **Basalt's thermal conductivity.** The model uses [2.5 W/(m·K)](numbers.md#rock-conductivity), the upper
    of two published values for dense basalt ([Robertson 1988](sources.md#basalt-thermal)). It sets the heat
-   the crust feeds into the air during cooling and the [12 PW](numbers.md#cryo-floor-load) the
+   the crust feeds into the air during cooling and the [12 PW](numbers.md#cryo-floor-load) the
    cryo-continent floors must shed at first. A better value, and how it changes at Venus's surface
    temperature, would tighten both.
 4. **Electroluminescent cooling at high power.** An LED has emitted more light than the electricity it drew
    ([Santhanam 2012](sources.md#santhanam-2012)), and thermophotonic transfer has been measured in
    laboratory structures ([Casado 2019](sources.md#casado-2019)), but only at tiny powers. The plan needs
-   [0.91 MW/m²](numbers.md#exhaust-flux), and the model charges the pump work at the Carnot minimum. What
+   [0.91 MW/m²](numbers.md#exhaust-flux), and the model charges the pump work at the Carnot minimum. What
    limits a real tile, and how close to Carnot it can get, are the most important open numbers in the plan.
    A physics argument that it cannot work would be just as valuable.
 5. **How sensitive the cloud-life survey can be.** The gate falls on

@@ -1,18 +1,18 @@
 # Acid Sweep
 
 Venus's clouds are sulfuric acid, and its lower air holds
-[150 ppm](../numbers.md?show=ppm#venus-so2-fraction) of sulfur dioxide:
-[1.1 × 10¹⁷ kg](../numbers.md#venus-so2-mass) of it. Cooling makes the sulfur rain out. The Acid Sweep
-meets it with [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of crushed basalt, carrying
-[9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of lime, so the oceans fill with fresh water rather than acid. It
+[150 ppm](../numbers.md?show=ppm#venus-so2-fraction) of sulfur dioxide:
+[1.1 × 10¹⁷ kg](../numbers.md#venus-so2-mass) of it. Cooling makes the sulfur rain out. The Acid Sweep
+meets it with [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of crushed basalt, carrying
+[9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of lime, so the oceans fill with fresh water rather than acid. It
 needs no breakthrough, only scale.
 
 ## Principle
 
 ### Where the sulfur is
 
-The cloud deck runs from [48 km](../numbers.md?sig=2#venus-cloud-base) to
-[70 km](../numbers.md?sig=2#venus-cloud-top) up. Its droplets are sulfuric acid, and they last because
+The cloud deck runs from [48 km](../numbers.md?sig=2#venus-cloud-base) to
+[70 km](../numbers.md?sig=2#venus-cloud-top) up. Its droplets are sulfuric acid, and they last because
 of a cycle: droplets that fall below the cloud base meet air hot enough to evaporate them and break the
 acid back into sulfur gases and water vapour, which rise and condense again. The clouds hold only a small
 part of the sulfur. Most of it is SO₂ gas mixed through the lower air.
@@ -33,8 +33,8 @@ anhydrite where it is dry. SO₂ first makes calcium sulfite, which turns to sul
 [Graphite Forges](forges.md) put oxygen into the air. Venus's traces of hydrogen chloride and hydrogen
 fluoride end as salts in the same way.
 
-Neutralizing all [1.7 × 10¹⁸ mol](../numbers.md#so2-moles) of SO₂ takes
-[9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of lime, carried in [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of
+Neutralizing all [1.7 × 10¹⁸ mol](../numbers.md#so2-moles) of SO₂ takes
+[9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of lime, carried in [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of
 basalt. The model sizes the basalt to take up every molecule: an upper bound. Sulfur frozen into the
 cryo-continents is sealed under the same caps as the CO₂ instead.
 
@@ -45,8 +45,8 @@ cryo-continents is sealed under the same caps as the CO₂ instead.
 
 ### Rock mills
 
-Mills in the highlands grind [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of basalt to dust. Spread over the
-basins, that is a layer [2.1 m](../numbers.md#acid-basalt-layer) deep, and it uses
+Mills in the highlands grind [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of basalt to dust. Spread over the
+basins, that is a layer [2.1 m](../numbers.md#acid-basalt-layer) deep, and it uses
 [0.07%](../numbers.md#acid-crust-share) of the top kilometre of Venus's crust. Grinding matters as much as
 mass: a reaction between a gas or a liquid and a solid runs at the solid's surface, and dust has vastly
 more surface than bedrock.
@@ -62,7 +62,7 @@ sulfur-laden liquid CO₂ then land on fresh lime rather than bare rock.
 When the ice melts and the oceans form, after the caps are sealed and the Veil opens on
 [30 June 2036](../numbers.md?date=day#traj-warming), crushed basalt on the shores and the sea floor keeps
 the water slightly alkaline: above pH [7.5](../numbers.md#genesis-ph-min), which [Genesis](genesis.md)
-needs to hold for [90 d](../numbers.md#genesis-ph-days) before any life is released.
+needs to hold for [90 d](../numbers.md#genesis-ph-days) before any life is released.
 
 ### What is not yet known
 
@@ -76,16 +76,16 @@ the oceans melt, where the same reaction is fast.
 <!-- table:specs acid -->
 | Parameter | Value |
 | --- | --- |
-| SO₂ | [150 ppm](../numbers.md?show=ppm#venus-so2-fraction), [1.1 × 10¹⁷ kg](../numbers.md#venus-so2-mass) |
-| Neutralizer | [9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of CaO, in [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of crushed basalt |
-| Basalt layer | [2.1 m](../numbers.md#acid-basalt-layer) over the basins, [0.07%](../numbers.md#acid-crust-share) of the crust available |
+| SO₂ | [150 ppm](../numbers.md?show=ppm#venus-so2-fraction), [1.1 × 10¹⁷ kg](../numbers.md#venus-so2-mass) |
+| Neutralizer | [9.3 × 10¹⁶ kg](../numbers.md#acid-cao) of CaO, in [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of crushed basalt |
+| Basalt layer | [2.1 m](../numbers.md#acid-basalt-layer) over the basins, [0.07%](../numbers.md#acid-crust-share) of the crust available |
 | Product | Gypsum and anhydrite, with traces of chloride and fluoride salts |
 <!-- /table -->
 
 ## What is invented
 
 > **Invented:** Nothing new in kind. The invention is scale: grinding and spreading
-> [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of rock across a planet before the Clear Rain.
+> [9 × 10¹⁷ kg](../numbers.md#acid-basalt) of rock across a planet before the Clear Rain.
 
 > **Precedent:** Calcium and magnesium minerals in Venus's crust already react with its acid gases;
 > Bullock and Grinspoon modeled these surface reactions as part of Venus's climate
@@ -107,10 +107,10 @@ the oceans melt, where the same reaction is fast.
 ## Failure modes and safeguards
 
 - **The oceans turn acid.** The pH gate holds back every organism until the water has stayed above pH
-  [7.5](../numbers.md#genesis-ph-min) for [90 d](../numbers.md#genesis-ph-days). The fix is more basalt;
+  [7.5](../numbers.md#genesis-ph-min) for [90 d](../numbers.md#genesis-ph-days). The fix is more basalt;
   the crust has plenty.
 - **A cryo-continent cell breaks open.** It releases at most
-  [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2) of CO₂ and the sulfur frozen with it. Shore basalt and the
+  [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2) of CO₂ and the sulfur frozen with it. Shore basalt and the
   oceans take up the sulfur while the cell is resealed.
 - **The cold reaction is slow.** Covered above: unreacted sulfur is sealed with the CO₂ or reacts in warm
   water later.

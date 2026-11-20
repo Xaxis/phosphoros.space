@@ -18,6 +18,13 @@ const SUP: Record<string, string> = {
   "9": "⁹",
 };
 
+/**
+ * The space inside a number and between a number and its unit: U+00A0, no-break space, so a line
+ * never breaks inside "5.3 × 10²⁶ J" or "60 d". Not U+202F (the narrow SI space): every face has
+ * U+00A0 at the width of an ordinary space, so text set before keeps its spacing and its layout.
+ */
+const NBSP = "\u00a0";
+
 /** Display names for units: SI strings in data/ become typographic ones. */
 const UNIT_TEXT: Record<string, string> = {
   "N/A2": "N/A²",
@@ -121,7 +128,7 @@ export function formatNumber(x: number, sig = 2): string {
     const ms = m.toFixed(Math.max(0, sig - 1));
     if (ms === "1") return `10${superscript(e)}`;
     if (ms === "-1") return `−10${superscript(e)}`;
-    return `${ms.replace("-", "−")} × 10${superscript(e)}`;
+    return `${ms.replace("-", "−")}${NBSP}×${NBSP}10${superscript(e)}`;
   }
   const decimals = Math.max(0, sig - 1 - Math.floor(Math.log10(a)));
   const s = r.toLocaleString("en-US", {
@@ -167,5 +174,6 @@ export function formatQuantity(
   const u = unitText(show);
   if (!u) return n;
   if (u === "%" || u === "°") return `${n}${u}`;
-  return `${n} ${u}`;
+  // A unit with spaces in it ("W m⁻² K⁻⁴") holds together too.
+  return `${n}${NBSP}${u.replaceAll(" ", NBSP)}`;
 }

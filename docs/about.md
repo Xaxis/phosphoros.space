@@ -89,21 +89,21 @@ that do not: some version 3 changed on purpose, and the rest differ for reasons 
 <!-- table:claims -->
 | Number | Version 2 | Model | Why |
 | --- | --- | --- | --- |
-| Heat in the top kilometre of crust, cooled by 400 K | 5.5 × 10²⁶ J | [4.6 × 10²⁶ J](numbers.md#crust-heat-per-km) | The brief's figure uses a rock heat capacity of 1,000 J/(kg·K). Its own rock constants (k 2.5, κ 10⁻⁶, ρ 3,000) imply 833, which gives 4.6 × 10²⁶ J. The model keeps the constants and derives the heat capacity. |
-| Heat conduction can pull from the crust in a 4-year campaign | 7.0 × 10²⁴ J | [5.8 × 10²⁴ J](numbers.md#crust-skin-heat) | Same cause: with the brief's own rock constants conduction pulls 5.8 × 10²⁴ J, not 7 × 10²⁴ J. Either way it is about 1% of the atmosphere's heat. |
-| Share of Mercury's mass the Foundry uses | 3 × 10⁻¹⁰ | [4 × 10⁻¹⁰](numbers.md#foundry-mercury-share) | The brief divides 10¹⁴ kg by Mercury's mass; at the full 1.34 × 10¹⁴ kg it is 4 × 10⁻¹⁰. |
-| Foundry power at full scale | 1.3 × 10¹⁵ W | [1.8 × 10¹⁵ W](numbers.md#foundry-peak-power) | The brief multiplies 13 W/kg by 10¹⁴ kg. At the full 1.34 × 10¹⁴ kg the Foundry draws 1.8 × 10¹⁵ W. |
-| Veil station, sunward of Venus | 137,000 km | [1.11 × 10⁶ km](numbers.md#veil-distance) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Veil area | 1.5 × 10¹⁴ m² | [5.4 × 10¹⁴ m²](numbers.md#veil-area) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Veil mass | 1.5 × 10¹¹ kg | [5.4 × 10¹¹ kg](numbers.md#veil-mass) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Number of slats | 1.0 × 10⁸ | [3.8 × 10⁸](numbers.md#veil-slats) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
+| Heat in the top kilometre of crust, cooled by 400 K | 5.5 × 10²⁶ J | [4.6 × 10²⁶ J](numbers.md#crust-heat-per-km) | The brief's figure uses a rock heat capacity of 1,000 J/(kg·K). Its own rock constants (k 2.5, κ 10⁻⁶, ρ 3,000) imply 833, which gives 4.6 × 10²⁶ J. The model keeps the constants and derives the heat capacity. |
+| Heat conduction can pull from the crust in a 4-year campaign | 7.0 × 10²⁴ J | [5.8 × 10²⁴ J](numbers.md#crust-skin-heat) | Same cause: with the brief's own rock constants conduction pulls 5.8 × 10²⁴ J, not 7 × 10²⁴ J. Either way it is about 1% of the atmosphere's heat. |
+| Share of Mercury's mass the Foundry uses | 3 × 10⁻¹⁰ | [4 × 10⁻¹⁰](numbers.md#foundry-mercury-share) | The brief divides 10¹⁴ kg by Mercury's mass; at the full 1.34 × 10¹⁴ kg it is 4 × 10⁻¹⁰. |
+| Foundry power at full scale | 1.3 × 10¹⁵ W | [1.8 × 10¹⁵ W](numbers.md#foundry-peak-power) | The brief multiplies 13 W/kg by 10¹⁴ kg. At the full 1.34 × 10¹⁴ kg the Foundry draws 1.8 × 10¹⁵ W. |
+| Veil station, sunward of Venus | 137,000 km | [1.11 × 10⁶ km](numbers.md#veil-distance) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
+| Veil area | 1.5 × 10¹⁴ m² | [5.4 × 10¹⁴ m²](numbers.md#veil-area) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
+| Veil mass | 1.5 × 10¹¹ kg | [5.4 × 10¹¹ kg](numbers.md#veil-mass) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
+| Number of slats | 1.0 × 10⁸ | [3.8 × 10⁸](numbers.md#veil-slats) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
 | Veil closes over Venus | 31 December 2031 | [30 June 2032](numbers.md?date=day#veil-close) | Corrected in version 3 ([veil-l1](about.md#corrections)) |
-| Peak power the Exhaust can throw into space | 3.6 × 10¹⁹ W | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
-| Emitter area installed (sized for the peak) | 4.0 × 10¹³ m² | [5.5 × 10¹³ m²](numbers.md#exhaust-area-installed) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Peak power the Exhaust can throw into space | 3.6 × 10¹⁹ W | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Emitter area installed (sized for the peak) | 4.0 × 10¹³ m² | [5.5 × 10¹³ m²](numbers.md#exhaust-area-installed) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
 | Installed emitter area as a share of Venus | 9% | [12%](numbers.md#exhaust-area-share) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
 | Lattice share to pump the floor heat away at first (worst case, from 200 K) | 1% | [0.2%](numbers.md#cryo-refrigeration-share) | The brief budgets about 1% of the Lattice to refrigerate the basin floors. Pumping the first 12 PW from 200 K to an effective 2,000 K takes 0.2%, and far less once the rock cools; 1% is a generous allowance. |
-| Power of one Forge | 1 TW | [960 TW](numbers.md#forge-plant-power) | The brief lists 500 plants of about 1 TW, but 4.9 × 10¹⁷ W shared by 500 Forges is about 1 PW (10¹⁵ W) each, a thousand times more. The total is right; the per-plant figure was a unit slip. |
-| Heat-pump work to cool Venus, day by day, Frost Towers included | 2.8 × 10²⁷ J | [3.5 × 10²⁷ J](numbers.md#traj-pump-energy) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
+| Power of one Forge | 1 TW | [960 TW](numbers.md#forge-plant-power) | The brief lists 500 plants of about 1 TW, but 4.9 × 10¹⁷ W shared by 500 Forges is about 1 PW (10¹⁵ W) each, a thousand times more. The total is right; the per-plant figure was a unit slip. |
+| Heat-pump work to cool Venus, day by day, Frost Towers included | 2.8 × 10²⁷ J | [3.5 × 10²⁷ J](numbers.md#traj-pump-energy) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
 | Spare supply, before counting the Ring's recovered energy | 9% | [1.7%](numbers.md#budget-spare) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
 | Share of the Lattice's output that water and cooling take | 90% | [98%](numbers.md#budget-launch-share) | Corrected in version 3 ([exhaust-capacity](about.md#corrections)) |
 <!-- /table -->

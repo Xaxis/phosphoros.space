@@ -133,12 +133,18 @@ test("provenance is recorded automatically", () => {
 });
 
 test("numbers are written the way people read them", () => {
-  assert.equal(formatNumber(5.28e26, 2), "5.3 × 10²⁶");
+  // A number never breaks across lines: no-break spaces inside it and before its unit.
+  assert.equal(formatNumber(5.28e26, 2), "5.3\u00a0×\u00a010²⁶");
   assert.equal(formatNumber(1e22, 1), "10²²");
   assert.equal(formatNumber(137_000, 3), "137,000");
   assert.equal(formatNumber(0.0173, 3), "0.0173");
-  assert.equal(formatNumber(9.96e25, 2), "1.0 × 10²⁶");
-  assert.equal(formatQuantity({ value: 9.2e6, unit: "Pa", show: "bar" }), "92 bar");
+  assert.equal(formatNumber(9.96e25, 2), "1.0\u00a0×\u00a010²⁶");
+  assert.equal(formatQuantity({ value: 9.2e6, unit: "Pa", show: "bar" }), "92\u00a0bar");
+  assert.equal(formatQuantity({ value: 5.3e27, unit: "J" }), "5.3\u00a0×\u00a010²⁷\u00a0J");
+  assert.equal(
+    formatQuantity({ value: 5.67e-8, unit: "W m-2 K-4" }),
+    "5.7\u00a0×\u00a010⁻⁸\u00a0W\u00a0m⁻²\u00a0K⁻⁴",
+  );
   assert.equal(formatQuantity({ value: 0.999, unit: "1", show: "%", sig: 3 }), "99.9%");
   assert.equal(formatQuantity({ value: dayOf("2033-06-22"), unit: "date" }), "June 2033");
 });

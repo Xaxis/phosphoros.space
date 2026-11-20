@@ -14,16 +14,16 @@ and cap graphite into soil. Trees, crops and animals come later, after 2040.
 ### The world they are seeded into
 
 The day-by-day [simulation](../plan.md#the-simulated-atmosphere) reaches Earth-like air on
-[30 September 2036](../numbers.md?date=day#traj-earth-like): [2.4 bar](../numbers.md#final-pressure) in
-all, of which [2.1 bar](../numbers.md#n2-pressure) is nitrogen and
-[0.25 bar](../numbers.md#o2-target-pressure) oxygen, with [310 ppm](../numbers.md#final-co2-ppm) of CO₂, at
-Earth's mean [288 K](../numbers.md#earth-surface-temp). Oxygen is only
+[30 September 2036](../numbers.md?date=day#traj-earth-like): [2.4 bar](../numbers.md#final-pressure) in
+all, of which [2.1 bar](../numbers.md#n2-pressure) is nitrogen and
+[0.25 bar](../numbers.md#o2-target-pressure) oxygen, with [310 ppm](../numbers.md#final-co2-ppm) of CO₂, at
+Earth's mean [288 K](../numbers.md#earth-surface-temp). Oxygen is only
 [11%](../numbers.md#final-o2-share) of that air, but its pressure is [1.2](../numbers.md#o2-vs-earth)
 times Earth's sea-level oxygen, and pressure is what cells feel.
 
-The oceans average [217 m](../numbers.md#ocean-depth) deep. They are melted ice, fresh to brackish, with
+The oceans average [217 m](../numbers.md#ocean-depth) deep. They are melted ice, fresh to brackish, with
 sulfate from the [Acid Sweep](acid.md) and little dissolved carbon. The Veil and its Lanterns give a
-[24 h](../numbers.md#day-length) day, opening to [52%](../numbers.md#veil-day-transmission) for
+[24 h](../numbers.md#day-length) day, opening to [52%](../numbers.md#veil-day-transmission) for
 Earth-strength light. Sunlight is turning the new oxygen into ozone, but the layer is young and thin. The
 land is bare basalt and the graphite caps of the [cryo-continents](cryo.md).
 
@@ -69,17 +69,17 @@ is thin. The soil consortium weathers basalt to free phosphorus and potassium an
 ### Black loam
 
 Shores and caps get a starter soil, "black loam": crushed basalt, graphite from the
-[Graphite Forges](forges.md) and a microbial starter, laid [10 cm](../numbers.md#genesis-soil-min) to
-[30 cm](../numbers.md#genesis-soil-max) deep. The Forges leave
-[1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) of graphite beyond what the caps need.
+[Graphite Forges](forges.md) and a microbial starter, laid [10 cm](../numbers.md#genesis-soil-min) to
+[30 cm](../numbers.md#genesis-soil-max) deep. The Forges leave
+[1.9 × 10¹⁷ kg](../numbers.md#graphite-stockpile) of graphite beyond what the caps need.
 
 ### The release gate
 
 No organism is released until three things are true:
 
 1. The oceans have held a pH above [7.5](../numbers.md#genesis-ph-min) for
-   [90 d](../numbers.md#genesis-ph-days), the [Acid Sweep](acid.md)'s job.
-2. The oxygen is in: [0.25 bar](../numbers.md#o2-target-pressure), when the Forges finish.
+   [90 d](../numbers.md#genesis-ph-days), the [Acid Sweep](acid.md)'s job.
+2. The oxygen is in: [0.25 bar](../numbers.md#o2-target-pressure), when the Forges finish.
 3. Ozone is detectable.
 
 The ice melts when the caps are sealed and the Veil opens, on
@@ -91,7 +91,7 @@ before its own oxygen condition could be met. Version 3 waits for the gate
 ### Seeding
 
 Drones spray cyanobacteria and nitrogen fixers over sunlit water. Doubling every
-[1 d](../numbers.md#genesis-doubling-days), they green it within weeks. Crews of machines lay black loam
+[1 d](../numbers.md#genesis-doubling-days), they green it within weeks. Crews of machines lay black loam
 on shores and caps and sow lichens, mosses and the soil consortium. Orbiters watch chlorophyll and oxygen
 across the planet, and the Choir's digital twin of Venus forecasts where each population will take hold
 and where it is failing. Seeding is complete by [15 December 2036](../numbers.md?date=day#genesis-end).
@@ -101,19 +101,19 @@ and where it is failing. Seeding is complete by [15 December 2036](../numbers.md
 <!-- table:specs genesis -->
 | Parameter | Value |
 | --- | --- |
-| Air | [2.4 bar](../numbers.md#final-pressure): [2.1 bar](../numbers.md#n2-pressure) nitrogen, [0.25 bar](../numbers.md#o2-target-pressure) oxygen, [310 ppm](../numbers.md#final-co2-ppm) CO₂ |
-| Oceans | [217 m](../numbers.md#ocean-depth) deep on average, fresh to brackish and sulfate-rich |
-| Light | [24 h](../numbers.md#day-length) days at Earth strength |
+| Air | [2.4 bar](../numbers.md#final-pressure): [2.1 bar](../numbers.md#n2-pressure) nitrogen, [0.25 bar](../numbers.md#o2-target-pressure) oxygen, [310 ppm](../numbers.md#final-co2-ppm) CO₂ |
+| Oceans | [217 m](../numbers.md#ocean-depth) deep on average, fresh to brackish and sulfate-rich |
+| Light | [24 h](../numbers.md#day-length) days at Earth strength |
 | Seeding | [30 September 2036](../numbers.md?date=day#forge-end) to [15 December 2036](../numbers.md?date=day#genesis-end) |
 <!-- /table -->
 
 ## What is invented
 
 > **Invented:** Organisms engineered for cold, fresh, sulfate-rich water under
-> [2.4 bar](../numbers.md#final-pressure) of nitrogen-rich air. Their starting points are real Earth
+> [2.4 bar](../numbers.md#final-pressure) of nitrogen-rich air. Their starting points are real Earth
 > species; the engineered traits are not yet made.
 
-> **Invented:** Cyanobacteria that keep doubling every [1 d](../numbers.md#genesis-doubling-days) in that
+> **Invented:** Cyanobacteria that keep doubling every [1 d](../numbers.md#genesis-doubling-days) in that
 > water, as the fastest strains do in culture.
 
 > **Precedent:** Sagan proposed seeding Venus's clouds with algae to turn its CO₂ into oxygen
@@ -139,7 +139,7 @@ and where it is failing. Seeding is complete by [15 December 2036](../numbers.md
 - **A strain fails to take hold.** Each group is seeded from a library of alternative strains, and the
   orbital watch shows within weeks where a population is failing.
 - **The oceans turn acid.** Seeding waits until the pH has held for the full
-  [90 d](../numbers.md#genesis-ph-days).
+  [90 d](../numbers.md#genesis-ph-days).
 - **The oxygen is late.** Seeding waits for the Forges. The simulated Earth-like date slips with them, and
   so does everything that depends on it.
 - **Ultraviolet before the ozone thickens.** UV-tolerant lichens and mosses go onto land first; ocean life
