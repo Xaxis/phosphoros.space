@@ -131,6 +131,19 @@ export function outcome(r: Registry) {
   }
 
   r.q(
+    "cryo-cell-release-ppm",
+    {
+      label: "CO₂ one torn cell could add to the 2036 air, at most",
+      unit: "1",
+      show: "ppm",
+      sig: 2,
+      formula: "m_cell g / A_V / P_final",
+      basis: "physics",
+      note: "By volume, like the air's CO₂: the cell's whole content, if it were never resealed.",
+    },
+    () => (v("cryo-cell-co2") * v("venus-gravity")) / v("venus-area") / v("final-pressure"),
+  );
+  r.q(
     "helios-handshake-delay",
     {
       label: "Age of a receiver's handshake when it reaches its emitter, at the longest beam range",

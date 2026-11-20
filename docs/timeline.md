@@ -29,7 +29,8 @@ chart moves with it.
 | CO₂ rain-out and sealing | [13 July 2034](numbers.md?date=day#traj-clear-rain) | [1 September 2036](numbers.md?date=day#sealing-end) |
 | Ice caught and parked | [16 September 2034](numbers.md?date=day#first-catch) | [15 December 2036](numbers.md?date=day#last-arrival) |
 | Ice lowered, oceans fill | [30 June 2035](numbers.md?date=day#lowering-start) | [15 December 2036](numbers.md?date=day#lowering-end) |
-| Oxygen forging, acid sweep | [1 January 2035](numbers.md?date=day#forge-start) | [30 September 2036](numbers.md?date=day#forge-end) |
+| Oxygen forging | [1 January 2035](numbers.md?date=day#forge-start) | [30 September 2036](numbers.md?date=day#forge-end) |
+| Acid sweep, until the pH holds | [3 May 2033](numbers.md?date=day#cooling-start) | [1 December 2036](numbers.md?date=day#genesis-ph-clear) |
 | Genesis seeding, oceans green | [1 December 2036](numbers.md?date=day#genesis-start) | [12 December 2036](numbers.md?date=day#genesis-end) |
 | **Earth-like Venus (simulated)** | [30 September 2036](numbers.md?date=day#traj-earth-like) |  |
 | **Deadline** | [31 December 2036](numbers.md?date=day#deadline) |  |

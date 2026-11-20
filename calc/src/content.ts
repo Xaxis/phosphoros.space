@@ -23,7 +23,8 @@ export interface Technology {
   experiments: string[];
   figures: string[];
   modules: string[];
-  correction?: string;
+  /** Version 3 corrections that changed it, by id. */
+  corrections?: string[];
   /** Open problems in the corrections log, by id. */
   open?: string[];
   groups?: { group: string; from: string; traits: string; job: string }[];
@@ -201,7 +202,7 @@ export function checkContent(r: Registry, c: Content): string[] {
   }
   const techs = new Set(c.technologies.map((t) => t.id));
   const sources = new Set(c.sources.map((s) => s.id));
-  const corrections = new Set(c.corrections.map((x) => x.id));
+  const kindOf = new Map(c.corrections.map((x) => [x.id, x.kind]));
   const experiments = new Set(c.experiments.experiments.map((e) => e.id));
   for (const t of c.technologies) {
     if (!known(t.online))
@@ -211,11 +212,12 @@ export function checkContent(r: Registry, c: Content): string[] {
         problems.push(`technologies.yaml: ${t.id}: unknown source ${p.source}`);
     for (const e of t.experiments)
       if (!experiments.has(e)) problems.push(`technologies.yaml: ${t.id}: unknown experiment ${e}`);
-    if (t.correction && !corrections.has(t.correction))
-      problems.push(`technologies.yaml: ${t.id}: unknown correction ${t.correction}`);
+    for (const x of t.corrections ?? [])
+      if (kindOf.get(x) !== "correction")
+        problems.push(`technologies.yaml: ${t.id}: ${x} is not a correction`);
     for (const o of t.open ?? [])
-      if (!corrections.has(o))
-        problems.push(`technologies.yaml: ${t.id}: unknown open problem ${o}`);
+      if (kindOf.get(o) !== "open")
+        problems.push(`technologies.yaml: ${t.id}: ${o} is not an open problem`);
   }
   for (const row of c.timeline.rows) {
     for (const d of [row.start, row.end])

@@ -42,7 +42,10 @@ scale that is [9.0 × 10¹⁴ W](../numbers.md#foundry-peak-power), all of it
 Sun. Mercury's axis is almost upright ([NASA](../sources.md#nasa-mercury-factsheet)), so crater rims near its
 poles see the Sun nearly all the time and escape the day side's heat. Its gravity is weak: escape speed is
 [4.25 km/s](../numbers.md#mercury-escape), low enough that mass drivers, not rockets, throw parts to orbit.
-And its silicate rock yields oxygen, silicon and metals by electrolysis.
+And its silicate rock yields oxygen, silicon and metals by electrolysis. MESSENGER found that rock rich in sulfur,
+carbon and magnesium and poor in aluminium, calcium and iron, under [4%](../numbers.md#mercury-surface-fe-max) iron
+by mass, most of it in sulfides and metal grains ([Nittler and Weider 2019](../sources.md#nittler-weider-2019)). Iron
+for cores and rails therefore takes more digging than aluminium wire or silicon film.
 
 ## Design
 
@@ -72,9 +75,10 @@ every part out) and on energy (film made by the loop powers the loop).
 
 **Simple mass, fast copies.** A loop doubles only as fast as its slowest line. Ouroboros keeps the slow lines
 small: about [2%](../numbers.md#foundry-complex-share) of each copy's mass is complex parts (chips, bearings,
-optics); the rest is film, beams, rail and wire, which are quick to make in bulk. The seed carries the few
-trace elements it cannot yet refine, until refining closes that last gap in 2030 (the specifications below
-give the closure).
+optics); the rest is film, beams, rail and wire, which are quick to make in bulk. The seed makes
+[99.99%](../numbers.md#foundry-closure-seed) of each copy from Mercury rock and carries the few trace elements it
+cannot yet refine, until refining closes that last gap in
+[2030](../numbers.md?date=year#foundry-trace-refining).
 
 **Products are diverted growth.** Mass is conserved: every kilogram the Foundry puts into a product is a kilogram
 it does not add to itself, along with all the growth that kilogram would have compounded into. A Foundry of mass M
@@ -117,7 +121,8 @@ Stopping at [26](../numbers.md#foundry-doublings) doublings finishes both sooner
 | Mercury's escape speed | [4.25 km/s](../numbers.md#mercury-escape), so parts reach orbit by mass driver |
 | Machinery in January 2030 | [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030) |
 | Machinery in January 2032 | [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032) |
-| Material closure | 99.99% at seed; 100% once trace-element refining runs in 2030 |
+| Material closure | [99.99%](../numbers.md#foundry-closure-seed) at seed; complete once trace-element refining runs, from [2030](../numbers.md?date=year#foundry-trace-refining) |
+| Mercury's surface rock | Rich in sulfur, carbon and magnesium; poor in aluminium, calcium and iron, under [4%](../numbers.md#mercury-surface-fe-max) by mass |
 <!-- /table -->
 
 ## What is invented

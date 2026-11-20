@@ -17,8 +17,9 @@ A [1,000 t](numbers.md#foundry-seed-mass) seed of twelve machine types launches
 [1 October 2028](numbers.md?date=day#foundry-seed-launch) and lands on Mercury on
 [14 January 2029](numbers.md?date=day#foundry-landing). There it digs, smelts, rolls, prints and assembles
 copies of itself from local rock, powered by its own solar film. Mercury suits it: sunlight close to the
-Sun is strong ([9,080 W/m²](numbers.md#mercury-sunlight) at its mean distance), the crust is rich in iron,
-silicon, aluminum and magnesium, and parts reach orbit by mass driver because escape speed is only
+Sun is strong ([9,080 W/m²](numbers.md#mercury-sunlight) at its mean distance), the silicate rock is
+rich in magnesium, sulfur and carbon (though poor in iron, under [4%](numbers.md#mercury-surface-fe-max) by mass),
+and parts reach orbit by mass driver because escape speed is only
 [4.25 km/s](numbers.md#mercury-escape).
 
 The [Ouroboros Foundry](technologies/ouroboros.md) doubles every [60 d](numbers.md#foundry-doubling-days):
@@ -223,7 +224,8 @@ Not delivered by 2036: trees, crops and animals. Those are the work of the follo
 ## The technology stack
 
 Thirteen inventions, on four worlds and the space between them. Only the seed foundry and the first Ceres
-factories leave Earth; every other kilogram is made where it is needed.
+factories leave Earth; every other kilogram is made where it is needed. The Ceres factories' mass, launch and
+growth are not yet modelled ([issue #7](https://github.com/Xaxis/phosphoros.space/issues/7)).
 
 <!-- figure:tech-stack -->
 ![The Phosphoros technology stack](../figures/svg/tech-stack.svg)

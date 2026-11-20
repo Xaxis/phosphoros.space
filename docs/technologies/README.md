@@ -9,7 +9,8 @@ number on it links to the model that computes it.
 One invention carries the rest: the [Ouroboros Foundry](ouroboros.md), a factory that copies itself
 every [60 d](../numbers.md#foundry-doubling-days). Only its [1,000 t](../numbers.md#foundry-seed-mass)
 seed and the first factories for Ceres leave Earth; every other kilogram is made in space or on other
-worlds. The Foundry builds the [Helios Lattice](helios.md), the Lattice's beamed sunlight powers almost
+worlds. The Ceres factories are not yet modelled: their mass, launch and growth are open
+([issue #7](https://github.com/Xaxis/phosphoros.space/issues/7)). The Foundry builds the [Helios Lattice](helios.md), the Lattice's beamed sunlight powers almost
 everything else, and the [Choir](choir.md) keeps the whole system inside hard limits.
 
 <!-- figure:tech-stack -->

@@ -505,3 +505,33 @@
     {first-catch|date=year}; the Forges when they start, {forge-start|date=year}; the
     Cryo-continents with the Clear Rain, {traj-clear-rain|date=year}; and Choir with the landing,
     {foundry-landing|date=year}.
+- id: aerogel-measured
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The cap's aerogel takes measured values
+  text: >-
+    Version 2 gave the cap's carbon aerogel a density of 100 kg/m³ and a conductivity of 0.014
+    W/(m·K), with no source. Lu and colleagues measured {cryo-aerogel-conductivity} in air at
+    {cryo-aerogel-density} (1993). With the measured aerogel the caps leak {cryo-leak-flux},
+    {cryo-leak-total} in all, still small beside the floor heat, and take {cryo-cap-mass} of
+    graphite. The Cryo-seal experiment now passes at the leak the plan's own cap gives, instead of
+    version 2's 0.1 W/m², which a cap of real aerogel this thick would fail.
+  before:
+    cryo-aerogel-density: 100
+    cryo-aerogel-conductivity: 0.014
+    cryo-leak-flux: 0.0756
+    cryo-leak-total: 1.14e13
+    cryo-cap-mass: 3.00e17
+    graphite-stockpile: 1.87e17
+- id: mercury-iron
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Mercury's surface is poor in iron
+  text: >-
+    Version 2 described Mercury's surface as rich in iron, silicon, aluminium, magnesium and sulfur.
+    MESSENGER found it rich in sulfur, carbon and magnesium but poor in aluminium, calcium and
+    iron: under {mercury-surface-fe-max} iron by mass, held mostly in sulfides and metal grains.
+    The Foundry's iron cores and rails need more rock dug per kilogram than version 2 implied; the
+    model does not yet size the Foundry's diggers by element.

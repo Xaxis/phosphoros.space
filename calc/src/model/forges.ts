@@ -94,7 +94,7 @@ export function forges(r: Registry) {
     {
       label: "Power of one Forge",
       unit: "W",
-      show: "TW",
+      show: "PW",
       sig: 2,
       formula: "P / N",
       basis: "invented",

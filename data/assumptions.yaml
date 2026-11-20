@@ -444,15 +444,25 @@ cryo-aerogel-thickness:
   label: Carbon aerogel layer in each cap
   basis: invented
 cryo-aerogel-density:
-  value: 100
+  value: 82
   unit: kg/m3
   label: Carbon aerogel density
   basis: precedent
+  source: [lu-1993-aerogel]
 cryo-aerogel-conductivity:
-  value: 0.014
+  value: 0.029
   unit: W/m/K
   label: Carbon aerogel thermal conductivity
   basis: precedent
+  source: [lu-1993-aerogel]
+  note: >-
+    Measured in air at room temperature at 82 kg/m³. The cap's pores hold gas, so the evacuated
+    value, 0.018 W/(m·K), does not apply; colder gas near the ice conducts a little less.
+cryo-reseal-time:
+  value: 7
+  unit: d
+  label: Time for the crawlers that laid a cell to reseal a tear in it
+  basis: design
 cryo-membrane-thickness:
   value: 1.0e-3
   unit: m
@@ -868,12 +878,6 @@ railhead-kill-rate:
   unit: count
   label: "Railhead test is killed below this many shots an hour"
   basis: design
-cryo-seal-leak:
-  value: 0.1
-  unit: W/m2
-  sig: 1
-  label: "Cryo-seal passes if the cap leaks less heat than this"
-  basis: design
 cryo-seal-months:
   value: 365.25
   unit: d
@@ -899,4 +903,18 @@ choir-sim-kill-interventions:
   value: 1
   unit: count
   label: "Choir-sim is killed above this many human interventions a day"
+  basis: design
+# --- Ouroboros material closure -----------------------------------------------------------------------
+foundry-closure-seed:
+  value: 0.9999
+  unit: "1"
+  show: "%"
+  sig: 4
+  label: Share of each copy's mass the seed Foundry makes from Mercury rock
+  basis: invented
+  note: The rest is trace elements the seed carries from Earth until it can refine them.
+foundry-trace-refining:
+  value: 2030-01-01
+  unit: date
+  label: Trace-element refining runs, closing the Foundry's loop completely
   basis: design

@@ -130,9 +130,9 @@
 - { model: cryo-volume, brief: 3e17, where: "2.9.6" }
 - { model: cryo-footprint, brief: 1.5e14, where: "2.9.6" }
 - { model: cryo-footprint-share, brief: 0.33, where: "2.9.6" }
-- { model: cryo-cap-mass, brief: 3e17, where: "2.9.6" }
-- { model: cryo-leak-flux, brief: 0.075, where: "2.9.6" }
-- { model: cryo-leak-total, brief: 1.1e13, where: "2.9.6" }
+- { model: cryo-cap-mass, brief: 3e17, where: "2.9.6", correction: aerogel-measured }
+- { model: cryo-leak-flux, brief: 0.075, where: "2.9.6", correction: aerogel-measured }
+- { model: cryo-leak-total, brief: 1.1e13, where: "2.9.6", correction: aerogel-measured }
 - { model: cryo-floor-flux-2, brief: 80, where: "2.9.6" }
 - { model: cryo-floor-flux-10, brief: 36, where: "2.9.6" }
 - { model: cryo-floor-flux-100, brief: 11, where: "2.9.6" }
@@ -157,7 +157,7 @@
 - { model: forge-plant-power, brief: 1e12, where: "2.9.7",
     note: "The brief lists 500 plants of about 1 TW, but 4.9 × 10¹⁷ W shared by 500 Forges is about 1 PW (10¹⁵ W) each, a thousand times more. The total is right; the per-plant figure was a unit slip." }
 - { model: forge-throughput, brief: 6.5e7, where: "2.9.7" }
-- { model: graphite-stockpile, brief: 1.9e17, where: "2.9.7" }
+- { model: graphite-stockpile, brief: 1.9e17, where: "2.9.7", correction: aerogel-measured }
 - { model: o2-vs-earth, brief: 1, tol: 0.25, where: "2.6",
     note: "The brief says 0.25 bar matches Earth's sea-level oxygen. Earth's is 0.21 bar; 0.25 bar is 18% more, comparable to breathing at about 1.5 m of water depth." }
 

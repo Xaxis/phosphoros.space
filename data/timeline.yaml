@@ -122,11 +122,17 @@ rows:
     end: lowering-end
     tech: ring
   - id: forging
-    label: Oxygen forging, acid sweep
+    label: Oxygen forging
     lane: venus
     start: forge-start
     end: forge-end
     tech: forges
+  - id: acid-sweep
+    label: Acid sweep, until the pH holds
+    lane: venus
+    start: cooling-start
+    end: genesis-ph-clear
+    tech: acid
   - id: genesis
     label: Genesis seeding, oceans green
     lane: venus
