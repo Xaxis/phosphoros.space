@@ -812,12 +812,11 @@ td:first-child {
   height: 8px;
 }
 
+/* Labels wrap rather than lose their ends: a cut name hides which input it is. */
 .card-inputs li a {
   color: var(--text-soft);
   text-decoration: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.35;
 }
 
 .card-inputs li a:hover {

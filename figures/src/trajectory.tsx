@@ -183,14 +183,21 @@ function Trajectory(p: Props) {
           </g>
         );
       })}
-      <line
-        className="f-accent-line"
-        strokeWidth={1.5}
-        x1={x(p.earthLike.day)}
-        x2={x(p.earthLike.day)}
-        y1={A.t}
-        y2={bottom}
-      />
+      {/* One segment per panel, like the other event lines, so it never crosses the key between them. */}
+      {[
+        [A.t, A.t + A.h],
+        [B.t, bottom],
+      ].map(([y1, y2]) => (
+        <line
+          key={y1}
+          className="f-accent-line"
+          strokeWidth={1.5}
+          x1={x(p.earthLike.day)}
+          x2={x(p.earthLike.day)}
+          y1={y1}
+          y2={y2}
+        />
+      ))}
 
       <path className="f-s1-line f-mark-line" d={line(p.temp, yT)}>
         <title>{`Mean air temperature: ${p.ends.start} to ${p.ends.finish}`}</title>
