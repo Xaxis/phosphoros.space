@@ -26,7 +26,8 @@ redraws this chart for your variant.
 | **The Ring powers the Railheads** | [16 September 2034](numbers.md?date=day#ring-pays-from) |  |
 | Active cooling | [3 May 2033](numbers.md?date=day#cooling-start) | [1 September 2036](numbers.md?date=day#cooling-end) |
 | **The Clear Rain** | [13 July 2034](numbers.md?date=day#traj-clear-rain) |  |
-| CO₂ rain-out and sealing | [13 July 2034](numbers.md?date=day#traj-clear-rain) | [1 September 2036](numbers.md?date=day#sealing-end) |
+| CO₂ rains out and freezes | [13 July 2034](numbers.md?date=day#traj-clear-rain) | [27 March 2036](numbers.md?date=day#traj-frozen) |
+| Caps laid on the frozen seas | [27 March 2036](numbers.md?date=day#traj-frozen) | [1 September 2036](numbers.md?date=day#sealing-end) |
 | Ice caught and parked | [16 September 2034](numbers.md?date=day#first-catch) | [15 December 2036](numbers.md?date=day#last-arrival) |
 | Ice lowered, oceans fill | [30 June 2035](numbers.md?date=day#lowering-start) | [15 December 2036](numbers.md?date=day#lowering-end) |
 | Oxygen forging | [1 January 2035](numbers.md?date=day#forge-start) | [30 September 2036](numbers.md?date=day#forge-end) |
@@ -90,12 +91,16 @@ Active cooling runs from [3 May 2033](numbers.md?date=day#cooling-start) to
 [simulation](plan.md#the-simulated-atmosphere) takes over. Until the Ring takes over the Railheads, they
 draw [6.7 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [8.5 × 10¹⁹ W](numbers.md#helios-power),
 and cooling is starved of power. From [16 September 2034](numbers.md?date=day#ring-pays-from) power is
-plentiful and the Exhaust runs at its limit, [5.0 × 10¹⁹ W](numbers.md#exhaust-peak). The Clear Rain begins
+plentiful and the Exhaust runs at its limit, [5.5 × 10¹⁹ W](numbers.md#exhaust-peak). The Clear Rain begins
 on [13 July 2034](numbers.md?date=day#traj-clear-rain). The seas start to freeze on
-[23 June 2036](numbers.md?date=day#traj-freeze), all the CO₂ is down by
-[3 August 2036](numbers.md?date=day#traj-cold), the Frost Towers reach their target on
-[22 August 2036](numbers.md?date=day#traj-scavenged), and the last caps are sealed by
-[1 September 2036](numbers.md?date=day#sealing-end).
+[5 July 2035](numbers.md?date=day#traj-freeze), when the air reaches the triple point, and the air holds
+there until they are frozen through on [27 March 2036](numbers.md?date=day#traj-frozen). That leaves
+[160 d](numbers.md#sealing-window) to lay the caps before the last is due on
+[1 September 2036](numbers.md?date=day#sealing-end): [950,000 km²/d](numbers.md#cap-laying-rate) of cap
+a day. All the CO₂ is down by [12 June 2036](numbers.md?date=day#traj-cold) and the Frost Towers reach
+their target on [28 June 2036](numbers.md?date=day#traj-scavenged),
+[65 d](numbers.md#frost-sealing-slack) before the last caps are due
+([check](numbers.md#check-frost-before-sealing)).
 
 ### Water: 2033 to 2036
 
@@ -112,11 +117,14 @@ and the air is warmed. How that ice gets down at all is still [open](risks.md#th
 The Forges run from [1 January 2035](numbers.md?date=day#forge-start) to
 [30 September 2036](numbers.md?date=day#forge-end), and the Aegis Shield has been on since
 [15 June 2034](numbers.md?date=day#aegis-online). Once the caps are sealed the Veil opens and the simulated
-air warms to [285 K](numbers.md#earth-like-temp) by [6 September 2036](numbers.md?date=day#traj-warm). It is
-Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like), the day the oxygen is complete,
-[92 d](numbers.md#traj-slack-days) before the deadline. Genesis seeding waits for the oceans to hold their pH
-as well, so it begins on [1 December 2036](numbers.md?date=day#genesis-start), and the sunlit water is green
-by [12 December 2036](numbers.md?date=day#genesis-end) ([check](numbers.md#check-genesis-by-deadline)).
+air warms to [285 K](numbers.md#earth-like-temp) by [5 September 2036](numbers.md?date=day#traj-warm). It is
+Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like), [92 d](numbers.md#traj-slack-days)
+before the deadline. The oxygen is complete on [30 September 2036](numbers.md?date=day#forge-end), but the
+Veil waits for the Frost Towers.
+Genesis seeding waits for the oceans to hold their pH as well, so it begins on
+[1 December 2036](numbers.md?date=day#genesis-start), and the sunlit water is green by
+[12 December 2036](numbers.md?date=day#genesis-end), before the deadline
+([check](numbers.md#check-genesis-by-deadline)).
 
 ## What slips if the Foundry is slow
 
@@ -128,20 +136,20 @@ does not move is the deadline, and with it the last useful ice launch. The slip 
 - **The water.** The ice campaign shrinks from the front, so the Railheads must throw faster to deliver
   the same [1.0 × 10²⁰ kg](numbers.md#ice-mass), or the ocean comes out shallower.
 - **The energy.** The Lattice has fewer full-power years before the deadline. Every day of slip comes out of
-  the [9.3%](numbers.md#budget-spare) it has to spare on its own, then out of the
-  [34%](numbers.md#budget-spare-with-ring) spare the Ring's recovered energy adds.
-- **The schedule.** There is almost no slack. A fraction of a day more per doubling (the
+  the [8.2%](numbers.md#budget-spare) it has to spare on its own, then out of the
+  [33%](numbers.md#budget-spare-with-ring) spare the Ring's recovered energy adds.
+- **The schedule.** There is little slack. A small rise in the doubling time (the
   [Budget](budget.md#how-much-room-the-plan-has) finds the edge for this and every other assumption), and the
   Frost Towers finish after the caps are due to be sealed, the oceans melt later, and the seeded life no
-  longer greens them by the deadline. Two days more per doubling and the air itself is Earth-like only in
-  2037. A much slower Foundry cannot build the Veil in time either.
+  longer greens them by the deadline. Under three days more per doubling and the air itself is Earth-like
+  only in 2037. A much slower Foundry cannot build the Veil in time either.
 
 To see the size of each effect, move the doubling time in the [Explorer](https://phosphoros.space/explore),
 or run:
 
 ```sh
-pnpm calc --set foundry-doubling-days=60.5   # the first checks fail
-pnpm calc --set foundry-doubling-days=62     # the air misses the deadline
+pnpm calc --set foundry-doubling-days=61     # the Frost Towers finish after the caps are due
+pnpm calc --set foundry-doubling-days=63     # the air misses the deadline
 ```
 
 If the Foundry cannot approach its doubling time at all, the decade is out of reach and the plan falls back

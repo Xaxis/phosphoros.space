@@ -11,27 +11,27 @@ gives each one's formula and inputs.
 | Task | Energy the Lattice delivers |
 | --- | --- |
 | Launch [1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice from Ceres | [4.8 × 10²⁷ J](numbers.md#ice-launch-energy) |
-| Heat-pump work to cool Venus | [3.5 × 10²⁷ J](numbers.md#traj-pump-energy) |
-| Run the chimney fans | [1.0 × 10²⁵ J](numbers.md#traj-fan-energy) |
+| Heat-pump work to cool Venus | [3.6 × 10²⁷ J](numbers.md#traj-pump-energy) |
+| Run the chimney fans | [9.9 × 10²⁴ J](numbers.md#traj-fan-energy) |
 | Warm the air and melt the last ice | [4.4 × 10²⁵ J](numbers.md#traj-warm-energy) |
 | Forge [0.25 bar](numbers.md#o2-target-pressure) of oxygen | [2.7 × 10²⁵ J](numbers.md#forge-energy) |
 | Build the Foundry, the Veil, the Lattice and the Ring | [10²² J](numbers.md#hardware-energy) |
-| **Total demand** | **[8.4 × 10²⁷ J](numbers.md#budget-demand)** |
+| **Total demand** | **[8.5 × 10²⁷ J](numbers.md#budget-demand)** |
 | Supply: the Lattice from full power to the deadline | [9.2 × 10²⁷ J](numbers.md#helios-supply) |
-| Spare | [9.3%](numbers.md#budget-spare) |
-| Spare once the Ring powers the Railheads | [34%](numbers.md#budget-spare-with-ring) |
+| Spare | [8.2%](numbers.md#budget-spare) |
+| Spare once the Ring powers the Railheads | [33%](numbers.md#budget-spare-with-ring) |
 <!-- /table -->
 
 <!-- figure:lattice-budget -->
 ![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
-The plan must deliver [8.4 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Helios
+The plan must deliver [8.5 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Helios
 Lattice supplies [9.2 × 10²⁷ J](numbers.md#helios-supply): [8.5 × 10¹⁹ W](numbers.md#helios-power) for the
 [3.4 yr](numbers.md#helios-supply-years) from full power in [July 2033](numbers.md?date=month#helios-full-power)
-to the deadline. That leaves [9.3%](numbers.md#budget-spare) spare on the Lattice alone, and
-[34%](numbers.md#budget-spare-with-ring) once the Braking Ring's recovered energy powers the Railheads.
-Launching the water and pumping out the heat take [90%](numbers.md#budget-launch-share) of the Lattice's
+to the deadline. That leaves [8.2%](numbers.md#budget-spare) spare on the Lattice alone, and
+[33%](numbers.md#budget-spare-with-ring) once the Braking Ring's recovered energy powers the Railheads.
+Launching the water and pumping out the heat take [91%](numbers.md#budget-launch-share) of the Lattice's
 output; oxygen and hardware are small change.
 
 The supply side is conservative. It counts only the full-power years, while the simulation also uses the
@@ -81,15 +81,17 @@ over the [3.3 yr](numbers.md#cooling-seconds) campaign.
 ### Why the simulation pumps more
 
 The budget does not charge [2.92 × 10²⁷ J](numbers.md#exhaust-work). It charges what the day-by-day
-[simulation](plan.md#the-simulated-atmosphere) actually spends, [3.5 × 10²⁷ J](numbers.md#traj-pump-energy).
+[simulation](plan.md#the-simulated-atmosphere) actually spends, [3.6 × 10²⁷ J](numbers.md#traj-pump-energy).
 The difference has three causes.
 
-- **Heat keeps arriving.** During the campaign [7.9 × 10²⁵ J](numbers.md#traj-heat-added) enters the air
+- **Heat keeps arriving.** While the pumps run, [7.5 × 10²⁵ J](numbers.md#traj-heat-added) enters the air
   from the crust, from the Forges' waste heat, from ice falling the last
   [100 km](numbers.md#lowering-release-altitude), and from the sunlight the closed Veil lets through.
-- **It arrives when pumping is dearest.** Much of that heat comes late, when the air is near
-  [195 K](numbers.md?sig=3#freeze-target-temp) and every joule costs more work than the campaign's average
-  of [5.5](numbers.md#exhaust-work-ratio). The air is also held cold for weeks while the caps are sealed.
+- **It arrives when pumping is dearest.** Much of that heat comes late, while the seas freeze at
+  [216.6 K](numbers.md#co2-triple-temp) and after, when every joule costs more work than the campaign's
+  average of [5.5](numbers.md#exhaust-work-ratio). The simple estimate also spreads all the latent heat
+  between the critical and triple points, where the simulation lifts the seas' heat of fusion,
+  [210 kJ/kg](numbers.md#co2-fusion-heat), at the triple point itself.
 - **The Frost Towers.** Trapping the last [5.4 × 10¹⁸ kg](numbers.md#frost-residual-co2) of CO₂ at
   [133 K](numbers.md#frost-tower-temp) takes about [4.3 × 10²⁵ J](numbers.md#frost-work) more.
 
@@ -128,7 +130,7 @@ or [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) for all the ice. That
 The budget counts it like this. Until the first Brick is caught on
 [16 September 2034](numbers.md?date=day#ring-pays-from), the Lattice powers the Railheads, which costs it
 [2.4 × 10²⁷ J](numbers.md#budget-lattice-launch). After that the Ring powers them, so the Lattice delivers
-only [6.1 × 10²⁷ J](numbers.md#budget-demand-with-ring), leaving [34%](numbers.md#budget-spare-with-ring)
+only [6.2 × 10²⁷ J](numbers.md#budget-demand-with-ring), leaving [33%](numbers.md#budget-spare-with-ring)
 spare. Counted instead as extra supply, the Ring brings the total to
 [1.5 × 10²⁸ J](numbers.md#budget-supply-total) and the spare to [42%](numbers.md#budget-spare-total). The
 budget never counts the further [2.0 × 10²⁷ J](numbers.md#ring-lowering-recovery) that slowing the parked
@@ -190,16 +192,18 @@ Every run of the model tests these. A check is a law of physics or a requirement
 | [The Foundry stops growing at the size that finishes the Lattice and the Ring soonest](numbers.md#check-foundry-size) | Pass | After 26 doublings the 6.7 × 10¹³ kg Foundry builds the 6.2 × 10¹³ kg Lattice in 80 d and the Ring in 13 d: both done 1653 days after landing, against 1687 with one doubling fewer and 1667 with one more. |
 | [The Ring's mass reaches Venus before the Ring must be complete](numbers.md#check-foundry-builds-ring) | Pass | After the Lattice, the Foundry builds the 1.0 × 10¹³ kg Ring in 13 d; its last parts reach Venus on 19 October 2033, and the Ring must be complete on 31 December 2033. |
 | [The Foundry can build the structure that holds the Aegis coil together](numbers.md#check-aegis-structure) | Pass | The coil's field pulls on its winding with 1.2 × 10¹¹ N; holding it takes at least 2.0 × 10¹¹ kg of carbon fibre at full strength, 0.25 days of the full Foundry's output against the 60 d of one doubling. |
-| [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) | Pass | The simulated Frost Towers finish on 22 August 2036; the last caps are sealed on 1 September 2036. |
+| [The simulation's heat books balance](numbers.md#check-traj-heat-books) | Pass | The Exhaust lifts 6.0 × 10²⁶ J: Venus's 5.3 × 10²⁶ J, less the 1.6 × 10²¹ J still held by the CO₂ the Frost Towers leave in the air, plus 7.5 × 10²⁵ J that enters while the pumps run. The two sides agree to rounding. |
+| [The seas are frozen through before the last caps are sealed](numbers.md#check-frozen-before-sealing) | Pass | The simulated seas are frozen through on 27 March 2036, leaving 160 d to the last cap on 1 September 2036: the crawler-rafts must lay 950,000 km²/d. |
+| [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) | Pass | The simulated Frost Towers finish on 28 June 2036; the last caps are sealed on 1 September 2036. |
 | [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline) | Pass | Seeding waits for the oxygen (30 September 2036) and for the oceans to hold their pH (1 December 2036), so it begins on 1 December 2036; doubling every 1 d, the cells reach bloom density on 12 December 2036, against a deadline of 31 December 2036. |
 | [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline) | Pass | The day-by-day simulation reaches Earth-like conditions on 30 September 2036, 92 d before the 31 December 2036 deadline. The chimneys, not the power, set the pace on 56 d. |
 | [The ozone model, run on Earth's air, gives Earth's ozone column](numbers.md#check-ozone-model-earth) | Pass | 280 DU against 279 DU from a three-dimensional model of the pre-industrial Earth, within a quarter either way, with nothing fitted. |
 | [The ozone shields the land before the deadline](numbers.md#check-ozone-shield-in-time) | Pass | One day of sunlight makes 49.9 DU, easily measured. The column reaches 185 DU on 2 December 2036, 91 d after the Veil opens, so lichens and mosses go onto land from 2 December 2036, against a deadline of 31 December 2036. |
-| [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) | Pass | Lattice supply 9.2 × 10²⁷ J against demand 8.4 × 10²⁷ J: 9.3% spare before the Ring's recovered energy, 34% once the Ring powers the Railheads. |
-| [With the Ring's recovered energy, supply covers demand](numbers.md#check-energy-closes-with-ring) | Pass | The Lattice delivers 9.2 × 10²⁷ J against 6.1 × 10²⁷ J once the Ring powers the Railheads, and the Ring recovers 5.3 × 10²⁷ J against the 2.3 × 10²⁷ J of launches it pays for. |
+| [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) | Pass | Lattice supply 9.2 × 10²⁷ J against demand 8.5 × 10²⁷ J: 8.2% spare before the Ring's recovered energy, 33% once the Ring powers the Railheads. |
+| [With the Ring's recovered energy, supply covers demand](numbers.md#check-energy-closes-with-ring) | Pass | The Lattice delivers 9.2 × 10²⁷ J against 6.2 × 10²⁷ J once the Ring powers the Railheads, and the Ring recovers 5.3 × 10²⁷ J against the 2.3 × 10²⁷ J of launches it pays for. |
 <!-- /table -->
 
-[4](numbers.md#checks-failing) of the [22](numbers.md#checks-total) checks fail, and each is shown on purpose.
+[4](numbers.md#checks-failing) of the [24](numbers.md#checks-total) checks fail, and each is shown on purpose.
 
 **The version 2 statite.** This check tests version 2's Veil, not the current one, and it is kept failing
 so the error stays visible. Version 2 put the Veil [137,000 km](numbers.md?sig=3#veil-v2-distance) sunward of
@@ -232,11 +236,24 @@ orbital motion, [280](numbers.md#ring-net-overload) times the rotor's spare lift
 recovers is real; what holds the Ring in place while it catches is unsolved
 ([Braking Ring](technologies/ring.md)).
 
+**Freezing the seas.** The tightest stretch of the schedule. At the triple point,
+[216.6 K](numbers.md#co2-triple-temp), the seas give up their heat of fusion while the air holds there. The
+emitters are at their peak all through it and the falling ice keeps adding heat, so the seas start to freeze on
+[5 July 2035](numbers.md?date=day#traj-freeze) and are frozen through on
+[27 March 2036](numbers.md?date=day#traj-frozen). All the CO₂ is down on
+[12 June 2036](numbers.md?date=day#traj-cold) and the Frost Towers finish on
+[28 June 2036](numbers.md?date=day#traj-scavenged), [65 d](numbers.md#frost-sealing-slack) before the last caps
+are due on [1 September 2036](numbers.md?date=day#sealing-end). The ice melts and the oceans start their pH hold
+when the Veil opens, on [2 September 2036](numbers.md?date=day#traj-warming), so seeded life greens them on
+[12 December 2036](numbers.md?date=day#genesis-end), before the deadline. When the model first released the
+heat of fusion, at the Exhaust's earlier peak, the freeze ran into June 2036 and both checks failed; the peak
+grew a tenth, to [5.5 × 10¹⁹ W](numbers.md#exhaust-peak), to fix it ([correction](about.md#corrections)).
+
 **Launches between windows.** The Railheads fire through every part of the
 [8.5 months](numbers.md#launch-window-period) between launch windows, and those shots cost
 [6.7 × 10²⁶ J](numbers.md#ice-launch-offwindow-energy) more than the Hohmann minimum. The budget charges them,
 and the Lattice is sized for it: [8.5 × 10¹⁹ W](numbers.md#helios-power), enough to close the budget on its own
-with [9.3%](numbers.md#budget-spare) to spare and [34%](numbers.md#budget-spare-with-ring) once the Ring powers
+with [8.2%](numbers.md#budget-spare) to spare and [33%](numbers.md#budget-spare-with-ring) once the Ring powers
 the Railheads ([check](numbers.md#check-energy-closes-with-ring)).
 
 ## How much room the plan has
@@ -245,22 +262,22 @@ Each row moves one assumption alone, across the range the [Explorer](/explore) l
 everything else as planned, and finds where a check that passes today first fails. Most of the plan's
 schedule hangs on one date: the Frost Towers must have the CO₂ down before the last caps are sealed on
 [1 September 2036](numbers.md?date=day#sealing-end), and they finish only
-[10 d](numbers.md#frost-sealing-slack) before it.
+[65 d](numbers.md#frost-sealing-slack) before it.
 
 <!-- table:margins -->
 | Assumption | Plan | The plan holds from | to | What breaks first |
 | --- | --- | --- | --- | --- |
 | Water share of Ceres's mass | [27%](numbers.md?sig=3#ceres-water-fraction) | 17% or less | 35% or more | Nothing, across the whole range |
-| Seed foundry mass | [1,000 t](numbers.md?sig=3#foundry-seed-mass) | 937 t | 1,560 t | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing). Higher: [The Foundry stops growing at the size that finishes the Lattice and the Ring soonest](numbers.md#check-foundry-size) |
-| Foundry doubling time | [60 d](numbers.md?sig=3#foundry-doubling-days) | 30 d or less | 60.1 d | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Seed foundry mass | [1,000 t](numbers.md?sig=3#foundry-seed-mass) | 895 t | 1,560 t | Lower: [The Foundry stops growing at the size that finishes the Lattice and the Ring soonest](numbers.md#check-foundry-size); [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing); [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline). Higher: [The Foundry stops growing at the size that finishes the Lattice and the Ring soonest](numbers.md#check-foundry-size) |
+| Foundry doubling time | [60 d](numbers.md?sig=3#foundry-doubling-days) | 30 d or less | 60.9 d | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
 | Energy to make a kilogram of machinery from regolith | [100 MJ/kg](numbers.md?sig=3#foundry-energy-per-kg) | 30 MJ/kg or less | 300 MJ/kg or more | Nothing, across the whole range |
-| Power the Helios Lattice delivers | [8.50 × 10¹⁹ W](numbers.md?sig=3#helios-power) | 8.41 × 10¹⁹ W | 1.00 × 10²⁰ W or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
-| Hot-film solar cell efficiency at about 460 K | [40%](numbers.md?sig=3#helios-film-efficiency) | 36.9% | 50% or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
-| Electricity-to-laser efficiency | [50%](numbers.md?sig=3#helios-laser-efficiency) | 46.3% | 70% or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
-| Share of sunlight's momentum the light-bending film takes up | [0.01](numbers.md?sig=3#veil-momentum-fraction) | 0.002 or less | 0.0349 | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
-| Effective temperature the emitters shine at | [2,000 K](numbers.md?sig=3#exhaust-effective-temp) | 1,000 K or less | 2,020 K | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
-| Peak power the Exhaust can throw into space | [5.00 × 10¹⁹ W](numbers.md?sig=3#exhaust-peak) | 4.95 × 10¹⁹ W | 6.53 × 10¹⁹ W | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing). Higher: [The energy budget closes: supply covers demand](numbers.md#check-energy-closes) |
-| Water shipped to Venus | [1.00 × 10²⁰ kg](numbers.md?sig=3#ice-mass) | 3.00 × 10¹⁹ kg or less | 1.01 × 10²⁰ kg | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Power the Helios Lattice delivers | [8.50 × 10¹⁹ W](numbers.md?sig=3#helios-power) | 7.91 × 10¹⁹ W | 1.00 × 10²⁰ W or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Hot-film solar cell efficiency at about 460 K | [40%](numbers.md?sig=3#helios-film-efficiency) | 30.1% | 50% or more | Lower: [The Foundry stops growing at the size that finishes the Lattice and the Ring soonest](numbers.md#check-foundry-size) |
+| Electricity-to-laser efficiency | [50%](numbers.md?sig=3#helios-laser-efficiency) | 37.6% | 70% or more | Lower: [The Foundry stops growing at the size that finishes the Lattice and the Ring soonest](numbers.md#check-foundry-size) |
+| Share of sunlight's momentum the light-bending film takes up | [0.01](numbers.md?sig=3#veil-momentum-fraction) | 0.002 or less | 0.0815 | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Effective temperature the emitters shine at | [2,000 K](numbers.md?sig=3#exhaust-effective-temp) | 1,000 K or less | 2,100 K | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Peak power the Exhaust can throw into space | [5.50 × 10¹⁹ W](numbers.md?sig=3#exhaust-peak) | 5.15 × 10¹⁹ W | 7.00 × 10¹⁹ W or more | Lower: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
+| Water shipped to Venus | [1.00 × 10²⁰ kg](numbers.md?sig=3#ice-mass) | 3.00 × 10¹⁹ kg or less | 1.06 × 10²⁰ kg | Higher: [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing) |
 <!-- /table -->
 
 Some changes are not on a slider. The seed launches before its own proof experiment, Ouroboros-0, must
@@ -271,7 +288,7 @@ than the slack:
 | What if | Simulated Earth-like | Against the deadline | Newly failing checks |
 | --- | --- | --- | --- |
 | The plan | 30 September 2036 | 92 d early | None |
-| The seed waits for every proof experiment to pass before it launches | 14 April 2037 | 104 d late | [The Ring's mass reaches Venus before the Ring must be complete](numbers.md#check-foundry-builds-ring); [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing); [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline); [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline); [The ozone shields the land before the deadline](numbers.md#check-ozone-shield-in-time) |
+| The seed waits for every proof experiment to pass before it launches | 2 March 2037 | 61 d late | [The Ring's mass reaches Venus before the Ring must be complete](numbers.md#check-foundry-builds-ring); [The simulation's heat books balance](numbers.md#check-traj-heat-books); [The seas are frozen through before the last caps are sealed](numbers.md#check-frozen-before-sealing); [The Frost Towers finish before the last caps are sealed](numbers.md#check-frost-before-sealing); [Seeded life greens the oceans by the deadline](numbers.md#check-genesis-by-deadline); [The simulated atmosphere is Earth-like by the deadline](numbers.md#check-earth-like-by-deadline); [The ozone shields the land before the deadline](numbers.md#check-ozone-shield-in-time) |
 <!-- /table -->
 
 `tools/margins.ts` computes both tables by running the whole model a few hundred times.
@@ -333,7 +350,7 @@ its basis says whether it is a design choice, an invention or a demonstrated pre
 | Peak heat flow from the deep atmosphere | [6.0 × 10¹⁸ W](numbers.md#deep-heat-peak) | Design choice |  | [data/assumptions.yaml:371](../data/assumptions.yaml#L371) | [exhaust.ts](../calc/src/model/exhaust.ts) |
 | Effective temperature the emitters shine at | [2,000 K](numbers.md#exhaust-effective-temp) | Invented | 1,000 K to 3,000 K | [data/assumptions.yaml:378](../data/assumptions.yaml#L378) | [cryo.ts](../calc/src/model/cryo.ts), [exhaust.ts](../calc/src/model/exhaust.ts), [trajectory.ts](../calc/src/model/trajectory.ts) |
 | Emitter tile bandgap (InGaAsSb) | [0.54 eV](numbers.md#exhaust-bandgap) | Invented |  | [data/assumptions.yaml:384](../data/assumptions.yaml#L384) | [exhaust.ts](../calc/src/model/exhaust.ts) |
-| Peak power the Exhaust can throw into space | [5.0 × 10¹⁹ W](numbers.md#exhaust-peak) | Design choice | 3.0 × 10¹⁹ W to 7.0 × 10¹⁹ W | [data/assumptions.yaml:389](../data/assumptions.yaml#L389) | [exhaust.ts](../calc/src/model/exhaust.ts), [trajectory.ts](../calc/src/model/trajectory.ts) |
+| Peak power the Exhaust can throw into space | [5.5 × 10¹⁹ W](numbers.md#exhaust-peak) | Design choice | 3.0 × 10¹⁹ W to 7.0 × 10¹⁹ W | [data/assumptions.yaml:389](../data/assumptions.yaml#L389) | [exhaust.ts](../calc/src/model/exhaust.ts), [trajectory.ts](../calc/src/model/trajectory.ts) |
 | Number of floating canopies | [10,000](numbers.md#exhaust-canopies) | Design choice |  | [data/assumptions.yaml:396](../data/assumptions.yaml#L396) | [exhaust.ts](../calc/src/model/exhaust.ts), [outcome.ts](../calc/src/model/outcome.ts) |
 | Beam cone each tile fires into (full apex angle) | [25°](numbers.md#exhaust-cone) | Invented |  | [data/assumptions.yaml:401](../data/assumptions.yaml#L401) | [exhaust.ts](../calc/src/model/exhaust.ts) |
 | Width of the band each tile emits in | [0.4 µm](numbers.md#exhaust-band) | Invented |  | [data/assumptions.yaml:406](../data/assumptions.yaml#L406) | [exhaust.ts](../calc/src/model/exhaust.ts) |

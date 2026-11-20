@@ -31,7 +31,7 @@ interface Props {
 }
 
 const M = { l: 74, r: 112 };
-const LABELS = 118;
+const LABELS = 134;
 const A = { t: LABELS + 16, h: 156 };
 const B = { t: A.t + A.h + 52, h: 196 };
 const H = B.t + B.h + 50;
@@ -262,7 +262,8 @@ function build(r: Registry): Props {
   });
   const events = [
     ev("traj-clear-rain", "The Clear Rain begins"),
-    ev("traj-freeze", "The CO₂ seas freeze"),
+    ev("traj-freeze", "The CO₂ seas start to freeze"),
+    ev("traj-frozen", "The seas are frozen through"),
     ev("traj-cold", "All the CO₂ is down"),
     ev("traj-scavenged", "Frost Towers finish"),
     ev("traj-warming", "Caps sealed, the Veil opens"),
@@ -288,6 +289,7 @@ function build(r: Registry): Props {
         label: "The CO₂ rains out into seas",
         tone: "sunk",
       },
+      { from: day("traj-freeze"), to: day("traj-frozen"), label: "The seas freeze" },
       { from: day("traj-warming"), to: day("traj-earth-like"), tone: "sunk" },
       { from: day("traj-earth-like"), to, tone: "cool-wash" },
     ],

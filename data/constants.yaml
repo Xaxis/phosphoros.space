@@ -600,28 +600,28 @@ co2-deposition-heat:
   basis: physics
   source: [nist-co2]
   sig: 3
-co2-sublimation-enthalpy:
-  value: 25200
-  unit: J/mol
-  show: kJ/mol
-  label: Sublimation enthalpy of CO₂
+co2-sublimation-a1:
+  value: -14.740846
+  unit: "1"
+  label: CO₂ sublimation curve, first coefficient (ln(p/p_t) = (T_t/T) [a₁ θ + a₂ θ^1.9 + a₃ θ^2.9], θ = 1 − T/T_t)
   basis: physics
-  source: [nist-co2]
-  sig: 3
-co2-sublimation-ref-temp:
-  value: 194.7
-  unit: K
-  label: CO₂ frost point at one atmosphere
+  source: [span-wagner-1996]
+  sig: 8
+  note: Span and Wagner's Eq. 3.12. It gives the triple-point pressure at the triple point, so the sublimation and vapour curves meet there.
+co2-sublimation-a2:
+  value: 2.4327015
+  unit: "1"
+  label: CO₂ sublimation curve, second coefficient
   basis: physics
-  source: [nist-co2]
-  sig: 4
-co2-sublimation-ref-pressure:
-  value: 101325
-  unit: Pa
-  show: bar
-  label: One atmosphere, the pressure of that frost point
+  source: [span-wagner-1996]
+  sig: 8
+co2-sublimation-a3:
+  value: -5.3061778
+  unit: "1"
+  label: CO₂ sublimation curve, third coefficient
   basis: physics
-  sig: 4
+  source: [span-wagner-1996]
+  sig: 8
 co2-critical-temp:
   value: 304.13
   unit: K
@@ -638,19 +638,19 @@ co2-critical-pressure:
   source: [nist-co2]
   sig: 3
 co2-triple-temp:
-  value: 216.59
+  value: 216.592
   unit: K
   label: CO₂ triple-point temperature
   basis: physics
-  source: [nist-co2]
+  source: [span-wagner-1996]
   sig: 4
 co2-triple-pressure:
-  value: 5.185e5
+  value: 5.1795e5
   unit: Pa
   show: bar
   label: CO₂ triple-point pressure
   basis: physics
-  source: [nist-co2]
+  source: [span-wagner-1996]
   sig: 2
 co2-melting-a1:
   value: 1955.5390

@@ -218,6 +218,7 @@
     - { label: Pump work for that heat, value: "{exhaust-work}, {exhaust-work-ratio} J per joule moved" }
     - { label: Pump work in the simulation, value: "{traj-pump-energy}, counting heat from the crust, the Forges and the ice" }
     - { label: Peak power out, value: "{exhaust-peak}" }
+    - { label: Fastest heat removal in the simulation, value: "{traj-heat-peak}, all the chimneys can carry, while the air is still hot" }
     - { label: Per canopy, value: "{canopy-power-in} in, {canopy-power-out} out" }
     - { label: Average electrical input, value: "{exhaust-work-avg}, {traj-pump-energy} in all" }
     - { label: Dark strip under the Ring, value: "{exhaust-dark-strip} wide, {exhaust-dark-strip-share} of the surface, where a cone would reach the Ring at {ring-altitude}" }
@@ -235,7 +236,7 @@
   figures: [heat-path, co2-phase, trajectory]
   modules: [exhaust.ts, trajectory.ts]
   open: [exhaust-entropy]
-  corrections: [exhaust-capacity, exhaust-safety]
+  corrections: [exhaust-capacity, exhaust-safety, sublimation-curve, triple-point-freeze]
 
 - id: cryo
   name: Cryo-continents
@@ -258,7 +259,8 @@
     - { label: Refrigeration, value: "{cryo-refrigeration-share} of the Lattice at first" }
     - { label: Compartments, value: "{cryo-cells} cells of {cryo-cell-area}, at most {cryo-cell-co2} each" }
     - { label: A torn cell, value: "Releases at most {cryo-cell-co2}, {cryo-cell-release-ppm} of the air; resealed within {cryo-reseal-time}" }
-    - { label: If refrigeration stops, value: "The floor heat would turn {cryo-unrefrigerated-loss} of the CO₂ a year; under a sealed cap it melts the base rather than escaping, which the model does not yet follow" }
+    - { label: Sealing, value: "{sealing-window} from the seas frozen through ({traj-frozen|date=day}) to the last cap ({sealing-end|date=day}): {cap-laying-rate} of cap" }
+    - { label: If refrigeration stops, value: "The floor heat melts the base into a liquid layer under the cap, {cryo-base-melt-rate} of ice a year at first: {cryo-unrefrigerated-loss} of the CO₂" }
   invented:
     - Sodium and ammonia heat pipes drilled into basin floors before the CO₂ arrives
     - Crawler-rafts that lay a gas-tight cap over a frozen sea
@@ -266,7 +268,7 @@
   experiments: [cryo-seal]
   figures: [co2-phase, heat-path]
   modules: [cryo.ts]
-  corrections: [aerogel-measured]
+  corrections: [aerogel-measured, sublimation-curve, triple-point-freeze, floor-melts]
 
 - id: forges
   name: Graphite Forges

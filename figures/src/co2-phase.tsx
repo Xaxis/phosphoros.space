@@ -3,7 +3,11 @@
  * the sublimation, vapour and melting curves from the model's physics, and the air's CO₂ partial
  * pressure from 2033 to 2036 drawn over them.
  */
-import { co2LiquidPressure, co2MeltingPressure, co2SolidPressure } from "@phosphoros/calc/physics";
+import {
+  co2LiquidPressure,
+  co2MeltingPressure,
+  co2SublimationPressure,
+} from "@phosphoros/calc/physics";
 import type { Registry } from "@phosphoros/calc/registry";
 import { Frame, Key, log, path, pow10, show, showValue, W } from "./kit.tsx";
 import { AxisBreak, Dot, Lines, Region } from "./space-kit.tsx";
@@ -20,10 +24,15 @@ function texts(r: Registry, first: Pt, last: Pt) {
     triple: `${show(r, "co2-triple-temp")}, ${show(r, "co2-triple-pressure")}`,
     clearRain: show(r, "traj-clear-rain", day),
     freeze: show(r, "traj-freeze", day),
+    frozen: show(r, "traj-frozen", day),
     coldDate: show(r, "traj-cold", day),
     cold: `${show(r, "freeze-target-temp", { sig: 3 })}, ${show(r, "co2-pressure-at-freeze")}`,
     scavenged: show(r, "traj-scavenged", day),
     sealed: show(r, "sealing-end", day),
+    sealing:
+      r.get("traj-scavenged").value <= r.get("sealing-end").value
+        ? `caps sealed by ${show(r, "sealing-end", day)}`
+        : `caps were due ${show(r, "sealing-end", day)}`,
     frostT: show(r, "frost-tower-temp"),
     frostP: show(r, "frost-co2-pressure"),
     earthLike: show(r, "traj-earth-like", day),
@@ -224,18 +233,14 @@ function Co2Phase(p: Props) {
       <Lines
         x={tpx + 12}
         y={tpy + 18}
-        lines={[`Seas freeze, ${t.freeze}`, `at the triple point, ${t.triple}`]}
+        lines={[`Seas freeze, ${t.freeze} to ${t.frozen}`, `at the triple point, ${t.triple}`]}
       />
 
       <Dot x={kx} y={ky} title={`All the CO₂ is down: ${t.cold}`} />
       <Lines x={kx + 10} y={ky + 20} lines={[`All the CO₂ is down, ${t.coldDate}`, t.cold]} />
 
       <Dot x={sx} y={sy} title={`Frost Towers finish: ${t.frostP}`} />
-      <Lines
-        x={sx + 10}
-        y={sy - 26}
-        lines={[`Frost Towers finish, ${t.scavenged}`, `caps sealed by ${t.sealed}`]}
-      />
+      <Lines x={sx + 10} y={sy - 26} lines={[`Frost Towers finish, ${t.scavenged}`, t.sealing]} />
 
       <Dot x={fx} y={fy} title={`Frost Tower cold trap: ${t.frostT}, ${t.frostP}`} />
       <Lines
@@ -271,11 +276,15 @@ export const co2Phase: FigureDef<Props> = {
     const pathPts: Pt[] = temps.points.map((q, i) => [q.y, co2.points[i]?.y ?? 0]);
     const triple = { T: v("co2-triple-temp"), P: v("co2-triple-pressure") };
     const critical = { T: v("co2-critical-temp"), P: v("co2-critical-pressure") };
-    const ref = { T: v("co2-sublimation-ref-temp"), P: v("co2-sublimation-ref-pressure") };
+    const a: [number, number, number] = [
+      v("co2-sublimation-a1"),
+      v("co2-sublimation-a2"),
+      v("co2-sublimation-a3"),
+    ];
     const step = (a: number, b: number, n: number) =>
       Array.from({ length: n + 1 }, (_, i) => a + ((b - a) * i) / n);
     const sublimation = step(MAIN[0], triple.T, 200).map(
-      (T): Pt => [T, co2SolidPressure(T, ref, v("co2-sublimation-enthalpy"), v("gas-constant"))],
+      (T): Pt => [T, co2SublimationPressure(T, triple, a)],
     );
     const vapour = step(triple.T, critical.T, 200).map(
       (T): Pt => [T, co2LiquidPressure(T, triple, critical)],
@@ -314,7 +323,8 @@ export const co2Phase: FigureDef<Props> = {
     rows: [
       ["Venus today", "Before cooling", p.text.start],
       ["Critical point: the Clear Rain begins", p.text.clearRain, p.text.critical],
-      ["Triple point: the seas freeze", p.text.freeze, p.text.triple],
+      ["Triple point: the seas start to freeze", p.text.freeze, p.text.triple],
+      ["Triple point: the seas are frozen through", p.text.frozen, p.text.triple],
       ["All the CO₂ is down", p.text.coldDate, p.text.cold],
       ["Frost Towers finish", p.text.scavenged, `${p.text.frostP} of CO₂ left in the air`],
       ["Frost Tower cold trap", "", `${p.text.frostT}, ${p.text.frostP}`],
@@ -332,11 +342,14 @@ export const co2Phase: FigureDef<Props> = {
     "co2-critical-pressure",
     "co2-triple-temp",
     "co2-triple-pressure",
-    "co2-sublimation-enthalpy",
+    "co2-sublimation-a1",
+    "co2-sublimation-a2",
+    "co2-sublimation-a3",
     "co2-melting-a1",
     "co2-melting-a2",
     "traj-clear-rain",
     "traj-freeze",
+    "traj-frozen",
     "traj-cold",
     "freeze-target-temp",
     "co2-pressure-at-freeze",

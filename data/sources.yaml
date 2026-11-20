@@ -81,7 +81,7 @@
   authors: National Institute of Standards and Technology
   url: https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Mask=4
   checked: 2026-11-20
-  note: Triple point 216.58 K and 5.185 bar, critical point 304.13 K and 73.77 bar, sublimation enthalpy.
+  note: Critical point 304.13 K and 73.77 bar, heat capacity, the heat of deposition and the heats of reaction. Its triple point, 216.58 K and 5.185 bar, agrees with the Span and Wagner values the model uses.
 - id: span-wagner-1996
   kind: paper
   title: "A New Equation of State for Carbon Dioxide Covering the Fluid Region from the Triple-Point Temperature to 1100 K at Pressures up to 800 MPa"
@@ -91,7 +91,7 @@
   doi: 10.1063/1.555991
   url: https://srd.nist.gov/jpcrdreprint/1.555991.pdf
   checked: 2026-11-20
-  note: The melting-pressure correlation, Eq. 3.10, and its coefficients a₁ = 1955.5390 and a₂ = 2055.4593. Its sublimation correlation, Eq. 3.12, gives 54 Pa at 133 K, below the 74 Pa of the model's simpler Clausius-Clapeyron fit.
+  note: The triple point, 216.592 K and 0.51795 MPa; the melting-pressure correlation, Eq. 3.10 (a₁ = 1955.5390, a₂ = 2055.4593); and the sublimation-pressure correlation, Eq. 3.12 (a₁ = −14.740846, a₂ = 2.4327015, a₃ = −5.3061778), which meets the vapour curve at the triple point.
 - id: jpl-sbdb-ceres
   kind: data
   title: "JPL Small-Body Database: 1 Ceres"

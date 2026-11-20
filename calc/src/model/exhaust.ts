@@ -6,7 +6,12 @@
  */
 
 import { formatQuantity } from "../format.ts";
-import { bandPumpWork, blackBodyShare, co2SolidPressure, sensiblePumpWork } from "../physics.ts";
+import {
+  bandPumpWork,
+  blackBodyShare,
+  co2SublimationPressure,
+  sensiblePumpWork,
+} from "../physics.ts";
 import type { Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
 import { fmt } from "./text.ts";
@@ -185,7 +190,7 @@ export function exhaust(r: Registry) {
       unit: "J",
       formula: "Q_L [T_h ln(T_c / T_t) / (T_c − T_t) − 1]",
       basis: "physics",
-      note: "Latent heat released evenly in temperature between CO₂'s critical point (304 K) and triple point (216.6 K).",
+      note: "The simple estimate: latent heat released evenly in temperature between CO₂'s critical point (304 K) and triple point (216.6 K). The day-by-day simulation releases it where the physics puts it, the heat of fusion at the triple point itself.",
     },
     () => coolingPathWork(v, v("exhaust-effective-temp")).latent,
   );
@@ -389,12 +394,11 @@ export function exhaust(r: Registry) {
 
   // Frost Towers: cold traps that pull the last CO₂ out of the air.
   const solid = (T: number) =>
-    co2SolidPressure(
-      T,
-      { T: v("co2-sublimation-ref-temp"), P: v("co2-sublimation-ref-pressure") },
-      v("co2-sublimation-enthalpy"),
-      v("gas-constant"),
-    );
+    co2SublimationPressure(T, { T: v("co2-triple-temp"), P: v("co2-triple-pressure") }, [
+      v("co2-sublimation-a1"),
+      v("co2-sublimation-a2"),
+      v("co2-sublimation-a3"),
+    ]);
   r.q(
     "co2-pressure-at-freeze",
     {
@@ -402,7 +406,7 @@ export function exhaust(r: Registry) {
       unit: "Pa",
       show: "bar",
       sig: 2,
-      formula: "Clausius-Clapeyron from 1 atm at 194.7 K",
+      formula: "p_t exp[(T_t/T)(a₁ θ + a₂ θ^1.9 + a₃ θ^2.9)], θ = 1 − T/T_t (Span and Wagner)",
       basis: "physics",
     },
     () => solid(v("freeze-target-temp")),
@@ -423,7 +427,7 @@ export function exhaust(r: Registry) {
       label: "CO₂ pressure Frost Towers leave, cold-trapping at 133 K",
       unit: "Pa",
       sig: 2,
-      formula: "P_ref exp[−(ΔH/R)(1/T − 1/T_ref)]",
+      formula: "p_t exp[(T_t/T)(a₁ θ + a₂ θ^1.9 + a₃ θ^2.9)], θ = 1 − T/T_t (Span and Wagner)",
       basis: "physics",
     },
     () => solid(v("frost-tower-temp")),

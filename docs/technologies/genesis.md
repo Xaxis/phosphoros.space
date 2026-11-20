@@ -2,7 +2,7 @@
 
 Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in and the new oceans
 have held their pH, from [1 December 2036](../numbers.md?date=day#genesis-start), so the sunlit water is
-green by [12 December 2036](../numbers.md?date=day#genesis-end). They start a food web, draw nutrients from the nitrogen sky and begin turning bare basalt
+green by [12 December 2036](../numbers.md?date=day#genesis-end), before the deadline. They start a food web, draw nutrients from the nitrogen sky and begin turning bare basalt
 and cap graphite into soil. Trees, crops and animals come later, after 2040.
 
 <!-- figure:venus-compare -->
@@ -16,7 +16,7 @@ and cap graphite into soil. Trees, crops and animals come later, after 2040.
 The day-by-day [simulation](../plan.md#the-simulated-atmosphere) reaches Earth-like air on
 [30 September 2036](../numbers.md?date=day#traj-earth-like): [2.4 bar](../numbers.md#final-pressure) in
 all, of which [2.1 bar](../numbers.md#n2-pressure) is nitrogen and
-[0.25 bar](../numbers.md#o2-target-pressure) oxygen, with [310 ppm](../numbers.md#final-co2-ppm) of CO₂, at
+[0.25 bar](../numbers.md#o2-target-pressure) oxygen, with [230 ppm](../numbers.md#final-co2-ppm) of CO₂, at
 Earth's mean [288 K](../numbers.md#earth-surface-temp). Oxygen is only
 [11%](../numbers.md#final-o2-share) of that air, but its pressure is [1.2](../numbers.md#o2-vs-earth)
 times Earth's sea-level oxygen, and pressure is what cells feel.
@@ -136,7 +136,7 @@ and the new air holds more oxygen over each square metre than Earth's does.
 <!-- table:specs genesis -->
 | Parameter | Value |
 | --- | --- |
-| Air | [2.4 bar](../numbers.md#final-pressure): [2.1 bar](../numbers.md#n2-pressure) nitrogen, [0.25 bar](../numbers.md#o2-target-pressure) oxygen, [310 ppm](../numbers.md#final-co2-ppm) CO₂ |
+| Air | [2.4 bar](../numbers.md#final-pressure): [2.1 bar](../numbers.md#n2-pressure) nitrogen, [0.25 bar](../numbers.md#o2-target-pressure) oxygen, [230 ppm](../numbers.md#final-co2-ppm) CO₂ |
 | Oceans | [217 m](../numbers.md#ocean-depth) deep on average, fresh to brackish and sulfate-rich |
 | Light | [24 h](../numbers.md#day-length) days at Earth strength |
 | Seeding | From [1 December 2036](../numbers.md?date=day#genesis-start), the later of the oxygen ([30 September 2036](../numbers.md?date=day#forge-end)) and the pH gate ([1 December 2036](../numbers.md?date=day#genesis-ph-clear)) |
@@ -163,9 +163,10 @@ and the new air holds more oxygen over each square metre than Earth's does.
 - **[June 2027](../numbers.md?date=month#survey-start):** The cloud-life survey begins.
 - **[December 2028](../numbers.md?date=month#life-gate):** The gate. No native life found, or the program
   stops. From here the organisms are engineered and tested on Earth in simulated 2036 conditions.
+- **[30 September 2036](../numbers.md?date=day#forge-end):** The Forges finish; the oxygen is in.
 - **[2 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed, the Veil opens and the
   ice melts into oceans. The pH clock starts.
-- **[30 September 2036](../numbers.md?date=day#forge-end):** The Forges finish and the air becomes Earth-like.
+- **[30 September 2036](../numbers.md?date=day#traj-earth-like):** The air is Earth-like.
 - **[1 December 2036](../numbers.md?date=day#genesis-start):** The pH has held; the gate opens and seeding
   begins.
 - **[12 December 2036](../numbers.md?date=day#genesis-end):** The sunlit water is green. Trees, crops and
