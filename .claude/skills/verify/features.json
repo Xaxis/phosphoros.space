@@ -1,0 +1,242 @@
+{
+  "version": 1,
+  "generated_by": "featuremap (claude-core) - regenerate with `featuremap generate --write`; do not edit by hand",
+  "checks": [
+    {
+      "id": "check:lint",
+      "kind": "lint",
+      "run": "pnpm lint",
+      "script": "biome check . && pnpm -r run typecheck && node tools/docs.ts --check && node --import ./tools/lib/register.ts tools/figures.ts --check && node tools/style.ts"
+    },
+    {
+      "id": "check:test",
+      "kind": "test",
+      "run": "pnpm test",
+      "script": "pnpm -r run test"
+    },
+    {
+      "id": "check:build",
+      "kind": "build",
+      "run": "pnpm build",
+      "script": "pnpm --filter @phosphoros/web build"
+    },
+    {
+      "id": "check:typecheck:calc",
+      "kind": "typecheck",
+      "run": "cd calc && pnpm typecheck",
+      "script": "tsc --noEmit"
+    },
+    {
+      "id": "check:typecheck:figures",
+      "kind": "typecheck",
+      "run": "cd figures && pnpm typecheck",
+      "script": "tsc --noEmit"
+    },
+    {
+      "id": "check:typecheck:web",
+      "kind": "typecheck",
+      "run": "cd web && pnpm typecheck",
+      "script": "next typegen && tsc --noEmit"
+    }
+  ],
+  "launch": [
+    {
+      "id": "launch:dev",
+      "run": "pnpm dev",
+      "script": "pnpm --filter @phosphoros/web dev"
+    },
+    {
+      "id": "launch:dev:web",
+      "run": "cd web && pnpm dev",
+      "script": "next dev --port 3417"
+    }
+  ],
+  "features": [
+    {
+      "id": "api:GET /manifest.webmanifest",
+      "kind": "api",
+      "entry": "web/app/manifest.ts",
+      "reach": "GET http://localhost:$PORT/manifest.webmanifest",
+      "area": "manifest",
+      "tests": []
+    },
+    {
+      "id": "api:GET /robots.txt",
+      "kind": "api",
+      "entry": "web/app/robots.ts",
+      "reach": "GET http://localhost:$PORT/robots.txt",
+      "area": "robots",
+      "tests": []
+    },
+    {
+      "id": "api:GET /sitemap.xml",
+      "kind": "api",
+      "entry": "web/app/sitemap.ts",
+      "reach": "GET http://localhost:$PORT/sitemap.xml",
+      "area": "sitemap",
+      "tests": []
+    },
+    {
+      "id": "cli:assets",
+      "kind": "cli",
+      "entry": "tools/assets.ts",
+      "reach": "~/.claude/claude-core/bin/heavy node tools/assets.ts",
+      "area": "metadata",
+      "tests": []
+    },
+    {
+      "id": "cli:calc",
+      "kind": "cli",
+      "entry": "calc/cli.ts",
+      "reach": "pnpm calc [--only ID] [--set ID=VALUE] [--json] [--claims]",
+      "area": "model",
+      "tests": []
+    },
+    {
+      "id": "cli:deploy",
+      "kind": "cli",
+      "entry": "tools/deploy.sh",
+      "reach": "tools/deploy.sh [--check [SHA]]",
+      "area": "deploy",
+      "tests": []
+    },
+    {
+      "id": "cli:docs",
+      "kind": "cli",
+      "entry": "tools/docs.ts",
+      "reach": "pnpm docs [--check] [FILE...]",
+      "area": "docs",
+      "tests": [
+        "calc/test/model.test.ts"
+      ]
+    },
+    {
+      "id": "cli:figures",
+      "kind": "cli",
+      "entry": "tools/figures.ts",
+      "reach": "pnpm figures [--check]",
+      "area": "figures",
+      "tests": []
+    },
+    {
+      "id": "cli:look",
+      "kind": "cli",
+      "entry": "tools/look.ts",
+      "reach": "node tools/look.ts OUT_DIR ID...",
+      "area": "figures",
+      "tests": []
+    },
+    {
+      "id": "cli:style",
+      "kind": "cli",
+      "entry": "tools/style.ts",
+      "reach": "node tools/style.ts [FILE...]",
+      "area": "docs",
+      "tests": []
+    },
+    {
+      "id": "export:@phosphoros/calc",
+      "kind": "export",
+      "entry": "calc/src/index.ts",
+      "reach": "import from '@phosphoros/calc'",
+      "area": "exports",
+      "tests": []
+    },
+    {
+      "id": "export:@phosphoros/calc/*",
+      "kind": "export",
+      "entry": "calc/src/*.ts",
+      "reach": "import from '@phosphoros/calc/*'",
+      "area": "exports",
+      "tests": []
+    },
+    {
+      "id": "export:@phosphoros/calc/load",
+      "kind": "export",
+      "entry": "calc/src/load.ts",
+      "reach": "import from '@phosphoros/calc/load'",
+      "area": "exports",
+      "tests": []
+    },
+    {
+      "id": "export:@phosphoros/figures",
+      "kind": "export",
+      "entry": "figures/src/index.ts",
+      "reach": "import from '@phosphoros/figures'",
+      "area": "exports",
+      "tests": []
+    },
+    {
+      "id": "export:@phosphoros/figures/*",
+      "kind": "export",
+      "entry": "figures/src/*.tsx",
+      "reach": "import from '@phosphoros/figures/*'",
+      "area": "exports",
+      "tests": []
+    },
+    {
+      "id": "export:@phosphoros/figures/theme",
+      "kind": "export",
+      "entry": "figures/src/theme.ts",
+      "reach": "import from '@phosphoros/figures/theme'",
+      "area": "exports",
+      "tests": []
+    },
+    {
+      "id": "page:/",
+      "kind": "page",
+      "entry": "web/app/page.tsx",
+      "reach": "http://localhost:$PORT/",
+      "area": "home",
+      "tests": []
+    },
+    {
+      "id": "page:/[slug]",
+      "kind": "page",
+      "entry": "web/app/[slug]/page.tsx",
+      "reach": "http://localhost:$PORT/[slug]",
+      "area": "home",
+      "tests": []
+    },
+    {
+      "id": "page:/explore",
+      "kind": "page",
+      "entry": "web/app/explore/page.tsx",
+      "reach": "http://localhost:$PORT/explore",
+      "area": "explore",
+      "tests": []
+    },
+    {
+      "id": "page:/numbers",
+      "kind": "page",
+      "entry": "web/app/numbers/page.tsx",
+      "reach": "http://localhost:$PORT/numbers",
+      "area": "numbers",
+      "tests": []
+    },
+    {
+      "id": "page:/sources",
+      "kind": "page",
+      "entry": "web/app/sources/page.tsx",
+      "reach": "http://localhost:$PORT/sources",
+      "area": "sources",
+      "tests": []
+    },
+    {
+      "id": "page:/technologies",
+      "kind": "page",
+      "entry": "web/app/technologies/page.tsx",
+      "reach": "http://localhost:$PORT/technologies",
+      "area": "technologies",
+      "tests": []
+    },
+    {
+      "id": "page:/technologies/[id]",
+      "kind": "page",
+      "entry": "web/app/technologies/[id]/page.tsx",
+      "reach": "http://localhost:$PORT/technologies/[id]",
+      "area": "technologies",
+      "tests": []
+    }
+  ]
+}
