@@ -15,13 +15,21 @@
     "figures": "node --import ./tools/lib/register.ts tools/figures.ts",
     "dev": "pnpm --filter @phosphoros/web dev",
     "build": "pnpm --filter @phosphoros/web build",
-    "lint": "biome check . && pnpm -r run typecheck && node tools/docs.ts --check && node tools/style.ts",
+    "lint": "biome check . && pnpm -r run typecheck && node tools/docs.ts --check && node --import ./tools/lib/register.ts tools/figures.ts --check && node tools/style.ts",
     "format": "biome check --write .",
-    "test": "pnpm -r run test"
+    "test": "pnpm -r run test",
+    "figures:check": "node --import ./tools/lib/register.ts tools/figures.ts --check",
+    "assets": "node tools/assets.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.8",
+    "@phosphoros/calc": "workspace:*",
+    "@phosphoros/figures": "workspace:*",
     "@types/node": "24.19.0",
+    "playwright-core": "1.63.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sucrase": "3.35.1",
     "typescript": "7.0.2"
   }
 }

@@ -1,0 +1,288 @@
+"use client";
+/**
+ * The Explorer: the same model the site is built from, run in the browser. Move an assumption and
+ * every consequence, including the day-by-day simulation and the physics checks, is recomputed.
+ * The chosen values live in the URL (?set=id:value,...), so a variant can be shared.
+ */
+import { compute } from "@phosphoros/calc";
+import { formatQuantity } from "@phosphoros/calc/format";
+import type { Basis, Input, Registry } from "@phosphoros/calc/registry";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
+
+export interface ExplorerGroup {
+  title: string;
+  ids: string[];
+}
+
+export interface Outcome {
+  id: string;
+  /** What a reader should compare it with. */
+  against?: string;
+  better: "earlier" | "later" | "higher" | "lower" | "none";
+}
+
+const STEPS = 400;
+
+function toSlider(q: Input, value: number): number {
+  const [lo, hi] = q.range as [number, number];
+  const log = hi / lo > 4;
+  const t = log ? Math.log(value / lo) / Math.log(hi / lo) : (value - lo) / (hi - lo);
+  return Math.round(Math.min(1, Math.max(0, t)) * STEPS);
+}
+
+function fromSlider(q: Input, step: number): number {
+  const [lo, hi] = q.range as [number, number];
+  const t = step / STEPS;
+  const log = hi / lo > 4;
+  const v = log ? lo * (hi / lo) ** t : lo + t * (hi - lo);
+  return Number(v.toPrecision(3));
+}
+
+function run(inputs: Input[], overrides: Record<string, number>): { r?: Registry; error?: string } {
+  try {
+    const map = new Map(inputs.map((q) => [q.id, id(q, overrides)]));
+    return { r: compute(map) };
+  } catch (e) {
+    return { error: (e as Error).message };
+  }
+}
+
+function id(q: Input, overrides: Record<string, number>): Input {
+  return q.id in overrides ? { ...q, value: overrides[q.id] as number } : q;
+}
+
+function readUrl(): Record<string, number> {
+  const out: Record<string, number> = {};
+  const set = new URLSearchParams(window.location.search).get("set");
+  for (const pair of (set ?? "").split(",")) {
+    const [k, v] = pair.split(":");
+    if (k && v !== undefined && Number.isFinite(Number(v))) out[k] = Number(v);
+  }
+  return out;
+}
+
+const BASIS_CLASS: Record<Basis, string> = {
+  physics: "basis-physics",
+  precedent: "basis-precedent",
+  invented: "basis-invented",
+  design: "basis-design",
+};
+
+export function Explorer({
+  inputs,
+  groups,
+  outcomes,
+}: {
+  inputs: Input[];
+  groups: ExplorerGroup[];
+  outcomes: Outcome[];
+}) {
+  const byId = useMemo(() => new Map(inputs.map((q) => [q.id, q])), [inputs]);
+  const [overrides, setOverrides] = useState<Record<string, number>>({});
+  const deferred = useDeferredValue(overrides);
+  const base = useMemo(() => run(inputs, {}), [inputs]);
+  const now = useMemo(() => run(inputs, deferred), [inputs, deferred]);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const fromUrl = readUrl();
+    const valid = Object.fromEntries(Object.entries(fromUrl).filter(([k]) => byId.get(k)?.range));
+    if (Object.keys(valid).length) setOverrides(valid);
+    const focus = window.location.hash.slice(1);
+    if (focus) document.getElementById(`x-${focus}`)?.focus();
+  }, [byId]);
+
+  useEffect(() => {
+    const set = Object.entries(overrides)
+      .map(([k, v]) => `${k}:${v}`)
+      .join(",");
+    const url = new URL(window.location.href);
+    if (set) url.searchParams.set("set", set);
+    else url.searchParams.delete("set");
+    window.history.replaceState(null, "", url);
+  }, [overrides]);
+
+  const changed = Object.keys(overrides).length > 0;
+
+  return (
+    <div className="explorer">
+      <section className="explorer-controls" aria-label="Assumptions">
+        {groups.map((g) => (
+          <fieldset key={g.title} className="explorer-group">
+            <legend>{g.title}</legend>
+            {g.ids.map((qid) => {
+              const q = byId.get(qid);
+              if (!q?.range) return null;
+              const value = overrides[qid] ?? q.value;
+              const moved = qid in overrides;
+              return (
+                <div key={qid} className={`explorer-input${moved ? " moved" : ""}`}>
+                  <div className="explorer-input-head">
+                    <label htmlFor={`x-${qid}`}>{q.label}</label>
+                    <output htmlFor={`x-${qid}`} className="explorer-value">
+                      {formatQuantity({ ...q, value }, { sig: 3 })}
+                    </output>
+                  </div>
+                  <input
+                    id={`x-${qid}`}
+                    type="range"
+                    min={0}
+                    max={STEPS}
+                    value={toSlider(q, value)}
+                    onChange={(e) => {
+                      const v = fromSlider(q, Number(e.currentTarget.value));
+                      setOverrides((o) => ({ ...o, [qid]: v }));
+                    }}
+                    aria-valuetext={formatQuantity({ ...q, value }, { sig: 3 })}
+                  />
+                  <div className="explorer-input-foot">
+                    <span>{formatQuantity({ ...q, value: q.range[0] }, { sig: 2 })}</span>
+                    <span className={BASIS_CLASS[q.basis]}>
+                      {moved ? (
+                        <button
+                          type="button"
+                          className="linkish"
+                          onClick={() =>
+                            setOverrides((o) => {
+                              const { [qid]: _, ...rest } = o;
+                              return rest;
+                            })
+                          }
+                        >
+                          Reset to {formatQuantity(q, { sig: 3 })}
+                        </button>
+                      ) : (
+                        "plan value"
+                      )}
+                    </span>
+                    <span>{formatQuantity({ ...q, value: q.range[1] }, { sig: 2 })}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </fieldset>
+        ))}
+        <div className="explorer-actions">
+          <button
+            type="button"
+            className="button"
+            disabled={!changed}
+            onClick={() => setOverrides({})}
+          >
+            Reset everything
+          </button>
+          <button
+            type="button"
+            className="button"
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(window.location.href);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 1800);
+              } catch {}
+            }}
+          >
+            {copied ? "Link copied" : "Copy a link to this variant"}
+          </button>
+        </div>
+      </section>
+      <section className="explorer-results" aria-label="Consequences" aria-live="polite">
+        {now.error || !now.r || !base.r ? (
+          <p className="explorer-error">The model cannot run with these assumptions: {now.error}</p>
+        ) : (
+          <Results base={base.r} now={now.r} outcomes={outcomes} changed={changed} />
+        )}
+      </section>
+    </div>
+  );
+}
+
+function Results({
+  base,
+  now,
+  outcomes,
+  changed,
+}: {
+  base: Registry;
+  now: Registry;
+  outcomes: Outcome[];
+  changed: boolean;
+}) {
+  const checks = [...now.checks.values()];
+  const passing = checks.filter((c) => c.pass).length;
+  const earthLike = now.get("traj-earth-like").value;
+  const deadline = now.get("deadline").value;
+  const onTime = earthLike <= deadline;
+  return (
+    <>
+      <div className={`explorer-verdict ${onTime ? "ok" : "late"}`}>
+        <p className="explorer-verdict-title">
+          {onTime ? "Venus is Earth-like in time" : "Venus misses the deadline"}
+        </p>
+        <p>
+          The day-by-day simulation reaches Earth-like air on{" "}
+          <strong>{formatQuantity(now.get("traj-earth-like"), { date: "day" })}</strong>
+          {onTime ? ", " : ", against a deadline of "}
+          {onTime
+            ? `${Math.round(deadline - earthLike)} days before the deadline.`
+            : `${formatQuantity(now.get("deadline"), { date: "day" })}.`}{" "}
+          {passing} of {checks.length} physics checks pass.
+        </p>
+      </div>
+      <table className="explorer-table">
+        <thead>
+          <tr>
+            <th>Consequence</th>
+            <th>Plan</th>
+            <th>This variant</th>
+          </tr>
+        </thead>
+        <tbody>
+          {outcomes.map((o) => {
+            const b = base.get(o.id);
+            const n = now.get(o.id);
+            const differs = Math.abs(n.value - b.value) > Math.abs(b.value) * 1e-6 + 1e-9;
+            const up = n.value > b.value;
+            const good =
+              o.better === "none" ? null : (o.better === "higher" || o.better === "later") === up;
+            return (
+              <tr
+                key={o.id}
+                className={
+                  differs ? (good === null ? "diff" : good ? "diff good" : "diff bad") : ""
+                }
+              >
+                <td>
+                  {n.label}
+                  {o.against && <span className="explorer-against"> {o.against}</span>}
+                </td>
+                <td className="explorer-num">{formatQuantity(b, { date: "day" })}</td>
+                <td className="explorer-num">{formatQuantity(n, { date: "day" })}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <h2 className="explorer-h">Physics checks</h2>
+      <ul className="check-list">
+        {checks.map((c) => {
+          const was = base.checks.get(c.id)?.pass;
+          return (
+            <li key={c.id} className={c.pass ? "check-pass" : "check-fail"}>
+              <span className="check-mark">{c.pass ? "Pass" : c.issue ? "Open" : "Fail"}</span>
+              <div>
+                <p className="check-label">
+                  {c.label}
+                  {changed && was !== c.pass && (
+                    <span className="check-changed">{c.pass ? " now passes" : " now fails"}</span>
+                  )}
+                </p>
+                <p className="check-detail">{c.detail}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
+}

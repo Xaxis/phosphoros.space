@@ -1,0 +1,73 @@
+import type { Metadata } from "next";
+import { Explorer, type ExplorerGroup, type Outcome } from "../../components/Explorer";
+import { Footer } from "../../components/Footer";
+import { Header } from "../../components/Header";
+import { model } from "../../lib/model";
+import { REPO } from "../../lib/site";
+
+export const metadata: Metadata = {
+  title: "Explorer",
+  description:
+    "Change any of the plan's key assumptions and watch every consequence, the simulated atmosphere and the physics checks recompute in your browser.",
+  alternates: { canonical: "/explore" },
+};
+
+const GROUPS: ExplorerGroup[] = [
+  {
+    title: "Ouroboros Foundry",
+    ids: ["foundry-doubling-days", "foundry-seed-mass", "foundry-energy-per-kg"],
+  },
+  {
+    title: "Helios Lattice",
+    ids: ["helios-power", "helios-film-efficiency", "helios-laser-efficiency"],
+  },
+  { title: "Hesperus Veil", ids: ["veil-momentum-fraction"] },
+  { title: "Photonic Exhaust", ids: ["exhaust-peak", "exhaust-effective-temp"] },
+  { title: "Water", ids: ["ice-mass", "ceres-water-fraction"] },
+];
+
+const OUTCOMES: Outcome[] = [
+  { id: "traj-earth-like", better: "earlier" },
+  { id: "budget-demand", better: "lower" },
+  { id: "helios-supply", better: "higher" },
+  { id: "budget-spare", better: "higher" },
+  { id: "budget-spare-with-ring", better: "higher" },
+  { id: "foundry-full-scale", better: "earlier" },
+  { id: "veil-affordable", better: "earlier" },
+  { id: "traj-clear-rain", better: "earlier" },
+  { id: "traj-scavenged", better: "earlier" },
+  { id: "helios-area", better: "none" },
+  { id: "exhaust-area-installed", better: "none" },
+  { id: "traj-pump-energy", better: "lower" },
+  { id: "veil-mass", better: "none" },
+  { id: "ocean-depth", better: "none" },
+  { id: "ice-ceres-water-share", better: "lower" },
+];
+
+export default function ExplorePage() {
+  const { r } = model();
+  const inputs = [...r.inputs.values()];
+  return (
+    <>
+      <Header current="/explore" />
+      <main id="content" className="page page-wide">
+        <div className="page-hero">
+          <p className="eyebrow">Fork the plan</p>
+          <h1>Explorer</h1>
+          <div className="lead">
+            <p>
+              This page runs the same model the site is built from, in your browser. Move an
+              assumption and every consequence is recomputed, including the day-by-day simulation of
+              Venus's air and every physics check. The link in your address bar keeps your variant.
+              To change anything else, edit{" "}
+              <a href={`${REPO}/blob/main/data/assumptions.yaml`}>data/assumptions.yaml</a> and run{" "}
+              <code>pnpm calc</code>.
+            </p>
+          </div>
+        </div>
+        <Explorer inputs={inputs} groups={GROUPS} outcomes={OUTCOMES} />
+      </main>
+      <Footer doc="calc/src/model/index.ts" />
+    </>
+  );
+}

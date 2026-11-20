@@ -1,0 +1,32 @@
+{
+  "name": "@phosphoros/web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "phosphoros.space: the site, rendered from docs/ and data/ through the model in calc/. Deployed as the Vercel project phosphoros.",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "next dev --port 3417",
+    "build": "next build",
+    "start": "next start --port 3417",
+    "typecheck": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@phosphoros/calc": "workspace:*",
+    "@phosphoros/figures": "workspace:*",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1",
+    "server-only": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "7.0.2"
+  }
+}

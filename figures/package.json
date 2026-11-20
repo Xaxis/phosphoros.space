@@ -1,0 +1,28 @@
+{
+  "name": "@phosphoros/figures",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Every Phosphoros chart and diagram as a React SVG component drawn from the model. The site renders them live; tools/figures.ts exports static SVGs to figures/svg/ for GitHub.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./theme": "./src/theme.ts",
+    "./*": "./src/*.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@phosphoros/calc": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.0",
+    "@types/react": "^19.3.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "typescript": "7.0.2"
+  }
+}
