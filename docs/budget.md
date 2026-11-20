@@ -318,6 +318,30 @@ its basis says whether it is a design choice, an invention or a demonstrated pre
 | Coldest mean temperature that counts as Earth-like | [285 K](numbers.md#earth-like-temp) | Design choice |  | [data/assumptions.yaml:667](../data/assumptions.yaml#L667) |
 | Most CO₂ that counts as Earth-like | [600 ppm](numbers.md#earth-like-co2) | Design choice |  | [data/assumptions.yaml:673](../data/assumptions.yaml#L673) |
 | Days a replicator keeps building without a Mass Ledger heartbeat | [7 d](numbers.md#choir-deadman-days) | Design choice |  | [data/assumptions.yaml:681](../data/assumptions.yaml#L681) |
+| Ouroboros-0 passes at this share of its own mass made from simulated regolith | [95%](numbers.md#ouroboros-0-closure) | Design choice |  | [data/assumptions.yaml:689](../data/assumptions.yaml#L689) |
+| Ouroboros-0 passes if it doubles in less than this | [120 d](numbers.md#ouroboros-0-doubling) | Design choice |  | [data/assumptions.yaml:695](../data/assumptions.yaml#L695) |
+| Ouroboros-0 is killed below this mass closure | [70%](numbers.md#ouroboros-0-kill-closure) | Design choice |  | [data/assumptions.yaml:700](../data/assumptions.yaml#L700) |
+| Exhaust-1 passes at this much net cooling | [10 kW/m²](numbers.md#exhaust-1-cooling) | Design choice |  | [data/assumptions.yaml:706](../data/assumptions.yaml#L706) |
+| Exhaust-1 must come within this share of the Carnot limit | [50%](numbers.md#exhaust-1-carnot) | Design choice |  | [data/assumptions.yaml:712](../data/assumptions.yaml#L712) |
+| Exhaust-1 is killed if it shows no net cooling above this | [100 W/m²](numbers.md#exhaust-1-kill-cooling) | Design choice |  | [data/assumptions.yaml:718](../data/assumptions.yaml#L718) |
+| Power the Lightpipe test beams between satellites | [1 MW](numbers.md#lightpipe-power) | Design choice |  | [data/assumptions.yaml:728](../data/assumptions.yaml#L728) |
+| Distance the Lightpipe test beams over | [1,000 km](numbers.md#lightpipe-range) | Design choice |  | [data/assumptions.yaml:734](../data/assumptions.yaml#L734) |
+| Lightpipe passes at this end-to-end efficiency | [30%](numbers.md#lightpipe-efficiency) | Design choice |  | [data/assumptions.yaml:740](../data/assumptions.yaml#L740) |
+| Lightpipe is killed if phase lock fails beyond this many emitters | [100](numbers.md#lightpipe-kill-emitters) | Design choice |  | [data/assumptions.yaml:746](../data/assumptions.yaml#L746) |
+| Area of the Veil-1 test slat | [1 km²](numbers.md#veil-1-area) | Design choice |  | [data/assumptions.yaml:751](../data/assumptions.yaml#L751) |
+| Veil-1 must dim to block this share of sunlight | [99%](numbers.md#veil-1-dim) | Design choice |  | [data/assumptions.yaml:757](../data/assumptions.yaml#L757) |
+| Veil-1 is killed if its film degrades within this | [6 months](numbers.md#veil-1-kill-life) | Design choice |  | [data/assumptions.yaml:763](../data/assumptions.yaml#L763) |
+| Ice block the Railhead test throws | [1 t](numbers.md#railhead-test-mass) | Design choice |  | [data/assumptions.yaml:769](../data/assumptions.yaml#L769) |
+| Railhead test passes at this muzzle speed | [3 km/s](numbers.md#railhead-test-speed) | Design choice |  | [data/assumptions.yaml:775](../data/assumptions.yaml#L775) |
+| Railhead test passes at this many shots an hour | [10](numbers.md#railhead-test-rate) | Design choice |  | [data/assumptions.yaml:781](../data/assumptions.yaml#L781) |
+| Railhead test is killed below this muzzle speed | [1 km/s](numbers.md#railhead-kill-speed) | Design choice |  | [data/assumptions.yaml:786](../data/assumptions.yaml#L786) |
+| Railhead test is killed below this many shots an hour | [1](numbers.md#railhead-kill-rate) | Design choice |  | [data/assumptions.yaml:792](../data/assumptions.yaml#L792) |
+| Cryo-seal passes if the cap leaks less heat than this | [0.1 W/m²](numbers.md#cryo-seal-leak) | Design choice |  | [data/assumptions.yaml:797](../data/assumptions.yaml#L797) |
+| How long Cryo-seal must hold its leak | [12 months](numbers.md#cryo-seal-months) | Design choice |  | [data/assumptions.yaml:803](../data/assumptions.yaml#L803) |
+| Size of the Mini-Aegis test coil | [10 m](numbers.md#mini-aegis-coil) | Design choice |  | [data/assumptions.yaml:809](../data/assumptions.yaml#L809) |
+| Robots in the Choir-sim test factory | [10,000](numbers.md#choir-sim-robots) | Design choice |  | [data/assumptions.yaml:814](../data/assumptions.yaml#L814) |
+| How long Choir-sim must run unattended | [90 d](numbers.md#choir-sim-days) | Design choice |  | [data/assumptions.yaml:819](../data/assumptions.yaml#L819) |
+| Choir-sim is killed above this many human interventions a day | [1](numbers.md#choir-sim-kill-interventions) | Design choice |  | [data/assumptions.yaml:824](../data/assumptions.yaml#L824) |
 <!-- /table -->
 
 Every assumption with a range is a slider in the [Explorer](https://phosphoros.space/explore), which runs

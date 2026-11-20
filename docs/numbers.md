@@ -228,6 +228,31 @@ Basis: **Physics** is measurement or established physics. **Precedent** is shown
 | <a id="earth-like-temp"></a>**Coldest mean temperature that counts as Earth-like**<br>`earth-like-temp` | 285 K |  | Design choice | [data/assumptions.yaml:667](../data/assumptions.yaml#L667) |
 | <a id="earth-like-co2"></a>**Most CO₂ that counts as Earth-like**<br>`earth-like-co2` | 600 ppm |  | Design choice | [data/assumptions.yaml:673](../data/assumptions.yaml#L673) |
 | <a id="choir-deadman-days"></a>**Days a replicator keeps building without a Mass Ledger heartbeat**<br>`choir-deadman-days` | 7 d |  | Design choice | [data/assumptions.yaml:681](../data/assumptions.yaml#L681) |
+| <a id="ouroboros-0-closure"></a>**Ouroboros-0 passes at this share of its own mass made from simulated regolith**<br>`ouroboros-0-closure` | 95% |  | Design choice | [data/assumptions.yaml:689](../data/assumptions.yaml#L689) |
+| <a id="ouroboros-0-doubling"></a>**Ouroboros-0 passes if it doubles in less than this**<br>`ouroboros-0-doubling` | 120 d |  | Design choice | [data/assumptions.yaml:695](../data/assumptions.yaml#L695) |
+| <a id="ouroboros-0-kill-closure"></a>**Ouroboros-0 is killed below this mass closure**<br>`ouroboros-0-kill-closure` | 70% |  | Design choice | [data/assumptions.yaml:700](../data/assumptions.yaml#L700) |
+| <a id="exhaust-1-cooling"></a>**Exhaust-1 passes at this much net cooling**<br>`exhaust-1-cooling` | 10 kW/m² |  | Design choice | [data/assumptions.yaml:706](../data/assumptions.yaml#L706) |
+| <a id="exhaust-1-carnot"></a>**Exhaust-1 must come within this share of the Carnot limit**<br>`exhaust-1-carnot` | 50% |  | Design choice | [data/assumptions.yaml:712](../data/assumptions.yaml#L712) |
+| <a id="exhaust-1-kill-cooling"></a>**Exhaust-1 is killed if it shows no net cooling above this**<br>`exhaust-1-kill-cooling` | 100 W/m² |  | Design choice | [data/assumptions.yaml:718](../data/assumptions.yaml#L718) |
+| <a id="exhaust-production-tile"></a>**Production Exhaust tiles shine at full brightness by**<br>`exhaust-production-tile` | 31 December 2031 |  | Design choice | [data/assumptions.yaml:723](../data/assumptions.yaml#L723) |
+| <a id="lightpipe-power"></a>**Power the Lightpipe test beams between satellites**<br>`lightpipe-power` | 1 MW |  | Design choice | [data/assumptions.yaml:728](../data/assumptions.yaml#L728) |
+| <a id="lightpipe-range"></a>**Distance the Lightpipe test beams over**<br>`lightpipe-range` | 1,000 km |  | Design choice | [data/assumptions.yaml:734](../data/assumptions.yaml#L734) |
+| <a id="lightpipe-efficiency"></a>**Lightpipe passes at this end-to-end efficiency**<br>`lightpipe-efficiency` | 30% |  | Design choice | [data/assumptions.yaml:740](../data/assumptions.yaml#L740) |
+| <a id="lightpipe-kill-emitters"></a>**Lightpipe is killed if phase lock fails beyond this many emitters**<br>`lightpipe-kill-emitters` | 100 |  | Design choice | [data/assumptions.yaml:746](../data/assumptions.yaml#L746) |
+| <a id="veil-1-area"></a>**Area of the Veil-1 test slat**<br>`veil-1-area` | 1 km² |  | Design choice | [data/assumptions.yaml:751](../data/assumptions.yaml#L751) |
+| <a id="veil-1-dim"></a>**Veil-1 must dim to block this share of sunlight**<br>`veil-1-dim` | 99% |  | Design choice | [data/assumptions.yaml:757](../data/assumptions.yaml#L757) |
+| <a id="veil-1-kill-life"></a>**Veil-1 is killed if its film degrades within this**<br>`veil-1-kill-life` | 6 months |  | Design choice | [data/assumptions.yaml:763](../data/assumptions.yaml#L763) |
+| <a id="railhead-test-mass"></a>**Ice block the Railhead test throws**<br>`railhead-test-mass` | 1 t |  | Design choice | [data/assumptions.yaml:769](../data/assumptions.yaml#L769) |
+| <a id="railhead-test-speed"></a>**Railhead test passes at this muzzle speed**<br>`railhead-test-speed` | 3 km/s |  | Design choice | [data/assumptions.yaml:775](../data/assumptions.yaml#L775) |
+| <a id="railhead-test-rate"></a>**Railhead test passes at this many shots an hour**<br>`railhead-test-rate` | 10 |  | Design choice | [data/assumptions.yaml:781](../data/assumptions.yaml#L781) |
+| <a id="railhead-kill-speed"></a>**Railhead test is killed below this muzzle speed**<br>`railhead-kill-speed` | 1 km/s |  | Design choice | [data/assumptions.yaml:786](../data/assumptions.yaml#L786) |
+| <a id="railhead-kill-rate"></a>**Railhead test is killed below this many shots an hour**<br>`railhead-kill-rate` | 1 |  | Design choice | [data/assumptions.yaml:792](../data/assumptions.yaml#L792) |
+| <a id="cryo-seal-leak"></a>**Cryo-seal passes if the cap leaks less heat than this**<br>`cryo-seal-leak` | 0.1 W/m² |  | Design choice | [data/assumptions.yaml:797](../data/assumptions.yaml#L797) |
+| <a id="cryo-seal-months"></a>**How long Cryo-seal must hold its leak**<br>`cryo-seal-months` | 12 months |  | Design choice | [data/assumptions.yaml:803](../data/assumptions.yaml#L803) |
+| <a id="mini-aegis-coil"></a>**Size of the Mini-Aegis test coil**<br>`mini-aegis-coil` | 10 m |  | Design choice | [data/assumptions.yaml:809](../data/assumptions.yaml#L809) |
+| <a id="choir-sim-robots"></a>**Robots in the Choir-sim test factory**<br>`choir-sim-robots` | 10,000 |  | Design choice | [data/assumptions.yaml:814](../data/assumptions.yaml#L814) |
+| <a id="choir-sim-days"></a>**How long Choir-sim must run unattended**<br>`choir-sim-days` | 90 d |  | Design choice | [data/assumptions.yaml:819](../data/assumptions.yaml#L819) |
+| <a id="choir-sim-kill-interventions"></a>**Choir-sim is killed above this many human interventions a day**<br>`choir-sim-kill-interventions` | 1 |  | Design choice | [data/assumptions.yaml:824](../data/assumptions.yaml#L824) |
 
 ## Derived
 
@@ -571,6 +596,7 @@ Basis: **Physics** is measurement or established physics. **Precedent** is shown
 | <a id="delay-venus-ceres-min"></a>**Light delay, Venus to Ceres, closest**<br>`delay-venus-ceres-min` | 17 min | distance / c<br>from [ceres-orbit](#ceres-orbit), [venus-orbit](#venus-orbit), [speed-of-light](#speed-of-light) | Physics | [model/outcome.ts:111](../calc/src/model/outcome.ts#L111) |
 | <a id="delay-venus-ceres-max"></a>**Light delay, Venus to Ceres, farthest**<br>`delay-venus-ceres-max` | 29 min | distance / c<br>from [ceres-orbit](#ceres-orbit), [venus-orbit](#venus-orbit), [speed-of-light](#speed-of-light) | Physics | [model/outcome.ts:116](../calc/src/model/outcome.ts#L116) |
 | <a id="delay-earth-ceres-max"></a>**Light delay, Earth to Ceres, farthest**<br>`delay-earth-ceres-max` | 33 min | distance / c<br>from [ceres-aphelion](#ceres-aphelion), [au](#au), [speed-of-light](#speed-of-light) | Physics | [model/outcome.ts:121](../calc/src/model/outcome.ts#L121) |
+| <a id="choir-machines"></a>**Machines the Choir runs that the model counts**<br>`choir-machines` | 3.9 × 10⁸ | Petals + slats + canopies + chimneys + Forges + Railheads + tether lifts<br>from [helios-petals](#helios-petals), [veil-slats](#veil-slats), [exhaust-canopies](#exhaust-canopies), [chimney-count](#chimney-count), [forge-count](#forge-count), [railhead-count](#railhead-count), [ring-tether-lifts](#ring-tether-lifts) | Design choice | [model/outcome.ts:143](../calc/src/model/outcome.ts#L143) |
 
 ### [model/trajectory.ts](../calc/src/model/trajectory.ts)
 

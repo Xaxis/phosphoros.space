@@ -28,7 +28,7 @@
   title: Veil moved from L1 to a statite 137,000 km sunward
   text: >-
     Because the Sun's angular size makes an L1 shade about three times larger (area 1.3 to
-    1.5 × 10¹⁴ m²). Version 3 found this move breaks Newton's laws and reverses it (see veil-l1).
+    1.5 × 10¹⁴ m²). Version 3 found this move breaks Newton's laws and returns the Veil to L1 (see "The Veil goes back to L1" below).
   issue: 1
 - id: pump-work
   kind: correction
@@ -56,8 +56,8 @@
 - id: rename
   kind: rename
   version: "2"
-  title: Renamed Phosphoros
-  text: The light-bringer, at phosphoros.space.
+  title: Project Hesperus Ten becomes Phosphoros
+  text: Phosphoros, the light-bringer, is the ancient Greek name for Venus as the morning star.
 - id: v3
   kind: version
   version: "3"
@@ -245,3 +245,13 @@
     {budget-spare-with-ring} spare, so the Ring is no longer a margin but a necessity. Options
     under study: fire harder near each window (more Railheads, less energy), a larger Lattice, or
     less water.
+- id: choir-count
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: Choir's machine count comes from the model
+  text: >-
+    Version 2 said Choir runs a trillion machines, a number nothing in the plan sized. Version 3
+    counts the machines the model does size, {choir-machines}: the Lattice's Petals, the Veil's
+    slats, the Exhaust canopies, the Thermal Chimneys, the Forges, the Railheads and the Ring's
+    tether lifts. The Foundry's own robots are not sized, so this is a floor.

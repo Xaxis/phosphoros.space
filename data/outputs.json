@@ -1657,6 +1657,206 @@
       "basis": "design",
       "source": "data/assumptions.yaml#L681"
     },
+    "ouroboros-0-closure": {
+      "value": 0.95,
+      "unit": "1",
+      "shown": "95%",
+      "label": "Ouroboros-0 passes at this share of its own mass made from simulated regolith",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L689"
+    },
+    "ouroboros-0-doubling": {
+      "value": 120,
+      "unit": "d",
+      "shown": "120 d",
+      "label": "Ouroboros-0 passes if it doubles in less than this",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L695"
+    },
+    "ouroboros-0-kill-closure": {
+      "value": 0.7,
+      "unit": "1",
+      "shown": "70%",
+      "label": "Ouroboros-0 is killed below this mass closure",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L700"
+    },
+    "exhaust-1-cooling": {
+      "value": 10000,
+      "unit": "W/m2",
+      "shown": "10 kW/m²",
+      "label": "Exhaust-1 passes at this much net cooling",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L706"
+    },
+    "exhaust-1-carnot": {
+      "value": 0.5,
+      "unit": "1",
+      "shown": "50%",
+      "label": "Exhaust-1 must come within this share of the Carnot limit",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L712"
+    },
+    "exhaust-1-kill-cooling": {
+      "value": 100,
+      "unit": "W/m2",
+      "shown": "100 W/m²",
+      "label": "Exhaust-1 is killed if it shows no net cooling above this",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L718"
+    },
+    "exhaust-production-tile": {
+      "value": "2031-12-31",
+      "unit": "date",
+      "shown": "31 December 2031",
+      "label": "Production Exhaust tiles shine at full brightness by",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L723"
+    },
+    "lightpipe-power": {
+      "value": 1000000,
+      "unit": "W",
+      "shown": "1 MW",
+      "label": "Power the Lightpipe test beams between satellites",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L728"
+    },
+    "lightpipe-range": {
+      "value": 1000000,
+      "unit": "m",
+      "shown": "1,000 km",
+      "label": "Distance the Lightpipe test beams over",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L734"
+    },
+    "lightpipe-efficiency": {
+      "value": 0.3,
+      "unit": "1",
+      "shown": "30%",
+      "label": "Lightpipe passes at this end-to-end efficiency",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L740"
+    },
+    "lightpipe-kill-emitters": {
+      "value": 100,
+      "unit": "count",
+      "shown": "100",
+      "label": "Lightpipe is killed if phase lock fails beyond this many emitters",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L746"
+    },
+    "veil-1-area": {
+      "value": 1000000,
+      "unit": "m2",
+      "shown": "1 km²",
+      "label": "Area of the Veil-1 test slat",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L751"
+    },
+    "veil-1-dim": {
+      "value": 0.99,
+      "unit": "1",
+      "shown": "99%",
+      "label": "Veil-1 must dim to block this share of sunlight",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L757"
+    },
+    "veil-1-kill-life": {
+      "value": 182.625,
+      "unit": "d",
+      "shown": "6 months",
+      "label": "Veil-1 is killed if its film degrades within this",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L763"
+    },
+    "railhead-test-mass": {
+      "value": 1000,
+      "unit": "kg",
+      "shown": "1 t",
+      "label": "Ice block the Railhead test throws",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L769"
+    },
+    "railhead-test-speed": {
+      "value": 3000,
+      "unit": "m/s",
+      "shown": "3 km/s",
+      "label": "Railhead test passes at this muzzle speed",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L775"
+    },
+    "railhead-test-rate": {
+      "value": 10,
+      "unit": "count",
+      "shown": "10",
+      "label": "Railhead test passes at this many shots an hour",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L781"
+    },
+    "railhead-kill-speed": {
+      "value": 1000,
+      "unit": "m/s",
+      "shown": "1 km/s",
+      "label": "Railhead test is killed below this muzzle speed",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L786"
+    },
+    "railhead-kill-rate": {
+      "value": 1,
+      "unit": "count",
+      "shown": "1",
+      "label": "Railhead test is killed below this many shots an hour",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L792"
+    },
+    "cryo-seal-leak": {
+      "value": 0.1,
+      "unit": "W/m2",
+      "shown": "0.1 W/m²",
+      "label": "Cryo-seal passes if the cap leaks less heat than this",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L797"
+    },
+    "cryo-seal-months": {
+      "value": 365.25,
+      "unit": "d",
+      "shown": "12 months",
+      "label": "How long Cryo-seal must hold its leak",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L803"
+    },
+    "mini-aegis-coil": {
+      "value": 10,
+      "unit": "m",
+      "shown": "10 m",
+      "label": "Size of the Mini-Aegis test coil",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L809"
+    },
+    "choir-sim-robots": {
+      "value": 10000,
+      "unit": "count",
+      "shown": "10,000",
+      "label": "Robots in the Choir-sim test factory",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L814"
+    },
+    "choir-sim-days": {
+      "value": 90,
+      "unit": "d",
+      "shown": "90 d",
+      "label": "How long Choir-sim must run unattended",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L819"
+    },
+    "choir-sim-kill-interventions": {
+      "value": 1,
+      "unit": "count",
+      "shown": "1",
+      "label": "Choir-sim is killed above this many human interventions a day",
+      "basis": "design",
+      "source": "data/assumptions.yaml#L824"
+    },
     "venus-area": {
       "value": 460234000000000,
       "unit": "m2",
@@ -5494,6 +5694,24 @@
         "ceres-aphelion",
         "au",
         "speed-of-light"
+      ]
+    },
+    "choir-machines": {
+      "value": 386333000,
+      "unit": "count",
+      "shown": "3.9 × 10⁸",
+      "label": "Machines the Choir runs that the model counts",
+      "basis": "design",
+      "source": "calc/src/model/outcome.ts#L143",
+      "formula": "Petals + slats + canopies + chimneys + Forges + Railheads + tether lifts",
+      "inputs": [
+        "helios-petals",
+        "veil-slats",
+        "exhaust-canopies",
+        "chimney-count",
+        "forge-count",
+        "railhead-count",
+        "ring-tether-lifts"
       ]
     },
     "traj-clear-rain": {

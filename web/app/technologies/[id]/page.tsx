@@ -1,5 +1,5 @@
-import type { Technology } from "@phosphoros/calc/content";
-import { fill, refsIn } from "@phosphoros/calc/template";
+import type { Experiment, Technology } from "@phosphoros/calc/content";
+import { fill, parseTemplate, refsIn } from "@phosphoros/calc/template";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BasisTag } from "../../../components/Basis";
@@ -31,6 +31,24 @@ function tech(id: string) {
   return model().content.technologies.find((t) => t.id === id);
 }
 
+function experimentsOf(t: Technology): Experiment[] {
+  return model().content.experiments.experiments.filter((e) => t.experiments.includes(e.id));
+}
+
+/** Data text with its numbers as model buttons, each opening its card. */
+function Template({ text }: { text: string }) {
+  let at = 0;
+  return (
+    <>
+      {parseTemplate(text).map((s) => {
+        const key = at;
+        at += ("text" in s ? s.text : s.raw).length;
+        return "text" in s ? s.text : <Num key={key} id={s.ref} opts={s.opts} />;
+      })}
+    </>
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -47,7 +65,7 @@ export async function generateMetadata({
 
 function Glance({ t }: { t: Technology }) {
   const { content } = model();
-  const experiments = content.experiments.experiments.filter((e) => t.experiments.includes(e.id));
+  const experiments = experimentsOf(t);
   const correction = t.correction
     ? content.corrections.find((c) => c.id === t.correction)
     : undefined;
@@ -72,20 +90,28 @@ function Glance({ t }: { t: Technology }) {
         <div>
           <dt>Breakthrough assumed</dt>
           <dd>
-            <BasisTag basis="invented" /> {fill(t.breakthrough, quantity)}
+            <BasisTag basis="invented" /> <Template text={t.breakthrough} />
           </dd>
         </div>
         {experiments.length > 0 && (
           <div>
             <dt>Proved by</dt>
-            <dd>
-              {experiments.map((e, i) => (
-                <span key={e.id}>
-                  {i > 0 && ", "}
-                  <a href="/research">{e.name}</a>
+            {experiments.map((e) => (
+              <dd key={e.id} className="glance-experiment">
+                <a href={`/research#${e.gate ? "the-cloud-life-gate" : e.id}`}>{e.name}</a>
+                <span className="glance-mark">
+                  <span className="glance-mark-label">Pass:</span> <Template text={e.pass} />
                 </span>
-              ))}
-            </dd>
+                {e.then && (
+                  <span className="glance-mark">
+                    <span className="glance-mark-label">Then:</span> <Template text={e.then} />
+                  </span>
+                )}
+                <span className="glance-mark">
+                  <span className="glance-mark-label">Kill:</span> <Template text={e.kill} />
+                </span>
+              </dd>
+            ))}
           </div>
         )}
         {correction && (
@@ -132,7 +158,11 @@ function Glance({ t }: { t: Technology }) {
 export default async function TechnologyPage({ params }: { params: Promise<{ id: string }> }) {
   const t = tech((await params).id);
   if (!t) notFound();
-  const extra = [t.online, ...refsIn(t.breakthrough)];
+  const extra = [
+    t.online,
+    ...refsIn(t.breakthrough),
+    ...experimentsOf(t).flatMap((e) => [e.pass, e.kill, e.then ?? ""].flatMap(refsIn)),
+  ];
   return (
     <DocPage
       file={`docs/technologies/${t.id}.md`}

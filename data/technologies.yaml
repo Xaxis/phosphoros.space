@@ -431,14 +431,16 @@
   place: everywhere
   online: foundry-landing
   summary: >-
-    A four-tier autonomous control system for a trillion machines across three worlds, planning
-    around up to {delay-earth-ceres-max} of light delay, with hard limits no machine can override.
-  job: Run a trillion machines as one system
+    A four-tier autonomous control system for at least {choir-machines} machines across three
+    worlds, planning around up to {delay-earth-ceres-max} of light delay, with hard limits no
+    machine can override.
+  job: Run every machine on three worlds as one system
   scale: Autonomy across three worlds
   breakthrough: Self-correcting swarm control with a verified safety core
   specs:
     - { label: Light delay, value: "Mercury to Venus {delay-mercury-venus-min} to {delay-mercury-venus-max}; Venus to Ceres {delay-venus-ceres-min} to {delay-venus-ceres-max}; Earth to Ceres up to {delay-earth-ceres-max}" }
     - { label: Veil to Venus, value: "{veil-light-delay}" }
+    - { label: Machines counted, value: "{choir-machines}, a floor: the Foundry's own robots are not sized" }
   tiers:
     - { tier: Cell, scope: One machine, decides: Its own actions, reacts: Milliseconds }
     - { tier: Guild, scope: "About 10,000 machines", decides: Tasks and repairs, reacts: Seconds }
@@ -451,3 +453,4 @@
   experiments: [choir-sim]
   figures: [tech-stack]
   modules: [outcome.ts]
+  correction: choir-count

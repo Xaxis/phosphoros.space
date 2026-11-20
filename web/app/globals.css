@@ -1088,6 +1088,20 @@ figcaption {
   color: var(--text-soft);
 }
 
+.glance-experiment + .glance-experiment {
+  margin-top: 0.5rem;
+}
+
+.glance-mark {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.88rem;
+}
+
+.glance-mark-label {
+  color: var(--faint);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

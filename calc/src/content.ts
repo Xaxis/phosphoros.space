@@ -63,6 +63,8 @@ export interface Experiment {
   proves: string;
   pass: string;
   kill: string;
+  /** The next mark the line must reach once the experiment passes. */
+  then?: string;
 }
 
 export interface Risk {

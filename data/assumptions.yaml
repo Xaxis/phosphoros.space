@@ -684,3 +684,145 @@ choir-deadman-days:
   label: Days a replicator keeps building without a Mass Ledger heartbeat
   basis: design
   note: The dead-man switch. Longer than any light delay or routine outage, short enough that a cut-off site cannot grow far.
+
+# --- Proof experiments: pass and kill marks, set before the results are in -------------------------
+ouroboros-0-closure:
+  value: 0.95
+  unit: "1"
+  show: "%"
+  label: "Ouroboros-0 passes at this share of its own mass made from simulated regolith"
+  basis: design
+ouroboros-0-doubling:
+  value: 120
+  unit: d
+  label: "Ouroboros-0 passes if it doubles in less than this"
+  basis: design
+ouroboros-0-kill-closure:
+  value: 0.70
+  unit: "1"
+  show: "%"
+  label: "Ouroboros-0 is killed below this mass closure"
+  basis: design
+exhaust-1-cooling:
+  value: 1.0e4
+  unit: W/m2
+  show: kW/m2
+  label: "Exhaust-1 passes at this much net cooling"
+  basis: design
+exhaust-1-carnot:
+  value: 0.5
+  unit: "1"
+  show: "%"
+  label: "Exhaust-1 must come within this share of the Carnot limit"
+  basis: design
+exhaust-1-kill-cooling:
+  value: 100
+  unit: W/m2
+  label: "Exhaust-1 is killed if it shows no net cooling above this"
+  basis: design
+exhaust-production-tile:
+  value: 2031-12-31
+  unit: date
+  label: Production Exhaust tiles shine at full brightness by
+  basis: design
+lightpipe-power:
+  value: 1.0e6
+  unit: W
+  show: MW
+  label: Power the Lightpipe test beams between satellites
+  basis: design
+lightpipe-range:
+  value: 1.0e6
+  unit: m
+  show: km
+  label: Distance the Lightpipe test beams over
+  basis: design
+lightpipe-efficiency:
+  value: 0.30
+  unit: "1"
+  show: "%"
+  label: "Lightpipe passes at this end-to-end efficiency"
+  basis: design
+lightpipe-kill-emitters:
+  value: 100
+  unit: count
+  label: "Lightpipe is killed if phase lock fails beyond this many emitters"
+  basis: design
+veil-1-area:
+  value: 1.0e6
+  unit: m2
+  show: km2
+  label: Area of the Veil-1 test slat
+  basis: design
+veil-1-dim:
+  value: 0.99
+  unit: "1"
+  show: "%"
+  label: "Veil-1 must dim to block this share of sunlight"
+  basis: design
+veil-1-kill-life:
+  value: 182.625
+  unit: d
+  show: months
+  label: "Veil-1 is killed if its film degrades within this"
+  basis: design
+railhead-test-mass:
+  value: 1000
+  unit: kg
+  show: t
+  label: Ice block the Railhead test throws
+  basis: design
+railhead-test-speed:
+  value: 3000
+  unit: m/s
+  show: km/s
+  label: "Railhead test passes at this muzzle speed"
+  basis: design
+railhead-test-rate:
+  value: 10
+  unit: count
+  label: "Railhead test passes at this many shots an hour"
+  basis: design
+railhead-kill-speed:
+  value: 1000
+  unit: m/s
+  show: km/s
+  label: "Railhead test is killed below this muzzle speed"
+  basis: design
+railhead-kill-rate:
+  value: 1
+  unit: count
+  label: "Railhead test is killed below this many shots an hour"
+  basis: design
+cryo-seal-leak:
+  value: 0.1
+  unit: W/m2
+  sig: 1
+  label: "Cryo-seal passes if the cap leaks less heat than this"
+  basis: design
+cryo-seal-months:
+  value: 365.25
+  unit: d
+  show: months
+  label: How long Cryo-seal must hold its leak
+  basis: design
+mini-aegis-coil:
+  value: 10
+  unit: m
+  label: Size of the Mini-Aegis test coil
+  basis: design
+choir-sim-robots:
+  value: 1.0e4
+  unit: count
+  label: Robots in the Choir-sim test factory
+  basis: design
+choir-sim-days:
+  value: 90
+  unit: d
+  label: How long Choir-sim must run unattended
+  basis: design
+choir-sim-kill-interventions:
+  value: 1
+  unit: count
+  label: "Choir-sim is killed above this many human interventions a day"
+  basis: design

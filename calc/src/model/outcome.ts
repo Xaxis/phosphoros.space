@@ -129,4 +129,26 @@ export function outcome(r: Registry) {
       () => d() / v("speed-of-light"),
     );
   }
+
+  const machines = [
+    "helios-petals",
+    "veil-slats",
+    "exhaust-canopies",
+    "chimney-count",
+    "forge-count",
+    "railhead-count",
+    "ring-tether-lifts",
+  ];
+  r.q(
+    "choir-machines",
+    {
+      label: "Machines the Choir runs that the model counts",
+      unit: "count",
+      sig: 2,
+      formula: "Petals + slats + canopies + chimneys + Forges + Railheads + tether lifts",
+      basis: "design",
+      note: "A floor. The Foundry's own robots, the crawlers that service the towers and the Ice Bricks are not counted, because the model does not size them.",
+    },
+    () => machines.reduce((sum, id) => sum + v(id), 0),
+  );
 }

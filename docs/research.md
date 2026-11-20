@@ -12,15 +12,15 @@ in advance. A kill signal stops the line it tests; one of them stops everything.
 <!-- table:experiments -->
 | Experiment | Proves | Pass by the end of 2028 | Kill signal |
 | --- | --- | --- | --- |
-| [Ouroboros-0](technologies/ouroboros.md) | A factory that builds itself from simulated Mercury regolith | 95% mass closure, doubling in under 120 days | Under 70% closure |
-| [Exhaust-1](technologies/exhaust.md) | Electroluminescent cooling at useful power | 10 kW/m² of net cooling, within 50% of the Carnot limit | No net cooling above 100 W/m² |
-| [Lightpipe](technologies/helios.md) | Coherent power beaming | 1 MW over 1,000 km between satellites at 30% end to end | Phase lock fails beyond 100 emitters |
-| [Veil-1](technologies/veil.md) | An electrochromic slat | A 1 km² slat in orbit dims from 0 to 99% and holds its attitude | The film degrades within 6 months |
-| [Railhead](technologies/ice-train.md) | An ice mass driver | 1 t of ice at 3 km/s, 10 shots an hour | Under 1 km/s, or under 1 shot an hour |
-| [Cryo-seal](technologies/cryo.md) | Dry-ice storage under a {earth-like-temp} sky | Under 0.1 W/m² of heat leak for 12 months | The cap cracks under thermal cycling |
-| [Mini-Aegis](technologies/aegis.md) | A magnetic shield | A 10 m coil's bubble deflects the solar wind | Repeated quenches |
+| [Ouroboros-0](technologies/ouroboros.md) | A factory that builds itself from simulated Mercury regolith | [95%](numbers.md#ouroboros-0-closure) mass closure, doubling in under [120 d](numbers.md#ouroboros-0-doubling) | Under [70%](numbers.md#ouroboros-0-kill-closure) closure |
+| [Exhaust-1](technologies/exhaust.md) | Electroluminescent cooling at useful power | [10 kW/m²](numbers.md#exhaust-1-cooling) of net cooling, within [50%](numbers.md#exhaust-1-carnot) of the Carnot limit. Then: The production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by [2031](numbers.md?date=year#exhaust-production-tile) | No net cooling above [100 W/m²](numbers.md#exhaust-1-kill-cooling) |
+| [Lightpipe](technologies/helios.md) | Coherent power beaming | [1 MW](numbers.md#lightpipe-power) over [1,000 km](numbers.md#lightpipe-range) between satellites at [30%](numbers.md#lightpipe-efficiency) end to end | Phase lock fails beyond [100](numbers.md#lightpipe-kill-emitters) emitters |
+| [Veil-1](technologies/veil.md) | An electrochromic slat | A [1 km²](numbers.md#veil-1-area) slat in orbit dims from clear to [99%](numbers.md#veil-1-dim) blocked and holds its attitude | The film degrades within [6 months](numbers.md#veil-1-kill-life) |
+| [Railhead](technologies/ice-train.md) | An ice mass driver | [1 t](numbers.md#railhead-test-mass) of ice at [3 km/s](numbers.md#railhead-test-speed), [10](numbers.md#railhead-test-rate) shots an hour | Under [1 km/s](numbers.md#railhead-kill-speed), or under [1](numbers.md#railhead-kill-rate) shot an hour |
+| [Cryo-seal](technologies/cryo.md) | Dry-ice storage under a {earth-like-temp} sky | Under [0.1 W/m²](numbers.md#cryo-seal-leak) of heat leak for [12 months](numbers.md#cryo-seal-months) | The cap cracks under thermal cycling |
+| [Mini-Aegis](technologies/aegis.md) | A magnetic shield | A [10 m](numbers.md#mini-aegis-coil) coil's bubble deflects the solar wind | Repeated quenches |
 | **Cloud-life survey** | No native life will be harmed | Balloon and droplet sample return show no biology | A credible biosignature: the whole program stops |
-| [Choir-sim](technologies/choir.md) | Fleet autonomy | 10,000 robots run a factory for 90 days unattended | More than 1 human intervention a day |
+| [Choir-sim](technologies/choir.md) | Fleet autonomy | [10,000](numbers.md#choir-sim-robots) robots run a factory for [90 d](numbers.md#choir-sim-days) unattended | More than [1](numbers.md#choir-sim-kill-interventions) human intervention a day |
 <!-- /table -->
 
 The pass criteria are not the production targets. They are the smallest result that shows the idea works

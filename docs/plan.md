@@ -243,7 +243,7 @@ factories leave Earth; every other kilogram is made where it is needed.
 | [Acid Sweep](technologies/acid.md) | Remove the sulfuric-acid clouds | Rain-out plus basalt neutralization | None but scale | [2034](numbers.md?date=year#traj-clear-rain) |
 | [Aegis Shield](technologies/aegis.md) | Stop the solar wind stripping the new water | Superconducting dipole beside the Veil | Large deep-space superconducting coils | [2034](numbers.md?date=year#aegis-online) |
 | [Genesis Biota](technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, fresh, nitrogen-rich water | [2036](numbers.md?date=year#genesis-start) |
-| [Choir](technologies/choir.md) | Run a trillion machines as one system | Autonomy across three worlds | Self-correcting swarm control with a verified safety core | [2029](numbers.md?date=year#foundry-landing) |
+| [Choir](technologies/choir.md) | Run every machine on three worlds as one system | Autonomy across three worlds | Self-correcting swarm control with a verified safety core | [2029](numbers.md?date=year#foundry-landing) |
 <!-- /table -->
 
 ## The decade in brief
