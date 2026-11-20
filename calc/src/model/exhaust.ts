@@ -6,7 +6,7 @@
  */
 
 import { formatQuantity } from "../format.ts";
-import { bandPumpWork, co2SolidPressure, sensiblePumpWork } from "../physics.ts";
+import { bandPumpWork, blackBodyShare, co2SolidPressure, sensiblePumpWork } from "../physics.ts";
 import type { Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
 import { fmt } from "./text.ts";
@@ -546,6 +546,64 @@ export function exhaust(r: Registry) {
       pass: v("exhaust-light-temp") <= v("exhaust-effective-temp"),
       detail: `The model charges pump work as if the hot side were at ${fmt(r, "exhaust-effective-temp")}. Light at ${fmt(r, "exhaust-flux")} squeezed into a ${fmt(r, "exhaust-band")} band around ${fmt(r, "exhaust-wavelength")} and a ${fmt(r, "exhaust-cone")} cone counts as at least ${fmt(r, "exhaust-light-temp")}, ${fmt(r, "exhaust-light-vs-effective")} times hotter. Lifting a joule from the ${fmt(r, "venus-surface-temp")} air into that light takes ${fmt(r, "exhaust-work-multiple")} times the work the budget charges.`,
     }),
+  );
+
+  // A Veil clear in the Exhaust's band would let that band of sunlight through to Venus.
+  r.q(
+    "exhaust-band-sunlight",
+    {
+      label: "Share of sunlight in the Exhaust's band",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "π ∫ B_λ(T_☉) dλ / σT_☉⁴ over λ ± Δλ / 2",
+      basis: "physics",
+      note: "The Sun taken as a black body at its effective temperature.",
+    },
+    () =>
+      blackBodyShare(
+        v("sun-temp"),
+        v("exhaust-wavelength") - v("exhaust-band") / 2,
+        v("exhaust-wavelength") + v("exhaust-band") / 2,
+        v("planck-constant"),
+        v("speed-of-light"),
+        v("boltzmann-constant"),
+        v("stefan-boltzmann"),
+      ),
+  );
+  r.q(
+    "exhaust-band-vs-veil-leak",
+    {
+      label: "Sunlight in the Exhaust's band compared with all the closed Veil may let through",
+      unit: "1",
+      sig: 2,
+      formula: "band share / (1 − block)",
+      basis: "physics",
+    },
+    () => v("exhaust-band-sunlight") / v("veil-leak-budget"),
+  );
+  r.q(
+    "exhaust-veil-tilt",
+    {
+      label:
+        "How far tiles near the subsolar point tilt their cones off the Sun line to miss the Veil",
+      unit: "deg",
+      sig: 2,
+      formula: "θ / 2 + Veil angular radius",
+      basis: "physics",
+    },
+    () => v("exhaust-cone") / 2 + v("veil-angular-radius"),
+  );
+  r.c(
+    "exhaust-clears-veil",
+    { label: "An opaque Veil leaves the Exhaust's cones a clear sky", kind: "geometry" },
+    () => {
+      const horizon = 90 - v("exhaust-cone") / 2 - v("exhaust-veil-tilt");
+      return {
+        pass: horizon > 0,
+        detail: `Seen from Venus the Veil is ${fmt(r, "veil-angular-radius")} in radius. Tiles that face it tilt their ${fmt(r, "exhaust-cone")} cones ${fmt(r, "exhaust-veil-tilt")} off the Sun line, which keeps every cone ${horizon.toFixed(0)}° clear of the horizon.`,
+      };
+    },
   );
 
   // Beam safety: where the tiles must stay dark, and how far out each cone is still bright.

@@ -400,3 +400,17 @@
     surface. At peak power one canopy's cone is still brighter than {exhaust-far-limit} out to
     {exhaust-cone-safe-distance}; where cones overlap, their light adds.
   before: { exhaust-dark-strip: 5.0e4, exhaust-cone-safe-distance: 5.0e7 }
+- id: veil-opaque
+  kind: correction
+  version: "3"
+  date: 2026-11-20
+  title: The Veil blocks every colour, and the Exhaust aims around it
+  text: >-
+    Version 2's slat was a metal mirror from 0.3 to 2.0 µm with a dielectric stack clear at the
+    Exhaust's {exhaust-wavelength}, so the outgoing beams could pass through the Veil. The
+    Exhaust's band holds {exhaust-band-sunlight} of sunlight, and a Veil clear there would let it
+    reach Venus: {exhaust-band-vs-veil-leak} times the {veil-leak-budget} the whole closed Veil may
+    let through. Version 3's slats block every colour, and the Exhaust aims around the Veil instead.
+    Seen from Venus it is only {veil-angular-radius} in radius, so tiles that face it tilt their
+    cones {exhaust-veil-tilt} off the Sun line. Gaps between slats are held to {veil-gap-max},
+    under version 2's 0.1%, so that gaps and closed slats together fit inside the budget.

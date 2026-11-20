@@ -247,3 +247,24 @@ export function offWindowPenalty(
   offWindowCache.set(key, out);
   return out;
 }
+
+/**
+ * Share of a black body's output between two wavelengths: π ∫ B_λ dλ / σT⁴, by Simpson's rule.
+ * h, c, k and σ are passed in so the constants stay in data/.
+ */
+export function blackBodyShare(
+  T: number,
+  from: number,
+  to: number,
+  h: number,
+  c: number,
+  k: number,
+  sigma: number,
+  steps = 2000,
+): number {
+  const B = (l: number) => (2 * h * c * c) / l ** 5 / Math.expm1((h * c) / (l * k * T));
+  const dl = (to - from) / steps;
+  let sum = B(from) + B(to);
+  for (let i = 1; i < steps; i++) sum += (i % 2 ? 4 : 2) * B(from + i * dl);
+  return (Math.PI * ((sum * dl) / 3)) / (sigma * T ** 4);
+}

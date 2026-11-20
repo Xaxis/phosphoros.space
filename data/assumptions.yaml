@@ -293,12 +293,19 @@ veil-station-tolerance:
   label: How far a slat may drift from its station
   basis: design
 veil-gap-max:
-  value: 0.001
+  value: 5.0e-4
   unit: "1"
   show: "%"
   label: Largest share of the Veil's area left as gaps between slats
   basis: design
-  note: Light through the gaps reaches Venus, so the gaps use up the whole of the sunlight the closed Veil may let through; a closed slat must pass almost none.
+  note: Under the brief's 0.1%. Light through the gaps reaches Venus, so the gaps and the closed slats share the little the closed Veil may let through.
+veil-slat-leak:
+  value: 3.0e-4
+  unit: "1"
+  show: "%"
+  label: Share of sunlight a closed slat lets through toward Venus, in every colour
+  basis: invented
+  note: The slats bend and darken every colour, including the Exhaust's band; the Exhaust aims its cones around the Veil instead of through it.
 veil-build-start:
   value: 2030-06-01
   unit: date

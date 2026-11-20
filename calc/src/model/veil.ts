@@ -295,6 +295,37 @@ export function veil(r: Registry) {
     () => v("solar-constant-earth") / v("venus-sunlight"),
   );
   r.q(
+    "veil-leak-budget",
+    {
+      label: "Share of sunlight the closed Veil may let through",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "1 − block",
+      basis: "design",
+    },
+    () => 1 - v("veil-block-fraction"),
+  );
+  r.c(
+    "veil-leak-fits",
+    { label: "Gaps and closed slats together leak no more than the Veil may", kind: "capacity" },
+    () => ({
+      pass: v("veil-gap-max") + v("veil-slat-leak") <= v("veil-leak-budget"),
+      detail: `Gaps of ${fmt(r, "veil-gap-max")} plus ${fmt(r, "veil-slat-leak")} through the closed slats, against the ${fmt(r, "veil-leak-budget")} the closed Veil may let through.`,
+    }),
+  );
+  r.q(
+    "veil-angular-radius",
+    {
+      label: "The Veil's angular radius seen from Venus",
+      unit: "deg",
+      sig: 2,
+      formula: "atan(R / d)",
+      basis: "physics",
+    },
+    () => (Math.atan(v("veil-radius") / v("veil-distance")) * 180) / Math.PI,
+  );
+  r.q(
     "lantern-area",
     {
       label: "Lantern mirror area to light the night side at Earth strength",

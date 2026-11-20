@@ -85,8 +85,14 @@ begins in [May 2033](../numbers.md?date=month#cooling-start).
 [1.4 km²](../numbers.md#veil-slat-area) and [1.4 t](../numbers.md#veil-slat-mass). Its surface is patterned to bend
 sunlight a few degrees off the line to Venus. A switchable layer sets how much light it passes straight
 through, from [99.9%](../numbers.md#veil-block-fraction) blocked to [60%](../numbers.md#veil-open-transmission)
-open, and changes in seconds. A dielectric stack lets the Exhaust's [2.3 µm](../numbers.md#exhaust-wavelength)
-light through untouched, so the planet's outgoing heat beams pass the Veil.
+open, and changes in seconds. Closed, it blocks every colour, the Exhaust's
+[2.3 µm](../numbers.md#exhaust-wavelength) included. A slat clear in the Exhaust's band would let
+[1.9%](../numbers.md#exhaust-band-sunlight) of the sunlight through, [19](../numbers.md#exhaust-band-vs-veil-leak)
+times what the whole closed Veil may. So the Exhaust aims around the Veil instead: seen from Venus it is only
+[0.68°](../numbers.md#veil-angular-radius) in radius, and tiles that face it tilt their cones
+[13°](../numbers.md#exhaust-veil-tilt) off the Sun line ([check](../numbers.md#check-exhaust-clears-veil)).
+Gaps between slats are held to [0.05%](../numbers.md#veil-gap-max) of the area, so that gaps and closed slats
+together stay inside that budget ([check](../numbers.md#check-veil-leak-fits)).
 
 **The swarm.** [3.8 × 10⁸](../numbers.md#veil-slats) slats fly in formation, each holding its own station by
 tilting, linked by lasers. Commands from Venus take [3.7 s](../numbers.md#veil-light-delay) to arrive, so each slat
@@ -120,7 +126,8 @@ The Veil stays after 2036 as the planet's thermostat.
 | Slats | [3.8 × 10⁸](../numbers.md#veil-slats), each [1.2 km](../numbers.md#veil-slat-side) square and [1.4 t](../numbers.md#veil-slat-mass) |
 | Light pressure over solar gravity | [0.0077](../numbers.md#veil-beta) |
 | Station-keeping | Each slat corrects its tilt at [1 Hz](../numbers.md#veil-trim-rate) to stay within [1 km](../numbers.md#veil-station-tolerance) of its station, with no propellant |
-| Gaps between slats | Under [0.1%](../numbers.md#veil-gap-max) of the area, all the light the closed Veil may let through |
+| Light through when closed | Gaps under [0.05%](../numbers.md#veil-gap-max) of the area plus [0.03%](../numbers.md#veil-slat-leak) through the slats, inside the [0.1%](../numbers.md#veil-leak-budget) the Veil may let through |
+| Seen from Venus | [0.68°](../numbers.md#veil-angular-radius) in radius, so Exhaust cones that face it tilt [13°](../numbers.md#exhaust-veil-tilt) off the Sun line and miss it |
 | Sunlight blocked when closed | [99.9%](../numbers.md#veil-block-fraction) ([3.0 × 10¹⁷ W](../numbers.md#veil-blocked-power)) |
 | Transmission | Set per slat, from [99.9%](../numbers.md#veil-block-fraction) blocked to [60%](../numbers.md#veil-open-transmission) open |
 | Day mode | [52%](../numbers.md#veil-day-transmission) open for Earth-strength daylight |
@@ -133,8 +140,8 @@ The Veil stays after 2036 as the planet's thermostat.
 > **Invented:** Slats that bend sunlight past Venus instead of reflecting it, taking up only about
 > [0.01](../numbers.md#veil-momentum-fraction) of its momentum, and switch their transmission in seconds.
 
-> **Invented:** Film at [1 g/m²](../numbers.md#veil-areal-density) carrying a light-bending pattern, a switchable
-> layer and a dielectric stack transparent at [2.3 µm](../numbers.md#exhaust-wavelength).
+> **Invented:** Film at [1 g/m²](../numbers.md#veil-areal-density) carrying a light-bending pattern and a switchable
+> layer that, closed, lets no more than [0.03%](../numbers.md#veil-slat-leak) of any colour through.
 
 > **Precedent:** [Angel (2006)](../sources.md#angel-2006) designed a shade for Earth near L1 made of thin
 > refracting flyers that bend light rather than reflect it, so that light pressure barely moves them. The Veil is

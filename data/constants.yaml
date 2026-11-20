@@ -93,6 +93,13 @@ sun-radius:
   basis: physics
   source: [iau-2015-nominal]
   sig: 4
+sun-temp:
+  value: 5772
+  unit: K
+  label: The Sun's effective temperature
+  basis: physics
+  source: [iau-2015-nominal]
+  sig: 4
 sun-luminosity:
   value: 3.828e26
   unit: W

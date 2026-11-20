@@ -63,8 +63,9 @@ whole planet in full shadow:
 [1 g/m²](numbers.md#veil-areal-density) that is [5.4 × 10¹¹ kg](numbers.md#veil-mass), cut into
 [3.8 × 10⁸](numbers.md#veil-slats) slats. The Veil closes in [December 2032](numbers.md?date=month#veil-close),
 before active cooling begins in [May 2033](numbers.md?date=month#cooling-start), and turns away
-[99.9%](numbers.md#veil-block-fraction) of the sunlight, [3.0 × 10¹⁷ W](numbers.md#veil-blocked-power). Slats fail opaque, and stay transparent at the Exhaust's
-[2.3 µm](numbers.md#exhaust-wavelength) so the planet's outgoing beams pass through. The
+[99.9%](numbers.md#veil-block-fraction) of the sunlight, [3.0 × 10¹⁷ W](numbers.md#veil-blocked-power). Slats fail opaque and block every colour,
+so the Exhaust aims its outgoing beams around the Veil, only
+[0.68°](numbers.md#veil-angular-radius) in radius as seen from Venus. The
 [Aegis Shield](technologies/aegis.md)'s coil sits beside it.
 
 <!-- figure:veil-geometry -->

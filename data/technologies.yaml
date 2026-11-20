@@ -147,7 +147,8 @@
     - { label: Slats, value: "{veil-slats}, each {veil-slat-side} square and {veil-slat-mass}" }
     - { label: Light pressure over solar gravity, value: "{veil-beta}" }
     - { label: Station-keeping, value: "Each slat corrects its tilt at {veil-trim-rate} to stay within {veil-station-tolerance} of its station, with no propellant" }
-    - { label: Gaps between slats, value: "Under {veil-gap-max} of the area, all the light the closed Veil may let through" }
+    - { label: Light through when closed, value: "Gaps under {veil-gap-max} of the area plus {veil-slat-leak} through the slats, inside the {veil-leak-budget} the Veil may let through" }
+    - { label: Seen from Venus, value: "{veil-angular-radius} in radius, so Exhaust cones that face it tilt {exhaust-veil-tilt} off the Sun line and miss it" }
     - { label: Sunlight blocked when closed, value: "{veil-block-fraction} ({veil-blocked-power})" }
     - { label: Transmission, value: "Set per slat, from {veil-block-fraction} blocked to {veil-open-transmission} open" }
     - { label: Day mode, value: "{veil-day-transmission} open for Earth-strength daylight" }
@@ -155,7 +156,7 @@
     - { label: Closes, value: "{veil-close|date=day}" }
   invented:
     - Slats that bend sunlight past Venus instead of reflecting it, switching transmission in seconds
-    - A dielectric stack transparent at the Exhaust's {exhaust-wavelength} wavelength
+    - "Closed slats that block every colour, the Exhaust's {exhaust-wavelength} included, letting through no more than {veil-slat-leak}"
   precedent:
     - text: Angel's 2006 design for shading Earth with refracting flyers near L1, which light pressure barely moves.
       source: angel-2006

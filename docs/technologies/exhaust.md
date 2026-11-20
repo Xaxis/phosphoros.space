@@ -102,7 +102,9 @@ quantum efficiency of [99.9%](../numbers.md#exhaust-eqe). A photonic-crystal fac
 [25°](../numbers.md#exhaust-cone) cone.
 
 **Why [2.3 µm](../numbers.md#exhaust-wavelength).** The thin CO₂ above the canopies barely absorbs at that wavelength,
-and the [Hesperus Veil](veil.md) is made transparent there, so the beams leave Venus and pass the Veil untouched.
+so the beams leave Venus. The [Hesperus Veil](veil.md) blocks it like every other colour, since a Veil clear in
+this band would let [1.9%](../numbers.md#exhaust-band-sunlight) of the sunlight through. Tiles that face the
+Veil tilt their cones [13°](../numbers.md#exhaust-veil-tilt) off the Sun line and miss it.
 
 **Sizing, and why version 3 made it bigger.** Version 2 sized the Exhaust from the campaign's average,
 [3.3 × 10¹⁹ W](../numbers.md#exhaust-rejected-avg), which [3.6 × 10¹³ m²](../numbers.md#exhaust-area-working) of
@@ -217,7 +219,7 @@ and is done by [22 August 2036](../numbers.md?date=day#traj-scavenged).
 - **Stray light.** Each canopy's light spreads through its cone. At peak power one canopy's cone is dimmer than
   [10 W/m²](../numbers.md#exhaust-far-limit) beyond [58,000 km](../numbers.md#exhaust-cone-safe-distance); where the
   cones of neighbouring canopies overlap, their light adds. Long before it reaches the Veil it is far fainter
-  than sunlight, and the Veil is transparent to it anyway.
+  than sunlight, and the cones are aimed around the Veil anyway.
 - **A stalled Exhaust.** Under the closed Veil, Venus gains heat only slowly, from the crust and the little sunlight
   the Veil lets through, so a pause costs time, not ground.
 - **The second law.** The model charges ideal pumping. Every real loss adds work, and the entropy of narrow,

@@ -91,6 +91,7 @@
 - { model: veil-slat-mass, brief: 1.5e3, tol: 0.1, where: "2.9.3" }
 - { model: veil-area-vs-v2, brief: 3, tol: 0.25, where: "2.9.3", note: "The brief's own comparison: a shade near L1 needs about three times the area." }
 - { model: veil-day-transmission, brief: 0.52, tol: 0.01, where: "2.9.3" }
+- { model: veil-gap-max, brief: 0.001, where: "2.9.3", correction: veil-opaque }
 - { model: lantern-area, brief: 6e13, where: "2.9.3" }
 - { model: veil-close, brief: 2031-12-31, tol: 31, where: "2.10", correction: veil-l1 }
 

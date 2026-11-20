@@ -250,7 +250,7 @@ function HeatPath(p: Props) {
             "Infrared to space",
             `${t.wavelength}, in ${t.cone} cones`,
             `${t.out} per canopy`,
-            "passes the Veil untouched",
+            "aimed around the Veil",
           ]}
         />
       </Art>

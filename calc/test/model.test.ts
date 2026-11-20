@@ -8,7 +8,7 @@ import { formatNumber, formatQuantity } from "../src/format.ts";
 import { loadInputs, ROOT, readYaml, run, sourceLines } from "../src/load.ts";
 import { compute } from "../src/model/index.ts";
 import { simulate } from "../src/model/trajectory.ts";
-import { lambert } from "../src/physics.ts";
+import { blackBodyShare, lambert } from "../src/physics.ts";
 import { NUMBER_LINK, refsIn, stringsIn } from "../src/template.ts";
 import { dayOf, isoOf } from "../src/time.ts";
 
@@ -106,6 +106,24 @@ test("Lambert's problem reproduces the Hohmann transfer, and off-window shots co
   assert.ok(v("launch-offwindow-mean") > 0.01);
   assert.ok(v("launch-offwindow-max") > v("launch-offwindow-mean"));
   assert.ok(v("ice-launch-energy") > v("ice-launch-energy-window"));
+});
+
+test("a black body's bands add up to its whole output", () => {
+  const share = (from: number, to: number) =>
+    blackBodyShare(
+      v("sun-temp"),
+      from,
+      to,
+      v("planck-constant"),
+      v("speed-of-light"),
+      v("boltzmann-constant"),
+      v("stefan-boltzmann"),
+      20_000,
+    );
+  assert.ok(Math.abs(share(5e-8, 1e-3) - 1) < 1e-3, "all wavelengths");
+  // Wien's law puts the Sun's peak near 0.5 µm: the band around it outshines one as wide at 2 µm.
+  assert.ok(share(0.4e-6, 0.6e-6) > 4 * share(1.9e-6, 2.1e-6));
+  assert.ok(v("exhaust-band-sunlight") > v("veil-leak-budget"), "a Veil clear in the band leaks");
 });
 
 test("the Hohmann transfer from Ceres matches the textbook numbers", () => {
