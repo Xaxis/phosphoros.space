@@ -73,7 +73,18 @@ export default function Home() {
           }
         >
           <p className="eyebrow">Phosphoros · the light-bringer plan</p>
-          <h1 className="hero-title">{TAGLINE}</h1>
+          <h1 className="hero-title">
+            {/* A compound word stays whole: "Earth-like" never breaks at its hyphen. */}
+            {TAGLINE.split(/(\S+-\S+)/).map((part, i) =>
+              part.includes("-") ? (
+                <span key={i} className="nowrap">
+                  {part}
+                </span>
+              ) : (
+                part
+              ),
+            )}
+          </h1>
           {doc?.lead && (
             <div className="hero-lead">
               <Markdown text={doc.lead} doc={HOME.doc} />
