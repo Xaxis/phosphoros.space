@@ -34,6 +34,13 @@ electron-volt:
   basis: physics
   source: [codata-2018]
   sig: 10
+boltzmann-constant:
+  value: 1.380649e-23
+  unit: J/K
+  label: Boltzmann constant
+  basis: physics
+  source: [codata-2018]
+  sig: 7
 stefan-boltzmann:
   value: 5.670374419e-8
   unit: W m-2 K-4
@@ -694,6 +701,21 @@ led-2012-light-out:
   basis: precedent
   source: [santhanam-2012]
   sig: 2
+carbon-fibre-strength:
+  value: 7.0e9
+  unit: Pa
+  show: GPa
+  label: Tensile strength of Toray T1100G, the strongest carbon fibre on general sale
+  basis: precedent
+  source: [toray-t1100g]
+  sig: 2
+carbon-fibre-density:
+  value: 1790
+  unit: kg/m3
+  label: Density of Toray T1100G carbon fibre
+  basis: precedent
+  source: [toray-t1100g]
+  sig: 3
 lunar-factory-seed-mass:
   value: 1.0e5
   unit: kg

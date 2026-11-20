@@ -21,7 +21,7 @@ part of the sulfur. Most of it is SO₂ gas mixed through the lower air.
 
 Once the [Photonic Exhaust](exhaust.md) cools the lower air, falling droplets stop evaporating, and the
 clouds rain out onto the surface. That begins before the CO₂ itself condenses in the Clear Rain of
-[September 2034](../numbers.md?date=month#traj-clear-rain). SO₂ is far less volatile than CO₂, so when the
+[July 2034](../numbers.md?date=month#traj-clear-rain). SO₂ is far less volatile than CO₂, so when the
 CO₂ liquefies, the SO₂ goes into the liquid preferentially and runs with it into the basins, where it
 freezes into the [cryo-continents](cryo.md).
 
@@ -60,7 +60,7 @@ sulfur-laden liquid CO₂ then land on fresh lime rather than bare rock.
 ### The shore buffer
 
 When the ice melts and the oceans form, after the caps are sealed and the Veil opens on
-[15 September 2036](../numbers.md?date=day#traj-warming), crushed basalt on the shores and the sea floor keeps
+[2 September 2036](../numbers.md?date=day#traj-warming), crushed basalt on the shores and the sea floor keeps
 the water slightly alkaline: above pH [7.5](../numbers.md#genesis-ph-min), which [Genesis](genesis.md)
 needs to hold for [90 d](../numbers.md#genesis-ph-days) before any life is released.
 
@@ -93,9 +93,9 @@ the oceans melt, where the same reaction is fast.
 
 ## Build sequence
 
-- **[January 2033](../numbers.md?date=month#cooling-start):** Active cooling begins. Rock mills start
+- **[May 2033](../numbers.md?date=month#cooling-start):** Active cooling begins. Rock mills start
   grinding, and canopy drones start dusting the basin floors.
-- **[September 2034](../numbers.md?date=month#traj-clear-rain):** The Clear Rain. By now the acid clouds
+- **[July 2034](../numbers.md?date=month#traj-clear-rain):** The Clear Rain. By now the acid clouds
   have rained out onto dusted ground, and the SO₂ runs into the basins with the liquid CO₂.
 - **[January 2035](../numbers.md?date=month#forge-start):** The Forges start, and their oxygen turns
   sulfite to sulfate.

@@ -1,6 +1,6 @@
 # Aegis Shield
 
-A superconducting coil [10 km](../numbers.md#aegis-coil-radius) in radius, holding station beside the
+A superconducting coil [1,000 km](../numbers.md#aegis-coil-radius) in radius, holding station beside the
 [Hesperus Veil](veil.md) just sunward of the Sun-Venus L1 point,
 [1.11 × 10⁶ km](../numbers.md?show=km#veil-distance) from Venus, inflates a magnetic bubble
 [10,000 km](../numbers.md#aegis-bubble-radius) in radius in the solar wind. The wind flows around the
@@ -48,19 +48,21 @@ L1 and the coil with it ([corrections](../about.md#corrections)).
 ![Hesperus Veil geometry](../../figures/svg/veil-geometry.svg)
 <!-- /figure -->
 
-The wind also pushes on the bubble as it would on a sail. Like the light pressure on the Veil, that push
-moves the coil's balance point a little sunward of L1. How far depends on the coil's mass, which the
-model does not yet size.
+The wind also pushes on the bubble as it would on a sail, with about [10⁶ N](../numbers.md#aegis-wind-force).
+Against the coil's mass that is only [5 × 10⁻⁴](../numbers.md#aegis-wind-beta) of the Sun's pull on it, far less
+than the light the Veil has to balance, so the coil's balance point sits close to L1 and the same slow trimming that
+holds the Veil holds the coil.
 
 ## Design
 
 ### The coil
 
-The coil is a loop [10 km](../numbers.md#aegis-coil-radius) in radius wound with
+The coil is a loop [1,000 km](../numbers.md#aegis-coil-radius) in radius wound with
 [1,000,000](../numbers.md#aegis-turns) turns of superconducting cable, each carrying
-[3 × 10⁶ A](../numbers.md#aegis-current): [3 × 10¹² A](../numbers.md#aegis-ampere-turns) in all. The cable
-runs at [40 K](../numbers.md#aegis-coil-temp), cooled by radiating to space from behind its own small
-sunshield. Once charged, the current flows without resistance and needs nearly no power to keep running.
+[300 A](../numbers.md#aegis-current): [3 × 10⁸ A](../numbers.md#aegis-ampere-turns) in all, in a winding pack
+[5 m](../numbers.md#aegis-winding-radius) in radius. The cable runs at [40 K](../numbers.md#aegis-coil-temp), cooled by
+radiating to space from behind its own small sunshield. Once charged, the current flows without resistance and needs
+nearly no power to keep running. The loop stores [7.1 × 10¹⁷ J](../numbers.md#aegis-stored-energy).
 
 ### Steering the field
 
@@ -69,18 +71,23 @@ Where it lies against the bubble's field, the two can link up (reconnection) and
 Green and colleagues proposed keeping the shield's field parallel to the wind's to cut the mass, momentum
 and energy flowing in. Aegis turns its axis slowly to follow the wind's field.
 
-### The coil's own forces: not yet checked
+### The coil's own forces
 
-A magnet pulls itself apart. Its field presses outward on its windings with a pressure that grows with
-the square of the field, and by the virial theorem any magnet needs at least as much structural material
-as its stored field energy divided by the strength-to-density of that material. For a fixed dipole
-moment, the stored energy falls steeply as the loop grows, roughly with the cube of its radius, because a
-wider loop carries the same moment with far less current.
+A magnet pulls itself apart. A current loop's field pushes its winding outward, which puts the winding in
+tension, [1.2 × 10¹¹ N](../numbers.md#aegis-hoop-tension) for this coil. Holding that takes at least
+[2.0 × 10¹¹ kg](../numbers.md#aegis-structure-mass) of carbon fibre at the full
+[7 GPa](../numbers.md#carbon-fibre-strength) of the strongest fibre on sale today
+([Toray T1100G](../sources.md#toray-t1100g)), less than the Veil weighs and a few hours of the full Foundry's output
+([check](../numbers.md#check-aegis-structure)). By the virial theorem no structure of any shape can do with less
+than the stored energy times the material's density over its strength, and this one comes close to that floor.
 
-By our estimate the [10 km](../numbers.md#aegis-coil-radius) coil's structure would outweigh everything
-the Foundry ever builds, many times over, whatever it is made of. A much wider loop gives the same bubble
-at a small fraction of the current, with a structure the Foundry can easily afford. The model does not yet compute the stored energy or the structure, so the specifications
-below still show version 2's coil. Enlarging it is the expected next correction.
+> **Physics:** For a thin loop of radius a and winding radius b carrying current I, the hoop tension is
+> μ₀I²(ln(8a/b) − 1)/4π. At a fixed dipole moment the current falls with a², so the tension, and the structure that
+> carries it, falls about with the cube of the radius.
+
+That is why the coil is so wide. Version 2's coil carried the same dipole moment on a loop a hundred times
+narrower, with ten thousand times the current; holding it together would have taken about a thousand times more
+fibre than the Foundry ever builds ([corrections](../about.md#corrections)).
 
 ## Specifications
 
@@ -91,15 +98,18 @@ below still show version 2's coil. Enlarging it is the expected next correction.
 | Field at the bubble's edge | [95 nT](../numbers.md#aegis-field) |
 | Bubble radius | [10,000 km](../numbers.md#aegis-bubble-radius) |
 | Dipole moment | [9.5 × 10²⁰ A·m²](../numbers.md#aegis-dipole), [1%](../numbers.md#aegis-vs-earth) of Earth's |
-| Coil | [10 km](../numbers.md#aegis-coil-radius) radius, [3 × 10¹² A](../numbers.md#aegis-ampere-turns) ([1,000,000](../numbers.md#aegis-turns) turns of [3 × 10⁶ A](../numbers.md#aegis-current)) |
+| Coil | [1,000 km](../numbers.md#aegis-coil-radius) radius, [3 × 10⁸ A](../numbers.md#aegis-ampere-turns) ([1,000,000](../numbers.md#aegis-turns) turns of [300 A](../numbers.md#aegis-current)) |
+| Structure | At least [2.0 × 10¹¹ kg](../numbers.md#aegis-structure-mass) of carbon fibre against a hoop tension of [1.2 × 10¹¹ N](../numbers.md#aegis-hoop-tension) |
+| Stored energy | [7.1 × 10¹⁷ J](../numbers.md#aegis-stored-energy) |
 | Position | Beside the Veil, [1.11 × 10⁶ km](../numbers.md#veil-distance) sunward |
 | Online | [15 June 2034](../numbers.md?date=day#aegis-online) |
 <!-- /table -->
 
 ## What is invented
 
-> **Invented:** A superconducting cable carrying [3 × 10⁶ A](../numbers.md#aegis-current) per strand at
-> [40 K](../numbers.md#aegis-coil-temp), wound into a loop kilometres across in deep space.
+> **Invented:** A superconducting loop [1,000 km](../numbers.md#aegis-coil-radius) in radius, assembled in deep
+> space, held round by a carbon-fibre structure against its own field, and kept at
+> [40 K](../numbers.md#aegis-coil-temp) behind its own sunshield.
 
 > **Invented:** Steering the axis of a dipole of [9.5 × 10²⁰ A·m²](../numbers.md#aegis-dipole) to follow
 > the solar wind's field.
@@ -114,10 +124,10 @@ below still show version 2's coil. Enlarging it is the expected next correction.
 - **[2028](../numbers.md?date=year#experiments-end):** Mini-Aegis, a small coil at the Sun-Earth L1
   point, must deflect the solar wind without repeated quenches. Pass and kill marks are on the
   [Research Agenda](../research.md).
-- **[June 2032](../numbers.md?date=month#veil-close):** The Veil closes near L1. The coil is built at the
+- **[December 2032](../numbers.md?date=month#veil-close):** The Veil closes near L1. The coil is built at the
   same station from Foundry parts.
 - **[June 2034](../numbers.md?date=month#aegis-online):** The coil is charged and the bubble inflates.
-- **[August 2034](../numbers.md?date=month#first-catch):** The first water arrives at Venus, already
+- **[September 2034](../numbers.md?date=month#first-catch):** The first water arrives at Venus, already
   under the shield.
 - **After 2036:** Aegis keeps running on its persistent current, for as long as Venus keeps its oceans.
 

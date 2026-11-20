@@ -46,8 +46,8 @@ inside its last limits.
 ### Limits that are not up for negotiation
 
 A self-copying industry is the most powerful machine in the plan and the most dangerous. Ouroboros grows
-from [1,000 t](../numbers.md#foundry-seed-mass) to [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) in
-[27](../numbers.md#foundry-doublings) doublings, and one unplanned doubling more would double everything.
+from [1,000 t](../numbers.md#foundry-seed-mass) to [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass) in
+[26](../numbers.md#foundry-doublings) doublings, and one unplanned doubling more would double everything.
 So the rules about replication are not left to software that learns or plans. They live in a safety core
 that every replicating machine carries, enforced in hardware and proved by mathematics.
 
@@ -57,7 +57,7 @@ that every replicating machine carries, enforced in hardware and proved by mathe
 
 The Ledger is an append-only record of every kilogram mined, built, shipped and recycled, copied at every
 site. Each entry carries a digest of the entry before it, so history cannot be edited without breaking
-the chain. The Council sets mass budgets, [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) for the
+the chain. The Council sets mass budgets, [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass) for the
 Foundry over the whole campaign, and a machine refuses any order that would take its site past its
 budget.
 
@@ -92,8 +92,8 @@ can only ask.
 ### The digital twin
 
 At the Council tier, a digital twin of Venus and of every machine forecasts phase changes weeks ahead,
-such as the Clear Rain of [September 2034](../numbers.md?date=month#traj-clear-rain) and the freezing of
-the CO₂ seas from [July 2036](../numbers.md?date=month#traj-freeze). The Works then move canopies, Forges
+such as the Clear Rain of [July 2034](../numbers.md?date=month#traj-clear-rain) and the freezing of
+the CO₂ seas from [June 2036](../numbers.md?date=month#traj-freeze). The Works then move canopies, Forges
 and crawlers before conditions change rather than after.
 
 ### What it coordinates
@@ -144,11 +144,11 @@ and crawlers before conditions change rather than after.
   Mercury. The Ledger's first entry is the seed itself.
 - **[June 2030](../numbers.md?date=month#helios-first-petals):** The first Lattice Petals fly and Veil
   slat production begins. Beam handshakes start.
-- **[June 2032](../numbers.md?date=month#veil-close):** The Veil closes. Choir holds its slats on station
+- **[December 2032](../numbers.md?date=month#veil-close):** The Veil closes. Choir holds its slats on station
   and sets its transmission.
-- **[June 2033](../numbers.md?date=month#foundry-full-scale):** The Foundry reaches full scale and its
+- **[May 2033](../numbers.md?date=month#foundry-full-scale):** The Foundry reaches full scale and its
   budget; replication stops there. The first Bricks leave Ceres.
-- **[August 2034](../numbers.md?date=month#first-catch):** The first catch. Ceres and Venus now work as
+- **[September 2034](../numbers.md?date=month#first-catch):** The first catch. Ceres and Venus now work as
   one schedule.
 - **[December 2036](../numbers.md?date=month#deadline):** The deadline. Choir stays on: the Veil remains
   the planet's thermostat, and the cryo-continents need refrigeration for good.

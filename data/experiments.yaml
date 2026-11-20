@@ -46,7 +46,7 @@ experiments:
     name: Cryo-seal
     where: Earth
     tech: cryo
-    proves: "Dry-ice storage under a {earth-like-temp} sky"
+    proves: "Dry-ice storage under a {earth-surface-temp} sky"
     pass: "Under {cryo-seal-leak} of heat leak for {cryo-seal-months}"
     kill: The cap cracks under thermal cycling
   - id: mini-aegis

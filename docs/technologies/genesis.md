@@ -1,8 +1,8 @@
 # Genesis Biota
 
 Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in and the new oceans
-have held their pH, from [14 December 2036](../numbers.md?date=day#genesis-start), so the sunlit water is
-green by [25 December 2036](../numbers.md?date=day#genesis-end). They start a food web, draw nutrients from the nitrogen sky and begin turning bare basalt
+have held their pH, from [1 December 2036](../numbers.md?date=day#genesis-start), so the sunlit water is
+green by [12 December 2036](../numbers.md?date=day#genesis-end). They start a food web, draw nutrients from the nitrogen sky and begin turning bare basalt
 and cap graphite into soil. Trees, crops and animals come later, after 2040.
 
 <!-- figure:venus-compare -->
@@ -83,10 +83,10 @@ No organism is released until three things are true:
 3. Ozone is detectable.
 
 The ice melts when the caps are sealed and the Veil opens, on
-[15 September 2036](../numbers.md?date=day#traj-warming), so the pH hold ends on
-[14 December 2036](../numbers.md?date=day#genesis-ph-clear). The Forges finish on
+[2 September 2036](../numbers.md?date=day#traj-warming), so the pH hold ends on
+[1 December 2036](../numbers.md?date=day#genesis-ph-clear). The Forges finish on
 [30 September 2036](../numbers.md?date=day#forge-end). Seeding begins at the later of the two, on
-[14 December 2036](../numbers.md?date=day#genesis-start). Version 2 seeded from mid-2036, before its own
+[1 December 2036](../numbers.md?date=day#genesis-start). Version 2 seeded from mid-2036, before its own
 oxygen condition could be met. Version 3 waits for the gate ([corrections](../about.md#corrections)).
 
 ### Seeding
@@ -95,7 +95,7 @@ Drones spray cyanobacteria and nitrogen fixers over sunlit water at
 [100 per cm³](../numbers.md#genesis-seed-density). Doubling every [1 d](../numbers.md#genesis-doubling-days),
 they reach [200,000 per cm³](../numbers.md#genesis-bloom-density), as rich as well-lit seawater on Earth, in
 [11 d](../numbers.md#genesis-green-days): the sunlit water is green by
-[25 December 2036](../numbers.md?date=day#genesis-end), before the deadline
+[12 December 2036](../numbers.md?date=day#genesis-end), before the deadline
 ([check](../numbers.md#check-genesis-by-deadline)). Crews of machines lay black loam
 on shores and caps and sow lichens, mosses and the soil consortium. Orbiters watch chlorophyll and oxygen
 across the planet, and the Choir's digital twin of Venus forecasts where each population will take hold
@@ -109,8 +109,8 @@ and where it is failing.
 | Air | [2.4 bar](../numbers.md#final-pressure): [2.1 bar](../numbers.md#n2-pressure) nitrogen, [0.25 bar](../numbers.md#o2-target-pressure) oxygen, [310 ppm](../numbers.md#final-co2-ppm) CO₂ |
 | Oceans | [217 m](../numbers.md#ocean-depth) deep on average, fresh to brackish and sulfate-rich |
 | Light | [24 h](../numbers.md#day-length) days at Earth strength |
-| Seeding | From [14 December 2036](../numbers.md?date=day#genesis-start), the later of the oxygen ([30 September 2036](../numbers.md?date=day#forge-end)) and the pH gate ([14 December 2036](../numbers.md?date=day#genesis-ph-clear)) |
-| Living oceans | [100 per cm³](../numbers.md#genesis-seed-density) seeded, [200,000 per cm³](../numbers.md#genesis-bloom-density) by [25 December 2036](../numbers.md?date=day#genesis-end), doubling every [1 d](../numbers.md#genesis-doubling-days) |
+| Seeding | From [1 December 2036](../numbers.md?date=day#genesis-start), the later of the oxygen ([30 September 2036](../numbers.md?date=day#forge-end)) and the pH gate ([1 December 2036](../numbers.md?date=day#genesis-ph-clear)) |
+| Living oceans | [100 per cm³](../numbers.md#genesis-seed-density) seeded, [200,000 per cm³](../numbers.md#genesis-bloom-density) by [12 December 2036](../numbers.md?date=day#genesis-end), doubling every [1 d](../numbers.md#genesis-doubling-days) |
 <!-- /table -->
 
 ## What is invented
@@ -131,12 +131,12 @@ and where it is failing.
 - **[June 2027](../numbers.md?date=month#survey-start):** The cloud-life survey begins.
 - **[December 2028](../numbers.md?date=month#life-gate):** The gate. No native life found, or the program
   stops. From here the organisms are engineered and tested on Earth in simulated 2036 conditions.
-- **[15 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed, the Veil opens and the
+- **[2 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed, the Veil opens and the
   ice melts into oceans. The pH clock starts.
 - **[30 September 2036](../numbers.md?date=day#forge-end):** The Forges finish and the air becomes Earth-like.
-- **[14 December 2036](../numbers.md?date=day#genesis-start):** The pH has held; the gate opens and seeding
+- **[1 December 2036](../numbers.md?date=day#genesis-start):** The pH has held; the gate opens and seeding
   begins.
-- **[25 December 2036](../numbers.md?date=day#genesis-end):** The sunlit water is green. Trees, crops and
+- **[12 December 2036](../numbers.md?date=day#genesis-end):** The sunlit water is green. Trees, crops and
   animals follow after 2040, once there is soil to grow in.
 
 ## Failure modes and safeguards

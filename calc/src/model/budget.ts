@@ -2,14 +2,16 @@
 import { formatQuantity } from "../format.ts";
 import type { Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
+import { fmt } from "./text.ts";
 
 /** Rows of the energy budget, in the order the site shows them. */
 export const DEMANDS = [
   ["ice-launch-energy", "Launch 10²⁰ kg of ice from Ceres"],
   ["traj-pump-energy", "Heat-pump work to cool Venus"],
+  ["traj-fan-energy", "Run the chimney fans"],
   ["traj-warm-energy", "Warm the air and melt the last ice"],
   ["forge-energy", "Forge 0.25 bar of oxygen"],
-  ["hardware-energy", "Build all hardware"],
+  ["hardware-energy", "Build the Foundry, the Veil, the Lattice and the Ring"],
 ] as const;
 
 export function budget(r: Registry) {
@@ -169,11 +171,10 @@ export function budget(r: Registry) {
     {
       label: "The energy budget closes: supply covers demand",
       kind: "conservation",
-      issue: "budget-offwindow",
     },
     () => ({
       pass: v("helios-supply") >= v("budget-demand"),
-      detail: `Lattice supply ${v("helios-supply").toExponential(2)} J against demand ${v("budget-demand").toExponential(2)} J: ${(v("budget-spare") * 100).toFixed(0)}% spare before the Ring's recovered energy, ${(v("budget-spare-with-ring") * 100).toFixed(0)}% once the Ring powers the Railheads.`,
+      detail: `Lattice supply ${fmt(r, "helios-supply")} against demand ${fmt(r, "budget-demand")}: ${fmt(r, "budget-spare")} spare before the Ring's recovered energy, ${fmt(r, "budget-spare-with-ring")} once the Ring powers the Railheads.`,
     }),
   );
   const show = (id: string) => formatQuantity({ ...r.get(id), value: v(id) });

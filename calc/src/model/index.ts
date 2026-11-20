@@ -15,6 +15,7 @@ import { iceTrain } from "./ice.ts";
 import { outcome } from "./outcome.ts";
 import { ring } from "./ring.ts";
 import { acid, aegis } from "./shield.ts";
+import { summary } from "./summary.ts";
 import { trajectory } from "./trajectory.ts";
 import { veil } from "./veil.ts";
 import { venus } from "./venus.ts";
@@ -22,9 +23,10 @@ import { venus } from "./venus.ts";
 export const MODULES = [
   venus,
   conventional,
+  // The Veil's mass sets how long the Foundry pauses to build it, so the Veil comes first.
+  veil,
   foundry,
   helios,
-  veil,
   chimneys,
   exhaust,
   cryo,
@@ -37,6 +39,7 @@ export const MODULES = [
   outcome,
   trajectory,
   budget,
+  summary,
 ];
 
 export function compute(inputs: Map<string, Input>): Registry {

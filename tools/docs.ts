@@ -176,10 +176,10 @@ const BLOCKS: Record<string, Block> = {
   },
   experiments(_arg, p) {
     return table(
-      ["Experiment", "Proves", "Pass by the end of 2028", "Kill signal"],
+      ["Experiment", "Proves", `Pass by ${md("{experiments-end|date=day}", p)}`, "Kill signal"],
       content.experiments.experiments.map((e) => [
         e.tech ? `[${e.name}](${p}technologies/${e.tech}.md)` : `**${e.name}**`,
-        e.proves,
+        md(e.proves, p),
         e.then ? `${md(e.pass, p)}. Then: ${md(e.then, p)}` : md(e.pass, p),
         md(e.kill, p),
       ]),
@@ -539,6 +539,12 @@ function sync(file: string): void {
       return `[${formatRef(r.get(id), opts)}](${up}numbers.md${q ? `?${q}` : ""}#${id})`;
     },
   );
+  // A template that reached the output unfilled: the page would show "{id}" to readers.
+  for (const m of text
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`[^`\n]*`/g, "")
+    .matchAll(/\{([a-z][a-z0-9-]*)(\|[^}\n]*)?\}/g))
+    if (known(m[1] as string)) problems.push(`${rel}: unfilled template ${m[0]}`);
   for (const m of text.matchAll(SOURCE_LINK))
     if (!sourceIds.has(m[2] as string)) problems.push(`${rel}: link to unknown source #${m[2]}`);
   for (const m of text.matchAll(DOC_LINK)) {

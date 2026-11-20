@@ -110,10 +110,11 @@ foundry-doubling-days:
   range: [30, 120]
   note: The single most important invention. The 1980 NASA study's lunar factory was meant to copy itself in about a year.
 foundry-target-mass:
-  value: 1.0e14
+  value: 6.0e13
   unit: kg
-  label: Foundry machinery at full scale
+  label: Machinery the Foundry grows to before it builds the Lattice and the Ring
   basis: design
+  note: About the mass of the Lattice and the Ring together. A Foundry that stops growing at the mass of what it must build next finishes it soonest; the check foundry-size confirms the doubling count.
 foundry-energy-per-kg:
   value: 1.0e8
   unit: J/kg
@@ -138,10 +139,11 @@ lithocell-feature-size:
 
 # --- Helios Lattice --------------------------------------------------------------------------------
 helios-power:
-  value: 7.0e19
+  value: 8.5e19
   unit: W
   label: Power the Helios Lattice delivers
   basis: design
+  note: Version 2 raised it from 4 to 7 × 10¹⁹ W so the launches would finish in time. Version 3 raises it again, because the Railheads draw more once launches between windows are charged and the Lattice's power arrives only after the Foundry stops growing.
   range: [4.0e19, 1.0e20]
 helios-film-efficiency:
   value: 0.40
@@ -264,11 +266,11 @@ veil-build-start:
   label: Veil slat production begins
   basis: design
 veil-close:
-  value: 2032-06-30
+  value: 2032-12-01
   unit: date
   label: Veil closes over Venus
   basis: design
-  note: Version 2 closed it in December 2031; the L1 Veil is 3.6 times heavier, so it closes six months later, still half a year before active cooling.
+  note: Late enough that the Foundry, large by then, stops growing for only about ten days to build it, and still months before the Lattice's power starts the cooling.
 
 # --- Thermal Chimneys ------------------------------------------------------------------------------
 chimney-count:
@@ -277,21 +279,29 @@ chimney-count:
   label: Number of chimneys (one per canopy)
   basis: design
 chimney-diameter:
-  value: 2000
+  value: 3500
   unit: m
   show: km
   label: Chimney diameter
   basis: design
+  note: Wide enough to carry the same heat as version 3's first 2 km design while cooling the air by a third as much, which keeps the pumps' cold side close to the air's temperature.
 chimney-flow-speed:
   value: 20
   unit: m/s
   label: Air speed through a chimney's intake exchangers
   basis: design
 chimney-gas-cooling:
-  value: 300
+  value: 100
   unit: K
-  label: How much the air cools passing a chimney's intake exchangers
+  label: How much the air cools passing a chimney's intake exchangers, at the starting 737 K
   basis: design
+  note: A share of the air's temperature, so it shrinks as the air cools. Cooling the air less costs fan power (bigger flow) but saves pump work (warmer cold side); the fans are far cheaper.
+chimney-loss-coefficient:
+  value: 4
+  unit: "1"
+  label: Pressure lost across a chimney's exchangers, in units of the flow's dynamic pressure
+  basis: invented
+  note: Typical of finned heat exchangers with ducting.
 chimney-base:
   value: 1000
   unit: m
@@ -337,15 +347,17 @@ exhaust-canopies:
 exhaust-cone:
   value: 25
   unit: deg
-  label: Beam cone each tile fires into
+  label: Beam cone each tile fires into (full apex angle)
   basis: invented
-cooling-start:
-  value: 2033-01-01
-  unit: date
-  label: Active cooling begins
-  basis: design
+exhaust-band:
+  value: 4.0e-7
+  unit: m
+  show: µm
+  label: Width of the band each tile emits in
+  basis: invented
+  note: About the natural width of a light-emitting diode's line at a few hundred kelvin. A wider band carries more entropy per joule, which is what the pumps need.
 cooling-end:
-  value: 2036-09-15
+  value: 2036-09-01
   unit: date
   label: Active cooling ends
   basis: design
@@ -416,7 +428,7 @@ cryo-cell-area:
   label: Area of one sealed compartment
   basis: design
 sealing-end:
-  value: 2036-09-15
+  value: 2036-09-01
   unit: date
   label: Last caps sealed
   basis: design
@@ -583,22 +595,28 @@ aegis-bubble-radius:
   label: Magnetic bubble radius
   basis: design
 aegis-coil-radius:
-  value: 1.0e4
+  value: 1.0e6
   unit: m
   show: km
   label: Coil radius
   basis: design
+  note: The coil's own field pulls it apart with a force that falls with the cube of its radius at a fixed dipole moment. At 10 km (version 2) no material could hold it; at 1,000 km carbon fibre can, for less than the Veil weighs.
 aegis-turns:
   value: 1.0e6
   unit: count
   label: Turns in the coil
+  basis: design
+aegis-winding-radius:
+  value: 5
+  unit: m
+  label: Radius of the coil's winding pack
   basis: design
 aegis-coil-temp:
   value: 40
   unit: K
   label: Temperature the Aegis cable runs at
   basis: invented
-  note: Kept cold by radiating to space from behind its own small sunshield; no cable today carries megaamperes per strand at this temperature.
+  note: Kept cold by radiating to space from behind its own small sunshield.
 
 # --- Venus in 2036 ---------------------------------------------------------------------------------
 genesis-ph-min:

@@ -180,6 +180,7 @@
     - { label: Flow speed, value: "{chimney-flow-speed}" }
     - { label: Mass flow, value: "{chimney-mass-flow} each" }
     - { label: Heat delivered, value: "{chimney-heat} each, cooling the gas by {chimney-gas-cooling}" }
+    - { label: Fans, value: "{chimney-fan-power} in all, {chimney-fan-share} of the heat carried" }
     - { label: Total capacity, value: "{chimney-capacity}, {chimney-vs-peak} times the {deep-heat-peak} peak deep heat flow" }
   invented:
     - Silicon-carbide and graphene composite walls stable at 750 K in CO₂, SO₂ and acid for four years
@@ -222,6 +223,7 @@
   experiments: [exhaust-1]
   figures: [heat-path, co2-phase, trajectory]
   modules: [exhaust.ts, trajectory.ts]
+  open: [exhaust-entropy]
   correction: exhaust-capacity
 
 - id: cryo
@@ -385,10 +387,12 @@
     - { label: Bubble radius, value: "{aegis-bubble-radius}" }
     - { label: Dipole moment, value: "{aegis-dipole}, {aegis-vs-earth} of Earth's" }
     - { label: Coil, value: "{aegis-coil-radius} radius, {aegis-ampere-turns} ({aegis-turns} turns of {aegis-current})" }
+    - { label: Structure, value: "At least {aegis-structure-mass} of carbon fibre against a hoop tension of {aegis-hoop-tension}" }
+    - { label: Stored energy, value: "{aegis-stored-energy}" }
     - { label: Position, value: "Beside the Veil, {veil-distance} sunward" }
     - { label: Online, value: "{aegis-online|date=day}" }
   invented:
-    - Cable carrying {aegis-current} per strand at {aegis-coil-temp}, behind its own sunshield
+    - A superconducting loop {aegis-coil-radius} in radius, assembled in deep space and kept at {aegis-coil-temp} behind its own sunshield
   precedent:
     - text: NASA's 2017 study placed a magnetic dipole at Mars's L1 point to shield the planet.
       source: nasa-mars-magnetic-2017

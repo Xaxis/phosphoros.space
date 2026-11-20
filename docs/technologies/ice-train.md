@@ -1,12 +1,12 @@
 # Ceres Ice Train
 
-[10,000](../numbers.md#railhead-count) coilguns on Ceres throw [1,360](../numbers.md#ice-bricks-per-second)
+[10,000](../numbers.md#railhead-count) coilguns on Ceres throw [1,410](../numbers.md#ice-bricks-per-second)
 blocks of ice a second toward Venus, each [1 Mt](../numbers.md#brick-mass), until
 [1.0 × 10²⁰ kg](../numbers.md#ice-mass) of water is on its way: enough for a
 [217 m](../numbers.md#ocean-depth) global ocean. Each Brick leaves at
 [6.4 km/s](../numbers.md#ice-launch-speed), falls toward the Sun for
 [1.15 yr](../numbers.md#ice-transfer-years) and is caught by the [Braking Ring](ring.md). Launches run
-from [June 2033](../numbers.md?date=month#ice-launch-start) to
+from [July 2033](../numbers.md?date=month#ice-launch-start) to
 [October 2035](../numbers.md?date=month#ice-launch-end).
 
 <!-- figure:ice-orbits -->
@@ -42,7 +42,7 @@ pulls it in: at the Ring's height it is moving at [13.5 km/s](../numbers.md#rin
 A Brick arrives at Venus's orbit [1.15 yr](../numbers.md#ice-transfer-years) after it leaves, and Venus
 must be there to meet it. That needs the two planets at the right angle at launch, an alignment that comes
 round once every synodic period, [8.5 months](../numbers.md#launch-window-period): about
-[3.3](../numbers.md#launch-windows) windows in the campaign.
+[3.2](../numbers.md#launch-windows) windows in the campaign.
 
 The Railheads fire all the time anyway, because the Lattice's power is steady and the deadline is fixed.
 Shots between windows need faster orbits, timed to meet Venus, and they cost more energy. The model finds
@@ -63,7 +63,7 @@ as motion. One Brick fired in a window carries [2.05 × 10¹⁶ J](../numbers
 [4.1 × 10¹⁶ J](../numbers.md#shot-energy-drawn). Averaged over shots between windows, each kilogram draws
 [47.7 MJ/kg](../numbers.md#launch-energy-per-kg-avg). Launching all the water takes
 [4.8 × 10²⁷ J](../numbers.md#ice-launch-energy), the largest single item in the
-[energy budget](../budget.md), and the Railheads together draw [6.5 × 10¹⁹ W](../numbers.md#railhead-power).
+[energy budget](../budget.md), and the Railheads together draw [6.7 × 10¹⁹ W](../numbers.md#railhead-power).
 
 ### Why the Ring gets back more than the Railheads spend
 
@@ -81,7 +81,7 @@ the Ring's height adds the rest.
 > outward by the recoil, and into Venus's, nudged forward as the Ring stops ice that overtakes it.
 
 That surplus is why the Ice Train runs on its own catch from
-[August 2034](../numbers.md?date=month#ring-pays-from). How the energy gets back to Ceres is in
+[September 2034](../numbers.md?date=month#ring-pays-from). How the energy gets back to Ceres is in
 [the Ring's energy loop](ring.md#the-energy-loop).
 
 ### Ceres pays in orbit
@@ -101,8 +101,8 @@ Either way Ceres moves away from Earth, never toward it, and the change is perma
 
 Each Railhead is a coilgun [10.4 km](../numbers.md#railhead-length) long that accelerates a Brick at
 [200 g](../numbers.md#railhead-accel) to [6.4 km/s](../numbers.md#ice-launch-speed) in
-[3.3 s](../numbers.md#railhead-shot-time), then fires again [7.4 s](../numbers.md#railhead-interval) later
-on average. It draws [6.5 × 10¹⁵ W](../numbers.md#railhead-power-each) and stores energy between shots,
+[3.3 s](../numbers.md#railhead-shot-time), then fires again [7.1 s](../numbers.md#railhead-interval) later
+on average. It draws [6.7 × 10¹⁵ W](../numbers.md#railhead-power-each) and stores energy between shots,
 so the power in the barrel during a shot is higher still.
 
 Every shot kicks the Railhead back as hard as it pushes the Brick forward. The coilguns are anchored in
@@ -131,14 +131,14 @@ Brick must meet its catcher track at the Ring's height, on time, on the side of 
 ### Power
 
 Until the first catch the [Helios Lattice](helios.md) beams the Railheads their
-[6.5 × 10¹⁹ W](../numbers.md#railhead-power). Even at the plan's longest beam range,
+[6.7 × 10¹⁹ W](../numbers.md#railhead-power). Even at the plan's longest beam range,
 [3.5 AU](../numbers.md#ring-to-ceres-range), a beam focuses to [140 m](../numbers.md#ceres-beam-spot).
 Receiving that much power is a design problem of its own. At the Lattice's receiver intensity of
 [10 MW/m²](../numbers.md#helios-receiver-intensity), the receivers would need more area than Ceres's
 whole surface, so they must fly in space around Ceres and send power down by cable, or run at higher
 intensity. The model sizes the Lattice's receivers in total, not Ceres's share.
 
-From [August 2034](../numbers.md?date=month#first-catch) the Ring's recovered electricity powers Venus's
+From [September 2034](../numbers.md?date=month#first-catch) the Ring's recovered electricity powers Venus's
 systems, so the Lattice's beams can stay on Ceres. In energy terms the Ice Train then pays for itself.
 
 ### How much water
@@ -154,15 +154,15 @@ water, and comets from the outer belt become the fallback.
 | Parameter | Value |
 | --- | --- |
 | Water shipped | [1.0 × 10²⁰ kg](../numbers.md#ice-mass), [39%](../numbers.md#ice-ceres-water-share) of Ceres's water |
-| Campaign | [June 2033](../numbers.md#ice-launch-start) to [October 2035](../numbers.md#ice-launch-end) ([2.3 yr](../numbers.md#ice-campaign)) |
-| Throughput | [1.36 × 10¹² kg/s](../numbers.md#ice-throughput), [1,360](../numbers.md#ice-bricks-per-second) Bricks a second |
-| Railheads | [10,000](../numbers.md#railhead-count), each firing every [7.4 s](../numbers.md#railhead-interval) |
+| Campaign | [July 2033](../numbers.md#ice-launch-start) to [October 2035](../numbers.md#ice-launch-end) ([2.2 yr](../numbers.md#ice-campaign)) |
+| Throughput | [1.41 × 10¹² kg/s](../numbers.md#ice-throughput), [1,410](../numbers.md#ice-bricks-per-second) Bricks a second |
+| Railheads | [10,000](../numbers.md#railhead-count), each firing every [7.1 s](../numbers.md#railhead-interval) |
 | Railhead | [10.4 km](../numbers.md#railhead-length) long, [200 g](../numbers.md#railhead-accel), [6.4 km/s](../numbers.md#ice-launch-speed) in [3.3 s](../numbers.md#railhead-shot-time) |
 | Brick | [1 Mt](../numbers.md#brick-mass), a cube [103 m](../numbers.md#brick-side) on a side |
 | Energy per shot | [2.05 × 10¹⁶ J](../numbers.md#shot-energy) ([4.1 × 10¹⁶ J](../numbers.md#shot-energy-drawn) drawn at [50%](../numbers.md#railhead-efficiency)) |
-| Power | [6.5 × 10¹⁹ W](../numbers.md#railhead-power) in all, [6.5 × 10¹⁵ W](../numbers.md#railhead-power-each) each |
+| Power | [6.7 × 10¹⁹ W](../numbers.md#railhead-power) in all, [6.7 × 10¹⁵ W](../numbers.md#railhead-power-each) each |
 | Transfer | [1.15 yr](../numbers.md#ice-transfer-years); arrives at [9.08 km/s](../numbers.md#ice-vinf) relative to Venus |
-| Launch windows | Every [8.5 months](../numbers.md#launch-window-period), about [3.3](../numbers.md#launch-windows) in the campaign |
+| Launch windows | Every [8.5 months](../numbers.md#launch-window-period), about [3.2](../numbers.md#launch-windows) in the campaign |
 | Ceres's recoil | [0.76 km/s](../numbers.md#ceres-recoil); its aphelion moves to [3.29 AU](../numbers.md#ceres-new-aphelion) |
 <!-- /table -->
 
@@ -170,10 +170,10 @@ water, and comets from the outer belt become the fallback.
 
 > **Invented:** Coilguns [10.4 km](../numbers.md#railhead-length) long that throw
 > [1 Mt](../numbers.md#brick-mass) blocks of ice at [200 g](../numbers.md#railhead-accel), every few
-> seconds, for [2.3 yr](../numbers.md#ice-campaign) without stopping.
+> seconds, for [2.2 yr](../numbers.md#ice-campaign) without stopping.
 
 > **Invented:** Turning electricity into motion at [50%](../numbers.md#railhead-efficiency) at a total
-> throughput of [1.36 × 10¹² kg/s](../numbers.md#ice-throughput).
+> throughput of [1.41 × 10¹² kg/s](../numbers.md#ice-throughput).
 
 > **Invented:** Steering unpowered Bricks by laser ablation so that each meets a moving track at the far
 > end of a fall of more than a year.
@@ -193,10 +193,10 @@ water, and comets from the outer belt become the fallback.
 - **[2028](../numbers.md?date=year#experiments-end):** The Railhead experiment must throw ice from a
   coilgun on Earth by the end of the year. Its pass and kill marks are on the
   [Research Agenda](../research.md); a kill signal stops this line of work.
-- **[June 2033](../numbers.md?date=month#ice-launch-start):** The Lattice reaches full power and the first
+- **[July 2033](../numbers.md?date=month#ice-launch-start):** The Lattice reaches full power and the first
   Bricks leave Ceres. The Railheads, their receivers and the Brick works must be finished by now. The model
   does not yet schedule their construction on Ceres or count their mass: an open gap.
-- **[August 2034](../numbers.md?date=month#first-catch):** The first Bricks reach Venus and the Ring starts
+- **[September 2034](../numbers.md?date=month#first-catch):** The first Bricks reach Venus and the Ring starts
   catching. From now the Ring's electricity powers Venus and the Lattice's beams stay on Ceres.
 - **[October 2035](../numbers.md?date=month#ice-launch-end):** The last Bricks leave. Ice launched later
   could not arrive and be lowered before the deadline.

@@ -21,6 +21,7 @@ const paths = [...sitemap.matchAll(/<loc>https?:\/\/[^/]+(\/[^<]*)<\/loc>/g)].ma
 {
   // Each page shares as itself: its own og:url, and a card image that loads.
   const wrong: string[] = [];
+  const raw: string[] = [];
   for (const path of paths) {
     const html = await (await fetch(`${base}${path}`)).text();
     const url = html.match(/property="og:url" content="([^"]*)"/)?.[1] ?? "";
@@ -30,7 +31,12 @@ const paths = [...sitemap.matchAll(/<loc>https?:\/\/[^/]+(\/[^<]*)<\/loc>/g)].ma
     const own = path === "/" || new URL(url || "x:/").pathname === path;
     if (!own || !res?.ok || !/^image\//.test(res.headers.get("content-type") ?? ""))
       wrong.push(`${path} (${url} ${img} ${res?.status})`);
+    // A number template the page forgot to fill shows readers "{some-id}".
+    const visible = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ");
+    for (const m of visible.matchAll(/\{[a-z]+(?:-[a-z0-9]+)+(?:\|[a-z=]+)?\}/g))
+      raw.push(`${path} ${m[0]}`);
   }
+  check(raw.length === 0, "no page shows an unfilled number template", raw.join(", "));
   check(
     wrong.length === 0,
     `every page shares its own URL and card (${paths.length})`,
