@@ -1,7 +1,9 @@
 /** A figure from the figures package, drawn from the model, with its caption and text alternative. */
 import { FIGURES } from "@phosphoros/figures";
+import type { GanttProps } from "@phosphoros/figures/gantt";
 import { model } from "../lib/model";
 import { repoUrl } from "../lib/site";
+import { GanttExplorer } from "./GanttExplorer";
 
 export function figureNumbers(id: string): string[] {
   const def = FIGURES[id];
@@ -19,14 +21,21 @@ export function Figure({ id }: { id: string }) {
   const { Component } = def;
   return (
     <figure className="figure" id={`figure-${id}`}>
-      {/* Focusable so a keyboard can scroll it sideways where it is wider than the screen. */}
-      {/* biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling region must take focus to scroll by keys */}
-      <section className="figure-art" tabIndex={0} aria-label={`Figure: ${def.title}`}>
-        <Component {...props} />
-      </section>
-      <p className="figure-hint" aria-hidden="true">
-        Swipe sideways to see the whole figure.
-      </p>
+      {id === "gantt" ? (
+        // The site's Gantt is interactive; the same rows are exported as figures/svg/gantt.svg.
+        <GanttExplorer p={props as GanttProps} />
+      ) : (
+        <>
+          {/* Focusable so a keyboard can scroll it sideways where it is wider than the screen. */}
+          {/* biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling region must take focus to scroll by keys */}
+          <section className="figure-art" tabIndex={0} aria-label={`Figure: ${def.title}`}>
+            <Component {...props} />
+          </section>
+          <p className="figure-hint" aria-hidden="true">
+            Swipe sideways to see the whole figure.
+          </p>
+        </>
+      )}
       <figcaption>
         <span className="figure-title">{def.title}.</span> {def.caption(props)}
         <span className="figure-links">

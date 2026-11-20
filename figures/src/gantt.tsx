@@ -8,7 +8,7 @@ import { Art, Frame, Link, linear, show, W } from "./kit.tsx";
 import { Diamond, YearBands } from "./structure-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
-interface Row {
+export interface GanttRow {
   id: string;
   label: string;
   lane: string;
@@ -24,9 +24,9 @@ interface Row {
   accent: boolean;
 }
 
-interface Props {
+export interface GanttProps {
   lanes: { id: string; label: string }[];
-  rows: Row[];
+  rows: GanttRow[];
   from: number;
   to: number;
   earthLike: number;
@@ -42,11 +42,11 @@ const ROW = 22;
 const LANE = 28;
 const TOP = 74;
 
-function Gantt(p: Props) {
+function Gantt(p: GanttProps) {
   const x = linear([p.from, p.to], [M.l, W - M.r]);
   // Each lane: a heading, then its rows in the order the data gives them.
   let y = TOP;
-  const placed: { lane?: { id: string; label: string }; row?: Row; y: number }[] = [];
+  const placed: { lane?: { id: string; label: string }; row?: GanttRow; y: number }[] = [];
   for (const lane of p.lanes) {
     const rows = p.rows.filter((r) => r.lane === lane.id);
     if (!rows.length) continue;
@@ -235,7 +235,7 @@ function Gantt(p: Props) {
   );
 }
 
-export const gantt: FigureDef<Props> = {
+export const gantt: FigureDef<GanttProps> = {
   id: "gantt",
   title: "The decade",
   file: "figures/src/gantt.tsx",
@@ -243,7 +243,7 @@ export const gantt: FigureDef<Props> = {
     const day = (id: string) => r.get(id).value;
     const date = (id: string) => show(r, id, { date: "day" });
     const t = content.timeline;
-    const rows: Row[] = t.rows.map((row) => ({
+    const rows: GanttRow[] = t.rows.map((row) => ({
       id: row.id,
       label: row.label,
       lane: row.lane,

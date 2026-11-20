@@ -131,6 +131,34 @@ for (const width of [390, 1440]) {
   await p.goto(`${base}/sources`);
   const a = await p.locator('.source-note a[href^="https://web.archive.org"]').count();
   check(a === 1, "the archive URL in a source note is a link", String(a));
+
+  // The interactive timeline: every row of data/timeline.yaml, filters, the date cursor, a selection.
+  await p.goto(`${base}/timeline`, { waitUntil: "load" });
+  const rows = () => p.locator(".tl-row").count();
+  const all = await rows();
+  await p.getByRole("button", { name: "Venus", exact: true }).click();
+  const noVenus = await rows();
+  await p.getByRole("button", { name: "Venus", exact: true }).click();
+  await p.getByRole("button", { name: "Critical path only" }).click();
+  const critical = await rows();
+  await p.getByRole("button", { name: "Critical path only" }).click();
+  await p.locator("#tl-day").fill("1200");
+  const when = await p.locator(".tl-date-value").textContent();
+  const under = await p.locator(".tl-under li").allTextContents();
+  await p.locator(".tl-row", { hasText: "Helios Lattice built" }).locator(".tl-label").click();
+  const pick = await p.locator(".tl-facts").textContent();
+  check(
+    all >= 20 &&
+      noVenus < all &&
+      critical < all &&
+      critical > 0 &&
+      when === "April 2030" &&
+      under.some((t) => t.includes("Ouroboros growth")) &&
+      /Mercury/.test(pick ?? "") &&
+      /2030/.test(pick ?? ""),
+    "timeline filters lanes and the critical path, moves its date and shows a selected row",
+    JSON.stringify({ all, noVenus, critical, when, under, pick }),
+  );
 }
 await b.close();
 console.log(failed ? `${failed} layout check(s) failed` : "layout checks pass");
