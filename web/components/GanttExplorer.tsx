@@ -218,7 +218,7 @@ export function GanttExplorer({ p }: { p: GanttProps }) {
 
       <div className="tl-panels">
         <section className="tl-panel" aria-label={`Under way in ${monthYear(day)}`}>
-          <h3>In {monthYear(day)}</h3>
+          <p className="tl-panel-title">In {monthYear(day)}</p>
           {now.under.length ? (
             <ul className="tl-under">
               {now.under.map((r) => {
@@ -255,7 +255,7 @@ export function GanttExplorer({ p }: { p: GanttProps }) {
         <section className="tl-panel" aria-live="polite" aria-label="Selected workstream">
           {pick ? (
             <>
-              <h3>{pick.label}</h3>
+              <p className="tl-panel-title">{pick.label}</p>
               <dl className="tl-facts">
                 <dt>Kind</dt>
                 <dd>
