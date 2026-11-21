@@ -61,13 +61,26 @@ function drop(x0: number, y: number, w: number, end: number): string {
   return `M${x0},${y}H${x0 + 2}Q${x0 + 2 + r},${y} ${x0 + 2 + r},${y + r}V${end}`;
 }
 
-function Band({ d, w, tone, title }: { d: string; w: number; tone: string; title: string }) {
+function Band({
+  d,
+  w,
+  tone,
+  title,
+  opacity,
+}: {
+  d: string;
+  w: number;
+  tone: string;
+  title: string;
+  /** A band that carries its own label is lighter, so the label reads on it in both themes. */
+  opacity?: number;
+}) {
   return (
     <path
       className={`f-${tone}-line`}
       d={d}
       strokeWidth={w}
-      strokeOpacity={tone === "muted" ? 0.4 : 0.55}
+      strokeOpacity={opacity ?? (tone === "muted" ? 0.4 : 0.55)}
     >
       <title>{title}</title>
     </path>
@@ -213,6 +226,7 @@ function EnergySankey(p: Props) {
           d={`M${X.sun},${LY + w(p.sunlight) / 2}H${X.lattice}`}
           w={w(p.sunlight)}
           tone="accent"
+          opacity={0.4}
           title={`Sunlight on the Lattice's film: ${p.sunlight.text}`}
         />
         <Band

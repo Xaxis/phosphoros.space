@@ -142,13 +142,18 @@ function IceOrbits(p: Props) {
         <Dot x={lx} y={ly} tone="s1" r={5} title={`Ceres at launch, ${t.ceres} from the Sun`} />
         <Lines x={lx - 10} y={ly + 20} anchor="end" lines={["Ceres", "at launch"]} />
         <Dot x={vx} y={vy} tone="hot" title="Venus when the Brick leaves" />
-        <Lines x={vx} y={vy + 22} anchor="middle" halo lines={["Venus", "at launch"]} />
+        {/* Low enough to clear the later windows' paths, which end just above it. */}
+        <Lines x={vx} y={vy + 30} anchor="middle" halo lines={["Venus", "at launch"]} />
         <Dot x={ax} y={ay} tone="hot" title={`Venus when the Brick arrives, ${t.transfer} later`} />
-        <Lines x={ax - 10} y={ay - 22} anchor="end" lines={["Venus", "at arrival"]} />
+        {/* Hemmed in by the later windows' paths: the halo stops them under the words. */}
+        <Lines x={ax - 10} y={ay - 22} anchor="end" halo lines={["Venus", "at arrival"]} />
         <Dot x={nx} y={ny} tone="s1" r={4} title={`Ceres's new aphelion, ${t.ceresNew}`} />
-        <Lines x={nx + 9} y={ny + 18} lines={["New aphelion", t.ceresNew]} />
+        {/* No room outside the new orbit: the label sits just inside Ceres's, tied to its dot. */}
+        <line className="f-axis" x1={nx + 6} y1={ny + 3} x2={CX - p.ceres * AU + 6} y2={ny + 7} />
+        <Lines x={CX - p.ceres * AU + 10} y={ny + 18} lines={["New aphelion", t.ceresNew]} />
 
-        <text className="f-note f-num" x={CX} y={CY - p.venus * AU - 8} textAnchor="middle">
+        {/* Beside its orbit, to the right, where no transfer runs. */}
+        <text className="f-note f-num" x={CX + p.venus * AU + 8} y={CY} dy="0.32em">
           Venus {t.venus}
         </text>
         <text className="f-note f-num" x={CX} y={CY + p.ceres * AU - 10} textAnchor="middle">

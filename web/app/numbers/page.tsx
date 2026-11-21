@@ -5,6 +5,7 @@ import { BasisGlyph, BasisTag } from "../../components/Basis";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { LedgerFilter } from "../../components/LedgerFilter";
+import { Mono } from "../../components/Mono";
 import { basisOf } from "../../components/Num";
 import { pageMeta } from "../../lib/meta";
 import { definedAt, model } from "../../lib/model";
@@ -18,15 +19,17 @@ function Row({ q }: { q: Quantity }) {
   const search = `${q.id} ${q.label} ${q.kind === "derived" ? q.formula : ""}`.toLowerCase();
   return (
     <tr id={q.id} data-q={search}>
-      <td>
+      <td data-label="Quantity">
         <span className="ledger-label">{q.label}</span>
         <code className="ledger-id">{q.id}</code>
       </td>
-      <td className="ledger-value">{formatQuantity(q, { date: "day" })}</td>
-      <td>
+      <td className="ledger-value" data-label="Value">
+        <Mono text={formatQuantity(q, { date: "day" })} />
+      </td>
+      <td data-label="Basis">
         <BasisTag basis={basisOf(q)} />
       </td>
-      <td className="ledger-how">
+      <td className="ledger-how" data-label="How">
         {q.kind === "derived" ? (
           <>
             <span className="ledger-formula">{q.formula}</span>
@@ -60,7 +63,7 @@ function Row({ q }: { q: Quantity }) {
         )}
         {q.note && <span className="ledger-note">{q.note}</span>}
       </td>
-      <td>
+      <td className="cell-short" data-label="Defined at">
         <a className="ledger-src" href={repoUrl(at.file, at.line)}>
           {at.file.replace(/^calc\/src\//, "")}:{at.line}
         </a>
@@ -78,7 +81,7 @@ function Group({ title, file, list }: { title: string; file: string; list: Quant
           {file}
         </a>
       </h2>
-      <div className="table-wrap">
+      <div className="table-wrap table-stack">
         <table className="ledger">
           <thead>
             <tr>

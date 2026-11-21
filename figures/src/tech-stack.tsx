@@ -28,13 +28,16 @@ const NODE_H = 44;
 const STEP = 56;
 const TOP = 40;
 
-/** Where each place's column sits. Ceres shares the third column with the near-Venus systems. */
+/**
+ * Where each place's column sits. Ceres shares the third column with the near-Venus systems. Each
+ * column is wide enough for its longest "Online <month> <year>" line.
+ */
 const COL: Record<Exclude<Place, "everywhere">, { x: number; w: number; label: string }> = {
   earth: { x: 16, w: 104, label: "Earth" },
   mercury: { x: 152, w: 148, label: "Mercury" },
-  space: { x: 360, w: 132, label: "Near Venus" },
-  ceres: { x: 360, w: 132, label: "Ceres" },
-  venus: { x: 548, w: 148, label: "Venus" },
+  space: { x: 352, w: 150, label: "Near Venus" },
+  ceres: { x: 352, w: 150, label: "Ceres" },
+  venus: { x: 554, w: 144, label: "Venus" },
 };
 
 interface Box {
@@ -142,7 +145,7 @@ function TechStack({ nodes, seedLaunch }: Props) {
   // The Foundry's parts go up its mass drivers to everything built near Venus.
   const builtNear = [veil, aegis, ring].filter((b): b is Box => !!b);
   if (foundry && builtNear.length) {
-    const bx = foundry.x + foundry.w + 30;
+    const bx = foundry.x + foundry.w + 26;
     const ys = builtNear.map(mid);
     arrows.push({
       points: [

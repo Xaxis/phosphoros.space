@@ -272,18 +272,28 @@ function AcidSweep({ bars, text: t }: Props) {
           width={PW - 2}
           height={(Y_CLOUD[1] ?? 0) - (Y_CLOUD[0] ?? 0)}
         />
-        {rain.map((x) => (
-          <line
-            key={x}
-            className="f-s4-line"
-            x1={x}
-            y1={(Y_CLOUD[1] ?? 0) + 4}
-            x2={x - 10}
-            y2={groundAt(b, x - 10) - 4}
-            strokeWidth={1.5}
-            strokeDasharray="7 5"
-          />
-        ))}
+        {rain.map((x) => {
+          // A streak that would fall through the "liquid CO₂" label stops just above it.
+          const y1 = (Y_CLOUD[1] ?? 0) + 4;
+          let y2 = groundAt(b, x - 10) - 4;
+          const cx = (co2L + co2R) / 2;
+          const half = textWidth("liquid CO₂", 11.5) / 2 + 4;
+          const top = yCO2 - 22;
+          const atTop = x - (10 * (top - y1)) / (y2 - y1);
+          if (y2 > top && Math.abs(atTop - cx) < half) y2 = top - 2;
+          return (
+            <line
+              key={x}
+              className="f-s4-line"
+              x1={x}
+              y1={y1}
+              x2={x - (10 * (y2 - y1)) / (groundAt(b, x - 10) - 4 - y1)}
+              y2={y2}
+              strokeWidth={1.5}
+              strokeDasharray="7 5"
+            />
+          );
+        })}
         <path
           className="f-cool-wash"
           d={`M${co2L},${yCO2}L${b + 96},${Y_FLOOR}H${b + PW - 56}L${co2R},${yCO2}Z`}
@@ -297,7 +307,6 @@ function AcidSweep({ bars, text: t }: Props) {
           x={(co2L + co2R) / 2}
           y={yCO2 - 8}
           anchor="middle"
-          halo
           lines={[{ text: "liquid CO₂", kind: "note" }]}
         />
         <Lines

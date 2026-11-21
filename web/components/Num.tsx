@@ -9,6 +9,15 @@ import { formatRef, type RefOptions } from "@phosphoros/calc/template";
 import { definedAt, model, quantity } from "../lib/model";
 import { repoUrl } from "../lib/site";
 import { BASIS_LABEL, BasisGlyph, BasisTag } from "./Basis";
+import { Mono } from "./Mono";
+
+/**
+ * A number button is an atomic inline, so a line can break on either side of it and leave a comma
+ * or bracket that touches it alone at the start or end of a line. The renderers join this
+ * punctuation to the number in a `.num-join` span, which does not wrap.
+ */
+export const OPENING = /[(“‘]+$/;
+export const CLOSING = /^[.,;:!?)”’]+/;
 
 export function basisOf(q: Quantity): Basis {
   return q.basis ?? "physics";
@@ -24,7 +33,7 @@ export function Num({ id, opts = {} }: { id: string; opts?: RefOptions }) {
       popoverTarget={`q-${id}`}
       aria-label={`${formatRef(q, opts)}: ${q.label} (${BASIS_LABEL[basis]}). Show how it is computed.`}
     >
-      {formatRef(q, opts)}
+      <Mono text={formatRef(q, opts)} />
     </button>
   );
 }
@@ -33,7 +42,11 @@ function SI({ q }: { q: Quantity }) {
   if (q.unit === "date") return null;
   const shown = formatQuantity(q, { sig: 6, date: "day" });
   const si = formatQuantity({ value: q.value, unit: q.unit, sig: 6 });
-  return shown === si ? null : <span className="card-si">{si}</span>;
+  return shown === si ? null : (
+    <span className="card-si">
+      <Mono text={si} />
+    </span>
+  );
 }
 
 function Card({ id }: { id: string }) {
@@ -50,7 +63,9 @@ function Card({ id }: { id: string }) {
       </div>
       <p className="card-label">{q.label}</p>
       <p className="card-value">
-        {formatQuantity(q, { sig: q.sig ? Math.max(q.sig, 3) : 3, date: "day" })}
+        <span>
+          <Mono text={formatQuantity(q, { sig: q.sig ? Math.max(q.sig, 3) : 3, date: "day" })} />
+        </span>
         <SI q={q} />
       </p>
       {q.kind === "derived" && (
@@ -68,7 +83,9 @@ function Card({ id }: { id: string }) {
                       <BasisGlyph basis={basisOf(d)} />
                     </span>
                     <a href={`/numbers#${i}`}>{d.label}</a>
-                    <span className="card-input-value">{formatQuantity(d, { date: "day" })}</span>
+                    <span className="card-input-value">
+                      <Mono text={formatQuantity(d, { date: "day" })} />
+                    </span>
                   </li>
                 );
               })}

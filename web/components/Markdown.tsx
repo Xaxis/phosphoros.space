@@ -11,7 +11,8 @@ import { slugify } from "../lib/docs";
 import { model } from "../lib/model";
 import { routeFor } from "../lib/site";
 import { BasisGlyph } from "./Basis";
-import { Num } from "./Num";
+import { CLOSING, Num, OPENING } from "./Num";
+import { shortColumns, TableWrap } from "./TableWrap";
 
 const LEDGER = /^(?:\.\.\/)*numbers\.md(?:\?([^#]*))?#([a-z0-9-]+)$/;
 const SOURCE = /^(?:\.\.\/)*sources\.md#([a-z0-9-]+)$/;
@@ -26,13 +27,104 @@ interface HastNode {
   type: string;
   tagName?: string;
   value?: string;
+  properties?: Record<string, unknown>;
   children?: HastNode[];
+}
+
+interface MdNode {
+  type: string;
+  url?: string;
+  value?: string;
+  data?: Record<string, unknown>;
+  children?: MdNode[];
 }
 
 function textOf(n: HastNode | undefined): string {
   if (!n) return "";
   if (n.type === "text") return n.value ?? "";
   return (n.children ?? []).map(textOf).join("");
+}
+
+/** A ledger link the page draws as a number button, alone or as the only thing in bold. */
+function isNumber(n: MdNode | undefined): boolean {
+  if (n?.type === "link") {
+    const m = LEDGER.exec(n.url ?? "");
+    return Boolean(m && !m[2]?.startsWith("check-"));
+  }
+  return (n?.type === "strong" || n?.type === "emphasis") && n.children?.length === 1
+    ? isNumber(n.children[0])
+    : false;
+}
+
+/** Joins the punctuation that touches a number to it (see `OPENING` in Num.tsx). */
+function keepPunctuation() {
+  const walk = (node: MdNode) => {
+    const kids = node.children;
+    if (!kids) return;
+    for (const k of kids) walk(k);
+    kids.forEach((k, i) => {
+      if (!isNumber(k)) return;
+      const prev = kids[i - 1];
+      const next = kids[i + 1];
+      const lead = prev?.type === "text" ? OPENING.exec(prev.value ?? "")?.[0] : undefined;
+      const tail = next?.type === "text" ? CLOSING.exec(next.value ?? "")?.[0] : undefined;
+      if (!lead && !tail) return;
+      const joined: MdNode[] = [k];
+      if (prev && lead) {
+        prev.value = (prev.value ?? "").slice(0, -lead.length);
+        joined.unshift({ type: "text", value: lead });
+      }
+      if (next && tail) {
+        next.value = (next.value ?? "").slice(tail.length);
+        joined.push({ type: "text", value: tail });
+      }
+      kids[i] = {
+        type: "numJoin",
+        data: { hName: "span", hProperties: { className: ["num-join"] } },
+        children: joined,
+      };
+    });
+  };
+  return walk;
+}
+
+/**
+ * Each body cell carries its column's heading, so a wide table can stack into labelled rows; the
+ * cells of a short column are marked to sit beside their label (see `shortColumns`).
+ */
+function labelCells() {
+  const walk = (node: HastNode) => {
+    if (node.tagName === "table") {
+      const rows = (node.children ?? []).flatMap((g) =>
+        (g.children ?? [])
+          .filter((r) => r.tagName === "tr")
+          .map((r) => ({ head: g.tagName === "thead", r })),
+      );
+      const labels = (rows.find((x) => x.head)?.r.children ?? [])
+        .filter((c) => c.tagName === "th")
+        .map(textOf);
+      const body = rows
+        .filter((x) => !x.head)
+        .map(({ r }) => (r.children ?? []).filter((c) => c.tagName === "td"));
+      const short = shortColumns(body.map((cells) => cells.map(textOf)));
+      for (const cells of body) {
+        cells.forEach((c, j) => {
+          const inline = short[j] && (c.children ?? []).length > 0;
+          c.properties = {
+            ...c.properties,
+            dataLabel: labels[j] ?? "",
+            ...(inline ? { className: ["cell-short"] } : {}),
+          };
+          if (inline)
+            c.children = [
+              { type: "element", tagName: "span", properties: {}, children: c.children },
+            ];
+        });
+      }
+    }
+    for (const k of node.children ?? []) walk(k);
+  };
+  return walk;
 }
 
 function plain(children: ReactNode): string {
@@ -112,11 +204,18 @@ export function Markdown({ text, doc }: { text: string; doc: string }) {
       // biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling block must take focus to scroll by keys
       <pre tabIndex={0}>{children}</pre>
     ),
-    table: ({ children }) => (
-      <div className="table-wrap">
-        <table>{children}</table>
-      </div>
-    ),
+    table: ({ node, children }) => {
+      const head = ((node as HastNode | undefined)?.children ?? [])
+        .find((g) => g.tagName === "thead")
+        ?.children?.find((r) => r.tagName === "tr")
+        ?.children?.filter((c) => c.tagName === "th")
+        .map(textOf);
+      return (
+        <TableWrap head={head}>
+          <table>{children}</table>
+        </TableWrap>
+      );
+    },
     img: ({ src, alt }) =>
       typeof src === "string" && /figures\/svg\//.test(src) ? null : (
         // biome-ignore lint/performance/noImgElement: documents may embed plain images
@@ -124,7 +223,11 @@ export function Markdown({ text, doc }: { text: string; doc: string }) {
       ),
   };
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm, keepPunctuation]}
+      rehypePlugins={[labelCells]}
+      components={components}
+    >
       {text}
     </ReactMarkdown>
   );

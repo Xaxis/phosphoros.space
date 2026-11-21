@@ -1,5 +1,5 @@
 /** Power scale: what a ten-year campaign needs against the power there is, on one log axis. */
-import { Halo, hbar, TechLink } from "./charts-kit.tsx";
+import { clearOf, Halo, hbar, TechLink } from "./charts-kit.tsx";
 import { Art, Frame, log, pow10, show, W } from "./kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -39,6 +39,7 @@ function PowerScale({ groups, sunlight, plan, years }: Props) {
   const x = log(DOMAIN, [M.l, W - M.r]);
   const top = M.t;
   const bottom = H - M.b;
+  const refs = [x(sunlight.value), x(plan.value)];
   const exps: number[] = [];
   for (let e = Math.log10(DOMAIN[0]); e <= Math.log10(DOMAIN[1]); e++) exps.push(10 ** e);
   let y = top;
@@ -126,9 +127,12 @@ function PowerScale({ groups, sunlight, plan, years }: Props) {
                     className={b.plan ? "f-accent" : "f-s1"}
                     d={hbar(M.l, x(b.value), mid - BAR / 2, BAR)}
                   />
-                  <Halo className="f-num" x={x(b.value) + 8} y={mid} dy="0.32em">
-                    {b.text}
-                  </Halo>
+                  {/* A value that would sit across a reference line moves just past it. */}
+                  {clearOf(x(b.value) + 8, b.text, refs).map(([lx, text]) => (
+                    <Halo key={text} className="f-num" x={lx} y={mid} dy="0.32em">
+                      {text}
+                    </Halo>
+                  ))}
                 </g>
               </TechLink>
             );

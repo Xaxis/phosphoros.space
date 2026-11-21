@@ -165,7 +165,8 @@ export function Diamond({
 
 /**
  * Years as bands on a time axis: a hairline at each January 1st and the year's name centred in the
- * part of its span the axis shows.
+ * part of its span the axis shows. A year the axis shows only a sliver of goes unnamed: its name
+ * would sit on its first day, not its middle, unlike the others.
  */
 export function YearBands({
   x,
@@ -174,6 +175,7 @@ export function YearBands({
   labelY,
   from,
   to,
+  spans = [[top, bottom]],
 }: {
   x: Scale;
   top: number;
@@ -181,6 +183,8 @@ export function YearBands({
   labelY: number[];
   from: number;
   to: number;
+  /** Where the hairlines run, top to bottom, when they must stop short of text between. */
+  spans?: [number, number][];
 }) {
   const out: ReactNode[] = [];
   for (let yr = 2027; yr <= 2040; yr++) {
@@ -188,13 +192,15 @@ export function YearBands({
     const d1 = dayOf(`${yr + 1}-01-01`);
     if (d0 > to + 1e-9) break;
     if (d0 >= from - 1e-9)
-      out.push(
-        <line key={`g${yr}`} className="f-grid" x1={x(d0)} x2={x(d0)} y1={top} y2={bottom} />,
-      );
+      for (const [y1, y2] of spans)
+        out.push(
+          <line key={`g${yr}-${y1}`} className="f-grid" x1={x(d0)} x2={x(d0)} y1={y1} y2={y2} />,
+        );
     const a = Math.max(d0, from);
     const b = Math.min(d1, to);
-    // A year shows its name only when enough of it is on the axis to hold the label.
-    if (x(b) - x(a) < 30) continue;
+    // A year shows its name only when enough of it is on the axis to hold the label, and at least
+    // a third of it.
+    if (x(b) - x(a) < Math.max(30, (x(d1) - x(d0)) / 3)) continue;
     for (const ly of labelY)
       out.push(
         <text

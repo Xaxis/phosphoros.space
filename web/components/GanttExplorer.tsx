@@ -178,7 +178,11 @@ export function GanttExplorer({ p }: { p: GanttProps }) {
                           {r.end !== undefined ? (
                             <span
                               className="tl-bar"
-                              style={{ left: pct(r.start), width: pct(p.from + (r.end - r.start)) }}
+                              // A bar shorter than its minimum width still ends inside the track.
+                              style={{
+                                left: `min(${pct(r.start)}, 100% - var(--tl-bar-min))`,
+                                width: pct(p.from + (r.end - r.start)),
+                              }}
                             />
                           ) : (
                             <span

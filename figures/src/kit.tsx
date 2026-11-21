@@ -65,6 +65,21 @@ export function textWidth(text: string, size = 13): number {
   return text.length * size * 0.56;
 }
 
+/** Text broken at spaces into lines no wider than `width` (by textWidth, so it fits any face). */
+export function wrap(text: string, width: number, size = 13): string[] {
+  const lines: string[] = [];
+  let line = "";
+  for (const word of text.split(" ")) {
+    const next = line ? `${line} ${word}` : word;
+    if (line && textWidth(next, size) > width) {
+      lines.push(line);
+      line = word;
+    } else line = next;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
 /** A rectangle in figure units. */
 export interface Box {
   x: number;

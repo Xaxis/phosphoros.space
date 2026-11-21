@@ -4,6 +4,7 @@ import type { GanttProps } from "@phosphoros/figures/gantt";
 import { model } from "../lib/model";
 import { repoUrl } from "../lib/site";
 import { GanttExplorer } from "./GanttExplorer";
+import { shortColumns, TableWrap } from "./TableWrap";
 
 export function figureNumbers(id: string): string[] {
   const def = FIGURES[id];
@@ -18,6 +19,7 @@ export function Figure({ id }: { id: string }) {
   const { r, content } = model();
   const props = def.build({ r, content });
   const alt = def.describe(props);
+  const short = shortColumns(alt.rows ?? []);
   const { Component } = def;
   return (
     <figure className="figure" id={`figure-${id}`}>
@@ -47,7 +49,7 @@ export function Figure({ id }: { id: string }) {
         <summary>The data in words</summary>
         <p>{alt.summary}</p>
         {alt.rows && (
-          <div className="table-wrap">
+          <TableWrap head={alt.head} name={`${def.title}: the data in words`}>
             <table>
               {alt.head && (
                 <thead>
@@ -61,14 +63,22 @@ export function Figure({ id }: { id: string }) {
               <tbody>
                 {alt.rows.map((row, i) => (
                   <tr key={i}>
-                    {row.map((c, j) => (
-                      <td key={j}>{c}</td>
-                    ))}
+                    {row.map((c, j) =>
+                      short[j] && c ? (
+                        <td key={j} className="cell-short" data-label={alt.head?.[j]}>
+                          <span>{c}</span>
+                        </td>
+                      ) : (
+                        <td key={j} data-label={alt.head?.[j]}>
+                          {c}
+                        </td>
+                      ),
+                    )}
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableWrap>
         )}
       </details>
     </figure>

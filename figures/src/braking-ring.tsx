@@ -410,9 +410,10 @@ function BrakingRing(p: Props) {
           head={6}
           dash="3 3"
         />
+        {/* Between the 400 km and 300 km gridlines, crossing neither. */}
         <Lines
           x={liftX - 12}
-          y={alt(330)}
+          y={alt(300) - 36}
           anchor="end"
           lines={[`${t.lifts} tether lifts`, `a Brick every ${t.interval}`, `down to ${t.release}`]}
         />
@@ -425,9 +426,10 @@ function BrakingRing(p: Props) {
             { text: `gaining ${t.fall}`, kind: "note" },
           ]}
         />
+        {/* Left of the tether and between the 200 km and 100 km gridlines, so no line crosses it. */}
         <Problem
-          x={liftX - 120}
-          y={alt(200)}
+          x={SX + 6}
+          y={(alt(200) + alt(100)) / 2 - 10}
           notes={["lowering needs", `${t.overload} times the Ring's lift`]}
         />
 

@@ -61,11 +61,17 @@ const SUN_DIR = new THREE.Vector3(-0.7, 0.45, 0.55).normalize();
 const RING_R = 1.12;
 /**
  * The Helios Lattice orbits near Mercury, so its beams reach Venus from wherever the Lattice is,
- * not from the Sun's direction. Drawn arriving from the upper left, behind Venus.
+ * not from the Sun's direction. Drawn arriving steeply from the upper left, behind Venus, so on a
+ * wide screen they pass right of the headline rather than through it.
  */
-const BEAM_DIR = new THREE.Vector3(-0.8, 0.55, -0.3).normalize();
-/** Where the Veil and Aegis sit, toward the Sun. Not to scale: the real Veil is 1.1 million km out. */
-const VEIL_POS = SUN_DIR.clone().multiplyScalar(2.15);
+const BEAM_DIR = new THREE.Vector3(-0.5, 0.8, -0.3).normalize();
+/**
+ * Where the Veil and Aegis sit: sunward and in front of Venus, raised 17 degrees above the Sun line
+ * and drawn at 3/4 size so that on a wide screen they fit between the headline and the planet,
+ * not behind the headline's letters. Not to scale: the real Veil is 1.1 million km out.
+ */
+const VEIL_POS = new THREE.Vector3(-0.93, 1.11, 0.68);
+const VEIL_SCALE = 0.75;
 const CAMERA_ELEVATION = 0.23;
 const FOV = 24;
 const BACKGROUND = "#090a12";
@@ -491,6 +497,7 @@ export function createScene(
     ),
   );
   veil.position.copy(VEIL_POS);
+  veil.scale.setScalar(VEIL_SCALE);
   veil.lookAt(SUN_DIR.clone().multiplyScalar(100));
   scene.add(veil);
 
@@ -509,6 +516,7 @@ export function createScene(
     ),
   );
   aegis.position.copy(VEIL_POS);
+  aegis.scale.setScalar(VEIL_SCALE);
   aegis.lookAt(SUN_DIR.clone().multiplyScalar(100));
   scene.add(aegis);
 

@@ -99,6 +99,7 @@ export function Lines({
   anchor = "start",
   gap = 14.5,
   halo = false,
+  wash,
 }: {
   x: number;
   y: number;
@@ -110,6 +111,11 @@ export function Lines({
    * (.f-halo), all under all the lines' text, so no halo covers the line above.
    */
   halo?: boolean;
+  /**
+   * For text on a tinted region (`f-<tone>-wash`): tint the halo the same, so it hides the lines
+   * under the words without showing as a pale box on the tint.
+   */
+  wash?: string;
 }) {
   const set = lines.map((l, i) => {
     const line = typeof l === "string" ? { text: l, kind: i ? "note" : "label" } : l;
@@ -132,6 +138,22 @@ export function Lines({
               {l.text}
             </text>
           ))}
+          {wash &&
+            set.map((l) => (
+              <text
+                key={l.key}
+                className={`${l.cls.includes("f-num") ? "f-num " : ""}f-${wash}-line`}
+                x={x}
+                y={l.y}
+                textAnchor={anchor}
+                fontSize={l.cls.includes("f-note") ? 11.5 : 13}
+                strokeWidth={7}
+                strokeOpacity={0.1}
+                strokeLinejoin="round"
+              >
+                {l.text}
+              </text>
+            ))}
         </Art>
       )}
       {set.map((l) => (
