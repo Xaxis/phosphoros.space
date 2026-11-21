@@ -595,6 +595,18 @@ ice-lowering-margin:
   unit: d
   label: Days kept between the last arrival and the deadline
   basis: design
+ice-arrival-peak:
+  value: 3
+  unit: "1"
+  sig: 1
+  label: Peak rate the Ring is built to catch, as a multiple of the mean
+  basis: design
+  note: >-
+    A whole number: the most launch phases the schedule may book into one arrival slot. Spreading
+    the arrivals evenly (1) would nearly double the launch energy; left free, the cheapest transfers
+    pile into a handful of slots each cycle. At 3 the trade turns: going down to 2 costs several
+    times the launch energy that going up to 4 saves, while the Ring's tracks, power and braking
+    grow with the peak.
 railhead-barrel-loss:
   value: 1.0e-3
   unit: "1"
