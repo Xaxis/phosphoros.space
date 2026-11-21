@@ -83,7 +83,7 @@ planet. The caps take [2.5 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) of car
 and [9.0 × 10¹⁷ kg](../numbers.md#cryo-armour-mass) of basalt. All the carbon comes from the Forges.
 
 **Heat from above.** Carbon aerogel conducts only [0.029 W/(m·K)](../numbers.md#cryo-aerogel-conductivity), as
-measured in air ([Lu 1993](../sources.md#lu-1993-aerogel)). Across
+measured in air ([Lu et al. 1993](../sources.md#lu-1993-aerogel)). Across
 [20 m](../numbers.md#cryo-aerogel-thickness), between a [288 K](../numbers.md#earth-surface-temp) surface and
 [180 K](../numbers.md#cryo-ice-temp) ice, the leak is `k ΔT / L`: [0.16 W/m²](../numbers.md#cryo-leak-flux),
 [24 TW](../numbers.md#cryo-leak-total) over all the caps. That is the easy part.
@@ -159,7 +159,7 @@ year as the rock cools. Even at the far higher cost of the tiles' narrow light
 > continent of ice, through thermal cycling and the ice's slow creep.
 
 > **Precedent:** Carbon aerogels are real materials. The cap's density and conductivity are the values Lu and colleagues
-> measured in air ([Lu 1993](../sources.md#lu-1993-aerogel)), and the [Cryo-seal](../research.md#cryo-seal) experiment
+> measured in air ([Lu et al. 1993](../sources.md#lu-1993-aerogel)), and the [Cryo-seal](../research.md#cryo-seal) experiment
 > must show the cap's leak on Earth before anything is built.
 
 ## Build sequence

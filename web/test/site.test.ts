@@ -19,6 +19,17 @@ test("line links pin to the build's commit", () => {
   );
 });
 
+test("a pinned link without a line pins to the build's commit too", () => {
+  assert.equal(
+    repoUrl("figures/src/tech-stack.tsx", undefined, true),
+    "https://github.com/Xaxis/phosphoros.space/blob/abc1234/figures/src/tech-stack.tsx",
+  );
+  assert.equal(
+    repoUrl("figures/svg/tech-stack.svg", undefined, true),
+    "https://github.com/Xaxis/phosphoros.space/blob/abc1234/figures/svg/tech-stack.svg",
+  );
+});
+
 test("other repository links follow main", () => {
   assert.equal(
     repoUrl("data/sources.yaml"),

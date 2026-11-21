@@ -168,7 +168,7 @@ export default function NumbersPage() {
           />
         ))}
       </main>
-      <Footer doc="docs/numbers.md" />
+      <Footer doc="docs/numbers.md" edit="data/" />
     </>
   );
 }

@@ -3,7 +3,7 @@
 #
 # basis:  design    a choice (a date, a size, a count)
 #         invented  a breakthrough the plan assumes; it does not exist yet
-#         precedent demonstrated in the real world (cite it)
+#         precedent demonstrated in the real world, or from a published study (cite it)
 # Dates are YYYY-MM-DD; the model counts them as days from 2027-01-01.
 # range: the span the Explorer lets a reader try.
 
@@ -79,9 +79,11 @@ heavy-launch-payload:
   unit: kg
   show: t
   label: Payload of one heavy-lift launch from Earth
-  basis: precedent
+  basis: design
   source: [newspace-starship-2026]
-  note: Starship-class; about 100 t to low orbit.
+  note: >-
+    The yardstick the plan picks for launching from Earth: Starship-class, about 100 t to low orbit,
+    which is SpaceX's goal for Starship.
 
 # --- Ouroboros Foundry -----------------------------------------------------------------------------
 foundry-seed-mass:
@@ -177,6 +179,7 @@ helios-wavelength:
   show: µm
   label: Beam wavelength
   basis: precedent
+  source: [geusic-1964-ndyag, belforte-2010-industrial]
   note: The neodymium laser line, in industrial use for decades.
 helios-aperture:
   value: 1.0e4

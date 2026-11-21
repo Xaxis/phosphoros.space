@@ -381,6 +381,36 @@
   url: https://www.toraycma.com/wp-content/uploads/T1100G-Data-Sheet.pdf
   checked: 2026-11-20
   note: Tensile strength 7,000 MPa and density 1.79 g/cm³; sizes the Aegis coil's structure.
+- id: geusic-1964-ndyag
+  kind: paper
+  title: Laser oscillations in Nd-doped yttrium aluminum, yttrium gallium and gadolinium garnets
+  authors: Geusic, J. E., Marcos, H. M., and Van Uitert, L. G.
+  year: 1964
+  venue: Applied Physics Letters 4, 182 to 184
+  doi: 10.1063/1.1753928
+  checked: 2026-11-21
+  note: The first Nd:YAG laser, at Bell Laboratories, on the neodymium line near 1.064 µm that the Helios Lattice's beam uses.
+- id: belforte-2010-industrial
+  kind: news
+  title: Milestones in industrial laser materials processing
+  authors: Belforte, D. A. (Laser Focus World)
+  year: 2010
+  date: 2010-01-01
+  url: https://www.laserfocusworld.com/industrial-laser-solutions/article/14215987/milestones-in-industrial-laser-materials-processing
+  checked: 2026-11-21
+  note: Nd:YAG lasers in industry from 1970, when Quantronix sold a system for scribing silicon wafers, then in drilling, cutting and welding.
+- id: wna-fast-reactors
+  kind: web
+  title: Fast Neutron Reactors
+  authors: World Nuclear Association
+  year: 2026
+  url: https://world-nuclear.org/information-library/current-and-future-generation/fast-neutron-reactors
+  checked: 2026-11-21
+  note: >-
+    Sodium-cooled fast reactors run at about 500 to 550 °C, near atmospheric pressure. Russia's BN-600
+    at Beloyarsk has supplied the grid since 1980; its sodium delivers 525 to 550 °C to the heat
+    exchangers of three secondary sodium loops, which feed three steam generators: liquid loops
+    carrying heat hotter than Venus's surface, for decades.
 - id: nasa-cp-2255
   kind: book
   title: "Advanced Automation for Space Missions, Chapter 5: Replicating Systems Concepts: Self-Replicating Lunar Factory and Demonstration"
@@ -546,7 +576,7 @@
 - id: esa-envision
   kind: web
   title: EnVision
-  authors: European Space Agency
+  authors: European Space Agency (ESA)
   url: https://www.esa.int/missions/about-us/directorates/science/envision
   checked: 2026-11-20
   note: >-
@@ -610,6 +640,37 @@
   url: https://spacepolicyonline.com/?p=91762
   checked: 2026-11-20
   note: Directs $263M for DAVINCI and $49M for VERITAS. No FY2027 bill is enacted yet.
+- id: ieee-2025-china-venus
+  kind: news
+  title: China Plans to Bring Back Samples of Venusian Clouds
+  authors: Jones, A. (IEEE Spectrum)
+  year: 2025
+  date: 2025-05-05
+  url: https://spectrum.ieee.org/china-venus-mission
+  checked: 2026-11-21
+  note: >-
+    A Venus atmosphere sample return is in the second phase, 2028 to 2035, of China's long-term space
+    science plan. No launch date is given; "few details were made public."
+- id: moscowtimes-2025-venera
+  kind: news
+  title: Russia Delays Moon and Venus Missions Again
+  authors: The Moscow Times
+  year: 2025
+  date: 2025-08-22
+  url: https://www.themoscowtimes.com/2025/08/22/russia-delays-moon-and-venus-missions-again-a90328
+  checked: 2026-11-21
+  note: >-
+    Venera-D, last set for 2034 to 2035, slips to 2036, according to the president of the Russian
+    Academy of Sciences, speaking to Izvestia. Roscosmos had not confirmed the new date.
+- id: jaxa-2025-akatsuki
+  kind: news
+  title: Venus Climate Orbiter "AKATSUKI" Operation Completed
+  authors: Japan Aerospace Exploration Agency (JAXA)
+  year: 2025
+  date: 2025-09-18
+  url: https://global.jaxa.jp/press/2025/09/20250918-2_e.html
+  checked: 2026-11-21
+  note: JAXA ended Akatsuki's operations on 18 September 2025, after losing contact with it in April 2024.
 
 # --- Law and governance ---------------------------------------------------------------------------------
 - id: outer-space-treaty
@@ -654,7 +715,7 @@
 - id: theweek-2026-vom
   kind: news
   title: "ISRO's upcoming Venus, Mars missions explained"
-  authors: Abhinav Singh, The Week
+  authors: Singh, A. (The Week)
   year: 2026
   date: 2026-08-30
   url: https://www.theweek.in/theweek/specials/2026/08/28/isros-upcoming-venus-mars-missions-explained.html
@@ -690,7 +751,7 @@
 - id: esa-envision-timeline
   kind: web
   title: EnVision timeline
-  authors: European Space Agency, EnVision science team
+  authors: EnVision science team, European Space Agency (ESA)
   url: https://www.cosmos.esa.int/web/envision/timeline
   checked: 2026-11-20
   note: >-

@@ -10,7 +10,7 @@ export const BASIS_LABEL: Record<B, string> = {
 
 export const BASIS_MEANING: Record<B, string> = {
   physics: "Measured, or established physics",
-  precedent: "Demonstrated in the real world, cited",
+  precedent: "Demonstrated, or from a published study, and cited",
   invented: "A breakthrough the plan assumes",
   design: "A size, count or date the plan chooses",
 };
@@ -61,7 +61,10 @@ export function Legend() {
       {(["physics", "precedent", "invented", "design"] as B[]).map((b) => (
         <BasisTag key={b} basis={b} long />
       ))}
-      <span className="legend-hint">Select any number to see how it is computed.</span>
+      <span className="legend-hint">
+        A computed number is marked by the weakest thing it rests on. Select any number to see how
+        it is computed.
+      </span>
     </p>
   );
 }

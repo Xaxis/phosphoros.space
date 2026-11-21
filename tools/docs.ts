@@ -119,13 +119,58 @@ function shortCite(id: string): string {
   const s = content.sources.find((x) => x.id === id);
   if (!s) return id;
   const surname = (name: string) => name.split(",")[0]?.trim() ?? name;
-  const [first = "", second] = s.authors.split(/,? and /);
-  const who = /et al/.test(s.authors)
-    ? `${surname(first)} et al.`
-    : second
-      ? `${surname(first)} and ${surname(second)}`
-      : surname(first);
+  // A suffix is not a name: "Freitas, R. A., Jr., and Gilbreath, W. P." is two people.
+  const [first = "", second] = s.authors.replace(/,? Jr\./g, "").split(/,? and /);
+  // "Surname, I., Surname, I., and Surname, I.": more than one name before the "and" is three or more.
+  const who =
+    /et al/.test(s.authors) || first.split(",").length > 2
+      ? `${surname(first)} et al.`
+      : second
+        ? `${surname(first)} and ${surname(second)}`
+        : surname(first);
   return s.year ? `${who} ${s.year}` : who;
+}
+
+/**
+ * "(Ars Technica; Planetary Society, January 2026; Planetary Society, April 2026)": sources cited
+ * after a sentence, as the prose cites them. News and the web are named by who published them, a
+ * paper by its authors and year; two from one publisher are told apart by their dates or titles.
+ */
+function citeList(ids: string[], p: string): string {
+  return `(${citeLinks(ids, p).join("; ")})`;
+}
+
+/** The links of a citation list, without the parentheses: for a table cell. */
+function citeLinks(ids: string[], p: string): string[] {
+  const name = (id: string): string => {
+    const s = content.sources.find((x) => x.id === id);
+    if (!s) return id;
+    // People are cited by surname and year; organisations by name.
+    const person = /, [A-Z]\./.test(s.authors ?? "");
+    if (s.kind === "paper" || s.kind === "book" || (s.kind === "report" && person))
+      return shortCite(id);
+    const by = s.authors ?? s.title;
+    const outlet = /\(([^()]+)\)$/.exec(by)?.[1];
+    if (outlet) return outlet;
+    return (by.split(",")[0] ?? by).trim().replace(/^The /, "");
+  };
+  const when = (id: string): string => {
+    const s = content.sources.find((x) => x.id === id);
+    return s?.date
+      ? new Date(`${s.date}T00:00:00Z`).toLocaleString("en-GB", {
+          month: "long",
+          year: "numeric",
+          timeZone: "UTC",
+        })
+      : (s?.title ?? id);
+  };
+  const names = ids.map(name);
+  const cites = ids.map((id, i) => {
+    const n = names[i] as string;
+    const label = names.filter((x) => x === n).length > 1 ? `${n}, ${when(id)}` : n;
+    return `[${label}](${p}sources.md#${id})`;
+  });
+  return cites;
 }
 
 // --- Generated tables --------------------------------------------------------------------------------
@@ -236,7 +281,7 @@ const BLOCKS: Record<string, Block> = {
         m.lead,
         m.changed ? `${m.launch} (version 2 said ${m.brief})` : m.launch,
         m.contributes,
-        `${m.status} ${m.sources.map((s) => `[${s}](${p}sources.md#${s})`).join(" ")}`,
+        `${m.status} ${citeList(m.sources, p)}`,
       ]),
     );
   },
@@ -425,10 +470,10 @@ function ledger(): string {
     "`pnpm calc --only <id>` to reproduce any one of them, or `pnpm calc --set <id>=<value>` to change an",
     "assumption and see what follows.",
     "",
-    "Basis: **Physics** is measurement or established physics. **Precedent** is shown in the real world.",
-    "**Invented** is a breakthrough the plan assumes. **Design choice** is a size, count or date the plan picks.",
-    "A computed number carries the weakest basis among what it is computed from: computed by physics from an",
-    "invented input, it is marked Invented.",
+    "Basis: **Physics** is measurement or established physics. **Precedent** is shown in the real world,",
+    "or taken from a published study, and cited. **Invented** is a breakthrough the plan assumes.",
+    "**Design choice** is a size, count or date the plan picks. A computed number carries the weakest basis",
+    "among what it is computed from: computed by physics from an invented input, it is marked Invented.",
     "",
   ];
   const quantityRow = (q: Quantity) => {
@@ -437,7 +482,7 @@ function ledger(): string {
     const how =
       q.kind === "derived"
         ? `${q.formula}<br>from ${q.inputs.map((i) => `[${i}](#${i})`).join(", ")}`
-        : (q.source ?? []).map((s) => `[${s}](sources.md#${s})`).join(", ");
+        : citeLinks(q.source ?? [], "").join("; ");
     const basis = BASIS_TEXT[q.basis ?? "physics"] ?? "";
     return [
       `<a id="${q.id}"></a>**${q.label}**<br>\`${q.id}\``,

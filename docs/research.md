@@ -57,7 +57,7 @@ Electroluminescent cooling at useful power, in the laboratory. This is the plan'
 removes heat from Venus faster than a plain radiator at the cloud tops can shed it
 ([Photonic Exhaust](technologies/exhaust.md)). The effect is real but has only been seen at tiny powers:
 [6.9 × 10⁻¹¹ W](numbers.md#led-2012-light-out) of light from [3.0 × 10⁻¹¹ W](numbers.md#led-2012-power-in) of
-electricity ([Santhanam 2012](sources.md#santhanam-2012)). The kill signal sits at the level a plain radiator already
+electricity ([Santhanam et al. 2012](sources.md#santhanam-2012)). The kill signal sits at the level a plain radiator already
 reaches: a tile that cannot beat passive radiation is not a heat pump worth building. The pass bar is well
 above that, and names a distance from the Carnot limit, because the model charges the pump work at the
 Carnot minimum, [5.5](numbers.md#exhaust-work-ratio) joules per joule. A real tile will do worse. The Lattice

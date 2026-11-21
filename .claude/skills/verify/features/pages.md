@@ -14,7 +14,11 @@ The site's pages, each rendered at build time from a document in `docs/` and the
 - numbers: every number is a button opening a card (`popover`) with basis, formula, inputs, sources, "View source" and the `pnpm calc --only` command.
 - ledger: `/numbers` lists every number by file and module with a filter box, and every physics check (`#checks`, `#check-<id>`).
 - sources: `/sources` lists every source with the numbers it supports.
-- markers: callouts for Invented, Precedent, Physics and Design choice; basis glyphs on every number.
+- markers: callouts for Invented, Precedent, Physics and Design choice; basis glyphs on every number. The legend (`web/components/Basis.tsx`) defines Precedent as demonstrated, or from a published study, and cited.
+- page footer: "This page is <file>", "Edit it on GitHub" (the file on main) and "Challenge a number". A generated page passes `edit` to `Footer`: `/numbers` sends editors to `data/`, not to the generated `docs/numbers.md`.
+- repo links: `repoUrl` (`web/lib/site.ts`) pins a link to the build's commit when it has a line, or when the caller pins it (figure "View source" and "SVG"); other links follow main. `web/test/site.test.ts` checks both.
+- about: `/about` ("About and Changelog") has a Changelog section linking `CHANGELOG.md`, then every correction.
+- precursors: `/precursors` cites each mission's sources by publisher, "(Ars Technica; Planetary Society, January 2026; ...)", from `citeList` in `tools/docs.ts`.
 - share cards: every page's metadata comes from `pageMeta` (`web/lib/meta.ts`), so it shares its own title, description, URL and card. Cards are `web/public/og/<page>.jpg` (home: `web/app/opengraph-image.png`), rendered by `heavy node tools/assets.ts` from `tools/og-page.html` and the page's own text (`tools/lib/cards.ts`); `node tools/assets.ts --check` (in `pnpm lint`) fails when a title, description or number on a card has changed since it was rendered. `tools/layout-check.ts` proves each page names its own URL and a card that loads.
 - themes: dark by default, light by system setting or the toggle (kept in `localStorage.theme`).
 
@@ -36,6 +40,17 @@ pnpm calc --only veil-distance | sed -n 2p
 ```
 
 Proves it when: every path answers 200; the Veil page has a number button for `veil-distance`; the ledger has its row; the value on the page matches `pnpm calc --only`.
+
+Links and citations on a production build (`PHOSPHOROS_BUILD` set):
+
+```sh
+curl -s localhost:$PORT/numbers | grep -o 'href="[^"]*">Edit it in data/ on GitHub'
+curl -s localhost:$PORT/plan | grep -o 'href="[^"]*tech-stack[^"]*"' | sort -u
+curl -s localhost:$PORT/precursors | grep -o 'class="cite"[^>]*>[^<]*' | sed 's/.*>//' | sort | uniq -c
+curl -s localhost:$PORT/about | grep -o 'id="changelog"\|CHANGELOG.md' | sort -u
+```
+
+Proves it when: the ledger's edit link goes to `tree/main/data`; the figure links carry the build's SHA, not `main`; the precursor citations are publisher names, never source ids; the About page has `id="changelog"` and a `CHANGELOG.md` link.
 
 Layout and keyboard (Chromium, under `heavy`):
 

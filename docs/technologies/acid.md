@@ -27,7 +27,7 @@ part of the sulfur. Most of it is SO₂ gas mixed through the lower air.
 Once the [Photonic Exhaust](exhaust.md) cools the lower air, falling droplets stop evaporating, and the
 clouds rain out onto the surface: [1.0 × 10¹⁴ kg](../numbers.md#venus-cloud-acid) of sulfuric acid, from the
 [0.22 kg/m²](../numbers.md#venus-cloud-column) of droplets Pioneer Venus found over every square metre
-([Baines and others 2021](../sources.md#baines-2021)). That begins before the CO₂ itself condenses in the
+([Baines et al. 2021](../sources.md#baines-2021)). That begins before the CO₂ itself condenses in the
 Clear Rain of [July 2034](../numbers.md?date=month#traj-clear-rain).
 
 ### Where the SO₂ goes

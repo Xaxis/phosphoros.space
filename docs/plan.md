@@ -95,9 +95,10 @@ and the receivers weigh more than the Ring can carry. Both are open problems
 ([Risks](risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)); the schedule below leaves the
 heat out until one is solved.
 
-On Venus, [10,000](numbers.md#chimney-count) [Thermal Chimneys](technologies/chimneys.md), fan-driven columns
-[3.5 km](numbers.md#chimney-diameter) wide and [64 km](numbers.md#chimney-height) tall, carry the deep heat up
-to floating canopies above the clouds at [1.3 × 10¹⁵ W](numbers.md#chimney-heat) each. There the
+On Venus, [10,000](numbers.md#chimney-count) [Thermal Chimneys](technologies/chimneys.md), towers
+[3.5 km](numbers.md#chimney-diameter) wide and [64 km](numbers.md#chimney-height) tall, draw the deep air through
+fan-driven exchangers and lift its heat in sealed liquid loops to floating canopies above the clouds at
+[1.3 × 10¹⁵ W](numbers.md#chimney-heat) each. There the
 [Photonic Exhaust](technologies/exhaust.md) throws it into space as light.
 
 > **Physics:** A plain radiator cannot shine brighter than σT⁴ at its own temperature, which at the cloud
@@ -116,7 +117,7 @@ emitters, [13%](numbers.md#exhaust-area-share) of Venus's area, enough to throw 
 
 > **Precedent:** An LED at MIT emitted [6.9 × 10⁻¹¹ W](numbers.md#led-2012-light-out) of light while drawing
 > [3.0 × 10⁻¹¹ W](numbers.md#led-2012-power-in) of electricity, taking the difference from heat
-> ([Santhanam 2012](sources.md#santhanam-2012)).
+> ([Santhanam et al. 2012](sources.md#santhanam-2012)).
 
 > **Invented:** Electroluminescent cooling at [0.91 MW/m²](numbers.md#exhaust-flux). It has never been shown
 > at useful power; the [Exhaust-1](research.md#exhaust-1) experiment must show it by 2028.
@@ -208,7 +209,7 @@ split [1.8 × 10¹⁸ kg](numbers.md#forge-co2) of CO₂, [0.4%](numbers.md#f
 [2.7 × 10²⁵ J](numbers.md#forge-energy). The graphite is the caps' membrane and foam.
 
 > **Precedent:** Molten-carbonate electrolysis splits CO₂ into graphene nanocarbons and oxygen in one step
-> ([Licht 2025](sources.md#licht-2025-c2cnt)), and sulfur gases do not poison it
+> ([Licht et al. 2025](sources.md#licht-2025-c2cnt)), and sulfur gases do not poison it
 > ([Licht 2015](sources.md#licht-2015)).
 
 The [Acid Sweep](technologies/acid.md) handles the sulfur. As the air cools, the
@@ -263,7 +264,7 @@ needed.
 | [Ouroboros Foundry](technologies/ouroboros.md) | Self-copying industry on Mercury | [1,000 t](numbers.md#foundry-seed-mass) seed to [6.7 × 10¹³ kg](numbers.md#foundry-final-mass) | A fully closed loop (chips, motors, optics, robots) from regolith, doubling every [60 d](numbers.md#foundry-doubling-days) | [2029](numbers.md?date=year#foundry-landing) |
 | [Helios Lattice](technologies/helios.md) | Harvest sunlight near Mercury and beam it | [6.2 × 10¹⁶ m²](numbers.md#helios-area) of film; [8.5 × 10¹⁹ W](numbers.md#helios-power) delivered | [15%](numbers.md#helios-efficiency) sunlight-to-target efficiency through kilometre-scale coherent laser arrays | [2033](numbers.md?date=year#helios-full-power) |
 | [Hesperus Veil](technologies/veil.md) | Sunshade, thermostat and day clock | [5.4 × 10¹⁴ m²](numbers.md#veil-area), [5.4 × 10¹¹ kg](numbers.md#veil-mass), [1.11 × 10⁶ km](numbers.md#veil-distance) sunward | [3.8 × 10⁸](numbers.md#veil-slats) electrochromic, light-bending slats holding station, dimming from open to [99.9%](numbers.md#veil-block-fraction) blocked | [2032](numbers.md?date=year#veil-close) |
-| [Thermal Chimneys](technologies/chimneys.md) | Lift deep heat to the cloud tops | Forced-convection columns [64 km](numbers.md#chimney-height) tall | Structures that survive [737 K](numbers.md#venus-surface-temp) and [92 bar](numbers.md#venus-surface-pressure) through the [3.3 yr](numbers.md#cooling-seconds) of active cooling | [2033](numbers.md?date=year#cooling-start) |
+| [Thermal Chimneys](technologies/chimneys.md) | Lift deep heat to the cloud tops | Towers [64 km](numbers.md#chimney-height) tall, with fan-driven intakes and sealed liquid loops | Structures that survive [737 K](numbers.md#venus-surface-temp) and [92 bar](numbers.md#venus-surface-pressure) through the [3.3 yr](numbers.md#cooling-seconds) of active cooling | [2033](numbers.md?date=year#cooling-start) |
 | [Photonic Exhaust](technologies/exhaust.md) | Throw heat into space as light | [6.1 × 10¹³ m²](numbers.md#exhaust-area-installed) of emitters; [5.5 × 10¹⁹ W](numbers.md#exhaust-peak) peak | Electroluminescent cooling at [0.91 MW/m²](numbers.md#exhaust-flux) | [2033](numbers.md?date=year#cooling-start) |
 | [Cryo-continents](technologies/cryo.md) | Store all the CO₂ | [3.0 × 10¹⁷ m³](numbers.md#cryo-volume) of sealed dry ice in [2 km](numbers.md#cryo-thickness) plateaus | A graphite membrane and [20 m](numbers.md#cryo-aerogel-thickness) foam cap; basal heat pipes and refrigeration of [12 PW](numbers.md#cryo-floor-load) at first | [2034](numbers.md?date=year#traj-clear-rain) |
 | [Graphite Forges](technologies/forges.md) | Split CO₂ into oxygen and carbon | [1.8 × 10¹⁸ kg](numbers.md#forge-co2) of CO₂ to [1.3 × 10¹⁸ kg](numbers.md#o2-mass) of oxygen | Molten-carbonate splitting at [60%](numbers.md#forge-efficiency) efficiency, at planetary scale | [2035](numbers.md?date=year#forge-start) |

@@ -25,7 +25,7 @@ semiconductor's bandgap; the electron's energy is set by the voltage. Drive the 
 each photon leaves with more energy than its electron brought. The difference is taken from the vibrations of the
 crystal, which is to say from heat: the LED cools while it shines. MIT showed it, an LED emitting
 [6.9 × 10⁻¹¹ W](../numbers.md#led-2012-light-out) of light from [3.0 × 10⁻¹¹ W](../numbers.md#led-2012-power-in) of
-electricity ([Santhanam 2012](../sources.md#santhanam-2012)). The Exhaust's tiles must do the same at a power density
+electricity ([Santhanam et al. 2012](../sources.md#santhanam-2012)). The Exhaust's tiles must do the same at a power density
 that has never been approached, with a bandgap of [0.54 eV](../numbers.md#exhaust-bandgap),
 which sets the [2.3 µm](../numbers.md#exhaust-wavelength) wavelength.
 
@@ -190,10 +190,10 @@ and is done by [19 July 2036](../numbers.md?date=day#traj-scavenged).
 
 > **Precedent:** An LED at MIT emitted [6.9 × 10⁻¹¹ W](../numbers.md#led-2012-light-out) of light from
 > [3.0 × 10⁻¹¹ W](../numbers.md#led-2012-power-in) of electricity, drawing the rest from heat
-> ([Santhanam 2012](../sources.md#santhanam-2012); [Phys.org](../sources.md#physorg-2012-led)).
+> ([Santhanam et al. 2012](../sources.md#santhanam-2012); [Phys.org](../sources.md#physorg-2012-led)).
 
 > **Precedent:** Thermophotonic energy transfer has been measured in intracavity structures at Aalto
-> ([Casado 2019](../sources.md#casado-2019)).
+> ([Casado et al. 2019](../sources.md#casado-2019)).
 
 ## Build sequence
 

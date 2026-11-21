@@ -58,7 +58,7 @@ the caps. The oxygen is vented to the air.
 that have filled the basins since the [Clear Rain](cryo.md) of [July 2034](../numbers.md?date=month#traj-clear-rain).
 They draw their feed straight from the cold, dense liquid under them. Sulfur is no obstacle: in the melt, sulfur gases are
 reduced to sulfur and do not poison the electrolysis ([Licht 2015](../sources.md#licht-2015), citing
-[Kaplan 2013](../sources.md#kaplan-2013)).
+[Kaplan et al. 2013](../sources.md#kaplan-2013)).
 
 **After the freeze.** On [17 July 2035](../numbers.md?date=day#traj-freeze) the seas start to freeze. The crystals sink,
 so the Forges keep drawing liquid from above the settling ice until the seas are frozen through on
@@ -111,10 +111,10 @@ beginning of a shield for the life that follows.
 
 > **Precedent:** The C2CNT process splits CO₂ dissolved in molten carbonate into graphene nanocarbons and oxygen in one
 > step, at the [60%](../numbers.md#forge-efficiency) efficiency the plan assumes
-> ([Licht, Hofstetter and Licht 2025](../sources.md#licht-2025-c2cnt); [Ren 2015](../sources.md#ren-2015)).
+> ([Licht et al. 2025](../sources.md#licht-2025-c2cnt); [Ren et al. 2015](../sources.md#ren-2015)).
 
 > **Precedent:** Sulfur gases are reduced to sulfur in the melt and do not poison the electrolysis
-> ([Licht 2015](../sources.md#licht-2015); [Kaplan 2013](../sources.md#kaplan-2013)).
+> ([Licht 2015](../sources.md#licht-2015); [Kaplan et al. 2013](../sources.md#kaplan-2013)).
 
 ## Build sequence
 

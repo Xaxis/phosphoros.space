@@ -5,8 +5,11 @@ import { Mark } from "./Mark";
 const build =
   process.env.PHOSPHOROS_BUILD ?? process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "dev";
 
-/** Every page ends with where it came from. */
-export function Footer({ doc }: { doc?: string }) {
+/**
+ * Every page ends with where it came from. A generated page names where to `edit` it instead, since
+ * its own file is rewritten from there.
+ */
+export function Footer({ doc, edit }: { doc?: string; edit?: string }) {
   return (
     <footer className="site-footer">
       {doc && (
@@ -14,7 +17,11 @@ export function Footer({ doc }: { doc?: string }) {
           <span>This page is</span>
           <a href={repoUrl(doc)}>{doc}</a>
           <span aria-hidden="true">·</span>
-          <a href={editUrl(doc)}>Edit it on GitHub</a>
+          {edit ? (
+            <a href={repoUrl(edit)}>{`Edit it in ${edit} on GitHub`}</a>
+          ) : (
+            <a href={editUrl(doc)}>Edit it on GitHub</a>
+          )}
           <span aria-hidden="true">·</span>
           <a href={`${REPO}/issues/new?template=challenge-a-number.yml`}>Challenge a number</a>
         </div>

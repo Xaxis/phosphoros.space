@@ -82,8 +82,8 @@ These are the places where the plan is weakest, or least sure of itself. Each is
    cryo-continent floors must shed at first. A better value, and how it changes at Venus's surface
    temperature, would tighten both.
 5. **Electroluminescent cooling at high power.** An LED has emitted more light than the electricity it drew
-   ([Santhanam 2012](sources.md#santhanam-2012)), and thermophotonic transfer has been measured in
-   laboratory structures ([Casado 2019](sources.md#casado-2019)), but only at tiny powers. The plan needs
+   ([Santhanam et al. 2012](sources.md#santhanam-2012)), and thermophotonic transfer has been measured in
+   laboratory structures ([Casado et al. 2019](sources.md#casado-2019)), but only at tiny powers. The plan needs
    [0.91 MW/m²](numbers.md#exhaust-flux), and the model charges the pump work at the Carnot minimum for
    emitters at an effective [2,000 K](numbers.md#exhaust-effective-temp). Light squeezed into the tiles'
    narrow band and cone carries so little entropy that the true minimum is

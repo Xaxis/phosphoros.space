@@ -52,10 +52,12 @@ range estimated before the Dawn mission ([McCord and Sotin 2005](sources.md#cere
 drier, the plan takes a larger share of what is there.
 
 Throwing that much mass sunward pushes Ceres the other way. Its speed changes by
-[0.76 km/s](numbers.md#ceres-recoil), and its farthest point from the Sun moves from
-[2.98 AU](numbers.md#ceres-aphelion) to [3.29 AU](numbers.md#ceres-new-aphelion). Ceres stays in the
-asteroid belt, farther from Earth than before, but the change is permanent: the plan moves a world. That
-is not a decision one program, or one country, can make. The safeguard is agreement in advance, with comets
+[0.76 km/s](numbers.md#ceres-recoil), which stretches its orbit. The model takes today's orbit as a circle at
+[2.77 AU](numbers.md#ceres-orbit); the push turns it into an ellipse from [2.77 AU](numbers.md#ceres-orbit) to
+[3.29 AU](numbers.md#ceres-new-aphelion) from the Sun. (The real orbit is already a little eccentric, out to
+[2.98 AU](numbers.md#ceres-aphelion).) Ceres stays in the asteroid belt, farther from
+Earth than before, but the change is permanent: the plan moves a world. That is not a decision one program,
+or one country, can make. The safeguard is agreement in advance, with comets
 from the outer Solar System as the fallback source of water.
 
 The new orbit stays clear of Jupiter: its farthest point is [1.66 AU](numbers.md#ceres-jupiter-gap) inside
