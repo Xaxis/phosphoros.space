@@ -129,7 +129,15 @@ export function coolingPath(v: (id: string) => number) {
   return { sensibleEnd, tripleReached, frozen, total, at };
 }
 
-export function simulate(v: (id: string) => number): {
+/**
+ * Run the plan day by day. With `leak`, the loss heat the receivers' fins and the Ring's radiators
+ * send into Venus is added to the heat entering the air: the published simulation leaves it out,
+ * and the check loss-heat-fits measures what it would cost.
+ */
+export function simulate(
+  v: (id: string) => number,
+  { leak = false }: { leak?: boolean } = {},
+): {
   days: TrajectoryDay[];
   events: Record<string, number>;
   /** Days the chimneys' capacity, not the power, set how fast the air cooled. */
@@ -137,6 +145,8 @@ export function simulate(v: (id: string) => number): {
 } {
   const Tf = v("freeze-target-temp");
   const Th = v("exhaust-effective-temp");
+  // Real pumps need more than the reversible work: every work below is divided by this share.
+  const eta = v("exhaust-carnot-share");
   const Tfrost = v("frost-tower-temp");
   const L = v("co2-deposition-heat");
   const path = coolingPath(v);
@@ -153,6 +163,23 @@ export function simulate(v: (id: string) => number): {
   const lattice = (d: number) =>
     v("helios-power") * Math.min(1, Math.max(0, (d - ramp0) / Math.max(1, ramp1 - ramp0)));
 
+  const leakage = (d: number, launching: boolean, catching: boolean) => {
+    const beam = Math.max(0, lattice(d) - (launching ? v("railhead-power") : 0));
+    const receivers =
+      beam *
+      (1 / v("helios-receiver-efficiency") - 1) *
+      (d < v("ring-complete") ? v("canopy-fin-venus-share") : v("ring-fin-venus-share"));
+    const catchHeat = catching ? v("ring-catch-loss-power") * v("ring-fin-venus-share") : 0;
+    const lowered =
+      d >= v("lowering-start") && d < v("lowering-end")
+        ? v("lowering-rate") *
+          0.5 *
+          v("ring-orbital-speed") ** 2 *
+          (1 - v("ring-recovery-efficiency")) *
+          v("ring-fin-venus-share")
+        : 0;
+    return receivers + catchHeat + lowered;
+  };
   const start = v("cooling-start");
   const deadline = v("deadline");
   const stop = deadline + 3 * 365;
@@ -169,6 +196,13 @@ export function simulate(v: (id: string) => number): {
   let iceCold = 0; // ice lowered while the air was below freezing, still to melt (kg)
   let phase: TrajectoryDay["phase"] = "cooling";
   let chimneyDays = 0; // days the chimneys, not the power, limit the cooling
+  const launched = new Map<number, number>(); // share of the planned launches made, by day
+  const lag = v("first-catch") - v("ice-launch-start");
+  let caughtSum = 0;
+  let catchDays = 0;
+  const forgeDays = v("forge-end") - v("forge-start");
+  let o2Done = 0; // share of the oxygen the Forges have made
+  let forgeShare = 0; // share of their full power the Forges drew yesterday
   const days: TrajectoryDay[] = [];
   const pressureOf = (pCO2: number, o2: number, T: number) => {
     const water = T >= 273.15 ? v("final-water-vapour") : 0;
@@ -181,16 +215,31 @@ export function simulate(v: (id: string) => number): {
       phase = "warming";
       mark("warming", d);
     }
-    // Power for Venus: the Lattice, less what the Railheads take before the Ring can pay them,
-    // plus the Ring's surplus, less the Forges.
-    let power = lattice(d);
+    // Power for Venus. The Lattice beams the Railheads their share first; when it has less, the
+    // launches slow to what it gives, and the Ring later catches only what was thrown. The Ring's
+    // electricity stays at Venus. The Forges take theirs next, and slow down when it runs short.
+    const beam = lattice(d);
     const launching = d >= v("ice-launch-start") && d < v("ice-launch-end");
     const catching = d >= v("first-catch") && d < v("last-arrival");
-    if (launching && !catching) power -= Math.min(power, v("railhead-power"));
-    if (catching)
-      power = Math.max(0, power + v("ring-power") - (launching ? v("railhead-power") : 0));
-    const forging = d >= v("forge-start") && d < v("forge-end");
-    if (forging) power -= Math.min(power, v("forge-power"));
+    const thrown = launching ? Math.min(1, beam / v("railhead-power")) : 0;
+    launched.set(d, thrown);
+    const caught = catching ? (launched.get(d - lag) ?? 1) : 0;
+    if (catching) {
+      caughtSum += caught;
+      catchDays++;
+    }
+    let power = beam - thrown * v("railhead-power") + caught * v("ring-power");
+    // Oxygen made by the start of today: yesterday's forging, for the part of it after the Forges
+    // start. Today's draw, if the day reaches past their start, makes tomorrow's.
+    o2Done = Math.min(
+      1,
+      o2Done + (Math.min(1, Math.max(0, d - v("forge-start"))) * forgeShare) / forgeDays,
+    );
+    const o2 = v("o2-target-pressure") * o2Done;
+    const forging = d + 1 > v("forge-start") && o2Done < 1;
+    const forgeDraw = forging ? Math.min(Math.max(0, power), v("forge-power")) : 0;
+    forgeShare = forgeDraw / v("forge-power");
+    power -= forgeDraw;
     // The chimney fans run while the pumps do.
     const fanPower = phase === "cooling" ? Math.min(power, v("chimney-fan-power")) : 0;
     power -= fanPower;
@@ -207,13 +256,17 @@ export function simulate(v: (id: string) => number): {
       ) *
         area *
         (1 - v("cryo-footprint-share")) +
-      (forging ? v("forge-power") * (1 - v("forge-efficiency")) : 0) +
+      forgeDraw * (1 - v("forge-efficiency")) +
+      // The fans' work ends as heat in the gas they push, which the pumps must then lift.
+      fanPower +
+      (leak ? leakage(d, launching, catching) : 0) +
       (phase === "warming" || phase === "earth-like"
         ? 0
         : (1 - v("veil-block-fraction")) * v("venus-absorbed"));
     const lowering = d >= v("lowering-start") && d < v("lowering-end");
     if (lowering) {
-      const rate = v("lowering-rate");
+      // Only what the Ring caught can be lowered.
+      const rate = v("lowering-rate") * (catchDays > 0 ? caughtSum / catchDays : 1);
       if (temp >= 273.15) heatIn += rate * (v("fall-energy") - v("melt-energy"));
       else {
         heatIn += rate * (v("fall-energy") - v("ice-cp") * Math.max(0, temp - v("brick-temp")));
@@ -221,9 +274,6 @@ export function simulate(v: (id: string) => number): {
       }
     }
 
-    const o2 =
-      v("o2-target-pressure") *
-      Math.min(1, Math.max(0, (d - v("forge-start")) / (v("forge-end") - v("forge-start"))));
     let pCO2: number;
     let heatOut = 0;
     let pumpPower = 0;
@@ -237,12 +287,13 @@ export function simulate(v: (id: string) => number): {
       const stage = path.at(H).stage;
       const latent = stage === "condensing" || stage === "freezing";
       const cold = phase === "cooling" ? (latent ? temp : temp * v("chimney-cold-factor")) : Tf;
-      const maxWork = v("exhaust-peak") * (1 - cold / Th);
+      // The emitters shine the heat lifted plus the work that lifts it, never more than their peak.
+      const maxWork = (v("exhaust-peak") * (Th - cold)) / (Th - cold + eta * cold);
       // Every watt the pumps lift has to come up the chimneys first.
-      const chimneyWork = (v("chimney-capacity") * (Th - cold)) / cold;
+      const chimneyWork = (v("chimney-capacity") * (Th - cold)) / (eta * cold);
       const work = Math.min(power, maxWork, chimneyWork);
       if (chimneyWork < Math.min(power, maxWork)) chimneyDays++;
-      const capacity = (work * cold) / (Th - cold);
+      const capacity = (eta * work * cold) / (Th - cold);
       if (phase === "cooling") {
         // Never past the end of the path: on the last day the pumps lift only what is left.
         heatOut = Math.min(capacity, heatIn + (path.total - H) / DAY_S);
@@ -251,8 +302,8 @@ export function simulate(v: (id: string) => number): {
       } else {
         // Hold the air at 195 K first; whatever is left traps CO₂ at the Frost Towers, never more
         // than is left to trap.
-        const holdWork = heatIn * ((Th - Tf) / Tf);
-        const perKg = L * (Th / Tfrost - 1);
+        const holdWork = (heatIn * (Th - Tf)) / (eta * Tf);
+        const perKg = (L * (Th / Tfrost - 1)) / eta;
         const trapped =
           phase === "scavenging"
             ? Math.min(
@@ -403,7 +454,7 @@ export function trajectory(r: Registry) {
       label: "Heat that enters the air from other sources while the pumps run",
       unit: "J",
       formula:
-        "Σ (crust + Forges + falling ice + residual sunlight) × 1 day, until the caps are sealed",
+        "Σ (crust + Forges + chimney fans + falling ice + residual sunlight) × 1 day, until the caps are sealed",
       basis: "physics",
       note: "Heat that enters after the pumps stop warms the air instead of being lifted out.",
     },
@@ -432,14 +483,17 @@ export function trajectory(r: Registry) {
   );
   r.c(
     "traj-heat-books",
-    { label: "The simulation's heat books balance", kind: "conservation" },
+    {
+      label: "The simulation's heat books balance: it lifts every joule it counts in",
+      kind: "conservation",
+    },
     () => {
       const lifted = v("traj-heat-lifted");
       const owed = v("atmosphere-heat") - v("traj-heat-left-airborne") + v("traj-heat-added");
       const pass = Math.abs(lifted - owed) < 1e-9 * lifted;
       return {
         pass,
-        detail: `The Exhaust lifts ${fmt(r, "traj-heat-lifted")}: Venus's ${fmt(r, "atmosphere-heat")}, less the ${fmt(r, "traj-heat-left-airborne")} still held by the CO₂ the Frost Towers leave in the air, plus ${fmt(r, "traj-heat-added")} that enters while the pumps run. ${pass ? "The two sides agree to rounding." : `The two sides differ by ${formatQuantity({ value: lifted - owed, unit: "J" })}.`}`,
+        detail: `The Exhaust lifts ${fmt(r, "traj-heat-lifted")}: Venus's ${fmt(r, "atmosphere-heat")}, less the ${fmt(r, "traj-heat-left-airborne")} still held by the CO₂ the Frost Towers leave in the air, plus ${fmt(r, "traj-heat-added")} that enters while the pumps run. ${pass ? "The two sides agree to rounding." : `The two sides differ by ${formatQuantity({ value: lifted - owed, unit: "J" })}.`} This confirms the simulation's own bookkeeping; a heat source the simulation leaves out cannot show here (see the loss-heat check).`,
       };
     },
   );
@@ -587,6 +641,46 @@ export function trajectory(r: Registry) {
       pass: v("traj-scavenged") <= v("sealing-end"),
       detail: `The simulated Frost Towers finish on ${day("traj-scavenged")}; the last caps are sealed on ${day("sealing-end")}.`,
     }),
+  );
+  r.c(
+    "venus-hardware-in-time",
+    {
+      label: "The hardware at Venus is built and delivered in time to cool on schedule",
+      kind: "schedule",
+      issue: "venus-hardware",
+    },
+    () => {
+      // Cooling cannot start before the tiles, chimneys and receivers are at Venus.
+      const ready = v("venus-hardware-ready");
+      const late = simulate((id) => (id === "cooling-start" ? Math.max(v(id), ready) : v(id)));
+      const finished = late.days.some((t) => t.phase === "holding" || t.phase === "warming");
+      const done = finished ? (late.events.scavenged as number) : Number.POSITIVE_INFINITY;
+      return {
+        pass: ready <= v("cooling-start") || done <= v("sealing-end"),
+        detail: `The tiles, chimneys, receivers, fins and Lanterns weigh ${fmt(r, "venus-hardware-mass")}. The plan does not say who builds them; the full Foundry would take ${fmt(r, "venus-hardware-build-days")}, and they would reach Venus on ${day("venus-hardware-ready")}, not on ${day("cooling-start")} when the plan starts cooling. Starting then, ${finished ? `the Frost Towers finish on ${formatQuantity({ value: done, unit: "date" }, { date: "day" })}` : "the Frost Towers never finish in the simulated years"}, against the last caps sealed on ${day("sealing-end")}.`,
+      };
+    },
+  );
+  r.c(
+    "loss-heat-fits",
+    {
+      label:
+        "The plan still cools in time with the loss heat its receivers and Ring send into Venus",
+      kind: "conservation",
+      issue: "loss-heat",
+    },
+    () => {
+      const leaky = simulate(v, { leak: true });
+      const finished = leaky.days.some((t) => t.phase === "holding" || t.phase === "warming");
+      const done = finished ? (leaky.events.scavenged as number) : Number.POSITIVE_INFINITY;
+      const when = finished
+        ? `the Frost Towers finish on ${formatQuantity({ value: done, unit: "date" }, { date: "day" })}`
+        : "the Frost Towers never finish in the simulated years";
+      return {
+        pass: done <= v("sealing-end"),
+        detail: `The receivers shed ${fmt(r, "helios-receiver-loss")} at full power and the catcher tracks ${fmt(r, "ring-catch-loss-power")}, from fins that radiate from both faces: ${fmt(r, "ring-fin-venus-share")} of their light falls on Venus from the Ring, ${fmt(r, "canopy-fin-venus-share")} from the canopies. That is ${fmt(r, "loss-heat-into-venus")} with the Lattice at full power and the Ring catching, which the published simulation leaves out. Counting it, ${when}, against the last caps sealed on ${day("sealing-end")}.`,
+      };
+    },
   );
   r.q(
     "genesis-start",

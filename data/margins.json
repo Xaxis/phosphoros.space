@@ -1,5 +1,5 @@
 {
-  "hash": "c30f0f5cff97e935",
+  "hash": "6c33517d077fbd5b",
   "inputs": [
     {
       "id": "ceres-water-fraction",
@@ -11,12 +11,10 @@
       "id": "foundry-seed-mass",
       "plan": 1000000,
       "below": {
-        "holds": 778239.5203441102,
-        "breaks": 777365.0302387759,
+        "holds": 779991.4529118103,
+        "breaks": 779114.994199568,
         "fails": [
-          "frost-before-sealing",
-          "genesis-by-deadline",
-          "ozone-shield-in-time"
+          "frost-before-sealing"
         ]
       },
       "above": {
@@ -32,8 +30,8 @@
       "plan": 60,
       "below": null,
       "above": {
-        "holds": 60.87890625,
-        "breaks": 60.90087890625,
+        "holds": 60.5712890625,
+        "breaks": 60.59326171875,
         "fails": [
           "frost-before-sealing"
         ]
@@ -49,8 +47,8 @@
       "id": "helios-power",
       "plan": 85000000000000000000,
       "below": {
-        "holds": 79067382812500000000,
-        "breaks": 79052734375000000000,
+        "holds": 81015625000000000000,
+        "breaks": 81000976562500010000,
         "fails": [
           "frost-before-sealing"
         ]
@@ -90,8 +88,8 @@
       "plan": 0.01,
       "below": null,
       "above": {
-        "holds": 0.08152453950938571,
-        "breaks": 0.08160243946617875,
+        "holds": 0.07017245995852657,
+        "breaks": 0.0702395125494609,
         "fails": [
           "frost-before-sealing"
         ]
@@ -102,19 +100,31 @@
       "plan": 2000,
       "below": null,
       "above": {
-        "holds": 2102.05078125,
-        "breaks": 2102.5390625,
+        "holds": 2067.87109375,
+        "breaks": 2068.359375,
         "fails": [
           "frost-before-sealing"
         ]
       }
     },
     {
+      "id": "exhaust-carnot-share",
+      "plan": 1,
+      "below": {
+        "holds": 0.9622314453125,
+        "breaks": 0.9620605468749999,
+        "fails": [
+          "frost-before-sealing"
+        ]
+      },
+      "above": null
+    },
+    {
       "id": "exhaust-peak",
       "plan": 55000000000000000000,
       "below": {
-        "holds": 51523437500000000000,
-        "breaks": 51513671875000000000,
+        "holds": 52675781249999995000,
+        "breaks": 52666015625000000000,
         "fails": [
           "frost-before-sealing"
         ]
@@ -126,8 +136,8 @@
       "plan": 100000000000000000000,
       "below": null,
       "above": {
-        "holds": 106403042334554620000,
-        "breaks": 106452335814114850000,
+        "holds": 104160046320286760000,
+        "breaks": 104208300684087180000,
         "fails": [
           "frost-before-sealing"
         ]
@@ -137,8 +147,8 @@
       "id": "ceres-seed-mass",
       "plan": 1000000,
       "below": {
-        "holds": 252831.99483831596,
-        "breaks": 252547.8932577379,
+        "holds": 329660.11534710764,
+        "breaks": 329289.68374930474,
         "fails": [
           "frost-before-sealing"
         ]
@@ -150,8 +160,8 @@
       "plan": 45,
       "below": null,
       "above": {
-        "holds": 48.2080078125,
-        "breaks": 48.22998046875,
+        "holds": 47.61474609375,
+        "breaks": 47.63671875,
         "fails": [
           "frost-before-sealing"
         ]
@@ -174,8 +184,8 @@
         "foundry-seed-launch": 730,
         "ceres-seed-launch": 730
       },
-      "earthLike": 3713.25911939883,
-      "slack": -61.25911939883008,
+      "earthLike": 3726.25911939883,
+      "slack": -74.25911939883008,
       "fails": [
         "foundry-builds-ring",
         "frozen-before-sealing",

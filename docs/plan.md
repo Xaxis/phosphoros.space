@@ -88,8 +88,12 @@ near Mercury, [6.2 × 10¹⁶ m²](numbers.md#helios-area) in all. Each turns
 From [July 2033](numbers.md?date=month#helios-full-power) it delivers [8.5 × 10¹⁹ W](numbers.md#helios-power),
 [2.2 × 10⁻⁵%](numbers.md#helios-sun-share) of the Sun's output, in beams that stay
 [46 m](numbers.md#helios-spot) wide across [1.2 AU](numbers.md#helios-range). The receivers ride above the
-air and radiate their own loss heat, [2.8 × 10¹⁹ W](numbers.md#helios-receiver-loss), to space from
-[1,500 K](numbers.md#helios-fin-temp) fins, never into Venus.
+air and radiate their own loss heat, [2.8 × 10¹⁹ W](numbers.md#helios-receiver-loss), from
+[1,500 K](numbers.md#helios-fin-temp) fins. Fins that close to Venus cannot help shining on it: about
+[28%](numbers.md#ring-fin-venus-share) of their light falls on the planet, more than the cooling can absorb,
+and the receivers weigh more than the Ring can carry. Both are open problems
+([Risks](risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)); the schedule below leaves the
+heat out until one is solved.
 
 On Venus, [10,000](numbers.md#chimney-count) [Thermal Chimneys](technologies/chimneys.md), fan-driven columns
 [3.5 km](numbers.md#chimney-diameter) wide and [64 km](numbers.md#chimney-height) tall, carry the deep heat up
@@ -118,14 +122,14 @@ emitters, [13%](numbers.md#exhaust-area-share) of Venus's area, enough to throw 
 > at useful power; the [Exhaust-1](research.md#exhaust-1) experiment must show it by 2028.
 
 As the air cools, its CO₂ comes down. The Clear Rain begins on
-[13 July 2034](numbers.md?date=day#traj-clear-rain), when the air drops below
+[23 July 2034](numbers.md?date=day#traj-clear-rain), when the air drops below
 [304 K](numbers.md?sig=3#co2-critical-temp) and liquid CO₂ runs into the lowland basins. The seas start to
-freeze on [5 July 2035](numbers.md?date=day#traj-freeze), when the air reaches the triple point,
+freeze on [17 July 2035](numbers.md?date=day#traj-freeze), when the air reaches the triple point,
 [216.6 K](numbers.md#co2-triple-temp), and the air holds there until they are frozen through on
-[27 March 2036](numbers.md?date=day#traj-frozen). Dry ice is denser than liquid CO₂, so the crystals sink and
+[15 April 2036](numbers.md?date=day#traj-frozen). Dry ice is denser than liquid CO₂, so the crystals sink and
 the seas fill with ice from the bottom up. Frost Towers, the same emitter tiles on towers at
 [133 K](numbers.md#frost-tower-temp), trap the last vapor down to [54 Pa](numbers.md#frost-co2-pressure).
-Crawler-rafts seal the frozen seas, [950,000 km²/d](numbers.md#cap-laying-rate) of cap a day, under a
+Crawler-rafts seal the frozen seas, [1.1 × 10⁶ km²/d](numbers.md#cap-laying-rate) of cap a day, under a
 [1 mm](numbers.md#cryo-membrane-thickness) graphite membrane,
 [20 m](numbers.md#cryo-aerogel-thickness) of carbon aerogel and [2 m](numbers.md#cryo-armour-thickness) of
 basalt. The [Cryo-continents](technologies/cryo.md) are [2 km](numbers.md#cryo-thickness) plateaus over
@@ -181,6 +185,15 @@ the parked ice down on tethers needs [150](numbers.md#lowering-overload) times m
 spare. The options there are to drop the Bricks from rest and pump out the extra
 [2.5 × 10²⁶ J](numbers.md#ring-drop-extra-heat) of heat, to lower more slowly, or to build a far heavier
 rotor ([Risks](risks.md#the-ring-cannot-yet-lower-the-ice)).
+
+Three more are open. The fins that shed the receivers' and the catch's loss heat shine
+[1.3 × 10¹⁹ W](numbers.md#loss-heat-into-venus) of it onto Venus, more than the cooling can absorb
+([Risks](risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)). The receivers, fins and radiators
+weigh [7.9](numbers.md#ring-equipment-overload) times what the Ring can carry
+([Risks](risks.md#the-ring-cannot-carry-its-receivers)). And the hardware at Venus, the tiles, chimneys,
+receivers and Lanterns, weighs [7.2 × 10¹³ kg](numbers.md#venus-hardware-mass), with nothing in the plan to
+build it before cooling starts ([Risks](risks.md#nothing-builds-the-hardware-at-venus-in-time)). Each is a
+[failing check](budget.md#physics-checks); the schedule above assumes each is solved.
 
 > **Invented:** A rotor carrying [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) at
 > [10 km/s](numbers.md#ring-rotor-speed), and sleds that brake megatonne blocks at
@@ -313,11 +326,11 @@ What it finds:
 
 | Event | Simulated date |
 | --- | --- |
-| The Clear Rain: air below [304 K](numbers.md?sig=3#co2-critical-temp) | [13 July 2034](numbers.md?date=day#traj-clear-rain) |
-| CO₂ seas start to freeze | [5 July 2035](numbers.md?date=day#traj-freeze) |
-| The seas are frozen through | [27 March 2036](numbers.md?date=day#traj-frozen) |
-| All the CO₂ is down | [12 June 2036](numbers.md?date=day#traj-cold) |
-| Frost Towers reach the CO₂ target | [28 June 2036](numbers.md?date=day#traj-scavenged) |
+| The Clear Rain: air below [304 K](numbers.md?sig=3#co2-critical-temp) | [23 July 2034](numbers.md?date=day#traj-clear-rain) |
+| CO₂ seas start to freeze | [17 July 2035](numbers.md?date=day#traj-freeze) |
+| The seas are frozen through | [15 April 2036](numbers.md?date=day#traj-frozen) |
+| All the CO₂ is down | [3 July 2036](numbers.md?date=day#traj-cold) |
+| Frost Towers reach the CO₂ target | [19 July 2036](numbers.md?date=day#traj-scavenged) |
 | Caps sealed; the Veil opens | [2 September 2036](numbers.md?date=day#traj-warming) |
 | Air reaches [285 K](numbers.md#earth-like-temp) | [5 September 2036](numbers.md?date=day#traj-warm) |
 | **Earth-like** | **[30 September 2036](numbers.md?date=day#traj-earth-like)** |
@@ -331,15 +344,15 @@ the Clear Rain and the seas frozen through is the CO₂'s latent heat,
 [2.7 × 10²⁶ J](numbers.md#atmosphere-latent-heat), about as much as the sensible cooling of the whole
 air, [2.6 × 10²⁶ J](numbers.md#atmosphere-sensible-heat). Freezing the seas alone holds the air at the
 triple point from [July 2035](numbers.md?date=month#traj-freeze) to
-[March 2036](numbers.md?date=month#traj-frozen), with the emitters at their peak and the falling ice adding
+[April 2036](numbers.md?date=month#traj-frozen), with the emitters at their peak and the falling ice adding
 heat all the while. And the last condition to fall is the oxygen: the caps are sealed and the Veil opens on
 [2 September 2036](numbers.md?date=day#traj-warming), the air is warm by
 [5 September 2036](numbers.md?date=day#traj-warm), and the Forges complete the oxygen on
 [30 September 2036](numbers.md?date=day#forge-end), the day Venus is Earth-like. The Frost Towers
-finish [65 d](numbers.md#frost-sealing-slack) before the last caps are due, the Exhaust's peak sized for it
+finish [44 d](numbers.md#frost-sealing-slack) before the last caps are due, the Exhaust's peak sized for it
 ([correction](about.md#corrections)), and seeded life greens the oceans before the deadline.
 
-The simulation's pump work, [3.6 × 10²⁷ J](numbers.md#traj-pump-energy), is what the energy budget charges,
+The simulation's pump work, [3.7 × 10²⁷ J](numbers.md#traj-pump-energy), is what the energy budget charges,
 and it is more than the simple estimate for the air alone ([why](budget.md#why-the-simulation-pumps-more)).
 To see how the dates move, change an assumption in the [Explorer](https://phosphoros.space/explore) or run
 `pnpm calc --set exhaust-peak=3.6e19` to try version 2's smaller Exhaust.

@@ -23,7 +23,7 @@ copy itself. Holding the seeds until every result is in would cost more than the
 | Experiment | Proves | Pass by [31 December 2028](numbers.md?date=day#experiments-end) | Kill signal |
 | --- | --- | --- | --- |
 | [Ouroboros-0](technologies/ouroboros.md) | A factory that builds itself from simulated Mercury regolith and simulated Ceres rock | [95%](numbers.md#ouroboros-0-closure) mass closure, doubling in under [120 d](numbers.md#ouroboros-0-doubling) | Under [70%](numbers.md#ouroboros-0-kill-closure) closure |
-| [Exhaust-1](technologies/exhaust.md) | Electroluminescent cooling at useful power | [10 kW/m²](numbers.md#exhaust-1-cooling) of net cooling, within [50%](numbers.md#exhaust-1-carnot) of the Carnot limit, with light in a band and cone the air above the canopies lets through. Then: The production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by [2031](numbers.md?date=year#exhaust-production-tile) | No net cooling above [100 W/m²](numbers.md#exhaust-1-kill-cooling) |
+| [Exhaust-1](technologies/exhaust.md) | Electroluminescent cooling at useful power | [10 kW/m²](numbers.md#exhaust-1-cooling) of net cooling, at [100%](numbers.md#exhaust-carnot-share) of the Carnot limit or better, with light in a band and cone the air above the canopies lets through. Then: The production tile must reach [0.91 MW/m²](numbers.md#exhaust-flux) by [2031](numbers.md?date=year#exhaust-production-tile) | No net cooling above [100 W/m²](numbers.md#exhaust-1-kill-cooling) |
 | [Lightpipe](technologies/helios.md) | Coherent power beaming | [1 MW](numbers.md#lightpipe-power) over [1,000 km](numbers.md#lightpipe-range) between satellites at [30%](numbers.md#lightpipe-efficiency) end to end | Phase lock fails beyond [100](numbers.md#lightpipe-kill-emitters) emitters |
 | [Veil-1](technologies/veil.md) | An electrochromic slat | A [1 km²](numbers.md#veil-1-area) slat in orbit dims from clear to [99%](numbers.md#veil-1-dim) blocked and holds its attitude | The film degrades within [6 months](numbers.md#veil-1-kill-life) |
 | [Railhead](technologies/ice-train.md) | An ice mass driver | [1 t](numbers.md#railhead-test-mass) of ice at [3 km/s](numbers.md#railhead-test-speed), [10](numbers.md#railhead-test-rate) shots an hour | Under [1 km/s](numbers.md#railhead-kill-speed), or under [1](numbers.md#railhead-kill-rate) shot an hour |
@@ -61,7 +61,7 @@ electricity ([Santhanam 2012](sources.md#santhanam-2012)). The kill signal sits 
 reaches: a tile that cannot beat passive radiation is not a heat pump worth building. The pass bar is well
 above that, and names a distance from the Carnot limit, because the model charges the pump work at the
 Carnot minimum, [5.5](numbers.md#exhaust-work-ratio) joules per joule. A real tile will do worse. The Lattice
-alone leaves [8.2%](numbers.md#budget-spare) spare, and once the Ring powers the Railheads the spare is
+alone leaves [7.6%](numbers.md#budget-spare) spare, and once the Ring powers the Railheads the spare is
 [33%](numbers.md#budget-spare-with-ring), so the plan can absorb a tile somewhat short of ideal, not one far
 short, and not yet the full cost of its narrow beam ([open problem](budget.md#physics-checks)). So the
 pass mark counts only light in a band and cone that the air above the canopies lets through: the experiment

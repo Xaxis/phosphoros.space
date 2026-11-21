@@ -104,8 +104,8 @@ time than building them during, because the full Foundry outproduces any smaller
 Venus on [19 October 2033](../numbers.md?date=day#ring-delivered) ([check](../numbers.md#check-foundry-builds-ring)).
 Stopping at [26](../numbers.md#foundry-doublings) doublings finishes both sooner than one more or one fewer would
 ([check](../numbers.md#check-foundry-size)). Matter is cheap once the loop runs: all
-[1.4 × 10¹⁴ kg](../numbers.md#foundry-built-mass) the Foundry builds, itself included, takes about
-[10²² J](../numbers.md#hardware-energy), about a millionth of the energy the plan spends on water and cooling.
+[2.2 × 10¹⁴ kg](../numbers.md#foundry-built-mass) the Foundry builds, itself included, takes about
+[2 × 10²² J](../numbers.md#hardware-energy), about a millionth of the energy the plan spends on water and cooling.
 
 ## Specifications
 

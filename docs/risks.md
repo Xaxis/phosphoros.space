@@ -17,6 +17,9 @@ no engineering can answer: whether Venus should be changed at all, who decides, 
 | The Ring cannot lower the ice as designed (open) | Tether lowering needs [150](numbers.md#lowering-overload) times the lift the rotor has to spare (an open problem in version 3) | Drop the ice from rest at the Ring and pump out the extra heat; the energy budget never counted lowering's recovered energy |
 | Nothing holds the Ring against the catch (open) | The catch leaves [8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) along Venus's orbit, [280](numbers.md#ring-net-overload) times the rotor's spare lift, and an orbital ring has no stiff way to hand it to the planet (an open problem in version 3) | None yet. Braking the ice in the air instead would turn its motion into heat, so the problem must be solved before the first catch |
 | The Exhaust's light costs more than the model charges (open) | Light in the tiles' narrow band and cone needs [12](numbers.md#exhaust-work-multiple) times the pump work the budget charges (an open problem in version 3) | Tiles that spread their light over more colours and directions while it still escapes the air; Exhaust-1 measures the real cost before any canopy is built |
+| The receivers' and the Ring's loss heat falls on Venus (open) | Fins that radiate from both faces near Venus shine [28%](numbers.md#ring-fin-venus-share) of their heat onto it, [1.3 × 10¹⁹ W](numbers.md#loss-heat-into-venus) at full power, more than the cooling can absorb (an open problem in version 3) | One-sided radiators with shielded backs facing Venus, or radiators far from the planet; the published schedule leaves this heat out until one is shown to work |
+| The Ring cannot carry its receivers (open) | The receivers, fins and catch radiators weigh [3.1 × 10¹³ kg](numbers.md#ring-equipment-mass), [7.9](numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator (an open problem in version 3) | Lighter receivers at higher beam intensity, a heavier or faster rotor, or receivers on the canopies with their heat pumped out |
+| Nothing builds the hardware at Venus in time (open) | The tiles, chimneys, receivers and Lanterns weigh [7.2 × 10¹³ kg](numbers.md#venus-hardware-mass); the full Foundry would take [93 d](numbers.md#venus-hardware-build-days) to build them, and cooling would start late (an open problem in version 3) | Lighter tiles and chimneys, or an industry at Venus that builds them from the air's own carbon |
 <!-- /table -->
 
 ## Ethics
@@ -149,12 +152,46 @@ tiles spread their light far wider, which the thin air above the canopies must t
 Lattice grow several times. [Exhaust-1](research.md) must settle which: its pass mark counts only light in a band and
 cone that the air above the canopies lets through.
 
+### The receivers' and the Ring's loss heat falls on Venus
+
+The Lattice's receivers shed [2.8 × 10¹⁹ W](numbers.md#helios-receiver-loss) and the catcher tracks
+[1.9 × 10¹⁹ W](numbers.md#ring-catch-loss-power) as heat, radiated from fins and radiators on the Ring. A radiator
+that close to a planet cannot help shining on it: standing upright at the Ring's height, each face sees Venus over
+[28%](numbers.md#ring-fin-venus-share) of its sky, and on the canopies [41%](numbers.md#canopy-fin-venus-share).
+That is [1.3 × 10¹⁹ W](numbers.md#loss-heat-into-venus) falling on the planet at full power. Counted day by day, it
+keeps the cooling from finishing in time ([failing check](numbers.md#check-loss-heat-fits),
+[issue 14](https://github.com/Xaxis/phosphoros.space/issues/14)); the published schedule leaves it out until a fix is
+shown. Radiators with one emitting face and a back toward Venus shielded by stacks of polished foil, as vacuum
+furnaces use, might cut the share below a percent, at twice the radiator area; radiators far from Venus would need
+another way to bring the power down.
+
+### The Ring cannot carry its receivers
+
+The plan hangs the Lattice's receivers, their fins and the catch's radiators on the Ring's stator. At the densities
+the plan uses for the same hardware on Ceres they weigh [3.1 × 10¹³ kg](numbers.md#ring-equipment-mass),
+[7.9](numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator
+([failing check](numbers.md#check-ring-carries-equipment),
+[issue 15](https://github.com/Xaxis/phosphoros.space/issues/15)). Receivers at a higher beam intensity would be
+smaller; a heavier rotor is more for the Foundry to build; receivers on the canopies would put their loss heat in
+the air, where the Exhaust must pump it out.
+
+### Nothing builds the hardware at Venus in time
+
+The Exhaust's tiles and canopies, the chimneys, the receivers and their fins, and the Lanterns weigh
+[7.2 × 10¹³ kg](numbers.md#venus-hardware-mass), about as much as the whole Foundry. They must be working when cooling
+starts, and the plan does not say who builds them. The full Foundry would take
+[93 d](numbers.md#venus-hardware-build-days), and they would reach Venus on
+[18 October 2033](numbers.md?date=day#venus-hardware-ready), months after cooling is meant to start
+([failing check](numbers.md#check-venus-hardware-in-time),
+[issue 18](https://github.com/Xaxis/phosphoros.space/issues/18)). Much lighter tiles and chimneys, or an industry at
+Venus that builds them from the carbon in its air, would close the gap.
+
 ### The seas freeze slowly
 
 At the triple point the CO₂ seas give up their heat of fusion, [210 kJ/kg](numbers.md#co2-fusion-heat), while the air
 holds at [216.6 K](numbers.md#co2-triple-temp). With the emitters at their peak and the falling ice adding heat all the
-while, they are frozen through only on [27 March 2036](numbers.md?date=day#traj-frozen). The Frost Towers then finish on
-[28 June 2036](numbers.md?date=day#traj-scavenged), [65 d](numbers.md#frost-sealing-slack) before the last caps are due
+while, they are frozen through only on [15 April 2036](numbers.md?date=day#traj-frozen). The Frost Towers then finish on
+[19 July 2036](numbers.md?date=day#traj-scavenged), [44 d](numbers.md#frost-sealing-slack) before the last caps are due
 ([check](numbers.md#check-frost-before-sealing)), and seeded life greens the oceans on
 [12 December 2036](numbers.md?date=day#genesis-end), before the deadline
 ([check](numbers.md#check-genesis-by-deadline)). Both margins rest on the Exhaust reaching its full peak: at a tenth

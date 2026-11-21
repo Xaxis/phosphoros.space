@@ -48,7 +48,10 @@ opposite directions and must never share one. The sled's linear motor runs as a 
 
 Each kilogram gives up [66.4 MJ/kg](../numbers.md#ring-catch-energy-per-kg) of motion. At
 [80%](../numbers.md#ring-recovery-efficiency) the Ring recovers [53 MJ/kg](../numbers.md#ring-recovered-per-kg)
-as electricity. The rest heats the tracks and is radiated to space from above the air, never into it.
+as electricity. The rest heats the tracks, [1.9 × 10¹⁹ W](../numbers.md#ring-catch-loss-power) at the full
+catch rate, and is radiated from [3.3 × 10¹³ m²](../numbers.md#ring-radiator-area) of radiators on the stator.
+About [28%](../numbers.md#ring-fin-venus-share) of their light falls on Venus, an open problem shared with
+the receivers ([Risks](../risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)).
 
 Braking pushes on the tracks along the Ring with [9.1 × 10¹⁵ N](../numbers.md#ring-braking-force) at the
 full rate, far more than the rotor's [3.0 × 10¹³ N](../numbers.md#ring-lift) of lift. Version 2 caught
@@ -100,16 +103,19 @@ electricity.
 The Ring circles Venus's equator [6,452 km](../numbers.md#ring-radius) from the planet's centre and
 weighs [1.0 × 10¹³ kg](../numbers.md#ring-mass) in all. The rotor is built in segments joined at
 controlled breakpoints, so a failure sheds a segment rather than unzipping the loop. The stator carries
-the catcher tracks, the Lattice's receivers and the tether heads.
+the catcher tracks, the Lattice's receivers and the tether heads. Its own
+[3.0 × 10¹² kg](../numbers.md#ring-stator-mass) counts the tracks, tether heads and cables. The receivers,
+their fins and the catch's radiators add [3.1 × 10¹³ kg](../numbers.md#ring-equipment-mass),
+[7.9](../numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator: an open
+problem ([Risks](../risks.md#the-ring-cannot-carry-its-receivers)).
 
 ### The power hub
 
 The Lattice's beams arrive at receivers on the stator at [10 MW/m²](../numbers.md#helios-receiver-intensity).
-Their loss heat, [2.8 × 10¹⁹ W](../numbers.md#helios-receiver-loss), radiates to space from fins at
-[1,500 K](../numbers.md#helios-fin-temp), above the air. Superconducting cables carry the power, the
+Their loss heat, [2.8 × 10¹⁹ W](../numbers.md#helios-receiver-loss), radiates from fins at
+[1,500 K](../numbers.md#helios-fin-temp), above the air, and part of it falls on Venus. Superconducting cables carry the power, the
 Lattice's and the Ring's own, down the tethers to the Exhaust canopies above the clouds. Until the Ring is
-complete, receivers on the canopies carry the load, their fins facing space above the thin upper air
-([Helios Lattice](helios.md#design)).
+complete, receivers on the canopies carry the load ([Helios Lattice](helios.md#design)).
 
 ### Catcher tracks
 

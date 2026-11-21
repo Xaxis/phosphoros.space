@@ -109,7 +109,15 @@ export function iceTrain(r: Registry) {
       formula: "last launch − first launch",
       basis: "design",
     },
-    () => (v("ice-launch-end") - v("ice-launch-start")) * DAY_S,
+    () => {
+      const days = v("ice-launch-end") - v("ice-launch-start");
+      // No time to launch means no water, and every rate below would be undefined.
+      if (days <= 0)
+        throw new Error(
+          "the first ice launch comes after the last launch that reaches Venus by the deadline, so no water arrives in time",
+        );
+      return days * DAY_S;
+    },
   );
   r.q(
     "ice-throughput",

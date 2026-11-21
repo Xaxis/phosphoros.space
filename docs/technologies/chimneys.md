@@ -85,7 +85,7 @@ the chimneys rather than the power set the pace on [56 d](../numbers.md#traj-ch
 [May 2033](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
 [July 2034](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
 CO₂ forms on them and drains to the basins. As the CO₂ rains out the air thins, the canopies float lower and the
-towers are shortened. They retire once the CO₂ is down, in [June 2036](../numbers.md?date=month#traj-cold), and
+towers are shortened. They retire once the CO₂ is down, in [July 2036](../numbers.md?date=month#traj-cold), and
 their carbon goes into the cryo-continent caps.
 
 ## Specifications
@@ -132,11 +132,11 @@ describe the air drawn through the intake and the heat taken from it.
   fast as the growing Lattice can pay for pumping.
 - **[July 2033](../numbers.md?date=month#ice-launch-start):** The Railheads on Ceres take most of the Lattice's
   power; cooling slows until the Ring pays for them.
-- **[13 July 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
+- **[23 July 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
   critical temperature and the exchangers start condensing liquid CO₂.
 - **[16 September 2034](../numbers.md?date=day#ring-pays-from):** The Ring pays for the Railheads and the Exhaust runs at
   its limit, with the chimneys lifting heat well above the design peak.
-- **[12 June 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
+- **[3 July 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
   apart.
 - **[1 September 2036](../numbers.md?date=day#cooling-end):** Active cooling ends.
 

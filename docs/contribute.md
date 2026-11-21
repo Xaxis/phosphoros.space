@@ -95,6 +95,20 @@ These are the places where the plan is weakest, or least sure of itself. Each is
    [15 December 2028](numbers.md?date=day#life-gate). What can balloons and droplet sample return flown from
    [June 2027](numbers.md?date=month#survey-start) actually detect, and what would a negative result rule
    out? The gate is only as honest as that answer ([Research Agenda](research.md#the-cloud-life-gate)).
+7. **Radiators that do not shine on Venus.** Fins near the planet send about
+   [28%](numbers.md#ring-fin-venus-share) of their light onto it, [1.3 × 10¹⁹ W](numbers.md#loss-heat-into-venus)
+   at full power. A radiator design, with its mass, that sheds the receivers' and the catch's loss heat while
+   sending under about a percent into Venus would close it
+   ([issue 14](https://github.com/Xaxis/phosphoros.space/issues/14),
+   [Risks](risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)).
+8. **Where the receivers go.** The receivers, fins and catch radiators weigh
+   [7.9](numbers.md#ring-equipment-overload) times what the Ring's rotor can hold up. A lighter receiver, a
+   different home for them, or a Ring that carries them, sized with its mass and its effect on the schedule
+   ([issue 15](https://github.com/Xaxis/phosphoros.space/issues/15)).
+9. **Who builds the hardware at Venus.** The tiles, chimneys, receivers and Lanterns weigh
+   [7.2 × 10¹³ kg](numbers.md#venus-hardware-mass) and must work when cooling starts. Lighter designs, or an
+   industry that makes them in time, with its own growth and power
+   ([issue 18](https://github.com/Xaxis/phosphoros.space/issues/18)).
 
 ## Pull requests
 

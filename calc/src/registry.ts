@@ -13,6 +13,14 @@ export type Basis =
   | "invented" // a breakthrough the plan assumes
   | "design"; // a program choice (a date, a size, a count)
 
+/** Weakest first: a computed number is no firmer than the least proven thing it rests on. */
+const STRENGTH: Record<Basis, number> = { invented: 0, design: 1, precedent: 2, physics: 3 };
+
+/** The weaker of two bases. */
+export function weaker(a: Basis, b: Basis): Basis {
+  return STRENGTH[b] < STRENGTH[a] ? b : a;
+}
+
 export interface Input {
   id: string;
   value: number;
@@ -44,6 +52,10 @@ export interface Derived {
   formula: string;
   /** Ids of inputs and derived quantities this one read, in first-read order. */
   inputs: string[];
+  /**
+   * The weakest basis among the step's own (as declared) and everything it read, so a number
+   * computed by physics from an invented input is marked invented. Set by the registry.
+   */
   basis?: Basis;
   show?: string;
   sig?: number;
@@ -140,7 +152,12 @@ export class Registry {
     if (this.derived.has(id) || this.inputs.has(id)) throw new Error(`calc: "${id}" defined twice`);
     const { value, inputs } = this.track(fn);
     if (!Number.isFinite(value)) throw new Error(`calc: "${id}" is not finite (${value})`);
-    this.derived.set(id, { id, value, inputs, module: this.module, ...meta });
+    let basis: Basis = meta.basis ?? "physics";
+    for (const i of inputs) {
+      const q = this.derived.get(i) ?? this.inputs.get(i);
+      if (q) basis = weaker(basis, q.basis ?? "physics");
+    }
+    this.derived.set(id, { id, value, inputs, module: this.module, ...meta, basis });
     // A quantity read by an enclosing definition counts as that definition's input.
     for (const r of this.reads) r.add(id);
     return value;

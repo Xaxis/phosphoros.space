@@ -427,6 +427,8 @@ function ledger(): string {
     "",
     "Basis: **Physics** is measurement or established physics. **Precedent** is shown in the real world.",
     "**Invented** is a breakthrough the plan assumes. **Design choice** is a size, count or date the plan picks.",
+    "A computed number carries the weakest basis among what it is computed from: computed by physics from an",
+    "invented input, it is marked Invented.",
     "",
   ];
   const quantityRow = (q: Quantity) => {

@@ -84,6 +84,31 @@ test("a Lattice finished after the deadline is an error, not negative energy", (
   assert.ok(run({ "foundry-doubling-days": 70 }).get("helios-supply").value > 0);
 });
 
+test("every Explorer slider runs end to end, or stops on a designed message", () => {
+  // A reader can set any ranged input anywhere in its range. The model must then either run, or
+  // stop with a sentence that says why the plan cannot work, never with an internal error.
+  const designed = [
+    /full power after the deadline/,
+    /first ice launch comes after the last launch that reaches Venus/,
+  ];
+  const failures: string[] = [];
+  for (const input of loadInputs().values()) {
+    if (!input.range) continue;
+    const [lo, hi] = input.range;
+    for (let i = 0; i <= 6; i++) {
+      const value = lo + ((hi - lo) * i) / 6;
+      try {
+        run({ [input.id]: value });
+      } catch (e) {
+        const message = e instanceof Error ? e.message : String(e);
+        if (!designed.some((d) => d.test(message)))
+          failures.push(`${input.id}=${value}: ${message}`);
+      }
+    }
+  }
+  assert.deepEqual(failures, []);
+});
+
 test("the Foundry stops at the soonest finish, and grows with what it must build", () => {
   // The closed form must agree with trying every doubling count, for Lattices small and large.
   const counts: number[] = [];

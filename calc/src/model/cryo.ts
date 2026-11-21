@@ -201,10 +201,12 @@ export function cryo(r: Registry) {
       unit: "1",
       show: "%",
       sig: 1,
-      formula: "Q_floor (T_h / 200 K − 1) / P_Lattice",
+      formula: "Q_floor (T_h / 200 K − 1) / (η_C P_Lattice)",
       basis: "physics",
     },
-    () => (v("cryo-floor-load") * (v("exhaust-effective-temp") / 200 - 1)) / v("helios-power"),
+    () =>
+      (v("cryo-floor-load") * (v("exhaust-effective-temp") / 200 - 1)) /
+      (v("exhaust-carnot-share") * v("helios-power")),
   );
   r.q(
     "cryo-cells",

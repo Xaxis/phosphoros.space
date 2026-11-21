@@ -716,3 +716,57 @@
     before it stopped one doubling short.
   before:
     foundry-target-mass: 6.0e13
+- id: loss-heat
+  kind: open
+  version: "3"
+  date: 2026-11-21
+  title: The receivers' and the Ring's loss heat falls on Venus
+  issue: 14
+  text: >-
+    Version 3 said the receivers' loss heat, {helios-receiver-loss}, and the heat the catcher tracks
+    shed, {ring-catch-loss-power}, radiate to space and never reach Venus. A radiator near a planet
+    cannot help shining on it: fins standing upright at the Ring's height send {ring-fin-venus-share}
+    of their light onto Venus, and fins on the canopies {canopy-fin-venus-share}. That is
+    {loss-heat-into-venus} at full power, and with it counted the cooling does not finish in time.
+    The published schedule still leaves this heat out, and the check loss-heat-fits measures it.
+    Options under study: one-sided radiators whose backs, facing Venus, are shielded by stacks of
+    polished foil as in vacuum furnaces, or radiators placed far from the planet.
+- id: ring-equipment
+  kind: open
+  version: "3"
+  date: 2026-11-21
+  title: The Ring cannot carry the receivers the plan hangs on it
+  issue: 15
+  text: >-
+    The stator's mass, {ring-stator-mass}, was said to include the Lattice's receivers. It does not:
+    at the densities the plan uses for the same hardware on Ceres, the receivers, their fins and the
+    catch's radiators weigh {ring-equipment-mass}, and the rotor can hold up only {ring-hang-capacity}
+    besides the stator, {ring-equipment-overload} times too little. The stator's mass now counts the
+    tracks, tether heads and cables, and the check ring-carries-equipment weighs the rest. Options:
+    receivers at a higher beam intensity, a heavier or faster rotor (which the Foundry must then
+    build), or receivers on the canopies with their loss heat pumped out by the Exhaust.
+- id: venus-hardware
+  kind: open
+  version: "3"
+  date: 2026-11-21
+  title: Nothing builds the hardware at Venus in time
+  issue: 18
+  text: >-
+    The Foundry's books counted the Foundry, the Veil, the Lattice and the Ring, but not the Exhaust's
+    tiles and canopies ({exhaust-tile-mass}), the chimneys ({chimney-mass}), the receivers and their
+    fins, or the Lanterns. Together they weigh {venus-hardware-mass}, and they must be working when
+    cooling starts. They now count in what the Foundry builds, {foundry-built-mass}. Built by the full
+    Foundry they would take {venus-hardware-build-days} and reach Venus on {venus-hardware-ready},
+    so cooling would start late and the Frost Towers would finish after the last caps are sealed.
+    The check venus-hardware-in-time measures it. Options: much lighter tiles and chimneys, or an
+    industry at Venus that builds them from the carbon in its air.
+- id: derived-basis
+  kind: correction
+  version: "3"
+  date: 2026-11-21
+  title: A computed number is no firmer than what it is computed from
+  text: >-
+    Derived numbers carried a basis typed by hand, and many computed by physics from invented inputs
+    were marked Physics, among them the Earth-like date itself. Every computed number now carries the
+    weakest basis among what it reads, so the date Venus becomes Earth-like is marked Invented: it
+    rests on inventions. No value changes.

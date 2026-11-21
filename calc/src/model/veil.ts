@@ -140,7 +140,15 @@ export function veil(r: Registry) {
       formula: "root of the rotating-frame force balance with light pressure β",
       basis: "physics",
     },
-    () => bisect((x) => balance(x, v("veil-beta")), v("venus-l1-distance") * 0.999, 1e10),
+    () => {
+      // A Veil too light for its light pressure has no balance point: report the nearest miss, and
+      // the check veil-hovers fails.
+      const f = (x: number) => balance(x, v("veil-beta"));
+      const lo = v("venus-l1-distance") * 0.999;
+      const hi = 1e10;
+      if (f(lo) * f(hi) > 0) return Math.abs(f(lo)) < Math.abs(f(hi)) ? lo : hi;
+      return bisect(f, lo, hi);
+    },
   );
   r.q(
     "veil-radius",
@@ -253,13 +261,19 @@ export function veil(r: Registry) {
   r.c(
     "veil-hovers",
     {
-      label: "The Veil's station balances gravity, light pressure and orbital motion",
+      label:
+        "A station exists where gravity, light pressure and orbital motion balance on the Veil",
       kind: "force",
     },
-    () => ({
-      pass: Math.abs(v("veil-net-accel")) < 1e-9,
-      detail: `At ${fmt(r, "veil-distance", { show: "km" })} sunward of Venus the residual is ${fmt(r, "veil-net-accel")}; slats trim the small, slow drift of this unstable point by tilting.`,
-    }),
+    () => {
+      const pass = Math.abs(v("veil-net-accel")) < 1e-9;
+      return {
+        pass,
+        detail: pass
+          ? `At ${fmt(r, "veil-distance", { show: "km" })} sunward of Venus the forces on a Veil with a lightness of ${fmt(r, "veil-beta")} balance. The point is unstable along the Sun line, so holding it takes constant trimming, by tilting slats, which the model does not size.`
+          : `No point sunward of Venus balances a Veil with a lightness of ${fmt(r, "veil-beta")}: the nearest miss leaves ${fmt(r, "veil-net-accel")} unbalanced.`,
+      };
+    },
   );
   r.q(
     "veil-light-delay",

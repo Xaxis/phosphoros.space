@@ -142,7 +142,8 @@ export function coolingPathWork(
     v("co2-triple-temp"),
     Th,
   );
-  return { sensible, latent, total: sensible + latent };
+  const eta = v("exhaust-carnot-share");
+  return { sensible: sensible / eta, latent: latent / eta, total: (sensible + latent) / eta };
 }
 
 export function exhaust(r: Registry) {
@@ -178,7 +179,8 @@ export function exhaust(r: Registry) {
     {
       label: "Heat-pump work for the sensible cooling",
       unit: "J",
-      formula: "∫ M c_p (T_h / T − 1) dT, from 737 K to 195 K",
+      formula:
+        "∫ M c_p (T_h / (k T) − 1) dT / η_C, from 737 K to 195 K, k the exchangers' cold factor",
       basis: "physics",
     },
     () => coolingPathWork(v, v("exhaust-effective-temp")).sensible,
@@ -188,7 +190,7 @@ export function exhaust(r: Registry) {
     {
       label: "Heat-pump work to freeze the CO₂",
       unit: "J",
-      formula: "Q_L [T_h ln(T_c / T_t) / (T_c − T_t) − 1]",
+      formula: "Q_L [T_h ln(T_c / T_t) / (T_c − T_t) − 1] / η_C",
       basis: "physics",
       note: "The simple estimate: latent heat released evenly in temperature between CO₂'s critical point (304 K) and triple point (216.6 K). The day-by-day simulation releases it where the physics puts it, the heat of fusion at the triple point itself.",
     },
@@ -447,25 +449,33 @@ export function exhaust(r: Registry) {
     {
       label: "Heat-pump work for the Frost Towers",
       unit: "J",
-      formula: "M_residual L (T_h / 133 K − 1)",
+      formula: "M_residual L (T_h / 133 K − 1) / η_C",
       basis: "physics",
     },
     () =>
-      v("frost-residual-co2") *
-      v("co2-deposition-heat") *
-      (v("exhaust-effective-temp") / v("frost-tower-temp") - 1),
+      (v("frost-residual-co2") *
+        v("co2-deposition-heat") *
+        (v("exhaust-effective-temp") / v("frost-tower-temp") - 1)) /
+      v("exhaust-carnot-share"),
   );
 
-  r.c("second-law", { label: "The heat pump never beats Carnot", kind: "second-law" }, () => {
-    const Q = v("atmosphere-heat");
-    const Th = v("exhaust-effective-temp");
-    const best = Q * (Th / v("venus-surface-temp") - 1);
-    return {
-      pass:
-        v("exhaust-work") >= best && v("exhaust-work-ratio") >= Th / v("venus-surface-temp") - 1,
-      detail: `Pump work ${fmt(r, "exhaust-work")} for ${fmt(r, "atmosphere-heat")} of heat, at least the ${formatQuantity({ value: best, unit: "J" })} Carnot demands even if every joule left from ${fmt(r, "venus-surface-temp")}, with the emitters as hot as ${fmt(r, "exhaust-effective-temp")}.`,
-    };
-  });
+  r.c(
+    "second-law",
+    { label: "The heat pumps are charged more than the reversible work", kind: "second-law" },
+    () => {
+      const Q = v("atmosphere-heat");
+      const Th = v("exhaust-effective-temp");
+      const best = Q * (Th / v("venus-surface-temp") - 1);
+      // A pump at the reversible limit moves heat infinitely slowly: any real rate costs more.
+      const real = v("exhaust-carnot-share") < 1;
+      return {
+        pass: real && v("exhaust-work") >= best,
+        detail: real
+          ? `The pumps reach ${fmt(r, "exhaust-carnot-share")} of the Carnot limit, so the model charges ${fmt(r, "exhaust-work")} of work for ${fmt(r, "atmosphere-heat")} of heat, more than the ${formatQuantity({ value: best, unit: "J" })} even a reversible pump would need if every joule left from ${fmt(r, "venus-surface-temp")}.`
+          : `The pumps are charged exactly the reversible work. A heat pump at the Carnot limit moves heat infinitely slowly, so any pump that cools Venus in years needs more.`,
+      };
+    },
+  );
 
   // The second law prices light by its entropy. Spread evenly over a band Δλ and a cone, light of
   // radiance L fills each mode with n = L λ⁵ / (2 h c² Δλ) photons; each mode carries energy n h ν

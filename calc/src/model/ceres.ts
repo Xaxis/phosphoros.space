@@ -814,7 +814,7 @@ export function ceres(r: Registry) {
   r.c(
     "ceres-ready-in-time",
     {
-      label: "Ceres's factories finish the Railheads and the Crown before the first launch",
+      label: "The first launch waits for Ceres's factories, whose seed leaves with the Foundry's",
       kind: "schedule",
     },
     () => ({

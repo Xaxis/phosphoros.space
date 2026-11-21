@@ -250,15 +250,102 @@ export function foundryProducts(r: Registry) {
     );
   }
 
+  // The hardware at Venus that must be working when the pumps start: the Exhaust's tiles and
+  // canopies, the chimneys, the receivers and their fins (on the canopies until the Ring is
+  // complete), and the Lanterns.
+  r.q(
+    "exhaust-tile-mass",
+    {
+      label: "Mass of the Exhaust's emitter tiles and canopies",
+      unit: "kg",
+      formula: "A_installed × σ_tile",
+      basis: "invented",
+    },
+    () => v("exhaust-area-installed") * v("exhaust-tile-areal-density"),
+  );
+  r.q(
+    "chimney-mass",
+    {
+      label: "Mass of all the chimneys",
+      unit: "kg",
+      formula: "N π D h σ_wall",
+      basis: "invented",
+    },
+    () =>
+      v("chimney-count") *
+      Math.PI *
+      v("chimney-diameter") *
+      v("chimney-height") *
+      v("chimney-wall-areal-density"),
+  );
+  r.q(
+    "lantern-mass",
+    {
+      label: "Mass of the Lanterns",
+      unit: "kg",
+      formula: "A_Lantern σ_Lantern",
+      basis: "invented",
+    },
+    () => v("lantern-area") * v("lantern-areal-density"),
+  );
+  r.q(
+    "venus-hardware-mass",
+    {
+      label: "Hardware that must be working at Venus when cooling starts",
+      unit: "kg",
+      formula: "M_tiles + M_chimneys + M_receivers + M_fins + M_Lanterns",
+      basis: "invented",
+    },
+    () =>
+      v("exhaust-tile-mass") +
+      v("chimney-mass") +
+      v("ring-receiver-mass") +
+      v("ring-fin-mass") +
+      v("lantern-mass"),
+  );
+  r.q(
+    "venus-hardware-build-days",
+    {
+      label: "Days the full Foundry takes to build it",
+      unit: "d",
+      sig: 2,
+      formula: "M_hardware T / (M_Foundry ln 2)",
+      basis: "invented",
+      note: "At full scale, the soonest it can be built: earlier, the smaller Foundry would give up more growth than it saved.",
+    },
+    () =>
+      (v("venus-hardware-mass") * v("foundry-doubling-days")) /
+      (v("foundry-final-mass") * Math.LN2),
+  );
+  r.q(
+    "venus-hardware-ready",
+    {
+      label: "The soonest that hardware can be working at Venus",
+      unit: "date",
+      formula: "Foundry full scale + build + Mercury-to-Venus transfer",
+      basis: "invented",
+    },
+    () =>
+      v("foundry-full-scale") + v("venus-hardware-build-days") + v("mercury-venus-transfer-days"),
+  );
   r.q(
     "foundry-built-mass",
     {
-      label: "Everything the Foundry builds: itself, the Veil, the Lattice and the Ring",
+      label:
+        "Everything the Foundry builds: itself, the Veil, the Lattice, the Ring and the hardware at Venus",
       unit: "kg",
-      formula: "M_Foundry + M_Veil + M_Lattice + M_Ring",
+      formula: "M_Foundry + M_Veil + M_Lattice + M_Ring + M_hardware + M_catch radiators",
       basis: "invented",
     },
-    () => v("foundry-final-mass") + v("veil-mass") + v("helios-mass") + v("ring-mass"),
+    () =>
+      v("foundry-final-mass") +
+      v("veil-mass") +
+      v("helios-mass") +
+      v("ring-mass") +
+      v("venus-hardware-mass") +
+      v("ring-equipment-mass") -
+      v("ring-receiver-mass") -
+      v("ring-fin-mass"),
   );
   r.q(
     "hardware-energy",

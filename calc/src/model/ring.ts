@@ -1,4 +1,5 @@
 /** Braking Ring: an orbital ring that catches the ice, turns its speed into electricity and lowers it. */
+import { formatQuantity } from "../format.ts";
 import type { Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
 import { fmt } from "./text.ts";
@@ -297,6 +298,121 @@ export function ring(r: Registry) {
     },
     () => v("ring-net-braking-force") / v("ring-lift"),
   );
+  // What else the plan hangs on the stator: the Lattice's receivers and their fins, and radiators
+  // for the heat the catcher tracks shed. Weighed at the densities the plan uses for the same
+  // hardware on Ceres.
+  r.q(
+    "ring-receiver-mass",
+    {
+      label: "Mass of the Lattice's receivers on the Ring",
+      unit: "kg",
+      formula: "A_receivers × σ_receiver",
+      basis: "invented",
+      note: "At the areal density of Ceres's receivers, which take four times the beam intensity.",
+    },
+    () => v("helios-receiver-area") * v("ceres-receiver-areal-density"),
+  );
+  r.q(
+    "ring-fin-mass",
+    {
+      label: "Mass of the receivers' radiator fins",
+      unit: "kg",
+      formula: "A_fins × σ_fin",
+      basis: "invented",
+    },
+    () => v("helios-fin-area") * v("ceres-fin-areal-density"),
+  );
+  r.q(
+    "ring-catch-loss-power",
+    {
+      label: "Heat the catcher tracks shed at the full catch rate",
+      unit: "W",
+      formula: "ṁ (e_caught − e_recovered)",
+      basis: "invented",
+    },
+    () => v("ice-throughput") * (v("ring-catch-energy-per-kg") - v("ring-recovered-per-kg")),
+  );
+  r.q(
+    "ring-radiator-area",
+    {
+      label: "Radiator area to shed the catch's heat at the fins' temperature (both faces)",
+      unit: "m2",
+      formula: "P_loss / (2 σ T⁴)",
+      basis: "physics",
+    },
+    () => v("ring-catch-loss-power") / (2 * v("stefan-boltzmann") * v("helios-fin-temp") ** 4),
+  );
+  r.q(
+    "ring-equipment-mass",
+    {
+      label: "Receivers, fins and catch radiators the plan puts on the stator",
+      unit: "kg",
+      formula: "M_receivers + M_fins + A_radiators σ_fin",
+      basis: "invented",
+    },
+    () =>
+      v("ring-receiver-mass") +
+      v("ring-fin-mass") +
+      v("ring-radiator-area") * v("ceres-fin-areal-density"),
+  );
+  r.q(
+    "ring-equipment-overload",
+    {
+      label: "Weight of that equipment over the rotor's spare lift",
+      unit: "1",
+      sig: 2,
+      formula: "M_equipment g / F_lift",
+      basis: "physics",
+    },
+    () => (v("ring-equipment-mass") * v("ring-gravity")) / v("ring-lift"),
+  );
+  // How much of a two-faced radiator's light falls on Venus: the view factor of a plate standing
+  // upright (its plane through Venus's centre) at a height h, F = [atan(1/√(H²−1)) − √(H²−1)/H²] / π
+  // with H = r / R_V. Each face sees that share of the planet, so a fin radiating equally from both
+  // faces sends that share of its heat into Venus. Lying flat would be worse: its lower face would
+  // see 1/H².
+  const upright = (h: number) => {
+    const H = (v("venus-radius") + h) / v("venus-radius");
+    const s = Math.sqrt(H * H - 1);
+    return (Math.atan(1 / s) - s / (H * H)) / Math.PI;
+  };
+  r.q(
+    "ring-fin-venus-share",
+    {
+      label: "Share of the Ring's fin and radiator heat that falls on Venus",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "[atan(1/√(H²−1)) − √(H²−1)/H²] / π, H = r_Ring / R_V",
+      basis: "physics",
+      note: "For two-faced fins standing upright at the Ring's height; fins reaching farther out see a little less of Venus.",
+    },
+    () => upright(v("ring-altitude")),
+  );
+  r.q(
+    "canopy-fin-venus-share",
+    {
+      label: "Share of the canopy receivers' fin heat that falls on Venus",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "[atan(1/√(H²−1)) − √(H²−1)/H²] / π, H = (R_V + h_canopy) / R_V",
+      basis: "physics",
+      note: "For two-faced fins standing upright on the canopies, at the chimneys' tops.",
+    },
+    () => upright(v("chimney-top")),
+  );
+  r.q(
+    "loss-heat-into-venus",
+    {
+      label: "Loss heat the receivers' fins and the catch radiators send into Venus",
+      unit: "W",
+      formula: "(P_receiver loss + P_catch loss) × F_Ring",
+      basis: "invented",
+      note: "With the Lattice beaming its full power to Venus and the Ring catching at the full rate.",
+    },
+    () => (v("helios-receiver-loss") + v("ring-catch-loss-power")) * v("ring-fin-venus-share"),
+  );
   r.q(
     "ring-hang-capacity",
     {
@@ -420,10 +536,33 @@ export function ring(r: Registry) {
   );
   r.c(
     "ring-energy-loop",
-    { label: "The Ring recovers more power than the Railheads draw", kind: "conservation" },
+    { label: "The Ring recovers more power than the Railheads draw", kind: "capacity" },
     () => ({
       pass: v("ring-power") >= v("railhead-power"),
       detail: `The Ring recovers ${fmt(r, "ring-power")} against the ${fmt(r, "railhead-power")} the Railheads draw.`,
+    }),
+  );
+  r.c("ring-holds-stator", { label: "The rotor holds the stator up", kind: "force" }, () => ({
+    pass: v("ring-lift") > 0,
+    detail:
+      v("ring-lift") > 0
+        ? `The ${fmt(r, "ring-rotor-mass")} rotor, faster than orbital speed, presses outward enough to carry the ${fmt(r, "ring-stator-mass")} stator with ${fmt(r, "ring-lift")} to spare.`
+        : `The ${fmt(r, "ring-rotor-mass")} rotor cannot carry the ${fmt(r, "ring-stator-mass")} stator: it falls short by ${formatQuantity({ value: -v("ring-lift"), unit: "N" })}.`,
+  }));
+  r.c(
+    "ring-carries-equipment",
+    {
+      label:
+        "The rotor can also carry the receivers, fins and radiators the plan hangs on the stator",
+      kind: "force",
+      issue: "ring-equipment",
+    },
+    () => ({
+      pass: v("ring-lift") > 0 && v("ring-equipment-mass") * v("ring-gravity") <= v("ring-lift"),
+      detail:
+        v("ring-lift") > 0
+          ? `The receivers, their fins and the catch's radiators weigh ${fmt(r, "ring-equipment-mass")} at the densities the plan uses on Ceres; the rotor's spare lift carries ${fmt(r, "ring-hang-capacity")}, ${fmt(r, "ring-equipment-overload")} times too little.`
+          : `The rotor cannot carry even the stator, let alone the ${fmt(r, "ring-equipment-mass")} of receivers, fins and radiators.`,
     }),
   );
   r.c(
@@ -435,7 +574,7 @@ export function ring(r: Registry) {
     },
     () => ({
       pass: v("ring-net-braking-force") <= v("ring-lift"),
-      detail: `Catching half the Bricks eastbound and half westbound cancels the twist, not the force: ${fmt(r, "ring-net-braking-force")} remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; its spare lift is ${fmt(r, "ring-lift")}, ${fmt(r, "ring-net-overload")} times too little.`,
+      detail: `Catching half the Bricks eastbound and half westbound cancels the twist, not the force: ${fmt(r, "ring-net-braking-force")} remains along Venus's orbital motion. An orbital ring has no stiff way to hand an in-plane force to the planet; ${v("ring-lift") > 0 ? `its spare lift is ${fmt(r, "ring-lift")}, ${fmt(r, "ring-net-overload")} times too little` : "its rotor has no lift to spare"}.`,
     }),
   );
   r.c(
@@ -447,7 +586,7 @@ export function ring(r: Registry) {
     },
     () => ({
       pass: v("lowering-support") <= v("ring-lift"),
-      detail: `Lowering ${fmt(r, "lowering-rate")} needs at least ${fmt(r, "lowering-support")}; the rotor's spare lift is ${fmt(r, "ring-lift")}, ${fmt(r, "lowering-overload")} times too little.`,
+      detail: `Lowering ${fmt(r, "lowering-rate")} needs at least ${fmt(r, "lowering-support")}; ${v("ring-lift") > 0 ? `the rotor's spare lift is ${fmt(r, "ring-lift")}, ${fmt(r, "lowering-overload")} times too little` : "the rotor has no lift to spare"}.`,
     }),
   );
 }

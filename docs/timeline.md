@@ -28,9 +28,9 @@ redraws this chart for your variant.
 | Ceres ice launches | [22 July 2033](numbers.md?date=day#ice-launch-start) | [21 October 2035](numbers.md?date=day#ice-launch-end) |
 | **The Ring pays for the launches** | [16 September 2034](numbers.md?date=day#ring-pays-from) |  |
 | Active cooling | [3 May 2033](numbers.md?date=day#cooling-start) | [1 September 2036](numbers.md?date=day#cooling-end) |
-| **The Clear Rain** | [13 July 2034](numbers.md?date=day#traj-clear-rain) |  |
-| CO₂ rains out and freezes | [13 July 2034](numbers.md?date=day#traj-clear-rain) | [27 March 2036](numbers.md?date=day#traj-frozen) |
-| Caps laid on the frozen seas | [27 March 2036](numbers.md?date=day#traj-frozen) | [1 September 2036](numbers.md?date=day#sealing-end) |
+| **The Clear Rain** | [23 July 2034](numbers.md?date=day#traj-clear-rain) |  |
+| CO₂ rains out and freezes | [23 July 2034](numbers.md?date=day#traj-clear-rain) | [15 April 2036](numbers.md?date=day#traj-frozen) |
+| Caps laid on the frozen seas | [15 April 2036](numbers.md?date=day#traj-frozen) | [1 September 2036](numbers.md?date=day#sealing-end) |
 | Ice caught and parked | [16 September 2034](numbers.md?date=day#first-catch) | [15 December 2036](numbers.md?date=day#last-arrival) |
 | Ice lowered, oceans fill | [30 June 2035](numbers.md?date=day#lowering-start) | [15 December 2036](numbers.md?date=day#lowering-end) |
 | Oxygen forging | [1 January 2035](numbers.md?date=day#forge-start) | [30 September 2036](numbers.md?date=day#forge-end) |
@@ -101,14 +101,14 @@ Active cooling runs from [3 May 2033](numbers.md?date=day#cooling-start) to
 draw [6.7 × 10¹⁹ W](numbers.md#railhead-power) of the Lattice's [8.5 × 10¹⁹ W](numbers.md#helios-power),
 and cooling is starved of power. From [16 September 2034](numbers.md?date=day#ring-pays-from) power is
 plentiful and the Exhaust runs at its limit, [5.5 × 10¹⁹ W](numbers.md#exhaust-peak). The Clear Rain begins
-on [13 July 2034](numbers.md?date=day#traj-clear-rain). The seas start to freeze on
-[5 July 2035](numbers.md?date=day#traj-freeze), when the air reaches the triple point, and the air holds
-there until they are frozen through on [27 March 2036](numbers.md?date=day#traj-frozen). That leaves
-[160 d](numbers.md#sealing-window) to lay the caps before the last is due on
-[1 September 2036](numbers.md?date=day#sealing-end): [950,000 km²/d](numbers.md#cap-laying-rate) of cap
-a day. All the CO₂ is down by [12 June 2036](numbers.md?date=day#traj-cold) and the Frost Towers reach
-their target on [28 June 2036](numbers.md?date=day#traj-scavenged),
-[65 d](numbers.md#frost-sealing-slack) before the last caps are due
+on [23 July 2034](numbers.md?date=day#traj-clear-rain). The seas start to freeze on
+[17 July 2035](numbers.md?date=day#traj-freeze), when the air reaches the triple point, and the air holds
+there until they are frozen through on [15 April 2036](numbers.md?date=day#traj-frozen). That leaves
+[140 d](numbers.md#sealing-window) to lay the caps before the last is due on
+[1 September 2036](numbers.md?date=day#sealing-end): [1.1 × 10⁶ km²/d](numbers.md#cap-laying-rate) of cap
+a day. All the CO₂ is down by [3 July 2036](numbers.md?date=day#traj-cold) and the Frost Towers reach
+their target on [19 July 2036](numbers.md?date=day#traj-scavenged),
+[44 d](numbers.md#frost-sealing-slack) before the last caps are due
 ([check](numbers.md#check-frost-before-sealing)).
 
 ### Water: 2033 to 2036
@@ -145,7 +145,7 @@ does not move is the deadline, and with it the last useful ice launch. The slip 
 - **The water.** The ice campaign shrinks from the front, so the Railheads must throw faster to deliver
   the same [1.0 × 10²⁰ kg](numbers.md#ice-mass), or the ocean comes out shallower.
 - **The energy.** The Lattice has fewer full-power years before the deadline. Every day of slip comes out of
-  the [8.2%](numbers.md#budget-spare) it has to spare on its own, then out of the
+  the [7.6%](numbers.md#budget-spare) it has to spare on its own, then out of the
   [33%](numbers.md#budget-spare-with-ring) spare the Ring's recovered energy adds.
 - **The schedule.** There is little slack. A small rise in the doubling time (the
   [Budget](budget.md#how-much-room-the-plan-has) finds the edge for this and every other assumption), and the

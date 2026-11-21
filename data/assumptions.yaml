@@ -375,6 +375,31 @@ exhaust-effective-temp:
   label: Effective temperature the emitters shine at
   basis: invented
   range: [1000, 3000]
+exhaust-tile-areal-density:
+  value: 0.5
+  unit: kg/m2
+  label: Mass of the Exhaust's emitter tiles and canopy per square metre
+  basis: invented
+  note: >-
+    A semiconductor film on a cooled backing that takes the chimneys' heat, with the canopy that floats
+    it. A quarter of the density of Ceres's receivers, which carry forty times the heat flux.
+chimney-wall-areal-density:
+  value: 2.0
+  unit: kg/m2
+  label: Mass of a chimney per square metre of its wall, liquid loops and exchangers included
+  basis: invented
+  note: The walls carry no pressure load; most of the mass is the loops and the exchangers at the base.
+exhaust-carnot-share:
+  value: 1.0
+  unit: "1"
+  show: "%"
+  sig: 2
+  label: Share of the Carnot limit the heat pumps reach
+  basis: invented
+  range: [0.3, 1]
+  note: >-
+    A heat pump's coefficient of performance as a share of the reversible one. Every pump work in the
+    model, the simulation's included, is the reversible work divided by this share.
 exhaust-bandgap:
   value: 0.54
   unit: eV
@@ -662,8 +687,11 @@ ring-rotor-mass:
 ring-stator-mass:
   value: 3.0e12
   unit: kg
-  label: Stator mass (tracks, tethers, receivers)
+  label: Stator mass (catcher tracks, tether heads and cables)
   basis: invented
+  note: >-
+    Not the Lattice's receivers and fins or the catch's radiators, which the plan also puts on the
+    stator: the check ring-carries-equipment weighs them.
 ring-catch-accel:
   value: 50
   unit: g
@@ -863,12 +891,6 @@ exhaust-1-cooling:
   unit: W/m2
   show: kW/m2
   label: "Exhaust-1 passes at this much net cooling"
-  basis: design
-exhaust-1-carnot:
-  value: 0.5
-  unit: "1"
-  show: "%"
-  label: "Exhaust-1 must come within this share of the Carnot limit"
   basis: design
 exhaust-1-kill-cooling:
   value: 100

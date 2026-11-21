@@ -49,8 +49,9 @@ land. ([Helios Lattice](technologies/helios.md), [Thermal Chimneys](technologies
 enough for a [217 m](numbers.md#ocean-depth) ocean. A Braking Ring around Venus catches it and turns its
 speed into [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) of electricity instead of heat, enough to power
 the coilguns from [September 2034](numbers.md?date=month#ring-pays-from). What holds the Ring against the
-catch's push, and how to lower the caught ice to the surface, are
-[open problems](risks.md#the-ring-cannot-yet-lower-the-ice).
+catch's push, how to lower the caught ice to the surface, and how the Ring carries its receivers are
+[open problems](risks.md#the-ring-cannot-yet-lower-the-ice), as are the loss heat its fins shine onto Venus
+and who builds the hardware at Venus in time.
 ([Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md))
 
 **5. Make it breathe ([2035](numbers.md?date=year#forge-start) to [2036](numbers.md?date=year#genesis-end)).** Graphite Forges split CO₂ into
@@ -94,11 +95,11 @@ deadline.
 
 The plan must bring [8.5 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Lattice supplies
 [9.2 × 10²⁷ J](numbers.md#helios-supply) between full power and the deadline, which leaves
-[8.2%](numbers.md#budget-spare) spare on its own, even though the coilguns fire between launch windows too and
+[7.6%](numbers.md#budget-spare) spare on its own, even though the coilguns fire between launch windows too and
 pay [16%](numbers.md#launch-offwindow-mean) more for it. Once the Ring's recovered energy powers the coilguns
 the spare is [33%](numbers.md#budget-spare-with-ring). Launching the water and pumping out the heat take
-[91%](numbers.md#budget-launch-share) of the Lattice's output. The walkthrough, and the
-[4](numbers.md#checks-failing) physics checks that still fail, are in [Energy and Mass Budget](budget.md).
+[92%](numbers.md#budget-launch-share) of the Lattice's output. The walkthrough, and the
+[8](numbers.md#checks-failing) physics checks that still fail, are in [Energy and Mass Budget](budget.md).
 
 ## Read on
 
