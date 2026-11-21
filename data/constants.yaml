@@ -164,6 +164,20 @@ venus-orbit:
   basis: physics
   source: [nasa-venus-factsheet]
   sig: 3
+venus-inclination:
+  value: 3.39471
+  unit: deg
+  label: Venus orbital inclination to the ecliptic (J2000)
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 4
+venus-node:
+  value: 76.68069
+  unit: deg
+  label: Longitude of Venus's ascending node on the ecliptic (J2000)
+  basis: physics
+  source: [nasa-venus-factsheet]
+  sig: 4
 venus-surface-temp:
   value: 737
   unit: K
@@ -498,12 +512,20 @@ ceres-rotation-period:
   source: [park-2016-ceres]
   sig: 4
 ceres-inclination:
-  value: 10.59
+  value: 10.588
   unit: deg
-  label: Ceres orbital inclination to the ecliptic
+  label: Ceres orbital inclination to the ecliptic (J2000)
   basis: physics
   source: [jpl-sbdb-ceres]
-  sig: 3
+  sig: 4
+ceres-node:
+  value: 80.249
+  unit: deg
+  label: Longitude of Ceres's ascending node on the ecliptic (J2000)
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 4
+  note: Osculating elements at the epoch of JD 2461200.5 (8 June 2026). The node drifts by a fraction of a degree a century.
 
 # --- Jupiter ---------------------------------------------------------------------------------------
 jupiter-mass:

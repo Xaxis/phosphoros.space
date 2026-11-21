@@ -54,10 +54,11 @@ export function ring(r: Registry) {
       unit: "m/s",
       show: "km/s",
       sig: 3,
-      formula: "√(v∞² + 2 G M_V / r)",
+      formula: "√(v∞,rms² + 2 G M_V / r)",
       basis: "physics",
+      note: "With the launch schedule's rms arrival speed, so the catch energy per kilogram is the campaign's average.",
     },
-    () => Math.sqrt(v("ice-vinf") ** 2 + (2 * v("venus-gm")) / v("ring-radius")),
+    () => Math.sqrt(v("ice-vinf-rms") ** 2 + (2 * v("venus-gm")) / v("ring-radius")),
   );
   r.q(
     "ring-mass",
@@ -120,8 +121,24 @@ export function ring(r: Registry) {
   );
   r.q(
     "ring-power",
-    { label: "Ring power at the full catch rate", unit: "W", formula: "ṁ × e", basis: "invented" },
+    {
+      label: "Ring power averaged over the catch",
+      unit: "W",
+      formula: "ṁ × e",
+      basis: "invented",
+      note: "The energy the catch turns into electricity, on average. Arrivals bunch within each synodic cycle, so the Ring's generators are built for the peak.",
+    },
     () => v("ice-throughput") * v("ring-recovered-per-kg"),
+  );
+  r.q(
+    "ring-power-peak",
+    {
+      label: "Ring power at the peak catch rate",
+      unit: "W",
+      formula: "ṁ_peak × e",
+      basis: "invented",
+    },
+    () => v("ice-catch-peak") * v("ring-recovered-per-kg"),
   );
   r.q(
     "ring-vs-launch",
@@ -180,13 +197,13 @@ export function ring(r: Registry) {
   r.q(
     "ring-braking-force",
     {
-      label: "Braking force on the Ring at the full catch rate",
+      label: "Braking force on the Ring at the peak catch rate",
       unit: "N",
       sig: 2,
-      formula: "ṁ (v_arrive − v_orbit)",
+      formula: "ṁ_peak (v_arrive − v_orbit)",
       basis: "physics",
     },
-    () => v("ice-throughput") * (v("ring-arrival-speed") - v("ring-orbital-speed")),
+    () => v("ice-catch-peak") * (v("ring-arrival-speed") - v("ring-orbital-speed")),
   );
   r.q(
     "ring-approach-eccentricity",
@@ -253,13 +270,13 @@ export function ring(r: Registry) {
   r.q(
     "ring-bricks-braking",
     {
-      label: "Bricks braking on the tracks at once, at the full rate",
+      label: "Bricks braking on the tracks at once, at the peak rate",
       unit: "count",
       sig: 2,
-      formula: "Bricks per second × braking time",
+      formula: "(ṁ_peak / M_brick) × braking time",
       basis: "physics",
     },
-    () => v("ice-bricks-per-second") * v("ring-catch-time"),
+    () => (v("ice-catch-peak") / v("brick-mass")) * v("ring-catch-time"),
   );
   r.q(
     "ring-tracks-min",

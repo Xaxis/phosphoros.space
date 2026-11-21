@@ -6,13 +6,20 @@ import { type Claim, checkClaims } from "../src/claims.ts";
 import { CONTENT_FILES, checkContent, loadContent } from "../src/content.ts";
 import { formatNumber, formatQuantity } from "../src/format.ts";
 import { loadInputs, ROOT, readYaml, run, sourceLines } from "../src/load.ts";
+import { caughtShare, iceCatch } from "../src/model/ice.ts";
 import { compute } from "../src/model/index.ts";
 import { simulate } from "../src/model/trajectory.ts";
 import {
+  assign,
   blackBodyShare,
   co2LiquidPressure,
   co2SublimationPressure,
+  hohmann,
+  inclinedTransfer,
   lambert,
+  launchSchedule,
+  SCHEDULE_SLOTS,
+  SCHEDULE_WINDOW,
 } from "../src/physics.ts";
 import { NUMBER_LINK, refsIn, stringsIn } from "../src/template.ts";
 import { dayOf, isoOf } from "../src/time.ts";
@@ -119,19 +126,6 @@ test("the classic L1 distance comes out of the force balance", () => {
   assert.ok(Math.abs(v("venus-l1-distance") / approx - 1) < 0.01);
 });
 
-test("Lambert's problem reproduces the Hohmann transfer, and off-window shots cost more", () => {
-  const mu = v("sun-mu");
-  const [r1, r2] = [v("ceres-orbit"), v("venus-orbit")];
-  // Almost half a turn in the Hohmann time is almost the Hohmann orbit.
-  const sol = lambert(mu, r1, r2, Math.PI * 0.999, v("ice-transfer-days") * 86_400);
-  assert.ok(sol);
-  const dv = Math.hypot(sol.v1[0], sol.v1[1] - Math.sqrt(mu / r1));
-  assert.ok(Math.abs(dv / v("ice-departure-dv") - 1) < 0.01, `Lambert Δv ${dv}`);
-  assert.ok(v("launch-offwindow-mean") > 0.01);
-  assert.ok(v("launch-offwindow-max") > v("launch-offwindow-mean"));
-  assert.ok(v("ice-launch-energy") > v("ice-launch-energy-window"));
-});
-
 test("a black body's bands add up to its whole output", () => {
   const share = (from: number, to: number) =>
     blackBodyShare(
@@ -150,9 +144,249 @@ test("a black body's bands add up to its whole output", () => {
   assert.ok(v("exhaust-band-sunlight") > v("veil-leak-budget"), "a Veil clear in the band leaks");
 });
 
+test("Lambert's problem reproduces the Hohmann transfer, and off-window shots cost more", () => {
+  const mu = v("sun-mu");
+  const [r1, r2] = [v("ceres-orbit"), v("venus-orbit")];
+  // Almost half a turn in the Hohmann time is almost the Hohmann orbit.
+  const sol = lambert(mu, r1, r2, Math.PI * 0.999, v("ice-transfer-days") * 86_400);
+  assert.ok(sol);
+  const dv = Math.hypot(sol.v1[0], sol.v1[1] - Math.sqrt(mu / r1));
+  assert.ok(Math.abs(dv / v("ice-departure-dv") - 1) < 0.01, `Lambert Δv ${dv}`);
+  // The same orbit whatever the search starts from.
+  const far = lambert(mu, r1, r2, Math.PI * 0.999, v("ice-transfer-days") * 86_400, -50);
+  assert.ok(
+    far && Math.abs(far.v1[0] - sol.v1[0]) < 1e-6 && Math.abs(far.v1[1] - sol.v1[1]) < 1e-6,
+  );
+  assert.equal(lambert(mu, r1, r2, Math.PI / 2, 1), null, "no orbit crosses a quarter turn in 1 s");
+  assert.ok(v("launch-offwindow-mean") > 0.01);
+  assert.ok(v("launch-offwindow-max") > v("launch-offwindow-mean"));
+  assert.ok(v("ice-launch-energy") > v("ice-launch-energy-window"));
+});
+
 test("the Hohmann transfer from Ceres matches the textbook numbers", () => {
   assert.ok(Math.abs(v("ice-transfer-days") / 365.25 - 1.15) < 0.01);
-  assert.ok(Math.abs(v("ring-arrival-speed") - 13540) < 50);
+  const hohmannAtRing = Math.sqrt(v("ice-vinf") ** 2 + (2 * v("venus-gm")) / v("ring-radius"));
+  assert.ok(Math.abs(hohmannAtRing - 13540) < 50);
+  // The schedule's Bricks arrive faster than the Hohmann transfer's: off-window and out of plane.
+  assert.ok(v("ice-vinf-rms") > 1.3 * v("ice-vinf"));
+  assert.ok(v("ring-arrival-speed") > hohmannAtRing);
+});
+
+test("tilted transfers: no tilt is Hohmann's, and a plane change costs what geometry says", () => {
+  const mu = v("sun-mu");
+  const [r1, r2] = [v("ceres-orbit"), v("venus-orbit")];
+  const t = v("ice-transfer-days") * 86_400;
+  const tilt = (v("ice-mutual-inclination") * Math.PI) / 180;
+  const near = (a: number, b: number, tol: number, what: string) =>
+    assert.ok(Math.abs(a / b - 1) < tol, `${what}: ${a} against ${b}`);
+  // No tilt, almost half a turn: the Hohmann kick and arrival, wherever it starts.
+  for (const u of [0.3, 2.1]) {
+    const x = inclinedTransfer(mu, r1, r2, 0, u, u + Math.PI * 0.999, t);
+    assert.ok(x);
+    near(Math.sqrt(x.dv2), v("ice-departure-dv"), 0.01, "kick");
+    near(Math.sqrt(x.vinf2), v("ice-vinf"), 0.01, "arrival");
+  }
+  // Leave from where the planes cross and arrive almost opposite, short of the other crossing:
+  // the transfer lies in Venus's plane, so the whole plane change is in the kick and none at Venus.
+  const v1 = Math.sqrt(mu / r1);
+  const v2 = Math.sqrt(mu / r2);
+  const aphelion = v1 - v("ice-departure-dv");
+  const perihelion = v2 + v("ice-vinf");
+  const atDeparture = inclinedTransfer(mu, r1, r2, tilt, 0, Math.PI * 0.999, t);
+  assert.ok(atDeparture);
+  const kick = Math.sqrt(v1 ** 2 + aphelion ** 2 - 2 * v1 * aphelion * Math.cos(tilt));
+  near(Math.sqrt(atDeparture.dv2), kick, 0.01, "kick with the plane change");
+  near(Math.sqrt(atDeparture.vinf2), v("ice-vinf"), 0.01, "arrival in plane");
+  near(Math.abs(atDeparture.kickTilt), aphelion * Math.sin(tilt), 0.01, "kick out of plane");
+  assert.ok(Math.abs(atDeparture.vinfTilt) < 1e-6 * v("ice-vinf"), "no tilt at arrival");
+  // Leave just past the crossing and arrive at the other: the transfer lies in Ceres's plane, so
+  // the kick is Hohmann's and the whole plane change arrives at Venus.
+  const atArrival = inclinedTransfer(mu, r1, r2, tilt, Math.PI * 0.001, Math.PI, t);
+  assert.ok(atArrival);
+  const arrival = Math.sqrt(perihelion ** 2 + v2 ** 2 - 2 * perihelion * v2 * Math.cos(tilt));
+  near(Math.sqrt(atArrival.dv2), v("ice-departure-dv"), 0.01, "kick in plane");
+  near(Math.sqrt(atArrival.vinf2), arrival, 0.01, "arrival with the plane change");
+  assert.ok(Math.abs(atArrival.kickTilt) < 1e-6 * v("ice-departure-dv"), "no tilt in the kick");
+  near(Math.abs(atArrival.vinfTilt), perihelion * Math.sin(tilt), 0.01, "arrival out of plane");
+  // In the schedule, most of the plane change is left to the catch.
+  assert.ok(v("ice-vinf-tilt") > 3 * v("ice-kick-tilt"));
+  // Point inversion through the Sun: half a turn on, the same transfer, mirrored.
+  const a = inclinedTransfer(mu, r1, r2, tilt, 0.7, 3.4, 0.9 * t);
+  const b = inclinedTransfer(mu, r1, r2, tilt, 0.7 + Math.PI, 3.4 + Math.PI, 0.9 * t);
+  assert.ok(a && b);
+  near(a.dv2, b.dv2, 1e-9, "inverted kick");
+  near(a.vinf2, b.vinf2, 1e-9, "inverted arrival");
+});
+
+/** The off-window table the schedule replaced: each launch phase's cheapest transfer, by angle. */
+function offWindowReference(mu: number, r1: number, r2: number, vEscape: number) {
+  const v1 = Math.sqrt(mu / r1);
+  const n2 = Math.sqrt(mu / r2 ** 3);
+  const P2 = (2 * Math.PI) / n2;
+  const h = hohmann(mu, r1, r2);
+  const best = h.departDv ** 2 + vEscape ** 2;
+  const cost = (phase: number, angle: number) => {
+    const theta = (angle * Math.PI) / 180;
+    const lead =
+      (((theta - (phase * Math.PI) / 180) % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+    let least = Number.POSITIVE_INFINITY;
+    for (let t = lead / n2; t <= 2 * h.time; t += P2) {
+      const sol = t > 0 ? lambert(mu, r1, r2, theta, t) : null;
+      if (sol) least = Math.min(least, sol.v1[0] ** 2 + (sol.v1[1] - v1) ** 2 + vEscape ** 2);
+    }
+    return least;
+  };
+  const costs: number[] = [];
+  for (let phase = 0; phase < 360; phase += 5) {
+    let at = 180;
+    let least = Number.POSITIVE_INFINITY;
+    for (let angle = 20; angle <= 340; angle += 4) {
+      const c = cost(phase, angle);
+      if (c < least) [least, at] = [c, angle];
+    }
+    for (let angle = at - 4; angle <= at + 4; angle += 0.5)
+      least = Math.min(least, cost(phase, angle));
+    costs.push(least / best - 1);
+  }
+  return { max: Math.max(...costs), mean: costs.reduce((x, y) => x + y, 0) / costs.length };
+}
+
+test("the launch schedule: free timing is the old off-window table, and arrivals can be even", () => {
+  const base = {
+    mu: v("sun-mu"),
+    r1: v("ceres-orbit"),
+    r2: v("venus-orbit"),
+    vEscape: v("ceres-escape"),
+    inclination: 0,
+  };
+  // With room for every phase in any slot, each phase takes its cheapest transfer: the same
+  // average and worst case as sweeping transfer angles phase by phase.
+  const free = launchSchedule({ ...base, peak: SCHEDULE_SLOTS });
+  const reference = offWindowReference(base.mu, base.r1, base.r2, base.vEscape);
+  const extra = (s: { energy: number; hohmann: number }, e = s.energy) => e / s.hohmann - 1;
+  assert.ok(Math.abs(extra(free) - reference.mean) < 0.003, `${extra(free)} vs ${reference.mean}`);
+  assert.ok(Math.abs(extra(free, free.energyMax) - reference.max) < 0.01);
+  // Left free, the cheapest transfers bunch: many phases land in one slot.
+  assert.ok(free.peak >= 8, `free peak ${free.peak}`);
+  // Peak 1: every slot gets exactly one phase, so arrivals are as even as launches, at a price.
+  const even = launchSchedule({ ...base, peak: 1 });
+  assert.equal(even.peak, 1);
+  assert.equal(even.flights.length, SCHEDULE_SLOTS);
+  assert.ok(extra(even) > 4 * extra(free), "even arrivals cost far more launch energy");
+  // The model's schedule: never more than the chosen peak in a slot, and the Ring is built for it.
+  const peak = v("ice-arrival-peak");
+  const model = launchSchedule({
+    ...base,
+    inclination: (v("ice-mutual-inclination") * Math.PI) / 180,
+    peak,
+  });
+  assert.ok(model.peak <= peak);
+  assert.ok(Math.abs(v("ice-catch-peak") / v("ice-throughput") - model.peak) < 1e-9);
+  assert.ok(v("ring-power-peak") > v("ring-power"));
+  // The tilt costs launch energy and arrival speed.
+  assert.ok(v("launch-offwindow-mean") > v("launch-coplanar-mean"));
+  assert.throws(() => launchSchedule({ ...base, peak: 2.5 }), /whole number/);
+});
+
+test("booking each cycle into the slots earlier ones left free holds the peak across cycles", () => {
+  // launchSchedule solves each sampled cycle on its own, as if repeated. Ceres moves on between
+  // cycles, so a real plan books each cycle's launches into the arrival slots still free. That
+  // keeps the peak exactly, and costs about what the model charges.
+  const [mu, r1, r2, esc] = [v("sun-mu"), v("ceres-orbit"), v("venus-orbit"), v("ceres-escape")];
+  const tilt = (v("ice-mutual-inclination") * Math.PI) / 180;
+  const peak = v("ice-arrival-peak");
+  const n = SCHEDULE_SLOTS;
+  const [n1, n2] = [Math.sqrt(mu / r1 ** 3), Math.sqrt(mu / r2 ** 3)];
+  const slot = (2 * Math.PI) / (n2 - n1) / n;
+  const h = hohmann(mu, r1, r2);
+  const [lo, hi] = SCHEDULE_WINDOW.map((x) => Math.round((x * h.time) / slot)) as [number, number];
+  const booked = new Map<number, number>();
+  const [cycles, warm] = [8, 2];
+  let [energy, count] = [0, 0];
+  for (let c = 0; c < cycles; c++) {
+    const columns: number[] = [];
+    for (let a = c * n + lo; a <= (c + 1) * n + hi; a++)
+      for (let k = booked.get(a) ?? 0; k < peak; k++) columns.push(a);
+    const cost = new Float64Array(n * columns.length).fill(1e30);
+    for (let i = 0; i < n; i++) {
+      const launch = c * n + i;
+      const u = n1 * launch * slot;
+      columns.forEach((a, k) => {
+        if (a - launch < lo || a - launch > hi) return;
+        const x = inclinedTransfer(mu, r1, r2, tilt, u, n2 * a * slot, (a - launch) * slot);
+        if (x) cost[i * columns.length + k] = x.dv2 + esc ** 2;
+      });
+    }
+    const pick = assign(cost, n, columns.length);
+    for (let i = 0; i < n; i++) {
+      const a = columns[pick[i] as number] as number;
+      booked.set(a, (booked.get(a) ?? 0) + 1);
+      const e = cost[i * columns.length + (pick[i] as number)] as number;
+      assert.ok(e < 1e30);
+      if (c >= warm) [energy, count] = [energy + e, count + 1];
+    }
+  }
+  assert.ok(Math.max(...booked.values()) <= peak);
+  const rolling = energy / count / (h.departDv ** 2 + esc ** 2) - 1;
+  assert.ok(
+    Math.abs(rolling - v("launch-offwindow-mean")) < 0.015,
+    `booked cycle by cycle ${rolling}, model ${v("launch-offwindow-mean")}`,
+  );
+});
+
+test("the slowest transfer from Ceres's drifted orbit sets the last launch", () => {
+  assert.equal(v("ice-launch-end"), v("deadline") - v("ice-flight-max") - v("ice-lowering-margin"));
+  assert.equal(v("last-arrival"), v("ice-launch-end") + v("ice-flight-max"));
+  assert.ok(v("last-arrival") <= v("deadline") - v("ice-lowering-margin") + 1e-9);
+  // The slowest transfer is the drifted schedule's, slower than Hohmann's and than any from the
+  // starting orbit's fastest.
+  const drifted = launchSchedule({
+    mu: v("sun-mu"),
+    r1: v("ceres-drift-orbit"),
+    r2: v("venus-orbit"),
+    vEscape: v("ceres-escape"),
+    inclination: (v("ice-mutual-inclination") * Math.PI) / 180,
+    peak: v("ice-arrival-peak"),
+  });
+  assert.equal(v("ice-flight-max"), (drifted.flights.at(-1) as number) / 86_400);
+  assert.ok(v("ice-flight-max") > v("ice-transfer-days"));
+  assert.ok(v("ceres-drift-orbit") > v("ceres-orbit"));
+  // Twice the ice: twice the recoil, a wider orbit, slower transfers, an earlier last launch.
+  const heavy = run({ "ice-mass": 2 * v("ice-mass") });
+  const h = (id: string) => heavy.get(id).value;
+  assert.ok(h("ceres-drift-orbit") > v("ceres-drift-orbit"));
+  assert.ok(h("ice-flight-max") > v("ice-flight-max"));
+  assert.ok(h("ice-launch-end") < v("ice-launch-end"));
+  assert.equal(h("ice-launch-end"), h("deadline") - h("ice-flight-max") - h("ice-lowering-margin"));
+});
+
+test("the Ring must have caught the ice it lowers, and be built before the first Brick", () => {
+  assert.equal(r.checks.get("ice-arrives")?.pass, true);
+  assert.equal(r.checks.get("ring-ready-for-ice")?.pass, true);
+  // Ending the lowering before the last Brick arrives fails, and so does starting it so early
+  // that the lowering outruns the catch.
+  const late = run({ "lowering-end": v("last-arrival") - 30 });
+  assert.equal(late.checks.get("ice-arrives")?.pass, false);
+  const early = run({ "lowering-start": v("first-catch") + 30 });
+  assert.equal(early.checks.get("ice-arrives")?.pass, false);
+  // A Ring finished after the fastest Brick arrives fails its check.
+  const slow = run({ "ring-complete": v("first-catch") + 30 });
+  assert.equal(slow.checks.get("ring-ready-for-ice")?.pass, false);
+  // The catch as it ramps: nothing before the first Brick, all of it by the last, and the share
+  // the check reads when lowering begins.
+  const caught = iceCatch(v);
+  assert.equal(caught.share(v("first-catch") - 1e-6), 0);
+  assert.equal(caught.share(v("last-arrival")), 1);
+  assert.equal(caught.share(v("lowering-start")), v("ice-caught-at-lowering"));
+  assert.equal(Math.min(...caught.turns), v("first-catch"));
+  assert.equal(Math.max(...caught.turns), v("last-arrival"));
+  // The caught share rises from nothing to all of the ice.
+  const [a, b] = [v("ice-launch-start"), v("ice-launch-end")];
+  const first = [300, 400];
+  const last = [350, 500];
+  assert.equal(caughtShare(a + 299, a, b, first, last), 0);
+  assert.equal(caughtShare(b + 500, a, b, first, last), 1);
+  assert.ok(caughtShare((a + b) / 2 + 400, a, b, first, last) > 0.4);
 });
 
 test("the simulated atmosphere cools, rains out, freezes and warms in order", () => {

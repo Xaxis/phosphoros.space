@@ -15,8 +15,8 @@
   authors: Williams, D. R. (NASA Goddard Space Flight Center, NSSDCA)
   year: 2024
   url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html
-  checked: 2026-11-20
-  note: Mass, radius, orbit, atmosphere mass and composition, surface temperature and pressure, rotation.
+  checked: 2026-11-21
+  note: Mass, radius, orbit (with its J2000 inclination and ascending node), atmosphere mass and composition, surface temperature and pressure, rotation.
 - id: nasa-earth-factsheet
   kind: data
   title: Earth Fact Sheet
@@ -105,8 +105,8 @@
   title: "JPL Small-Body Database: 1 Ceres"
   authors: NASA Jet Propulsion Laboratory, Solar System Dynamics
   url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=1
-  checked: 2026-11-20
-  note: Ceres's semi-major axis, aphelion and inclination.
+  checked: 2026-11-21
+  note: Ceres's semi-major axis, aphelion, inclination and ascending node (J2000 ecliptic, osculating at JD 2461200.5).
 - id: park-2016-ceres
   kind: paper
   title: "A partially differentiated interior for (1) Ceres deduced from its gravity field and shape"
