@@ -2,9 +2,10 @@
 
 A [40,540 km](../numbers.md#ring-circumference) orbital ring [400 km](../numbers.md#ring-altitude) above
 Venus catches every Brick the [Ice Train](ice-train.md) throws. Its sleds brake each one from
-[13.5 km/s](../numbers.md#ring-arrival-speed) to orbital speed and turn the motion into electricity
-instead of heat: [5.3 × 10²⁷ J](../numbers.md#ring-recovered-energy) over the campaign,
-[7.5 × 10¹⁹ W](../numbers.md#ring-power) at the full catch rate. Two parts of it do not work yet, and both
+[18.2 km/s](../numbers.md#ring-arrival-speed) to orbital speed and turn the motion into electricity
+instead of heat: [1.1 × 10²⁸ J](../numbers.md#ring-recovered-energy) over the campaign,
+[2.2 × 10²⁰ W](../numbers.md#ring-power) on average and [6.5 × 10²⁰ W](../numbers.md#ring-power-peak) at the
+peak of each cycle, when arrivals bunch. Two parts of it do not work yet, and both
 are open problems: nothing holds the Ring against the catch's net push ([below](#catching)), and lowering
 the caught ice to the surface on tethers, as designed, needs far more lift than the rotor has
 ([below](#lowering-the-open-problem)).
@@ -41,36 +42,36 @@ what the Ring can do and what it cannot.
 Every Brick arrives from the same direction, overtaking Venus from behind along its orbit (see
 [falling to Venus](ice-train.md#falling-to-venus)). Aimed to pass one side of the planet or the other, it
 skims the Ring's height going one way round or the other. A sled on a catcher track about
-[140 km](../numbers.md#ring-track-length) long takes it at [13.5 km/s](../numbers.md#ring-arrival-speed),
+[290 km](../numbers.md#ring-track-length) long takes it at [18.2 km/s](../numbers.md#ring-arrival-speed),
 brakes it at [50 g](../numbers.md#ring-catch-accel) to orbital speed and releases it into a parking belt
 beside the Ring. The belt has two lanes, because eastbound and westbound Bricks end up orbiting in
 opposite directions and must never share one. The sled's linear motor runs as a generator, so the braking makes electricity.
 
-Each kilogram gives up [66.4 MJ/kg](../numbers.md#ring-catch-energy-per-kg) of motion. At
-[80%](../numbers.md#ring-recovery-efficiency) the Ring recovers [53 MJ/kg](../numbers.md#ring-recovered-per-kg)
-as electricity. The rest heats the tracks, [1.9 × 10¹⁹ W](../numbers.md#ring-catch-loss-power) at the full
-catch rate, and is radiated from [3.3 × 10¹³ m²](../numbers.md#ring-radiator-area) of radiators on the stator.
+Each kilogram gives up [140 MJ/kg](../numbers.md#ring-catch-energy-per-kg) of motion. At
+[80%](../numbers.md#ring-recovery-efficiency) the Ring recovers [110 MJ/kg](../numbers.md#ring-recovered-per-kg)
+as electricity. The rest heats the tracks, [5.4 × 10¹⁹ W](../numbers.md#ring-catch-loss-power) at the full
+catch rate, and is radiated from [9.5 × 10¹³ m²](../numbers.md#ring-radiator-area) of radiators on the stator.
 About [28%](../numbers.md#ring-fin-venus-share) of their light falls on Venus, an open problem shared with
 the receivers ([Risks](../risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)).
 
-Braking pushes on the tracks along the Ring with [9.1 × 10¹⁵ N](../numbers.md#ring-braking-force) at the
+Braking pushes on the tracks along the Ring with [6.5 × 10¹⁶ N](../numbers.md#ring-braking-force) at the
 full rate, far more than the rotor's [3.0 × 10¹³ N](../numbers.md#ring-lift) of lift. Version 2 caught
 half the Bricks eastbound and half westbound so the two pushes would cancel. They cancel the twist on the
 Ring, not the force. Every Brick arrives from the same direction, and the two streams graze the Ring at
 mirror-image points, each turned half its path's bend away from that direction (the path's eccentricity
 is [2.64](../numbers.md#ring-approach-eccentricity)). Their sideways pushes cancel; their forward pushes
-add, to [8.4 × 10¹⁵ N](../numbers.md#ring-net-braking-force) along Venus's orbital motion,
-[280](../numbers.md#ring-net-overload) times the rotor's lift. An orbital ring has no stiff way to hand
+add, to [6.0 × 10¹⁶ N](../numbers.md#ring-net-braking-force) along Venus's orbital motion,
+[2,000](../numbers.md#ring-net-overload) times the rotor's lift. An orbital ring has no stiff way to hand
 an in-plane force to the planet, so the model's `ring-net-force` check fails until a design does
 ([issue #3](https://github.com/Xaxis/phosphoros.space/issues/3)).
 
 ### The energy loop
 
-The Ring recovers [7.5 × 10¹⁹ W](../numbers.md#ring-power), more than the
-[6.7 × 10¹⁹ W](../numbers.md#railhead-power) the Railheads draw on Ceres. The model checks this on every
+The Ring recovers [2.2 × 10²⁰ W](../numbers.md#ring-power), more than the
+[1.1 × 10²⁰ W](../numbers.md#railhead-power) the Railheads draw on Ceres. The model checks this on every
 run (the `ring-energy-loop` check in [calc/src/model/ring.ts](../../calc/src/model/ring.ts)). The surplus
 is not free: it is gravity's work on the falling ice,
-[4.3 × 10²⁷ J](../numbers.md#ice-solar-gain), explained in
+[1.1 × 10²⁸ J](../numbers.md#ice-solar-gain), explained in
 [the Ice Train](ice-train.md#why-the-ring-gets-back-more-than-the-railheads-spend).
 
 <!-- figure:energy-sankey -->
@@ -82,7 +83,7 @@ would lose half of it in the lasers ([50%](../numbers.md#helios-laser-efficiency
 rest in the receivers ([75%](../numbers.md#helios-receiver-efficiency)). Instead the Ring's power runs
 down the tethers to Venus's own systems, and the [Helios Lattice](helios.md), which already beams to Ceres,
 keeps doing so. The day-by-day [simulation](../plan.md#the-simulated-atmosphere) counts it exactly this
-way: from [September 2034](../numbers.md?date=month#ring-pays-from), Venus gets the Lattice's power plus the
+way: from [July 2034](../numbers.md?date=month#ring-pays-from), Venus gets the Lattice's power plus the
 Ring's, less what the Railheads take.
 
 ### Why the ice must not simply fall
@@ -92,7 +93,7 @@ bring [9.5 × 10²⁷ J](../numbers.md#ring-free-fall-impact) of heat. That i
 [18](../numbers.md#ring-free-fall-vs-atmosphere) times all the heat the
 [Photonic Exhaust](exhaust.md) spends years pumping out of the air
 ([5.3 × 10²⁶ J](../numbers.md#atmosphere-heat)), and more than the Lattice delivers in the whole campaign
-([9.2 × 10²⁷ J](../numbers.md#helios-supply)). Braking in the air is the same disaster, slower:
+([1.3 × 10²⁸ J](../numbers.md#helios-supply)). Braking in the air is the same disaster, slower:
 aerobraking turns motion into heat in the atmosphere. The Ring takes the motion out above the air, as
 electricity.
 
@@ -105,14 +106,14 @@ weighs [1.0 × 10¹³ kg](../numbers.md#ring-mass) in all. The rotor is built
 controlled breakpoints, so a failure sheds a segment rather than unzipping the loop. The stator carries
 the catcher tracks, the Lattice's receivers and the tether heads. Its own
 [3.0 × 10¹² kg](../numbers.md#ring-stator-mass) counts the tracks, tether heads and cables. The receivers,
-their fins and the catch's radiators add [3.1 × 10¹³ kg](../numbers.md#ring-equipment-mass),
-[7.9](../numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator: an open
+their fins and the catch's radiators add [4.8 × 10¹³ kg](../numbers.md#ring-equipment-mass),
+[12](../numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator: an open
 problem ([Risks](../risks.md#the-ring-cannot-carry-its-receivers)).
 
 ### The power hub
 
 The Lattice's beams arrive at receivers on the stator at [10 MW/m²](../numbers.md#helios-receiver-intensity).
-Their loss heat, [2.8 × 10¹⁹ W](../numbers.md#helios-receiver-loss), radiates from fins at
+Their loss heat, [4.0 × 10¹⁹ W](../numbers.md#helios-receiver-loss), radiates from fins at
 [1,500 K](../numbers.md#helios-fin-temp), above the air, and part of it falls on Venus. Superconducting cables carry the power, the
 Lattice's and the Ring's own, down the tethers to the Exhaust canopies above the clouds. Until the Ring is
 complete, receivers on the canopies carry the load ([Helios Lattice](helios.md#design)).
@@ -122,8 +123,8 @@ complete, receivers on the canopies carry the load ([Helios Lattice](helios.md#d
 Braking at [50 g](../numbers.md#ring-catch-accel) would load a bare Brick with
 [46 MPa](../numbers.md#brick-catch-stress), more than cold ice can bear, so each sled cradles its Brick
 along its whole length, as the sabot did at launch. Each Brick brakes for
-[13 s](../numbers.md#ring-catch-time), so at the full rate [19,000](../numbers.md#ring-bricks-braking) of them are
-on the tracks at once. End to end they would fill [15](../numbers.md#ring-tracks-min) tracks
+[23 s](../numbers.md#ring-catch-time), so at the full rate [130,000](../numbers.md#ring-bricks-braking) of them are
+on the tracks at once. End to end they would fill [48](../numbers.md#ring-tracks-min) tracks
 ([correction](../about.md#corrections)), and sleds need gaps, so the Ring carries more than that side by side
 around its circumference.
 
@@ -172,7 +173,7 @@ Three options are under study, and none is free.
    [150](../numbers.md#lowering-overload) times as long as the plan allows: centuries, not months.
 3. **A far heavier or faster rotor.** Lift grows with the rotor's mass and with how far its speed exceeds
    orbital speed. Closing the gap by mass alone needs a rotor heavier than the whole Foundry at full scale
-   ([6.7 × 10¹³ kg](../numbers.md#foundry-final-mass)); by speed alone, a rotor many times
+   ([1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass)); by speed alone, a rotor many times
    faster, storing many times the energy.
 
 A mix of the three may do better than any one. Meanwhile the energy budget is unchanged, because it never
@@ -188,11 +189,11 @@ the tethers work: the heat it counts from the falling ice is the fall from
 | Altitude and circumference | [400 km](../numbers.md#ring-altitude), [40,540 km](../numbers.md#ring-circumference) |
 | Rotor speed | [10 km/s](../numbers.md#ring-rotor-speed) (orbital speed [7.1 km/s](../numbers.md#ring-orbital-speed)) |
 | Mass | [1.0 × 10¹³ kg](../numbers.md#ring-mass) (rotor [7.0 × 10¹² kg](../numbers.md#ring-rotor-mass), stator [3.0 × 10¹² kg](../numbers.md#ring-stator-mass)) |
-| Catcher tracks | About [140 km](../numbers.md#ring-track-length) long, braking at [50 g](../numbers.md#ring-catch-accel) |
-| Brick arrival | [13.5 km/s](../numbers.md#ring-arrival-speed) |
-| Energy recovered | [66.4 MJ/kg](../numbers.md#ring-catch-energy-per-kg) of motion, [53 MJ/kg](../numbers.md#ring-recovered-per-kg) as electricity |
-| Recovered power | [7.5 × 10¹⁹ W](../numbers.md#ring-power) at full rate |
-| Braking force | [9.1 × 10¹⁵ N](../numbers.md#ring-braking-force); east and west catches cancel the twist, not the force |
+| Catcher tracks | About [290 km](../numbers.md#ring-track-length) long, braking at [50 g](../numbers.md#ring-catch-accel) |
+| Brick arrival | [18.2 km/s](../numbers.md#ring-arrival-speed) |
+| Energy recovered | [140 MJ/kg](../numbers.md#ring-catch-energy-per-kg) of motion, [110 MJ/kg](../numbers.md#ring-recovered-per-kg) as electricity |
+| Recovered power | [2.2 × 10²⁰ W](../numbers.md#ring-power) at full rate |
+| Braking force | [6.5 × 10¹⁶ N](../numbers.md#ring-braking-force); east and west catches cancel the twist, not the force |
 | Without the Ring | Ice would hit at [13.8 km/s](../numbers.md#ring-free-fall-speed) and dump [9.5 × 10²⁷ J](../numbers.md#ring-free-fall-impact) of heat, [18](../numbers.md#ring-free-fall-vs-atmosphere) times the air's |
 | Tether lifts | [3,000](../numbers.md#ring-tether-lifts), each lowering a Brick every [1.4 s](../numbers.md#tether-interval) |
 <!-- /table -->
@@ -218,12 +219,12 @@ the tethers work: the heat it counts from the falling ice is the fall from
 - **[November 2032](../numbers.md?date=month#ring-affordable):** The growing
   [Ouroboros Foundry](ouroboros.md) could now build the whole Ring in one doubling, but every kilogram it spends
   on the Ring it does not add to itself, so it keeps growing.
-- **[22 July 2033](../numbers.md?date=day#ring-build-begin):** With the Lattice finished, the full Foundry turns to
-  the Ring and builds it in [13 d](../numbers.md#ring-build-days). The parts coast from Mercury, and the last reach
-  Venus on [19 October 2033](../numbers.md?date=day#ring-delivered) ([check](../numbers.md#check-foundry-builds-ring)).
+- **[28 August 2033](../numbers.md?date=day#ring-build-begin):** With the Lattice finished, the full Foundry turns to
+  the Ring and builds it in [6.4 d](../numbers.md#ring-build-days). The parts coast from Mercury, and the last reach
+  Venus on [18 November 2033](../numbers.md?date=day#ring-delivered) ([check](../numbers.md#check-foundry-builds-ring)).
 - **[December 2033](../numbers.md?date=month#ring-complete):** The Ring is complete and takes the Lattice's
   receivers from the canopies.
-- **[September 2034](../numbers.md?date=month#first-catch):** The first Bricks arrive and the Ring starts
+- **[July 2034](../numbers.md?date=month#first-catch):** The first Bricks arrive and the Ring starts
   catching. From now its electricity powers Venus's systems.
 - **[June 2035](../numbers.md?date=month#lowering-start):** Lowering was to begin. It waits on the open
   problem; until then the catch stays parked.

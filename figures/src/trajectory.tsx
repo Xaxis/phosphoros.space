@@ -1,5 +1,5 @@
 /**
- * The simulated atmosphere, 2033 to 2036: air temperature, and surface pressure with the CO₂ and
+ * The simulated atmosphere, day by day: air temperature, and surface pressure with the CO₂ and
  * oxygen in it, as two small multiples on one time axis. Drawn from the model's day-by-day run.
  */
 import type { Registry } from "@phosphoros/calc/registry";
@@ -61,7 +61,7 @@ function Trajectory(p: Props) {
   return (
     <Frame
       id="trajectory"
-      title="The simulated atmosphere, 2033 to 2036"
+      title="The simulated atmosphere, day by day"
       desc={`Day-by-day simulation. The air cools from ${p.ends.start} to the CO₂ frost point, then warms to ${p.ends.finish}; surface pressure falls to ${p.ends.total}. Earth-like on ${p.earthLike.when}.`}
       height={H}
     >

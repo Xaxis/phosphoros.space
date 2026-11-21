@@ -4,7 +4,7 @@
 [64 km](../numbers.md#chimney-height) tall, carry the heat of Venus's deep air up to the Exhaust canopies at
 [1.3 × 10¹⁵ W](../numbers.md#chimney-heat) each, [1.3 × 10¹⁹ W](../numbers.md#chimney-capacity) in all. Fans draw
 the hot air through heat exchangers; sealed liquid loops lift the heat; the cooled air sinks and stays down.
-They work from [May 2033](../numbers.md?date=month#cooling-start) until the CO₂ is down.
+They work from [April 2034](../numbers.md?date=month#cooling-start) until the CO₂ is down.
 
 <!-- figure:heat-path -->
 ![Venus's heat path, in cross-section](../../figures/svg/heat-path.svg)
@@ -79,13 +79,13 @@ on a grid about [215 km](../numbers.md#chimney-spacing) apart. Together they ca
 [6.0 × 10¹⁸ W](../numbers.md#deep-heat-peak) design peak of deep heat flow. The day-by-day
 [simulation](../plan.md#the-simulated-atmosphere) never removes heat faster than the chimneys can lift it, and
 it uses that margin: in its fastest weeks it hits the limit, [1.3 × 10¹⁹ W](../numbers.md#traj-heat-peak), and
-the chimneys rather than the power set the pace on [56 d](../numbers.md#traj-chimney-days).
+the chimneys rather than the power set the pace on [160 d](../numbers.md#traj-chimney-days).
 
 **Life cycle.** The chimneys are built from the canopies down from late 2032, as the Veil closes, and run hardest from
-[May 2033](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
-[July 2034](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
+[April 2034](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
+[January 2035](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
 CO₂ forms on them and drains to the basins. As the CO₂ rains out the air thins, the canopies float lower and the
-towers are shortened. They retire once the CO₂ is down, in [July 2036](../numbers.md?date=month#traj-cold), and
+towers are shortened. They retire once the CO₂ is down, in [March 2036](../numbers.md?date=month#traj-cold), and
 their carbon goes into the cryo-continent caps.
 
 ## Specifications
@@ -129,15 +129,15 @@ describe the air drawn through the intake and the heat taken from it.
 
 - **[1 December 2032](../numbers.md?date=day#veil-close):** The Veil closes. Canopies float at the cloud tops and the
   chimneys are lowered from them to their ground anchors.
-- **[3 May 2033](../numbers.md?date=day#cooling-start):** Active cooling begins. The chimneys feed the Exhaust as
+- **[5 April 2034](../numbers.md?date=day#cooling-start):** Active cooling begins. The chimneys feed the Exhaust as
   fast as the growing Lattice can pay for pumping.
-- **[July 2033](../numbers.md?date=month#ice-launch-start):** The Railheads on Ceres take most of the Lattice's
+- **[August 2033](../numbers.md?date=month#ice-launch-start):** The Railheads on Ceres take most of the Lattice's
   power; cooling slows until the Ring pays for them.
-- **[23 July 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
+- **[22 January 2035](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
   critical temperature and the exchangers start condensing liquid CO₂.
-- **[16 September 2034](../numbers.md?date=day#ring-pays-from):** The Ring pays for the Railheads and the Exhaust runs at
+- **[3 July 2034](../numbers.md?date=day#ring-pays-from):** The Ring pays for the Railheads and the Exhaust runs at
   its limit, with the chimneys lifting heat well above the design peak.
-- **[3 July 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
+- **[30 March 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
   apart.
 - **[1 September 2036](../numbers.md?date=day#cooling-end):** Active cooling ends.
 

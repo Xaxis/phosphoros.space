@@ -77,7 +77,7 @@ Foundry does not add to itself, so the Veil is built later, when the Foundry is 
 [9.8 d](../numbers.md#veil-diversion-days). Its last parts leave Mercury on
 [16 September 2032](../numbers.md?date=day#veil-build-end) and coast [76 d](../numbers.md#mercury-venus-transfer-days)
 to L1, and the Veil closes on [1 December 2032](../numbers.md?date=day#veil-close), months before active cooling
-begins in [May 2033](../numbers.md?date=month#cooling-start).
+begins in [April 2034](../numbers.md?date=month#cooling-start).
 
 ## Design
 
@@ -167,7 +167,7 @@ The Veil stays after 2036 as the planet's thermostat.
 - **[16 September 2032](../numbers.md?date=day#veil-build-end):** The last slats leave Mercury, after the Foundry
   stops growing for [9.8 d](../numbers.md#veil-diversion-days) to make them.
 - **[1 December 2032](../numbers.md?date=day#veil-close):** The Veil closes over Venus.
-- **[May 2033](../numbers.md?date=month#cooling-start):** Active cooling begins under the closed Veil.
+- **[April 2034](../numbers.md?date=month#cooling-start):** Active cooling begins under the closed Veil.
 - **[June 2034](../numbers.md?date=month#aegis-online):** The Aegis coil switches on beside it.
 - **[2 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed and the Veil opens to its day setting.
   The air warms to Earth-like temperatures within days.

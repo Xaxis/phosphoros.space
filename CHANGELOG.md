@@ -58,7 +58,23 @@ corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the 
   the Ring against it; the finish is set by the oxygen, not by the warmth; build sequences follow the
   simulated dates; the Foundry's target is computed from the Lattice and the Ring it builds next, so a
   larger Lattice grows the Foundry; Exhaust-1 must measure light the air above the canopies lets through;
-  and the risks table lists all three open problems.
+  and the risks table lists every open problem.
+- A second review of the model against its own physics. The heat pumps are charged as real
+  machines, at half the Carnot limit, not the reversible minimum, and the chimney fans' heat is
+  counted ([#17](https://github.com/Xaxis/phosphoros.space/issues/17)); the emitters run cooler, so
+  the Exhaust grows, and the Lattice grows to drive it. The hardware at Venus (the Exhaust's tiles,
+  the chimneys, the receivers and the Lanterns) is weighed and built after the Ring, and cooling
+  waits for it ([#18](https://github.com/Xaxis/phosphoros.space/issues/18)). Every Brick flies its
+  own transfer, solved by Lambert's method out of Ceres's tilted orbit as the recoil pushes it out,
+  so launches cost more and the Bricks reach the Ring faster
+  ([#16](https://github.com/Xaxis/phosphoros.space/issues/16)); the simulation takes the Ring's
+  power day by day as the Bricks arrive. Every computed number carries the weakest basis among its
+  inputs ([#19](https://github.com/Xaxis/phosphoros.space/issues/19)). Every Explorer slider runs
+  the model end to end or stops with a sentence that says why.
+- Two more open problems: the fins that shed the receivers' and the Ring's loss heat shine part of
+  it onto Venus ([#14](https://github.com/Xaxis/phosphoros.space/issues/14)), and the Ring cannot
+  carry the receivers the plan hangs on it
+  ([#15](https://github.com/Xaxis/phosphoros.space/issues/15)).
 - The site, phosphoros.space, renders every page from the docs in this repository, and the
   Explorer runs the model in the browser so anyone can change an assumption and see what follows.
 

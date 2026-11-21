@@ -133,7 +133,7 @@ fibre than the Foundry ever builds ([corrections](../about.md#corrections)).
 - **[December 2032](../numbers.md?date=month#veil-close):** The Veil closes near L1. The coil is built at the
   same station from Foundry parts.
 - **[June 2034](../numbers.md?date=month#aegis-online):** The coil is charged and the bubble inflates.
-- **[September 2034](../numbers.md?date=month#first-catch):** The first water arrives at Venus, already
+- **[July 2034](../numbers.md?date=month#first-catch):** The first water arrives at Venus, already
   under the shield.
 - **After 2036:** Aegis keeps running on its persistent current, for as long as Venus keeps its oceans.
 

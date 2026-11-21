@@ -173,17 +173,6 @@ export function heliosSchedule(r: Registry) {
     () => v("foundry-full-scale") + v("lattice-build-days"),
   );
   r.q(
-    "cooling-start",
-    {
-      label: "Active cooling begins: the Lattice's first power reaches Venus",
-      unit: "date",
-      formula: "the Foundry's full-scale date",
-      basis: "invented",
-      note: "The Exhaust can pump only as fast as the Lattice powers it, and the Lattice is built once the Foundry stops growing.",
-    },
-    () => v("foundry-full-scale"),
-  );
-  r.q(
     "helios-supply-years",
     {
       label: "Years of full Lattice power before the deadline",

@@ -1,7 +1,7 @@
 /**
  * CO₂ phase diagram with the cooling path the simulation follows: log pressure against temperature,
  * the sublimation, vapour and melting curves from the model's physics, and the air's CO₂ partial
- * pressure from 2033 to 2036 drawn over them.
+ * pressure from the simulation drawn over them.
  */
 import {
   co2LiquidPressure,

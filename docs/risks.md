@@ -8,18 +8,18 @@ no engineering can answer: whether Venus should be changed at all, who decides, 
 | Risk | What goes wrong | Safeguard |
 | --- | --- | --- |
 | Runaway replication | Copies grow past their mandate | A hard mass budget in the Choir Mass Ledger, signed build orders, and an international kill code |
-| Beam misdirection | A beam carrying [8.5 × 10¹⁹ W](numbers.md#helios-power) hits the wrong target | Every beam fires only with a live, signed handshake from its receiver and defocuses within [1 ms](numbers.md#beam-defocus-time) once the handshake stops arriving. At the longest range the handshake is [9.8 min](numbers.md#helios-handshake-delay) old when it arrives, so light already in flight, aimed where the receiver was, still lands |
+| Beam misdirection | A beam carrying [1.2 × 10²⁰ W](numbers.md#helios-power) hits the wrong target | Every beam fires only with a live, signed handshake from its receiver and defocuses within [1 ms](numbers.md#beam-defocus-time) once the handshake stops arriving. At the longest range the handshake is [9.8 min](numbers.md#helios-handshake-delay) old when it arrives, so light already in flight, aimed where the receiver was, still lands |
 | Veil failure after cooling | Sunlight boils the CO₂ back out | [3.8 × 10⁸](numbers.md#veil-slats) independent slats that fail opaque, so a dead slat still shades, and CO₂ sealed in cryo-continents |
 | Cryo-continent breach | CO₂ escapes back into the air | [1.5 × 10⁶](numbers.md#cryo-cells) compartments of [100 km²](numbers.md#cryo-cell-area), each with its own seal and refrigeration |
 | Ceres depletion | [39%](numbers.md#ice-ceres-water-share) of Ceres's water is used and its orbit is changed for good | Agreed internationally in advance; comets from the outer belt as the fallback |
 | Native life on Venus | Cooling the planet would destroy it | The 2027 to 2028 cloud-life survey gates the Veil; a credible biosignature stops the program |
 | Weaponization | Mass drivers and power beams are also weapons | Open telemetry, inspection, and treaty oversight beyond the Outer Space Treaty |
 | The Ring cannot lower the ice as designed (open) | Tether lowering needs [150](numbers.md#lowering-overload) times the lift the rotor has to spare (an open problem in version 3) | Drop the ice from rest at the Ring and pump out the extra heat; the energy budget never counted lowering's recovered energy |
-| Nothing holds the Ring against the catch (open) | The catch leaves [8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) along Venus's orbit, [280](numbers.md#ring-net-overload) times the rotor's spare lift, and an orbital ring has no stiff way to hand it to the planet (an open problem in version 3) | None yet. Braking the ice in the air instead would turn its motion into heat, so the problem must be solved before the first catch |
-| The Exhaust's light costs more than the model charges (open) | Light in the tiles' narrow band and cone needs [12](numbers.md#exhaust-work-multiple) times the pump work the budget charges (an open problem in version 3) | Tiles that spread their light over more colours and directions while it still escapes the air; Exhaust-1 measures the real cost before any canopy is built |
-| The receivers' and the Ring's loss heat falls on Venus (open) | Fins that radiate from both faces near Venus shine [28%](numbers.md#ring-fin-venus-share) of their heat onto it, [1.3 × 10¹⁹ W](numbers.md#loss-heat-into-venus) at full power, more than the cooling can absorb (an open problem in version 3) | One-sided radiators with shielded backs facing Venus, or radiators far from the planet; the published schedule leaves this heat out until one is shown to work |
-| The Ring cannot carry its receivers (open) | The receivers, fins and catch radiators weigh [3.1 × 10¹³ kg](numbers.md#ring-equipment-mass), [7.9](numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator (an open problem in version 3) | Lighter receivers at higher beam intensity, a heavier or faster rotor, or receivers on the canopies with their heat pumped out |
-| Nothing builds the hardware at Venus in time (open) | The tiles, chimneys, receivers and Lanterns weigh [7.2 × 10¹³ kg](numbers.md#venus-hardware-mass); the full Foundry would take [93 d](numbers.md#venus-hardware-build-days) to build them, and cooling would start late (an open problem in version 3) | Lighter tiles and chimneys, or an industry at Venus that builds them from the air's own carbon |
+| Nothing holds the Ring against the catch (open) | The catch leaves [6.0 × 10¹⁶ N](numbers.md#ring-net-braking-force) along Venus's orbit, [2,000](numbers.md#ring-net-overload) times the rotor's spare lift, and an orbital ring has no stiff way to hand it to the planet (an open problem in version 3) | None yet. Braking the ice in the air instead would turn its motion into heat, so the problem must be solved before the first catch |
+| The Exhaust's light costs more than the model charges (open) | Light in the tiles' narrow band and cone needs [9.6](numbers.md#exhaust-work-multiple) times the pump work the budget charges (an open problem in version 3) | Tiles that spread their light over more colours and directions while it still escapes the air; Exhaust-1 measures the real cost before any canopy is built |
+| The receivers' and the Ring's loss heat falls on Venus (open) | Fins that radiate from both faces near Venus shine [28%](numbers.md#ring-fin-venus-share) of their heat onto it, [2.7 × 10¹⁹ W](numbers.md#loss-heat-into-venus) at full power, more than the cooling can absorb (an open problem in version 3) | One-sided radiators with shielded backs facing Venus, or radiators far from the planet; the published schedule leaves this heat out until one is shown to work |
+| The Ring cannot carry its receivers (open) | The receivers, fins and catch radiators weigh [4.8 × 10¹³ kg](numbers.md#ring-equipment-mass), [12](numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator (an open problem in version 3) | Lighter receivers at higher beam intensity, a heavier or faster rotor, or receivers on the canopies with their heat pumped out |
+| The hardware at Venus delays cooling | The tiles, chimneys, receivers and Lanterns weigh [2.1 × 10¹⁴ kg](numbers.md#venus-hardware-mass); the Foundry builds them after the Ring, in [140 d](numbers.md#venus-hardware-build-days), and cooling waits for them, so a slower build eats the [150 d](numbers.md#frost-sealing-slack) before the last caps | Lighter tiles and chimneys, or an industry at Venus that builds them from the air's own carbon |
 <!-- /table -->
 
 ## Ethics
@@ -52,16 +52,16 @@ range estimated before the Dawn mission ([McCord and Sotin 2005](sources.md#cere
 drier, the plan takes a larger share of what is there.
 
 Throwing that much mass sunward pushes Ceres the other way. Its speed changes by
-[0.76 km/s](numbers.md#ceres-recoil), which stretches its orbit. The model takes today's orbit as a circle at
+[0.78 km/s](numbers.md#ceres-recoil), which stretches its orbit. The model takes today's orbit as a circle at
 [2.77 AU](numbers.md#ceres-orbit); the push turns it into an ellipse from [2.77 AU](numbers.md#ceres-orbit) to
-[3.29 AU](numbers.md#ceres-new-aphelion) from the Sun. (The real orbit is already a little eccentric, out to
+[3.31 AU](numbers.md#ceres-new-aphelion) from the Sun. (The real orbit is already a little eccentric, out to
 [2.98 AU](numbers.md#ceres-aphelion).) Ceres stays in the asteroid belt, farther from
 Earth than before, but the change is permanent: the plan moves a world. That is not a decision one program,
 or one country, can make. The safeguard is agreement in advance, with comets
 from the outer Solar System as the fallback source of water.
 
-The new orbit stays clear of Jupiter: its farthest point is [1.66 AU](numbers.md#ceres-jupiter-gap) inside
-Jupiter's nearest, [4.7](numbers.md#ceres-jupiter-gap-hill) of Jupiter's Hill radii, and its Tisserand
+The new orbit stays clear of Jupiter: its farthest point is [1.64 AU](numbers.md#ceres-jupiter-gap) inside
+Jupiter's nearest, [4.6](numbers.md#ceres-jupiter-gap-hill) of Jupiter's Hill radii, and its Tisserand
 parameter stays above 3 ([3.21](numbers.md#ceres-tisserand)), so Jupiter cannot capture or scatter it in
 one pass. The model does not follow resonances. The new orbit sits on Jupiter's weak 9:4 resonance, and
 only a long numerical integration can show it stays stable for millions of years; that must be done before
@@ -70,7 +70,7 @@ the first shot ([Ice Train](technologies/ice-train.md#clear-of-jupiter)).
 ### Weaponization
 
 Everything that makes Phosphoros work could be used to hurt people. The Helios Lattice delivers
-[8.5 × 10¹⁹ W](numbers.md#helios-power), in beams that receivers take at
+[1.2 × 10²⁰ W](numbers.md#helios-power), in beams that receivers take at
 [10 MW/m²](numbers.md#helios-receiver-intensity). The Ice Train throws [1 Mt](numbers.md#brick-mass) Bricks
 at [6.4 km/s](numbers.md#ice-launch-speed), and their transfer orbits from Ceres to Venus cross Earth's
 orbit on the way in. The Ring's rotor stores the energy of [7.0 × 10¹² kg](numbers.md#ring-rotor-mass)
@@ -91,9 +91,9 @@ governance exists before the hardware does.
 
 A factory that copies itself every [60 d](numbers.md#foundry-doubling-days) is the plan's engine and its
 most obvious danger. The same exponential that grows a [1,000 t](numbers.md#foundry-seed-mass) seed into
-[6.7 × 10¹³ kg](numbers.md#foundry-final-mass) in [4.3 yr](numbers.md#foundry-years-to-scale) would not stop
+[1.3 × 10¹⁴ kg](numbers.md#foundry-final-mass) in [4.5 yr](numbers.md#foundry-years-to-scale) would not stop
 on its own at the mass the plan needs. At full scale the Foundry is only
-[2 × 10⁻¹⁰](numbers.md#foundry-mercury-share) of Mercury, so the limit has to be imposed; Mercury will not
+[4 × 10⁻¹⁰](numbers.md#foundry-mercury-share) of Mercury, so the limit has to be imposed; Mercury will not
 impose it.
 
 [Choir](technologies/choir.md)'s safety core imposes it in several independent ways. The Mass Ledger, an
@@ -134,21 +134,21 @@ problem is open for [contributions](contribute.md#open-questions).
 
 Also open, and also a [failing check](numbers.md#check-ring-net-force). Catching half the Bricks eastbound and half
 westbound cancels the twist the catch puts on the Ring, not its push: every Brick arrives from the same direction, so
-[8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) remains along Venus's orbital motion,
-[280](numbers.md#ring-net-overload) times the rotor's spare lift. An orbital ring has no stiff way to hand that force
+[6.0 × 10¹⁶ N](numbers.md#ring-net-braking-force) remains along Venus's orbital motion,
+[2,000](numbers.md#ring-net-overload) times the rotor's spare lift. An orbital ring has no stiff way to hand that force
 to the planet. The energy the catch recovers is real, and the budget counts it; what holds the Ring in place while it
 does is unsolved ([issue 3](https://github.com/Xaxis/phosphoros.space/issues/3)). This matters more than the
-[33%](numbers.md#budget-spare-with-ring) spare the Ring's energy adds to the budget. There is no other way to stop the
+[32%](numbers.md#budget-spare-with-ring) spare the Ring's energy adds to the budget. There is no other way to stop the
 ice above the air: braked in the atmosphere instead, the Bricks would turn their motion into
 [9.5 × 10²⁷ J](numbers.md#ring-free-fall-impact) of heat, more than the Lattice delivers in the whole campaign
-([9.2 × 10²⁷ J](numbers.md#helios-supply)). Without an answer, the water cannot be delivered as planned.
+([1.3 × 10²⁸ J](numbers.md#helios-supply)). Without an answer, the water cannot be delivered as planned.
 
 ### The Exhaust's light costs more than the model charges
 
 The [Photonic Exhaust](technologies/exhaust.md#the-cost-of-beamed-light) beams its heat away as light so concentrated
 in colour and direction that, by its entropy, it counts as at least
-[16,000 K](numbers.md#exhaust-light-temp). Pumping heat into such light takes
-[12](numbers.md#exhaust-work-multiple) times the work the budget charges, a [failing check](numbers.md#check-exhaust-entropy)
+[9,000 K](numbers.md#exhaust-light-temp). Pumping heat into such light takes
+[9.6](numbers.md#exhaust-work-multiple) times the work the budget charges, a [failing check](numbers.md#check-exhaust-entropy)
 and the biggest unpriced cost in the plan ([issue 4](https://github.com/Xaxis/phosphoros.space/issues/4)). Either the
 tiles spread their light far wider, which the thin air above the canopies must then let through, or the pumps and the
 Lattice grow several times. [Exhaust-1](research.md) must settle which: its pass mark counts only light in a band and
@@ -156,11 +156,11 @@ cone that the air above the canopies lets through.
 
 ### The receivers' and the Ring's loss heat falls on Venus
 
-The Lattice's receivers shed [2.8 × 10¹⁹ W](numbers.md#helios-receiver-loss) and the catcher tracks
-[1.9 × 10¹⁹ W](numbers.md#ring-catch-loss-power) as heat, radiated from fins and radiators on the Ring. A radiator
+The Lattice's receivers shed [4.0 × 10¹⁹ W](numbers.md#helios-receiver-loss) and the catcher tracks
+[5.4 × 10¹⁹ W](numbers.md#ring-catch-loss-power) as heat, radiated from fins and radiators on the Ring. A radiator
 that close to a planet cannot help shining on it: standing upright at the Ring's height, each face sees Venus over
 [28%](numbers.md#ring-fin-venus-share) of its sky, and on the canopies [41%](numbers.md#canopy-fin-venus-share).
-That is [1.3 × 10¹⁹ W](numbers.md#loss-heat-into-venus) falling on the planet at full power. Counted day by day, it
+That is [2.7 × 10¹⁹ W](numbers.md#loss-heat-into-venus) falling on the planet at full power. Counted day by day, it
 keeps the cooling from finishing in time ([failing check](numbers.md#check-loss-heat-fits),
 [issue 14](https://github.com/Xaxis/phosphoros.space/issues/14)); the published schedule leaves it out until a fix is
 shown. Radiators with one emitting face and a back toward Venus shielded by stacks of polished foil, as vacuum
@@ -170,30 +170,29 @@ another way to bring the power down.
 ### The Ring cannot carry its receivers
 
 The plan hangs the Lattice's receivers, their fins and the catch's radiators on the Ring's stator. At the densities
-the plan uses for the same hardware on Ceres they weigh [3.1 × 10¹³ kg](numbers.md#ring-equipment-mass),
-[7.9](numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator
+the plan uses for the same hardware on Ceres they weigh [4.8 × 10¹³ kg](numbers.md#ring-equipment-mass),
+[12](numbers.md#ring-equipment-overload) times what the rotor can hold up besides the stator
 ([failing check](numbers.md#check-ring-carries-equipment),
 [issue 15](https://github.com/Xaxis/phosphoros.space/issues/15)). Receivers at a higher beam intensity would be
 smaller; a heavier rotor is more for the Foundry to build; receivers on the canopies would put their loss heat in
 the air, where the Exhaust must pump it out.
 
-### Nothing builds the hardware at Venus in time
+### The hardware at Venus delays cooling
 
 The Exhaust's tiles and canopies, the chimneys, the receivers and their fins, and the Lanterns weigh
-[7.2 × 10¹³ kg](numbers.md#venus-hardware-mass), about as much as the whole Foundry. They must be working when cooling
-starts, and the plan does not say who builds them. The full Foundry would take
-[93 d](numbers.md#venus-hardware-build-days), and they would reach Venus on
-[18 October 2033](numbers.md?date=day#venus-hardware-ready), months after cooling is meant to start
-([failing check](numbers.md#check-venus-hardware-in-time),
-[issue 18](https://github.com/Xaxis/phosphoros.space/issues/18)). Much lighter tiles and chimneys, or an industry at
-Venus that builds them from the carbon in its air, would close the gap.
+[2.1 × 10¹⁴ kg](numbers.md#venus-hardware-mass), more than the whole Foundry. The Foundry builds them after the
+Lattice and the Ring, in [140 d](numbers.md#venus-hardware-build-days), and cooling waits until they reach Venus on
+[5 April 2034](numbers.md?date=day#venus-hardware-ready). A slower build takes its days from the
+[150 d](numbers.md#frost-sealing-slack) between the Frost Towers finishing and the last caps being sealed
+([check](numbers.md#check-frost-before-sealing)). Lighter tiles and chimneys, or an industry at Venus that builds
+them from the carbon in its air, would give that time back.
 
 ### The seas freeze slowly
 
 At the triple point the CO₂ seas give up their heat of fusion, [210 kJ/kg](numbers.md#co2-fusion-heat), while the air
 holds at [216.6 K](numbers.md#co2-triple-temp). With the emitters at their peak and the falling ice adding heat all the
-while, they are frozen through only on [15 April 2036](numbers.md?date=day#traj-frozen). The Frost Towers then finish on
-[19 July 2036](numbers.md?date=day#traj-scavenged), [44 d](numbers.md#frost-sealing-slack) before the last caps are due
+while, they are frozen through only on [13 February 2036](numbers.md?date=day#traj-frozen). The Frost Towers then finish on
+[9 April 2036](numbers.md?date=day#traj-scavenged), [150 d](numbers.md#frost-sealing-slack) before the last caps are due
 ([check](numbers.md#check-frost-before-sealing)), and seeded life greens the oceans on
 [12 December 2036](numbers.md?date=day#genesis-end), before the deadline
 ([check](numbers.md#check-genesis-by-deadline)). Both margins rest on the Exhaust reaching its full peak: at a tenth
@@ -229,7 +228,7 @@ Planetary protection is governed in practice by COSPAR's policy ([COSPAR](source
 requirements by target and mission type to keep spacecraft from contaminating the places scientists want to
 study, and Earth from returned samples. It was written for probes. Nothing in the treaty or the policy
 contemplates rebuilding a planet, moving a dwarf planet's orbit or aiming
-[8.5 × 10¹⁹ W](numbers.md#helios-power) of beams across the inner Solar System.
+[1.2 × 10²⁰ W](numbers.md#helios-power) of beams across the inner Solar System.
 
 ### What a new framework needs
 

@@ -29,12 +29,13 @@ description: Verify Phosphoros (the model in calc/, the docs sync, the figures a
 
 Known pre-existing failures: none in the checks. Some physics checks fail on purpose and are
 reported, not hidden: `veil-v2-hovers` (version 2's statite cannot hover), and the open problems
-`ring-lowering-load`, `ring-net-force` and `exhaust-entropy` (the Exhaust's narrow beams cost far
-more pump work than the model charges). Each open one names its `issue`. The schedule checks
-`frost-before-sealing` and `genesis-by-deadline` pass, but only because the Exhaust's peak was sized
-for the slow freeze at the triple point (correction `freeze-outlasts-sealing`); `data/margins.json`
-says how little any input can move before they fail. `checks-failing` in the
-ledger counts them, and the docs cite that count. `pnpm calc` lists them; they do not fail a command.
+`ring-lowering-load`, `ring-net-force`, `ring-carries-equipment`, `loss-heat-fits` and
+`exhaust-entropy`. Each names its `issue`, and the test "every failing check names its problem"
+fails if one does not, or if an `open` corrections entry has no failing check. The schedule checks
+(`frost-before-sealing`, `genesis-by-deadline`, `earth-like-by-deadline`) pass with the design point
+in `data/assumptions.yaml`; `data/margins.json` says how far any input can move before they fail.
+`checks-failing` in the ledger counts the failures, and the docs cite that count. `pnpm calc` lists
+them; they do not fail a command.
 
 ## Launch
 

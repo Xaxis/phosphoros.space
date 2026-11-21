@@ -8,7 +8,7 @@ import { budget } from "./budget.ts";
 import { ceres, READY_TOLERANCE_DAYS } from "./ceres.ts";
 import { conventional } from "./conventional.ts";
 import { cryo } from "./cryo.ts";
-import { chimneys, exhaust } from "./exhaust.ts";
+import { chimneys, exhaust, exhaustAverages } from "./exhaust.ts";
 import { forges } from "./forges.ts";
 import { foundry, foundryProducts } from "./foundry.ts";
 import { helios, heliosSchedule } from "./helios.ts";
@@ -39,6 +39,8 @@ export const MODULES = [
   ceres,
   ring,
   foundryProducts,
+  // Cooling starts when the hardware at Venus arrives, so the campaign averages follow it.
+  exhaustAverages,
   acid,
   aegis,
   outcome,

@@ -13,8 +13,9 @@ phosphoros.space. The repository is the source of truth; the site renders it.
 - **No em dashes**, anywhere: docs, data, code comments, commit messages, issues.
 - **Physics is never bent to make the plan work.** If the model shows a design fails, keep it as a
   failing check (`r.c(...)` with `issue:`), add an `open` entry to `data/corrections.yaml`, and open
-  a GitHub issue. Four checks fail on purpose today: `veil-v2-hovers`, `ring-lowering-load`,
-  `ring-net-force` and `exhaust-entropy`. Prose cites the count as `numbers.md#checks-failing`.
+  a GitHub issue. Some checks fail on purpose: `pnpm calc | grep FAIL` lists them, and a test
+  fails if one has no issue or an `open` entry has no failing check. Prose cites the count as
+  `numbers.md#checks-failing`.
 - **A changed published number is a correction.** Record it in `data/corrections.yaml` with its
   `before` values and the reason, so the About page and CHANGELOG show it.
 - **Every number shows its basis**: physics, precedent, invented or design choice. Set `basis` on

@@ -165,7 +165,7 @@ export function exhaust(r: Registry) {
   r.q(
     "exhaust-flux",
     {
-      label: "Emitter brightness, as bright as a 2,000 K body",
+      label: "Emitter brightness, as bright as a black body at the emitters' temperature",
       unit: "W/m2",
       show: "MW/m2",
       sig: 2,
@@ -229,29 +229,6 @@ export function exhaust(r: Registry) {
     () => v("atmosphere-heat") + v("exhaust-work"),
   );
   r.q(
-    "cooling-seconds",
-    {
-      label: "Length of the active-cooling campaign",
-      unit: "s",
-      show: "yr",
-      sig: 2,
-      formula: "end − start",
-      basis: "design",
-    },
-    () => (v("cooling-end") - v("cooling-start")) * DAY_S,
-  );
-  for (const [id, total, label] of [
-    ["exhaust-heat-avg", "atmosphere-heat", "Average heat removed from Venus"],
-    ["exhaust-work-avg", "exhaust-work", "Average electrical input"],
-    ["exhaust-rejected-avg", "exhaust-rejected", "Average power thrown into space"],
-  ] as const) {
-    r.q(
-      id,
-      { label, unit: "W", formula: "E / campaign", basis: "physics" },
-      () => v(total) / v("cooling-seconds"),
-    );
-  }
-  r.q(
     "exhaust-area-installed",
     {
       label: "Emitter area installed (sized for the peak)",
@@ -260,16 +237,6 @@ export function exhaust(r: Registry) {
       basis: "invented",
     },
     () => v("exhaust-peak") / v("exhaust-flux"),
-  );
-  r.q(
-    "exhaust-area-working",
-    {
-      label: "Emitter area working on average",
-      unit: "m2",
-      formula: "P_avg / (σ T_h⁴)",
-      basis: "invented",
-    },
-    () => v("exhaust-rejected-avg") / v("exhaust-flux"),
   );
   r.q(
     "exhaust-area-share",
@@ -300,99 +267,6 @@ export function exhaust(r: Registry) {
     },
     () => Math.sqrt((2 * v("canopy-area")) / Math.sqrt(3)),
   );
-  r.q(
-    "canopy-power-in",
-    {
-      label: "Electrical power into one canopy",
-      unit: "W",
-      formula: "W_avg / N",
-      basis: "invented",
-    },
-    () => v("exhaust-work-avg") / v("exhaust-canopies"),
-  );
-  r.q(
-    "canopy-power-out",
-    {
-      label: "Power one canopy throws into space",
-      unit: "W",
-      formula: "P_avg / N",
-      basis: "invented",
-    },
-    () => v("exhaust-rejected-avg") / v("exhaust-canopies"),
-  );
-  r.q(
-    "exhaust-vs-passive-heat",
-    {
-      label: "Exhaust heat removal compared with a shaded Venus radiating alone",
-      unit: "1",
-      sig: 2,
-      formula: "Q_avg / σ (230 K)⁴ A",
-      basis: "physics",
-    },
-    () => v("exhaust-heat-avg") / v("passive-power"),
-  );
-  r.q(
-    "exhaust-vs-passive-light",
-    {
-      label: "Exhaust light output compared with a shaded Venus radiating alone",
-      unit: "1",
-      sig: 2,
-      formula: "P_avg / σ (230 K)⁴ A",
-      basis: "physics",
-    },
-    () => v("exhaust-rejected-avg") / v("passive-power"),
-  );
-
-  // How the choice of effective emitter temperature trades area against work.
-  r.s(
-    "exhaust-tradeoff",
-    {
-      label: "Emitter temperature against emitter area (share of Venus) and pump work",
-      x: "K",
-      y: "1",
-      note: "y is the working emitter area as a share of Venus's surface.",
-    },
-    () => {
-      const pts = [];
-      for (let Th = 800; Th <= 3000; Th += 50) {
-        const w = coolingPathWork(v, Th).total;
-        const avg = (w + v("atmosphere-heat")) / v("cooling-seconds");
-        pts.push({ x: Th, y: avg / (v("stefan-boltzmann") * Th ** 4) / v("venus-area") });
-      }
-      return pts;
-    },
-  );
-  r.s(
-    "exhaust-tradeoff-work",
-    { label: "Emitter temperature against total pump work", x: "K", y: "J" },
-    () => {
-      const pts = [];
-      for (let Th = 800; Th <= 3000; Th += 50) pts.push({ x: Th, y: coolingPathWork(v, Th).total });
-      return pts;
-    },
-  );
-  for (const Th of [1000, 1500, 2500]) {
-    r.q(
-      `exhaust-area-share-${Th}`,
-      {
-        label: `Working emitter area as a share of Venus at an effective ${Th.toLocaleString("en-US")} K`,
-        unit: "1",
-        show: "%",
-        sig: 2,
-        formula: "(Q + W(T_h)) / campaign / (σ T_h⁴ A_V)",
-        basis: "physics",
-      },
-      () => {
-        const w = coolingPathWork(v, Th).total;
-        return (
-          (w + v("atmosphere-heat")) /
-          v("cooling-seconds") /
-          (v("stefan-boltzmann") * Th ** 4) /
-          v("venus-area")
-        );
-      },
-    );
-  }
 
   // Frost Towers: cold traps that pull the last CO₂ out of the air.
   const solid = (T: number) =>
@@ -537,7 +411,7 @@ export function exhaust(r: Registry) {
     "exhaust-work-multiple",
     {
       label:
-        "Work to lift a joule from 737 K air into the beamed light, over the work the model charges",
+        "Pump work to lift a joule from 737 K air into the beamed light, over the work the model charges, for pumps equally far from Carnot",
       unit: "1",
       sig: 2,
       formula: "(T_light / T_s − 1) / (T_h / T_s − 1)",
@@ -677,4 +551,139 @@ export function exhaust(r: Registry) {
           (v("exhaust-canopies") * v("exhaust-cone-solid-angle") * v("exhaust-far-limit")),
       ),
   );
+}
+
+/**
+ * The Exhaust's campaign averages. They divide by the length of active cooling, which starts only
+ * once the hardware at Venus is built, so they run after the Foundry's products.
+ */
+export function exhaustAverages(r: Registry) {
+  const { v } = r.in("model/exhaust.ts");
+
+  r.q(
+    "cooling-seconds",
+    {
+      label: "Length of the active-cooling campaign",
+      unit: "s",
+      show: "yr",
+      sig: 2,
+      formula: "end − start",
+      basis: "design",
+    },
+    () => (v("cooling-end") - v("cooling-start")) * DAY_S,
+  );
+  for (const [id, total, label] of [
+    ["exhaust-heat-avg", "atmosphere-heat", "Average heat removed from Venus"],
+    ["exhaust-work-avg", "exhaust-work", "Average electrical input"],
+    ["exhaust-rejected-avg", "exhaust-rejected", "Average power thrown into space"],
+  ] as const) {
+    r.q(
+      id,
+      { label, unit: "W", formula: "E / campaign", basis: "physics" },
+      () => v(total) / v("cooling-seconds"),
+    );
+  }
+  r.q(
+    "exhaust-area-working",
+    {
+      label: "Emitter area working on average",
+      unit: "m2",
+      formula: "P_avg / (σ T_h⁴)",
+      basis: "invented",
+    },
+    () => v("exhaust-rejected-avg") / v("exhaust-flux"),
+  );
+  r.q(
+    "canopy-power-in",
+    {
+      label: "Electrical power into one canopy",
+      unit: "W",
+      formula: "W_avg / N",
+      basis: "invented",
+    },
+    () => v("exhaust-work-avg") / v("exhaust-canopies"),
+  );
+  r.q(
+    "canopy-power-out",
+    {
+      label: "Power one canopy throws into space",
+      unit: "W",
+      formula: "P_avg / N",
+      basis: "invented",
+    },
+    () => v("exhaust-rejected-avg") / v("exhaust-canopies"),
+  );
+  r.q(
+    "exhaust-vs-passive-heat",
+    {
+      label: "Exhaust heat removal compared with a shaded Venus radiating alone",
+      unit: "1",
+      sig: 2,
+      formula: "Q_avg / σ (230 K)⁴ A",
+      basis: "physics",
+    },
+    () => v("exhaust-heat-avg") / v("passive-power"),
+  );
+  r.q(
+    "exhaust-vs-passive-light",
+    {
+      label: "Exhaust light output compared with a shaded Venus radiating alone",
+      unit: "1",
+      sig: 2,
+      formula: "P_avg / σ (230 K)⁴ A",
+      basis: "physics",
+    },
+    () => v("exhaust-rejected-avg") / v("passive-power"),
+  );
+
+  // How the choice of effective emitter temperature trades area against work.
+  r.s(
+    "exhaust-tradeoff",
+    {
+      label: "Emitter temperature against emitter area (share of Venus) and pump work",
+      x: "K",
+      y: "1",
+      note: "y is the working emitter area as a share of Venus's surface.",
+    },
+    () => {
+      const pts = [];
+      for (let Th = 800; Th <= 3000; Th += 50) {
+        const w = coolingPathWork(v, Th).total;
+        const avg = (w + v("atmosphere-heat")) / v("cooling-seconds");
+        pts.push({ x: Th, y: avg / (v("stefan-boltzmann") * Th ** 4) / v("venus-area") });
+      }
+      return pts;
+    },
+  );
+  r.s(
+    "exhaust-tradeoff-work",
+    { label: "Emitter temperature against total pump work", x: "K", y: "J" },
+    () => {
+      const pts = [];
+      for (let Th = 800; Th <= 3000; Th += 50) pts.push({ x: Th, y: coolingPathWork(v, Th).total });
+      return pts;
+    },
+  );
+  for (const Th of [1000, 1500, 2500]) {
+    r.q(
+      `exhaust-area-share-${Th}`,
+      {
+        label: `Working emitter area as a share of Venus at an effective ${Th.toLocaleString("en-US")} K`,
+        unit: "1",
+        show: "%",
+        sig: 2,
+        formula: "(Q + W(T_h)) / campaign / (σ T_h⁴ A_V)",
+        basis: "physics",
+      },
+      () => {
+        const w = coolingPathWork(v, Th).total;
+        return (
+          (w + v("atmosphere-heat")) /
+          v("cooling-seconds") /
+          (v("stefan-boltzmann") * Th ** 4) /
+          v("venus-area")
+        );
+      },
+    );
+  }
 }

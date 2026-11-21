@@ -103,21 +103,21 @@
 
 # --- 2.9.5 Photonic Exhaust ------------------------------------------------------------------------------
 - { model: exhaust-wavelength, brief: 2.3e-6, tol: 0.01, where: "2.9.5" }
-- { model: exhaust-flux, brief: 9e5, tol: 0.02, where: "2.9.5" }
+- { model: exhaust-flux, brief: 9e5, tol: 0.02, where: "2.9.5", correction: real-pumps }
 - { model: exhaust-work, brief: 2.84e27, tol: 0.01, where: "2.13", correction: chimney-design }
 - { model: exhaust-work-ratio, brief: 5.4, tol: 0.02, where: "2.13", correction: chimney-design }
-- { model: exhaust-rejected, brief: 3.4e27, where: "2.9.5" }
+- { model: exhaust-rejected, brief: 3.4e27, where: "2.9.5", correction: real-pumps }
 - { model: exhaust-dark-strip, brief: 5.0e4, where: "2.9.5", correction: exhaust-safety }
 - { model: exhaust-cone-safe-distance, brief: 5.0e7, where: "2.9.5", correction: exhaust-safety }
-- { model: exhaust-heat-avg, brief: 4.8e18, where: "2.9.5" }
-- { model: exhaust-work-avg, brief: 2.6e19, where: "2.9.5" }
-- { model: exhaust-rejected-avg, brief: 3e19, where: "2.9.5" }
+- { model: exhaust-heat-avg, brief: 4.8e18, where: "2.9.5", correction: real-pumps }
+- { model: exhaust-work-avg, brief: 2.6e19, where: "2.9.5", correction: real-pumps }
+- { model: exhaust-rejected-avg, brief: 3e19, where: "2.9.5", correction: real-pumps }
 - { model: exhaust-peak, brief: 3.6e19, where: "2.9.5", correction: exhaust-capacity }
 - { model: exhaust-area-installed, brief: 4e13, where: "2.9.5", correction: exhaust-capacity }
-- { model: exhaust-area-working, brief: 3.4e13, where: "2.9.5" }
+- { model: exhaust-area-working, brief: 3.4e13, where: "2.9.5", correction: real-pumps }
 - { model: exhaust-area-share, brief: 0.09, where: "2.9.5", correction: exhaust-capacity }
-- { model: canopy-power-in, brief: 2.6e15, where: "2.9.5" }
-- { model: canopy-power-out, brief: 3.1e15, where: "2.9.5" }
+- { model: canopy-power-in, brief: 2.6e15, where: "2.9.5", correction: real-pumps }
+- { model: canopy-power-out, brief: 3.1e15, where: "2.9.5", correction: real-pumps }
 - { model: exhaust-vs-passive-light, brief: 400, where: "2.5",
     note: "The Exhaust throws out light {exhaust-vs-passive-light} times faster than a shaded Venus radiates, but removes Venus's own heat {exhaust-vs-passive-heat} times faster: most of the light is the pump's own work." }
 - { model: exhaust-area-share-1000, brief: 0.58, tol: 0.02, where: "2.13", correction: sealing-follows-frost }
@@ -167,13 +167,13 @@
 - { model: ice-launch-speed, brief: 6400, tol: 0.01, where: "2.9.8" }
 - { model: ice-vinf, brief: 9090, tol: 0.01, where: "2.13" }
 - { model: ice-transfer-years, brief: 3.63e7, tol: 0.01, where: "2.13" }
-- { model: ice-launch-start, brief: 2033-06-30, tol: 31, where: "2.10" }
-- { model: ice-launch-end, brief: 2035-10-31, tol: 31, where: "2.10" }
+- { model: ice-launch-start, brief: 2033-06-30, tol: 31, where: "2.10", correction: real-pumps }
+- { model: ice-launch-end, brief: 2035-10-31, tol: 31, where: "2.10", correction: ice-schedule }
 - { model: ice-throughput, brief: 1.36e12, tol: 0.03, where: "2.9.8", correction: foundry-products }
 - { model: ice-bricks-per-second, brief: 1360, tol: 0.03, where: "2.9.8", correction: foundry-products }
 - { model: railhead-interval, brief: 7.4, tol: 0.03, where: "2.9.8", correction: foundry-products }
-- { model: railhead-length, brief: 10400, tol: 0.02, where: "2.9.8" }
-- { model: railhead-shot-time, brief: 3.3, tol: 0.03, where: "2.9.8" }
+- { model: railhead-length, brief: 10400, tol: 0.02, where: "2.9.8", correction: ice-schedule }
+- { model: railhead-shot-time, brief: 3.3, tol: 0.03, where: "2.9.8", correction: ice-schedule }
 - { model: brick-side, brief: 103, tol: 0.01, where: "2.9.8" }
 - { model: shot-energy, brief: 2.05e16, tol: 0.01, where: "2.9.8" }
 - { model: shot-energy-drawn, brief: 4.1e16, tol: 0.02, where: "2.9.8" }
@@ -191,17 +191,17 @@
 # --- 2.9.9 Braking Ring -----------------------------------------------------------------------------------
 - { model: ring-circumference, brief: 4.054e7, tol: 0.001, where: "2.9.9" }
 - { model: ring-orbital-speed, brief: 7100, tol: 0.01, where: "2.13" }
-- { model: ring-arrival-speed, brief: 13540, tol: 0.01, where: "2.13" }
-- { model: ring-catch-energy-per-kg, brief: 6.65e7, tol: 0.01, where: "2.13" }
-- { model: ring-recovered-per-kg, brief: 5.3e7, tol: 0.02, where: "2.9.9" }
-- { model: ring-recovered-energy, brief: 5.3e27, where: "2.8" }
-- { model: ring-power, brief: 7.2e19, where: "2.9.9" }
+- { model: ring-arrival-speed, brief: 13540, tol: 0.01, where: "2.13", correction: ice-schedule }
+- { model: ring-catch-energy-per-kg, brief: 6.65e7, tol: 0.01, where: "2.13", correction: ice-schedule }
+- { model: ring-recovered-per-kg, brief: 5.3e7, tol: 0.02, where: "2.9.9", correction: ice-schedule }
+- { model: ring-recovered-energy, brief: 5.3e27, where: "2.8", correction: ice-schedule }
+- { model: ring-power, brief: 7.2e19, where: "2.9.9", correction: ice-schedule }
 - { model: ring-lowering-recovery, brief: 2e27, where: "2.8" }
 - { model: ring-free-fall-speed, brief: 13800, tol: 0.01, where: "2.7" }
 - { model: ring-free-fall-impact, brief: 9.5e27, where: "2.7" }
 - { model: ring-free-fall-vs-atmosphere, brief: 18, where: "2.7" }
-- { model: ring-braking-force, brief: 1e16, tol: 0.15, where: "2.9.9" }
-- { model: ring-track-length, brief: 1.4e5, tol: 0.05, where: "2.9.9" }
+- { model: ring-braking-force, brief: 1e16, tol: 0.15, where: "2.9.9", correction: ice-schedule }
+- { model: ring-track-length, brief: 1.4e5, tol: 0.05, where: "2.9.9", correction: ice-schedule }
 - { model: ring-tracks-min, brief: 8, where: "2.9.9", correction: ring-tracks }
 - { model: lowering-start, brief: 2034-08-01, tol: 31, where: "3.2", correction: campaign-dates }
 - { model: canopy-width, brief: 7.0e4, tol: 0.05, where: "2.9.5", correction: canopy-size }

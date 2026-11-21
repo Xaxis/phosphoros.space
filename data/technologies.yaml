@@ -317,7 +317,7 @@
     {railhead-count} coilguns on Ceres fire {ice-bricks-per-second} one-megatonne ice Bricks a second,
     delivering {ice-mass} of water from {ice-launch-start} to {ice-launch-end}.
   job: Ship the water
-  scale: "{ice-mass} of ice at {ice-launch-speed}, {ice-transfer-years} in transit"
+  scale: "{ice-mass} of ice at {ice-launch-speed}, {ice-flight-min} to {ice-flight-max} in transit"
   breakthrough: Mass drivers throwing {ice-throughput} in all
   specs:
     - { label: Water shipped, value: "{ice-mass}, {ice-ceres-water-share} of Ceres's water" }
@@ -328,7 +328,7 @@
     - { label: Brick, value: "{brick-mass}, a cube {brick-side} on a side" }
     - { label: Energy per shot, value: "{shot-energy} ({shot-energy-drawn} drawn at {railhead-efficiency})" }
     - { label: Power, value: "{railhead-power} in all, {railhead-power-each} each" }
-    - { label: Transfer, value: "{ice-transfer-years}; arrives at {ice-vinf} relative to Venus" }
+    - { label: Transfer, value: "{ice-flight-min} to {ice-flight-max} ({ice-transfer-years} on the Hohmann transfer); arrives at {ice-vinf-rms} relative to Venus on average" }
     - { label: Launch windows, value: "Every {launch-window-period}, about {launch-windows} in the campaign" }
     - { label: Launches between windows, value: "Up to {launch-offwindow-max} more energy than in a window, {launch-offwindow-mean} more on average" }
     - { label: Railhead mass, value: "At least {railhead-mass} each, {railheads-mass} in all: carbon fibre holding {railhead-field} coils" }

@@ -336,11 +336,12 @@
   title: The Exhaust's narrow beams cost far more pump work than the model charges
   issue: 4
   text: >-
-    The model charges the heat pumps the Carnot work for emitters at {exhaust-effective-temp}, right
-    for light spread over colours and directions the way a surface that hot spreads it. The tiles
+    The model charges the heat pumps {exhaust-carnot-share} of the Carnot efficiency for emitters at
+    {exhaust-effective-temp}, right for light spread over colours and directions the way a surface that
+    hot spreads it. The tiles
     instead put {exhaust-flux} into a {exhaust-band} band and a {exhaust-cone} cone, light that counts
     as at least {exhaust-light-temp} by its entropy. Lifting a joule from the starting air into it
-    takes {exhaust-work-multiple} times the work charged. Either the tiles spread their light over
+    takes {exhaust-work-multiple} times the work charged, for pumps equally far from the limit. Either the tiles spread their light over
     far more colours and directions, or the pumps need many times the power. The budget's pump work
     is a floor until this is solved.
 - id: budget-offwindow
@@ -353,7 +354,7 @@
     Charging the launches fired between windows added {ice-launch-offwindow-energy} to the demand,
     and the Lattice's power now arrives only once the Foundry stops growing. At 7 × 10¹⁹ W the
     Lattice alone fell 7% short, and the air was Earth-like only in February 2037. Version 2 raised
-    the Lattice from 4 to 7 × 10¹⁹ W for the same reason: the launches. At {helios-power} the
+    the Lattice from 4 to 7 × 10¹⁹ W for the same reason: the launches. Today, at {helios-power}, the
     Lattice delivers {helios-supply} against {budget-demand}, {budget-spare} spare before the Ring's
     recovered energy and {budget-spare-with-ring} after, and the plan finishes on time. It takes
     {helios-mass} of petals, which the full Foundry builds in {lattice-build-days}.
@@ -630,10 +631,11 @@
     freeze, with the Exhaust at its peak and the falling ice adding most of the heat that enters
     meanwhile. At the old peak the seas froze only in June 2036, the Frost Towers finished after the
     last caps were due on {sealing-end|date=day}, and seeded life greened the oceans after the
-    deadline. The peak grows to {exhaust-peak}: the seas are frozen through on
+    deadline. The peak grew to 5.5 × 10¹⁹ W, and the seas froze before the caps were due. It cost
+    little energy, because a faster freeze lets less heat in. The peak has since grown again, to
+    {exhaust-peak}, for pumps charged as real machines: the seas are frozen through on
     {traj-frozen|date=day}, the Frost Towers finish {frost-sealing-slack} before the last caps, and
-    the oceans are green on {genesis-end|date=day}. It costs little energy, because a faster freeze
-    lets less heat in: the Lattice still has {budget-spare} to spare on its own.
+    the oceans are green on {genesis-end|date=day}.
   before: { exhaust-peak: 5.0e19 }
 - id: so2-sealed
   kind: correction
@@ -747,20 +749,22 @@
     receivers at a higher beam intensity, a heavier or faster rotor (which the Foundry must then
     build), or receivers on the canopies with their loss heat pumped out by the Exhaust.
 - id: venus-hardware
-  kind: open
+  kind: correction
   version: "3"
   date: 2026-11-21
-  title: Nothing builds the hardware at Venus in time
+  title: Cooling waits for the hardware at Venus
   issue: 18
   text: >-
     The Foundry's books counted the Foundry, the Veil, the Lattice and the Ring, but not the Exhaust's
     tiles and canopies ({exhaust-tile-mass}), the chimneys ({chimney-mass}), the receivers and their
-    fins, or the Lanterns. Together they weigh {venus-hardware-mass}, and they must be working when
-    cooling starts. They now count in what the Foundry builds, {foundry-built-mass}. Built by the full
-    Foundry they would take {venus-hardware-build-days} and reach Venus on {venus-hardware-ready},
-    so cooling would start late and the Frost Towers would finish after the last caps are sealed.
-    The check venus-hardware-in-time measures it. Options: much lighter tiles and chimneys, or an
-    industry at Venus that builds them from the carbon in its air.
+    fins, or the Lanterns, and cooling began the day the Foundry reached full scale, before any of
+    them existed. Together they weigh {venus-hardware-mass}, more than the Foundry itself. The Foundry
+    now builds them after the Lattice and the Ring, in {venus-hardware-build-days}, and active cooling
+    begins when they reach Venus, on {cooling-start|date=day}.
+  before:
+    cooling-start: 2033-05-03
+    foundry-built-mass: "1.4e14"
+    hardware-energy: "1.4e22"
 - id: derived-basis
   kind: correction
   version: "3"
@@ -771,3 +775,209 @@
     were marked Physics, among them the Earth-like date itself. Every computed number now carries the
     weakest basis among what it reads, so the date Venus becomes Earth-like is marked Invented: it
     rests on inventions. No value changes.
+- id: ice-schedule
+  kind: correction
+  version: "3"
+  date: 2026-11-21
+  title: Every Brick flies its own transfer, out of Ceres's tilted orbit
+  issue: 16
+  text: >-
+    Version 3 charged each launch between windows its cheapest transfer, but timed every arrival as if
+    the Brick flew the standard Hohmann transfer, left out the {ice-mutual-inclination} tilt between
+    Ceres's orbit and Venus's, and launched every Brick from Ceres's original orbit, though the recoil
+    moves it outward. Each synodic cycle's launches are now booked to arrival slots, transfer by
+    transfer with Lambert's method, for the least launch energy with at most {ice-arrival-peak} times
+    the mean arriving at once. The plane change is paid at launch and at the catch, and the last
+    launches leave from the drifted orbit. Launches cost {launch-offwindow-mean} more than the Hohmann
+    minimum on average, the Railheads draw {railhead-power}, and Bricks reach the Ring at
+    {ring-arrival-speed}. The slowest transfer, {ice-flight-max}, moves the last launch to
+    {ice-launch-end|date=day}. The Ring now gives back {ring-recovered-energy}, and the simulation
+    takes its power day by day as the Bricks arrive, not at its average from the first catch.
+  before:
+    ceres-inclination: 10.6
+    ice-launch-end: 2035-10-21
+    ice-campaign: "7.09e7"
+    ice-throughput: "1.41e12"
+    ice-bricks-per-second: 1410
+    railhead-interval: 7.09
+    railhead-length: 10400
+    railhead-shot-time: 3.26
+    launch-offwindow-max: 0.461
+    launch-offwindow-mean: 0.164
+    launch-energy-per-kg-avg: "4.77e7"
+    ice-launch-energy: "4.77e27"
+    ice-launch-offwindow-energy: "6.72e26"
+    ice-launch-motion: "2.38e27"
+    railhead-loss-energy: "2.38e27"
+    railhead-power: "6.72e19"
+    railhead-power-each: "6.72e15"
+    ceres-recoil: 763
+    ceres-new-aphelion: "4.93e11"
+    launch-windows: 3.16
+    first-catch: 2034-09-16
+    railhead-mass: "4.11e9"
+    railheads-mass: "4.11e13"
+    railheads-firing: 4600
+    railhead-barrel-heat: "6.72e16"
+    railhead-ground-share: 0.0845
+    ceres-receiver-incident: "8.96e19"
+    ceres-receiver-surface-ratio: 3.23
+    ceres-receiver-area: "2.24e12"
+    ceres-receiver-loss: "2.24e19"
+    railhead-plant-heat: "3.35e19"
+    crown-heat: "5.6e19"
+    ceres-heat-vs-surface: 70.4
+    crown-fin-area: "9.75e13"
+    crown-fin-radius: "5.7e6"
+    crown-band-height: "9.4e5"
+    crown-receiver-installed: "7.04e12"
+    crown-receiver-mass: "1.41e13"
+    crown-fin-mass: "9.75e12"
+    crown-cable-mass: "8.64e12"
+    crown-push: "2.99e11"
+    crown-tether-mass: "1.87e11"
+    crown-mass: "3.27e13"
+    ceres-recoil-accel: "1.08e-5"
+    crown-edge-gravity: 0.00193
+    ceres-build-mass: "7.38e13"
+    ceres-doublings: 26
+    ceres-final-mass: "6.71e13"
+    ceres-full-scale: 2033-03-31
+    ceres-build-days: 71.4
+    ceres-ready: 2033-06-10
+    ceres-slack: 41.8
+    ceres-seed-latest: 2028-11-12
+    ceres-ready-foundry-pace: 2034-07-29
+    ceres-factory-power: "1.2e15"
+    ceres-mirror-area: "1.68e13"
+    ceres-mirror-mass: "1.68e10"
+    ceres-hardware-energy: "1.41e22"
+    ceres-new-semi-major-axis: "4.53e11"
+    ceres-new-eccentricity: 0.0871
+    ceres-jupiter-gap: "2.48e11"
+    ceres-jupiter-gap-hill: 4.66
+    ceres-jupiter-period-ratio: 2.25
+    ring-arrival-speed: 13500
+    ring-catch-energy-per-kg: "6.64e7"
+    ring-recovered-per-kg: "5.31e7"
+    ring-recovered-energy: "5.31e27"
+    ring-catch-energy: "6.64e27"
+    ring-loss-energy: "1.33e27"
+    ring-power: "7.49e19"
+    ring-vs-launch: 1.3
+    ring-braking-force: "9.07e15"
+    ring-net-braking-force: "8.4e15"
+    ring-track-length: "1.35e5"
+    ring-catch-time: 13.1
+    ring-bricks-braking: 18500
+    ring-tracks-min: 15
+    ring-net-overload: 276
+    budget-supply-total: "1.45e28"
+    budget-spare-total: 0.417
+    ice-solar-gain: "4.25e27"
+    ring-pays-from: 2034-09-16
+    budget-lattice-launch: "2.45e27"
+    budget-ring-launch: "2.32e27"
+    budget-ring-surplus: "2.99e27"
+- id: real-pumps
+  kind: correction
+  version: "3"
+  date: 2026-11-21
+  title: The heat pumps are charged as real machines, and the Exhaust and the Lattice grow to pay
+  issue: 17
+  text: >-
+    Version 3 charged the heat pumps exactly the reversible work, the least the second law allows, so
+    its second-law check could never fail; and the chimney fans' work, which ends as heat in the air
+    they push, was never added to the heat the pumps must lift. The pumps are now charged at
+    {exhaust-carnot-share} of the Carnot limit, about what good industrial heat pumps reach, and the
+    fans' heat is counted. A hotter emitter needs less area but more work for every joule, so the
+    design moves along that trade: the emitters shine at {exhaust-effective-temp} rather than
+    2,000 K, the Exhaust peaks at {exhaust-peak} over {exhaust-area-share} of Venus's area, and the
+    Lattice grows to {helios-power} to drive the pumps and the Railheads. The pumps spend
+    {exhaust-work-ratio} joules of electricity per joule moved. Venus is still Earth-like on
+    {traj-earth-like|date=day}, and the Frost Towers finish {frost-sealing-slack} before the last
+    caps.
+  before:
+    helios-power: "8.5e19"
+    exhaust-effective-temp: 2000
+    exhaust-peak: "5.5e19"
+    helios-area: "6.24e16"
+    helios-mass: "6.24e13"
+    helios-petals: "1.27e7"
+    helios-sun-share: "2.22e-7"
+    foundry-target-mass: "7.24e13"
+    foundry-doublings: 26
+    foundry-final-mass: "6.71e13"
+    foundry-full-scale: 2033-05-03
+    foundry-years-to-scale: 1570
+    foundry-peak-power: "8.97e14"
+    foundry-mercury-share: "2.03e-10"
+    lattice-build-days: 80.5
+    helios-full-power: 2033-07-22
+    helios-supply-years: 1260
+    helios-supply: "9.24e27"
+    helios-sunlight-energy: "6.16e28"
+    helios-loss-energy: "5.23e28"
+    helios-receiver-incident: "1.13e20"
+    helios-receiver-area: "1.13e13"
+    helios-receiver-loss: "2.83e19"
+    helios-fin-area: "4.94e13"
+    exhaust-flux: "9.07e5"
+    exhaust-work-sensible: "1.11e27"
+    exhaust-work-latent: "1.81e27"
+    exhaust-work: "2.92e27"
+    exhaust-work-ratio: 5.53
+    exhaust-rejected: "3.45e27"
+    cooling-seconds: "1.05e8"
+    exhaust-heat-avg: "5.02e18"
+    exhaust-work-avg: "2.78e19"
+    exhaust-rejected-avg: "3.28e19"
+    exhaust-area-installed: "6.06e13"
+    exhaust-area-working: "3.62e13"
+    exhaust-area-share: 0.132
+    canopy-area: "6.06e9"
+    canopy-width: 83700
+    canopy-power-in: "2.78e15"
+    canopy-power-out: "3.28e15"
+    exhaust-vs-passive-heat: 68.8
+    exhaust-vs-passive-light: 449
+    exhaust-area-share-1000: 0.628
+    exhaust-area-share-1500: 0.186
+    exhaust-area-share-2500: 0.0402
+    frost-work: "4.32e25"
+    exhaust-radiance: "6.16e6"
+    exhaust-photons-per-mode: 8.26
+    exhaust-light-temp: 16300
+    exhaust-light-vs-effective: 8.16
+    exhaust-work-multiple: 12.3
+    exhaust-cone-safe-distance: "6.08e7"
+    ice-launch-start: 2033-07-22
+    helios-affordable: 2033-04-17
+    ring-build-days: 12.9
+    ring-build-begin: 2033-07-22
+    ring-delivered: 2033-10-19
+    traj-clear-rain: 2034-07-13
+    traj-freeze: 2035-07-05
+    traj-frozen: 2036-03-27
+    traj-cold: 2036-06-12
+    traj-scavenged: 2036-06-28
+    traj-warm: 2036-09-05
+    traj-pump-energy: "3.64e27"
+    traj-heat-added: "7.52e25"
+    traj-heat-lifted: "6.03e26"
+    traj-exhaust-light: "4.24e27"
+    traj-fan-energy: "9.86e24"
+    traj-chimney-days: 56
+    sealing-window: 158
+    cap-laying-rate: "1.1e7"
+    budget-demand: "8.48e27"
+    budget-spare: 0.0817
+    budget-launch-share: 0.91
+    budget-demand-with-ring: "6.16e27"
+    budget-spare-with-ring: 0.333
+    budget-lattice-spare: "3.08e27"
+    frost-sealing-slack: 65.2
+    checks-total: 31
+    checks-failing: 4
+    checks-passing: 27
+    exhaust-1-carnot: 0.5

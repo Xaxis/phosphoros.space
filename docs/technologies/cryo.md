@@ -35,7 +35,7 @@ from the air: the air above can sit at [288 K](../numbers.md#earth-surface-temp
 The dates are from the day-by-day [simulation](../plan.md#the-simulated-atmosphere), which treats the whole atmosphere
 as one temperature. Real basins will run ahead of or behind these dates by place.
 
-1. **The Clear Rain, [23 July 2034](../numbers.md?date=day#traj-clear-rain).** The air falls below
+1. **The Clear Rain, [22 January 2035](../numbers.md?date=day#traj-clear-rain).** The air falls below
    [304 K](../numbers.md?sig=3#co2-critical-temp) and liquid CO₂ rains out. It runs downhill into the lowland basins,
    such as Atalanta Planitia, which the [Thermal Chimneys](chimneys.md) have already filled with pooled cold air.
    The surface pressure starts to fall from [92 bar](../numbers.md#venus-surface-pressure).
@@ -43,35 +43,35 @@ as one temperature. Real basins will run ahead of or behind these dates by place
    vapor curve. Every kelvin lower, more CO₂ leaves the air for the seas, each kilogram giving up its heat of
    condensation, and the pressure keeps falling. The [Graphite Forges](forges.md) float on these seas from
    [January 2035](../numbers.md?date=month#forge-start).
-3. **The seas freeze, [17 July 2035](../numbers.md?date=day#traj-freeze) to
-   [15 April 2036](../numbers.md?date=day#traj-frozen).** At the triple point, [216.6 K](../numbers.md#co2-triple-temp)
+3. **The seas freeze, [4 September 2035](../numbers.md?date=day#traj-freeze) to
+   [13 February 2036](../numbers.md?date=day#traj-frozen).** At the triple point, [216.6 K](../numbers.md#co2-triple-temp)
    and [5.2 bar](../numbers.md#co2-triple-pressure), liquid, solid and vapor coexist, and the air holds there while
    the seas give up their heat of fusion, [210 kJ/kg](../numbers.md#co2-fusion-heat). It is slow even with the
    emitters at their peak, because the falling ice keeps adding heat. Dry ice is denser than liquid CO₂, so
    crystals that form at the surface sink and each sea fills with ice from the bottom up: it has no firm surface
    until it is frozen through.
-4. **The last frost, to [3 July 2036](../numbers.md?date=day#traj-cold).** Below the triple point the
+4. **The last frost, to [30 March 2036](../numbers.md?date=day#traj-cold).** Below the triple point the
    [5.7%](../numbers.md#co2-triple-vapour-share) of the CO₂ still in the air freezes out as frost while the air cools,
    until at [195 K](../numbers.md?sig=3#freeze-target-temp) all the CO₂ that will come down by cooling alone is down.
-5. **Sealing, [15 April 2036](../numbers.md?date=day#traj-frozen) to
+5. **Sealing, [13 February 2036](../numbers.md?date=day#traj-frozen) to
    [1 September 2036](../numbers.md?date=day#sealing-end).** Crawler-rafts, waiting on the seas since before the
-   freeze, lay the caps once the seas are frozen through: [140 d](../numbers.md#sealing-window) for all
-   [1.5 × 10¹⁴ m²](../numbers.md#cryo-footprint), [1.1 × 10⁶ km²/d](../numbers.md#cap-laying-rate) of cap a day. Each cap
+   freeze, lay the caps once the seas are frozen through: [200 d](../numbers.md#sealing-window) for all
+   [1.5 × 10¹⁴ m²](../numbers.md#cryo-footprint), [750,000 km²/d](../numbers.md#cap-laying-rate) of cap a day. Each cap
    is a [1 mm](../numbers.md#cryo-membrane-thickness) graphite membrane that stops the gas,
    [20 m](../numbers.md#cryo-aerogel-thickness) of carbon aerogel that stops the heat, and
    [2 m](../numbers.md#cryo-armour-thickness) of crushed basalt armor with soil on top. Version 2 sealed in 2035.
-6. **Scavenging, to [19 July 2036](../numbers.md?date=day#traj-scavenged).** The Frost Towers freeze the last
+6. **Scavenging, to [9 April 2036](../numbers.md?date=day#traj-scavenged).** The Frost Towers freeze the last
    [5.4 × 10¹⁸ kg](../numbers.md#frost-residual-co2) of vapor out of the air, down to
-   [54 Pa](../numbers.md#frost-co2-pressure). They finish [44 d](../numbers.md#frost-sealing-slack) before the
+   [54 Pa](../numbers.md#frost-co2-pressure). They finish [150 d](../numbers.md#frost-sealing-slack) before the
    last caps are due ([check](../numbers.md#check-frost-before-sealing)).
 7. **The thaw above, [2 September 2036](../numbers.md?date=day#traj-warming).** With the last caps sealed, the
    Veil opens. The thin nitrogen and oxygen air warms to [285 K](../numbers.md#earth-like-temp) by
-   [5 September 2036](../numbers.md?date=day#traj-warm), and cap surfaces warm with it. Venus is Earth-like on
+   [4 September 2036](../numbers.md?date=day#traj-warm), and cap surfaces warm with it. Venus is Earth-like on
    [30 September 2036](../numbers.md?date=day#traj-earth-like), when the Forges complete the oxygen
    ([30 September 2036](../numbers.md?date=day#forge-end)).
 
 <!-- figure:trajectory -->
-![The simulated atmosphere, 2033 to 2036](../../figures/svg/trajectory.svg)
+![The simulated atmosphere, day by day](../../figures/svg/trajectory.svg)
 <!-- /figure -->
 
 ### The plateaus
@@ -122,8 +122,8 @@ The answer is to take the heat out before it reaches the ice. **Basal heat pipes
 [200 m](../numbers.md#heat-pipe-depth) into the basin floors before the Clear Rain: sodium for the hot early rock, ammonia
 once it cools. Insulated risers carry the heat up through the ice to radiators on the cap surface, where Exhaust tiles
 throw it to space. Pumping the first [12 PW](../numbers.md#cryo-floor-load) away, lifting it from the ice's temperature
-to the tiles' effective [2,000 K](../numbers.md#exhaust-effective-temp), takes
-[0.1%](../numbers.md#cryo-refrigeration-share) of the Lattice's [8.5 × 10¹⁹ W](../numbers.md#helios-power), and less every
+to the tiles' effective [1,600 K](../numbers.md#exhaust-effective-temp), takes
+[0.1%](../numbers.md#cryo-refrigeration-share) of the Lattice's [1.2 × 10²⁰ W](../numbers.md#helios-power), and less every
 year as the rock cools. Even at the far higher cost of the tiles' narrow light
 ([open problem](../risks.md#the-exhausts-light-costs-more-than-the-model-charges)) it stays a small share. It never stops entirely: this is a permanent duty, like pumping a polder dry.
 
@@ -142,7 +142,7 @@ year as the rock cools. Even at the far higher cost of the tiles' narrow light
 | Refrigeration | [0.1%](../numbers.md#cryo-refrigeration-share) of the Lattice at first |
 | Compartments | [1.5 × 10⁶](../numbers.md#cryo-cells) cells of [100 km²](../numbers.md#cryo-cell-area), at most [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2) each |
 | A torn cell | Releases at most [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2), [26 ppm](../numbers.md#cryo-cell-release-ppm) of the air; resealed within [7 d](../numbers.md#cryo-reseal-time) |
-| Sealing | [140 d](../numbers.md#sealing-window) from the seas frozen through ([15 April 2036](../numbers.md?date=day#traj-frozen)) to the last cap ([1 September 2036](../numbers.md?date=day#sealing-end)): [1.1 × 10⁶ km²/d](../numbers.md#cap-laying-rate) of cap |
+| Sealing | [200 d](../numbers.md#sealing-window) from the seas frozen through ([13 February 2036](../numbers.md?date=day#traj-frozen)) to the last cap ([1 September 2036](../numbers.md?date=day#sealing-end)): [750,000 km²/d](../numbers.md#cap-laying-rate) of cap |
 | If refrigeration stops | The floor heat melts the base into a liquid layer under the cap, [7.6 m](../numbers.md#cryo-base-melt-rate) of ice a year at first: [0.4%](../numbers.md#cryo-unrefrigerated-loss) of the CO₂ |
 <!-- /table -->
 
@@ -152,8 +152,8 @@ year as the rock cools. Even at the far higher cost of the tiles' narrow light
 > [2 km](../numbers.md#cryo-thickness) of dry ice for centuries.
 
 > **Invented:** Crawler-rafts that lay a gas-tight graphite membrane and [20 m](../numbers.md#cryo-aerogel-thickness) of
-> aerogel over [1.5 × 10¹⁴ m²](../numbers.md#cryo-footprint) of frozen sea in [140 d](../numbers.md#sealing-window),
-> [1.1 × 10⁶ km²/d](../numbers.md#cap-laying-rate).
+> aerogel over [1.5 × 10¹⁴ m²](../numbers.md#cryo-footprint) of frozen sea in [200 d](../numbers.md#sealing-window),
+> [750,000 km²/d](../numbers.md#cap-laying-rate).
 
 > **Invented:** A graphite membrane only [1 mm](../numbers.md#cryo-membrane-thickness) thick that stays gas-tight over a
 > continent of ice, through thermal cycling and the ice's slow creep.
@@ -166,21 +166,21 @@ year as the rock cools. Even at the far higher cost of the tiles' narrow light
 
 - **[2027](../numbers.md?date=year#program-start):** [Cryo-seal](../research.md#cryo-seal) begins: dry ice stored under a
   cap at Earth temperature for a year, measuring the leak. Its kill signal is a cap that cracks under thermal cycling.
-- **[3 May 2033](../numbers.md?date=day#cooling-start):** Active cooling begins. Basal heat pipes are drilled into the
+- **[5 April 2034](../numbers.md?date=day#cooling-start):** Active cooling begins. Basal heat pipes are drilled into the
   lowland basins while they are still dry.
-- **[23 July 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. Liquid CO₂ fills the basins.
+- **[22 January 2035](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. Liquid CO₂ fills the basins.
 - **[January 2035](../numbers.md?date=month#forge-start):** The Forges start making graphite on the seas, the caps' raw
   material.
-- **[17 July 2035](../numbers.md?date=day#traj-freeze):** The air reaches the triple point and the seas start to freeze.
-- **[15 April 2036](../numbers.md?date=day#traj-frozen):** The seas are frozen through. Sealing begins.
-- **[3 July 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down at [195 K](../numbers.md?sig=3#freeze-target-temp).
-- **[19 July 2036](../numbers.md?date=day#traj-scavenged):** The Frost Towers finish, [44 d](../numbers.md#frost-sealing-slack)
+- **[4 September 2035](../numbers.md?date=day#traj-freeze):** The air reaches the triple point and the seas start to freeze.
+- **[13 February 2036](../numbers.md?date=day#traj-frozen):** The seas are frozen through. Sealing begins.
+- **[30 March 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down at [195 K](../numbers.md?sig=3#freeze-target-temp).
+- **[9 April 2036](../numbers.md?date=day#traj-scavenged):** The Frost Towers finish, [150 d](../numbers.md#frost-sealing-slack)
   before the last caps are due ([check](../numbers.md#check-frost-before-sealing)).
 - **[1 September 2036](../numbers.md?date=day#sealing-end):** The last caps are sealed. By then the Forges have made
   [4.6 × 10¹⁷ kg](../numbers.md#graphite-by-sealing) of graphite, more than the
   [2.5 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) the caps need ([check](../numbers.md#check-graphite-for-caps)).
 - **[2 September 2036](../numbers.md?date=day#traj-warming):** The Veil opens.
-- **[5 September 2036](../numbers.md?date=day#traj-warm):** The air over the caps is warm.
+- **[4 September 2036](../numbers.md?date=day#traj-warm):** The air over the caps is warm.
 - **[30 September 2036](../numbers.md?date=day#traj-earth-like):** Venus is Earth-like. The floor refrigeration carries
   on beyond the deadline, falling toward [1.7 PW](../numbers.md#cryo-floor-load-century) within a century.
 

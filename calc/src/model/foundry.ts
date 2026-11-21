@@ -311,22 +311,11 @@ export function foundryProducts(r: Registry) {
       sig: 2,
       formula: "M_hardware T / (M_Foundry ln 2)",
       basis: "invented",
-      note: "At full scale, the soonest it can be built: earlier, the smaller Foundry would give up more growth than it saved.",
+      note: "At full scale: earlier, the smaller Foundry would give up more growth than it saved.",
     },
     () =>
       (v("venus-hardware-mass") * v("foundry-doubling-days")) /
       (v("foundry-final-mass") * Math.LN2),
-  );
-  r.q(
-    "venus-hardware-ready",
-    {
-      label: "The soonest that hardware can be working at Venus",
-      unit: "date",
-      formula: "Foundry full scale + build + Mercury-to-Venus transfer",
-      basis: "invented",
-    },
-    () =>
-      v("foundry-full-scale") + v("venus-hardware-build-days") + v("mercury-venus-transfer-days"),
   );
   r.q(
     "foundry-built-mass",
@@ -392,6 +381,32 @@ export function foundryProducts(r: Registry) {
     () => v("ring-build-begin") + v("ring-build-days") + v("mercury-venus-transfer-days"),
   );
 
+  r.q(
+    "venus-hardware-ready",
+    {
+      label: "The soonest that hardware can be working at Venus",
+      unit: "date",
+      formula: "Ring build begins + Ring build + hardware build + Mercury-to-Venus transfer",
+      basis: "invented",
+      note: "The Foundry builds the Lattice, which powers everything, then the Ring, which is small and must be finished before the first catch, then this hardware. Cooling waits for it.",
+    },
+    () =>
+      v("ring-build-begin") +
+      v("ring-build-days") +
+      v("venus-hardware-build-days") +
+      v("mercury-venus-transfer-days"),
+  );
+  r.q(
+    "cooling-start",
+    {
+      label: "Active cooling begins: the Exhaust's hardware is at Venus",
+      unit: "date",
+      formula: "the later of the Foundry's full scale and the hardware's arrival",
+      basis: "invented",
+      note: "The Exhaust can pump only once its tiles, chimneys and receivers are at Venus, which the Foundry builds after the Lattice and the Ring.",
+    },
+    () => Math.max(v("foundry-full-scale"), v("venus-hardware-ready")),
+  );
   r.s(
     "foundry-growth",
     {

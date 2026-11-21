@@ -67,11 +67,10 @@ risks:
     tech: [ring, helios]
     open: true
   - id: venus-hardware
-    risk: Nothing builds the hardware at Venus in time
-    what: The tiles, chimneys, receivers and Lanterns weigh {venus-hardware-mass}; the full Foundry would take {venus-hardware-build-days} to build them, and cooling would start late (an open problem in version 3)
+    risk: The hardware at Venus delays cooling
+    what: The tiles, chimneys, receivers and Lanterns weigh {venus-hardware-mass}; the Foundry builds them after the Ring, in {venus-hardware-build-days}, and cooling waits for them, so a slower build eats the {frost-sealing-slack} before the last caps
     safeguard: Lighter tiles and chimneys, or an industry at Venus that builds them from the air's own carbon
     tech: [exhaust, chimneys, ouroboros]
-    open: true
 
 governance: >-
   The 1967 Outer Space Treaty bars national appropriation of celestial bodies (Article II) and

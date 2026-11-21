@@ -1,6 +1,6 @@
 /**
  * Ceres Ice Train orbits, to scale: Venus's orbit, Ceres's before and after the campaign, the
- * Hohmann transfer the Bricks fall along, and the transfers of the next cheap windows.
+ * Hohmann transfer, the cheapest path between them, and the transfers of the next cheap windows.
  */
 import { period } from "@phosphoros/calc/physics";
 import { Art, Frame, Key, Link, path, show, textWidth, W } from "./kit.tsx";
@@ -21,8 +21,10 @@ interface Props {
     ceres: string;
     ceresNew: string;
     transfer: string;
+    flights: string;
     launch: string;
     vinf: string;
+    vinfMean: string;
     windowPeriod: string;
     windows: string;
     start: string;
@@ -255,8 +257,10 @@ export const iceOrbits: FigureDef<Props> = {
         ceres: show(r, "ceres-orbit", { sig: 3 }),
         ceresNew: show(r, "ceres-new-aphelion", { sig: 3 }),
         transfer: show(r, "ice-transfer-years"),
+        flights: `${show(r, "ice-flight-min")} to ${show(r, "ice-flight-max")}`,
         launch: show(r, "ice-launch-speed", { sig: 2 }),
         vinf: show(r, "ice-vinf", { sig: 3 }),
+        vinfMean: show(r, "ice-vinf-rms", { sig: 3 }),
         windowPeriod: show(r, "launch-window-period"),
         windows: show(r, "launch-windows"),
         start: show(r, "ice-launch-start", month),
@@ -267,16 +271,18 @@ export const iceOrbits: FigureDef<Props> = {
     };
   },
   caption: (p) =>
-    `Bricks fall from Ceres to Venus along half an ellipse in ${p.text.transfer}; the cheapest windows come every ${p.text.windowPeriod}. Throwing the ice backward pushes Ceres forward, stretching its orbit out to ${p.text.ceresNew}.`,
+    `The cheapest fall from Ceres to Venus is half an ellipse, ${p.text.transfer}, and its windows come every ${p.text.windowPeriod}; launched all the time, Bricks take ${p.text.flights}. Throwing the ice backward pushes Ceres forward, stretching its orbit out to ${p.text.ceresNew}.`,
   describe: (p) => ({
-    summary: `To scale, seen from the north. Venus orbits at ${p.text.venus}, Ceres at ${p.text.ceres}. A Brick thrown backward from Ceres falls along a Hohmann transfer ellipse that touches both orbits, arriving ${p.text.transfer} later, ${p.text.vinf} faster than Venus. Each later window turns the whole picture by the angle Ceres moves in ${p.text.windowPeriod}. The recoil leaves Ceres on an ellipse from ${p.text.ceres} to ${p.text.ceresNew}.`,
+    summary: `To scale, seen from the north. Venus orbits at ${p.text.venus}, Ceres at ${p.text.ceres}. A Brick thrown backward from Ceres in a launch window falls along a Hohmann transfer ellipse that touches both orbits, arriving ${p.text.transfer} later, ${p.text.vinf} faster than Venus. The Railheads fire between windows too, so Bricks fly other transfers, taking ${p.text.flights} and arriving ${p.text.vinfMean} faster on average. Each later window turns the whole picture by the angle Ceres moves in ${p.text.windowPeriod}. The recoil leaves Ceres on an ellipse from ${p.text.ceres} to ${p.text.ceresNew}.`,
     head: ["Quantity", "Value"],
     rows: [
       ["Venus's orbit", p.text.venus],
       ["Ceres's orbit (as a circle)", p.text.ceres],
-      ["Transfer time", p.text.transfer],
-      ["Muzzle speed", p.text.launch],
-      ["Arrival speed relative to Venus, far out", p.text.vinf],
+      ["Transfer time, Hohmann", p.text.transfer],
+      ["Transfer times flown", p.text.flights],
+      ["Muzzle speed, in a window", p.text.launch],
+      ["Arrival speed relative to Venus, far out, Hohmann", p.text.vinf],
+      ["Arrival speed relative to Venus, far out, on average", p.text.vinfMean],
       ["Time between cheap windows", p.text.windowPeriod],
       ["Windows in the campaign", p.text.windows],
       ["Launch campaign", `${p.text.start} to ${p.text.end}`],
@@ -291,8 +297,11 @@ export const iceOrbits: FigureDef<Props> = {
     "ceres-new-aphelion",
     "ceres-aphelion",
     "ice-transfer-years",
+    "ice-flight-min",
+    "ice-flight-max",
     "ice-launch-speed",
     "ice-vinf",
+    "ice-vinf-rms",
     "launch-window-period",
     "launch-windows",
     "ice-launch-start",

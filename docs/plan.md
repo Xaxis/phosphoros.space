@@ -6,7 +6,7 @@ every [60 d](numbers.md#foundry-doubling-days). Everything else follows from th
 One rule binds every invention: it may assume engineering we do not have yet, but it must obey
 conservation of energy and the second law of thermodynamics. The binding constraint is energy. Venus
 cannot shed its heat fast enough on its own ([The Problem](problem.md)), so the plan brings in
-[8.5 × 10²⁷ J](numbers.md#budget-demand) from outside the planet, almost all of it sunlight harvested near
+[1.1 × 10²⁸ J](numbers.md#budget-demand) from outside the planet, almost all of it sunlight harvested near
 Mercury and beamed across the inner Solar System.
 
 ## The five moves
@@ -24,13 +24,13 @@ and parts reach orbit by mass driver because escape speed is only
 
 The [Ouroboros Foundry](technologies/ouroboros.md) doubles every [60 d](numbers.md#foundry-doubling-days):
 [5.8 × 10⁷ kg](numbers.md#foundry-mass-2030) of machinery by January 2030,
-[2.7 × 10¹¹ kg](numbers.md#foundry-mass-2032) by January 2032, and after [26](numbers.md#foundry-doublings)
-doublings [6.7 × 10¹³ kg](numbers.md#foundry-final-mass) in [May 2033](numbers.md?date=month#foundry-full-scale).
+[2.7 × 10¹¹ kg](numbers.md#foundry-mass-2032) by January 2032, and after [27](numbers.md#foundry-doublings)
+doublings [1.3 × 10¹⁴ kg](numbers.md#foundry-final-mass) in [July 2033](numbers.md?date=month#foundry-full-scale).
 Exponential growth makes everything after it cheap, but nothing is free: every kilogram of product is a
 kilogram the Foundry does not add to itself. So it stops growing for only [9.8 d](numbers.md#veil-diversion-days)
 to build the Veil, late in 2032 when it is large, and builds the Helios Lattice and the Braking Ring once it is
-full grown, the Lattice in [80 d](numbers.md#lattice-build-days) and the Ring in
-[13 d](numbers.md#ring-build-days). [Choir](technologies/choir.md) runs it all, with a mass budget no machine can
+full grown, the Lattice in [57 d](numbers.md#lattice-build-days) and the Ring in
+[6.4 d](numbers.md#ring-build-days). [Choir](technologies/choir.md) runs it all, with a mass budget no machine can
 exceed.
 
 <!-- figure:foundry-growth -->
@@ -63,7 +63,7 @@ whole planet in full shadow:
 [3.6](numbers.md#veil-area-vs-v2) times the version 2 statite's area. At
 [1 g/m²](numbers.md#veil-areal-density) that is [5.4 × 10¹¹ kg](numbers.md#veil-mass), cut into
 [3.8 × 10⁸](numbers.md#veil-slats) slats. The Veil closes in [December 2032](numbers.md?date=month#veil-close),
-before active cooling begins in [May 2033](numbers.md?date=month#cooling-start), and turns away
+before active cooling begins in [April 2034](numbers.md?date=month#cooling-start), and turns away
 [99.9%](numbers.md#veil-block-fraction) of the sunlight, [3.0 × 10¹⁷ W](numbers.md#veil-blocked-power). Slats fail opaque and block every colour,
 so the Exhaust aims its outgoing beams around the Veil, only
 [0.68°](numbers.md#veil-angular-radius) in radius as seen from Venus. The
@@ -81,14 +81,14 @@ so the Exhaust aims its outgoing beams around the Veil, only
 
 ### 3. Pump the heat out
 
-The [Helios Lattice](technologies/helios.md) is [1.3 × 10⁷](numbers.md#helios-petals) film Petals orbiting
-near Mercury, [6.2 × 10¹⁶ m²](numbers.md#helios-area) in all. Each turns sunlight into laser light:
+The [Helios Lattice](technologies/helios.md) is [1.8 × 10⁷](numbers.md#helios-petals) film Petals orbiting
+near Mercury, [8.8 × 10¹⁶ m²](numbers.md#helios-area) in all. Each turns sunlight into laser light:
 [40%](numbers.md#helios-film-efficiency) film, [50%](numbers.md#helios-laser-efficiency) laser and
 [75%](numbers.md#helios-receiver-efficiency) receiver make [15%](numbers.md#helios-efficiency) end to end.
-From [July 2033](numbers.md?date=month#helios-full-power) it delivers [8.5 × 10¹⁹ W](numbers.md#helios-power),
-[2.2 × 10⁻⁵%](numbers.md#helios-sun-share) of the Sun's output, in beams that stay
+From [August 2033](numbers.md?date=month#helios-full-power) it delivers [1.2 × 10²⁰ W](numbers.md#helios-power),
+[3.1 × 10⁻⁵%](numbers.md#helios-sun-share) of the Sun's output, in beams that stay
 [46 m](numbers.md#helios-spot) wide across [1.2 AU](numbers.md#helios-range). The receivers ride above the
-air and radiate their own loss heat, [2.8 × 10¹⁹ W](numbers.md#helios-receiver-loss), from
+air and radiate their own loss heat, [4.0 × 10¹⁹ W](numbers.md#helios-receiver-loss), from
 [1,500 K](numbers.md#helios-fin-temp) fins. Fins that close to Venus cannot help shining on it: about
 [28%](numbers.md#ring-fin-venus-share) of their light falls on the planet, more than the cooling can absorb,
 and the receivers weigh more than the Ring can carry. Both are open problems
@@ -105,32 +105,32 @@ fan-driven exchangers and lift its heat in sealed liquid loops to floating canop
 > tops is thousands of times less than the Exhaust needs. To go faster, heat must be pumped.
 
 The Exhaust is a light-emitting heat pump. Electricity gives each photon extra energy, so a tile sitting at
-a few hundred kelvin glows as brightly as a [2,000 K](numbers.md#exhaust-effective-temp) body,
-[0.91 MW/m²](numbers.md#exhaust-flux), at [2.3 µm](numbers.md#exhaust-wavelength), where the thin CO₂ above
+a few hundred kelvin glows as brightly as a [1,600 K](numbers.md#exhaust-effective-temp) body,
+[0.37 MW/m²](numbers.md#exhaust-flux), at [2.3 µm](numbers.md#exhaust-wavelength), where the thin CO₂ above
 the canopies barely absorbs. The second law sets the price. The model charges the minimum for an emitter at
-that temperature, about [5.5](numbers.md#exhaust-work-ratio) joules of electricity per joule of heat moved
+that temperature, about [8.5](numbers.md#exhaust-work-ratio) joules of electricity per joule of heat moved
 ([budget](budget.md#pump-work-and-the-carnot-factor)); for light as narrow as the tiles emit, the true minimum
 is higher, an [open problem](risks.md#the-exhausts-light-costs-more-than-the-model-charges). The
-[10,000](numbers.md#exhaust-canopies) canopies carry [6.1 × 10¹³ m²](numbers.md#exhaust-area-installed) of
-emitters, [13%](numbers.md#exhaust-area-share) of Venus's area, enough to throw out
-[5.5 × 10¹⁹ W](numbers.md#exhaust-peak) at the peak the simulation needs.
+[10,000](numbers.md#exhaust-canopies) canopies carry [3.2 × 10¹⁴ m²](numbers.md#exhaust-area-installed) of
+emitters, [70%](numbers.md#exhaust-area-share) of Venus's area, enough to throw out
+[1.2 × 10²⁰ W](numbers.md#exhaust-peak) at the peak the simulation needs.
 
 > **Precedent:** An LED at MIT emitted [6.9 × 10⁻¹¹ W](numbers.md#led-2012-light-out) of light while drawing
 > [3.0 × 10⁻¹¹ W](numbers.md#led-2012-power-in) of electricity, taking the difference from heat
 > ([Santhanam et al. 2012](sources.md#santhanam-2012)).
 
-> **Invented:** Electroluminescent cooling at [0.91 MW/m²](numbers.md#exhaust-flux). It has never been shown
+> **Invented:** Electroluminescent cooling at [0.37 MW/m²](numbers.md#exhaust-flux). It has never been shown
 > at useful power; the [Exhaust-1](research.md#exhaust-1) experiment must show it by 2028.
 
 As the air cools, its CO₂ comes down. The Clear Rain begins on
-[23 July 2034](numbers.md?date=day#traj-clear-rain), when the air drops below
+[22 January 2035](numbers.md?date=day#traj-clear-rain), when the air drops below
 [304 K](numbers.md?sig=3#co2-critical-temp) and liquid CO₂ runs into the lowland basins. The seas start to
-freeze on [17 July 2035](numbers.md?date=day#traj-freeze), when the air reaches the triple point,
+freeze on [4 September 2035](numbers.md?date=day#traj-freeze), when the air reaches the triple point,
 [216.6 K](numbers.md#co2-triple-temp), and the air holds there until they are frozen through on
-[15 April 2036](numbers.md?date=day#traj-frozen). Dry ice is denser than liquid CO₂, so the crystals sink and
+[13 February 2036](numbers.md?date=day#traj-frozen). Dry ice is denser than liquid CO₂, so the crystals sink and
 the seas fill with ice from the bottom up. Frost Towers, the same emitter tiles on towers at
 [133 K](numbers.md#frost-tower-temp), trap the last vapor down to [54 Pa](numbers.md#frost-co2-pressure).
-Crawler-rafts seal the frozen seas, [1.1 × 10⁶ km²/d](numbers.md#cap-laying-rate) of cap a day, under a
+Crawler-rafts seal the frozen seas, [750,000 km²/d](numbers.md#cap-laying-rate) of cap a day, under a
 [1 mm](numbers.md#cryo-membrane-thickness) graphite membrane,
 [20 m](numbers.md#cryo-aerogel-thickness) of carbon aerogel and [2 m](numbers.md#cryo-armour-thickness) of
 basalt. The [Cryo-continents](technologies/cryo.md) are [2 km](numbers.md#cryo-thickness) plateaus over
@@ -148,10 +148,10 @@ basalt. The [Cryo-continents](technologies/cryo.md) are [2 km](numbers.md#cryo-
 ### 4. Bring the water
 
 The [Ceres Ice Train](technologies/ice-train.md) is [10,000](numbers.md#railhead-count) coilguns on Ceres,
-where gravity is [0.28 m/s²](numbers.md#ceres-gravity). They fire [1,410](numbers.md#ice-bricks-per-second)
+where gravity is [0.28 m/s²](numbers.md#ceres-gravity). They fire [1,950](numbers.md#ice-bricks-per-second)
 Bricks of [1 Mt](numbers.md#brick-mass) of ice a second at [6.4 km/s](numbers.md#ice-launch-speed), from
-[July 2033](numbers.md?date=month#ice-launch-start) to [October 2035](numbers.md?date=month#ice-launch-end).
-Each falls sunward for [1.15 yr](numbers.md#ice-transfer-years). In all they carry
+[August 2033](numbers.md?date=month#ice-launch-start) to [April 2035](numbers.md?date=month#ice-launch-end).
+Each falls sunward for [310 d](numbers.md#ice-flight-min) to [611 d](numbers.md#ice-flight-max). In all they carry
 [1.0 × 10²⁰ kg](numbers.md#ice-mass), a [217 m](numbers.md#ocean-depth) global ocean and
 [7.1%](numbers.md#ice-vs-earth-water) of Earth's water. That is [39%](numbers.md#ice-ceres-water-share) of
 Ceres's water, and the recoil changes Ceres's orbit for good ([Risks](risks.md#ceres)).
@@ -165,10 +165,10 @@ Ice falling freely onto Venus would hit at [13.8 km/s](numbers.md#ring-free-fal
 times what the whole cooling campaign removes from the air. So the [Braking Ring](technologies/ring.md)
 catches it: a [40,540 km](numbers.md#ring-circumference) orbital ring at
 [400 km](numbers.md#ring-altitude), whose rotor spins faster than orbital speed and holds a stationary
-stator aloft. Magnetic sleds brake each Brick from [13.5 km/s](numbers.md#ring-arrival-speed) to orbital
-speed and turn [53 MJ/kg](numbers.md#ring-recovered-per-kg) of its motion into electricity:
-[5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) in all, [7.5 × 10¹⁹ W](numbers.md#ring-power) at full rate.
-That is more than the coilguns draw, so from [16 September 2034](numbers.md?date=day#ring-pays-from) the Ring
+stator aloft. Magnetic sleds brake each Brick from [18.2 km/s](numbers.md#ring-arrival-speed) to orbital
+speed and turn [110 MJ/kg](numbers.md#ring-recovered-per-kg) of its motion into electricity:
+[1.1 × 10²⁸ J](numbers.md#ring-recovered-energy) in all, [2.2 × 10²⁰ W](numbers.md#ring-power) at full rate.
+That is more than the coilguns draw, so from [3 July 2034](numbers.md?date=day#ring-pays-from) the Ring
 pays for the launches. It does so by swapping customers: the Ring's electricity runs Venus's own systems, and
 the Lattice's beams stay on the Railheads at Ceres. The surplus is not free energy: gravity
 adds it as the ice falls from Ceres's orbit into the Sun's well and then into Venus's
@@ -180,20 +180,18 @@ adds it as the ice falls from Ceres's orbit into the Sun's well and then into Ve
 
 **Open problems.** Two parts of the Ring do not work yet. Nothing holds it against the catch's net push:
 catching east and west cancels the twist, not the force, which leaves
-[8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) along Venus's orbit, [280](numbers.md#ring-net-overload)
+[6.0 × 10¹⁶ N](numbers.md#ring-net-braking-force) along Venus's orbit, [2,000](numbers.md#ring-net-overload)
 times the rotor's spare lift ([Risks](risks.md#nothing-yet-holds-the-ring-against-the-catch)). And bringing
 the parked ice down on tethers needs [150](numbers.md#lowering-overload) times more lift than the rotor has to
 spare. The options there are to drop the Bricks from rest and pump out the extra
 [2.5 × 10²⁶ J](numbers.md#ring-drop-extra-heat) of heat, to lower more slowly, or to build a far heavier
 rotor ([Risks](risks.md#the-ring-cannot-yet-lower-the-ice)).
 
-Three more are open. The fins that shed the receivers' and the catch's loss heat shine
-[1.3 × 10¹⁹ W](numbers.md#loss-heat-into-venus) of it onto Venus, more than the cooling can absorb
+Two more are open. The fins that shed the receivers' and the catch's loss heat shine
+[2.7 × 10¹⁹ W](numbers.md#loss-heat-into-venus) of it onto Venus, more than the cooling can absorb
 ([Risks](risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)). The receivers, fins and radiators
-weigh [7.9](numbers.md#ring-equipment-overload) times what the Ring can carry
-([Risks](risks.md#the-ring-cannot-carry-its-receivers)). And the hardware at Venus, the tiles, chimneys,
-receivers and Lanterns, weighs [7.2 × 10¹³ kg](numbers.md#venus-hardware-mass), with nothing in the plan to
-build it before cooling starts ([Risks](risks.md#nothing-builds-the-hardware-at-venus-in-time)). Each is a
+weigh [12](numbers.md#ring-equipment-overload) times what the Ring can carry
+([Risks](risks.md#the-ring-cannot-carry-its-receivers)). Each is a
 [failing check](budget.md#physics-checks); the schedule above assumes each is solved.
 
 > **Invented:** A rotor carrying [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) at
@@ -261,16 +259,16 @@ needed.
 <!-- table:techs -->
 | Invention | Job | Scale | Breakthrough assumed | Online |
 | --- | --- | --- | --- | --- |
-| [Ouroboros Foundry](technologies/ouroboros.md) | Self-copying industry on Mercury | [1,000 t](numbers.md#foundry-seed-mass) seed to [6.7 × 10¹³ kg](numbers.md#foundry-final-mass) | A fully closed loop (chips, motors, optics, robots) from regolith, doubling every [60 d](numbers.md#foundry-doubling-days) | [2029](numbers.md?date=year#foundry-landing) |
-| [Helios Lattice](technologies/helios.md) | Harvest sunlight near Mercury and beam it | [6.2 × 10¹⁶ m²](numbers.md#helios-area) of film; [8.5 × 10¹⁹ W](numbers.md#helios-power) delivered | [15%](numbers.md#helios-efficiency) sunlight-to-target efficiency through kilometre-scale coherent laser arrays | [2033](numbers.md?date=year#helios-full-power) |
+| [Ouroboros Foundry](technologies/ouroboros.md) | Self-copying industry on Mercury | [1,000 t](numbers.md#foundry-seed-mass) seed to [1.3 × 10¹⁴ kg](numbers.md#foundry-final-mass) | A fully closed loop (chips, motors, optics, robots) from regolith, doubling every [60 d](numbers.md#foundry-doubling-days) | [2029](numbers.md?date=year#foundry-landing) |
+| [Helios Lattice](technologies/helios.md) | Harvest sunlight near Mercury and beam it | [8.8 × 10¹⁶ m²](numbers.md#helios-area) of film; [1.2 × 10²⁰ W](numbers.md#helios-power) delivered | [15%](numbers.md#helios-efficiency) sunlight-to-target efficiency through kilometre-scale coherent laser arrays | [2033](numbers.md?date=year#helios-full-power) |
 | [Hesperus Veil](technologies/veil.md) | Sunshade, thermostat and day clock | [5.4 × 10¹⁴ m²](numbers.md#veil-area), [5.4 × 10¹¹ kg](numbers.md#veil-mass), [1.11 × 10⁶ km](numbers.md#veil-distance) sunward | [3.8 × 10⁸](numbers.md#veil-slats) electrochromic, light-bending slats holding station, dimming from open to [99.9%](numbers.md#veil-block-fraction) blocked | [2032](numbers.md?date=year#veil-close) |
-| [Thermal Chimneys](technologies/chimneys.md) | Lift deep heat to the cloud tops | Towers [64 km](numbers.md#chimney-height) tall, with fan-driven intakes and sealed liquid loops | Structures that survive [737 K](numbers.md#venus-surface-temp) and [92 bar](numbers.md#venus-surface-pressure) through the [3.3 yr](numbers.md#cooling-seconds) of active cooling | [2033](numbers.md?date=year#cooling-start) |
-| [Photonic Exhaust](technologies/exhaust.md) | Throw heat into space as light | [6.1 × 10¹³ m²](numbers.md#exhaust-area-installed) of emitters; [5.5 × 10¹⁹ W](numbers.md#exhaust-peak) peak | Electroluminescent cooling at [0.91 MW/m²](numbers.md#exhaust-flux) | [2033](numbers.md?date=year#cooling-start) |
-| [Cryo-continents](technologies/cryo.md) | Store all the CO₂ | [3.0 × 10¹⁷ m³](numbers.md#cryo-volume) of sealed dry ice in [2 km](numbers.md#cryo-thickness) plateaus | A graphite membrane and [20 m](numbers.md#cryo-aerogel-thickness) foam cap; basal heat pipes and refrigeration of [12 PW](numbers.md#cryo-floor-load) at first | [2034](numbers.md?date=year#traj-clear-rain) |
+| [Thermal Chimneys](technologies/chimneys.md) | Lift deep heat to the cloud tops | Towers [64 km](numbers.md#chimney-height) tall, with fan-driven intakes and sealed liquid loops | Structures that survive [737 K](numbers.md#venus-surface-temp) and [92 bar](numbers.md#venus-surface-pressure) through the [2.4 yr](numbers.md#cooling-seconds) of active cooling | [2034](numbers.md?date=year#cooling-start) |
+| [Photonic Exhaust](technologies/exhaust.md) | Throw heat into space as light | [3.2 × 10¹⁴ m²](numbers.md#exhaust-area-installed) of emitters; [1.2 × 10²⁰ W](numbers.md#exhaust-peak) peak | Electroluminescent cooling at [0.37 MW/m²](numbers.md#exhaust-flux) | [2034](numbers.md?date=year#cooling-start) |
+| [Cryo-continents](technologies/cryo.md) | Store all the CO₂ | [3.0 × 10¹⁷ m³](numbers.md#cryo-volume) of sealed dry ice in [2 km](numbers.md#cryo-thickness) plateaus | A graphite membrane and [20 m](numbers.md#cryo-aerogel-thickness) foam cap; basal heat pipes and refrigeration of [12 PW](numbers.md#cryo-floor-load) at first | [2035](numbers.md?date=year#traj-clear-rain) |
 | [Graphite Forges](technologies/forges.md) | Split CO₂ into oxygen and carbon | [1.8 × 10¹⁸ kg](numbers.md#forge-co2) of CO₂ to [1.3 × 10¹⁸ kg](numbers.md#o2-mass) of oxygen | Molten-carbonate splitting at [60%](numbers.md#forge-efficiency) efficiency, at planetary scale | [2035](numbers.md?date=year#forge-start) |
-| [Ceres Ice Train](technologies/ice-train.md) | Ship the water | [1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice at [6.4 km/s](numbers.md#ice-launch-speed), [1.15 yr](numbers.md#ice-transfer-years) in transit | Mass drivers throwing [1.41 × 10¹² kg/s](numbers.md#ice-throughput) in all | [2033](numbers.md?date=year#ice-launch-start) |
-| [Braking Ring](technologies/ring.md) | Catch the ice without heating Venus | Orbital ring of [1.0 × 10¹³ kg](numbers.md#ring-mass) | Regenerative magnetic braking recovering [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) | [2034](numbers.md?date=year#first-catch) |
-| [Acid Sweep](technologies/acid.md) | Remove the sulfuric-acid clouds | Rain-out plus basalt neutralization | None but scale | [2034](numbers.md?date=year#traj-clear-rain) |
+| [Ceres Ice Train](technologies/ice-train.md) | Ship the water | [1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice at [6.4 km/s](numbers.md#ice-launch-speed), [310 d](numbers.md#ice-flight-min) to [611 d](numbers.md#ice-flight-max) in transit | Mass drivers throwing [1.95 × 10¹² kg/s](numbers.md#ice-throughput) in all | [2033](numbers.md?date=year#ice-launch-start) |
+| [Braking Ring](technologies/ring.md) | Catch the ice without heating Venus | Orbital ring of [1.0 × 10¹³ kg](numbers.md#ring-mass) | Regenerative magnetic braking recovering [1.1 × 10²⁸ J](numbers.md#ring-recovered-energy) | [2034](numbers.md?date=year#first-catch) |
+| [Acid Sweep](technologies/acid.md) | Remove the sulfuric-acid clouds | Rain-out plus basalt neutralization | None but scale | [2035](numbers.md?date=year#traj-clear-rain) |
 | [Aegis Shield](technologies/aegis.md) | Stop the solar wind stripping the new water | Superconducting dipole beside the Veil | Large deep-space superconducting coils | [2034](numbers.md?date=year#aegis-online) |
 | [Genesis Biota](technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, sulfate-rich water under nitrogen-rich air | [2036](numbers.md?date=year#genesis-start) |
 | [Choir](technologies/choir.md) | Run every machine on three worlds as one system | Autonomy across three worlds | Self-correcting swarm control with a verified safety core | [2029](numbers.md?date=year#foundry-landing) |
@@ -291,22 +289,23 @@ Foundry grows on Mercury while the Veil, the Lattice and the Ring are built from
 ## The simulated atmosphere
 
 <!-- figure:trajectory -->
-![The simulated atmosphere, 2033 to 2036](../figures/svg/trajectory.svg)
+![The simulated atmosphere, day by day](../figures/svg/trajectory.svg)
 <!-- /figure -->
 
 The dates on which Venus's air changes are not chosen. They come from a day-by-day simulation of the
 atmosphere,
 [calc/src/model/trajectory.ts](../calc/src/model/trajectory.ts), which runs from the start of active
-cooling on [3 May 2033](numbers.md?date=day#cooling-start) using only the power the plan has. Each day:
+cooling on [5 April 2034](numbers.md?date=day#cooling-start) using only the power the plan has. Each day:
 
-1. The Lattice supplies electricity, climbing from nothing to full power as the Petals are built. Before the Ring catches its
-   first Brick, the Railheads take their share first; after, the Ring pays for them and adds its surplus.
+1. The Lattice supplies electricity, at full power by the time the hardware is at Venus. Before the Ring catches its
+   first Brick, the Railheads take their share first; after, the Ring pays for them and adds its surplus, day by day
+   as the Bricks arrive.
    The Forges take theirs.
 2. Heat enters the air: from the crust, from the Forges' waste heat, from the falling ice, and from the
    sunlight the closed Veil lets through.
 3. The rest of the power, less the chimney fans, drives the Exhaust, which lifts heat out of the air and
-   rejects it at an effective [2,000 K](numbers.md#exhaust-effective-temp), never more than
-   [5.5 × 10¹⁹ W](numbers.md#exhaust-peak) and never faster than the chimneys carry it,
+   rejects it at an effective [1,600 K](numbers.md#exhaust-effective-temp), never more than
+   [1.2 × 10²⁰ W](numbers.md#exhaust-peak) and never faster than the chimneys carry it,
    [1.3 × 10¹⁹ W](numbers.md#chimney-capacity). While the air cools as a gas the pumps see it a little colder
    than it is, [0.931](numbers.md#chimney-cold-factor) of its temperature, because the chimneys' exchangers take
    its heat over a range.
@@ -320,40 +319,40 @@ and the whole deposition heat for the [5.7%](numbers.md#co2-triple-vapour-share)
 freezes out below. Its simplifications are named in the code: the whole atmosphere shares one temperature,
 its heat capacity and the CO₂'s deposition heat are averages over the path, receiver loss heat goes straight
 to space, and the
-pumps are charged the work for light as hot as [2,000 K](numbers.md#exhaust-effective-temp), a floor until the
+pumps are charged the work for light as hot as [1,600 K](numbers.md#exhaust-effective-temp), a floor until the
 Exhaust's beamed light is reconciled ([open problem](budget.md#physics-checks)).
 
 What it finds:
 
 | Event | Simulated date |
 | --- | --- |
-| The Clear Rain: air below [304 K](numbers.md?sig=3#co2-critical-temp) | [23 July 2034](numbers.md?date=day#traj-clear-rain) |
-| CO₂ seas start to freeze | [17 July 2035](numbers.md?date=day#traj-freeze) |
-| The seas are frozen through | [15 April 2036](numbers.md?date=day#traj-frozen) |
-| All the CO₂ is down | [3 July 2036](numbers.md?date=day#traj-cold) |
-| Frost Towers reach the CO₂ target | [19 July 2036](numbers.md?date=day#traj-scavenged) |
+| The Clear Rain: air below [304 K](numbers.md?sig=3#co2-critical-temp) | [22 January 2035](numbers.md?date=day#traj-clear-rain) |
+| CO₂ seas start to freeze | [4 September 2035](numbers.md?date=day#traj-freeze) |
+| The seas are frozen through | [13 February 2036](numbers.md?date=day#traj-frozen) |
+| All the CO₂ is down | [30 March 2036](numbers.md?date=day#traj-cold) |
+| Frost Towers reach the CO₂ target | [9 April 2036](numbers.md?date=day#traj-scavenged) |
 | Caps sealed; the Veil opens | [2 September 2036](numbers.md?date=day#traj-warming) |
-| Air reaches [285 K](numbers.md#earth-like-temp) | [5 September 2036](numbers.md?date=day#traj-warm) |
+| Air reaches [285 K](numbers.md#earth-like-temp) | [4 September 2036](numbers.md?date=day#traj-warm) |
 | **Earth-like** | **[30 September 2036](numbers.md?date=day#traj-earth-like)** |
 | Deadline | [31 December 2036](numbers.md?date=day#deadline) |
 
 Venus is Earth-like [92 d](numbers.md#traj-slack-days) before the deadline. Three things stand out.
-Until the Ring pays for the Railheads in [September 2034](numbers.md?date=month#ring-pays-from), cooling is
+Until the Ring pays for the Railheads in [July 2034](numbers.md?date=month#ring-pays-from), cooling is
 starved of power; after that, power is plentiful and the emitters are the limit, which is why the Exhaust
 is sized for the peak and not the average ([correction](about.md#corrections)). The long stretch between
 the Clear Rain and the seas frozen through is the CO₂'s latent heat,
 [2.7 × 10²⁶ J](numbers.md#atmosphere-latent-heat), about as much as the sensible cooling of the whole
 air, [2.6 × 10²⁶ J](numbers.md#atmosphere-sensible-heat). Freezing the seas alone holds the air at the
-triple point from [July 2035](numbers.md?date=month#traj-freeze) to
-[April 2036](numbers.md?date=month#traj-frozen), with the emitters at their peak and the falling ice adding
+triple point from [September 2035](numbers.md?date=month#traj-freeze) to
+[February 2036](numbers.md?date=month#traj-frozen), with the emitters at their peak and the falling ice adding
 heat all the while. And the last condition to fall is the oxygen: the caps are sealed and the Veil opens on
 [2 September 2036](numbers.md?date=day#traj-warming), the air is warm by
-[5 September 2036](numbers.md?date=day#traj-warm), and the Forges complete the oxygen on
+[4 September 2036](numbers.md?date=day#traj-warm), and the Forges complete the oxygen on
 [30 September 2036](numbers.md?date=day#forge-end), the day Venus is Earth-like. The Frost Towers
-finish [44 d](numbers.md#frost-sealing-slack) before the last caps are due, the Exhaust's peak sized for it
+finish [150 d](numbers.md#frost-sealing-slack) before the last caps are due, the Exhaust's peak sized for it
 ([correction](about.md#corrections)), and seeded life greens the oceans before the deadline.
 
-The simulation's pump work, [3.7 × 10²⁷ J](numbers.md#traj-pump-energy), is what the energy budget charges,
+The simulation's pump work, [5.6 × 10²⁷ J](numbers.md#traj-pump-energy), is what the energy budget charges,
 and it is more than the simple estimate for the air alone ([why](budget.md#why-the-simulation-pumps-more)).
 To see how the dates move, change an assumption in the [Explorer](https://phosphoros.space/explore) or run
 `pnpm calc --set exhaust-peak=3.6e19` to try version 2's smaller Exhaust.

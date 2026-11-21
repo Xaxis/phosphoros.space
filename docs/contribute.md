@@ -61,8 +61,8 @@ These are the places where the plan is weakest, or least sure of itself. Each is
 
 1. **Holding the Ring against the catch.** Catching half the Bricks eastbound and half westbound cancels the
    twist on the [Braking Ring](technologies/ring.md), not the push: every Brick arrives from the same
-   direction, so [8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) remains along Venus's orbit,
-   [280](numbers.md#ring-net-overload) times the rotor's spare lift. A solution must hand that force to Venus,
+   direction, so [6.0 × 10¹⁶ N](numbers.md#ring-net-braking-force) remains along Venus's orbit,
+   [2,000](numbers.md#ring-net-overload) times the rotor's spare lift. A solution must hand that force to Venus,
    or catch the ice some other way that keeps its heat out of the air
    ([issue 3](https://github.com/Xaxis/phosphoros.space/issues/3), [Risks](risks.md#nothing-yet-holds-the-ring-against-the-catch)).
 2. **Lowering the ice.** Lowering the caught ice on tethers needs [150](numbers.md#lowering-overload) times the
@@ -84,10 +84,11 @@ These are the places where the plan is weakest, or least sure of itself. Each is
 5. **Electroluminescent cooling at high power.** An LED has emitted more light than the electricity it drew
    ([Santhanam et al. 2012](sources.md#santhanam-2012)), and thermophotonic transfer has been measured in
    laboratory structures ([Casado et al. 2019](sources.md#casado-2019)), but only at tiny powers. The plan needs
-   [0.91 MW/m²](numbers.md#exhaust-flux), and the model charges the pump work at the Carnot minimum for
-   emitters at an effective [2,000 K](numbers.md#exhaust-effective-temp). Light squeezed into the tiles'
+   [0.37 MW/m²](numbers.md#exhaust-flux), and the model charges the pump work at
+   [50%](numbers.md#exhaust-carnot-share) of the Carnot limit for emitters at an effective
+   [1,600 K](numbers.md#exhaust-effective-temp). Light squeezed into the tiles'
    narrow band and cone carries so little entropy that the true minimum is
-   [12](numbers.md#exhaust-work-multiple) times that ([issue 4](https://github.com/Xaxis/phosphoros.space/issues/4)).
+   [9.6](numbers.md#exhaust-work-multiple) times that ([issue 4](https://github.com/Xaxis/phosphoros.space/issues/4)).
    A tile that spreads its light over more colours and directions while it still escapes the air, what
    limits a real tile, and how close to its minimum it can get, are the most important open numbers in the
    plan. A physics argument that it cannot work would be just as valuable.
@@ -96,19 +97,15 @@ These are the places where the plan is weakest, or least sure of itself. Each is
    [June 2027](numbers.md?date=month#survey-start) actually detect, and what would a negative result rule
    out? The gate is only as honest as that answer ([Research Agenda](research.md#the-cloud-life-gate)).
 7. **Radiators that do not shine on Venus.** Fins near the planet send about
-   [28%](numbers.md#ring-fin-venus-share) of their light onto it, [1.3 × 10¹⁹ W](numbers.md#loss-heat-into-venus)
+   [28%](numbers.md#ring-fin-venus-share) of their light onto it, [2.7 × 10¹⁹ W](numbers.md#loss-heat-into-venus)
    at full power. A radiator design, with its mass, that sheds the receivers' and the catch's loss heat while
    sending under about a percent into Venus would close it
    ([issue 14](https://github.com/Xaxis/phosphoros.space/issues/14),
    [Risks](risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)).
 8. **Where the receivers go.** The receivers, fins and catch radiators weigh
-   [7.9](numbers.md#ring-equipment-overload) times what the Ring's rotor can hold up. A lighter receiver, a
+   [12](numbers.md#ring-equipment-overload) times what the Ring's rotor can hold up. A lighter receiver, a
    different home for them, or a Ring that carries them, sized with its mass and its effect on the schedule
    ([issue 15](https://github.com/Xaxis/phosphoros.space/issues/15)).
-9. **Who builds the hardware at Venus.** The tiles, chimneys, receivers and Lanterns weigh
-   [7.2 × 10¹³ kg](numbers.md#venus-hardware-mass) and must work when cooling starts. Lighter designs, or an
-   industry that makes them in time, with its own growth and power
-   ([issue 18](https://github.com/Xaxis/phosphoros.space/issues/18)).
 
 ## Pull requests
 

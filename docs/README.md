@@ -26,9 +26,9 @@ global ocean, water clouds and a [24 h](numbers.md#day-length) day. The full co
 **1. Grow an industry ([2028](numbers.md?date=year#foundry-seed-launch) to [2033](numbers.md?date=year#foundry-full-scale)).** A [1,000 t](numbers.md#foundry-seed-mass) seed foundry launches on
 [1 October 2028](numbers.md?date=day#foundry-seed-launch), lands on Mercury on
 [14 January 2029](numbers.md?date=day#foundry-landing) and rebuilds itself from rock every
-[60 d](numbers.md#foundry-doubling-days). [26](numbers.md#foundry-doublings) doublings later, in
-[May 2033](numbers.md?date=month#foundry-full-scale), it is [6.7 × 10¹³ kg](numbers.md#foundry-final-mass)
-of machinery, [2 × 10⁻¹⁰](numbers.md#foundry-mercury-share) of Mercury's mass.
+[60 d](numbers.md#foundry-doubling-days). [27](numbers.md#foundry-doublings) doublings later, in
+[July 2033](numbers.md?date=month#foundry-full-scale), it is [1.3 × 10¹⁴ kg](numbers.md#foundry-final-mass)
+of machinery, [4 × 10⁻¹⁰](numbers.md#foundry-mercury-share) of Mercury's mass.
 ([Ouroboros Foundry](technologies/ouroboros.md), [Choir](technologies/choir.md))
 
 **2. Switch off the Sun ([2032](numbers.md?date=year#veil-close)).** The Hesperus Veil, [5.4 × 10¹⁴ m²](numbers.md#veil-area) of light-bending
@@ -37,21 +37,20 @@ film held just sunward of the Sun-Venus L1 point, [1.11 × 10⁶ km](numbers.
 [December 2032](numbers.md?date=month#veil-close). Later it becomes the planet's dimmer switch and day clock.
 ([Hesperus Veil](technologies/veil.md), [Aegis Shield](technologies/aegis.md))
 
-**3. Pump the heat out ([2033](numbers.md?date=year#cooling-start) to [2036](numbers.md?date=year#cooling-end)).** The Helios Lattice near Mercury beams
-[8.5 × 10¹⁹ W](numbers.md#helios-power), shared between Venus and the Ice Train's coilguns on Ceres. Thermal Chimneys lift the deep heat to floating canopies
+**3. Pump the heat out ([2034](numbers.md?date=year#cooling-start) to [2036](numbers.md?date=year#cooling-end)).** The Helios Lattice near Mercury beams
+[1.2 × 10²⁰ W](numbers.md#helios-power), shared between Venus and the Ice Train's coilguns on Ceres. Thermal Chimneys lift the deep heat to floating canopies
 above the clouds, where the Photonic Exhaust fires it into space as [2.3 µm](numbers.md#exhaust-wavelength)
-infrared, up to [5.5 × 10¹⁹ W](numbers.md#exhaust-peak). The CO₂ rains out as liquid from
-[July 2034](numbers.md?date=month#traj-clear-rain), freezes, and is sealed under insulated caps as new
+infrared, up to [1.2 × 10²⁰ W](numbers.md#exhaust-peak). The CO₂ rains out as liquid from
+[January 2035](numbers.md?date=month#traj-clear-rain), freezes, and is sealed under insulated caps as new
 land. ([Helios Lattice](technologies/helios.md), [Thermal Chimneys](technologies/chimneys.md),
 [Photonic Exhaust](technologies/exhaust.md), [Cryo-continents](technologies/cryo.md))
 
 **4. Bring the water ([2033](numbers.md?date=year#ice-launch-start) to [2036](numbers.md?date=year#lowering-end)).** Coilguns on Ceres launch [1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice,
 enough for a [217 m](numbers.md#ocean-depth) ocean. A Braking Ring around Venus catches it and turns its
-speed into [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) of electricity instead of heat, enough to power
-the coilguns from [September 2034](numbers.md?date=month#ring-pays-from). What holds the Ring against the
+speed into [1.1 × 10²⁸ J](numbers.md#ring-recovered-energy) of electricity instead of heat, enough to power
+the coilguns from [July 2034](numbers.md?date=month#ring-pays-from). What holds the Ring against the
 catch's push, how to lower the caught ice to the surface, and how the Ring carries its receivers are
-[open problems](risks.md#the-ring-cannot-yet-lower-the-ice), as are the loss heat its fins shine onto Venus
-and who builds the hardware at Venus in time.
+[open problems](risks.md#the-ring-cannot-yet-lower-the-ice), as is the loss heat its fins shine onto Venus.
 ([Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md))
 
 **5. Make it breathe ([2035](numbers.md?date=year#forge-start) to [2036](numbers.md?date=year#genesis-end)).** Graphite Forges split CO₂ into
@@ -93,13 +92,13 @@ deadline.
 ![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
-The plan must bring [8.5 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Lattice supplies
-[9.2 × 10²⁷ J](numbers.md#helios-supply) between full power and the deadline, which leaves
-[7.6%](numbers.md#budget-spare) spare on its own, even though the coilguns fire between launch windows too and
-pay [16%](numbers.md#launch-offwindow-mean) more for it. Once the Ring's recovered energy powers the coilguns
-the spare is [33%](numbers.md#budget-spare-with-ring). Launching the water and pumping out the heat take
-[92%](numbers.md#budget-launch-share) of the Lattice's output. The walkthrough, and the
-[8](numbers.md#checks-failing) physics checks that still fail, are in [Energy and Mass Budget](budget.md).
+The plan must bring [1.1 × 10²⁸ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Lattice supplies
+[1.3 × 10²⁸ J](numbers.md#helios-supply) between full power and the deadline, which leaves
+[11%](numbers.md#budget-spare) spare on its own, even though the coilguns fire between launch windows too and
+pay [37%](numbers.md#launch-offwindow-mean) more for it. Once the Ring's recovered energy powers the coilguns
+the spare is [32%](numbers.md#budget-spare-with-ring). Launching the water and pumping out the heat take
+[88%](numbers.md#budget-launch-share) of the Lattice's output. The walkthrough, and the
+[6](numbers.md#checks-failing) physics checks that still fail, are in [Energy and Mass Budget](budget.md).
 
 ## Read on
 

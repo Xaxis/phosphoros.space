@@ -69,6 +69,26 @@ test("every number in the brief is reproduced, corrected on purpose, or explaine
   for (const c of results) if (c.correction) assert.ok(corrections.has(c.correction), c.correction);
 });
 
+test("every failing check names its problem, and every open problem has a failing check", () => {
+  // A design that fails stays a failing check, tied to a corrections entry and a GitHub issue; an
+  // open entry whose check passes would claim a problem the model no longer shows.
+  const entries = readYaml("data/corrections.yaml").data as {
+    id: string;
+    kind: string;
+    issue?: number;
+  }[];
+  const named = new Set<string>();
+  for (const c of r.checks.values()) {
+    if (c.pass) continue;
+    const entry = entries.find((e) => e.id === c.issue);
+    assert.ok(entry, `${c.id} fails without a corrections entry`);
+    assert.ok(entry?.issue, `${c.issue} has no GitHub issue`);
+    named.add(entry?.id ?? "");
+  }
+  for (const e of entries.filter((e) => e.kind === "open"))
+    assert.ok(named.has(e.id), `open problem ${e.id} has no failing check`);
+});
+
 test("the energy budget closes with the Ring, and the heat pump obeys the second law", () => {
   assert.ok(v("helios-supply") >= v("budget-demand-with-ring"));
   assert.ok(v("ring-recovered-energy") >= v("budget-ring-launch"));
@@ -81,8 +101,10 @@ test("the energy budget closes with the Ring, and the heat pump obeys the second
     v("exhaust-work") / v("atmosphere-heat") >
       v("exhaust-effective-temp") / v("venus-surface-temp") - 1,
   );
-  // Emitting 0.9 MW/m² is what a 2,000 K body does.
-  assert.ok(Math.abs(v("exhaust-flux") - 5.670374419e-8 * 2000 ** 4) < 1);
+  // The emitters shine as a black body at their effective temperature.
+  assert.ok(
+    Math.abs(v("exhaust-flux") / (5.670374419e-8 * v("exhaust-effective-temp") ** 4) - 1) < 1e-9,
+  );
 });
 
 test("a Lattice finished after the deadline is an error, not negative energy", () => {
@@ -458,11 +480,13 @@ test("the seas freeze at the triple point, and the simulation's heat books balan
     assert.equal(d.temp, Tt);
     assert.ok(Math.abs(d.co2 / Pt - 1) < 1e-9);
   }
-  // The CO₂ pressure never jumps from one day to the next while the pumps cool the air.
+  // The CO₂ pressure never jumps from one day to the next while the pumps cool the air. On the
+  // frost curve near 200 K, a day's half a kelvin of cooling lowers it about 4% (Clausius-Clapeyron);
+  // a step between stages would show as far more.
   for (let i = 1; i < sim.days.length; i++) {
     const [a, b] = [sim.days[i - 1], sim.days[i]];
     if (a && b && b.phase === "cooling")
-      assert.ok(b.co2 <= a.co2 && (a.co2 - b.co2) / a.co2 < 0.04);
+      assert.ok(b.co2 <= a.co2 && (a.co2 - b.co2) / a.co2 < 0.1, `day ${b.day}`);
   }
   assert.equal(
     r.checks.get("traj-heat-books")?.pass,
@@ -477,6 +501,7 @@ test("the seas freeze at the triple point, and the simulation's heat books balan
     loadInputs({
       "foundry-seed-launch": v("experiments-end"),
       "ceres-seed-launch": v("experiments-end"),
+      "exhaust-peak": 8e19,
     }),
   );
   assert.ok(late.get("traj-scavenged").value > v("deadline"));

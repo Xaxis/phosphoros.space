@@ -135,12 +135,12 @@ lithocell-feature-size:
 
 # --- Helios Lattice --------------------------------------------------------------------------------
 helios-power:
-  value: 8.5e19
+  value: 1.2e20
   unit: W
   label: Power the Helios Lattice delivers
   basis: design
-  note: Version 2 raised it from 4 to 7 × 10¹⁹ W so the launches would finish in time. Version 3 raises it again, because the Railheads draw more once launches between windows are charged and the Lattice's power arrives only after the Foundry stops growing.
-  range: [4.0e19, 1.0e20]
+  note: Version 2 raised it from 4 to 7 × 10¹⁹ W so the launches would finish in time. Version 3 raised it to 8.5 × 10¹⁹ W, because the Railheads draw more once launches between windows are charged and the Lattice's power arrives only after the Foundry stops growing. It rose again when the launch schedule was solved transfer by transfer, out of Ceres's tilted orbit, and the pumps were charged as real machines rather than reversible ones.
+  range: [6.0e19, 1.6e20]
 helios-film-efficiency:
   value: 0.40
   unit: "1"
@@ -373,11 +373,16 @@ deep-heat-peak:
 
 # --- Photonic Exhaust ------------------------------------------------------------------------------
 exhaust-effective-temp:
-  value: 2000
+  value: 1600
   unit: K
   label: Effective temperature the emitters shine at
-  basis: invented
+  basis: design
   range: [1000, 3000]
+  note: >-
+    A hotter emitter needs less area (it shines as T⁴) but more pump work per joule lifted, and the
+    pumps share the Lattice's power with everything else. Version 3 chose 2,000 K with reversible
+    pumps; at half the Carnot limit the work costs too much that hot, and the extra tiles at
+    {exhaust-effective-temp} still reach Venus in time.
 exhaust-tile-areal-density:
   value: 0.5
   unit: kg/m2
@@ -393,28 +398,30 @@ chimney-wall-areal-density:
   basis: invented
   note: The walls carry no pressure load; most of the mass is the loops and the exchangers at the base.
 exhaust-carnot-share:
-  value: 1.0
+  value: 0.5
   unit: "1"
   show: "%"
   sig: 2
   label: Share of the Carnot limit the heat pumps reach
   basis: invented
-  range: [0.3, 1]
+  range: [0.3, 0.9]
   note: >-
     A heat pump's coefficient of performance as a share of the reversible one. Every pump work in the
-    model, the simulation's included, is the reversible work divided by this share.
+    model, the simulation's included, is the reversible work divided by this share. Good industrial
+    heat pumps reach about half the Carnot limit; none lifts heat from cool air to a glowing
+    emitter, so the share is invented, and the Exhaust-1 test must show it.
 exhaust-bandgap:
   value: 0.54
   unit: eV
   label: Emitter tile bandgap (InGaAsSb)
   basis: invented
 exhaust-peak:
-  value: 5.5e19
+  value: 1.2e20
   unit: W
   label: Peak power the Exhaust can throw into space
   basis: design
-  range: [3.0e19, 7.0e19]
-  note: Version 2 sized it at 3.6 × 10¹⁹ W from the campaign's average. The day-by-day simulation shows the Exhaust, not the power supply, sets the pace once the Ring pays for the Railheads, and at 3.6 × 10¹⁹ W Venus is Earth-like only in 2037, long after the deadline.
+  range: [6.0e19, 1.6e20]
+  note: Version 2 sized it at 3.6 × 10¹⁹ W from the campaign's average. The day-by-day simulation shows the Exhaust, not the power supply, sets the pace once the Ring pays for the Railheads, and at 3.6 × 10¹⁹ W Venus is Earth-like only in 2037, long after the deadline. Version 3 sized it at 5.5 × 10¹⁹ W for reversible pumps; pumps at half the Carnot limit spend twice the work, and the emitters shine that work too.
 exhaust-canopies:
   value: 10000
   unit: count

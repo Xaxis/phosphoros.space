@@ -28,7 +28,7 @@ Once the [Photonic Exhaust](exhaust.md) cools the lower air, falling droplets st
 clouds rain out onto the surface: [1.0 × 10¹⁴ kg](../numbers.md#venus-cloud-acid) of sulfuric acid, from the
 [0.22 kg/m²](../numbers.md#venus-cloud-column) of droplets Pioneer Venus found over every square metre
 ([Baines et al. 2021](../sources.md#baines-2021)). That begins before the CO₂ itself condenses in the
-Clear Rain of [July 2034](../numbers.md?date=month#traj-clear-rain).
+Clear Rain of [January 2035](../numbers.md?date=month#traj-clear-rain).
 
 ### Where the SO₂ goes
 
@@ -131,9 +131,9 @@ even lime for every molecule of SO₂, as version 2 planned, would take basalt f
 
 ## Build sequence
 
-- **[May 2033](../numbers.md?date=month#cooling-start):** Active cooling begins. Rock mills start
+- **[April 2034](../numbers.md?date=month#cooling-start):** Active cooling begins. Rock mills start
   grinding, and canopy drones start dusting the highlands and the future shores.
-- **[July 2034](../numbers.md?date=month#traj-clear-rain):** The Clear Rain. By now the acid clouds
+- **[January 2035](../numbers.md?date=month#traj-clear-rain):** The Clear Rain. By now the acid clouds
   have rained out onto dusted ground, and the SO₂ runs into the basins with the liquid CO₂.
 - **[January 2035](../numbers.md?date=month#forge-start):** The Forges start, and their oxygen turns
   sulfite to sulfate.

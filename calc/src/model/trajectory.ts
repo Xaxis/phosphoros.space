@@ -19,6 +19,7 @@ import { formatQuantity } from "../format.ts";
 import { co2LiquidPressure, co2SublimationPressure, conductedFlux } from "../physics.ts";
 import type { Point, Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
+import { iceCatch } from "./ice.ts";
 import { fmt } from "./text.ts";
 
 export interface TrajectoryDay {
@@ -158,18 +159,17 @@ export function simulate(
   // The full Foundry builds the Lattice after it stops growing, so its power climbs from nothing
   // at full scale to full power as the petals come off the line. The first demonstration petals
   // (2030) are too few to count.
-  const ramp0 = v("cooling-start");
+  const ramp0 = v("foundry-full-scale");
   const ramp1 = v("helios-full-power");
   const lattice = (d: number) =>
     v("helios-power") * Math.min(1, Math.max(0, (d - ramp0) / Math.max(1, ramp1 - ramp0)));
 
-  const leakage = (d: number, launching: boolean, catching: boolean) => {
-    const beam = Math.max(0, lattice(d) - (launching ? v("railhead-power") : 0));
+  const leakage = (d: number, beam: number, catchLoss: number) => {
     const receivers =
       beam *
       (1 / v("helios-receiver-efficiency") - 1) *
       (d < v("ring-complete") ? v("canopy-fin-venus-share") : v("ring-fin-venus-share"));
-    const catchHeat = catching ? v("ring-catch-loss-power") * v("ring-fin-venus-share") : 0;
+    const catchHeat = catchLoss * v("ring-fin-venus-share");
     const lowered =
       d >= v("lowering-start") && d < v("lowering-end")
         ? v("lowering-rate") *
@@ -196,10 +196,15 @@ export function simulate(
   let iceCold = 0; // ice lowered while the air was below freezing, still to melt (kg)
   let phase: TrajectoryDay["phase"] = "cooling";
   let chimneyDays = 0; // days the chimneys, not the power, limit the cooling
-  const launched = new Map<number, number>(); // share of the planned launches made, by day
-  const lag = v("first-catch") - v("ice-launch-start");
-  let caughtSum = 0;
-  let catchDays = 0;
+  // The catch ramps up and down as Bricks on fast and slow transfers arrive; each day's share of
+  // the ice gives the Ring's power that day. When the Lattice cannot feed the Railheads in full,
+  // fewer Bricks fly, and the catch shrinks by the share of launches made so far (a simplification:
+  // a Brick arriving today left months ago).
+  const caughtBy = iceCatch(v).share;
+  const recovered = v("ice-mass") * v("ring-recovered-per-kg");
+  const catchLoss = v("ice-mass") * (v("ring-catch-energy-per-kg") - v("ring-recovered-per-kg"));
+  let thrownSum = 0;
+  let launchDays = 0;
   const forgeDays = v("forge-end") - v("forge-start");
   let o2Done = 0; // share of the oxygen the Forges have made
   let forgeShare = 0; // share of their full power the Forges drew yesterday
@@ -220,15 +225,15 @@ export function simulate(
     // electricity stays at Venus. The Forges take theirs next, and slow down when it runs short.
     const beam = lattice(d);
     const launching = d >= v("ice-launch-start") && d < v("ice-launch-end");
-    const catching = d >= v("first-catch") && d < v("last-arrival");
     const thrown = launching ? Math.min(1, beam / v("railhead-power")) : 0;
-    launched.set(d, thrown);
-    const caught = catching ? (launched.get(d - lag) ?? 1) : 0;
-    if (catching) {
-      caughtSum += caught;
-      catchDays++;
+    if (launching) {
+      thrownSum += thrown;
+      launchDays++;
     }
-    let power = beam - thrown * v("railhead-power") + caught * v("ring-power");
+    const flown = launchDays > 0 ? thrownSum / launchDays : 1;
+    const caughtToday = (caughtBy(d + 1) - caughtBy(d)) * flown;
+    const toVenus = beam - thrown * v("railhead-power");
+    let power = toVenus + (caughtToday * recovered) / DAY_S;
     // Oxygen made by the start of today: yesterday's forging, for the part of it after the Forges
     // start. Today's draw, if the day reaches past their start, makes tomorrow's.
     o2Done = Math.min(
@@ -259,14 +264,14 @@ export function simulate(
       forgeDraw * (1 - v("forge-efficiency")) +
       // The fans' work ends as heat in the gas they push, which the pumps must then lift.
       fanPower +
-      (leak ? leakage(d, launching, catching) : 0) +
+      (leak ? leakage(d, toVenus, (caughtToday * catchLoss) / DAY_S) : 0) +
       (phase === "warming" || phase === "earth-like"
         ? 0
         : (1 - v("veil-block-fraction")) * v("venus-absorbed"));
     const lowering = d >= v("lowering-start") && d < v("lowering-end");
     if (lowering) {
       // Only what the Ring caught can be lowered.
-      const rate = v("lowering-rate") * (catchDays > 0 ? caughtSum / catchDays : 1);
+      const rate = v("lowering-rate") * flown;
       if (temp >= 273.15) heatIn += rate * (v("fall-energy") - v("melt-energy"));
       else {
         heatIn += rate * (v("fall-energy") - v("ice-cp") * Math.max(0, temp - v("brick-temp")));
@@ -643,25 +648,6 @@ export function trajectory(r: Registry) {
     }),
   );
   r.c(
-    "venus-hardware-in-time",
-    {
-      label: "The hardware at Venus is built and delivered in time to cool on schedule",
-      kind: "schedule",
-      issue: "venus-hardware",
-    },
-    () => {
-      // Cooling cannot start before the tiles, chimneys and receivers are at Venus.
-      const ready = v("venus-hardware-ready");
-      const late = simulate((id) => (id === "cooling-start" ? Math.max(v(id), ready) : v(id)));
-      const finished = late.days.some((t) => t.phase === "holding" || t.phase === "warming");
-      const done = finished ? (late.events.scavenged as number) : Number.POSITIVE_INFINITY;
-      return {
-        pass: ready <= v("cooling-start") || done <= v("sealing-end"),
-        detail: `The tiles, chimneys, receivers, fins and Lanterns weigh ${fmt(r, "venus-hardware-mass")}. The plan does not say who builds them; the full Foundry would take ${fmt(r, "venus-hardware-build-days")}, and they would reach Venus on ${day("venus-hardware-ready")}, not on ${day("cooling-start")} when the plan starts cooling. Starting then, ${finished ? `the Frost Towers finish on ${formatQuantity({ value: done, unit: "date" }, { date: "day" })}` : "the Frost Towers never finish in the simulated years"}, against the last caps sealed on ${day("sealing-end")}.`,
-      };
-    },
-  );
-  r.c(
     "loss-heat-fits",
     {
       label:
@@ -749,9 +735,11 @@ export function trajectory(r: Registry) {
     { label: "The simulated atmosphere is Earth-like by the deadline", kind: "schedule" },
     () => {
       const d = run().events["earth-like"] as number;
+      const slack = v("traj-slack-days");
+      const gap = formatQuantity({ ...r.get("traj-slack-days"), value: Math.abs(slack) });
       return {
         pass: d <= v("deadline"),
-        detail: `The day-by-day simulation reaches Earth-like conditions on ${fmt(r, "traj-earth-like", { date: "day" })}, ${fmt(r, "traj-slack-days")} before the ${fmt(r, "deadline", { date: "day" })} deadline. The chimneys, not the power, set the pace on ${fmt(r, "traj-chimney-days")}.`,
+        detail: `The day-by-day simulation reaches Earth-like conditions on ${fmt(r, "traj-earth-like", { date: "day" })}, ${gap} ${slack >= 0 ? "before" : "after"} the ${fmt(r, "deadline", { date: "day" })} deadline. The chimneys, not the power, set the pace on ${fmt(r, "traj-chimney-days")} of it.`,
       };
     },
   );

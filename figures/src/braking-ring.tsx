@@ -156,7 +156,7 @@ function BrakingRing(p: Props) {
     <Frame
       id="braking-ring"
       title="Braking Ring: catching the Ice Train"
-      desc={`Left, to scale, seen from the north: Venus and the Ring ${t.alt} up. Bricks come from behind Venus at ${t.vinf}, half aimed past each side, and Venus's gravity bends them onto the Ring's height at ${t.arrive}, eastbound on one side, westbound on the other. Right, a side view along the Ring: a catch, the parking belt and a tether lift.`}
+      desc={`Left, to scale, seen from the north: Venus and the Ring ${t.alt} up. Bricks come from behind Venus at ${t.vinf} on average, half aimed past each side, and Venus's gravity bends them onto the Ring's height at ${t.arrive}, eastbound on one side, westbound on the other. Right, a side view along the Ring: a catch, the parking belt and a tether lift.`}
       height={H}
       links
     >
@@ -459,7 +459,7 @@ export const brakingRing: FigureDef<Props> = {
       text: {
         alt: show(r, "ring-altitude"),
         radius: show(r, "ring-radius"),
-        vinf: show(r, "ice-vinf", { sig: 3 }),
+        vinf: show(r, "ice-vinf-rms", { sig: 3 }),
         arrive: show(r, "ring-arrival-speed", { sig: 3 }),
         orbital: show(r, "ring-orbital-speed", { sig: 2 }),
         rotor: show(r, "ring-rotor-speed"),
@@ -479,12 +479,12 @@ export const brakingRing: FigureDef<Props> = {
   caption: (p) =>
     `Every Brick comes from behind Venus and is bent onto the Ring's height, caught eastbound or westbound at ${p.text.arrive}. The two catches' twists cancel but their forward pushes add to ${p.text.net}, ${p.text.netOverload} times the Ring's lift, and lowering the ice on tethers needs ${p.text.overload} times: both are open problems.`,
   describe: (p) => ({
-    summary: `Seen from the north and to scale, the Ring circles Venus ${p.text.alt} up. Bricks arrive from behind Venus ${p.text.vinf} faster than the planet; Venus's gravity bends each stream onto the Ring's height, where catcher tracks ${p.text.track} long brake them at ${p.text.g} from ${p.text.arrive} to ${p.text.orbital} and release them into a parking belt. Each catch pushes its track the way its Brick was going: the twists cancel, but the pushes add to ${p.text.net} forward, ${p.text.netOverload} times the Ring's lift, an open problem. In a side view, ${p.text.lifts} tether lifts were to lower a Brick every ${p.text.interval} to ${p.text.release}, an open problem: it needs ${p.text.overload} times the Ring's lift.`,
+    summary: `Seen from the north and to scale, the Ring circles Venus ${p.text.alt} up. Bricks arrive from behind Venus ${p.text.vinf} faster than the planet on average; Venus's gravity bends each stream onto the Ring's height, where catcher tracks ${p.text.track} long brake them at ${p.text.g} from ${p.text.arrive} to ${p.text.orbital} and release them into a parking belt. Each catch pushes its track the way its Brick was going: the twists cancel, but the pushes add to ${p.text.net} forward, ${p.text.netOverload} times the Ring's lift, an open problem. In a side view, ${p.text.lifts} tether lifts were to lower a Brick every ${p.text.interval} to ${p.text.release}, an open problem: it needs ${p.text.overload} times the Ring's lift.`,
     head: ["Quantity", "Value"],
     rows: [
       ["Ring altitude", p.text.alt],
       ["Ring radius from Venus's centre", p.text.radius],
-      ["Arrival speed far out", p.text.vinf],
+      ["Arrival speed far out, on average", p.text.vinf],
       ["Speed at the Ring", p.text.arrive],
       ["Orbital speed at the Ring", p.text.orbital],
       ["Rotor speed", p.text.rotor],
@@ -502,7 +502,7 @@ export const brakingRing: FigureDef<Props> = {
     "ring-radius",
     "ring-altitude",
     "ring-approach-eccentricity",
-    "ice-vinf",
+    "ice-vinf-rms",
     "ring-arrival-speed",
     "ring-orbital-speed",
     "ring-rotor-speed",
