@@ -74,7 +74,9 @@ Petals, which fly in [June 2030](../numbers.md?date=month#helios-first-petals), 
 1. **The Ceres Railheads** draw [6.7 × 10¹⁹ W](../numbers.md#railhead-power) from the first launch in
    [July 2033](../numbers.md?date=month#ice-launch-start) until the Ring starts recovering energy from the
    arriving ice in [September 2034](../numbers.md?date=month#ring-pays-from) and takes them over.
-2. **The Photonic Exhaust** gets the rest, and after August 2034 nearly all of it.
+2. **The Photonic Exhaust** gets the rest. From [September 2034](../numbers.md?date=month#ring-pays-from) the
+   Ring's electricity runs Venus's systems as well, while the Lattice's beams stay on the Railheads until the
+   last launch.
 3. **The Graphite Forges** take [4.8 × 10¹⁷ W](../numbers.md#forge-power) from
    [January 2035](../numbers.md?date=month#forge-start).
 
@@ -193,6 +195,6 @@ pnpm calc --only budget-spare    # 1 − demand / supply
 
 In the [Explorer](https://phosphoros.space/explore), lower `helios-film-efficiency` and the film area, the mass
 and the date the Foundry can afford the Lattice all grow, though full power still comes when the Foundry
-reaches full scale. Lower `helios-power` and the supply falls: the budget goes negative before the schedule
-breaks, and the simulated atmosphere becomes Earth-like later. Raise it and the spare grows, but only if the
-Foundry can build the extra film.
+reaches full scale. Lower `helios-power` and the supply falls: the schedule breaks first, when the Frost Towers finish after
+the last caps are due, and then the budget goes negative. The Earth-like date itself barely moves, because the
+oxygen sets it. Raise it and the spare grows, but only if the Foundry can build the extra film.

@@ -51,15 +51,26 @@ export function foundry(r: Registry) {
     () => v("foundry-seed-launch") + v("foundry-transfer-days"),
   );
   r.q(
+    "foundry-target-mass",
+    {
+      label: "What the Foundry builds once it stops growing: the Lattice and the Ring",
+      unit: "kg",
+      formula: "M_Lattice + M_rotor + M_stator",
+      basis: "design",
+    },
+    () => v("helios-mass") + v("ring-rotor-mass") + v("ring-stator-mass"),
+  );
+  r.q(
     "foundry-doublings",
     {
       label: "Doublings from seed to full scale",
       unit: "count",
       sig: 2,
-      formula: "⌈log₂(target / seed)⌉",
+      formula: "⌈log₂(target / (2 ln 2 × seed))⌉",
       basis: "design",
+      note: "Each doubling takes one doubling time T and halves the time the products then take, target × T / (M ln 2) at the Foundry's full rate. One more doubling pays while the Foundry is under target / (2 ln 2), about seven-tenths of the target, so the soonest finish comes at the first whole number of doublings past that. The check foundry-size confirms it.",
     },
-    () => Math.ceil(Math.log2(v("foundry-target-mass") / v("foundry-seed-mass"))),
+    () => Math.ceil(Math.log2(v("foundry-target-mass") / (2 * Math.LN2 * v("foundry-seed-mass")))),
   );
   r.q(
     "foundry-final-mass",
@@ -336,7 +347,7 @@ export function foundryProducts(r: Registry) {
     () => {
       // n doublings, then build the products at the full Foundry's rate.
       const T = v("foundry-doubling-days");
-      const products = v("helios-mass") + v("ring-mass");
+      const products = v("foundry-target-mass");
       const finish = (n: number) =>
         n * T + (products * T) / (v("foundry-seed-mass") * 2 ** n * Math.LN2);
       const n = v("foundry-doublings");

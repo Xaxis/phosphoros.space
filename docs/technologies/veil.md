@@ -175,8 +175,8 @@ The Veil stays after 2036 as the planet's thermostat.
 ## Failure modes and safeguards
 
 - **Failing open during cooling.** Sunlight returning before the CO₂ is sealed would undo the work. Slats fail
-  opaque: a slat that loses power or contact defaults to blocking. The swarm carries spare slats, and each slat
-  is independent, so no single failure opens a hole.
+  opaque: a slat that loses power or contact defaults to blocking. Each slat is independent, so no single
+  failure opens a hole.
 - **Failing open after cooling.** Once the caps are sealed, sunlight warms the air but cannot reach the dry ice
   under its insulation. The cryo-continents are the backstop.
 - **Losing station.** The station is unstable, so control is continuous. Every slat keeps its own station by

@@ -109,7 +109,21 @@ export function sourceLines(r: Registry): Map<string, { file: string; line: numb
       lines = readFileSync(path.join(/*turbopackIgnore: true*/ ROOT, file), "utf8").split("\n");
       cache.set(file, lines);
     }
-    // Ids built in loops ("passive-power") are found by their stem.
+    const src = lines;
+    const at = (test: (l: string) => boolean) => {
+      const i = src.findIndex(test);
+      return i >= 0 ? { file, line: i + 1 } : undefined;
+    };
+    const exact = at((l) => l.includes(`"${id}"`));
+    if (exact) return exact;
+    // Ids built in loops are found by the template that builds them: `traj-${k}` or `${id}-power`.
+    const parts = id.split("-");
+    for (let n = parts.length - 1; n > 0; n--) {
+      const head = at((l) => l.includes(`\`${parts.slice(0, n).join("-")}-\${`));
+      if (head) return head;
+      const tail = at((l) => l.includes(`}-${parts.slice(parts.length - n).join("-")}\``));
+      if (tail) return tail;
+    }
     const stems = [id, id.replace(/-\d+$/, ""), id.split("-").slice(0, 2).join("-")];
     for (const stem of stems) {
       const i = lines.findIndex((l) => l.includes(`"${stem}`) || l.includes(`\`${stem}`));

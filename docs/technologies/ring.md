@@ -4,9 +4,10 @@ A [40,540 km](../numbers.md#ring-circumference) orbital ring [400 km](../numbe
 Venus catches every Brick the [Ice Train](ice-train.md) throws. Its sleds brake each one from
 [13.5 km/s](../numbers.md#ring-arrival-speed) to orbital speed and turn the motion into electricity
 instead of heat: [5.3 × 10²⁷ J](../numbers.md#ring-recovered-energy) over the campaign,
-[7.5 × 10¹⁹ W](../numbers.md#ring-power) at the full catch rate. Catching works. Lowering the caught ice
-to the surface on tethers, as designed, does not yet: it is the plan's
-[open problem](../risks.md#the-ring-cannot-yet-lower-the-ice).
+[7.5 × 10¹⁹ W](../numbers.md#ring-power) at the full catch rate. Two parts of it do not work yet, and both
+are open problems: nothing holds the Ring against the catch's net push ([below](#catching)), and lowering
+the caught ice to the surface on tethers, as designed, needs far more lift than the rotor has
+([below](#lowering-the-open-problem)).
 
 <!-- figure:braking-ring -->
 ![Braking Ring: catching the Ice Train](../../figures/svg/braking-ring.svg)
@@ -107,7 +108,8 @@ The Lattice's beams arrive at receivers on the stator at [10 MW/m²](../numbers
 Their loss heat, [2.8 × 10¹⁹ W](../numbers.md#helios-receiver-loss), radiates to space from fins at
 [1,500 K](../numbers.md#helios-fin-temp), above the air. Superconducting cables carry the power, the
 Lattice's and the Ring's own, down the tethers to the Exhaust canopies above the clouds. Until the Ring is
-complete, receivers on the canopies carry the load and the Exhaust removes their loss heat.
+complete, receivers on the canopies carry the load, their fins facing space above the thin upper air
+([Helios Lattice](helios.md#design)).
 
 ### Catcher tracks
 
@@ -163,8 +165,8 @@ Three options are under study, and none is free.
 2. **Lower more slowly.** The force falls in proportion to the rate. Closing the gap this way takes
    [150](../numbers.md#lowering-overload) times as long as the plan allows: centuries, not months.
 3. **A far heavier or faster rotor.** Lift grows with the rotor's mass and with how far its speed exceeds
-   orbital speed. Closing the gap by mass alone needs a rotor heavier than all the machinery the Foundry
-   ever builds ([6.7 × 10¹³ kg](../numbers.md#foundry-final-mass)); by speed alone, a rotor many times
+   orbital speed. Closing the gap by mass alone needs a rotor heavier than the whole Foundry at full scale
+   ([6.7 × 10¹³ kg](../numbers.md#foundry-final-mass)); by speed alone, a rotor many times
    faster, storing many times the energy.
 
 A mix of the three may do better than any one. Meanwhile the energy budget is unchanged, because it never

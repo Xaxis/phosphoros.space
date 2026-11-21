@@ -166,4 +166,4 @@ pnpm calc --only aegis-ampere-turns    # the current that makes the moment
 The [Explorer](https://phosphoros.space/explore) has no Aegis slider; use `--set`. A bigger bubble
 (`aegis-bubble-radius`) needs a dipole that grows with the cube of its radius. A bigger coil
 (`aegis-coil-radius`) needs current that falls with the square of its radius:
-`pnpm calc --set aegis-coil-radius=1e6` shows how little current per turn a much wider loop needs.
+`pnpm calc --set aegis-coil-radius=1e7` shows how little current per turn a loop ten times wider needs.

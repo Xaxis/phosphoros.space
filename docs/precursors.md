@@ -28,7 +28,8 @@ clouds since 1985. It will measure the deep air's composition, its noble gases a
 ocean. For Phosphoros that is the ground truth under three technologies. The
 [Photonic Exhaust](technologies/exhaust.md) and its chimneys work on that deep air. The
 [Cryo-continents](technologies/cryo.md) must hold all of its CO₂. The [Acid Sweep](technologies/acid.md)
-is sized from its sulfur, [150 ppm](numbers.md?show=ppm#venus-so2-fraction) of SO₂. Above all, the plan's
+is sized from the sulfur the frozen seas leave in the air, [0.63%](numbers.md#acid-swept-share) of the
+[150 ppm](numbers.md?show=ppm#venus-so2-fraction) of SO₂, and DAVINCI's measurement of that SO₂ sets both. Above all, the plan's
 finish line assumes Venus's nitrogen, [3.5%](numbers.md#venus-n2-fraction) of the air, becomes
 [2.1 bar](numbers.md#n2-pressure) of breathable atmosphere. DAVINCI will check that number directly.
 

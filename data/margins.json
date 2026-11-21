@@ -1,5 +1,5 @@
 {
-  "hash": "ca8a1432cbad16f5",
+  "hash": "c30f0f5cff97e935",
   "inputs": [
     {
       "id": "ceres-water-fraction",
@@ -11,19 +11,19 @@
       "id": "foundry-seed-mass",
       "plan": 1000000,
       "below": {
-        "holds": 894664.3995325504,
-        "breaks": 893659.0854299715,
+        "holds": 778239.5203441102,
+        "breaks": 777365.0302387759,
         "fails": [
-          "foundry-size",
           "frost-before-sealing",
-          "genesis-by-deadline"
+          "genesis-by-deadline",
+          "ozone-shield-in-time"
         ]
       },
       "above": {
-        "holds": 1555587.8100299574,
-        "breaks": 1557337.7551586085,
+        "holds": 9635776.515190065,
+        "breaks": 9646616.199111992,
         "fails": [
-          "foundry-size"
+          "foundry-affords-veil"
         ]
       }
     },
@@ -64,7 +64,9 @@
         "holds": 0.30057373046875,
         "breaks": 0.3005126953125,
         "fails": [
-          "foundry-size"
+          "frost-before-sealing",
+          "genesis-by-deadline",
+          "ozone-shield-in-time"
         ]
       },
       "above": null
@@ -76,7 +78,9 @@
         "holds": 0.37578125,
         "breaks": 0.37568359375000004,
         "fails": [
-          "foundry-size"
+          "frost-before-sealing",
+          "genesis-by-deadline",
+          "ozone-shield-in-time"
         ]
       },
       "above": null

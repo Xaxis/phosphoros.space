@@ -109,12 +109,6 @@ foundry-doubling-days:
   basis: invented
   range: [30, 120]
   note: The single most important invention. The 1980 NASA study's lunar factory was meant to copy itself in about a year.
-foundry-target-mass:
-  value: 6.0e13
-  unit: kg
-  label: Machinery the Foundry grows to before it builds the Lattice and the Ring
-  basis: design
-  note: About the mass of the Lattice and the Ring together. A Foundry that stops growing at the mass of what it must build next finishes it soonest; the check foundry-size confirms the doubling count.
 foundry-energy-per-kg:
   value: 1.0e8
   unit: J/kg
@@ -392,7 +386,7 @@ exhaust-peak:
   label: Peak power the Exhaust can throw into space
   basis: design
   range: [3.0e19, 7.0e19]
-  note: Version 2 sized it at 3.6 × 10¹⁹ W from the campaign's average. The day-by-day simulation shows the Exhaust, not the power supply, sets the pace once the Ring pays for the Railheads, and at 3.6 × 10¹⁹ W Venus is Earth-like only in April 2037.
+  note: Version 2 sized it at 3.6 × 10¹⁹ W from the campaign's average. The day-by-day simulation shows the Exhaust, not the power supply, sets the pace once the Ring pays for the Railheads, and at 3.6 × 10¹⁹ W Venus is Earth-like only in 2037, long after the deadline.
 exhaust-canopies:
   value: 10000
   unit: count
@@ -714,7 +708,7 @@ aegis-online:
   unit: date
   label: Aegis Shield switched on
   basis: design
-  note: Before the first ice arrives in August 2034, so the new water is shielded from the start.
+  note: Before the first ice arrives, so the new water is shielded from the start.
 aegis-bubble-radius:
   value: 1.0e7
   unit: m
@@ -762,7 +756,7 @@ ozone-shield-column:
   unit: 1/m2
   show: DU
   sig: 3
-  label: Ozone column that must stand before any life is released
+  label: Ozone column that must stand before land life is released
   basis: design
   source: [cooke-2022]
   note: The top of the range, 120 to 185 DU, that earlier studies took as a full shield against ultraviolet. Land life waits for it; ocean life is shielded by the water above it.

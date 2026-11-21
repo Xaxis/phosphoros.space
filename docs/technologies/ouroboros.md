@@ -16,18 +16,20 @@ A factory doubles when it can make every one of its own parts, chips and robots 
 around it. If each kilogram of machinery builds another kilogram in a fixed time T, the mass grows as
 `M(t) = M₀ · 2^(t/T)`. Nothing else about the plan scales like that, and nothing else needs to.
 
-**The doubling arithmetic.** The Foundry grows until it weighs about as much as what it must build next, the
-Lattice and the Ring, [6.0 × 10¹³ kg](../numbers.md#foundry-target-mass). From a
-[1,000 t](../numbers.md#foundry-seed-mass) seed that is log₂ of their ratio, rounded up to a whole number:
-[26](../numbers.md#foundry-doublings) doublings, which give [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass). At
+**The doubling arithmetic.** The Foundry grows until one more doubling would take longer than it saves. What
+it must build next, the Lattice and the Ring, weighs [7.2 × 10¹³ kg](../numbers.md#foundry-target-mass). Each
+doubling costs one doubling time and halves the time those products then take, so it pays while the Foundry is
+under about seven-tenths of their mass. From a [1,000 t](../numbers.md#foundry-seed-mass) seed that is
+[26](../numbers.md#foundry-doublings) doublings, which give [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass)
+([check](../numbers.md#check-foundry-size)). At
 [60 d](../numbers.md#foundry-doubling-days) each, plus a short stop to build the Veil, that takes
 [4.3 yr](../numbers.md#foundry-years-to-scale). Two consequences follow from the shape of the curve:
 
 - **Most of the mass arrives at the end.** Each doubling makes as much as all the doublings before it. In
   [January 2030](../numbers.md?date=month#date-2030), a year after landing, the Foundry is only
   [5.8 × 10⁷ kg](../numbers.md#foundry-mass-2030); by [January 2032](../numbers.md?date=month#date-2032) it
-  is [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032); and in the eighteen months after that it grows to
-  [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass). Almost everything the plan builds, it builds in the last
+  is [2.7 × 10¹¹ kg](../numbers.md#foundry-mass-2032); and by [May 2033](../numbers.md?date=month#foundry-full-scale)
+  it has grown to [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass). Almost everything the plan builds, it builds in the last
   year.
 - **Every day counts many times over.** Full scale comes [26](../numbers.md#foundry-doublings) doubling periods after
   landing, so each day added to the doubling time moves full scale, the Lattice's full power and the first
@@ -146,9 +148,9 @@ Stopping at [26](../numbers.md#foundry-doublings) doublings finishes both sooner
 ## Build sequence
 
 - **[2027](../numbers.md?date=year#program-start):** [Ouroboros-0](../research.md#ouroboros-0) starts on
-  Earth: a factory that builds itself from simulated Mercury regolith, and from Ceres's. It must show mass
-  closure and a doubling time before the seeds are committed. Under its kill signal, the plan falls back to
-  the multi-century route.
+  Earth: a factory that builds itself from simulated Mercury regolith, and from simulated Ceres rock. It must
+  show mass closure before the seeds are committed; the rest of its pass is decided while they fly. Under its
+  kill signal, the plan falls back to the multi-century route.
 - **[1 October 2028](../numbers.md?date=day#foundry-seed-launch):** The seed launches, one of the very few
   things in the plan that leaves Earth; the seed of the [Ceres factories](ice-train.md#ceres-factories) leaves
   the same day. The transfer to Mercury takes

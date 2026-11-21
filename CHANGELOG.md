@@ -51,8 +51,14 @@ corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the 
   and half westbound cancels the twist on the Ring, not its braking force
   ([#3](https://github.com/Xaxis/phosphoros.space/issues/3)). The Exhaust's narrow beams cost far
   more pump work than the model charges ([#4](https://github.com/Xaxis/phosphoros.space/issues/4)).
-  Each is carried as a failing check until a design closes it. Other gaps found while rebuilding the numbers are open as
-  [issues](https://github.com/Xaxis/phosphoros.space/issues).
+  Each is carried as a failing check until a design closes it. The other gaps found while rebuilding
+  the numbers were filed as [issues](https://github.com/Xaxis/phosphoros.space/issues?q=is%3Aissue)
+  and closed by the changes above.
+- A full review of every page against the model: no page says the Ring's catch works while nothing holds
+  the Ring against it; the finish is set by the oxygen, not by the warmth; build sequences follow the
+  simulated dates; the Foundry's target is computed from the Lattice and the Ring it builds next, so a
+  larger Lattice grows the Foundry; Exhaust-1 must measure light the air above the canopies lets through;
+  and the risks table lists all three open problems.
 - The site, phosphoros.space, renders every page from the docs in this repository, and the
   Explorer runs the model in the browser so anyone can change an assumption and see what follows.
 

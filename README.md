@@ -12,9 +12,10 @@ Read it at **[phosphoros.space](https://phosphoros.space)**, or here on GitHub, 
 - **Every number is reproducible.** Nothing is typed by hand. Inputs live in [`data/`](data/), the
   model in [`calc/`](calc/) derives everything else, and the [ledger](docs/numbers.md) lists every
   number with its formula, its inputs and the line that defines it.
-- **The physics closes.** Energy is conserved, the second law holds, everything that hovers is held
-  by something, and every machine is asked for no more than it can give. The model checks all of it
-  on every change, and a check that fails is published, not hidden.
+- **The physics is checked, not assumed.** Energy must be conserved, the second law must hold,
+  everything that hovers must be held by something, and no machine may be asked for more than it can
+  give. The model checks all of it on every change. Where a design fails a check, the failure is
+  published with an open issue, not hidden.
 - **Real and invented are never mixed up.** Every input is marked as physics, precedent, invented
   or a design choice, and the site shows the mark on every number.
 - **Anyone can fork it.** Change an assumption in the [Explorer](https://phosphoros.space/explore)

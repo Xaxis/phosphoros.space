@@ -19,7 +19,7 @@
 - { model: venus-co2-mass, brief: 4.69e20, tol: 0.01, where: "2.13" }
 - { model: venus-n2-mass, brief: 1.08e19, tol: 0.03, where: "2.13" }
 - { model: n2-pressure, brief: 2.1e5, tol: 0.03, where: "2.2" }
-- { model: n2-vs-earth, brief: 3, tol: 0.1, where: "2.2", note: "The brief says about three times; it is 2.8 times by mass." }
+- { model: n2-vs-earth, brief: 3, tol: 0.1, where: "2.2", note: "The brief says about three times; it is {n2-vs-earth} times by mass." }
 - { model: venus-so2-mass, brief: 1.1e17, where: "2.9.10" }
 
 # --- 2.3 Why ten years is impossible -----------------------------------------------------------------
@@ -27,9 +27,9 @@
 - { model: atmosphere-latent-heat, brief: 2.7e26, where: "2.3" }
 - { model: atmosphere-heat, brief: 5.3e26, where: "2.3" }
 - { model: crust-heat-per-km, brief: 5.5e26, tol: 0.05, where: "2.3",
-    note: "The brief's figure uses a rock heat capacity of 1,000 J/(kg·K). Its own rock constants (k 2.5, κ 10⁻⁶, ρ 3,000) imply 833, which gives 4.6 × 10²⁶ J. The model keeps the constants and derives the heat capacity." }
+    note: "The brief's figure uses a rock heat capacity of 1,000 J/(kg·K). Its own rock constants (k 2.5, κ 10⁻⁶, ρ 3,000) imply 833, which gives {crust-heat-per-km}. The model keeps the constants and derives the heat capacity." }
 - { model: crust-skin-heat, brief: 7e24, tol: 0.1, where: "2.3",
-    note: "Same cause: with the brief's own rock constants conduction pulls 5.8 × 10²⁴ J, not 7 × 10²⁴ J. Either way it is about 1% of the atmosphere's heat." }
+    note: "Same cause: with the brief's own rock constants conduction pulls {crust-skin-heat}, not 7 × 10²⁴ J. Either way it is about 1% of the atmosphere's heat." }
 - { model: crust-skin-depth, brief: 15, tol: 0.35, where: "2.3", note: "The brief gives a range of 10 to 20 m." }
 - { model: passive-power, brief: 7.3e16, where: "2.13" }
 - { model: passive-years, brief: 7.26e9, where: "2.3" }
@@ -57,10 +57,9 @@
 - { model: foundry-doublings, brief: 27, tol: 0, where: "2.5", correction: foundry-products }
 - { model: foundry-final-mass, brief: 1.3e14, where: "2.9.1", correction: foundry-products }
 - { model: foundry-mercury-share, brief: 3e-10, tol: 0.35, where: "2.9.1",
-    note: "The brief divides 10¹⁴ kg by Mercury's mass; at the full 1.34 × 10¹⁴ kg it is 4 × 10⁻¹⁰." }
+    note: "The brief divides 10¹⁴ kg by Mercury's mass; at the full {foundry-final-mass} it is {foundry-mercury-share}." }
 - { model: foundry-power-per-kg, brief: 13, where: "2.9.1" }
-- { model: foundry-peak-power, brief: 1.3e15, tol: 0.1, where: "2.9.1",
-    note: "The brief multiplies 13 W/kg by 10¹⁴ kg. At the full 1.34 × 10¹⁴ kg the Foundry draws 1.8 × 10¹⁵ W." }
+- { model: foundry-peak-power, brief: 1.3e15, tol: 0.1, where: "2.9.1", correction: foundry-products }
 - { model: foundry-landing, brief: 2029-01-15, tol: 15, where: "2.9.1",
     note: "Launch moved from 15 to 1 October 2028 so that the brief's 105-day transfer lands in mid-January 2029, as its growth figures assume." }
 - { model: foundry-full-scale, brief: 2033-06-30, tol: 30, where: "2.9.1", correction: foundry-products }
@@ -120,7 +119,7 @@
 - { model: canopy-power-in, brief: 2.6e15, where: "2.9.5" }
 - { model: canopy-power-out, brief: 3.1e15, where: "2.9.5" }
 - { model: exhaust-vs-passive-light, brief: 400, where: "2.5",
-    note: "The Exhaust throws out light 420 times faster than a shaded Venus radiates, but removes Venus's own heat 66 times faster: most of the light is the pump's own work." }
+    note: "The Exhaust throws out light {exhaust-vs-passive-light} times faster than a shaded Venus radiates, but removes Venus's own heat {exhaust-vs-passive-heat} times faster: most of the light is the pump's own work." }
 - { model: exhaust-area-share-1000, brief: 0.58, tol: 0.02, where: "2.13", correction: sealing-follows-frost }
 - { model: exhaust-area-share-1500, brief: 0.17, tol: 0.03, where: "2.13", correction: sealing-follows-frost }
 - { model: exhaust-area-share-2500, brief: 0.037, tol: 0.03, where: "2.13", correction: sealing-follows-frost }
@@ -141,7 +140,7 @@
 - { model: cryo-floor-load-century, brief: 1.7e15, where: "2.9.6" }
 - { model: cryo-unrefrigerated-loss, brief: 0.001, tol: 0.5, where: "2.9.6", correction: floor-melts }
 - { model: cryo-refrigeration-share, brief: 0.01, where: "2.9.6",
-    note: "The brief budgets about 1% of the Lattice to refrigerate the basin floors. Pumping the first 12 PW from 200 K to an effective 2,000 K takes 0.2%, and far less once the rock cools; 1% is a generous allowance." }
+    note: "The brief budgets about 1% of the Lattice to refrigerate the basin floors. Pumping the first {cryo-floor-load} from 200 K to an effective {exhaust-effective-temp} takes {cryo-refrigeration-share}, and far less once the rock cools; 1% is a generous allowance." }
 - { model: cryo-cells, brief: 1.5e6, where: "2.9.6" }
 - { model: cryo-cell-co2, brief: 3e14, where: "2.9.6" }
 
@@ -155,7 +154,7 @@
 - { model: forge-energy, brief: 2.7e25, where: "2.9.7" }
 - { model: forge-power, brief: 4.9e17, where: "2.9.7" }
 - { model: forge-plant-power, brief: 1e12, where: "2.9.7",
-    note: "The brief lists 500 plants of about 1 TW, but 4.9 × 10¹⁷ W shared by 500 Forges is about 1 PW (10¹⁵ W) each, a thousand times more. The total is right; the per-plant figure was a unit slip." }
+    note: "The brief lists 500 plants of about 1 TW, but {forge-power} shared by {forge-count} Forges is about {forge-plant-power} each, a thousand times more. The total is right; the per-plant figure was a unit slip." }
 - { model: forge-throughput, brief: 6.5e7, where: "2.9.7" }
 - { model: graphite-stockpile, brief: 1.9e17, where: "2.9.7", correction: aerogel-measured }
 - { model: o2-vs-earth, brief: 1, tol: 0.25, where: "2.6",

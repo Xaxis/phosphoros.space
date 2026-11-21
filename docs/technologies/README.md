@@ -31,7 +31,7 @@ sunlight powers almost everything else, and the [Choir](choir.md) keeps the whol
 | [Braking Ring](../technologies/ring.md) | Catch the ice without heating Venus | Orbital ring of [1.0 × 10¹³ kg](../numbers.md#ring-mass) | Regenerative magnetic braking recovering [5.3 × 10²⁷ J](../numbers.md#ring-recovered-energy) | [2034](../numbers.md?date=year#first-catch) |
 | [Acid Sweep](../technologies/acid.md) | Remove the sulfuric-acid clouds | Rain-out plus basalt neutralization | None but scale | [2034](../numbers.md?date=year#traj-clear-rain) |
 | [Aegis Shield](../technologies/aegis.md) | Stop the solar wind stripping the new water | Superconducting dipole beside the Veil | Large deep-space superconducting coils | [2034](../numbers.md?date=year#aegis-online) |
-| [Genesis Biota](../technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, fresh, nitrogen-rich water | [2036](../numbers.md?date=year#genesis-start) |
+| [Genesis Biota](../technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, sulfate-rich water under nitrogen-rich air | [2036](../numbers.md?date=year#genesis-start) |
 | [Choir](../technologies/choir.md) | Run every machine on three worlds as one system | Autonomy across three worlds | Self-correcting swarm control with a verified safety core | [2029](../numbers.md?date=year#foundry-landing) |
 <!-- /table -->
 
@@ -76,7 +76,7 @@ experiments that must prove them by the end of 2028 are on the [Research Agenda]
   [64 km](../numbers.md#chimney-height) tall that lift deep heat to the cloud tops.
 - [Photonic Exhaust](exhaust.md): floating canopies that fire the planet's heat into space as
   [2.3 µm](../numbers.md#exhaust-wavelength) infrared, up to [5.5 × 10¹⁹ W](../numbers.md#exhaust-peak).
-- [Cryo-continents](cryo.md): all [4.69 × 10²⁰ kg](../numbers.md#venus-co2-mass) of the CO₂, frozen and
+- [Cryo-continents](cryo.md): nearly all [4.69 × 10²⁰ kg](../numbers.md#venus-co2-mass) of the CO₂, frozen and
   sealed as new land over [33%](../numbers.md#cryo-footprint-share) of Venus.
 - [Graphite Forges](forges.md): [500](../numbers.md#forge-count) molten-salt plants that split CO₂ into
   [0.25 bar](../numbers.md#o2-target-pressure) of oxygen and the graphite for the caps.

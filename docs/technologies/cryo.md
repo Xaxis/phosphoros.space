@@ -64,11 +64,11 @@ as one temperature. Real basins will run ahead of or behind these dates by place
    [5.4 × 10¹⁸ kg](../numbers.md#frost-residual-co2) of vapor out of the air, down to
    [54 Pa](../numbers.md#frost-co2-pressure). They finish [65 d](../numbers.md#frost-sealing-slack) before the
    last caps are due ([check](../numbers.md#check-frost-before-sealing)).
-7. **The thaw above, [2 September 2036](../numbers.md?date=day#traj-warming).** With the caps sealed and the Frost
-   Towers done, the Veil opens. The thin nitrogen and oxygen air warms to [285 K](../numbers.md#earth-like-temp) by
+7. **The thaw above, [2 September 2036](../numbers.md?date=day#traj-warming).** With the last caps sealed, the
+   Veil opens. The thin nitrogen and oxygen air warms to [285 K](../numbers.md#earth-like-temp) by
    [5 September 2036](../numbers.md?date=day#traj-warm), and cap surfaces warm with it. Venus is Earth-like on
-   [30 September 2036](../numbers.md?date=day#traj-earth-like), once the air is warm; the oxygen was complete on
-   [30 September 2036](../numbers.md?date=day#forge-end).
+   [30 September 2036](../numbers.md?date=day#traj-earth-like), when the Forges complete the oxygen
+   ([30 September 2036](../numbers.md?date=day#forge-end)).
 
 <!-- figure:trajectory -->
 ![The simulated atmosphere, 2033 to 2036](../../figures/svg/trajectory.svg)
@@ -121,10 +121,11 @@ presses out toward the cell walls and any crack.
 The answer is to take the heat out before it reaches the ice. **Basal heat pipes** are drilled
 [200 m](../numbers.md#heat-pipe-depth) into the basin floors before the Clear Rain: sodium for the hot early rock, ammonia
 once it cools. Insulated risers carry the heat up through the ice to radiators on the cap surface, where Exhaust tiles
-throw it to space. Pumping the first [12 PW](../numbers.md#cryo-floor-load) away, even in the worst case of lifting it
-from the ice's temperature to the tiles' effective [2,000 K](../numbers.md#exhaust-effective-temp), takes
+throw it to space. Pumping the first [12 PW](../numbers.md#cryo-floor-load) away, lifting it from the ice's temperature
+to the tiles' effective [2,000 K](../numbers.md#exhaust-effective-temp), takes
 [0.1%](../numbers.md#cryo-refrigeration-share) of the Lattice's [8.5 × 10¹⁹ W](../numbers.md#helios-power), and less every
-year as the rock cools. It never stops entirely: this is a permanent duty, like pumping a polder dry.
+year as the rock cools. Even at the far higher cost of the tiles' narrow light
+([open problem](../risks.md#the-exhausts-light-costs-more-than-the-model-charges)) it stays a small share. It never stops entirely: this is a permanent duty, like pumping a polder dry.
 
 ## Specifications
 
@@ -172,12 +173,12 @@ year as the rock cools. It never stops entirely: this is a permanent duty, like 
   material.
 - **[5 July 2035](../numbers.md?date=day#traj-freeze):** The air reaches the triple point and the seas start to freeze.
 - **[27 March 2036](../numbers.md?date=day#traj-frozen):** The seas are frozen through. Sealing begins.
-- **[1 September 2036](../numbers.md?date=day#sealing-end):** The last caps are due. By then the Forges have made
+- **[12 June 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down at [195 K](../numbers.md?sig=3#freeze-target-temp).
+- **[28 June 2036](../numbers.md?date=day#traj-scavenged):** The Frost Towers finish, [65 d](../numbers.md#frost-sealing-slack)
+  before the last caps are due ([check](../numbers.md#check-frost-before-sealing)).
+- **[1 September 2036](../numbers.md?date=day#sealing-end):** The last caps are sealed. By then the Forges have made
   [4.6 × 10¹⁷ kg](../numbers.md#graphite-by-sealing) of graphite, more than the
   [2.5 × 10¹⁷ kg](../numbers.md#cryo-cap-mass) the caps need ([check](../numbers.md#check-graphite-for-caps)).
-- **[12 June 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down at [195 K](../numbers.md?sig=3#freeze-target-temp).
-- **[28 June 2036](../numbers.md?date=day#traj-scavenged):** The Frost Towers finish, after the caps were due
-  ([check](../numbers.md#check-frost-before-sealing)).
 - **[2 September 2036](../numbers.md?date=day#traj-warming):** The Veil opens.
 - **[5 September 2036](../numbers.md?date=day#traj-warm):** The air over the caps is warm.
 - **[30 September 2036](../numbers.md?date=day#traj-earth-like):** Venus is Earth-like. The floor refrigeration carries

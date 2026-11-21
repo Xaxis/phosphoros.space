@@ -107,12 +107,12 @@
   title: The Ring cannot lower the ice on tethers
   issue: 2
   text: >-
-    Bringing 2.2 × 10¹² kg of ice a second to rest 300 km lower takes at least the momentum it
-    would gain falling that far, every second: about 4.7 × 10¹⁵ N. The Ring's rotor has about
-    3 × 10¹³ N of lift to spare, 150 times too little. Catching the ice works; lowering it this way
-    does not. Options under study: drop the Bricks from rest at the Ring and pump out the extra
-    2.5 × 10²⁶ J of heat; lower over a longer time; or a far heavier, faster rotor. The energy
-    budget never counted the lowering's recovered energy, so it still closes.
+    Bringing {lowering-rate} of ice to rest 300 km lower takes at least the momentum it would gain
+    falling that far, every second: {lowering-support}. The Ring's rotor has {ring-lift} of lift to
+    spare, {lowering-overload} times too little. Options under study: drop the Bricks from rest at
+    the Ring and pump out the extra {ring-drop-extra-heat} of heat; lower over a longer time; or a
+    far heavier, faster rotor. The energy budget never counted the lowering's recovered energy, so
+    it is unchanged.
 - id: ring-net-force
   kind: open
   version: "3"
@@ -123,10 +123,10 @@
     Version 2 caught half the Bricks eastbound and half westbound so the braking forces would
     cancel. Every Brick arrives from the same direction, and the two streams graze the Ring at
     mirror-image points, each about 22° forward of the line across Venus. Their sideways pushes
-    cancel and their forward pushes add: about 8 × 10¹⁵ N along Venus's orbital motion, some 270
-    times the rotor's spare lift. An orbital ring has no stiff way to hand that force to the
-    planet. Catching still recovers the energy the budget counts; what holds the Ring in place
-    while it does is unsolved.
+    cancel and their forward pushes add: {ring-net-braking-force} along Venus's orbital motion,
+    {ring-net-overload} times the rotor's spare lift. An orbital ring has no stiff way to hand that
+    force to the planet. The catch would recover the energy the budget counts; what holds the Ring
+    in place while it does is unsolved.
 - id: o2-match
   kind: correction
   version: "3"
@@ -703,3 +703,16 @@
     Jupiter falls from {ceres-tisserand-now} to {ceres-tisserand}, still above 3. The model does not
     follow resonances: the new orbit sits on Jupiter's weak 9:4 resonance, and a long numerical
     integration must show it is stable before the first shot.
+- id: foundry-target
+  kind: correction
+  version: "3"
+  date: 2026-11-21
+  title: The Foundry's target is what it builds next
+  text: >-
+    The Foundry's target mass was typed in as 6.0 × 10¹³ kg, about the Lattice and the Ring before
+    the Lattice grew. It is now computed from them, {foundry-target-mass}, and the doubling count is the exact soonest finish: one more doubling pays while the Foundry is
+    under the target divided by 2 ln 2. The plan still stops at {foundry-doublings} doublings, so no
+    date moves, but a larger Lattice in the Explorer now grows the Foundry as it should, where
+    before it stopped one doubling short.
+  before:
+    foundry-target-mass: 6.0e13

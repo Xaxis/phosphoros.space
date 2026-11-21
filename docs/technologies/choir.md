@@ -58,8 +58,8 @@ that every replicating machine carries, enforced in hardware and proved by mathe
 The Ledger is an append-only record of every kilogram mined, built, shipped and recycled, copied at every
 site. Each entry carries a digest of the entry before it, so history cannot be edited without breaking
 the chain. The Council sets mass budgets, [6.7 × 10¹³ kg](../numbers.md#foundry-final-mass) for the
-Foundry over the whole campaign, and a machine refuses any order that would take its site past its
-budget.
+Foundry and [6.7 × 10¹³ kg](../numbers.md#ceres-final-mass) for the Ceres factories, the two lines that copy
+themselves, and a machine refuses any order that would take its site past its budget.
 
 ### Signed build orders
 
@@ -106,8 +106,8 @@ and crawlers before conditions change rather than after.
 
 ### What it coordinates
 
-- **On Mercury:** the [Ouroboros Foundry](ouroboros.md)'s twelve machine types and the
-  [Helios Lattice](helios.md)'s Petals. A beam fires only while its receiver answers with a live, signed
+- **On and near Mercury:** the [Ouroboros Foundry](ouroboros.md)'s twelve machine types on the ground and the
+  [Helios Lattice](helios.md)'s Petals in orbit. A beam fires only while its receiver answers with a live, signed
   handshake, and defocuses the moment the handshake drops.
 - **Near Venus:** the [Hesperus Veil](veil.md)'s [3.8 × 10⁸](../numbers.md#veil-slats) slats, each holding
   station by itself, and the [Braking Ring](ring.md)'s catches.

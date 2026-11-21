@@ -75,9 +75,11 @@ spare; the model checks it ([check](../numbers.md#check-graphite-for-caps)). In 
 [4.9 × 10¹⁷ kg](../numbers.md#forge-graphite), leaving [2.4 × 10¹⁷ kg](../numbers.md#graphite-stockpile) after the caps for
 structures and for the black loam soil of [Genesis](genesis.md).
 
-**The oxygen comes just before the finish.** In the day-by-day [simulation](../plan.md#the-simulated-atmosphere) the
-Forges finish on [30 September 2036](../numbers.md?date=day#forge-end), but the air is warm, and Earth-like, only on
-[30 September 2036](../numbers.md?date=day#traj-earth-like), once the Frost Towers are done and the Veil opens. Ultraviolet sunlight starts turning some of it into ozone as soon as it is in the air, the
+**The oxygen sets the finish.** In the day-by-day [simulation](../plan.md#the-simulated-atmosphere) the caps are
+sealed and the Veil opens on [2 September 2036](../numbers.md?date=day#traj-warming), and the air is warm by
+[5 September 2036](../numbers.md?date=day#traj-warm). The Forges finish on
+[30 September 2036](../numbers.md?date=day#forge-end), and Venus is Earth-like the same day,
+[30 September 2036](../numbers.md?date=day#traj-earth-like). Ultraviolet sunlight starts turning some of the oxygen into ozone as soon as it is in the air, the
 beginning of a shield for the life that follows.
 
 ## Specifications
@@ -126,7 +128,7 @@ beginning of a shield for the life that follows.
 - **[1 September 2036](../numbers.md?date=day#sealing-end):** The caps are complete, with
   [4.6 × 10¹⁷ kg](../numbers.md#graphite-by-sealing) of graphite made so far.
 - **[30 September 2036](../numbers.md?date=day#forge-end):** Forging ends with [0.25 bar](../numbers.md#o2-target-pressure)
-  of oxygen in the air. Venus is Earth-like once the air warms, on
+  of oxygen in the air, and Venus is Earth-like the same day,
   [30 September 2036](../numbers.md?date=day#traj-earth-like).
 
 ## Failure modes and safeguards

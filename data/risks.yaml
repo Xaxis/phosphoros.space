@@ -42,6 +42,18 @@ risks:
     safeguard: Drop the ice from rest at the Ring and pump out the extra heat; the energy budget never counted lowering's recovered energy
     tech: [ring]
     open: true
+  - id: ring-net-force
+    risk: Nothing holds the Ring against the catch
+    what: The catch leaves {ring-net-braking-force} along Venus's orbit, {ring-net-overload} times the rotor's spare lift, and an orbital ring has no stiff way to hand it to the planet (an open problem in version 3)
+    safeguard: None yet. Braking the ice in the air instead would turn its motion into heat, so the problem must be solved before the first catch
+    tech: [ring]
+    open: true
+  - id: exhaust-entropy
+    risk: The Exhaust's light costs more than the model charges
+    what: Light in the tiles' narrow band and cone needs {exhaust-work-multiple} times the pump work the budget charges (an open problem in version 3)
+    safeguard: Tiles that spread their light over more colours and directions while it still escapes the air; Exhaust-1 measures the real cost before any canopy is built
+    tech: [exhaust]
+    open: true
 
 governance: >-
   The 1967 Outer Space Treaty bars national appropriation of celestial bodies (Article II) and

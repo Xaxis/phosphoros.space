@@ -77,9 +77,9 @@ through the sulfuric-acid clouds between [48 km](../numbers.md#venus-cloud-base
 on a grid about [215 km](../numbers.md#chimney-spacing) apart. Together they can lift
 [1.3 × 10¹⁹ W](../numbers.md#chimney-capacity), [2.1](../numbers.md#chimney-vs-peak) times the
 [6.0 × 10¹⁸ W](../numbers.md#deep-heat-peak) design peak of deep heat flow. The day-by-day
-[simulation](../plan.md#the-simulated-atmosphere) never removes heat faster than the chimneys can lift it: in its
-fastest weeks it hits that limit, [1.3 × 10¹⁹ W](../numbers.md#traj-heat-peak), and the chimneys rather than the
-power set the pace on [56 d](../numbers.md#traj-chimney-days).
+[simulation](../plan.md#the-simulated-atmosphere) never removes heat faster than the chimneys can lift it, and
+it uses that margin: in its fastest weeks it hits the limit, [1.3 × 10¹⁹ W](../numbers.md#traj-heat-peak), and
+the chimneys rather than the power set the pace on [56 d](../numbers.md#traj-chimney-days).
 
 **Life cycle.** The chimneys are built from the canopies down from late 2032, as the Veil closes, and run hardest from
 [May 2033](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
@@ -108,7 +108,7 @@ their carbon goes into the cryo-continent caps.
 
 > **Invented:** Silicon-carbide and graphene composite walls that survive Venus's surface conditions,
 > [737 K](../numbers.md#venus-surface-temp) and [92 bar](../numbers.md#venus-surface-pressure) of CO₂ laced with SO₂,
-> and the acid clouds above, for four years.
+> and the acid clouds above, through the years of active cooling.
 
 > **Invented:** Ground anchors that grip basalt at [737 K](../numbers.md#venus-surface-temp), set by melting rock
 > around graphite roots and letting it freeze.
@@ -120,8 +120,9 @@ their carbon goes into the cryo-continent caps.
 > **Precedent:** None is cited. Forced-convection heat exchange is ordinary engineering; nothing remotely this tall
 > or this hot has been built.
 
-Version 3 changes how the chimney works, from rising gas to rising liquid; the model's numbers are unchanged,
-because they describe the air drawn through the intake and the heat taken from it.
+Version 3 changes how the chimney works, from rising gas to rising liquid
+([correction](../about.md#corrections)). The switch itself leaves the intake numbers as they were, because they
+describe the air drawn through the intake and the heat taken from it.
 
 ## Build sequence
 
@@ -141,8 +142,8 @@ because they describe the air drawn through the intake and the heat taken from i
 
 ## Failure modes and safeguards
 
-- **A collapse.** A fallen chimney slows cooling only in its own cell. The rest have twice the design peak's
-  capacity between them and take up the load.
+- **A collapse.** A fallen chimney slows cooling only in its own cell. Most of the time the rest have capacity to
+  spare and take up the load; in the weeks when the chimneys set the pace, it slows the cooling by its share.
 - **Acid.** The towers pass through the sulfuric-acid clouds. Crawler robots inspect and patch the walls
   continuously, and the clouds rain out as the air cools ([Acid Sweep](acid.md)).
 - **A leaking loop.** Each loop is a sealed stage. A leaking stage is isolated and its neighbors carry the heat

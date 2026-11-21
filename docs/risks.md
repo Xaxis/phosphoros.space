@@ -15,6 +15,8 @@ no engineering can answer: whether Venus should be changed at all, who decides, 
 | Native life on Venus | Cooling the planet would destroy it | The 2027 to 2028 cloud-life survey gates the Veil; a credible biosignature stops the program |
 | Weaponization | Mass drivers and power beams are also weapons | Open telemetry, inspection, and treaty oversight beyond the Outer Space Treaty |
 | The Ring cannot lower the ice as designed (open) | Tether lowering needs [150](numbers.md#lowering-overload) times the lift the rotor has to spare (an open problem in version 3) | Drop the ice from rest at the Ring and pump out the extra heat; the energy budget never counted lowering's recovered energy |
+| Nothing holds the Ring against the catch (open) | The catch leaves [8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) along Venus's orbit, [280](numbers.md#ring-net-overload) times the rotor's spare lift, and an orbital ring has no stiff way to hand it to the planet (an open problem in version 3) | None yet. Braking the ice in the air instead would turn its motion into heat, so the problem must be solved before the first catch |
+| The Exhaust's light costs more than the model charges (open) | Light in the tiles' narrow band and cone needs [12](numbers.md#exhaust-work-multiple) times the pump work the budget charges (an open problem in version 3) | Tiles that spread their light over more colours and directions while it still escapes the air; Exhaust-1 measures the real cost before any canopy is built |
 <!-- /table -->
 
 ## Ethics
@@ -101,7 +103,9 @@ is formally verified.
 ### The Ring cannot yet lower the ice
 
 This is an open problem in version 3, tracked by a [failing check](budget.md#physics-checks). The
-[Braking Ring](technologies/ring.md) catches the ice well. Lowering it does not work as designed: bringing
+[Braking Ring](technologies/ring.md) recovers the ice's energy as it catches it, though nothing yet holds it
+against the catch's push ([below](#nothing-yet-holds-the-ring-against-the-catch)). Lowering the ice does not
+work as designed either: bringing
 [2.2 × 10¹² kg/s](numbers.md#lowering-rate) to rest and down the tethers needs
 [4.7 × 10¹⁵ N](numbers.md#lowering-support), [150](numbers.md#lowering-overload) times the
 [3.0 × 10¹³ N](numbers.md#ring-lift) of lift the rotor has to spare. Each option has a cost.
@@ -128,9 +132,11 @@ westbound cancels the twist the catch puts on the Ring, not its push: every Bric
 [8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) remains along Venus's orbital motion,
 [280](numbers.md#ring-net-overload) times the rotor's spare lift. An orbital ring has no stiff way to hand that force
 to the planet. The energy the catch recovers is real, and the budget counts it; what holds the Ring in place while it
-does is unsolved ([issue 3](https://github.com/Xaxis/phosphoros.space/issues/3)). If no answer is found the Bricks
-must be braked some other way, and the [33%](numbers.md#budget-spare-with-ring) spare that the Ring's energy adds is
-lost, leaving the Lattice's own [8.2%](numbers.md#budget-spare).
+does is unsolved ([issue 3](https://github.com/Xaxis/phosphoros.space/issues/3)). This matters more than the
+[33%](numbers.md#budget-spare-with-ring) spare the Ring's energy adds to the budget. There is no other way to stop the
+ice above the air: braked in the atmosphere instead, the Bricks would turn their motion into
+[9.5 × 10²⁷ J](numbers.md#ring-free-fall-impact) of heat, more than the Lattice delivers in the whole campaign
+([9.2 × 10²⁷ J](numbers.md#helios-supply)). Without an answer, the water cannot be delivered as planned.
 
 ### The Exhaust's light costs more than the model charges
 
@@ -140,7 +146,8 @@ in colour and direction that, by its entropy, it counts as at least
 [12](numbers.md#exhaust-work-multiple) times the work the budget charges, a [failing check](numbers.md#check-exhaust-entropy)
 and the biggest unpriced cost in the plan ([issue 4](https://github.com/Xaxis/phosphoros.space/issues/4)). Either the
 tiles spread their light far wider, which the thin air above the canopies must then let through, or the pumps and the
-Lattice grow several times. The Exhaust experiments on the [Research Agenda](research.md) must settle which.
+Lattice grow several times. [Exhaust-1](research.md) must settle which: its pass mark counts only light in a band and
+cone that the air above the canopies lets through.
 
 ### The seas freeze slowly
 

@@ -70,7 +70,7 @@ widens as the air cools.
 > the light counts as. Even spreading gives the most entropy for the energy, so this is the most favourable case.
 
 The model's check fails ([check](../numbers.md#check-exhaust-entropy), [issue 4](https://github.com/Xaxis/phosphoros.space/issues/4)).
-Two ways out, both open: the tiles spread their light over far more colours and directions than version 2 described
+Two ways out, both open: the tiles spread their light over far more colours and directions than the design has
 (which needs the thin air above the canopies to pass it), or the pumps and the Lattice grow several times. Until one
 is shown, read the model's pump work as a floor.
 
@@ -116,11 +116,11 @@ three different phases:
 2. **From [July 2033](../numbers.md?date=month#ice-launch-start) to [September 2034](../numbers.md?date=month#ring-pays-from).**
    The Ceres Railheads draw [6.7 × 10¹⁹ W](../numbers.md#railhead-power) of the Lattice's
    [8.5 × 10¹⁹ W](../numbers.md#helios-power), more than a launch in a window would need, because they fire between
-   windows too. Cooling crawls.
+   windows too. Cooling crawls, but the Clear Rain still begins on
+   [13 July 2034](../numbers.md?date=day#traj-clear-rain).
 3. **From [September 2034](../numbers.md?date=month#ring-pays-from).** The Ring recovers
    [7.5 × 10¹⁹ W](../numbers.md#ring-power) from the arriving ice and runs Venus, so the Lattice's beams can stay
-   on the Railheads. Power is now plentiful, and the emitters, not the supply, set the pace. The Clear Rain begins on
-   [13 July 2034](../numbers.md?date=day#traj-clear-rain).
+   on the Railheads. Power is now plentiful, and the emitters, not the supply, set the pace.
 
 So the emitters must be sized for the peak of the third phase. With version 2's smaller Exhaust the simulated air
 becomes Earth-like months after the deadline. With [5.5 × 10¹⁹ W](../numbers.md#exhaust-peak) of emitters,
@@ -204,16 +204,17 @@ and is done by [28 June 2036](../numbers.md?date=day#traj-scavenged).
   are lowered.
 - **[3 May 2033](../numbers.md?date=day#cooling-start):** Active cooling begins, on the growing Lattice's power.
 - **[July 2033](../numbers.md?date=month#ice-launch-start):** The Railheads take most of the power; cooling slows.
+- **[13 July 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain: liquid CO₂ starts to fall.
 - **[16 September 2034](../numbers.md?date=day#ring-pays-from):** The Ring pays for the Railheads. The Exhaust runs at its
   limit from here on.
-- **[13 July 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain: liquid CO₂ starts to fall.
 - **[5 July 2035](../numbers.md?date=day#traj-freeze):** The CO₂ seas start to freeze, and the air holds at the
   triple point while they do.
 - **[27 March 2036](../numbers.md?date=day#traj-frozen):** The seas are frozen through.
-- **[1 September 2036](../numbers.md?date=day#cooling-end):** Active cooling was planned to end here, with the last caps.
 - **[12 June 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The Frost Towers take over.
-- **[28 June 2036](../numbers.md?date=day#traj-scavenged):** The CO₂ left in the air is at its target. The pumps stop,
-  and the Veil opens the next day.
+- **[28 June 2036](../numbers.md?date=day#traj-scavenged):** The CO₂ left in the air is at its target. The pumps hold
+  the air at [195 K](../numbers.md?sig=3#freeze-target-temp) while the last caps are sealed.
+- **[1 September 2036](../numbers.md?date=day#cooling-end):** The last caps are sealed and active cooling ends. The
+  Veil opens the next day.
 - **[30 September 2036](../numbers.md?date=day#traj-earth-like):** Venus is Earth-like.
 
 ## Failure modes and safeguards
@@ -229,8 +230,9 @@ and is done by [28 June 2036](../numbers.md?date=day#traj-scavenged).
   [10 W/m²](../numbers.md#exhaust-far-limit) beyond [61,000 km](../numbers.md#exhaust-cone-safe-distance); where the
   cones of neighbouring canopies overlap, their light adds. Long before it reaches the Veil it is far fainter
   than sunlight, and the cones are aimed around the Veil anyway.
-- **A stalled Exhaust.** Under the closed Veil, Venus gains heat only slowly, from the crust and the little sunlight
-  the Veil lets through, so a pause costs time, not ground.
+- **A stalled Exhaust.** Under the closed Veil, Venus gains heat only slowly, from the crust, the little sunlight
+  the Veil lets through and, while the ice arrives, its fall. A short pause costs time; a long one in the years of the
+  catch also loses ground.
 - **The second law.** The model charges ideal pumping. Every real loss adds work, and the entropy of narrow,
   beamed light adds far more ([below](#the-cost-of-beamed-light)). The Lattice alone leaves
   [8.2%](../numbers.md#budget-spare) spare and the Ring's recovered energy [33%](../numbers.md#budget-spare-with-ring),
@@ -250,5 +252,5 @@ pnpm calc --only traj-pump-energy        # what the simulation actually spends
 
 In the [Explorer](https://phosphoros.space/explore), lower `exhaust-peak` toward version 2's size and the simulated
 finish slips past the deadline. Raise it and the finish does not move, because the oxygen sets it, while the pump work
-and the energy demand rise until the spare is gone. Lower `exhaust-effective-temp` and each joule
+and the energy demand rise a little and the spare barely moves. Lower `exhaust-effective-temp` and each joule
 costs less work but the emitter area grows steeply; raise it and the area shrinks but the work grows.

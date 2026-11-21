@@ -102,8 +102,10 @@ to floating canopies above the clouds at [1.3 × 10¹⁵ W](numbers.md#chimne
 The Exhaust is a light-emitting heat pump. Electricity gives each photon extra energy, so a tile sitting at
 a few hundred kelvin glows as brightly as a [2,000 K](numbers.md#exhaust-effective-temp) body,
 [0.91 MW/m²](numbers.md#exhaust-flux), at [2.3 µm](numbers.md#exhaust-wavelength), where the thin CO₂ above
-the canopies barely absorbs. The second law sets the price: about [5.5](numbers.md#exhaust-work-ratio)
-joules of electricity per joule of heat moved ([budget](budget.md#pump-work-and-the-carnot-factor)). The
+the canopies barely absorbs. The second law sets the price. The model charges the minimum for an emitter at
+that temperature, about [5.5](numbers.md#exhaust-work-ratio) joules of electricity per joule of heat moved
+([budget](budget.md#pump-work-and-the-carnot-factor)); for light as narrow as the tiles emit, the true minimum
+is higher, an [open problem](risks.md#the-exhausts-light-costs-more-than-the-model-charges). The
 [10,000](numbers.md#exhaust-canopies) canopies carry [6.1 × 10¹³ m²](numbers.md#exhaust-area-installed) of
 emitters, [13%](numbers.md#exhaust-area-share) of Venus's area, enough to throw out
 [5.5 × 10¹⁹ W](numbers.md#exhaust-peak) at the peak the simulation needs.
@@ -171,10 +173,14 @@ adds it as the ice falls from Ceres's orbit into the Sun's well and then into Ve
 ![Braking Ring: catching the Ice Train](../figures/svg/braking-ring.svg)
 <!-- /figure -->
 
-**Open problem.** Catching works. Lowering does not, yet. Bringing the parked ice down on tethers needs
-[150](numbers.md#lowering-overload) times more lift than the rotor has to spare. The options are to drop the
-Bricks from rest and pump out the extra [2.5 × 10²⁶ J](numbers.md#ring-drop-extra-heat) of heat, to lower
-more slowly, or to build a far heavier rotor ([Risks](risks.md#the-ring-cannot-yet-lower-the-ice)).
+**Open problems.** Two parts of the Ring do not work yet. Nothing holds it against the catch's net push:
+catching east and west cancels the twist, not the force, which leaves
+[8.4 × 10¹⁵ N](numbers.md#ring-net-braking-force) along Venus's orbit, [280](numbers.md#ring-net-overload)
+times the rotor's spare lift ([Risks](risks.md#nothing-yet-holds-the-ring-against-the-catch)). And bringing
+the parked ice down on tethers needs [150](numbers.md#lowering-overload) times more lift than the rotor has to
+spare. The options there are to drop the Bricks from rest and pump out the extra
+[2.5 × 10²⁶ J](numbers.md#ring-drop-extra-heat) of heat, to lower more slowly, or to build a far heavier
+rotor ([Risks](risks.md#the-ring-cannot-yet-lower-the-ice)).
 
 > **Invented:** A rotor carrying [7.0 × 10¹² kg](numbers.md#ring-rotor-mass) at
 > [10 km/s](numbers.md#ring-rotor-speed), and sleds that brake megatonne blocks at
@@ -252,7 +258,7 @@ needed.
 | [Braking Ring](technologies/ring.md) | Catch the ice without heating Venus | Orbital ring of [1.0 × 10¹³ kg](numbers.md#ring-mass) | Regenerative magnetic braking recovering [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) | [2034](numbers.md?date=year#first-catch) |
 | [Acid Sweep](technologies/acid.md) | Remove the sulfuric-acid clouds | Rain-out plus basalt neutralization | None but scale | [2034](numbers.md?date=year#traj-clear-rain) |
 | [Aegis Shield](technologies/aegis.md) | Stop the solar wind stripping the new water | Superconducting dipole beside the Veil | Large deep-space superconducting coils | [2034](numbers.md?date=year#aegis-online) |
-| [Genesis Biota](technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, fresh, nitrogen-rich water | [2036](numbers.md?date=year#genesis-start) |
+| [Genesis Biota](technologies/genesis.md) | Start an ecosystem | Engineered cyanobacteria, lichens and plankton | Organisms tuned to cold, sulfate-rich water under nitrogen-rich air | [2036](numbers.md?date=year#genesis-start) |
 | [Choir](technologies/choir.md) | Run every machine on three worlds as one system | Autonomy across three worlds | Self-correcting swarm control with a verified safety core | [2029](numbers.md?date=year#foundry-landing) |
 <!-- /table -->
 
@@ -263,7 +269,7 @@ needed.
 <!-- /figure -->
 
 The years [2027](numbers.md?date=year#program-start) and [2028](numbers.md?date=year#experiments-end) are for
-proof: nine experiments and the cloud-life survey, with the gate on [15 December 2028](numbers.md?date=day#life-gate). From 2029 to 2033 the
+proof: nine experiments, the cloud-life survey among them, with the gate on [15 December 2028](numbers.md?date=day#life-gate). From 2029 to 2033 the
 Foundry grows on Mercury while the Veil, the Lattice and the Ring are built from its output. From 2033 to
 2036 the work moves to Venus: cooling, the Clear Rain, the ice, the Forges and the first life. The
 [Timeline](timeline.md) has every workstream, the critical path and what slips if the Foundry is slow.
@@ -326,9 +332,10 @@ the Clear Rain and the seas frozen through is the CO₂'s latent heat,
 air, [2.6 × 10²⁶ J](numbers.md#atmosphere-sensible-heat). Freezing the seas alone holds the air at the
 triple point from [July 2035](numbers.md?date=month#traj-freeze) to
 [March 2036](numbers.md?date=month#traj-frozen), with the emitters at their peak and the falling ice adding
-heat all the while. And the last condition to fall is the warmth: the oxygen is complete on
-[30 September 2036](numbers.md?date=day#forge-end), but the Veil opens only once the Frost Towers finish, so
-the air is warm, and Earth-like, on [30 September 2036](numbers.md?date=day#traj-earth-like). The Frost Towers
+heat all the while. And the last condition to fall is the oxygen: the caps are sealed and the Veil opens on
+[2 September 2036](numbers.md?date=day#traj-warming), the air is warm by
+[5 September 2036](numbers.md?date=day#traj-warm), and the Forges complete the oxygen on
+[30 September 2036](numbers.md?date=day#forge-end), the day Venus is Earth-like. The Frost Towers
 finish [65 d](numbers.md#frost-sealing-slack) before the last caps are due, the Exhaust's peak sized for it
 ([correction](about.md#corrections)), and seeded life greens the oceans before the deadline.
 

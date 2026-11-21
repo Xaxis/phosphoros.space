@@ -61,7 +61,7 @@ export const SECTIONS: Section[] = [
     title: "Energy and Mass Budget",
     nav: "Budget",
     description:
-      "Every joule the plan needs, where it comes from, and the physics checks that prove the budget closes.",
+      "Every joule the plan needs, where it comes from, and the physics checks that test whether the budget closes.",
   },
   {
     slug: "timeline",

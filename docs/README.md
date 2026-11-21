@@ -38,7 +38,7 @@ film held just sunward of the Sun-Venus L1 point, [1.11 × 10⁶ km](numbers.
 ([Hesperus Veil](technologies/veil.md), [Aegis Shield](technologies/aegis.md))
 
 **3. Pump the heat out ([2033](numbers.md?date=year#cooling-start) to [2036](numbers.md?date=year#cooling-end)).** The Helios Lattice near Mercury beams
-[8.5 × 10¹⁹ W](numbers.md#helios-power) to Venus. Thermal Chimneys lift the deep heat to floating canopies
+[8.5 × 10¹⁹ W](numbers.md#helios-power), shared between Venus and the Ice Train's coilguns on Ceres. Thermal Chimneys lift the deep heat to floating canopies
 above the clouds, where the Photonic Exhaust fires it into space as [2.3 µm](numbers.md#exhaust-wavelength)
 infrared, up to [5.5 × 10¹⁹ W](numbers.md#exhaust-peak). The CO₂ rains out as liquid from
 [July 2034](numbers.md?date=month#traj-clear-rain), freezes, and is sealed under insulated caps as new
@@ -48,8 +48,9 @@ land. ([Helios Lattice](technologies/helios.md), [Thermal Chimneys](technologies
 **4. Bring the water ([2033](numbers.md?date=year#ice-launch-start) to [2036](numbers.md?date=year#lowering-end)).** Coilguns on Ceres launch [1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice,
 enough for a [217 m](numbers.md#ocean-depth) ocean. A Braking Ring around Venus catches it and turns its
 speed into [5.3 × 10²⁷ J](numbers.md#ring-recovered-energy) of electricity instead of heat, enough to power
-the coilguns from [September 2034](numbers.md?date=month#ring-pays-from). Lowering the caught ice to the
-surface is an [open problem](risks.md#the-ring-cannot-yet-lower-the-ice).
+the coilguns from [September 2034](numbers.md?date=month#ring-pays-from). What holds the Ring against the
+catch's push, and how to lower the caught ice to the surface, are
+[open problems](risks.md#the-ring-cannot-yet-lower-the-ice).
 ([Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md))
 
 **5. Make it breathe ([2035](numbers.md?date=year#forge-start) to [2036](numbers.md?date=year#genesis-end)).** Graphite Forges split CO₂ into
@@ -91,7 +92,7 @@ deadline.
 ![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
-The plan must bring [8.5 × 10²⁷ J](numbers.md#budget-demand) to Venus from outside. The Lattice supplies
+The plan must bring [8.5 × 10²⁷ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Lattice supplies
 [9.2 × 10²⁷ J](numbers.md#helios-supply) between full power and the deadline, which leaves
 [8.2%](numbers.md#budget-spare) spare on its own, even though the coilguns fire between launch windows too and
 pay [16%](numbers.md#launch-offwindow-mean) more for it. Once the Ring's recovered energy powers the coilguns

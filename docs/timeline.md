@@ -128,8 +128,8 @@ The Forges run from [1 January 2035](numbers.md?date=day#forge-start) to
 [15 June 2034](numbers.md?date=day#aegis-online). Once the caps are sealed the Veil opens and the simulated
 air warms to [285 K](numbers.md#earth-like-temp) by [5 September 2036](numbers.md?date=day#traj-warm). It is
 Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like), [92 d](numbers.md#traj-slack-days)
-before the deadline. The oxygen is complete on [30 September 2036](numbers.md?date=day#forge-end), but the
-Veil waits for the Frost Towers.
+before the deadline. The warmth comes first; the finish waits for the oxygen, which the Forges complete on
+[30 September 2036](numbers.md?date=day#forge-end).
 Genesis seeding waits for the oceans to hold their pH as well, so it begins on
 [1 December 2036](numbers.md?date=day#genesis-start), and the sunlit water is green by
 [12 December 2036](numbers.md?date=day#genesis-end), before the deadline

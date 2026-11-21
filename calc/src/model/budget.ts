@@ -20,7 +20,7 @@ export function budget(r: Registry) {
   r.q(
     "budget-demand",
     {
-      label: "Energy delivered from outside Venus",
+      label: "Energy delivered to Venus and Ceres from outside",
       unit: "J",
       formula: "launch + pump work + warming + forging + hardware",
       basis: "physics",

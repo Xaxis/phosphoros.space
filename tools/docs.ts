@@ -269,6 +269,8 @@ const BLOCKS: Record<string, Block> = {
         ["Helios Lattice", md("{helios-mass}", p), "Mercury"],
         ["Hesperus Veil", md("{veil-mass}", p), "Mercury"],
         ["Braking Ring", md("{ring-mass}", p), "Mercury"],
+        ["Ceres factories at peak", md("{ceres-final-mass}", p), "Ceres rock"],
+        ["Railheads and Crown", md("{ceres-build-mass}", p), "Ceres"],
         [
           "Water delivered",
           md("{ice-mass}", p),
@@ -373,7 +375,7 @@ const BLOCKS: Record<string, Block> = {
         `[${c.shown.model}](${p}numbers.md${r.get(c.model).unit === "date" ? "?date=day" : ""}#${c.model})`,
         c.correction
           ? `Corrected in version 3: [${content.corrections.find((x) => x.id === c.correction)?.title ?? c.correction}](${p}about.md#corrections)`
-          : (c.note ?? ""),
+          : md(c.note ?? "", p),
       ]),
     );
   },

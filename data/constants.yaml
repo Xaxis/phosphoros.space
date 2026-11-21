@@ -487,7 +487,7 @@ ceres-water-fraction:
   basis: physics
   source: [ceres-water]
   sig: 2
-  note: Estimates run from about 17% to 30%; at the low end the Ice Train would need most of Ceres's water.
+  note: McCord and Sotin's density argument gives 17% to 27%; the model takes the top of that range. At the low end the Ice Train would need most of Ceres's water. The Explorer's range runs wider, to test the plan.
   range: [0.17, 0.35]
 ceres-rotation-period:
   value: 32667.012

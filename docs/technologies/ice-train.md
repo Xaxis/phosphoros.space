@@ -81,7 +81,7 @@ the Ring's height adds the rest.
 > the Ring collects only a small part of what that fall releases. The rest goes into Ceres's orbit, pushed
 > outward by the recoil, and into Venus's, nudged forward as the Ring stops ice that overtakes it.
 
-That surplus is why the Ice Train runs on its own catch from
+That surplus is why the Ice Train can run on its own catch from
 [September 2034](../numbers.md?date=month#ring-pays-from). None of it is beamed back to Ceres: the Ring's
 electricity runs Venus, so the Lattice's beams, no longer needed there, stay on the Railheads
 ([the Ring's energy loop](ring.md#the-energy-loop)).
@@ -170,7 +170,8 @@ Brick must meet its catcher track at the Ring's height, on time, on the side of 
 The [Helios Lattice](helios.md) beams the Railheads their [6.7 × 10¹⁹ W](../numbers.md#railhead-power) for
 the whole campaign. From [September 2034](../numbers.md?date=month#first-catch) the Ring's recovered
 electricity powers Venus's systems, so the Lattice's beams can stay on Ceres; in energy terms the Ice Train
-then pays for itself. Even at the longest range, from the Lattice's outermost orbit to Ceres on the far
+then pays for itself, once the Ring can be held against the catch's push, still an
+[open problem](../risks.md#nothing-yet-holds-the-ring-against-the-catch). Even at the longest range, from the Lattice's outermost orbit to Ceres on the far
 side of the Sun, [3.2 AU](../numbers.md#lattice-to-ceres-range), a beam focuses to
 [120 m](../numbers.md#ceres-beam-spot).
 

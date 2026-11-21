@@ -390,7 +390,7 @@
     - { label: Ocean buffer, value: "Shore basalt holds pH {genesis-ph-min} to {acid-ocean-ph-max}; no life until it holds above {genesis-ph-min} for {genesis-ph-days}" }
   invented: []
   precedent:
-    - text: Calcium and magnesium minerals react with acid gases; the same chemistry, at far smaller scale, cleans power-plant flue gas.
+    - text: Calcium minerals on Venus's surface already react with its SO₂ to make anhydrite; the Acid Sweep runs the same chemistry fast.
       source: bullock-grinspoon-1996
   experiments: []
   figures: [acid-sweep]
@@ -434,7 +434,7 @@
     oceans hold their pH, so the sunlit water is green by {genesis-end|date=month}.
   job: Start an ecosystem
   scale: Engineered cyanobacteria, lichens and plankton
-  breakthrough: Organisms tuned to cold, fresh, nitrogen-rich water
+  breakthrough: Organisms tuned to cold, sulfate-rich water under nitrogen-rich air
   specs:
     - { label: Air, value: "{final-pressure}: {n2-pressure} nitrogen, {o2-target-pressure} oxygen, {final-co2-ppm} CO₂" }
     - { label: Oceans, value: "{ocean-depth} deep on average, fresh to brackish and sulfate-rich" }

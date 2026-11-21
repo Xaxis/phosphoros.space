@@ -163,10 +163,10 @@ and the new air holds more oxygen over each square metre than Earth's does.
 - **[June 2027](../numbers.md?date=month#survey-start):** The cloud-life survey begins.
 - **[December 2028](../numbers.md?date=month#life-gate):** The gate. No native life found, or the program
   stops. From here the organisms are engineered and tested on Earth in simulated 2036 conditions.
-- **[30 September 2036](../numbers.md?date=day#forge-end):** The Forges finish; the oxygen is in.
 - **[2 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed, the Veil opens and the
   ice melts into oceans. The pH clock starts.
-- **[30 September 2036](../numbers.md?date=day#traj-earth-like):** The air is Earth-like.
+- **[30 September 2036](../numbers.md?date=day#forge-end):** The Forges finish; the oxygen is in, and the air is
+  Earth-like ([30 September 2036](../numbers.md?date=day#traj-earth-like)).
 - **[1 December 2036](../numbers.md?date=day#genesis-start):** The pH has held; the gate opens and seeding
   begins.
 - **[12 December 2036](../numbers.md?date=day#genesis-end):** The sunlit water is green. Trees, crops and

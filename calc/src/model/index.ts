@@ -11,7 +11,7 @@ import { cryo } from "./cryo.ts";
 import { chimneys, exhaust } from "./exhaust.ts";
 import { forges } from "./forges.ts";
 import { foundry, foundryProducts } from "./foundry.ts";
-import { helios } from "./helios.ts";
+import { helios, heliosSchedule } from "./helios.ts";
 import { iceTrain } from "./ice.ts";
 import { outcome } from "./outcome.ts";
 import { ozone } from "./ozone.ts";
@@ -25,10 +25,12 @@ import { venus } from "./venus.ts";
 export const MODULES = [
   venus,
   conventional,
-  // The Veil's mass sets how long the Foundry pauses to build it, so the Veil comes first.
+  // The Veil's mass sets how long the Foundry pauses to build it, so the Veil comes first, and the
+  // Lattice's mass sets how far the Foundry grows, so the Lattice's size comes before the Foundry.
   veil,
-  foundry,
   helios,
+  foundry,
+  heliosSchedule,
   chimneys,
   exhaust,
   cryo,

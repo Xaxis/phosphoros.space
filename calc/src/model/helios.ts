@@ -144,6 +144,11 @@ export function helios(r: Registry) {
     },
     () => (2.44 * v("helios-wavelength") * v("lattice-to-ceres-range")) / v("helios-aperture"),
   );
+}
+
+/** When the Lattice is built and what it delivers: it waits for the Foundry to reach full scale. */
+export function heliosSchedule(r: Registry) {
+  const { v } = r.in("model/helios.ts");
   r.q(
     "lattice-build-days",
     {

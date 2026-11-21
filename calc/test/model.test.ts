@@ -84,6 +84,25 @@ test("a Lattice finished after the deadline is an error, not negative energy", (
   assert.ok(run({ "foundry-doubling-days": 70 }).get("helios-supply").value > 0);
 });
 
+test("the Foundry stops at the soonest finish, and grows with what it must build", () => {
+  // The closed form must agree with trying every doubling count, for Lattices small and large.
+  const counts: number[] = [];
+  for (const power of [4e19, 8.5e19, 1.2e20, 2e20]) {
+    const x = run({ "helios-power": power });
+    const T = x.get("foundry-doubling-days").value;
+    const target = x.get("foundry-target-mass").value;
+    const seed = x.get("foundry-seed-mass").value;
+    const finish = (n: number) => n * T + (target * T) / (seed * 2 ** n * Math.LN2);
+    let best = 1;
+    for (let n = 2; n < 40; n++) if (finish(n) < finish(best)) best = n;
+    assert.equal(x.get("foundry-doublings").value, best, `helios-power ${power}`);
+    assert.equal(x.checks.get("foundry-size")?.pass, true);
+    counts.push(best);
+  }
+  assert.ok((counts.at(-1) ?? 0) > (counts[0] ?? 0), "a far bigger Lattice needs a bigger Foundry");
+  assert.equal(v("foundry-target-mass"), v("helios-mass") + v("ring-mass"));
+});
+
 test("the version 2 statite cannot hover; the version 3 Veil can", () => {
   assert.equal(r.checks.get("veil-v2-hovers")?.pass, false);
   assert.ok(v("veil-v2-net-accel") > 0.03, "both forces point at Venus");
