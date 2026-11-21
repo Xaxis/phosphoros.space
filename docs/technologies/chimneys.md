@@ -117,8 +117,9 @@ their carbon goes into the cryo-continent caps.
 > [64 km](../numbers.md#chimney-height) while losing little temperature, and fans that move
 > [1.3 × 10¹⁰ kg/s](../numbers.md#chimney-mass-flow) of hot, dense CO₂ through its exchangers.
 
-> **Precedent:** None is cited. Forced-convection heat exchange is ordinary engineering; nothing remotely this tall
-> or this hot has been built.
+> **Precedent:** Sealed liquid loops already carry heat hotter than Venus's surface through exchangers: Russia's
+> BN-600 reactor has sent its heat into three secondary loops of liquid sodium since 1980
+> ([World Nuclear Association](../sources.md#wna-fast-reactors)). Nothing remotely this tall has been built.
 
 Version 3 changes how the chimney works, from rising gas to rising liquid
 ([correction](../about.md#corrections)). The switch itself leaves the intake numbers as they were, because they

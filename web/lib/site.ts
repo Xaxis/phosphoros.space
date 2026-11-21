@@ -12,11 +12,12 @@ const BUILD = process.env.PHOSPHOROS_BUILD ?? process.env.VERCEL_GIT_COMMIT_SHA?
 
 /**
  * A file in the repository, as a GitHub link (optionally to a line). A line number is right only in
- * the commit the site was built from, so line links pin to it; main moves on.
+ * the commit the site was built from, so line links pin to it; main moves on. `pin` pins a link
+ * without a line too, for a file that must match what the page shows, like a figure's code.
  */
-export function repoUrl(file: string, line?: number): string {
+export function repoUrl(file: string, line?: number, pin = line !== undefined): string {
   const kind = file.endsWith("/") || !/\.[a-z]+$/.test(file) ? "tree" : "blob";
-  const ref = line && BUILD ? BUILD : BRANCH;
+  const ref = pin && BUILD ? BUILD : BRANCH;
   return `${REPO}/${kind}/${ref}/${file.replace(/\/$/, "")}${line ? `#L${line}` : ""}`;
 }
 

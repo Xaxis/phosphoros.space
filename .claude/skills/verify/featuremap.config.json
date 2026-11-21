@@ -1,7 +1,7 @@
 {
   "manual": [
     { "kind": "cli", "label": "calc", "entry": "calc/cli.ts", "reach": "pnpm calc [--only ID] [--set ID=VALUE] [--json] [--claims]", "area": "model" },
-    { "kind": "cli", "label": "docs", "entry": "tools/docs.ts", "reach": "pnpm docs [--check] [FILE...]", "area": "docs" },
+    { "kind": "cli", "label": "docs", "entry": "tools/docs.ts", "reach": "pnpm run docs [--check] [FILE...]", "area": "docs" },
     { "kind": "cli", "label": "style", "entry": "tools/style.ts", "reach": "node tools/style.ts [FILE...]", "area": "docs" },
     { "kind": "cli", "label": "figures", "entry": "tools/figures.ts", "reach": "pnpm figures [--check]", "area": "figures" },
     { "kind": "cli", "label": "look", "entry": "tools/look.ts", "reach": "node tools/look.ts OUT_DIR ID...", "area": "figures" },

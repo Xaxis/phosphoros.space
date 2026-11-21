@@ -77,7 +77,7 @@ means the port is not this run's server. Run it before the first drive, and agai
 - Record the command and its decisive output: status plus body, the rendered text, the
   exit code, or the image you looked at.
 - Capture both the action and the resulting state; check side effects through a
-  second, read-only view (after `pnpm docs`, `pnpm docs --check` is current).
+  second, read-only view (after `pnpm run docs`, `pnpm run docs --check` is current).
 - If a path is unreachable, name the missing precondition and prove the nearest
   real path. Never report it as verified.
 

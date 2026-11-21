@@ -57,15 +57,15 @@ missions:
   - id: vlf
     name: Venus Life Finder (Morning Star)
     lead: Rocket Lab with MIT (Sara Seager); privately funded
-    launch: Late 2027 at the earliest, awaiting Neutron
+    launch: To be confirmed, awaiting Neutron
     brief: TBC, awaiting Neutron
-    changed: true
     arrives: A small probe falls through the clouds, sampling for about five minutes
     contributes: Organic molecules in cloud droplets; the first direct look for the chemistry of life in the clouds
     informs: [genesis]
     gate: true
     status: >-
-      Waiting for Rocket Lab's Neutron rocket, whose first launch moved to 2027 in October 2026.
+      Rocket Lab lists the launch as to be confirmed. It waits for Rocket Lab's Neutron rocket, whose
+      first launch moved to 2027 in October 2026.
     sources: [spacecom-2026-vlf, rocketlab-2026-neutron, ars-2026-venus]
   - id: verve
     name: VERVE

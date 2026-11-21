@@ -39,8 +39,9 @@ export function Figure({ id }: { id: string }) {
       <figcaption>
         <span className="figure-title">{def.title}.</span> {def.caption(props)}
         <span className="figure-links">
-          <a href={repoUrl(def.file)}>View source</a>
-          <a href={`${repoUrl(`figures/svg/${id}.svg`)}`}>SVG</a>
+          {/* Pinned to the build: on main, the code and the SVG may already draw something else. */}
+          <a href={repoUrl(def.file, undefined, true)}>View source</a>
+          <a href={repoUrl(`figures/svg/${id}.svg`, undefined, true)}>SVG</a>
         </span>
       </figcaption>
       <details className="figure-data">

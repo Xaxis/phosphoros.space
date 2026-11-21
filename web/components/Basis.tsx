@@ -10,7 +10,7 @@ export const BASIS_LABEL: Record<B, string> = {
 
 export const BASIS_MEANING: Record<B, string> = {
   physics: "Measured, or established physics",
-  precedent: "Demonstrated in the real world, cited",
+  precedent: "Demonstrated, or from a published study, and cited",
   invented: "A breakthrough the plan assumes",
   design: "A size, count or date the plan chooses",
 };

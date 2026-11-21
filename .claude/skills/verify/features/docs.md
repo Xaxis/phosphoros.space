@@ -14,7 +14,7 @@ Keeps every document in `docs/` in step with the model, and enforces the house s
 
 ## How to reach it
 
-- `pnpm docs`, `pnpm docs --check`, `node tools/docs.ts docs/plan.md` (one file).
+- `pnpm run docs`, `pnpm run docs --check`, `node tools/docs.ts docs/plan.md` (one file).
 - `node tools/style.ts`, `node tools/style.ts docs/plan.md`.
 - Both run inside `pnpm lint`.
 
@@ -25,7 +25,7 @@ Static: `pnpm lint`.
 Runtime:
 
 ```sh
-pnpm docs && pnpm docs --check; echo "exit $?"
+pnpm run docs && pnpm run docs --check; echo "exit $?"
 node tools/style.ts; echo "exit $?"
 printf '# T\n\nIt is 5 km away.\n' > docs/zz-style.md && node tools/style.ts docs/zz-style.md; echo "exit $?"; rm docs/zz-style.md
 ```
@@ -35,5 +35,6 @@ Proves it when: the second docs run says "are current" and exits 0; style prints
 ## Gotchas
 
 - Never type a quantity into docs prose; link it. Years, counts and section numbers are fine.
+- Under pnpm 10 `pnpm docs` is npm's own `docs` command, not this script: it writes nothing, and `pnpm docs --check` hangs. Use `pnpm run docs` or `node tools/docs.ts`.
 - From `docs/technologies/` the link starts `../numbers.md`.
 - An empty block (opener, then the closer on the next line) is valid and is filled in place.

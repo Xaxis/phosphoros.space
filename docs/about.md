@@ -38,7 +38,7 @@ Phosphoros is Greek for "light-bringer", the ancient name for Venus as the morni
 Hesperos, which survives here in the [Hesperus Veil](technologies/veil.md). The name has a second meaning
 for this plan: Phosphoros cools Venus by beaming its heat away into space as light.
 
-## History
+## Changelog
 
 The project began as **Project Hesperus**, a conventional analysis that concluded an Earth-like Venus in ten
 years was impossible without imported energy, and proposed a decade of groundwork for a transformation
@@ -46,6 +46,18 @@ lasting centuries. Its second version, **Project Hesperus Ten**, asked what woul
 finish in ten years instead, and was renamed Phosphoros. The third version, published on 2026-11-20, rebuilt
 every number from first principles in code. That reproduced almost all of version 2, and found the errors
 listed below.
+
+Version 3 changed how the plan is made, not only its numbers:
+
+- Every number is computed by the model in [`calc/`](../calc/) from [`data/`](../data/), and links to its
+  formula, its inputs and the line that defines it.
+- A day-by-day simulation of Venus's air drives the energy budget and the finish date, instead of averages.
+- Physics checks run on every change: energy, the second law, the forces on everything that hovers or
+  hangs, machine capacities and the order of events. Failing checks are shown, not hidden.
+- Every number in the version 2 brief is [checked against the model](#version-2s-numbers-checked).
+
+The release notes for each version are in [CHANGELOG.md](../CHANGELOG.md). Every change to a published
+number is listed under [Corrections](#corrections), with its reason and the numbers before and after.
 
 ## Corrections
 
@@ -79,7 +91,7 @@ Every number in the plan now comes from data/ through the model in calc/. Rebuil
 - **Correction (v3): 0.25 bar of oxygen is a little more than Earth's, not a match.** Earth's sea-level oxygen is 0.21 bar. 0.25 bar is about 18% more.
 - **Correction (v3): Seeding waits for the oxygen.** Version 2 seeded life from mid-2036 behind a gate that needs 0.25 bar of oxygen, but the Forges finish only at the end of September 2036. Seeding now starts when the gate opens; one-day doubling still greens the sunlit water by December.
 - **Finding (v3): The ozone layer is modelled, and land life waits for it.** Version 2 left the gate's ozone condition as a measurement. A Chapman model of the new air, which gives Earth's column when run on Earth's air, makes [49.9 DU](numbers.md#ozone-first-day) of ozone in the first day of sunlight, so the condition is met at once. A shield for land, [185 DU](numbers.md#ozone-shield-column), takes [91 d](numbers.md#ozone-shield-days): lichens and mosses go onto land on [2 December 2036](numbers.md?date=day#genesis-land-start), after the ocean seeding and before the deadline.
-- **Correction (v3): Precursor mission dates checked.** EnVision has slipped from November 2031 to 2032; Venus Life Finder waits on Neutron, now due in 2027. DAVINCI (December 2030) and VERITAS (November 2032) are confirmed, but NASA's 2027 budget request again proposes ending both.
+- **Correction (v3): Precursor mission dates checked.** EnVision has slipped from November 2031 to 2032; Venus Life Finder waits on Neutron, now due in 2027. Ars Technica reported in October 2026 that DAVINCI launches in December 2030 and VERITAS in November 2032; NASA's own mission pages give no newer date yet. NASA's 2027 budget request again proposes ending both.
 - **Correction (v3): Launches between windows cost more, and the budget now charges them.** Version 2 priced every Ice Train shot at the Hohmann minimum, but the Railheads fire all the time. A shot between launch windows needs a faster orbit to meet Venus: up to [46%](numbers.md#launch-offwindow-max) more energy at the worst moment, [16%](numbers.md#launch-offwindow-mean) more on average. Charging the average raises the launch energy to [4.8 × 10²⁷ J](numbers.md#ice-launch-energy) and the Railheads' power to [6.7 × 10¹⁹ W](numbers.md#railhead-power). Until the Ring takes over, cooling gets less of the Lattice, so the Clear Rain moves to [July 2034](numbers.md?date=month#traj-clear-rain) and all the CO₂ is down on [12 June 2036](numbers.md?date=day#traj-cold). The air is Earth-like on [30 September 2036](numbers.md?date=day#traj-earth-like).
 - **Correction (v3): Cooling and sealing end once the Frost Towers finish.** The end of active cooling and the last cap were both planned for 30 June 2036. With launches between windows charged, the simulated Frost Towers finish only on [28 June 2036](numbers.md?date=day#traj-scavenged), so both move to [1 September 2036](numbers.md?date=day#sealing-end), and a new check keeps them after the Frost Towers. The Exhaust's campaign averages are taken over the longer campaign, so they fall a little.
 - **Correction (v3): Seeding waits for the ocean pH gate as well as the oxygen.** Seeding began the day the oxygen was in, [30 September 2036](numbers.md?date=day#forge-end), which met the pH gate (oceans above pH [7.5](numbers.md#genesis-ph-min) for [90 d](numbers.md#genesis-ph-days)) with almost nothing to spare. With the later melt the pH gate opens on [1 December 2036](numbers.md?date=day#genesis-ph-clear), so seeding now begins at the later of the two gates, [1 December 2036](numbers.md?date=day#genesis-start). Seeded at [100 per cm³](numbers.md#genesis-seed-density) and doubling every [1 d](numbers.md#genesis-doubling-days), the cyanobacteria reach the density of rich Earth seawater on [12 December 2036](numbers.md?date=day#genesis-end), and a new check holds that to the deadline. That date used to mark the end of seeding; it now marks green water.

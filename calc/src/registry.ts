@@ -9,7 +9,7 @@
 /** Where a number stands between proven and imagined. Drives the markers on every page. */
 export type Basis =
   | "physics" // measured fact or established physics
-  | "precedent" // demonstrated in the real world, cited
+  | "precedent" // demonstrated in the real world, or from a published study; cited
   | "invented" // a breakthrough the plan assumes
   | "design"; // a program choice (a date, a size, a count)
 

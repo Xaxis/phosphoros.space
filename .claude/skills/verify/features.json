@@ -6,7 +6,7 @@
       "id": "check:lint",
       "kind": "lint",
       "run": "pnpm lint",
-      "script": "biome check . && pnpm -r run typecheck && node tools/docs.ts --check && node --import ./tools/lib/register.ts tools/figures.ts --check && node tools/style.ts"
+      "script": "biome check . && pnpm -r run typecheck && node tools/docs.ts --check && node --import ./tools/lib/register.ts tools/figures.ts --check && node tools/assets.ts --check && node tools/spectra.ts --check && node tools/style.ts"
     },
     {
       "id": "check:test",
@@ -90,7 +90,9 @@
       "entry": "calc/cli.ts",
       "reach": "pnpm calc [--only ID] [--set ID=VALUE] [--json] [--claims]",
       "area": "model",
-      "tests": []
+      "tests": [
+        "web/test/site.test.ts"
+      ]
     },
     {
       "id": "cli:deploy",
@@ -104,7 +106,7 @@
       "id": "cli:docs",
       "kind": "cli",
       "entry": "tools/docs.ts",
-      "reach": "pnpm docs [--check] [FILE...]",
+      "reach": "pnpm run docs [--check] [FILE...]",
       "area": "docs",
       "tests": [
         "calc/test/model.test.ts"
@@ -228,7 +230,9 @@
       "entry": "web/app/technologies/page.tsx",
       "reach": "http://localhost:$PORT/technologies",
       "area": "technologies",
-      "tests": []
+      "tests": [
+        "web/test/site.test.ts"
+      ]
     },
     {
       "id": "page:/technologies/[id]",
@@ -236,7 +240,9 @@
       "entry": "web/app/technologies/[id]/page.tsx",
       "reach": "http://localhost:$PORT/technologies/[id]",
       "area": "technologies",
-      "tests": []
+      "tests": [
+        "web/test/site.test.ts"
+      ]
     }
   ]
 }

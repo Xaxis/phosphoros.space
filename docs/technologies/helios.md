@@ -137,8 +137,9 @@ line.
 > [1,500 K](../numbers.md#helios-fin-temp).
 
 > **Precedent:** The beam's wavelength, [1.06 µm](../numbers.md?sig=3#helios-wavelength), is the neodymium
-> laser line, in industrial use for decades. Nothing else about the Lattice has been done at any scale close to
-> this; no precedent is cited. The [Lightpipe](../research.md#lightpipe) experiment is the first step.
+> line of the Nd:YAG laser, first built in 1964 ([Geusic 1964](../sources.md#geusic-1964-ndyag)) and at work in
+> factories since 1970 ([Belforte 2010](../sources.md#belforte-2010-industrial)). Nothing else about the Lattice
+> has been done at any scale close to this. The [Lightpipe](../research.md#lightpipe) experiment is the first step.
 
 ## Build sequence
 

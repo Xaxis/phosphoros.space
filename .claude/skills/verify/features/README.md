@@ -24,7 +24,7 @@ dispatch GitHub Actions (none exist; the owner pays for minutes).
 ## Areas
 
 - [model](model.md): `pnpm calc` and the `@phosphoros/calc` package the site and tools import.
-- [docs](docs.md): `pnpm docs` (ledger, bibliography, number links, generated tables) and the style check.
+- [docs](docs.md): `pnpm run docs` (ledger, bibliography, number links, generated tables) and the style check.
 - [figures](figures.md): `pnpm figures`, `tools/look.ts` and the `@phosphoros/figures` package.
 - [pages](pages.md): the home page, the section pages, the technology pages, the ledger and sources.
 - [explore](explore.md): the in-browser Explorer.

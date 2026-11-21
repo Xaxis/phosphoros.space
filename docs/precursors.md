@@ -11,12 +11,12 @@ cited; where version 2 of the plan gave a different date, the table shows it.
 <!-- table:missions -->
 | Mission | Lead | Launch | Contributes | Status |
 | --- | --- | --- | --- | --- |
-| **DAVINCI** | NASA Goddard (PI Jim Garvin) | Late December 2030 | Deep-atmosphere composition, noble gases and evidence of a past ocean; the first direct measurements below the clouds since 1985 | Launch brought forward a year. Congress funded it for FY2026 after the budget request proposed cancelling it. The FY2027 request again proposes ending it; the Senate subcommittee mark (12 November 2026) directs $263M. NASA runs on a continuing resolution to 11 December 2026. [ars-2026-venus](sources.md#ars-2026-venus) [planetary-2026-fy2026](sources.md#planetary-2026-fy2026) [planetary-2026-fy2027](sources.md#planetary-2026-fy2027) [spacepolicy-2026-senate](sources.md#spacepolicy-2026-senate) |
-| **VERITAS** | NASA JPL | November 2032 | Global 3D topography and surface composition; where the basins that will hold the CO₂ seas are, and how hot the rock beneath them is | Funded for FY2026 after a proposed cancellation. The FY2027 request again proposes ending it; the Senate subcommittee mark directs $49M. [ars-2026-venus](sources.md#ars-2026-venus) [planetary-2026-fy2027](sources.md#planetary-2026-fy2027) [spacepolicy-2026-senate](sources.md#spacepolicy-2026-senate) |
-| **EnVision** | ESA (prime contractor Thales Alenia Space) | 2032, on Ariane 6 (version 2 said November 2031) | Venus as a system, from core to upper atmosphere; active volcanism and the surface's history | Delayed one year, to 2032, after NASA withdrew its VenSAR radar; ESA is studying a European radar instead. ESA's own pages still say 2031. [ars-2026-envision](sources.md#ars-2026-envision) [esa-envision](sources.md#esa-envision) [esa-envision-timeline](sources.md#esa-envision-timeline) |
-| **Venus Orbiter Mission (Shukrayaan)** | ISRO | 29 March 2028, on LVM3 | Nineteen instruments, led by a radar that sees beneath the surface; active volcanism, and how Venus loses its air to space | Approved by India's cabinet in September 2024. It finished its preliminary design review in April 2026 and is on track for launch. Version 2 left it out. [theweek-2026-vom](sources.md#theweek-2026-vom) |
-| **Venus Life Finder (Morning Star)** | Rocket Lab with MIT (Sara Seager); privately funded | Late 2027 at the earliest, awaiting Neutron (version 2 said TBC, awaiting Neutron) | Organic molecules in cloud droplets; the first direct look for the chemistry of life in the clouds | Waiting for Rocket Lab's Neutron rocket, whose first launch moved to 2027 in October 2026. [spacecom-2026-vlf](sources.md#spacecom-2026-vlf) [rocketlab-2026-neutron](sources.md#rocketlab-2026-neutron) [ars-2026-venus](sources.md#ars-2026-venus) |
-| **VERVE** | Cardiff University (Jane Greaves), proposed to ESA | Would ride with EnVision, so 2032 if selected | Phosphine, ammonia and other reduced gases that might signal life | A small probe proposed to ESA's first Mini-F call. ESA planned to choose that mission in November 2026; the plan does not count on VERVE either way. [ras-2025-verve](sources.md#ras-2025-verve) [astrobiology-2025-verve](sources.md#astrobiology-2025-verve) [snsa-2026-minif](sources.md#snsa-2026-minif) |
+| **DAVINCI** | NASA Goddard (PI Jim Garvin) | Late December 2030 | Deep-atmosphere composition, noble gases and evidence of a past ocean; the first direct measurements below the clouds since 1985 | Launch brought forward a year. Congress funded it for FY2026 after the budget request proposed cancelling it. The FY2027 request again proposes ending it; the Senate subcommittee mark (12 November 2026) directs $263M. NASA runs on a continuing resolution to 11 December 2026. ([Ars Technica](sources.md#ars-2026-venus); [Planetary Society, January 2026](sources.md#planetary-2026-fy2026); [Planetary Society, April 2026](sources.md#planetary-2026-fy2027); [SpacePolicyOnline](sources.md#spacepolicy-2026-senate)) |
+| **VERITAS** | NASA JPL | November 2032 | Global 3D topography and surface composition; where the basins that will hold the CO₂ seas are, and how hot the rock beneath them is | Funded for FY2026 after a proposed cancellation. The FY2027 request again proposes ending it; the Senate subcommittee mark directs $49M. ([Ars Technica](sources.md#ars-2026-venus); [Planetary Society](sources.md#planetary-2026-fy2027); [SpacePolicyOnline](sources.md#spacepolicy-2026-senate)) |
+| **EnVision** | ESA (prime contractor Thales Alenia Space) | 2032, on Ariane 6 (version 2 said November 2031) | Venus as a system, from core to upper atmosphere; active volcanism and the surface's history | Delayed one year, to 2032, after NASA withdrew its VenSAR radar; ESA is studying a European radar instead. ESA's own pages still say 2031. ([Ars Technica](sources.md#ars-2026-envision); [ESA, EnVision](sources.md#esa-envision); [ESA, EnVision timeline](sources.md#esa-envision-timeline)) |
+| **Venus Orbiter Mission (Shukrayaan)** | ISRO | 29 March 2028, on LVM3 | Nineteen instruments, led by a radar that sees beneath the surface; active volcanism, and how Venus loses its air to space | Approved by India's cabinet in September 2024. It finished its preliminary design review in April 2026 and is on track for launch. Version 2 left it out. ([The Week](sources.md#theweek-2026-vom)) |
+| **Venus Life Finder (Morning Star)** | Rocket Lab with MIT (Sara Seager); privately funded | To be confirmed, awaiting Neutron | Organic molecules in cloud droplets; the first direct look for the chemistry of life in the clouds | Rocket Lab lists the launch as to be confirmed. It waits for Rocket Lab's Neutron rocket, whose first launch moved to 2027 in October 2026. ([Space.com](sources.md#spacecom-2026-vlf); [Rocket Lab USA](sources.md#rocketlab-2026-neutron); [Ars Technica](sources.md#ars-2026-venus)) |
+| **VERVE** | Cardiff University (Jane Greaves), proposed to ESA | Would ride with EnVision, so 2032 if selected | Phosphine, ammonia and other reduced gases that might signal life | A small probe proposed to ESA's first Mini-F call. ESA planned to choose that mission in November 2026; the plan does not count on VERVE either way. ([Royal Astronomical Society](sources.md#ras-2025-verve); [Astrobiology.com](sources.md#astrobiology-2025-verve); [Swedish National Space Agency](sources.md#snsa-2026-minif)) |
 <!-- /table -->
 
 ## What each mission gives Phosphoros
@@ -81,6 +81,16 @@ descend through the clouds, measuring phosphine, ammonia and other reduced gases
 which ESA planned to decide in November 2026 ([Swedish National Space Agency](sources.md#snsa-2026-minif)).
 Selected or not, it would fly with EnVision in 2032, long after the gate, so the plan does not count on it.
 
+### Not counted on
+
+Three more are left out of the table. China plans to bring back samples of Venus's clouds in the second
+phase of its long-term space science plan, 2028 to 2035, but has given no launch date
+([IEEE Spectrum](sources.md#ieee-2025-china-venus)). Russia's Venera-D has slipped again, to 2036, by the
+Russian Academy of Sciences' account, which Roscosmos has not confirmed
+([The Moscow Times](sources.md#moscowtimes-2025-venera)). And no spacecraft is working at Venus today: JAXA
+ended Akatsuki's mission on 18 September 2025, after losing contact with it in April 2024
+([JAXA](sources.md#jaxa-2025-akatsuki)). The plan counts on none of them.
+
 ## Funding
 
 The two NASA missions have survived one attempt to cancel them and face a second. The FY2026 budget
@@ -93,8 +103,9 @@ EnVision out of the protections it gives other planetary missions, which the Pla
 cancellation by omission ([Planetary Society](sources.md#planetary-2026-house)). The Senate
 appropriations subcommittee's mark of 12 November 2026 directs money to both, but no FY2027 bill is
 enacted, and NASA runs on a continuing resolution to 11 December 2026
-([SpacePolicyOnline](sources.md#spacepolicy-2026-senate)). Earlier in 2026, reporting suggested NASA's
-"decade of Venus" might shrink to a single probe ([Space.com](sources.md#spacecom-2026-decade)).
+([SpacePolicyOnline](sources.md#spacepolicy-2026-senate)). In March 2026, NASA's planetary science
+director, Louise Prockter, said it would be "a challenge getting all three Venus missions to continue"
+([Space.com](sources.md#spacecom-2026-decade)).
 
 Version 2 cited a report that DAVINCI had been pushed back; its own source says the launch was brought
 forward ([Mezha](sources.md#mezha-2026-venus)). Version 3 cites the original. The date changes are logged

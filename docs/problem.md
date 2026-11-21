@@ -114,7 +114,7 @@ takes tens of millions of years ([Bullock and Grinspoon 1996](sources.md#bullock
 Even the simplest piece, a shade the size of Venus's disk made of
 [1 g/m²](numbers.md#veil-areal-density) film, has a mass of
 [1.2 × 10¹¹ kg](numbers.md#earth-launched-shade-mass). At [100 t](numbers.md#heavy-launch-payload) per
-heavy-lift launch ([NewSpace Economy 2026](sources.md#newspace-starship-2026)) that is
+heavy-lift launch, SpaceX's goal for Starship ([NewSpace Economy 2026](sources.md#newspace-starship-2026)), that is
 [1.2 × 10⁶](numbers.md#earth-launched-shade-launches) launches. Anything this large must be made in space,
 from material already there.
 

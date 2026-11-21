@@ -125,7 +125,11 @@
   invented:
     - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency from {helios-film-temp} to {helios-film-temp-inner}
     - Phase-locked emitter grids acting as {helios-aperture} virtual apertures
-  precedent: []
+  precedent:
+    - text: The beam's wavelength, {helios-wavelength|sig=3}, is the neodymium line of the Nd:YAG laser, first built at Bell Laboratories in 1964.
+      source: geusic-1964-ndyag
+    - text: Nd:YAG lasers have scribed, drilled, cut and welded in factories since 1970.
+      source: belforte-2010-industrial
   experiments: [lightpipe]
   figures: [energy-sankey, lattice-budget]
   modules: [helios.ts]
@@ -175,10 +179,11 @@
   place: venus
   online: cooling-start
   summary: >-
-    {chimney-count} fan-driven columns, {chimney-diameter} wide and {chimney-height} tall, carry deep
-    heat up to the Exhaust canopies at {chimney-heat} each.
+    {chimney-count} towers, {chimney-diameter} wide and {chimney-height} tall, draw deep air through
+    fan-driven intake exchangers and lift its heat in sealed liquid loops to the Exhaust canopies, at
+    {chimney-heat} each.
   job: Lift deep heat to the cloud tops
-  scale: Forced-convection columns {chimney-height} tall
+  scale: Towers {chimney-height} tall, with fan-driven intakes and sealed liquid loops
   breakthrough: Structures that survive {venus-surface-temp} and {venus-surface-pressure} through the {cooling-seconds} of active cooling
   specs:
     - { label: Number, value: "{chimney-count}, one per canopy, about {chimney-spacing} apart" }
@@ -193,7 +198,9 @@
   invented:
     - Silicon-carbide and graphene composite walls stable at {venus-surface-temp} in CO₂, SO₂ and acid for the {cooling-seconds} of active cooling
     - Ground anchors that grip basalt at {venus-surface-temp}
-  precedent: []
+  precedent:
+    - text: Russia's BN-600 reactor has carried its heat through exchangers into sealed loops of liquid sodium, hotter than Venus's surface, since 1980.
+      source: wna-fast-reactors
   experiments: []
   figures: [heat-path]
   modules: [exhaust.ts]
