@@ -163,13 +163,14 @@ function HeatPath(p: Props) {
         href="/technologies/helios"
         label={`Helios Lattice beam in: ${beam}`}
         box={{
-          x: AX + 52,
-          y: 24 - 15,
+          x: AX + 78,
+          y: 20 - 15,
           w: Math.max(textWidth("Helios Lattice beam in"), textWidth(beam, 11.5)) + 12,
           h: 14.5 + 21,
         }}
       >
-        <Lines x={AX + 58} y={24} halo lines={["Helios Lattice beam in", beam]} />
+        {/* Clear of the beam's edge, which slants under where the label starts. */}
+        <Lines x={AX + 84} y={20} lines={["Helios Lattice beam in", beam]} />
       </Link>
       {/* The Ring and its name are one link: lit, an accent bar barely changes, so the name is boxed. */}
       <Link
@@ -272,11 +273,11 @@ function HeatPath(p: Props) {
           y2={yCan - 8}
           strokeWidth={2}
         />
+        {/* Above the canopy's left end, between the altitude axis and the first tether. */}
         <Lines
-          x={CAN0 - 10}
-          y={yCan - 18}
+          x={CAN0 + 22}
+          y={yCan - 47}
           anchor="end"
-          halo
           lines={[
             "Exhaust canopy",
             `${t.canopy} up, ${t.width} across`,
@@ -348,10 +349,9 @@ function HeatPath(p: Props) {
         <Arrow x1={CH + 72} y1={yBase - 28} x2={CH + CW / 2 + 3} y2={yBase - 28} tone="hot" />
         <Arrow x1={CH + CW / 2} y1={Y0 - 3} x2={basin0 + 40} y2={Y0 - 3} tone="cool" width={2} />
         <Lines
-          x={CH - 84}
+          x={CH - 24}
           y={yBase - 72}
           anchor="end"
-          halo
           lines={[
             "Fans pull hot air",
             `through exchangers at ${t.flow}`,

@@ -65,7 +65,7 @@ function IceOrbits(p: Props) {
   const [nx, ny] = pt(p.ceresAphelion, 180);
   const px = W - 220;
   const fall = `Hohmann transfer: ${t.transfer} from Ceres to Venus`;
-  const fallLines = ["Bricks fall", `for ${t.transfer}`];
+  const fallLines = ["Cheapest fall", t.transfer];
   const [fx, fy] = pt(2.1, 62);
   const fallW = Math.max(textWidth(fallLines[0] ?? ""), textWidth(fallLines[1] ?? "", 11.5));
   const fallBox = { x: fx - 6, y: fy - 15, w: fallW + 12, h: 14.5 + 21 };
@@ -86,7 +86,7 @@ function IceOrbits(p: Props) {
     <Frame
       id="ice-orbits"
       title="Ceres Ice Train orbits, to scale"
-      desc={`To scale. Bricks fall from Ceres's orbit at ${t.ceres} to Venus's at ${t.venus} along half an ellipse, in ${t.transfer}. Throwing the ice stretches Ceres's orbit to an aphelion of ${t.ceresNew}.`}
+      desc={`To scale. The cheapest fall from Ceres's orbit at ${t.ceres} to Venus's at ${t.venus} is half an ellipse, ${t.transfer}; Bricks launched between windows take ${t.flights}. Throwing the ice stretches Ceres's orbit to an aphelion of ${t.ceresNew}.`}
       height={H}
       links
     >
@@ -144,13 +144,18 @@ function IceOrbits(p: Props) {
         <Dot x={lx} y={ly} tone="s1" r={5} title={`Ceres at launch, ${t.ceres} from the Sun`} />
         <Lines x={lx - 10} y={ly + 20} anchor="end" lines={["Ceres", "at launch"]} />
         <Dot x={vx} y={vy} tone="hot" title="Venus when the Brick leaves" />
-        <Lines x={vx} y={vy + 22} anchor="middle" halo lines={["Venus", "at launch"]} />
+        {/* Low enough to clear the later windows' paths, which end just above it. */}
+        <Lines x={vx} y={vy + 30} anchor="middle" halo lines={["Venus", "at launch"]} />
         <Dot x={ax} y={ay} tone="hot" title={`Venus when the Brick arrives, ${t.transfer} later`} />
-        <Lines x={ax - 10} y={ay - 22} anchor="end" lines={["Venus", "at arrival"]} />
+        {/* Hemmed in by the later windows' paths: the halo stops them under the words. */}
+        <Lines x={ax - 10} y={ay - 22} anchor="end" halo lines={["Venus", "at arrival"]} />
         <Dot x={nx} y={ny} tone="s1" r={4} title={`Ceres's new aphelion, ${t.ceresNew}`} />
-        <Lines x={nx + 9} y={ny + 18} lines={["New aphelion", t.ceresNew]} />
+        {/* No room outside the new orbit: the label sits just inside Ceres's, tied to its dot. */}
+        <line className="f-axis" x1={nx + 6} y1={ny + 3} x2={CX - p.ceres * AU + 6} y2={ny + 7} />
+        <Lines x={CX - p.ceres * AU + 10} y={ny + 18} lines={["New aphelion", t.ceresNew]} />
 
-        <text className="f-note f-num" x={CX} y={CY - p.venus * AU - 8} textAnchor="middle">
+        {/* Beside its orbit, to the right, where no transfer runs. */}
+        <text className="f-note f-num" x={CX + p.venus * AU + 8} y={CY} dy="0.32em">
           Venus {t.venus}
         </text>
         <text className="f-note f-num" x={CX} y={CY + p.ceres * AU - 10} textAnchor="middle">
@@ -174,7 +179,7 @@ function IceOrbits(p: Props) {
             Ceres's orbit, after
           </text>
         </g>
-        <Key x={px} y={110} tone="accent" label="Brick transfer" line />
+        <Key x={px} y={110} tone="accent" label="Hohmann transfer" line />
         <g>
           <line
             className="f-accent-line"
@@ -194,15 +199,16 @@ function IceOrbits(p: Props) {
           x={px}
           y={178}
           lines={[
-            "The fall",
+            "The cheapest fall",
             `${t.transfer}, half the ellipse`,
             `launched at ${t.launch}`,
             `arrives ${t.vinf} faster than Venus`,
+            `between windows: ${t.flights}`,
           ]}
         />
         <Lines
           x={px}
-          y={256}
+          y={270}
           lines={[
             "Launch windows",
             `cheapest every ${t.windowPeriod}`,
@@ -212,7 +218,7 @@ function IceOrbits(p: Props) {
         />
         <Lines
           x={px}
-          y={334}
+          y={348}
           lines={[
             "Ceres pays in orbit",
             `recoil adds ${t.recoil} to its speed`,

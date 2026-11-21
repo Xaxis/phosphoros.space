@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BasisTag } from "../../../components/Basis";
 import { DocPage } from "../../../components/DocPage";
-import { Num } from "../../../components/Num";
+import { CLOSING, Num, OPENING } from "../../../components/Num";
 import { hasDoc } from "../../../lib/docs";
 import { pageMeta } from "../../../lib/meta";
 import { model, quantity } from "../../../lib/model";
@@ -35,15 +35,37 @@ function experimentsOf(t: Technology): Experiment[] {
   return model().content.experiments.experiments.filter((e) => t.experiments.includes(e.id));
 }
 
-/** Data text with its numbers as model buttons, each opening its card. */
+/** Data text with its numbers as model buttons, each opening its card, holding the punctuation it touches. */
 function Template({ text }: { text: string }) {
+  const parts = parseTemplate(text);
+  const texts = parts.map((s) => ("text" in s ? s.text : ""));
+  const joins = parts.map((s, i) => {
+    if ("text" in s) return { lead: "", tail: "" };
+    const before = texts[i - 1] ?? "";
+    const after = texts[i + 1] ?? "";
+    const lead = OPENING.exec(before)?.[0] ?? "";
+    const tail = CLOSING.exec(after)?.[0] ?? "";
+    if (i > 0) texts[i - 1] = before.slice(0, before.length - lead.length);
+    if (i + 1 < texts.length) texts[i + 1] = after.slice(tail.length);
+    return { lead, tail };
+  });
   let at = 0;
   return (
     <>
-      {parseTemplate(text).map((s) => {
+      {parts.map((s, i) => {
         const key = at;
         at += ("text" in s ? s.text : s.raw).length;
-        return "text" in s ? s.text : <Num key={key} id={s.ref} opts={s.opts} />;
+        if ("text" in s) return texts[i];
+        const { lead, tail } = joins[i] ?? { lead: "", tail: "" };
+        return lead || tail ? (
+          <span key={key} className="num-join">
+            {lead}
+            <Num id={s.ref} opts={s.opts} />
+            {tail}
+          </span>
+        ) : (
+          <Num key={key} id={s.ref} opts={s.opts} />
+        );
       })}
     </>
   );

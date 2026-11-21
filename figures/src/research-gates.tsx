@@ -3,7 +3,7 @@
  * signal, against the gates that end the proof years and the seed foundry's flight.
  */
 import { fill, refsIn } from "@phosphoros/calc/template";
-import { Art, Frame, Link, linear, midSentence, show, W } from "./kit.tsx";
+import { Art, Frame, Link, linear, midSentence, show, W, wrap } from "./kit.tsx";
 import { YearBands } from "./structure-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
@@ -52,8 +52,21 @@ function ResearchGates({ exps, markers, from, to }: Props) {
   const stacked = [...markers].sort((a, b) => b.day - a.day);
   const axisY = LABELS + stacked.length * STACK + 8;
   const rowsTop = axisY + 10;
-  const rowsBottom = rowsTop + exps.length * ROW;
+  // Each pass mark and kill signal wraps short of the first marker line, so no marker runs through
+  // it; a row grows by a line for each line it wraps onto.
+  const textW = x(Math.min(...markers.map((m) => m.day))) - 10 - M.l;
+  let at = rowsTop;
+  const rows = exps.map((e) => {
+    const pass = wrap(`Pass ${e.pass}`, textW);
+    const kill = wrap(`Kill ${e.kill}`, textW);
+    const top = at;
+    at += ROW + 15 * (pass.length + kill.length - 2);
+    return { e, pass, kill, top };
+  });
+  const rowsBottom = at;
   const H = rowsBottom + 64;
+  // Year hairlines run through the axis and each row's bar, and stop short of the text under it.
+  const spans: [number, number][] = rows.map((row, i) => [i ? row.top : axisY + 4, row.top + 22]);
   const lineClass = (k: Marker["kind"]) =>
     k === "gate" ? "f-accent-line" : k === "end" ? "f-ink-line" : "f-muted-line";
   return (
@@ -82,11 +95,11 @@ function ResearchGates({ exps, markers, from, to }: Props) {
           labelY={[axisY, rowsBottom + 18]}
           from={from}
           to={to}
+          spans={spans}
         />
         <line className="f-axis" x1={M.l} x2={W - M.r} y1={rowsBottom} y2={rowsBottom} />
       </Art>
-      {exps.map((e, i) => {
-        const top = rowsTop + i * ROW;
+      {rows.map(({ e, pass, kill, top }, i) => {
         const title = `${e.name} (${e.where}), ${e.when}: proves ${midSentence(e.proves)}.`;
         const name = (
           <g>
@@ -123,18 +136,23 @@ function ResearchGates({ exps, markers, from, to }: Props) {
                   {e.gate ? "Stops the whole program" : "No substitute"}
                 </text>
               )}
-              <text x={M.l} y={top + 34}>
-                <tspan className="f-label" fontWeight={600}>
-                  Pass{" "}
-                </tspan>
-                {e.pass}
-              </text>
-              <text x={M.l} y={top + 49}>
-                <tspan className="f-label" fontWeight={600}>
-                  Kill{" "}
-                </tspan>
-                {e.kill}
-              </text>
+              {[
+                ...pass.map((l) => ["Pass", l] as const),
+                ...kill.map((l) => ["Kill", l] as const),
+              ].map(([word, l], k) => (
+                <text key={`${word}${k}`} x={M.l} y={top + 34 + k * 15}>
+                  {l.startsWith(`${word} `) ? (
+                    <>
+                      <tspan className="f-label" fontWeight={600}>
+                        {word}{" "}
+                      </tspan>
+                      {l.slice(word.length + 1)}
+                    </>
+                  ) : (
+                    l
+                  )}
+                </text>
+              ))}
             </Art>
           </g>
         );

@@ -14,6 +14,7 @@ import { latticeBudget } from "@phosphoros/figures/lattice-budget";
 import { trajectory } from "@phosphoros/figures/trajectory";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { BasisTag, Legend } from "./Basis";
+import { Mono } from "./Mono";
 
 export interface ExplorerGroup {
   title: string;
@@ -151,7 +152,7 @@ export function Explorer({
                       {q.label} <BasisTag basis={q.basis} />
                     </label>
                     <output htmlFor={`x-${qid}`} className="explorer-value">
-                      {formatQuantity({ ...q, value }, { sig: 3 })}
+                      <Mono text={formatQuantity({ ...q, value }, { sig: 3 })} />
                     </output>
                   </div>
                   <input
@@ -310,8 +311,12 @@ function Results({
                     {n.label} {n.basis && <BasisTag basis={n.basis} />}
                     {o.against && <span className="explorer-against"> {o.against}</span>}
                   </td>
-                  <td className="explorer-num">{formatQuantity(b, { date: "day" })}</td>
-                  <td className="explorer-num">{formatQuantity(n, { date: "day" })}</td>
+                  <td className="explorer-num">
+                    <Mono text={formatQuantity(b, { date: "day" })} />
+                  </td>
+                  <td className="explorer-num">
+                    <Mono text={formatQuantity(n, { date: "day" })} />
+                  </td>
                 </tr>
               );
             })}

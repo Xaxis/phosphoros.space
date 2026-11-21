@@ -388,21 +388,28 @@ function AegisShield({ venusOverBubble, coilOverBubble, steps, text: t }: Props)
         <text className="f-note f-num" x={KX + KR / 2 - 13} y={KY - 6} textAnchor="middle">
           {t.coil}
         </text>
+        {/* Two paragraphs, with a gap between them. */}
         <Lines
           x={208}
-          y={IN_TOP + 60}
+          y={IN_TOP + 58}
           lines={[
             { text: `${t.turns} turns`, kind: "label" },
             { text: `of ${t.current} each, ${t.ampereTurns}`, kind: "note" },
             { text: `in all, in a pack ${t.pack}`, kind: "note" },
             { text: "in radius.", kind: "note" },
+          ]}
+        />
+        <Lines
+          x={208}
+          y={IN_TOP + 58 + 4 * 14.5 + 8}
+          lines={[
             { text: `Cable at ${t.temp}, kept`, kind: "label" },
             { text: "cold behind its sunshield;", kind: "note" },
             { text: "the current persists, so it", kind: "note" },
             { text: "needs almost no power.", kind: "note" },
           ]}
         />
-        <text x={28} y={IN_TOP + 186}>
+        <text x={28} y={IN_TOP + 190}>
           Dipole {t.dipole}, {t.vsEarth} of Earth's
         </text>
         {/* The coil's own forces, which the model checks the Foundry can carry (aegis-structure). */}

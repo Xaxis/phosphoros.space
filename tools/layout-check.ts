@@ -116,7 +116,7 @@ for (const width of [320, 390]) {
     });
   };
   const plan = await look("");
-  const slow = await look("?set=foundry-doubling-days:63");
+  const slow = await look("?set=foundry-doubling-days:70");
   check(
     plan.figs === 3 &&
       plan.badges === plan.sliders &&

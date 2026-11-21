@@ -4,7 +4,7 @@
  */
 import type { Registry } from "@phosphoros/calc/registry";
 import { Halo, seriesOf } from "./charts-kit.tsx";
-import { Frame, Key, linear, log, path, show, W, YearAxis } from "./kit.tsx";
+import { Frame, Key, linear, log, path, show, textWidth, W, YearAxis } from "./kit.tsx";
 import type { FigureDef } from "./types.ts";
 
 interface Event {
@@ -20,7 +20,8 @@ interface Props {
   co2: [number, number][];
   o2: [number, number][];
   events: Event[];
-  phases: { from: number; to: number; label?: string; tone?: string }[];
+  /** A label's lines stand centred in its phase. */
+  phases: { from: number; to: number; label?: string[]; tone?: string }[];
   earthLike: Event;
   deadline: Event;
   from: number;
@@ -32,7 +33,8 @@ interface Props {
 
 const M = { l: 74, r: 112 };
 const LABELS = 134;
-const A = { t: LABELS + 16, h: 156 };
+// Room under the lowest event label for the panel title, so the two do not read as one block.
+const A = { t: LABELS + 24, h: 156 };
 const B = { t: A.t + A.h + 52, h: 196 };
 const H = B.t + B.h + 50;
 
@@ -88,17 +90,18 @@ function Trajectory(p: Props) {
       )}
       {p.phases
         .filter((ph) => ph.label)
-        .map((ph) => (
-          <text
-            key={ph.from}
-            className="f-note"
-            x={ph.tone ? (x(ph.from) + x(ph.to)) / 2 : x(ph.to) - 8}
-            y={yT(560)}
-            textAnchor={ph.tone ? "middle" : "end"}
-          >
-            {ph.label}
-          </text>
-        ))}
+        .map((ph) => {
+          const at = (x(ph.from) + x(ph.to)) / 2;
+          return (
+            <text key={ph.from} className="f-note" y={yT(410)} textAnchor="middle">
+              {ph.label?.map((line, i) => (
+                <tspan key={line} x={at} dy={i ? "1.25em" : 0}>
+                  {line}
+                </tspan>
+              ))}
+            </text>
+          );
+        })}
 
       {/* Panel A: temperature. */}
       {[200, 300, 400, 500, 600, 700].map((v) => (
@@ -145,9 +148,21 @@ function Trajectory(p: Props) {
         y1={yP(p.co2Limit.value)}
         y2={yP(p.co2Limit.value)}
       />
-      <Halo className="f-note" x={x(p.from) + 6} y={yP(p.co2Limit.value) - 6}>
-        {`Earth-like: CO₂ under ${p.co2Limit.text} of the air`}
-      </Halo>
+      {/* Two lines where one would run into the first event's line. */}
+      {(textWidth(`Earth-like: CO₂ under ${p.co2Limit.text} of the air`, 11.5) <
+      x(Math.min(...p.events.map((e) => e.day))) - x(p.from) - 12
+        ? [`Earth-like: CO₂ under ${p.co2Limit.text} of the air`]
+        : ["Earth-like: CO₂ under", `${p.co2Limit.text} of the air`]
+      ).map((l, i, all) => (
+        <Halo
+          key={l}
+          className="f-note"
+          x={x(p.from) + 6}
+          y={yP(p.co2Limit.value) - 6 - (all.length - 1 - i) * 14}
+        >
+          {l}
+        </Halo>
+      ))}
 
       {/* Event lines through both panels, then the labels above. */}
       {p.events.map((e) => (
@@ -160,8 +175,10 @@ function Trajectory(p: Props) {
       {ordered.map((e, i) => {
         const y = rowOf(i);
         const accent = e.id === p.earthLike.id;
-        // Labels of events in the first half of the plot read rightward, the rest leftward.
-        const right = x(e.day) < (M.l + W - M.r) / 2;
+        // Labels read leftward, ending at their own line: every line to the right belongs to a
+        // later event and stops at its own label, higher up, so none runs through this one. Only a
+        // label with no room to the left reads rightward.
+        const right = x(e.day) - 6 - textWidth(e.label) - textWidth(`  ${e.when}`, 11.5) < 0;
         return (
           <g key={e.id}>
             <line
@@ -282,15 +299,15 @@ function build(r: Registry): Props {
     o2,
     events,
     phases: [
-      { from, to: day("traj-clear-rain"), label: "The air cools" },
+      { from, to: day("traj-clear-rain"), label: ["The air cools"] },
       {
         from: day("traj-clear-rain"),
         to: day("traj-freeze"),
-        label: "The CO₂ rains out into seas",
-        tone: "sunk",
+        label: ["The CO₂ rains", "out into seas"],
+        tone: "muted-wash",
       },
-      { from: day("traj-freeze"), to: day("traj-frozen"), label: "The seas freeze" },
-      { from: day("traj-warming"), to: day("traj-earth-like"), tone: "sunk" },
+      { from: day("traj-freeze"), to: day("traj-frozen"), label: ["The seas", "freeze"] },
+      { from: day("traj-warming"), to: day("traj-earth-like"), tone: "muted-wash" },
       { from: day("traj-earth-like"), to, tone: "cool-wash" },
     ],
     earthLike,

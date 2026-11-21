@@ -59,7 +59,8 @@ function VeilGeometry({ l1OverVeil, veilOverVenus, bars, text: t }: Props) {
   const max = Math.max(...bars.map((b) => b.value));
   const veil = `Hesperus Veil: ${t.radius} in radius, ${t.area}, ${t.veilDistance} from Venus`;
   const veilLines = ["Hesperus Veil", `radius ${t.radius}`, t.area];
-  const veilY = Y0 - RVEIL - 40;
+  // High enough that the penumbra edge rising past the Veil's top clears the last line.
+  const veilY = Y0 - RVEIL - 50;
   const veilW = Math.max(...veilLines.map((l, i) => textWidth(l, i ? 11.5 : 13)));
   const veilBox = { x: veilX - veilW / 2 - 6, y: veilY - 15, w: veilW + 12, h: 2 * 14.5 + 21 };
   return (
@@ -123,11 +124,14 @@ function VeilGeometry({ l1OverVeil, veilOverVenus, bars, text: t }: Props) {
           <line x1={veilX - 16} x2={veilX - 8} y1={Y0 - RV} y2={Y0 - RV} />
           <line x1={veilX - 16} x2={veilX - 8} y1={Y0} y2={Y0} />
         </g>
+        {/* The penumbra edge rises through the Veil's top, past these: halos tinted like the
+            sunlight they sit on hide it under the words. */}
         <Lines
           x={veilX - 20}
           y={Y0 - (RVEIL + RV) / 2 + 4}
           anchor="end"
           halo
+          wash="s4"
           lines={[{ text: `margin, ${t.margin}`, kind: "note" }]}
         />
         <Lines
@@ -135,6 +139,7 @@ function VeilGeometry({ l1OverVeil, veilOverVenus, bars, text: t }: Props) {
           y={Y0 - RV / 2 + 4}
           anchor="end"
           halo
+          wash="s4"
           lines={[{ text: "Venus's radius", kind: "note" }]}
         />
 
@@ -142,7 +147,8 @@ function VeilGeometry({ l1OverVeil, veilOverVenus, bars, text: t }: Props) {
           <title>{`Venus, radius ${t.venus}`}</title>
         </circle>
 
-        <Lines x={SUN_X + 10} y={Y0 - 8} halo lines={["Sun", `radius ${t.sun}`]} />
+        {/* Above the Sun's disc, where no line runs. */}
+        <Lines x={SUN_X + 10} y={Y0 - RS - 22} lines={["Sun", `radius ${t.sun}`]} />
       </Art>
       {/* The Veil and its name are one link; focus lights the bar and a box round the name. */}
       <Link href="/technologies/veil" label={veil} box={veilBox}>
@@ -168,8 +174,7 @@ function VeilGeometry({ l1OverVeil, veilOverVenus, bars, text: t }: Props) {
         />
         <Lines
           x={l1X + 9}
-          y={Y0 + 17}
-          halo
+          y={Y0 + 13}
           lines={[
             { text: "L1", kind: "label" },
             { text: "dashed: a shade there", kind: "note" },
@@ -184,10 +189,12 @@ function VeilGeometry({ l1OverVeil, veilOverVenus, bars, text: t }: Props) {
           head={6}
           width={1.25}
         />
+        {/* Left of the Veil, under the sunlight cone: the penumbra edges cross the space by the
+            arrow. */}
         <Lines
-          x={l1X + 10}
-          y={Y0 + rL1 + 16}
-          halo
+          x={veilX - 8}
+          y={Y0 + RVEIL + 33}
+          anchor="end"
           lines={[
             // Two short lines: one long one ran past the right edge of the drawing.
             { text: `Light pressure (β = ${t.beta}) moves the`, kind: "note" },
@@ -207,11 +214,11 @@ function VeilGeometry({ l1OverVeil, veilOverVenus, bars, text: t }: Props) {
           halo
           lines={[{ text: "Penumbra: part of the Sun hidden", kind: "note" }]}
         />
+        {/* In the cone's lower edge, between the penumbra edges and the cone's own edge. */}
         <Lines
-          x={(SUN_X + veilX) / 2 + 30}
-          y={Y0 + 40}
+          x={(SUN_X + veilX) / 2 + 45}
+          y={Y0 + 49}
           anchor="middle"
-          halo
           lines={[{ text: "Sunlight bound for Venus", kind: "note" }]}
         />
 

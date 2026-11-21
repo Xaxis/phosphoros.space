@@ -202,8 +202,9 @@ h4 {
   top: 0;
   z-index: 50;
   background: color-mix(in srgb, var(--bg) 82%, transparent);
+  /* Unprefixed only: the build adds -webkit- for Safari. With both written, the minifier kept the
+     last one, and a trailing -webkit- line left Chrome, Edge and Firefox with no blur. */
   backdrop-filter: blur(14px) saturate(1.4);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
   border-bottom: 1px solid var(--line);
 }
 
@@ -546,12 +547,85 @@ h4:hover .anchor {
   color: var(--text-soft);
 }
 
+/* A shadow on each edge the table runs on past shows that it scrolls: the covers scroll with the
+   table and hide each shadow once its edge is reached. */
 .table-wrap {
+  --edge: color-mix(in srgb, var(--text) 24%, transparent);
   overflow-x: auto;
   margin: 1.5rem 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--bg-raised);
+  background:
+    linear-gradient(to right, var(--bg-raised) 45%, transparent) left / 2.5rem 100% no-repeat local,
+    linear-gradient(to left, var(--bg-raised) 45%, transparent) right / 2.5rem 100% no-repeat local,
+    linear-gradient(to right, var(--edge), transparent) left / 0.8rem 100% no-repeat scroll,
+    linear-gradient(to left, var(--edge), transparent) right / 0.8rem 100% no-repeat scroll,
+    var(--bg-raised);
+}
+
+/* On a phone a table of three or more columns stacks: one block per row, its first cell as the
+   heading and every other cell under its column's name (the cell's data-label). */
+@media (max-width: 640px) {
+  .table-stack table,
+  .table-stack tbody,
+  .table-stack tr,
+  .table-stack td {
+    display: block;
+  }
+
+  .table-stack thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .table-stack tr {
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .table-stack tr:last-child {
+    border-bottom: 0;
+  }
+
+  .table-stack tr[hidden],
+  .table-stack td:empty {
+    display: none;
+  }
+
+  .table-stack td {
+    padding: 0;
+    border: 0;
+  }
+
+  .table-stack td + td {
+    margin-top: 0.45rem;
+  }
+
+  .table-stack td + td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* A short column's cell sits beside its label, one line instead of two. */
+  .table-stack td.cell-short {
+    display: grid;
+    grid-template-columns: minmax(5.5rem, 32%) minmax(0, 1fr);
+    align-items: baseline;
+    gap: 0 0.75rem;
+  }
+
+  .table-stack td + td.cell-short {
+    margin-top: 0.3rem;
+  }
 }
 
 table {
@@ -694,6 +768,18 @@ td:first-child {
   background: var(--bg-hover);
 }
 
+/* Superscript digits in IBM Plex Mono each fill a whole cell; set a run of them (an exponent)
+   tighter so "10²⁷" does not show a gap between its digits (see Mono.tsx). */
+.sup-run {
+  letter-spacing: -0.2em;
+  margin-right: 0.2em;
+}
+
+/* A number with the punctuation that touches it, kept on one line (see OPENING in Num.tsx). */
+.num-join {
+  white-space: nowrap;
+}
+
 .num-physics {
   text-decoration-color: color-mix(in srgb, var(--physics) 70%, transparent);
 }
@@ -731,6 +817,15 @@ td:first-child {
     flip-block flip-inline;
 }
 
+/* Open on the side of the number with more room and shrink to the space there (100% is that area,
+   less the margins), so the foot (View source, Ledger) is always on screen; the card scrolls. */
+@supports (position-area: block-end) {
+  .card {
+    max-height: min(34rem, 100% - 0.8rem);
+    position-try-order: most-block-size;
+  }
+}
+
 @supports not (position-area: block-end) {
   .card {
     position: fixed;
@@ -744,6 +839,7 @@ td:first-child {
     position: fixed;
     inset: auto 0 0.75rem;
     margin: 0 auto;
+    max-height: min(34rem, calc(100vh - 2rem));
     position-area: none;
   }
 }
@@ -836,7 +932,9 @@ td:first-child {
   white-space: nowrap;
 }
 
-.card-more {
+/* "and N more" is one line under the labels, not a row of the glyph, label and value grid. */
+.card-inputs .card-more {
+  display: block;
   color: var(--faint);
   padding-left: 1.25rem;
 }
@@ -1234,6 +1332,41 @@ section[data-group] h2 {
   font-family: var(--font-mono);
   font-size: 0.76rem;
   white-space: nowrap;
+}
+
+/* On a phone each ledger row is a block: the name, then value and basis on one line, then how and
+   where it is defined. */
+@media (max-width: 640px) {
+  .ledger tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.4rem 0.75rem;
+  }
+
+  .ledger tr:target {
+    background: var(--accent-soft);
+  }
+
+  .ledger td + td,
+  .ledger td + td.cell-short {
+    margin-top: 0;
+  }
+
+  .ledger td:nth-child(1),
+  .ledger td:nth-child(4),
+  .ledger td:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .ledger td:nth-child(2)::before,
+  .ledger td:nth-child(3)::before {
+    content: none;
+  }
+
+  .ledger-how {
+    min-width: 0;
+  }
 }
 
 .checks h2 {
@@ -2111,11 +2244,16 @@ button.button {
   background: var(--line);
 }
 
+/* Wide enough that a span of days (Genesis seeding, on the deadline) reads as a bar, not a line. */
+.tl-track {
+  --tl-bar-min: 6px;
+}
+
 .tl-bar {
   position: absolute;
   top: 0.35rem;
   height: 0.65rem;
-  min-width: 3px;
+  min-width: var(--tl-bar-min);
   border-radius: 3px;
   background: var(--chart-1);
 }

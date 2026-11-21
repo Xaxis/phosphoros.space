@@ -1,7 +1,7 @@
 /** Helpers the "charts" set shares: bars with a rounded data end, technology links, model series. */
 import type { Registry } from "@phosphoros/calc/registry";
 import type { ReactNode } from "react";
-import { Art, type Box, Link } from "./kit.tsx";
+import { Art, type Box, Link, textWidth } from "./kit.tsx";
 
 /**
  * A horizontal bar from x0 (the baseline, square) to x1 (the data end, rounded 4px). Bars too short
@@ -75,6 +75,27 @@ export function Halo({
       </text>
     </g>
   );
+}
+
+/**
+ * Where a value label goes so that no vertical reference line runs through it: at `x` if it clears
+ * every line, else just past the line it would straddle. With a `note` ("8.2% spare"), the value can
+ * stay at the bar's end and the note alone move past the line. Returns [x, text] pieces.
+ */
+export function clearOf(
+  x: number,
+  text: string,
+  lines: number[],
+  note?: string,
+  size = 13,
+): [number, string][] {
+  const full = note ? `${text}, ${note}` : text;
+  const straddles = (at: number, s: string) =>
+    lines.find((l) => at < l + 2 && at + textWidth(s, size) > l - 4);
+  const l = straddles(x, full);
+  if (l === undefined) return [[x, full]];
+  if (note && straddles(x, text) === undefined) return [[x, text], ...clearOf(l + 6, note, lines)];
+  return clearOf(l + 6, full, lines);
 }
 
 /** A model time series as [day, value] pairs. */

@@ -69,6 +69,11 @@ test("every number in the brief is reproduced, corrected on purpose, or explaine
   for (const c of results) if (c.correction) assert.ok(corrections.has(c.correction), c.correction);
 });
 
+test("input notes are plain text: only content prose fills {id} templates", () => {
+  for (const input of loadInputs().values())
+    assert.ok(!/\{[a-z0-9-]+\}/.test(input.note ?? ""), `${input.id} has a template in its note`);
+});
+
 test("every failing check names its problem, and every open problem has a failing check", () => {
   // A design that fails stays a failing check, tied to a corrections entry and a GitHub issue; an
   // open entry whose check passes would claim a problem the model no longer shows.

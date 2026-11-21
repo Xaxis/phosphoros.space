@@ -381,8 +381,8 @@ exhaust-effective-temp:
   note: >-
     A hotter emitter needs less area (it shines as T⁴) but more pump work per joule lifted, and the
     pumps share the Lattice's power with everything else. Version 3 chose 2,000 K with reversible
-    pumps; at half the Carnot limit the work costs too much that hot, and the extra tiles at
-    {exhaust-effective-temp} still reach Venus in time.
+    pumps; at half the Carnot limit the work costs too much that hot, and the extra tiles a cooler
+    emitter needs still reach Venus in time.
 exhaust-tile-areal-density:
   value: 0.5
   unit: kg/m2

@@ -41,6 +41,13 @@ export interface GanttProps {
 }
 
 const M = { l: 236, r: 22 };
+
+/** "1 December 2036" and "12 December 2036" read as "1 to 12 December 2036". */
+function spanText(a: string, b: string): string {
+  const [ad, ...am] = a.split(/\s/);
+  const [, ...bm] = b.split(/\s/);
+  return am.join(" ") === bm.join(" ") ? `${ad} to ${b}` : `${a} to ${b}`;
+}
 const ROW = 22;
 const LANE = 28;
 const TOP = 74;
@@ -155,7 +162,35 @@ function Gantt(p: GanttProps) {
               ? "s1"
               : "ink";
         let mark: ReactNode;
-        if (row.kind === "bar" && row.end !== undefined) {
+        // Dates sit right of their mark unless they would cross the Earth-like line or run off the
+        // edge; then left, and clear of the line.
+        const dated = (mx: number, half: number, text: string) => {
+          const right = mx + half + 4 + text.length * 6.4 < (mx < xe ? xe : W) - 4;
+          return (
+            <text
+              className="f-note f-num"
+              x={right ? mx + half + 4 : Math.min(mx, xe) - half - 4}
+              y={cy}
+              dy="0.32em"
+              textAnchor={right ? "start" : "end"}
+            >
+              {text}
+            </text>
+          );
+        };
+        const span = row.end !== undefined ? x(row.end) - x(row.start) : 0;
+        if (row.kind === "bar" && row.end !== undefined && span < 6) {
+          // Too short to see at this scale (Genesis's twelve days): drawn 6 px wide, centred on its
+          // dates, and dated like a milestone so the row does not look empty.
+          const h = row.critical ? 14 : 10;
+          const mx = x(row.start) + span / 2;
+          mark = (
+            <g>
+              <rect className={`f-${tone}`} x={mx - 3} y={cy - h / 2} width={6} height={h} rx={2} />
+              {dated(mx, 7, spanText(row.startText, row.endText ?? ""))}
+            </g>
+          );
+        } else if (row.kind === "bar" && row.end !== undefined) {
           const h = row.critical ? 14 : 10;
           mark = (
             <rect
@@ -169,21 +204,10 @@ function Gantt(p: GanttProps) {
           );
         } else {
           const mx = x(row.start);
-          // Dates sit right of their diamond unless they would cross the Earth-like line or run off
-          // the edge; then left, and clear of the line.
-          const right = mx + 11 + row.startText.length * 6.4 < (mx < xe ? xe : W) - 4;
           mark = (
             <g>
               <Diamond x={mx} y={cy} r={7} tone={tone} hollow={row.kind === "gate"} />
-              <text
-                className="f-note f-num"
-                x={right ? mx + 11 : Math.min(mx, xe) - 11}
-                y={cy}
-                dy="0.32em"
-                textAnchor={right ? "start" : "end"}
-              >
-                {row.startText}
-              </text>
+              {dated(mx, 7, row.startText)}
             </g>
           );
         }

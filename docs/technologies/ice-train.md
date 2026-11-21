@@ -103,9 +103,12 @@ a gun recoils. Summed over the campaign its speed rises by [0.78 km/s](../numbe
 model treats Ceres's slightly oval orbit (it already swings out to [2.98 AU](../numbers.md#ceres-aphelion))
 as a circle at its average distance, and the push as a single kick. On those terms the circle becomes an
 ellipse, still [2.77 AU](../numbers.md#ceres-orbit) from the Sun at its nearest and
-[3.31 AU](../numbers.md#ceres-new-aphelion) at its farthest. Spread over the campaign, about half of
+[3.31 AU](../numbers.md#ceres-new-aphelion) at its farthest. Spread over the campaign, about a third of
 Ceres's year, the same push raises Ceres's average distance by about as much but leaves the orbit rounder.
-Either way Ceres moves away from Earth, never toward it, and the change is permanent.
+The launch schedule takes the round extreme, a circle at [3.02 AU](../numbers.md#ceres-drift-orbit) by the
+last launch, for the last and longest transfers; the Jupiter tests below take the single kick, whose farther
+aphelion is the cautious case. Either way Ceres moves away from Earth, never toward it, and the change is
+permanent.
 
 ### Clear of Jupiter
 
