@@ -31,7 +31,7 @@ pnpm docs                     # sync docs/ and data/outputs.json from the model
 pnpm figures                  # render figures/svg/ from figures/src/
 pnpm lint                     # biome, types, docs check, figures check, style
 pnpm test
-pnpm build                    # the site, static (36 pages)
+pnpm build                    # the site, static (35 pages)
 node tools/look.ts DIR id...  # PNGs of figures in both themes, for review
 tools/deploy.sh               # production deploy of HEAD, then proves it live
 ```
@@ -42,7 +42,7 @@ checks fail when docs or SVGs are stale.
 ## Layout
 
 `data/` inputs and content, `calc/` the model (browser-safe index; `calc/src/load.ts` is Node only),
-`docs/` the Markdown the site renders, `figures/` the 17 figures as React SVG (shared by the site and
+`docs/` the Markdown the site renders, `figures/` the 16 figures as React SVG (shared by the site and
 `figures/svg/`), `web/` the Next.js site, `tools/` sync, style, figures, assets and deploy.
 
 `.claude/skills/verify/` says how to launch, drive and prove each feature.

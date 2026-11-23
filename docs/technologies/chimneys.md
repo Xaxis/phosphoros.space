@@ -1,10 +1,11 @@
 # Thermal Chimneys
 
-[10,000](../numbers.md#chimney-count) towers, [3.5 km](../numbers.md#chimney-diameter) wide and
+[10,000](../numbers.md#chimney-count) towers, [6 km](../numbers.md#chimney-diameter) wide and
 [64 km](../numbers.md#chimney-height) tall, carry the heat of Venus's deep air up to the Exhaust canopies at
-[1.3 × 10¹⁵ W](../numbers.md#chimney-heat) each, [1.3 × 10¹⁹ W](../numbers.md#chimney-capacity) in all. Fans draw
+[3.7 × 10¹⁵ W](../numbers.md#chimney-heat) each, [3.7 × 10¹⁹ W](../numbers.md#chimney-capacity) in all. Fans draw
 the hot air through heat exchangers; sealed liquid loops lift the heat; the cooled air sinks and stays down.
-They work from [April 2034](../numbers.md?date=month#cooling-start) until the CO₂ is down.
+A chimney delivers heat only while the [Helios Lattice](helios.md) lights its canopy, so half of them work at
+once. They work from [February 2034](../numbers.md?date=month#cooling-start) until the CO₂ is down.
 
 <!-- figure:heat-path -->
 ![Venus's heat path, in cross-section](../../figures/svg/heat-path.svg)
@@ -38,11 +39,11 @@ quite the air's own temperature, as the next section shows.
 
 **Intakes.** Each chimney's intake stages carry maglev fans that pull the surrounding air through heat
 exchangers at [20 m/s](../numbers.md#chimney-flow-speed), across the tower's full section,
-[9.6 × 10⁶ m²](../numbers.md#chimney-flow-area). At the base, [1 km](../numbers.md#chimney-base) above the ground,
-that is [1.3 × 10¹⁰ kg/s](../numbers.md#chimney-mass-flow) of gas at [92 bar](../numbers.md#venus-surface-pressure).
+[2.8 × 10⁷ m²](../numbers.md#chimney-flow-area). At the base, [1 km](../numbers.md#chimney-base) above the ground,
+that is [3.7 × 10¹⁰ kg/s](../numbers.md#chimney-mass-flow) of gas at [92 bar](../numbers.md#venus-surface-pressure).
 The exchangers cool it by [100 K](../numbers.md#chimney-gas-cooling). With CO₂'s heat capacity of
-[1,000 J/(kg·K)](../numbers.md#co2-cp), `Q = ṁ c_p ΔT` gives [1.3 × 10¹⁵ W](../numbers.md#chimney-heat) per chimney.
-The fans pay to push that much air through the exchangers: [1.0 × 10¹⁷ W](../numbers.md#chimney-fan-power) for all
+[1,000 J/(kg·K)](../numbers.md#co2-cp), `Q = ṁ c_p ΔT` gives [3.7 × 10¹⁵ W](../numbers.md#chimney-heat) per chimney.
+The fans pay to push that much air through the exchangers: [3.0 × 10¹⁷ W](../numbers.md#chimney-fan-power) for all
 the chimneys, [0.8%](../numbers.md#chimney-fan-share) of the heat they carry, charged to the energy budget.
 
 **How much to cool the air.** The exchangers take heat from air that cools as it passes them, so the pumps see that
@@ -50,8 +51,8 @@ heat over a range of temperatures, and they pay for it as if it all came at the 
 more the air cools, the colder that is, and the more work each joule costs. Version 3's first chimneys cooled the
 air three times as much: the pumps saw it more than a fifth colder than it was, which raised the work for each
 joule of the gas's heat by a third or more. Cooling it
-by [100 K](../numbers.md#chimney-gas-cooling) instead, and drawing three times the air through towers
-[3.5 km](../numbers.md#chimney-diameter) wide, carries the same heat while the pumps see
+by [100 K](../numbers.md#chimney-gas-cooling) instead, and drawing more air through towers
+[6 km](../numbers.md#chimney-diameter) wide, carries the heat while the pumps see
 [0.931](../numbers.md#chimney-cold-factor) of the air's temperature. The extra fan power is far cheaper than the pump
 work it saves. Once CO₂ condenses on the exchangers it gives up its heat at a single temperature, so the penalty
 applies only while the air cools as a gas.
@@ -74,18 +75,23 @@ through the sulfuric-acid clouds between [48 km](../numbers.md#venus-cloud-base
 [70 km](../numbers.md#venus-cloud-top).
 
 **Grid and capacity.** There is one chimney under each of the [10,000](../numbers.md#exhaust-canopies) canopies,
-on a grid about [215 km](../numbers.md#chimney-spacing) apart. Together they can lift
-[1.3 × 10¹⁹ W](../numbers.md#chimney-capacity), [2.1](../numbers.md#chimney-vs-peak) times the
-[6.0 × 10¹⁸ W](../numbers.md#deep-heat-peak) design peak of deep heat flow. The day-by-day
-[simulation](../plan.md#the-simulated-atmosphere) never removes heat faster than the chimneys can lift it, and
-it uses that margin: in its fastest weeks it hits the limit, [1.3 × 10¹⁹ W](../numbers.md#traj-heat-peak), and
-the chimneys rather than the power set the pace on [160 d](../numbers.md#traj-chimney-days).
+on a grid about [215 km](../numbers.md#chimney-spacing) apart. Together they could lift
+[3.7 × 10¹⁹ W](../numbers.md#chimney-capacity), [6.1](../numbers.md#chimney-vs-peak) times the
+[6.0 × 10¹⁸ W](../numbers.md#deep-heat-peak) design peak of deep heat flow. But a chimney's heat is useful only
+while its canopy's tiles are pumped, and the Lattice sees only the side of Venus facing it,
+[50%](../numbers.md#exhaust-lit-share) of the canopies at once. So the chimneys can deliver
+[1.8 × 10¹⁹ W](../numbers.md#chimney-capacity-lit) at any moment. The day-by-day
+[simulation](../plan.md#the-simulated-atmosphere) never removes heat faster than that, and it uses the margin: in
+its fastest weeks, while the air is hot and each joule cheap to pump, it hits the limit,
+[1.8 × 10¹⁹ W](../numbers.md#traj-heat-peak), and the chimneys rather than the light set the pace on
+[51 d](../numbers.md#traj-chimney-days). Version 4 widened the towers for this; version 3's assumed every canopy
+worked at once ([correction](../about.md#corrections)).
 
 **Life cycle.** The chimneys are built from the canopies down from late 2032, as the Veil closes, and run hardest from
-[April 2034](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
-[January 2035](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
+[February 2034](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
+[August 2034](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
 CO₂ forms on them and drains to the basins. As the CO₂ rains out the air thins, the canopies float lower and the
-towers are shortened. They retire once the CO₂ is down, in [March 2036](../numbers.md?date=month#traj-cold), and
+towers are shortened. They retire once the CO₂ is down, in [June 2036](../numbers.md?date=month#traj-cold), and
 their carbon goes into the cryo-continent caps.
 
 ## Specifications
@@ -94,14 +100,14 @@ their carbon goes into the cryo-continent caps.
 | Parameter | Value |
 | --- | --- |
 | Number | [10,000](../numbers.md#chimney-count), one per canopy, about [215 km](../numbers.md#chimney-spacing) apart |
-| Diameter | [3.5 km](../numbers.md#chimney-diameter) |
+| Diameter | [6 km](../numbers.md#chimney-diameter) |
 | Height | [1 km](../numbers.md#chimney-base) above the surface to [65 km](../numbers.md#chimney-top) |
 | Gas at the base | [737 K](../numbers.md#venus-surface-temp), [65 kg/m³](../numbers.md#venus-surface-density), [92 bar](../numbers.md#venus-surface-pressure) |
 | Flow speed | [20 m/s](../numbers.md#chimney-flow-speed) |
-| Mass flow | [1.3 × 10¹⁰ kg/s](../numbers.md#chimney-mass-flow) each |
-| Heat delivered | [1.3 × 10¹⁵ W](../numbers.md#chimney-heat) each, cooling the gas by [100 K](../numbers.md#chimney-gas-cooling) |
-| Fans | [1.0 × 10¹⁷ W](../numbers.md#chimney-fan-power) in all, [0.8%](../numbers.md#chimney-fan-share) of the heat carried |
-| Total capacity | [1.3 × 10¹⁹ W](../numbers.md#chimney-capacity), [2.1](../numbers.md#chimney-vs-peak) times the [6.0 × 10¹⁸ W](../numbers.md#deep-heat-peak) peak deep heat flow |
+| Mass flow | [3.7 × 10¹⁰ kg/s](../numbers.md#chimney-mass-flow) each |
+| Heat delivered | [3.7 × 10¹⁵ W](../numbers.md#chimney-heat) each, cooling the gas by [100 K](../numbers.md#chimney-gas-cooling) |
+| Fans | [3.0 × 10¹⁷ W](../numbers.md#chimney-fan-power) in all, [0.8%](../numbers.md#chimney-fan-share) of the heat carried |
+| Total capacity | [3.7 × 10¹⁹ W](../numbers.md#chimney-capacity), [6.1](../numbers.md#chimney-vs-peak) times the [6.0 × 10¹⁸ W](../numbers.md#deep-heat-peak) peak deep heat flow; [1.8 × 10¹⁹ W](../numbers.md#chimney-capacity-lit) from the lit side, where the tiles work |
 <!-- /table -->
 
 ## What is invented
@@ -113,9 +119,9 @@ their carbon goes into the cryo-continent caps.
 > **Invented:** Ground anchors that grip basalt at [737 K](../numbers.md#venus-surface-temp), set by melting rock
 > around graphite roots and letting it freeze.
 
-> **Invented:** A cascade of liquid loops that lifts [1.3 × 10¹⁵ W](../numbers.md#chimney-heat)
+> **Invented:** A cascade of liquid loops that lifts [3.7 × 10¹⁵ W](../numbers.md#chimney-heat)
 > [64 km](../numbers.md#chimney-height) while losing little temperature, and fans that move
-> [1.3 × 10¹⁰ kg/s](../numbers.md#chimney-mass-flow) of hot, dense CO₂ through its exchangers.
+> [3.7 × 10¹⁰ kg/s](../numbers.md#chimney-mass-flow) of hot, dense CO₂ through its exchangers.
 
 > **Precedent:** Sealed liquid loops already carry heat hotter than Venus's surface through exchangers: Russia's
 > BN-600 reactor has sent its heat into three secondary loops of liquid sodium since 1980
@@ -129,15 +135,15 @@ describe the air drawn through the intake and the heat taken from it.
 
 - **[1 December 2032](../numbers.md?date=day#veil-close):** The Veil closes. Canopies float at the cloud tops and the
   chimneys are lowered from them to their ground anchors.
-- **[5 April 2034](../numbers.md?date=day#cooling-start):** Active cooling begins. The chimneys feed the Exhaust as
-  fast as the growing Lattice can pay for pumping.
-- **[August 2033](../numbers.md?date=month#ice-launch-start):** The Railheads on Ceres take most of the Lattice's
-  power; cooling slows until the Ring pays for them.
-- **[22 January 2035](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
+- **[23 February 2034](../numbers.md?date=day#cooling-start):** Active cooling begins, after the Ice Train's
+  launches have ended, so the Lattice's whole light is free for Venus. The lit canopies' chimneys run at their
+  limit, lifting heat well above the design peak.
+- **[8 August 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s
   critical temperature and the exchangers start condensing liquid CO₂.
-- **[3 July 2034](../numbers.md?date=day#ring-pays-from):** The Ring pays for the Railheads and the Exhaust runs at
-  its limit, with the chimneys lifting heat well above the design peak.
-- **[30 March 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
+- **[13 November 2034](../numbers.md?date=day#first-arrival):** The Bricks start falling into the polar air, faster
+  than the lit chimneys can carry their heat out, and the air warms back by [88 K](../numbers.md#traj-rewarm) until
+  the pumps catch up. The Clear Rain begins for good on [30 January 2035](../numbers.md?date=day#traj-rerain).
+- **[17 June 2036](../numbers.md?date=day#traj-cold):** All the CO₂ is down. The chimneys retire and are taken
   apart.
 - **[1 September 2036](../numbers.md?date=day#cooling-end):** Active cooling ends.
 
@@ -145,6 +151,8 @@ describe the air drawn through the intake and the heat taken from it.
 
 - **A collapse.** A fallen chimney slows cooling only in its own cell. Most of the time the rest have capacity to
   spare and take up the load; in the weeks when the chimneys set the pace, it slows the cooling by its share.
+- **The night side.** A chimney whose canopy has turned away from the Lattice stops delivering heat until Venus
+  turns it back. The chimneys are sized for the half that is lit.
 - **Acid.** The towers pass through the sulfuric-acid clouds. Crawler robots inspect and patch the walls
   continuously, and the clouds rain out as the air cools ([Acid Sweep](acid.md)).
 - **A leaking loop.** Each loop is a sealed stage. A leaking stage is isolated and its neighbors carry the heat
@@ -165,10 +173,12 @@ with the Exhaust they feed.
 pnpm calc --only chimney-heat       # ṁ c_p ΔT for one chimney
 pnpm calc --only chimney-mass-flow  # ρ v A at the base
 pnpm calc --only chimney-capacity   # all chimneys together
+pnpm calc --only chimney-capacity-lit  # the half whose canopies are lit
 pnpm calc --only chimney-cold-factor  # what the pumps see, as a share of the air's temperature
 ```
 
-Try `pnpm calc --set chimney-gas-cooling=300`, version 3's first design: capacity triples, but the pumps see the air
-colder, the pump work rises, and the Frost Towers finish too late for the caps. A lower `chimney-flow-speed` cuts capacity
-and fan power together, and the chimneys hold the cooling back for longer. Raising `chimney-count` adds capacity and
+Try `pnpm calc --set chimney-gas-cooling=300`, version 3's first design: capacity triples and the chimneys never set
+the pace, but the pumps see the air colder, the pump work rises, and most of the Frost Towers' margin goes. A lower
+`chimney-flow-speed` cuts capacity and fan power together; at half speed the chimneys hold the cooling back for most of
+the campaign and the Frost Towers finish after the caps are due. Raising `chimney-count` adds capacity and
 narrows the grid.

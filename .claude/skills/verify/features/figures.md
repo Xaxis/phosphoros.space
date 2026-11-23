@@ -6,7 +6,7 @@ Charts and diagrams drawn from the model, rendered live on the site and exported
 
 ## Sub-features
 
-- registry: `FIGURES` in `figures/src/index.ts`, filled from `set-charts.ts`, `set-space.ts`, `set-structure.ts` plus `foundry-growth.tsx`, `acid-sweep.tsx` and `aegis-shield.tsx` (17 figures).
+- registry: `FIGURES` in `figures/src/index.ts`, filled from `set-charts.ts`, `set-space.ts`, `set-structure.ts` plus `foundry-growth.tsx`, `acid-sweep.tsx` and `aegis-shield.tsx` (16 figures).
 - acid-sweep: the Acid Sweep page's figure. Three cross-sections (grind and dust, the Clear Rain, the oceans with the pH gate) over the SO₂, lime and basalt masses to scale. Links to Exhaust, Genesis and Cryo.
 - aegis-shield: the Aegis page's figure. The bubble in the solar wind along the Sun-Venus line (bubble, coil and Venus to scale), the grey "?" on whether the shelter reaches Venus, the coil magnified with its hoop tension, structure mass and stored energy from the model, and the Mini-Aegis to switch-on steps. Links to the Veil, the Research Agenda and the Ice Train.
 - export: `pnpm figures` writes `figures/svg/<id>.svg` with the theme stylesheet and a surface, so each SVG follows light or dark on GitHub.
@@ -33,7 +33,7 @@ curl -s localhost:$PORT/technologies/acid | grep -c 'data-figure="acid-sweep"'
 curl -s localhost:$PORT/technologies/aegis | grep -c 'data-figure="aegis-shield"'
 ```
 
-Proves it when: the check says "is current (17 figures)" and exits 0; each `-dark.png` and `-light.png` exists and, read as images, shows the drawing with legible, unclipped labels that cross no line; each page carries its `data-figure=` SVG.
+Proves it when: the check says "is current (16 figures)" and exits 0; each `-dark.png` and `-light.png` exists and, read as images, shows the drawing with legible, unclipped labels that cross no line; each page carries its `data-figure=` SVG.
 
 ## Gotchas
 

@@ -76,8 +76,8 @@ afford it by [2 March 2032](../numbers.md?date=day#veil-affordable), but every k
 Foundry does not add to itself, so the Veil is built later, when the Foundry is larger and stops growing for only
 [9.8 d](../numbers.md#veil-diversion-days). Its last parts leave Mercury on
 [16 September 2032](../numbers.md?date=day#veil-build-end) and coast [76 d](../numbers.md#mercury-venus-transfer-days)
-to L1, and the Veil closes on [1 December 2032](../numbers.md?date=day#veil-close), months before active cooling
-begins in [April 2034](../numbers.md?date=month#cooling-start).
+to L1, and the Veil closes on [1 December 2032](../numbers.md?date=day#veil-close), more than a year before active
+cooling begins in [February 2034](../numbers.md?date=month#cooling-start).
 
 ## Design
 
@@ -88,9 +88,13 @@ through, from [99.9%](../numbers.md#veil-block-fraction) blocked to [60%](../num
 open, and changes in seconds. Closed, it blocks every colour, the Exhaust's
 [2.3 µm](../numbers.md#exhaust-wavelength) included. A slat clear in the Exhaust's band would let
 [1.9%](../numbers.md#exhaust-band-sunlight) of the sunlight through, [19](../numbers.md#exhaust-band-vs-veil-leak)
-times what the whole closed Veil may. So the Exhaust aims around the Veil instead: seen from Venus it is only
-[0.68°](../numbers.md#veil-angular-radius) in radius, and tiles that face it tilt their cones
-[13°](../numbers.md#exhaust-veil-tilt) off the Sun line ([check](../numbers.md#check-exhaust-clears-veil)).
+times what the whole closed Veil may. So the Veil takes the Exhaust's light on its back. Seen from Venus it is only
+[0.68°](../numbers.md#veil-angular-radius) in radius, and the lit tiles spread their light over the whole sky, so it
+catches [0.007%](../numbers.md#exhaust-veil-share) of it: [1.5 × 10¹⁶ W](../numbers.md#exhaust-veil-load) at the
+Exhaust's peak, [5.1%](../numbers.md#exhaust-veil-load-share) of the
+[3.0 × 10¹⁷ W](../numbers.md#veil-blocked-power) of sunlight it turns away
+([check](../numbers.md#check-exhaust-spares-veil)). That light pushes the slats toward the Sun, against the
+sunlight's push, and the same tilting that keeps them on station takes it up.
 Gaps between slats are held to [0.05%](../numbers.md#veil-gap-max) of the area, so that gaps and closed slats
 together stay inside that budget ([check](../numbers.md#check-veil-leak-fits)).
 
@@ -131,7 +135,7 @@ The Veil stays after 2036 as the planet's thermostat.
 | Light pressure over solar gravity | [0.0077](../numbers.md#veil-beta) |
 | Station-keeping | Each slat corrects its tilt at [1 Hz](../numbers.md#veil-trim-rate) to stay within [1 km](../numbers.md#veil-station-tolerance) of its station, with no propellant |
 | Light through when closed | Gaps under [0.05%](../numbers.md#veil-gap-max) of the area plus [0.03%](../numbers.md#veil-slat-leak) through the slats, inside the [0.1%](../numbers.md#veil-leak-budget) the Veil may let through |
-| Seen from Venus | [0.68°](../numbers.md#veil-angular-radius) in radius, so Exhaust cones that face it tilt [13°](../numbers.md#exhaust-veil-tilt) off the Sun line and miss it |
+| Seen from Venus | [0.68°](../numbers.md#veil-angular-radius) in radius; the lit tiles send it [1.5 × 10¹⁶ W](../numbers.md#exhaust-veil-load), [5.1%](../numbers.md#exhaust-veil-load-share) of the sunlight it turns away |
 | Sunlight blocked when closed | [99.9%](../numbers.md#veil-block-fraction) ([3.0 × 10¹⁷ W](../numbers.md#veil-blocked-power)) |
 | Transmission | Set per slat, from [99.9%](../numbers.md#veil-block-fraction) blocked to [60%](../numbers.md#veil-open-transmission) open |
 | Day mode | [52%](../numbers.md#veil-day-transmission) open for Earth-strength daylight |
@@ -167,7 +171,7 @@ The Veil stays after 2036 as the planet's thermostat.
 - **[16 September 2032](../numbers.md?date=day#veil-build-end):** The last slats leave Mercury, after the Foundry
   stops growing for [9.8 d](../numbers.md#veil-diversion-days) to make them.
 - **[1 December 2032](../numbers.md?date=day#veil-close):** The Veil closes over Venus.
-- **[April 2034](../numbers.md?date=month#cooling-start):** Active cooling begins under the closed Veil.
+- **[February 2034](../numbers.md?date=month#cooling-start):** Active cooling begins under the closed Veil.
 - **[June 2034](../numbers.md?date=month#aegis-online):** The Aegis coil switches on beside it.
 - **[2 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed and the Veil opens to its day setting.
   The air warms to Earth-like temperatures within days.

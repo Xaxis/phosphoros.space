@@ -1,4 +1,4 @@
-/** The energy budget: what the Helios Lattice must deliver, against what it supplies. */
+/** The energy budget: the light the Helios Lattice must beam, against what it beams. */
 import { DEMANDS } from "@phosphoros/calc/model/budget";
 import { clearOf, Halo, hbar, TechLink } from "./charts-kit.tsx";
 import { Art, Frame, Key, linear, show, showValue, textWidth, ticks, W } from "./kit.tsx";
@@ -18,22 +18,17 @@ interface Props {
   supply: Item;
   share: string;
   spare: string;
-  ring: Item;
-  caught: string;
-  gain: string;
-  withRing: Item;
-  spareWithRing: string;
   ticks: { value: number; text: string }[];
   max: number;
 }
 
 /** Words for each demand row; the ids and their order come from the model's DEMANDS list. */
 const NAMES: Record<string, { label: string; tech?: string }> = {
-  "ice-launch-energy": { label: "Launch the ice from Ceres", tech: "ice-train" },
-  "traj-pump-energy": { label: "Heat-pump work to cool Venus", tech: "exhaust" },
+  "ice-launch-light": { label: "Launch the ice from Ceres", tech: "ice-train" },
+  "traj-pump-energy": { label: "Pump the heat out of Venus", tech: "exhaust" },
   "traj-fan-energy": { label: "Run the chimney fans", tech: "chimneys" },
-  "traj-warm-energy": { label: "Warm the air, melt the last ice" },
-  "forge-energy": { label: "Forge the oxygen", tech: "forges" },
+  "traj-warm-energy": { label: "Warm the air, melt the ice" },
+  "forge-light": { label: "Forge the oxygen", tech: "forges" },
   "hardware-energy": { label: "Build all the hardware", tech: "ouroboros" },
 };
 
@@ -104,16 +99,10 @@ function LatticeBudget(p: Props) {
       ? [`${shareHead} ${shareTail}`]
       : [shareHead, shareTail];
   const supplyY = bracketY + 26 + (shareLines.length - 1) * 14;
-  const ringHead = supplyY + ROW + 34;
-  const ringY = ringHead + 12;
-  const withY = ringY + ROW + 24;
-  const axisY = withY + ROW + 10;
+  const axisY = supplyY + ROW + 10;
   const H = axisY + 52;
   const sx = x(p.supply.value);
-  const gridSpans: [number, number][] = [
-    [top - 8, ringHead - 22],
-    [ringHead + 4, axisY],
-  ];
+  const gridSpans: [number, number][] = [[top - 8, axisY]];
   // The total bar shows its parts, separated by 2px surface gaps.
   let acc = 0;
   const parts = p.demands.map((d) => {
@@ -126,7 +115,7 @@ function LatticeBudget(p: Props) {
   return (
     <Frame
       id="lattice-budget"
-      title="Energy the Helios Lattice must deliver, against its supply"
+      title="Light the Helios Lattice must beam, against what it beams"
       desc={`Demand ${p.total.text} against supply ${p.supply.text}: ${p.spare}. Launching the water and pumping out the heat take ${p.share} of the supply.`}
       height={H}
       links
@@ -134,8 +123,6 @@ function LatticeBudget(p: Props) {
       <Art>
         <Key x={24} y={20} tone="s1" label="Demand" />
         <Key x={110} y={20} tone="accent" label="Lattice supply" />
-        <Key x={232} y={20} tone="s3" label="Recovered by the Braking Ring" />
-        {/* Gridlines pause for the second section's heading, so none runs through it. */}
         {p.ticks.map((t) => (
           <g key={t.value}>
             {gridSpans.map(([y1, y2]) => (
@@ -150,11 +137,11 @@ function LatticeBudget(p: Props) {
           <line key={y1} className="f-axis" x1={x(0)} x2={x(0)} y1={y1} y2={y2} />
         ))}
         <text className="f-note" x={M.l} y={axisY + 40}>
-          Energy over the campaign, to the deadline (linear scale)
+          Light over the campaign, from the Lattice's full power to the deadline (linear scale)
         </text>
 
         <text className="f-title" x={24} y={top - 14}>
-          What the Lattice must deliver
+          What the Lattice must beam
         </text>
       </Art>
       {p.demands.map((d, i) => (
@@ -162,10 +149,8 @@ function LatticeBudget(p: Props) {
       ))}
 
       <Art>
-        {/* The supply line runs through every row of demand, so each bar reads against it. It skips
-            the Ring's own section: the energy the Ring recovers is not a demand. */}
-        <line className="f-accent-line" x1={sx} x2={sx} y1={top - 8} y2={supplyY + ROW + 4} />
-        <line className="f-accent-line" x1={sx} x2={sx} y1={withY - 2} y2={axisY} />
+        {/* The supply line runs through every row of demand, so each bar reads against it. */}
+        <line className="f-accent-line" x1={sx} x2={sx} y1={top - 8} y2={axisY} />
         <Halo className="f-note" x={sx + 6} y={top - 14}>
           Lattice supply
         </Halo>
@@ -204,27 +189,6 @@ function LatticeBudget(p: Props) {
         ))}
       </Art>
       <Row item={p.supply} y={supplyY} x={x} tone="accent" />
-
-      <Art>
-        <text className="f-title" x={24} y={ringHead - 6}>
-          Counted separately: the Braking Ring
-        </text>
-      </Art>
-      <Row item={p.ring} y={ringY} x={x} tone="s3" />
-      <Art>
-        <Halo className="f-note" x={M.l} y={ringY + ROW + 8}>
-          {`Of ${p.caught} caught. Gravity, the Sun's and then Venus's, gave the ice ${p.gain} of it.`}
-        </Halo>
-      </Art>
-      <Row
-        item={p.withRing}
-        y={withY}
-        x={x}
-        tone="s1"
-        note={p.spareWithRing}
-        sub="once the Ring powers the Railheads"
-        line={sx}
-      />
     </Frame>
   );
 }
@@ -258,28 +222,20 @@ export const latticeBudget: FigureDef<Props> = {
       supply,
       share: show(r, "budget-launch-share"),
       spare: margin("budget-spare"),
-      ring: item("ring-recovered-energy", "Recovered by the Ring", "ring"),
-      caught: show(r, "ring-catch-energy"),
-      gain: show(r, "ice-solar-gain"),
-      withRing: item("budget-demand-with-ring", "Demand on the Lattice"),
-      spareWithRing: margin("budget-spare-with-ring"),
       ticks: ticks(0, max, 5).map((v) => ({ value: v, text: showValue(q, v, { sig: 1 }) })),
       max,
     };
   },
   caption: (p) =>
-    `The Lattice supplies ${p.supply.text} against a demand of ${p.total.text}: ${p.spare}, and ${p.spareWithRing} once the Braking Ring's recovered energy pays for the launches. Launching the water and pumping out the heat take ${p.share} of the supply.`,
+    `The Lattice beams ${p.supply.text} of light against a demand of ${p.total.text}: ${p.spare}. Pumping out the heat takes nearly all of it; what runs on electricity, the Railheads, the Forges and the fans, is charged the light its receivers take. Launching the water and pumping out the heat take ${p.share} of the supply.`,
   describe: (p) => ({
-    summary: `${p.demands.length} demands add up to ${p.total.text}, against the Lattice's supply of ${p.supply.text} (${p.spare}). The Ring recovers ${p.ring.text} from the falling ice, of ${p.caught} caught; once it powers the Railheads the Lattice's demand falls to ${p.withRing.text} (${p.spareWithRing}).`,
+    summary: `${p.demands.length} demands, counted as the Lattice's light, add up to ${p.total.text}, against the ${p.supply.text} it beams (${p.spare}).`,
     head: ["Item", "Energy"],
     rows: [
       ...p.demands.map((d) => [d.label, d.text]),
       [p.total.label, p.total.text],
       [p.supply.label, p.supply.text],
       ["Margin", p.spare],
-      [p.ring.label, p.ring.text],
-      [`${p.withRing.label}, once the Ring powers the Railheads`, p.withRing.text],
-      ["Margin once the Ring pays the Railheads", p.spareWithRing],
     ],
   }),
   numbers: (p) => [
@@ -288,11 +244,6 @@ export const latticeBudget: FigureDef<Props> = {
     "helios-supply",
     "budget-spare",
     "budget-launch-share",
-    "ring-recovered-energy",
-    "ring-catch-energy",
-    "ice-solar-gain",
-    "budget-demand-with-ring",
-    "budget-spare-with-ring",
   ],
   Component: LatticeBudget,
 };

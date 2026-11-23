@@ -205,7 +205,7 @@ export function cryo(r: Registry) {
       basis: "physics",
     },
     () =>
-      (v("cryo-floor-load") * (v("exhaust-effective-temp") / 200 - 1)) /
+      (v("cryo-floor-load") * (v("exhaust-light-temp") / 200 - 1)) /
       (v("exhaust-carnot-share") * v("helios-power")),
   );
   r.q(

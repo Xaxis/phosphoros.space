@@ -1,13 +1,13 @@
 # Helios Lattice
 
-[1.8 × 10⁷](../numbers.md#helios-petals) film Petals orbiting near Mercury turn sunlight into laser beams and
-deliver [1.2 × 10²⁰ W](../numbers.md#helios-power) from [August 2033](../numbers.md?date=month#helios-full-power),
-[3.1 × 10⁻⁵%](../numbers.md#helios-sun-share) of the Sun's output. By the deadline that is
-[1.3 × 10²⁸ J](../numbers.md#helios-supply), the energy the whole plan runs on. Water and cooling take
-[88%](../numbers.md#budget-launch-share) of it.
+[2.5 × 10⁷](../numbers.md#helios-petals) film Petals orbiting near Mercury turn sunlight into laser beams and
+beam [2.2 × 10²⁰ W](../numbers.md#helios-power) of light from [9 October 2033](../numbers.md?date=day#helios-full-power),
+[5.7 × 10⁻⁵%](../numbers.md#helios-sun-share) of the Sun's output. By the deadline that is
+[2.2 × 10²⁸ J](../numbers.md#helios-supply) of light, the energy the whole plan runs on. Water and cooling take
+[69%](../numbers.md#budget-launch-share) of it.
 
 <!-- figure:energy-sankey -->
-![Energy flows of the Phosphoros campaign, to the deadline](../../figures/svg/energy-sankey.svg)
+![Energy flows of the Phosphoros campaign, from the Lattice's full power to the deadline](../../figures/svg/energy-sankey.svg)
 <!-- /figure -->
 
 ## Principle
@@ -17,24 +17,36 @@ from outside, and the cheapest outside energy in the inner Solar System is sunli
 the Foundry already is. Near Mercury, sunlight carries [9,080 W/m²](../numbers.md#mercury-sunlight), against
 [2,601 W/m²](../numbers.md#venus-sunlight) at Venus.
 
-The Lattice converts that sunlight three times, and each step costs:
+The Lattice converts that sunlight twice, and each step costs:
 
 - **Film:** sunlight to electricity at [40%](../numbers.md#helios-film-efficiency).
 - **Laser:** electricity to a coherent beam at [50%](../numbers.md#helios-laser-efficiency).
-- **Receiver:** beam back to electricity at [75%](../numbers.md#helios-receiver-efficiency).
 
-End to end, [15%](../numbers.md#helios-efficiency) of the sunlight a Petal catches arrives as electricity at
-Venus. Delivering [1.2 × 10²⁰ W](../numbers.md#helios-power) therefore takes `A = P / (S η)`:
-[8.8 × 10¹⁶ m²](../numbers.md#helios-area) of film, [8.8 × 10¹³ kg](../numbers.md#helios-mass) at
+So [20%](../numbers.md#helios-efficiency) of the sunlight a Petal catches leaves as beamed light. Beaming
+[2.2 × 10²⁰ W](../numbers.md#helios-power) therefore takes `A = P / (S η)`:
+[1.2 × 10¹⁷ m²](../numbers.md#helios-area) of film, [1.2 × 10¹⁴ kg](../numbers.md#helios-mass) at
 [1 g/m²](../numbers.md#helios-areal-density).
 
+**Light, not electricity.** Most of that light is never turned back into electricity. The
+[Photonic Exhaust](exhaust.md)'s tiles take it as it is: each one is cooled by the light it absorbs, and gives
+the heat back to space in its own light. Only the machines that need electricity get receivers, which turn
+light into electricity at [75%](../numbers.md#helios-receiver-efficiency): the Railheads on Ceres, and the
+[Graphite Forges](forges.md) and the chimney fans on Venus. The model counts the Lattice's output, and every
+demand on it, in light ([correction](../about.md#corrections)).
+
 **Why lasers.** A beam spreads by diffraction at an angle of about its wavelength over its aperture. From a
-phase-locked aperture [10 km](../numbers.md#helios-aperture) wide at
-[1.06 µm](../numbers.md?sig=3#helios-wavelength), the spot is `2.44 λ L / D`: only
-[46 m](../numbers.md#helios-spot) wide at the longest range, from the outermost Petals to Venus,
-[1.2 AU](../numbers.md#helios-range). A receiver of modest size catches all of it. The Lattice also beams the
-[Ice Train](ice-train.md)'s power to Ceres, where at the longest range,
-[3.2 AU](../numbers.md#lattice-to-ceres-range), the spot is [120 m](../numbers.md#ceres-beam-spot).
+phase-locked aperture [10 km](../numbers.md#helios-aperture) wide at [2.5 µm](../numbers.md#helios-wavelength),
+the spot is `2.44 λ L / D`: only [110 m](../numbers.md#helios-spot) wide at the longest range, from the outermost
+Petals to Venus, [1.2 AU](../numbers.md#helios-range). The Lattice also beams the [Ice Train](ice-train.md)'s power
+to Ceres, where at the longest range, [3.2 AU](../numbers.md#lattice-to-ceres-range), the spot is
+[290 m](../numbers.md#ceres-beam-spot). A beam can be spread as easily as focused, so at Venus each one is
+widened to light a canopy's tiles.
+
+**Why [2.5 µm](../numbers.md#helios-wavelength).** The wavelength is chosen for the Exhaust's tiles: a little longer
+than their [0.54 eV](../numbers.md#exhaust-bandgap) bandgap, so each photon a tile absorbs leaves as one of the
+tile's own, a little bluer, with the difference taken from heat
+([check](../numbers.md#check-exhaust-pump-photons)). The thin CO₂ above the canopies passes it. Version 3 beamed at
+the shorter neodymium line, for its receivers.
 
 ## Design
 
@@ -52,65 +64,66 @@ has to hold its efficiency across that range.
 [10 km](../numbers.md#helios-aperture) wide acts as one aperture. Steering is electronic: shift the phases and
 the beam moves. A Petal can serve any customer it can see.
 
-**The receivers.** At Venus the beams land on receivers above the air, on the Braking Ring, at
-[10 MW/m²](../numbers.md#helios-receiver-intensity). They take in
-[1.6 × 10²⁰ W](../numbers.md#helios-receiver-incident) across [1.6 × 10¹³ m²](../numbers.md#helios-receiver-area)
-and lose a quarter of it, [4.0 × 10¹⁹ W](../numbers.md#helios-receiver-loss), as heat. That heat is radiated from
-fins at [1,500 K](../numbers.md#helios-fin-temp), [7.0 × 10¹³ m²](../numbers.md#helios-fin-area) of them
-counting both faces. Until the Ring is complete in
-[December 2033](../numbers.md?date=month#ring-complete), receivers ride on the Exhaust canopies.
+**Only the side it sees.** The Lattice orbits inside Venus's orbit, so it always sees Venus's sunward side, and
+only the tiles there can be pumped: [50%](../numbers.md#exhaust-lit-share) of them at any moment. A mirror
+hovering behind Venus cannot pass the beams on to the night side. To hold still its push must point straight away
+from Venus, and then the beam it sends on misses Venus by as much as the beam it takes in. The Exhaust is built
+for that: twice the tiles that work at once.
 
-**Open problem: the fins shine on Venus.** A fin standing upright at the Ring's height sees Venus over
-[28%](../numbers.md#ring-fin-venus-share) of its sky on each face, and one on a canopy
-[41%](../numbers.md#canopy-fin-venus-share), so that share of the loss heat falls on the planet the plan is
-trying to cool. With the Ring's catch radiators, that is [2.7 × 10¹⁹ W](../numbers.md#loss-heat-into-venus)
-at full power, and counted day by day the cooling does not finish in time
-([check](../numbers.md#check-loss-heat-fits)). The day-by-day simulation still leaves this heat out, and the
-receivers and fins also weigh more than the Ring can carry. Radiators with one emitting face and a
-shielded back toward Venus, or radiators far from the planet, might cut it enough; none is sized yet
-([Risks](../risks.md#the-receivers-and-the-rings-loss-heat-falls-on-venus)).
+**The receivers at Venus.** The Forges and the fans draw [8.6 × 10¹⁷ W](../numbers.md#venus-receiver-power) of
+electricity at full output. Their receivers take the beams at [10 MW/m²](../numbers.md#helios-receiver-intensity),
+weigh [2.3 × 10¹¹ kg](../numbers.md#venus-receiver-mass) and stand on the canopies, shedding a quarter of the
+light, [2.9 × 10¹⁷ W](../numbers.md#venus-receiver-loss), into the air. The pumps lift that heat with the rest:
+the day-by-day simulation counts it ([check](../numbers.md#check-traj-heat-books)). Version 3's receivers took the
+whole Lattice's output, and their loss heat fell on Venus uncounted ([correction](../about.md#corrections)).
 
 **Built by the full Foundry.** Every Petal is mass the [Ouroboros Foundry](ouroboros.md) does not add to itself,
 and a kilogram spent early costs all the growth it would have compounded into. So the Foundry grows to full scale
-first, in [July 2033](../numbers.md?date=month#foundry-full-scale), then turns out the
-[8.8 × 10¹³ kg](../numbers.md#helios-mass) of Petals in [57 d](../numbers.md#lattice-build-days). The Lattice's power
-climbs as they come off the line and is full in [August 2033](../numbers.md?date=month#helios-full-power). The first
+first, in [August 2033](../numbers.md?date=month#foundry-full-scale), then turns out the
+[1.2 × 10¹⁴ kg](../numbers.md#helios-mass) of Petals in [39 d](../numbers.md#lattice-build-days). The Lattice's power
+climbs as they come off the line and is full on [9 October 2033](../numbers.md?date=day#helios-full-power). The first
 Petals, which fly in [June 2030](../numbers.md?date=month#helios-first-petals), are demonstrations too few to count.
+The Foundry then builds the [1.9 × 10¹⁴ kg](../numbers.md#venus-hardware-mass) of tiles, chimneys and receivers for
+Venus in [61 d](../numbers.md#venus-hardware-build-days).
 
-**The customers.** Three users share the output, and the order matters:
+**The customers.** The light is shared, and the order matters:
 
-1. **The Ceres Railheads** draw [1.1 × 10²⁰ W](../numbers.md#railhead-power) from the first launch in
-   [August 2033](../numbers.md?date=month#ice-launch-start) until the Ring starts recovering energy from the
-   arriving ice in [July 2034](../numbers.md?date=month#ring-pays-from) and takes them over.
-2. **The Photonic Exhaust** gets the rest. From [July 2034](../numbers.md?date=month#ring-pays-from) the
-   Ring's electricity runs Venus's systems as well, while the Lattice's beams stay on the Railheads until the
-   last launch.
-3. **The Graphite Forges** take [4.8 × 10¹⁷ W](../numbers.md#forge-power) from
-   [January 2035](../numbers.md?date=month#forge-start).
+1. **The Ceres Railheads** take it first, from the first launch on
+   [9 October 2033](../numbers.md?date=day#ice-launch-start) to the last on
+   [7 January 2034](../numbers.md?date=day#ice-launch-end): [8.4 × 10¹⁸ W](../numbers.md#ceres-receiver-incident) of
+   light into the Crown's receivers, [6.5 × 10²⁵ J](../numbers.md#ice-launch-light) in all.
+2. **The Photonic Exhaust** takes the rest from [23 February 2034](../numbers.md?date=day#cooling-start), when its
+   hardware reaches Venus, until the last caps are sealed: [1.5 × 10²⁸ J](../numbers.md#traj-pump-energy) of
+   pumping light.
+3. **The Graphite Forges** take [5.6 × 10¹⁷ W](../numbers.md#forge-power) of electricity from
+   [April 2035](../numbers.md?date=month#forge-start), [3.5 × 10²⁵ J](../numbers.md#forge-light) of light in all,
+   and the chimney fans [2.9 × 10²⁵ J](../numbers.md#traj-fan-energy) while the pumps run.
+4. **Warming:** once the Veil opens, the light melts the frozen seas and warms the air,
+   [1.7 × 10²⁴ J](../numbers.md#traj-warm-energy).
 
 <!-- table:budget -->
-| Task | Energy the Lattice delivers |
+| Task | Light the Lattice delivers |
 | --- | --- |
-| Launch [1.0 × 10²⁰ kg](../numbers.md#ice-mass) of ice from Ceres | [5.6 × 10²⁷ J](../numbers.md#ice-launch-energy) |
-| Heat-pump work to cool Venus | [5.6 × 10²⁷ J](../numbers.md#traj-pump-energy) |
-| Run the chimney fans | [6.3 × 10²⁴ J](../numbers.md#traj-fan-energy) |
-| Warm the air and melt the last ice | [4.4 × 10²⁵ J](../numbers.md#traj-warm-energy) |
-| Forge [0.25 bar](../numbers.md#o2-target-pressure) of oxygen | [2.7 × 10²⁵ J](../numbers.md#forge-energy) |
-| Build the Foundry, the Veil, the Lattice and the Ring | [5 × 10²² J](../numbers.md#hardware-energy) |
-| **Total demand** | **[1.1 × 10²⁸ J](../numbers.md#budget-demand)** |
-| Supply: the Lattice from full power to the deadline | [1.3 × 10²⁸ J](../numbers.md#helios-supply) |
-| Spare | [11%](../numbers.md#budget-spare) |
-| Spare once the Ring powers the Railheads | [32%](../numbers.md#budget-spare-with-ring) |
+| Launch [1.0 × 10¹⁸ kg](../numbers.md#ice-mass) of ice from Ceres | [6.5 × 10²⁵ J](../numbers.md#ice-launch-light) |
+| Pump the heat out of Venus's air | [1.5 × 10²⁸ J](../numbers.md#traj-pump-energy) |
+| Run the chimney fans | [2.9 × 10²⁵ J](../numbers.md#traj-fan-energy) |
+| Warm the air and melt the ice | [1.7 × 10²⁴ J](../numbers.md#traj-warm-energy) |
+| Forge [0.25 bar](../numbers.md#o2-target-pressure) of oxygen | [3.5 × 10²⁵ J](../numbers.md#forge-light) |
+| Build the Foundry, the Veil, the Lattice and the hardware at Venus | [6 × 10²² J](../numbers.md#hardware-energy) |
+| **Total demand** | **[1.6 × 10²⁸ J](../numbers.md#budget-demand)** |
+| Supply: the Lattice from full power to the deadline | [2.2 × 10²⁸ J](../numbers.md#helios-supply) |
+| Spare | [30%](../numbers.md#budget-spare) |
 <!-- /table -->
 
-The Lattice alone leaves [11%](../numbers.md#budget-spare) spare. Counting the Ring's recovered energy, which pays
-for most of the launches, the spare is [32%](../numbers.md#budget-spare-with-ring). Version 3 raised the Lattice's power by
-about a fifth, to [1.2 × 10²⁰ W](../numbers.md#helios-power), to get there, once the launches between windows were charged
-and the Foundry was made to pay for the Petals ([corrections](../about.md#corrections)). The [budget](../budget.md#the-energy-budget) walks through each
-line.
+The plan needs [1.6 × 10²⁸ J](../numbers.md#budget-demand) of light against the
+[2.2 × 10²⁸ J](../numbers.md#helios-supply) the Lattice beams from full power to the deadline:
+[30%](../numbers.md#budget-spare) spare. Version 4 raised the Lattice's power to
+[2.2 × 10²⁰ W](../numbers.md#helios-power), because only the lit side of Venus can be pumped, the tiles' light
+counts as hotter than their brightness, and the Bricks' heat must be lifted too
+([corrections](../about.md#corrections)). The [budget](../budget.md#the-energy-budget) walks through each line.
 
 <!-- figure:lattice-budget -->
-![Energy the Helios Lattice must deliver, against its supply](../../figures/svg/lattice-budget.svg)
+![Light the Helios Lattice must beam, against what it beams](../../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
 ## Specifications
@@ -121,15 +134,16 @@ line.
 | Orbits | Circular, [0.3 AU](../numbers.md#helios-orbit-inner) to [0.45 AU](../numbers.md#helios-orbit-outer) from the Sun, at many inclinations so no Petal shades another |
 | Film temperature | [460 K](../numbers.md#helios-film-temp) near Mercury, [520 K](../numbers.md#helios-film-temp-inner) on the innermost orbits |
 | Sunlight near Mercury | [9,080 W/m²](../numbers.md#mercury-sunlight) |
-| End-to-end efficiency | [40%](../numbers.md#helios-film-efficiency) film × [50%](../numbers.md#helios-laser-efficiency) laser × [75%](../numbers.md#helios-receiver-efficiency) receiver = [15%](../numbers.md#helios-efficiency) |
-| Petals | [1.8 × 10⁷](../numbers.md#helios-petals), each [70 km](../numbers.md#helios-petal-side) square and [4,900 t](../numbers.md#helios-petal-mass) |
-| Film area | [8.8 × 10¹⁶ m²](../numbers.md#helios-area) |
-| Mass | [8.8 × 10¹³ kg](../numbers.md#helios-mass) |
-| Delivered power | [1.2 × 10²⁰ W](../numbers.md#helios-power), from [August 2033](../numbers.md#helios-full-power) |
-| Energy delivered by the deadline | [1.3 × 10²⁸ J](../numbers.md#helios-supply) |
-| Beam spot at Venus | [46 m](../numbers.md#helios-spot) wide from a [10 km](../numbers.md#helios-aperture) aperture at [1.2 AU](../numbers.md#helios-range) |
-| Receiver intensity | [10 MW/m²](../numbers.md#helios-receiver-intensity), actively cooled |
-| Receiver loss | [4.0 × 10¹⁹ W](../numbers.md#helios-receiver-loss), radiated from [1,500 K](../numbers.md#helios-fin-temp) fins to space |
+| Sunlight to beam | [40%](../numbers.md#helios-film-efficiency) film × [50%](../numbers.md#helios-laser-efficiency) laser = [20%](../numbers.md#helios-efficiency) |
+| Petals | [2.5 × 10⁷](../numbers.md#helios-petals), each [70 km](../numbers.md#helios-petal-side) square and [4,900 t](../numbers.md#helios-petal-mass) |
+| Film area | [1.2 × 10¹⁷ m²](../numbers.md#helios-area) |
+| Mass | [1.2 × 10¹⁴ kg](../numbers.md#helios-mass) |
+| Light beamed | [2.2 × 10²⁰ W](../numbers.md#helios-power), from [October 2033](../numbers.md#helios-full-power) |
+| Beam wavelength | [2.48 µm](../numbers.md?sig=3#helios-wavelength), just below the Exhaust tiles' bandgap, so the tiles take it directly |
+| Light beamed by the deadline | [2.2 × 10²⁸ J](../numbers.md#helios-supply) |
+| Beam spot at Venus | [110 m](../numbers.md#helios-spot) wide from a [10 km](../numbers.md#helios-aperture) aperture at [1.2 AU](../numbers.md#helios-range) |
+| Receivers | Only where electricity is needed: the Railheads on Ceres, and the Forges and fans on Venus, [2.3 × 10¹¹ kg](../numbers.md#venus-receiver-mass) at [10 MW/m²](../numbers.md#helios-receiver-intensity) and [75%](../numbers.md#helios-receiver-efficiency) efficient |
+| Receiver loss at Venus | [2.9 × 10¹⁷ W](../numbers.md#venus-receiver-loss) at full output, lifted by the pumps with the rest of the heat |
 <!-- /table -->
 
 ## What is invented
@@ -138,16 +152,16 @@ line.
 > about [460 K](../numbers.md#helios-film-temp), made in bulk at [1 g/m²](../numbers.md#helios-areal-density).
 
 > **Invented:** Phase-locked emitter grids that act as [10 km](../numbers.md#helios-aperture) virtual
-> apertures, converting electricity to light at [50%](../numbers.md#helios-laser-efficiency).
+> apertures, converting electricity to [2.5 µm](../numbers.md#helios-wavelength) light at
+> [50%](../numbers.md#helios-laser-efficiency).
 
 > **Invented:** Receivers that turn [10 MW/m²](../numbers.md#helios-receiver-intensity) of laser light into
-> electricity at [75%](../numbers.md#helios-receiver-efficiency), cooled by fins at
-> [1,500 K](../numbers.md#helios-fin-temp).
+> electricity at [75%](../numbers.md#helios-receiver-efficiency), for the machines that need electricity.
 
-> **Precedent:** The beam's wavelength, [1.06 µm](../numbers.md?sig=3#helios-wavelength), is the neodymium
-> line of the Nd:YAG laser, first built in 1964 ([Geusic et al. 1964](../sources.md#geusic-1964-ndyag)) and at work in
-> factories since 1970 ([Belforte 2010](../sources.md#belforte-2010-industrial)). Nothing else about the Lattice
-> has been done at any scale close to this. The [Lightpipe](../research.md#lightpipe) experiment is the first step.
+> **Precedent:** Lasers of chromium-doped zinc selenide and zinc sulphide emit in the mid-infrared, near the
+> beam's [2.5 µm](../numbers.md#helios-wavelength) ([Mirov et al. 2015](../sources.md#mirov-2015-midir)). Nothing
+> else about the Lattice has been done at any scale close to this. The [Lightpipe](../research.md#lightpipe)
+> experiment is the first step.
 
 ## Build sequence
 
@@ -155,41 +169,39 @@ line.
   between two satellites with phase lock across many emitters. It gates the design.
 - **[June 2030](../numbers.md?date=month#helios-first-petals):** The first Petals fly, built from the Foundry's
   film lines.
-- **[May 2033](../numbers.md?date=month#helios-affordable):** The Foundry could build the whole Lattice in one
-  doubling. It grows a little longer, to finish sooner.
-- **[2 July 2033](../numbers.md?date=day#foundry-full-scale):** The Foundry reaches full scale and turns to the
+- **[June 2033](../numbers.md?date=month#helios-affordable):** The Foundry could build the whole Lattice in one
+  doubling. It grows a little longer, to finish the Lattice and the hardware at Venus sooner.
+- **[31 August 2033](../numbers.md?date=day#foundry-full-scale):** The Foundry reaches full scale and turns to the
   Petals.
-- **[28 August 2033](../numbers.md?date=day#helios-full-power):** Full power,
-  [1.2 × 10²⁰ W](../numbers.md#helios-power). The Ceres Railheads start firing and take most of it. The Foundry builds
-  the Ring, then the hardware at Venus, and active cooling begins on what the Railheads leave once that hardware
-  arrives, on [5 April 2034](../numbers.md?date=day#cooling-start).
-- **[3 July 2034](../numbers.md?date=day#ring-pays-from):** The first Bricks reach Venus and the Ring powers
-  the Railheads from then on. The Lattice turns almost entirely to cooling.
-- **[January 2035](../numbers.md?date=month#forge-start):** The Forges start drawing power.
+- **[9 October 2033](../numbers.md?date=day#helios-full-power):** Full power,
+  [2.2 × 10²⁰ W](../numbers.md#helios-power). The Ceres Railheads fire until
+  [7 January 2034](../numbers.md?date=day#ice-launch-end), while the Foundry builds the hardware at Venus.
+- **[23 February 2034](../numbers.md?date=day#cooling-start):** The tiles, chimneys and receivers are at Venus, and
+  the Lattice turns to cooling.
+- **[April 2035](../numbers.md?date=month#forge-start):** The Forges start drawing power.
 - **[31 December 2036](../numbers.md?date=day#deadline):** The deadline. From full power to here the Lattice has
-  delivered [1.3 × 10²⁸ J](../numbers.md#helios-supply) over [3.3 yr](../numbers.md#helios-supply-years). It stays
+  beamed [2.2 × 10²⁸ J](../numbers.md#helios-supply) over [3.2 yr](../numbers.md#helios-supply-years). It stays
   on afterwards: cooling the cryo-continent floors is a permanent job.
 
 ## Failure modes and safeguards
 
-- **A beam on the wrong target.** Each beam carries a share of [1.2 × 10²⁰ W](../numbers.md#helios-power). A
+- **A beam on the wrong target.** Each beam carries a share of [2.2 × 10²⁰ W](../numbers.md#helios-power). A
   Petal fires only while its receiver returns a live, signed handshake, and defocuses within
   [1 ms](../numbers.md#beam-defocus-time) if the handshake drops. No beam path passes within
   [0.01 AU](../numbers.md#beam-keep-out) of Earth or of any crewed craft.
 - **Light already in flight.** A beam takes [2.8 min](../numbers.md#delay-mercury-venus-min) to
   [9.2 min](../numbers.md#delay-mercury-venus-max) to cross from Mercury to Venus. Cutting it at the Petal does
   not recall what is on its way. Aim is therefore planned from predicted positions, and the keep-out zone is set
-  wide enough that the light in transit is harmless if the receiver moves.
+  wide enough that the light in transit is harmless if the target moves.
 - **Lost phase lock.** An array that loses phase lock cannot focus. Its emitters spread their light over a wide
   cone, so the failure is safe by physics, not by software.
-- **Lost Petals.** There are [1.8 × 10⁷](../numbers.md#helios-petals) of them, each independent. Losing one costs
-  a ten-millionth of the output.
+- **Lost Petals.** There are [2.5 × 10⁷](../numbers.md#helios-petals) of them, each independent. Losing one costs
+  a part in tens of millions of the output.
 - **Geometry.** A Petal whose line to Venus crosses the [Hesperus Veil](veil.md) hands its customers to another
   Petal. Only Petals that sit almost in front of the Sun, as seen from Venus, are affected.
-- **A thin margin.** From the Lattice alone the budget leaves [11%](../numbers.md#budget-spare) spare, and the
-  model charges the heat pumps the least work the second law allows, far less than the Exhaust's beamed light
-  needs ([open problem](../budget.md#physics-checks)). If the Ring is late, Venus waits longer for the Ring's
-  power and cooling slips.
+- **The margin.** The budget leaves [30%](../numbers.md#budget-spare) spare, with the pumps charged at
+  [50%](../numbers.md#exhaust-carnot-share) of the Carnot limit against the temperature the tiles' light counts as.
+  Tiles further from that limit need more light, and the spare is what absorbs it.
 
 ## Reproduce these numbers
 
@@ -204,7 +216,7 @@ pnpm calc --only budget-spare    # 1 − demand / supply
 ```
 
 In the [Explorer](https://phosphoros.space/explore), lower `helios-film-efficiency` and the film area, the mass
-and the date the Foundry can afford the Lattice all grow, though full power still comes when the Foundry
-reaches full scale. Lower `helios-power` and the supply falls: the schedule breaks first, when the Frost Towers finish after
-the last caps are due, and then the budget goes negative. The Earth-like date itself barely moves, because the
-oxygen sets it. Raise it and the spare grows, but only if the Foundry can build the extra film.
+and the date the Foundry can afford the Lattice all grow, and full power comes later, because the full Foundry
+takes longer to build the bigger Lattice. Lower `helios-power` and the light falls: the Frost Towers soon finish
+after the last caps are due, and lower still the seas freeze too late, the air misses the deadline and the spare
+runs out. Raise it and the spare grows, but only if the Foundry can build the extra film.

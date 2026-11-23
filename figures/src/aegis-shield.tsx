@@ -503,7 +503,7 @@ export const aegisShield: FigureDef<Props> = {
         kind: "on",
       },
       {
-        when: show(r, "first-catch", { date: "month" }),
+        when: show(r, "first-arrival", { date: "month" }),
         label: "the first water",
         note: ["arrives already under the shield"],
         href: "/technologies/ice-train",
@@ -591,7 +591,7 @@ export const aegisShield: FigureDef<Props> = {
     "experiments-end",
     "veil-close",
     "aegis-online",
-    "first-catch",
+    "first-arrival",
   ],
   Component: AegisShield,
 };

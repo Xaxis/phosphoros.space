@@ -1,6 +1,6 @@
 # Genesis Biota
 
-Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in and the new oceans
+Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in and the new seas
 have held their pH, from [1 December 2036](../numbers.md?date=day#genesis-start), so the sunlit water is
 green by [12 December 2036](../numbers.md?date=day#genesis-end), before the deadline. They start a food web, draw nutrients from the nitrogen sky and begin turning bare basalt
 and cap graphite into soil. Trees, crops and animals come later, after 2040.
@@ -21,7 +21,8 @@ Earth's mean [288 K](../numbers.md#earth-surface-temp). Oxygen is only
 [11%](../numbers.md#final-o2-share) of that air, but its pressure is [1.2](../numbers.md#o2-vs-earth)
 times Earth's sea-level oxygen, and pressure is what cells feel.
 
-The oceans average [217 m](../numbers.md#ocean-depth) deep. They are melted ice, fresh to brackish, with
+The new water would stand [2.17 m](../numbers.md#ocean-depth) deep spread evenly over Venus. Gathered in the low ground
+between the caps, it makes shallow seas and lakes, not oceans. They are melted ice, fresh to brackish, with
 sulfate from the [Acid Sweep](acid.md) and little dissolved carbon. The Veil and its Lanterns give a
 [24 h](../numbers.md#day-length) day, opening to [52%](../numbers.md#veil-day-transmission) for
 Earth-strength light. Sunlight is turning the new oxygen into ozone, but the layer is young and thin. The
@@ -77,7 +78,7 @@ Shores and caps get a starter soil, "black loam": crushed basalt, graphite from 
 
 No organism is released until three things are true:
 
-1. The oceans have held a pH above [7.5](../numbers.md#genesis-ph-min) for
+1. The seas have held a pH above [7.5](../numbers.md#genesis-ph-min) for
    [90 d](../numbers.md#genesis-ph-days), the [Acid Sweep](acid.md)'s job.
 2. The oxygen is in: [0.25 bar](../numbers.md#o2-target-pressure), when the Forges finish.
 3. Ozone is detectable. It is within a day of the Veil opening:
@@ -137,10 +138,10 @@ and the new air holds more oxygen over each square metre than Earth's does.
 | Parameter | Value |
 | --- | --- |
 | Air | [2.4 bar](../numbers.md#final-pressure): [2.1 bar](../numbers.md#n2-pressure) nitrogen, [0.25 bar](../numbers.md#o2-target-pressure) oxygen, [230 ppm](../numbers.md#final-co2-ppm) CO₂ |
-| Oceans | [217 m](../numbers.md#ocean-depth) deep on average, fresh to brackish and sulfate-rich |
+| Seas | [2.17 m](../numbers.md#ocean-depth) deep on average, fresh to brackish and sulfate-rich |
 | Light | [24 h](../numbers.md#day-length) days at Earth strength |
 | Seeding | From [1 December 2036](../numbers.md?date=day#genesis-start), the later of the oxygen ([30 September 2036](../numbers.md?date=day#forge-end)) and the pH gate ([1 December 2036](../numbers.md?date=day#genesis-ph-clear)) |
-| Living oceans | [100 per cm³](../numbers.md#genesis-seed-density) seeded, [200,000 per cm³](../numbers.md#genesis-bloom-density) by [12 December 2036](../numbers.md?date=day#genesis-end), doubling every [1 d](../numbers.md#genesis-doubling-days) |
+| Living seas | [100 per cm³](../numbers.md#genesis-seed-density) seeded, [200,000 per cm³](../numbers.md#genesis-bloom-density) by [12 December 2036](../numbers.md?date=day#genesis-end), doubling every [1 d](../numbers.md#genesis-doubling-days) |
 | Temperature | [288 K](../numbers.md#genesis-air-temp) mean air temperature when seeding begins; Earth-like is at least [285 K](../numbers.md#earth-like-temp) |
 | Ozone | [49.9 DU](../numbers.md#ozone-first-day) after the first day of sunlight; [185 DU](../numbers.md#ozone-shield-column), a shield for land life, on [2 December 2036](../numbers.md?date=day#ozone-shield-date); settles near [301 DU](../numbers.md#ozone-steady) |
 <!-- /table -->
@@ -164,7 +165,7 @@ and the new air holds more oxygen over each square metre than Earth's does.
 - **[December 2028](../numbers.md?date=month#life-gate):** The gate. No native life found, or the program
   stops. From here the organisms are engineered and tested on Earth in simulated 2036 conditions.
 - **[2 September 2036](../numbers.md?date=day#traj-warming):** The caps are sealed, the Veil opens and the
-  ice melts into oceans. The pH clock starts.
+  ice melts into seas. The pH clock starts.
 - **[30 September 2036](../numbers.md?date=day#forge-end):** The Forges finish; the oxygen is in, and the air is
   Earth-like ([30 September 2036](../numbers.md?date=day#traj-earth-like)).
 - **[1 December 2036](../numbers.md?date=day#genesis-start):** The pH has held; the gate opens and seeding
@@ -178,14 +179,14 @@ and the new air holds more oxygen over each square metre than Earth's does.
   Phosphoros, and it is meant to.
 - **A strain fails to take hold.** Each group is seeded from a library of alternative strains, and the
   orbital watch shows within weeks where a population is failing.
-- **The oceans turn acid.** Seeding waits until the pH has held for the full
+- **The seas turn acid.** Seeding waits until the pH has held for the full
   [90 d](../numbers.md#genesis-ph-days).
 - **The oxygen is late.** Seeding waits for the Forges. The simulated Earth-like date slips with them, and
   so does everything that depends on it.
-- **Ultraviolet before the ozone thickens.** Ocean life is shielded by the water above it. Lichens and
+- **Ultraviolet before the ozone thickens.** Life in the seas is shielded by the water above it. Lichens and
   mosses go onto land only once the column reaches [185 DU](../numbers.md#ozone-shield-column). If the
   ozone grows more slowly than the model says (it leaves out winds and the catalytic cycles), land seeding
-  waits; the oceans do not.
+  waits; the seas do not.
 - **Life on Venus cannot be recalled.** Once seeded, Earth life is there for good. That is why the gate
   comes years before the Veil, and why the plan needs an international framework agreed before the seed
   foundry launches.

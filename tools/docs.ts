@@ -303,8 +303,7 @@ const BLOCKS: Record<string, Block> = {
     rows.push(["**Total demand**", `**${md("{budget-demand}", p)}**`]);
     rows.push([`Supply: the Lattice from full power to the deadline`, md("{helios-supply}", p)]);
     rows.push(["Spare", md("{budget-spare}", p)]);
-    rows.push(["Spare once the Ring powers the Railheads", md("{budget-spare-with-ring}", p)]);
-    return table(["Task", "Energy the Lattice delivers"], rows);
+    return table(["Task", "Light the Lattice delivers"], rows);
   },
   mass(_arg, p) {
     return table(
@@ -313,7 +312,11 @@ const BLOCKS: Record<string, Block> = {
         ["Ouroboros machinery at peak", md("{foundry-final-mass}", p), "Mercury regolith"],
         ["Helios Lattice", md("{helios-mass}", p), "Mercury"],
         ["Hesperus Veil", md("{veil-mass}", p), "Mercury"],
-        ["Braking Ring", md("{ring-mass}", p), "Mercury"],
+        [
+          "Tiles, chimneys, receivers and Lanterns for Venus",
+          md("{venus-hardware-mass}", p),
+          "Mercury",
+        ],
         ["Ceres factories at peak", md("{ceres-final-mass}", p), "Ceres rock"],
         ["Railheads and Crown", md("{ceres-build-mass}", p), "Ceres"],
         [
@@ -407,6 +410,11 @@ const BLOCKS: Record<string, Block> = {
       .join("\n");
   },
   claims(_arg, p) {
+    const fixedBy = (id: string, verb: string, p: string) => {
+      const x = content.corrections.find((y) => y.id === id);
+      if (!x) throw new Error(`claims: no correction ${id}`);
+      return `${verb} in version ${x.version}: [${x.title}](${p}about.md#corrections)`;
+    };
     const results = checkClaims(r, readYaml("data/claims.yaml").data as Claim[]).filter(
       (c) => c.status !== "match",
     );
@@ -417,9 +425,11 @@ const BLOCKS: Record<string, Block> = {
         // the link to the ledger goes on the model's value instead.
         c.label,
         c.shown.brief,
-        `[${c.shown.model}](${p}numbers.md${r.get(c.model).unit === "date" ? "?date=day" : ""}#${c.model})`,
-        c.correction
-          ? `Corrected in version 3: [${content.corrections.find((x) => x.id === c.correction)?.title ?? c.correction}](${p}about.md#corrections)`
+        c.status === "retired"
+          ? c.shown.model
+          : `[${c.shown.model}](${p}numbers.md${r.get(c.model).unit === "date" ? "?date=day" : ""}#${c.model})`,
+        c.correction || c.retired
+          ? fixedBy(c.correction ?? c.retired ?? "", c.retired ? "Retired" : "Corrected", p)
           : md(c.note ?? "", p),
       ]),
     );

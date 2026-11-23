@@ -49,6 +49,15 @@ interface Box {
 
 const mid = (b: Box): number => b.y + b.h / 2;
 
+/** Counts as words, the way the prose writes them. */
+const WORDS: Record<number, string> = {
+  10: "Ten",
+  11: "Eleven",
+  12: "Twelve",
+  13: "Thirteen",
+  14: "Fourteen",
+};
+
 /** Lay the boxes out: by place in columns, by online date down each column. */
 function layout(nodes: Node[]): Map<string, Box> {
   const at = new Map<string, Box>();
@@ -56,7 +65,7 @@ function layout(nodes: Node[]): Map<string, Box> {
   const put = (id: string, p: Exclude<Place, "everywhere">, y: number) =>
     at.set(id, { x: COL[p].x, y, w: COL[p].w, h: NODE_H });
 
-  // Near Venus first; Ceres sits below it with room for the ice to climb to the Ring.
+  // Near Venus first; Ceres sits below it, with room for its heading.
   const space = col("space");
   space.forEach((n, i) => {
     put(n.id, "space", TOP + i * STEP);
@@ -87,7 +96,6 @@ function TechStack({ nodes, seedLaunch }: Props) {
   const choir = nodes.find((n) => n.place === "everywhere");
   const foundry = box("ouroboros");
   const helios = box("helios");
-  const ring = box("ring");
   const ice = box("ice-train");
   const veil = box("veil");
   const aegis = box("aegis");
@@ -101,9 +109,7 @@ function TechStack({ nodes, seedLaunch }: Props) {
   const factories: Box = { x: COL.earth.x, y: (ice?.y ?? 0) + 70, w: COL.earth.w, h: NODE_H };
   const bus = (ice ? ice.y + ice.h : 0) + 24;
   const split = COL.mercury.x + COL.mercury.w + 34;
-  // The ice climbs to the Ring at the right of the column, clear of the Ceres heading; the Ceres
-  // factories come up into the Ice Train at its left.
-  const iceX = COL.space.x + COL.space.w - 30;
+  // The Ceres factories come up into the Ice Train at its left.
   const factoriesX = COL.space.x + 40;
   const choirY = Math.max(venusBottom, factories.y + factories.h) + 20;
   const keyY = choirY + 70;
@@ -143,7 +149,7 @@ function TechStack({ nodes, seedLaunch }: Props) {
     });
   }
   // The Foundry's parts go up its mass drivers to everything built near Venus.
-  const builtNear = [veil, aegis, ring].filter((b): b is Box => !!b);
+  const builtNear = [veil, aegis].filter((b): b is Box => !!b);
   if (foundry && builtNear.length) {
     const bx = foundry.x + foundry.w + 26;
     const ys = builtNear.map(mid);
@@ -187,23 +193,11 @@ function TechStack({ nodes, seedLaunch }: Props) {
         [wash.x, bus],
       ],
       flow: "power",
-      label: "laser power",
+      label: "laser light",
       lx: (factoriesX + wash.x) / 2,
       ly: bus + 16,
     });
   }
-  if (ice && ring)
-    arrows.push({
-      points: [
-        [iceX, ice.y],
-        [iceX, ring.y + ring.h],
-      ],
-      flow: "mass",
-      label: "ice",
-      lx: iceX + 7,
-      ly: (ice.y + ring.y + ring.h) / 2 + 4,
-      anchor: "start",
-    });
   if (ice)
     arrows.push({
       points: [
@@ -231,8 +225,8 @@ function TechStack({ nodes, seedLaunch }: Props) {
   };
   toVenus(veil, "shade", "effect");
   toVenus(aegis, "shield", "effect");
-  toVenus(ring, "ice", "mass", -7);
-  toVenus(ring, "power", "power", 7);
+  // The Bricks fall straight into Venus's air.
+  toVenus(ice, "ice", "mass");
   if (chimneys && exhaust) {
     const x = chimneys.x + 24;
     arrows.push({
@@ -265,7 +259,7 @@ function TechStack({ nodes, seedLaunch }: Props) {
     <Frame
       id="tech-stack"
       title="The Phosphoros technology stack"
-      desc="Thirteen inventions in the place each works, from Earth to Mercury, Ceres, near Venus and Venus, with the flows between them. Each box links to its technology page."
+      desc={`${WORDS[nodes.length] ?? nodes.length} inventions in the place each works, from Earth to Mercury, Ceres, near Venus and Venus, with the flows between them. Each box links to its technology page.`}
       height={H}
       links
     >
@@ -373,7 +367,7 @@ export const techStack: FigureDef<Props> = {
   caption: () =>
     "The seed foundry and the first Ceres factories leave Earth; the Foundry builds everything else on Mercury, the Lattice's beams power it, and the Choir runs every machine as one system. Each box opens its technology page.",
   describe: (p) => ({
-    summary: `Only the seed foundry (launching ${p.seedLaunch}) and the first Ceres factories leave Earth. On Mercury the Ouroboros Foundry builds the Helios Lattice and sends parts to the Veil, the Aegis Shield and the Braking Ring near Venus. The Lattice beams power to the Ceres Ice Train and to Venus. Ice goes from Ceres to the Ring and down to Venus, with the Ring's power. The Veil shades Venus, the Aegis shields it, and the Chimneys lift heat to the Exhaust, which sends it to space. The Choir runs every machine.`,
+    summary: `Only the seed foundry (launching ${p.seedLaunch}) and the first Ceres factories leave Earth. On Mercury the Ouroboros Foundry builds the Helios Lattice and sends parts to the Veil and the Aegis Shield near Venus. The Lattice beams its light to the Ceres Ice Train and to Venus, where it pumps the Exhaust's tiles. Ice goes from Ceres straight into Venus's air. The Veil shades Venus, the Aegis shields it, and the Chimneys lift heat to the Exhaust, which sends it to space. The Choir runs every machine.`,
     head: ["Invention", "Where", "Job", "Online"],
     rows: p.nodes.map((n) => [
       n.name,

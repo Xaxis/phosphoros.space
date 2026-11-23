@@ -135,12 +135,12 @@ lithocell-feature-size:
 
 # --- Helios Lattice --------------------------------------------------------------------------------
 helios-power:
-  value: 1.2e20
+  value: 2.2e20
   unit: W
-  label: Power the Helios Lattice delivers
+  label: Light the Helios Lattice beams out
   basis: design
-  note: Version 2 raised it from 4 to 7 × 10¹⁹ W so the launches would finish in time. Version 3 raised it to 8.5 × 10¹⁹ W, because the Railheads draw more once launches between windows are charged and the Lattice's power arrives only after the Foundry stops growing. It rose again when the launch schedule was solved transfer by transfer, out of Ceres's tilted orbit, and the pumps were charged as real machines rather than reversible ones.
-  range: [6.0e19, 1.6e20]
+  note: Version 2 raised it from 4 to 7 × 10¹⁹ W so the launches would finish in time. Version 3 raised it to 8.5 × 10¹⁹ W, because the Railheads draw more once launches between windows are charged and the Lattice's power arrives only after the Foundry stops growing. It rose again when the launch schedule was solved transfer by transfer, out of Ceres's tilted orbit, and the pumps were charged as real machines rather than reversible ones. Version 4 counts it as light rather than electricity, because the Exhaust's tiles take the light itself, and raises it, because only the lit side of Venus can be pumped and the Bricks' entry heat must be lifted too.
+  range: [1.4e20, 3.0e20]
 helios-film-efficiency:
   value: 0.40
   unit: "1"
@@ -174,13 +174,15 @@ helios-petal-side:
   label: Petal edge
   basis: design
 helios-wavelength:
-  value: 1.064e-6
+  value: 2.48e-6
   unit: m
   show: µm
   label: Beam wavelength
-  basis: precedent
-  source: [geusic-1964-ndyag, belforte-2010-industrial]
-  note: The neodymium laser line, in industrial use for decades.
+  basis: design
+  note: >-
+    A little longer than the Exhaust tiles' bandgap, so each photon a tile absorbs leaves as one of
+    the tile's own, a little bluer, with the difference taken from heat. It sits in the band the
+    CO₂ above the canopies passes. Version 3 used the neodymium line at 1.064 µm, for receivers.
 helios-aperture:
   value: 1.0e4
   unit: m
@@ -191,7 +193,7 @@ helios-receiver-intensity:
   value: 1.0e7
   unit: W/m2
   show: MW/m2
-  label: Beam intensity at the receivers
+  label: Beam intensity at the receivers at Venus, which power the Forges and the chimney fans
   basis: invented
 helios-fin-temp:
   value: 1500
@@ -234,9 +236,9 @@ helios-orbit-outer:
 exhaust-far-limit:
   value: 10
   unit: W/m2
-  label: Brightest one Exhaust cone may be far from Venus
+  label: Brightest one canopy's light may be far from Venus
   basis: design
-  note: Under a hundredth of sunlight at Earth, so a craft that strays into a cone is warmed, not harmed.
+  note: Under a hundredth of sunlight at Earth, so a craft that strays above a canopy is warmed, not harmed.
 beam-defocus-time:
   value: 1.0e-3
   unit: s
@@ -309,7 +311,7 @@ veil-slat-leak:
   show: "%"
   label: Share of sunlight a closed slat lets through toward Venus, in every colour
   basis: invented
-  note: The slats bend and darken every colour, including the Exhaust's band; the Exhaust aims its cones around the Veil instead of through it.
+  note: The slats bend and darken every colour, including the Exhaust's band, so the small share of the tiles' light that reaches the Veil is absorbed there, a load the Veil must shed.
 veil-build-start:
   value: 2030-06-01
   unit: date
@@ -330,12 +332,15 @@ chimney-count:
   label: Number of chimneys (one per canopy)
   basis: design
 chimney-diameter:
-  value: 3500
+  value: 6000
   unit: m
   show: km
   label: Chimney diameter
   basis: design
-  note: Wide enough to carry the same heat as version 3's first 2 km design while cooling the air by a third as much, which keeps the pumps' cold side close to the air's temperature.
+  note: >-
+    Version 3's 3.5 km chimneys carried the heat with every canopy working. Only the lit half work at
+    once, and the falling ice adds heat of its own, so they are wider; cooling the air little as it
+    passes keeps the pumps' cold side close to the air's temperature.
 chimney-flow-speed:
   value: 20
   unit: m/s
@@ -373,16 +378,17 @@ deep-heat-peak:
 
 # --- Photonic Exhaust ------------------------------------------------------------------------------
 exhaust-effective-temp:
-  value: 1600
+  value: 2200
   unit: K
   label: Effective temperature the emitters shine at
   basis: design
-  range: [1000, 3000]
+  range: [1600, 3000]
   note: >-
-    A hotter emitter needs less area (it shines as T⁴) but more pump work per joule lifted, and the
-    pumps share the Lattice's power with everything else. Version 3 chose 2,000 K with reversible
-    pumps; at half the Carnot limit the work costs too much that hot, and the extra tiles a cooler
-    emitter needs still reach Venus in time.
+    It sets how bright the tiles are: as bright as a black body this hot. A brighter tile needs less
+    area (it shines as T⁴), but its light counts as hotter still, so every joule it lifts costs more
+    light. Version 3 chose 1,600 K, with tiles pumped day and night; the Lattice can light only the
+    side of Venus it sees, so the lit tiles must shine for all of them, and at 1,600 K they would
+    need more than the whole lit side.
 exhaust-tile-areal-density:
   value: 0.5
   unit: kg/m2
@@ -416,22 +422,37 @@ exhaust-bandgap:
   label: Emitter tile bandgap (InGaAsSb)
   basis: invented
 exhaust-peak:
-  value: 1.2e20
+  value: 2.2e20
   unit: W
-  label: Peak power the Exhaust can throw into space
+  label: Peak power the Exhaust's lit tiles can throw into space
   basis: design
-  range: [6.0e19, 1.6e20]
+  range: [1.2e20, 3.0e20]
   note: Version 2 sized it at 3.6 × 10¹⁹ W from the campaign's average. The day-by-day simulation shows the Exhaust, not the power supply, sets the pace once the Ring pays for the Railheads, and at 3.6 × 10¹⁹ W Venus is Earth-like only in 2037, long after the deadline. Version 3 sized it at 5.5 × 10¹⁹ W for reversible pumps; pumps at half the Carnot limit spend twice the work, and the emitters shine that work too.
 exhaust-canopies:
   value: 10000
   unit: count
   label: Number of floating canopies
   basis: design
-exhaust-cone:
-  value: 25
+ice-drop-latitude:
+  value: 60
   unit: deg
-  label: Beam cone each tile fires into (full apex angle)
-  basis: invented
+  label: Latitude beyond which the Bricks fall, north and south
+  basis: design
+  note: >-
+    Each Brick bursts in the air with the energy of a large hydrogen bomb, so they fall at the poles,
+    clear of the canopies. The Lattice's beams reach the poles only at a slant, so tiles there would
+    be dim; the canopies fill the band between.
+exhaust-lit-share:
+  value: 0.5
+  unit: "1"
+  show: "%"
+  sig: 2
+  label: Share of the tiles the Lattice can beam at once
+  basis: design
+  note: >-
+    The Lattice orbits inside Venus's orbit, so it sees only the side of Venus facing the Sun, a
+    little more with its petals spread round their orbits; tiles near that edge would take the beams
+    too low. Venus turns once in 117 days of daylight and night, so each canopy works half the time.
 exhaust-band:
   value: 4.0e-7
   unit: m
@@ -444,7 +465,7 @@ cooling-end:
   unit: date
   label: Active cooling ends
   basis: design
-  note: Set with the last caps, just after the simulated Frost Towers finished. With the seas freezing at the triple point the simulation now passes it, so the check that the Frost Towers finish before the caps are sealed fails, an open problem.
+  note: Set with the last caps, after the simulated Frost Towers finish.
 frost-tower-temp:
   value: 133
   unit: K
@@ -525,7 +546,7 @@ sealing-end:
   unit: date
   label: Last caps sealed
   basis: design
-  note: Caps go on from the day the seas are frozen through, and the last once the Frost Towers have taken the last CO₂ out of the air, so this was set to follow the simulation. With the seas freezing at the triple point the simulation now passes it, an open problem.
+  note: Caps go on from the day the seas are frozen through, and the last once the Frost Towers have taken the last CO₂ out of the air, so this was set to follow the simulation. The Frost Towers now finish weeks before it.
 heat-pipe-depth:
   value: 200
   unit: m
@@ -552,10 +573,15 @@ forge-count:
   label: Number of Forges
   basis: design
 forge-start:
-  value: 2035-01-01
+  value: 2035-04-01
   unit: date
   label: Forging begins
   basis: design
+  note: >-
+    The Forges float on the liquid CO₂ seas, so they start two months after the Clear Rain begins for
+    good, once the Bricks' heat has stopped boiling the first seas back into the air. The two months
+    are for a slower Foundry: its later cooling can bring the seas back as late as March, and the
+    Forges still find them.
 forge-end:
   value: 2036-09-30
   unit: date
@@ -570,11 +596,25 @@ forge-raft-width:
 
 # --- Ceres Ice Train -------------------------------------------------------------------------------
 ice-mass:
-  value: 1.0e20
+  value: 1.0e18
   unit: kg
   label: Water shipped to Venus
   basis: design
-  range: [3.0e19, 2.0e20]
+  range: [3.0e17, 3.0e18]
+  note: >-
+    Every Brick falls into the air and stops there, bringing the heat of its whole fall, which the
+    pumps must lift. Version 3 shipped a hundred times more and caught it on a Braking Ring that
+    could not work. This much fits: seas in Venus's lowlands, not oceans.
+sea-mean-depth:
+  value: 300
+  unit: m
+  label: Average depth of the new seas where they lie
+  basis: design
+  range: [50, 1000]
+  note: >-
+    The water gathers in the deepest of Venus's lowland basins, which lie a kilometre or two below
+    the planet's mean surface, so the seas are deep where they are and cover little of the planet.
+    A design figure, not a survey; it sets only how much of Venus the seas cover.
 brick-mass:
   value: 1.0e9
   unit: kg
@@ -597,23 +637,37 @@ railhead-efficiency:
   show: "%"
   label: Railhead efficiency, electricity to motion
   basis: invented
-ice-lowering-margin:
-  value: 16
+ice-campaign-days:
+  value: 90
   unit: d
-  label: Days kept between the last arrival and the deadline
+  label: Length of the launch campaign
   basis: design
+  note: >-
+    Short, so the Bricks fall into air that is still hot, where the pumps lift their heat for the
+    least work, and the launches end before cooling begins and needs the Lattice's light.
 ice-arrival-peak:
   value: 3
   unit: "1"
   sig: 1
-  label: Peak rate the Ring is built to catch, as a multiple of the mean
+  label: Peak arrival rate, as a multiple of the mean
   basis: design
   note: >-
     A whole number: the most launch phases the schedule may book into one arrival slot. Spreading
-    the arrivals evenly (1) would nearly double the launch energy; left free, the cheapest transfers
-    pile into a handful of slots each cycle. At 3 the trade turns: going down to 2 costs several
-    times the launch energy that going up to 4 saves, while the Ring's tracks, power and braking
-    grow with the peak.
+    the arrivals evenly (1) costs more launch energy; left free, the cheapest transfers pile into a
+    handful of slots each cycle and their heat into a few days.
+ice-arrival-weight:
+  value: 0
+  unit: "1"
+  sig: 2
+  range: [0, 4]
+  label: Launch energy the schedule will spend to save one joule of arrival speed
+  basis: design
+  note: >-
+    A Brick's arrival speed ends as heat in Venus's air, so it is tempting to pay launch energy for
+    slower arrivals. Weighing it books slower transfers, which spread the arrivals over months and
+    warm the air back less as they land; but the later Bricks fall into colder air, where their heat
+    costs the pumps more to lift, and the frost margin is no better, then worse. So the schedule books
+    the cheapest launches, and the Bricks arrive within weeks, into the warmest air they can reach.
 railhead-barrel-loss:
   value: 1.0e-3
   unit: "1"
@@ -683,74 +737,12 @@ ceres-doubling-days:
     carbon-fibre industry needs, which Mercury's rock lacks, but far less sunlight. At the Foundry's
     pace the Railheads would not be ready when the launches must start.
 
-# --- Braking Ring ----------------------------------------------------------------------------------
-ring-complete:
-  value: 2033-12-31
-  unit: date
-  label: Braking Ring complete
-  basis: design
-ring-altitude:
-  value: 4.0e5
-  unit: m
-  show: km
-  label: Ring altitude
-  basis: design
-ring-rotor-speed:
-  value: 1.0e4
-  unit: m/s
-  show: km/s
-  label: Rotor speed
-  basis: invented
-ring-rotor-mass:
-  value: 7.0e12
-  unit: kg
-  label: Rotor mass
-  basis: invented
-ring-stator-mass:
-  value: 3.0e12
-  unit: kg
-  label: Stator mass (catcher tracks, tether heads and cables)
-  basis: invented
-  note: >-
-    Not the Lattice's receivers and fins or the catch's radiators, which the plan also puts on the
-    stator: the check ring-carries-equipment weighs them.
-ring-catch-accel:
-  value: 50
-  unit: g
-  label: Catcher braking
-  basis: invented
-ring-recovery-efficiency:
-  value: 0.80
-  unit: "1"
-  show: "%"
-  label: Regenerative braking efficiency
-  basis: invented
-ring-tether-lifts:
-  value: 3000
-  unit: count
-  label: Number of tether lifts
-  basis: design
-lowering-release-altitude:
-  value: 1.0e5
-  unit: m
-  show: km
-  label: Height Bricks are released from
-  basis: design
-lowering-start:
-  value: 2035-06-30
-  unit: date
-  label: Lowering begins
-  basis: design
-lowering-end:
-  value: 2036-12-15
-  unit: date
-  label: Lowering ends
-  basis: design
 brick-temp:
   value: 150
   unit: K
-  label: Temperature of a Brick when it is lowered
+  label: Temperature of a Brick's ice when it enters Venus's air
   basis: design
+  note: It sets only the heat that warming and melting the ice takes, a small fraction of the heat of its fall.
 
 # --- Aegis Shield ----------------------------------------------------------------------------------
 aegis-online:
@@ -861,7 +853,7 @@ final-humidity:
   value: 0.75
   unit: "1"
   show: "%"
-  label: Relative humidity over the new oceans
+  label: Relative humidity over the new seas
   basis: design
 final-albedo:
   value: 0.30

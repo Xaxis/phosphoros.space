@@ -49,8 +49,8 @@ finish:
     by: [cryo, forges, exhaust]
   - measure: Water
     today: Nearly none
-    target: "{ice-mass}, a {ocean-depth} global ocean"
-    by: [ice-train, ring]
+    target: "{ice-mass}, seas {ocean-depth} deep if spread over the globe"
+    by: [ice-train]
   - measure: Light cycle
     today: "A {venus-solar-day} solar day"
     target: "A {day-length} day"

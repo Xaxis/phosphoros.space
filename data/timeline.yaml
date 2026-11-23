@@ -65,12 +65,13 @@ rows:
     start: veil-build-begin
     end: veil-close
     tech: veil
-  - id: ring-build
-    label: Braking Ring built
-    lane: space
-    start: ring-build-begin
-    end: ring-complete
-    tech: ring
+  - id: hardware-build
+    label: Tiles, chimneys and receivers built and shipped to Venus
+    lane: mercury
+    start: helios-full-power
+    end: venus-hardware-ready
+    tech: exhaust
+    critical: true
   - id: aegis-online
     label: Aegis Shield online
     lane: space
@@ -102,12 +103,6 @@ rows:
     end: ice-launch-end
     tech: ice-train
     critical: true
-  - id: ring-pays
-    label: The Ring pays for the launches
-    lane: ceres
-    kind: milestone
-    start: ring-pays-from
-    tech: ring
   - id: cooling
     label: Active cooling
     lane: venus
@@ -132,19 +127,24 @@ rows:
     start: traj-frozen
     end: sealing-end
     tech: cryo
-  - id: ice-catch
-    label: Ice caught and parked
-    lane: space
-    start: first-catch
-    end: last-arrival
-    tech: ring
-    critical: true
-  - id: ice-lowering
-    label: Ice lowered, oceans fill
+  - id: ice-arrival
+    label: Bricks fall into the air at the poles
     lane: venus
-    start: lowering-start
-    end: lowering-end
-    tech: ring
+    start: first-arrival
+    end: last-arrival
+    tech: ice-train
+  - id: water-rain
+    label: The new water rains out
+    lane: venus
+    kind: milestone
+    start: traj-water-rain
+    tech: ice-train
+  - id: rerain
+    label: The Clear Rain begins for good, after the Bricks' heat
+    lane: venus
+    kind: milestone
+    start: traj-rerain
+    tech: cryo
   - id: forging
     label: Oxygen forging
     lane: venus
@@ -158,7 +158,7 @@ rows:
     end: genesis-ph-clear
     tech: acid
   - id: genesis
-    label: Genesis seeding, oceans green
+    label: Genesis seeding, seas green
     lane: venus
     start: genesis-start
     end: genesis-end
@@ -184,6 +184,8 @@ rows:
 
 critical_path: >-
   The critical path runs through the Foundry. The seed must launch by {foundry-seed-launch} so the
-  Lattice reaches full power by {helios-full-power}. Ice launched after {ice-launch-end} cannot
-  arrive before the deadline, so any slip in the doubling time comes straight out of the water.
-  Ceres's factories, launched the same day, finish the Railheads {ceres-slack} before the first launch.
+  Lattice reaches full power by {helios-full-power}; the Foundry then builds the tiles, chimneys
+  and receivers, which reach Venus on {cooling-start}, when cooling begins. From there the pumps
+  set the pace: the Frost Towers finish {frost-sealing-slack} before the last caps, so any slip in
+  the doubling time comes straight out of that margin. Ceres's factories, launched the same day,
+  finish the Railheads {ceres-slack} before the first launch.

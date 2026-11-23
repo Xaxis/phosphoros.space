@@ -105,8 +105,15 @@
   title: "JPL Small-Body Database: 1 Ceres"
   authors: NASA Jet Propulsion Laboratory, Solar System Dynamics
   url: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=1
-  checked: 2026-11-21
-  note: Ceres's semi-major axis, aphelion, inclination and ascending node (J2000 ecliptic, osculating at JD 2461200.5).
+  checked: 2026-11-23
+  note: Ceres's semi-major axis, aphelion, eccentricity, inclination, ascending node, argument of perihelion, mean anomaly and mean motion (J2000 ecliptic, osculating at JD 2461200.5, JPL solution of 13 April 2021).
+- id: standish-1992-approx
+  kind: data
+  title: Approximate Positions of the Planets
+  authors: Standish, E. M., and Williams, J. G. (NASA Jet Propulsion Laboratory, Solar System Dynamics)
+  url: https://ssd.jpl.nasa.gov/planets/approx_pos.html
+  checked: 2026-11-23
+  note: Keplerian elements of the planets and their rates, for 1800 to 2050 (Table 1); Venus's mean longitude at J2000 and its rate, 58,517.815° a century.
 - id: park-2016-ceres
   kind: paper
   title: "A partially differentiated interior for (1) Ceres deduced from its gravity field and shape"
@@ -381,24 +388,33 @@
   url: https://www.toraycma.com/wp-content/uploads/T1100G-Data-Sheet.pdf
   checked: 2026-11-20
   note: Tensile strength 7,000 MPa and density 1.79 g/cm³; sizes the Aegis coil's structure.
-- id: geusic-1964-ndyag
+- id: mirov-2015-midir
   kind: paper
-  title: Laser oscillations in Nd-doped yttrium aluminum, yttrium gallium and gadolinium garnets
-  authors: Geusic, J. E., Marcos, H. M., and Van Uitert, L. G.
-  year: 1964
-  venue: Applied Physics Letters 4, 182 to 184
-  doi: 10.1063/1.1753928
-  checked: 2026-11-21
-  note: The first Nd:YAG laser, at Bell Laboratories, on the neodymium line near 1.064 µm that the Helios Lattice's beam uses.
-- id: belforte-2010-industrial
-  kind: news
-  title: Milestones in industrial laser materials processing
-  authors: Belforte, D. A. (Laser Focus World)
-  year: 2010
-  date: 2010-01-01
-  url: https://www.laserfocusworld.com/industrial-laser-solutions/article/14215987/milestones-in-industrial-laser-materials-processing
-  checked: 2026-11-21
-  note: Nd:YAG lasers in industry from 1970, when Quantronix sold a system for scribing silicon wafers, then in drilling, cutting and welding.
+  title: Progress in Mid-IR Lasers Based on Cr and Fe-Doped II-VI Chalcogenides
+  authors: Mirov, S. B., Fedorov, V. V., Martyshkin, D., Moskalev, I. S., Mirov, M., and Vasilyev, S.
+  year: 2015
+  venue: IEEE Journal of Selected Topics in Quantum Electronics 21(1), 292 to 310
+  doi: 10.1109/JSTQE.2014.2346512
+  checked: 2026-11-23
+  note: A review of chromium- and iron-doped zinc selenide and zinc sulphide lasers, which emit in the mid-infrared near the Lattice's wavelength.
+- id: epstein-1995-cooling
+  kind: paper
+  title: Observation of laser-induced fluorescent cooling of a solid
+  authors: Epstein, R. I., Buchwald, M. I., Edwards, B. C., Gosnell, T. R., and Mungan, C. E.
+  year: 1995
+  venue: Nature 377, 500 to 503
+  doi: 10.1038/377500a0
+  checked: 2026-11-23
+  note: The first solid cooled by laser light, a glass doped with ytterbium that gave off a little more energy as light than it absorbed.
+- id: zhang-2013-semiconductor
+  kind: paper
+  title: Laser cooling of a semiconductor by 40 kelvin
+  authors: Zhang, J., Li, D., Chen, R., and Xiong, Q.
+  year: 2013
+  venue: Nature 493, 504 to 508
+  doi: 10.1038/nature11721
+  checked: 2026-11-23
+  note: The first semiconductor cooled by laser light, cadmium sulphide nanobelts, by 40 K.
 - id: wna-fast-reactors
   kind: web
   title: Fast Neutron Reactors

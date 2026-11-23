@@ -21,7 +21,7 @@ Venus), runs straight into its upper air, picks up ions and carries them away. E
 wind off far above the air. At Mars, which has also lost its field, spacecraft have measured the
 atmosphere being carried off this way
 ([Green et al. 2017](../sources.md#nasa-mars-magnetic-2017)). Stripping works slowly, over geological
-time; Aegis is there so that the oceans and oxygen the plan delivers are still there long after 2036.
+time; Aegis is there so that the seas and oxygen the plan delivers are still there long after 2036.
 
 ### How a magnetic bubble works
 
@@ -133,9 +133,9 @@ fibre than the Foundry ever builds ([corrections](../about.md#corrections)).
 - **[December 2032](../numbers.md?date=month#veil-close):** The Veil closes near L1. The coil is built at the
   same station from Foundry parts.
 - **[June 2034](../numbers.md?date=month#aegis-online):** The coil is charged and the bubble inflates.
-- **[July 2034](../numbers.md?date=month#first-catch):** The first water arrives at Venus, already
+- **[November 2034](../numbers.md?date=month#first-arrival):** The first Bricks fall into Venus's air, already
   under the shield.
-- **After 2036:** Aegis keeps running on its persistent current, for as long as Venus keeps its oceans.
+- **After 2036:** Aegis keeps running on its persistent current, for as long as Venus keeps its seas.
 
 ## Failure modes and safeguards
 

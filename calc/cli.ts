@@ -54,10 +54,10 @@ if (flag("--json")) {
 } else if (flag("--claims")) {
   const claims = readYaml("data/claims.yaml").data as Claim[];
   const results = checkClaims(r, claims);
-  const counts = { match: 0, differs: 0, corrected: 0 };
+  const counts = { match: 0, differs: 0, corrected: 0, retired: 0 };
   for (const c of results) {
     counts[c.status]++;
-    const mark = c.status === "match" ? "ok " : c.status === "corrected" ? "v3 " : "!! ";
+    const mark = { match: "ok ", corrected: "fix", retired: "ret", differs: "!! " }[c.status];
     console.log(
       `${mark} ${c.model.padEnd(32)} brief ${c.shown.brief.padEnd(22)} model ${c.shown.model}`,
     );
@@ -65,7 +65,7 @@ if (flag("--json")) {
       console.log("     ^ differs with no note in data/claims.yaml");
   }
   console.log(
-    `\n${results.length} claims: ${counts.match} match, ${counts.corrected} corrected in v3, ${counts.differs} differ (each explained in data/claims.yaml)`,
+    `\n${results.length} claims: ${counts.match} match, ${counts.corrected} corrected on purpose, ${counts.retired} retired with their machine, ${counts.differs} differ (each explained in data/claims.yaml)`,
   );
   const unexplained = results.filter((c) => c.status === "differs" && !c.note);
   if (unexplained.length) process.exit(1);

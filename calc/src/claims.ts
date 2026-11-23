@@ -9,11 +9,17 @@ export interface Claim {
   tol?: number;
   where: string;
   correction?: string;
+  /** The correction that retired the machine this number describes; the model no longer has it. */
+  retired?: string;
+  /** For a retired claim, how its number was labelled and shown, since the model cannot say. */
+  label?: string;
+  unit?: string;
+  show?: string;
   note?: string;
 }
 
 export interface ClaimResult extends Claim {
-  status: "match" | "differs" | "corrected";
+  status: "match" | "differs" | "corrected" | "retired";
   model_value: number;
   brief_value: number;
   /** Relative difference (or days, for dates). */
@@ -24,6 +30,20 @@ export interface ClaimResult extends Claim {
 
 export function checkClaims(r: Registry, claims: Claim[]): ClaimResult[] {
   return claims.map((c) => {
+    if (c.retired) {
+      if (!c.label || !c.unit) throw new Error(`claims: retired ${c.model} needs a label and unit`);
+      const value = typeof c.brief === "string" ? dayOf(c.brief) : c.brief;
+      const q = { value, unit: c.unit, show: c.show, sig: 2 };
+      return {
+        ...c,
+        status: "retired" as const,
+        model_value: Number.NaN,
+        brief_value: value,
+        diff: Number.NaN,
+        label: c.label,
+        shown: { brief: formatQuantity(q, { date: "day" }), model: "Retired" },
+      };
+    }
     const q = r.get(c.model);
     const isDate = q.unit === "date";
     const brief = typeof c.brief === "string" ? dayOf(c.brief) : c.brief;

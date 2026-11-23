@@ -1,7 +1,7 @@
 # Choir
 
-Choir runs at least [3.9 × 10⁸](../numbers.md#choir-machines) machines on three worlds as one system (the
-Petals, slats, canopies, chimneys, Forges, Railheads and tether lifts the model counts, before the
+Choir runs at least [4.0 × 10⁸](../numbers.md#choir-machines) machines on three worlds as one system (the
+Petals, slats, canopies, chimneys, Forges and Railheads the model counts, before the
 Foundry's own robots, which it does not). It is a four-tier autonomous control
 system that plans around light delays of up to [33 min](../numbers.md#delay-earth-ceres-max), and its
 safety core sets hard limits that no machine, and no single person, can override: a Mass Ledger, signed
@@ -23,7 +23,7 @@ Mercury is [2.8 min](../numbers.md#delay-mercury-venus-min) to
 Ceres, and Earth is up to [33 min](../numbers.md#delay-earth-ceres-max) from Ceres. Even the Veil is
 [3.7 s](../numbers.md#veil-light-delay) from Venus. A question and its answer take twice as long.
 
-Nobody on Earth can steer a coilgun on Ceres, a sled on the Ring or a slat on the Veil as it happens. So
+Nobody on Earth can steer a coilgun on Ceres, a Brick falling into Venus's air or a slat on the Veil as it happens. So
 each decision is made at the lowest level that can see enough to make it and act fast enough to matter.
 
 ### Four tiers
@@ -46,8 +46,8 @@ inside its last limits.
 ### Limits that are not up for negotiation
 
 A self-copying industry is the most powerful machine in the plan and the most dangerous. Ouroboros grows
-from [1,000 t](../numbers.md#foundry-seed-mass) to [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) in
-[27](../numbers.md#foundry-doublings) doublings, and one unplanned doubling more would double everything.
+from [1,000 t](../numbers.md#foundry-seed-mass) to [2.7 × 10¹⁴ kg](../numbers.md#foundry-final-mass) in
+[28](../numbers.md#foundry-doublings) doublings, and one unplanned doubling more would double everything.
 So the rules about replication are not left to software that learns or plans. They live in a safety core
 that every replicating machine carries, enforced in hardware and proved by mathematics.
 
@@ -57,8 +57,8 @@ that every replicating machine carries, enforced in hardware and proved by mathe
 
 The Ledger is an append-only record of every kilogram mined, built, shipped and recycled, copied at every
 site. Each entry carries a digest of the entry before it, so history cannot be edited without breaking
-the chain. The Council sets mass budgets, [1.3 × 10¹⁴ kg](../numbers.md#foundry-final-mass) for the
-Foundry and [1.3 × 10¹⁴ kg](../numbers.md#ceres-final-mass) for the Ceres factories, the two lines that copy
+the chain. The Council sets mass budgets, [2.7 × 10¹⁴ kg](../numbers.md#foundry-final-mass) for the
+Foundry and [6.7 × 10¹³ kg](../numbers.md#ceres-final-mass) for the Ceres factories, the two lines that copy
 themselves, and a machine refuses any order that would take its site past its budget.
 
 ### Signed build orders
@@ -100,8 +100,8 @@ can only ask.
 ### The digital twin
 
 At the Council tier, a digital twin of Venus and of every machine forecasts phase changes weeks ahead,
-such as the Clear Rain of [January 2035](../numbers.md?date=month#traj-clear-rain) and the freezing of
-the CO₂ seas from [September 2035](../numbers.md?date=month#traj-freeze). The Works then move canopies, Forges
+such as the Clear Rain of [August 2034](../numbers.md?date=month#traj-clear-rain) and the freezing of
+the CO₂ seas from [November 2035](../numbers.md?date=month#traj-freeze). The Works then move canopies, Forges
 and crawlers before conditions change rather than after.
 
 ### What it coordinates
@@ -110,11 +110,11 @@ and crawlers before conditions change rather than after.
   [Helios Lattice](helios.md)'s Petals in orbit. A beam fires only while its receiver answers with a live, signed
   handshake, and defocuses the moment the handshake drops.
 - **Near Venus:** the [Hesperus Veil](veil.md)'s [3.8 × 10⁸](../numbers.md#veil-slats) slats, each holding
-  station by itself, and the [Braking Ring](ring.md)'s catches.
-- **Between Ceres and Venus:** a Brick is in flight for up to [611 d](../numbers.md#ice-flight-max), so
-  every catch is scheduled when it is launched. Eastbound and westbound catches must balance, so a
-  Railhead that stops on Ceres is matched by a change of plan at the Ring, across up to
-  [29 min](../numbers.md#delay-venus-ceres-max) of delay.
+  station by itself.
+- **Between Ceres and Venus:** a Brick is in flight for up to [410 d](../numbers.md#ice-flight-max), so
+  every arrival is scheduled when it is launched. Each Brick must fall into its drop zone, near a pole and
+  clear of the canopies, so the Railheads' aim and the canopies' positions are planned together, across up
+  to [29 min](../numbers.md#delay-venus-ceres-max) of delay.
 - **On Venus:** chimneys, canopies, crawler-rafts, Forges, rock mills and, at the end, the seeding drones
   of [Genesis](genesis.md).
 
@@ -125,7 +125,7 @@ and crawlers before conditions change rather than after.
 | --- | --- |
 | Light delay | Mercury to Venus [2.8 min](../numbers.md#delay-mercury-venus-min) to [9.2 min](../numbers.md#delay-mercury-venus-max); Venus to Ceres [17 min](../numbers.md#delay-venus-ceres-min) to [29 min](../numbers.md#delay-venus-ceres-max); Earth to Ceres up to [33 min](../numbers.md#delay-earth-ceres-max) |
 | Veil to Venus | [3.7 s](../numbers.md#veil-light-delay) |
-| Machines counted | [3.9 × 10⁸](../numbers.md#choir-machines), a floor: the Foundry's own robots are not sized |
+| Machines counted | [4.0 × 10⁸](../numbers.md#choir-machines), a floor: the Foundry's own robots are not sized |
 <!-- /table -->
 
 ## What is invented
@@ -154,11 +154,11 @@ and crawlers before conditions change rather than after.
   Veil slats are tested. Beam handshakes start.
 - **[December 2032](../numbers.md?date=month#veil-close):** The Veil closes. Choir holds its slats on station
   and sets its transmission.
-- **[July 2033](../numbers.md?date=month#foundry-full-scale):** The Foundry reaches full scale and its
-  budget; replication stops there, and the Foundry turns to the Lattice and the Ring.
-- **[August 2033](../numbers.md?date=month#ice-launch-start):** The first Bricks leave Ceres.
-- **[July 2034](../numbers.md?date=month#first-catch):** The first catch. Ceres and Venus now work as
-  one schedule.
+- **[August 2033](../numbers.md?date=month#foundry-full-scale):** The Foundry reaches full scale and its
+  budget; replication stops there, and the Foundry turns to the Lattice and the hardware at Venus.
+- **[October 2033](../numbers.md?date=month#ice-launch-start):** The first Bricks leave Ceres.
+- **[November 2034](../numbers.md?date=month#first-arrival):** The first Bricks fall into Venus's air. Ceres and
+  Venus now work as one schedule.
 - **[December 2036](../numbers.md?date=month#deadline):** The deadline. Choir stays on: the Veil remains
   the planet's thermostat, and the cryo-continents need refrigeration for good.
 

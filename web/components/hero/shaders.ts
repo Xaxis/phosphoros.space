@@ -143,6 +143,8 @@ uniform vec3 uCamPos;
 uniform float uSun;
 uniform float uHeat;
 uniform float uCO2Level;
+uniform float uCO2Line;
+uniform float uWaterLine;
 uniform float uDryIce;
 uniform float uSealed;
 uniform float uWaterIce;
@@ -197,14 +199,14 @@ void main() {
   vec3 bumped = normalize(n - (hx / max(0.15, length(n.xz)) * east + hy * north) * 5.0);
 
   float lat = abs(n.y);
-  // The CO2 basins: wide mid- and high-latitude lowlands, since the frozen air outweighs the oceans.
+  // The CO2 basins: wide mid- and high-latitude lowlands, since the frozen air far outweighs the seas.
   float co2Basin = smoothstep(0.46, 0.56, t.g) * smoothstep(0.28, 0.52, lat);
   float waterBasin = 1.0 - co2Basin;
 
   vec3 col = mix(cRockLow, cRockHigh, smoothstep(0.4, 0.78, h)) * (0.8 + 0.4 * t.b);
 
-  float co2Line = mix(0.28, 0.52, uCO2Level);
-  float co2Sea = co2Basin * smoothstep(0.012, -0.012, h - co2Line) * step(0.001, uCO2Level);
+  // The shorelines are heights read from this terrain, so the seas cover the share the model gives.
+  float co2Sea = co2Basin * smoothstep(0.012, -0.012, h - uCO2Line) * step(0.001, uCO2Level);
   // Liquid CO2, then dry ice, then the sealed lids: pale plates with dark joints between cells.
   vec3 co2Col = mix(cCO2, cDryIce, uDryIce);
   if (uSealed > 0.0 && co2Sea > 0.0) {
@@ -214,7 +216,7 @@ void main() {
 
   // Ice and liquid water are the same water: the seas only ever rise as the ice melts.
   float wet = uOcean + uWaterIce;
-  float waterLine = mix(0.26, 0.53, clamp(wet, 0.0, 1.0));
+  float waterLine = uWaterLine;
   float water = waterBasin * smoothstep(0.012, -0.012, h - waterLine) * step(0.001, wet);
   float depth = clamp((waterLine - h) / 0.14, 0.0, 1.0);
   float frozen = uWaterIce / max(wet, 1e-3);
@@ -286,8 +288,9 @@ void main() {
   float deckA = uDeck * (0.9 + 0.1 * deckN);
   float wn = a.g * 0.6 + b.g * 0.4;
   float waterA = uWater * smoothstep(0.5, 0.76, wn) * 0.9;
+  // Water clouds lie over the deck: while the new water rains out they swirl white through it.
   float alpha = clamp(deckA + waterA * (1.0 - deckA), 0.0, 1.0);
-  vec3 c = mix(cCloud, deck, deckA / max(alpha, 1e-3));
+  vec3 c = (cCloud * waterA + deck * deckA * (1.0 - waterA)) / max(alpha, 1e-3);
 
   vec3 N = normalize(uRot * n);
   vec3 V = normalize(uCamPos - vPosW);
@@ -351,27 +354,12 @@ void main() {
 }
 `;
 
-/** Shared by the Ring and its halo: the loop is drawn only as far as it is built. */
-export const RING_VERT = /* glsl */ `
+/** A flat shape's texture coordinates, for the Veil's disc. */
+export const FLAT_VERT = /* glsl */ `
 varying vec2 vUv;
 void main() {
   vUv = uv;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-}
-`;
-
-export const RING_FRAG = /* glsl */ `
-uniform float uBuilt;
-uniform float uGlow;
-uniform vec3 cRing;
-varying vec2 vUv;
-void main() {
-  if (vUv.x > uBuilt) discard;
-  float head = smoothstep(uBuilt - 0.03, uBuilt, vUv.x) * step(uBuilt, 0.999);
-  vec3 col = cRing * (1.0 + 4.0 * head);
-  float a = uGlow > 0.5 ? 0.22 * (1.0 - abs(vUv.y - 0.5) * 2.0) : 1.0;
-  gl_FragColor = vec4(col * a, a);
-  ${OUT}
 }
 `;
 
@@ -388,22 +376,29 @@ void main() {
 }
 `;
 
-/** Photonic Exhaust: each canopy is a point of infrared light on the cloud tops, gently flickering. */
+/**
+ * Photonic Exhaust: each canopy is a point of infrared light on the cloud tops, gently flickering.
+ * The tiles shine only while the Lattice's light reaches them, so only the side of Venus facing the
+ * Lattice (uLitDir) glows; the canopies turn into it and out of it as the planet spins.
+ */
 export const CANOPY_VERT = /* glsl */ `
 uniform float uTime;
 uniform float uPixel;
 uniform float uOn;
+uniform vec3 uLitDir;
 attribute float aSeed;
 varying float vAlpha;
 void main() {
-  vAlpha = uOn * (0.65 + 0.35 * sin(uTime * (1.1 + aSeed * 1.9) + aSeed * 40.0));
+  vec3 up = normalize(mat3(modelMatrix) * position);
+  float lit = smoothstep(-0.02, 0.25, dot(up, uLitDir));
+  vAlpha = uOn * lit * (0.65 + 0.35 * sin(uTime * (1.1 + aSeed * 1.9) + aSeed * 40.0));
   vec4 mv = modelViewMatrix * vec4(position, 1.0);
   gl_PointSize = uPixel * (3.2 + 2.6 * aSeed) * (8.0 / -mv.z);
   gl_Position = projectionMatrix * mv;
 }
 `;
 
-/** Helios power beams: pulses travel from the Lattice down to the Ring's receivers. */
+/** Helios beams: pulses travel from the Lattice down to the Exhaust's tiles on the lit side. */
 export const BEAM_FRAG = /* glsl */ `
 uniform float uTime;
 uniform float uOn;
@@ -412,7 +407,8 @@ varying float vV;
 varying float vSeed;
 void main() {
   float pulse = pow(0.5 + 0.5 * sin((vV * 9.0 - uTime * 1.6 + vSeed * 6.0) * 6.28318), 6.0);
-  float fade = smoothstep(0.0, 0.35, vV) * smoothstep(1.0, 0.94, vV);
+  // Fades in far from Venus and lands at full strength on the cloud tops.
+  float fade = smoothstep(0.0, 0.35, vV);
   vec3 col = cBeam * (0.25 + 1.6 * pulse) * fade * uOn;
   gl_FragColor = vec4(col, 1.0);
   ${OUT}
@@ -420,8 +416,10 @@ void main() {
 `;
 
 /**
- * Ice Bricks on their way in: each follows a curve from deep space to one of the Ring's two catch
- * points, then slows along the Ring into the parking belt.
+ * Ice Bricks on their way in: each follows a curve from deep space, steered down onto its own spot
+ * in a polar drop zone (aEnd, on the cloud tops), where it bursts in a brief flash of heat. Bricks
+ * show only between the stream's tail and its front, and flash only once the front has arrived and
+ * until the tail has.
  */
 export const BRICK_VERT = /* glsl */ `
 uniform float uTime;
@@ -430,15 +428,12 @@ uniform float uTail;
 uniform float uPixel;
 uniform vec3 uP0[2];
 uniform vec3 uP1[2];
-uniform vec3 uP2[2];
-uniform vec3 uP3[2];
-uniform float uRingR;
-uniform float uCatchAngle[2];
-uniform float uDir[2];
 attribute float aOffset;
 attribute float aSide;
 attribute vec3 aJitter;
+attribute vec3 aEnd;
 varying float vAlpha;
+varying float vFlash;
 vec3 bezier(vec3 a, vec3 b, vec3 c, vec3 d, float t) {
   float s = 1.0 - t;
   return s * s * s * a + 3.0 * s * s * t * b + 3.0 * s * t * t * c + t * t * t * d;
@@ -447,21 +442,42 @@ void main() {
   int k = aSide > 0.5 ? 1 : 0;
   float u = fract(aOffset + uTime * 0.045);
   vec3 pos;
-  float alpha;
-  float along = u / 0.86;
-  if (u < 0.86) {
-    pos = bezier(uP0[k], uP1[k], uP2[k], uP3[k], along) + aJitter * (1.0 - along) * 0.5;
-    alpha = smoothstep(0.0, 0.15, along) * step(along, uFront) * step(uTail, along);
+  float size;
+  float along = u / 0.9;
+  if (u < 0.9) {
+    // The last leg comes down from above the drop point, along the local vertical.
+    pos = bezier(uP0[k], uP1[k], aEnd * 2.1, aEnd, along) + aJitter * (1.0 - along) * 0.5;
+    vAlpha = smoothstep(0.0, 0.15, along) * step(along, uFront) * step(uTail, along);
+    vFlash = 0.0;
+    size = 2.2 + 8.0 * aJitter.x * aJitter.x;
   } else {
-    float s = (u - 0.86) / 0.14;
-    float ang = uCatchAngle[k] + uDir[k] * 0.9 * (1.0 - (1.0 - s) * (1.0 - s));
-    pos = vec3(cos(ang) * uRingR, 0.0, sin(ang) * uRingR) + aJitter * 0.03;
-    alpha = (1.0 - s) * step(1.0, uFront) * step(uTail, 0.999);
+    float s = (u - 0.9) / 0.1;
+    float burst = (1.0 - s) * (1.0 - s);
+    pos = aEnd;
+    vAlpha = burst * step(1.0, uFront) * step(uTail, 0.999);
+    vFlash = 1.0;
+    size = 4.0 + 24.0 * sqrt(s) * (1.0 - s);
   }
-  vAlpha = alpha;
   vec4 mv = modelViewMatrix * vec4(pos, 1.0);
-  gl_PointSize = uPixel * (2.2 + 2.0 * aJitter.x * aJitter.x * 4.0) * (5.0 / -mv.z);
+  gl_PointSize = uPixel * size * (5.0 / -mv.z);
   gl_Position = projectionMatrix * mv;
+}
+`;
+
+/** A Brick in flight is icy blue; bursting in the air, a flash of heat. */
+export const BRICK_FRAG = /* glsl */ `
+uniform vec3 cPoint;
+uniform vec3 cFlash;
+uniform float uOn;
+varying float vAlpha;
+varying float vFlash;
+void main() {
+  vec2 q = gl_PointCoord - 0.5;
+  float r = length(q) * 2.0;
+  if (r > 1.0) discard;
+  float core = pow(1.0 - r, 2.2);
+  gl_FragColor = vec4(mix(cPoint, cFlash, vFlash) * core * vAlpha * uOn, 1.0);
+  ${OUT}
 }
 `;
 
@@ -476,22 +492,6 @@ void main() {
   float core = pow(1.0 - r, 2.2);
   gl_FragColor = vec4(cPoint * core * vAlpha * uOn, 1.0);
   ${OUT}
-}
-`;
-
-/** A pulse of light where Bricks meet the Ring. */
-export const FLASH_VERT = /* glsl */ `
-uniform float uTime;
-uniform float uPixel;
-uniform float uOn;
-attribute float aSeed;
-varying float vAlpha;
-void main() {
-  float beat = 0.6 + 0.4 * sin(uTime * 7.0 + aSeed * 3.0);
-  vAlpha = beat;
-  vec4 mv = modelViewMatrix * vec4(position, 1.0);
-  gl_PointSize = uPixel * 26.0 * uOn * beat * (5.0 / -mv.z);
-  gl_Position = projectionMatrix * mv;
 }
 `;
 

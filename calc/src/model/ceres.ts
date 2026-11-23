@@ -827,12 +827,12 @@ export function ceres(r: Registry) {
   r.c(
     "railheads-within-lattice",
     {
-      label: "The Lattice can power the Railheads until the Ring pays for them",
+      label: "The Lattice can power the Railheads",
       kind: "capacity",
     },
     () => ({
-      pass: v("railhead-power") <= v("helios-power"),
-      detail: `Throwing ${fmt(r, "ice-mass")} in ${fmt(r, "ice-campaign")} takes ${fmt(r, "railhead-power")}, and until the first Brick is caught on ${fmt(r, "first-catch", { date: "day" })} only the Lattice's ${fmt(r, "helios-power")} can supply it.`,
+      pass: v("ceres-receiver-incident") <= v("helios-power"),
+      detail: `Throwing ${fmt(r, "ice-mass")} in ${fmt(r, "ice-campaign")} takes ${fmt(r, "railhead-power")}, which Ceres's receivers make from ${fmt(r, "ceres-receiver-incident")} of the Lattice's ${fmt(r, "helios-power")}.`,
     }),
   );
   r.c(

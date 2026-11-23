@@ -98,9 +98,23 @@ for (const width of [320, 390]) {
   // The Explorer marks basis in words and redraws the schedule, the air and the budget per variant.
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 } });
   const p = await ctx.newPage();
-  const look = async (query: string) => {
+  // The Explorer runs the whole model in the page for a variant, which can take a few seconds on a
+  // busy machine, so a variant waits for the verdict to move off the plan's before it is read.
+  const look = async (query: string, planWhen?: string) => {
     await p.goto(`${base}/explore${query}`, { waitUntil: "load" });
     await p.waitForTimeout(1200);
+    if (planWhen)
+      await p
+        .waitForFunction(
+          (when) =>
+            (document.querySelector(".explorer-verdict strong")?.textContent ?? "").replace(
+              /\s+/g,
+              " ",
+            ) !== when,
+          planWhen,
+          { timeout: 20_000 },
+        )
+        .catch(() => undefined);
     return p.evaluate(() => {
       const text = (e: Element | null | undefined) => (e?.textContent ?? "").replace(/\s+/g, " ");
       const figs = [...document.querySelectorAll(".explorer-results figure")];
@@ -116,7 +130,7 @@ for (const width of [320, 390]) {
     });
   };
   const plan = await look("");
-  const slow = await look("?set=foundry-doubling-days:70");
+  const slow = await look("?set=foundry-doubling-days:70", plan.when);
   check(
     plan.figs === 3 &&
       plan.badges === plan.sliders &&

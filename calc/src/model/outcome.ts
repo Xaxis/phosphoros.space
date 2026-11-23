@@ -7,7 +7,7 @@ export function outcome(r: Registry) {
   r.q(
     "final-water-vapour",
     {
-      label: "Water vapour pressure over the new oceans",
+      label: "Water vapour pressure over the new seas",
       unit: "Pa",
       show: "bar",
       sig: 1,
@@ -163,7 +163,6 @@ export function outcome(r: Registry) {
     "chimney-count",
     "forge-count",
     "railhead-count",
-    "ring-tether-lifts",
   ];
   r.q(
     "choir-machines",
@@ -171,7 +170,7 @@ export function outcome(r: Registry) {
       label: "Machines the Choir runs that the model counts",
       unit: "count",
       sig: 2,
-      formula: "Petals + slats + canopies + chimneys + Forges + Railheads + tether lifts",
+      formula: "Petals + slats + canopies + chimneys + Forges + Railheads",
       basis: "design",
       note: "A floor. The Foundry's own robots, the crawlers that service the towers and the Ice Bricks are not counted, because the model does not size them.",
     },

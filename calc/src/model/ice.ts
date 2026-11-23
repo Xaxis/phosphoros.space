@@ -1,51 +1,52 @@
 /**
  * Ceres Ice Train: coilguns on Ceres throw water ice onto transfer orbits to Venus.
  *
- * The Railheads fire steadily, so most Bricks leave between the cheap launch windows. Their
- * transfers come from a launch schedule (physics.ts, launchSchedule): Lambert transfers in three
- * dimensions between Ceres's orbit and Venus's, tilted to each other, booked so that no more than a
- * chosen multiple of the mean arrival rate reaches the Ring at once. The schedule is solved twice:
- * from Ceres's starting orbit, and from the wider orbit the recoil has pushed it to by the last
- * launch. Simplifications, each named where it is used: both orbits are circular (Ceres's own
- * eccentricity, 0.08, is left out, as everywhere in the model); the schedule is averaged over
- * Ceres's whole orbit rather than the part the campaign covers; and Ceres's drift is taken at the
- * campaign's two ends, with the average of the two standing for the whole.
+ * The Railheads fire steadily through a short campaign, which starts when the Lattice can power
+ * them. Its transfers come from a launch schedule on the campaign's real dates (physics.ts,
+ * campaignSchedule): Ceres and Venus are placed by their measured orbits on the first launch day,
+ * and each launch slot is booked onto a Lambert transfer in three dimensions between the two
+ * orbits, tilted to each other, so that no more than a chosen multiple of the launch rate reaches
+ * Venus at once. Simplifications, each named where it is used: the transfers treat both orbits as
+ * circles (Ceres's eccentricity, 0.08, only places it along its orbit on the day), and Ceres's
+ * drift outward under the recoil is taken as even over the campaign.
  */
-import { circularSpeed, hohmann, launchSchedule, period } from "../physics.ts";
+import {
+  CAMPAIGN_SLOTS,
+  type CampaignSchedule,
+  campaignSchedule,
+  circularSpeed,
+  crossingAngles,
+  hohmann,
+  period,
+  trueAnomaly,
+} from "../physics.ts";
 import type { Registry } from "../registry.ts";
-import { DAY_S } from "../time.ts";
+import { DAY_S, dayOfJulian } from "../time.ts";
 import { fmt } from "./text.ts";
 
 const RADIAN = Math.PI / 180;
 
 /**
- * Share of the ice the Ring has caught by day x, for launches running evenly from day `start` to
- * day `end`. `first` and `last` are the schedule's flight times in days, shortest first, from the
- * starting orbit and from the drifted one; the k-th transfer is taken to slow evenly from its first
- * value to its last as Ceres drifts, and to fire evenly through the campaign. (In fact each launch
- * phase fires for a 72nd of every cycle, which moves single arrivals by days, not the totals.)
+ * Share of the ice that has reached Venus by day x, for a campaign starting on day `start` cut into
+ * slots `slot` days wide: each launch slot's share arrives evenly through its arrival slot,
+ * `arrivals` counting slots from the start.
  */
-export function caughtShare(
+export function arrivedShare(
   x: number,
   start: number,
-  end: number,
-  first: readonly number[],
-  last: readonly number[],
+  slot: number,
+  arrivals: readonly number[],
 ): number {
   let sum = 0;
-  for (let k = 0; k < first.length; k++) {
-    const from = start + (first[k] as number);
-    const to = end + (last[k] as number);
-    sum += to > from ? Math.min(1, Math.max(0, (x - from) / (to - from))) : x >= to ? 1 : 0;
-  }
-  return sum / first.length;
+  for (const a of arrivals) sum += Math.min(1, Math.max(0, (x - start - a * slot) / slot));
+  return sum / arrivals.length;
 }
 
 export function iceTrain(r: Registry) {
   const { v } = r.in("model/ice.ts");
   const transfer = () => hohmann(v("sun-mu"), v("ceres-orbit"), v("venus-orbit"));
   // The site links each id to its first mention in this file, so the helpers that read ids defined
-  // here (first, last, iceSchedule, iceCatch) are declared after the definitions.
+  // here (first, main, iceSchedule, iceArrivals) are declared after the definitions.
 
   r.q(
     "ceres-gravity",
@@ -141,54 +142,39 @@ export function iceTrain(r: Registry) {
       unit: "date",
       formula: "the later of the Lattice's full power and the Railheads' finish",
       basis: "design",
-      note: "The Railheads need the Lattice's beams, so launches start when it reaches full power, unless the Ceres factories are still building the Railheads and the Crown. A later start shortens the campaign, which raises the Railheads' power, grows the Crown that sheds their heat and makes the finish later, so the model solves for the date where the two meet.",
+      note: "The Railheads need the Lattice's beams, so launches start when it reaches full power, unless the Ceres factories are still building the Railheads and the Crown. A later start finds the planets elsewhere, which changes what the launches cost, the Railheads' power and the Crown that sheds their heat, and so the finish, so the model solves for the date where the two meet.",
     },
     () => Math.max(v("helios-full-power"), r.solved["ceres-ready"] ?? Number.NEGATIVE_INFINITY),
   );
 
-  // --- The launch schedule ------------------------------------------------------------------------
   r.q(
-    "launch-offwindow-mean",
+    "ice-launch-end",
     {
-      label: "Average extra launch energy, firing all the time, over a launch in a window",
-      unit: "1",
-      show: "%",
-      sig: 2,
-      formula:
-        "mean over the schedule of (Δv² + v_esc²) / (Δv_H² + v_esc²) − 1, from Ceres's starting orbit",
-      basis: "physics",
-      note: "The Railheads fire at a steady rate through every phase of the synodic cycle. Each launch phase is booked onto the cheapest Lambert transfer, in three dimensions, that leaves an arrival slot free, with no slot taking more than the chosen peak. The plane change is part of the price. Averaged over every launch phase and over Ceres's whole orbit; the campaign covers only part of it.",
+      label: "Last Ice Bricks leave Ceres",
+      unit: "date",
+      formula: "first launch + campaign",
+      basis: "design",
     },
-    () => first().energy / first().hohmann - 1,
+    () => v("ice-launch-start") + v("ice-campaign-days"),
   );
   r.q(
-    "launch-offwindow-max",
+    "ice-campaign",
     {
-      label: "Extra launch energy for the costliest shot in the schedule",
-      unit: "1",
-      show: "%",
+      label: "Length of the launch campaign",
+      unit: "s",
+      show: "yr",
       sig: 2,
-      formula: "max over the schedule of (Δv² + v_esc²) / (Δv_H² + v_esc²) − 1",
-      basis: "physics",
-    },
-    () => first().energyMax / first().hohmann - 1,
-  );
-  r.q(
-    "launch-coplanar-mean",
-    {
-      label: "Average extra launch energy if Ceres's orbit lay in Venus's plane",
-      unit: "1",
-      show: "%",
-      sig: 2,
-      formula: "the same schedule with no tilt between the orbits",
-      basis: "physics",
-      note: "What the schedule would cost without the plane change; the difference from the full average is what Ceres's tilt adds.",
+      formula: "last launch − first launch",
+      basis: "design",
     },
     () => {
-      const flat = iceSchedule(v, v("ceres-orbit"), 0);
-      return flat.energy / flat.hohmann - 1;
+      const days = v("ice-launch-end") - v("ice-launch-start");
+      // No time to launch means no water, and every rate below would be undefined.
+      if (days <= 0) throw new Error("the ice campaign has no days, so no water is launched");
+      return days * DAY_S;
     },
   );
+  // --- The launch schedule ------------------------------------------------------------------------
   r.q(
     "ice-throw-back",
     {
@@ -196,7 +182,7 @@ export function iceTrain(r: Registry) {
       unit: "m/s",
       show: "km/s",
       sig: 3,
-      formula: "mean over the schedule of −Δv · v̂_Ceres",
+      formula: "mean over the campaign of −Δv · v̂_Ceres, from Ceres's starting orbit",
       basis: "physics",
       note: "The part of each kick that pushes Ceres along its orbit. The rest, toward or away from the Sun and out of Ceres's plane, changes the shape and tilt of Ceres's orbit a little but not its size, and is left out.",
     },
@@ -211,7 +197,7 @@ export function iceTrain(r: Registry) {
       sig: 2,
       formula: "v̄ ln(M_C / (M_C − M_ice))",
       basis: "physics",
-      note: "The ice leaves a Brick at a time over the whole campaign, so the rocket equation. v̄ is the average kick against Ceres's motion from its starting orbit; from the drifted orbit it is slightly larger.",
+      note: "The ice leaves a Brick at a time over the whole campaign, so the rocket equation. v̄ is the average kick against Ceres's motion from its starting orbit; as the orbit widens it is slightly larger.",
     },
     () => v("ice-throw-back") * Math.log(v("ceres-mass") / (v("ceres-mass") - v("ice-mass"))),
   );
@@ -232,6 +218,47 @@ export function iceTrain(r: Registry) {
     },
   );
   r.q(
+    "launch-offwindow-mean",
+    {
+      label: "Average extra launch energy over the campaign, over a launch in a window",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "mean over the campaign's launches of (Δv² + v_esc²) / (Δv_H² + v_esc²) − 1",
+      basis: "physics",
+      note: "The Railheads fire at a steady rate through the campaign, on its real dates: Ceres and Venus are placed by their measured orbits on the first launch day. Each day's launches are booked onto the Lambert transfer, in three dimensions, that best trades launch energy against arrival speed while leaving an arrival slot free, with no slot taking more than the chosen peak. The plane change is part of the price.",
+    },
+    () => main().energy / main().hohmann - 1,
+  );
+  r.q(
+    "launch-offwindow-max",
+    {
+      label: "Extra launch energy for the costliest shot in the campaign",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "max over the campaign of (Δv² + v_esc²) / (Δv_H² + v_esc²) − 1",
+      basis: "physics",
+    },
+    () => main().energyMax / main().hohmann - 1,
+  );
+  r.q(
+    "launch-coplanar-mean",
+    {
+      label: "Average extra launch energy if Ceres's orbit lay in Venus's plane",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "the same campaign with no tilt between the orbits",
+      basis: "physics",
+      note: "What the campaign would cost without the plane change; the difference from the full average is what Ceres's tilt adds.",
+    },
+    () => {
+      const flat = iceSchedule(v, v("ceres-drift-orbit"), 0);
+      return flat.energy / flat.hohmann - 1;
+    },
+  );
+  r.q(
     "launch-energy-per-kg",
     {
       label: "Energy drawn per kilogram launched in a window",
@@ -244,33 +271,17 @@ export function iceTrain(r: Registry) {
     () => (0.5 * v("ice-launch-speed") ** 2) / v("railhead-efficiency"),
   );
   r.q(
-    "launch-energy-per-kg-end",
-    {
-      label:
-        "Energy drawn per kilogram launched at the end of the campaign, from the drifted orbit",
-      unit: "J/kg",
-      show: "MJ/kg",
-      sig: 3,
-      formula: "mean over the schedule of ½ (Δv² + v_esc²) / η",
-      basis: "invented",
-    },
-    () => (0.5 * last().energy) / v("railhead-efficiency"),
-  );
-  r.q(
     "launch-energy-per-kg-avg",
     {
       label: "Energy drawn per kilogram launched, averaged over the campaign",
       unit: "J/kg",
       show: "MJ/kg",
       sig: 3,
-      formula: "½ (e_window × (1 + mean penalty) + e_end)",
+      formula: "mean over the campaign of ½ (Δv² + v_esc²) / η",
       basis: "invented",
-      note: "The first launches leave from Ceres's starting orbit, the last from its drifted one. The steady recoil moves Ceres outward at a nearly even pace, so the average of the two ends stands for the whole campaign.",
+      note: "Each launch leaves from where Ceres is that day, on an orbit the recoil widens evenly through the campaign.",
     },
-    () =>
-      0.5 *
-      (v("launch-energy-per-kg") * (1 + v("launch-offwindow-mean")) +
-        v("launch-energy-per-kg-end")),
+    () => (0.5 * main().energy) / v("railhead-efficiency"),
   );
   r.q(
     "ice-launch-speed-max",
@@ -279,10 +290,10 @@ export function iceTrain(r: Registry) {
       unit: "m/s",
       show: "km/s",
       sig: 2,
-      formula: "√(max (Δv² + v_esc²)), over both ends of the campaign",
+      formula: "√(max (Δv² + v_esc²)) over the campaign",
       basis: "physics",
     },
-    () => Math.sqrt(Math.max(first().energyMax, last().energyMax)),
+    () => Math.sqrt(main().energyMax),
   );
   r.q(
     "ice-vinf-rms",
@@ -291,11 +302,11 @@ export function iceTrain(r: Registry) {
       unit: "m/s",
       show: "km/s",
       sig: 3,
-      formula: "√(½ (v∞,first² + v∞,last²)), each the rms over the schedule",
+      formula: "rms over the campaign's launches of v∞",
       basis: "physics",
-      note: "Includes the plane change the Ring must absorb: see the out-of-plane parts below.",
+      note: "Includes the plane change left to the arrival: see the out-of-plane parts below.",
     },
-    () => Math.sqrt(0.5 * (first().vinfRms ** 2 + last().vinfRms ** 2)),
+    () => main().vinfRms,
   );
   r.q(
     "ice-kick-tilt",
@@ -305,11 +316,11 @@ export function iceTrain(r: Registry) {
       unit: "m/s",
       show: "km/s",
       sig: 2,
-      formula: "√(½ (first² + last²)), each the rms over the schedule of Δv · n̂_Ceres",
+      formula: "rms over the campaign of Δv · n̂_Ceres",
       basis: "physics",
-      note: "How the plane change splits between launch and catch. A Brick coasts, so it can change plane only where it leaves and where it is caught. Its transfer lies in the plane through the Sun, Ceres at launch and Venus at arrival, which is tilted to both orbits: the Railhead pays the tilt to Ceres's orbit in the kick, and the Ring takes the tilt to Venus's orbit as arrival speed. The schedule is chosen for the least launch energy, so it picks transfers whose planes lie close to Ceres's and leaves most of the plane change to the catch, where the Ring recovers the energy. Weighting arrival speed in the schedule as well lowers it only a little, for more launch energy.",
+      note: "How the plane change splits between launch and arrival. A Brick coasts, so it can change plane only where it leaves and where it arrives. Its transfer lies in the plane through the Sun, Ceres at launch and Venus at arrival, which is tilted to both orbits: the Railhead pays the tilt to Ceres's orbit in the kick, and the tilt to Venus's orbit arrives as speed, which ends as heat in Venus's air. The schedule books the cheapest launches, so most of the plane change arrives at Venus.",
     },
-    () => Math.sqrt(0.5 * (first().kickTiltRms ** 2 + last().kickTiltRms ** 2)),
+    () => main().kickTiltRms,
   );
   r.q(
     "ice-vinf-tilt",
@@ -319,21 +330,21 @@ export function iceTrain(r: Registry) {
       unit: "m/s",
       show: "km/s",
       sig: 2,
-      formula: "√(½ (first² + last²)), each the rms over the schedule of v∞ · n̂_Venus",
+      formula: "rms over the campaign of v∞ · n̂_Venus",
       basis: "physics",
     },
-    () => Math.sqrt(0.5 * (first().vinfTiltRms ** 2 + last().vinfTiltRms ** 2)),
+    () => main().vinfTiltRms,
   );
   r.q(
     "ice-flight-min",
     {
-      label: "Fastest transfer the schedule uses",
+      label: "Fastest transfer the campaign uses",
       unit: "d",
       sig: 3,
-      formula: "least flight time in the schedule, from Ceres's starting orbit",
+      formula: "least flight time in the campaign",
       basis: "physics",
     },
-    () => (first().flights[0] as number) / DAY_S,
+    () => Math.min(...main().flights) / DAY_S,
   );
   r.q(
     "ice-flight-mean",
@@ -342,55 +353,21 @@ export function iceTrain(r: Registry) {
       unit: "d",
       show: "yr",
       sig: 3,
-      formula: "½ (mean flight time from the starting orbit + from the drifted orbit)",
+      formula: "mean flight time over the campaign's launches",
       basis: "physics",
     },
-    () => {
-      const mean = (f: readonly number[]) => f.reduce((a, b) => a + b, 0) / f.length;
-      return (0.5 * (mean(first().flights) + mean(last().flights))) / DAY_S;
-    },
+    () => main().flights.reduce((a, b) => a + b, 0) / main().flights.length / DAY_S,
   );
   r.q(
     "ice-flight-max",
     {
-      label: "Slowest transfer the schedule uses, from Ceres's drifted orbit",
+      label: "Slowest transfer the campaign uses",
       unit: "d",
       sig: 3,
-      formula: "greatest flight time in the schedule from the drifted orbit",
-      basis: "physics",
-      note: "The model does not follow where Venus is on the day of the last launch, so the last Bricks may be on the slowest transfer the schedule uses.",
-    },
-    () => (last().flights.at(-1) as number) / DAY_S,
-  );
-  r.q(
-    "ice-launch-end",
-    {
-      label: "Last Ice Bricks leave Ceres",
-      unit: "date",
-      formula: "deadline − slowest transfer − lowering margin",
+      formula: "greatest flight time in the campaign",
       basis: "physics",
     },
-    () => v("deadline") - v("ice-flight-max") - v("ice-lowering-margin"),
-  );
-  r.q(
-    "ice-campaign",
-    {
-      label: "Length of the launch campaign",
-      unit: "s",
-      show: "yr",
-      sig: 2,
-      formula: "last launch − first launch",
-      basis: "design",
-    },
-    () => {
-      const days = v("ice-launch-end") - v("ice-launch-start");
-      // No time to launch means no water, and every rate below would be undefined.
-      if (days <= 0)
-        throw new Error(
-          "the first ice launch comes after the last launch that reaches Venus by the deadline, so no water arrives in time",
-        );
-      return days * DAY_S;
-    },
+    () => Math.max(...main().flights) / DAY_S,
   );
   r.q(
     "ice-throughput",
@@ -404,27 +381,27 @@ export function iceTrain(r: Registry) {
     () => v("ice-mass") / v("ice-campaign"),
   );
   r.q(
-    "ice-catch-peak",
+    "ice-arrival-peak-rate",
     {
-      label: "Ice reaching the Ring per second at the peak of each cycle",
+      label: "Ice reaching Venus per second at the peak of the arrivals",
       unit: "kg/s",
       sig: 3,
-      formula: "ṁ × most launch phases booked into one arrival slot",
+      formula: "ṁ × most launch slots booked into one arrival slot",
       basis: "physics",
-      note: "Averaged over one arrival slot. The Ring is built for this rate, not the mean.",
+      note: "Averaged over one arrival slot.",
     },
-    () => v("ice-throughput") * Math.max(first().peak, last().peak),
+    () => v("ice-throughput") * main().peak,
   );
   r.q(
     "ice-arrival-slot",
     {
-      label: "Span the peak catch rate is averaged over (one arrival slot)",
+      label: "Span the peak arrival rate is averaged over (one arrival slot)",
       unit: "d",
       sig: 2,
-      formula: "synodic period / number of slots",
+      formula: `campaign / launch slots (one a day, at most ${CAMPAIGN_SLOTS})`,
       basis: "design",
     },
-    () => first().slot / DAY_S,
+    () => main().slot / DAY_S,
   );
   r.q(
     "ice-bricks-per-second",
@@ -648,15 +625,71 @@ export function iceTrain(r: Registry) {
     () => v("ice-campaign") / v("launch-window-period"),
   );
   r.q(
+    "ice-launch-lead",
+    {
+      label: "How far Venus leads Ceres along their orbits on the first launch day",
+      unit: "deg",
+      sig: 3,
+      formula: "w₀ − u₀, from their measured orbits",
+      basis: "physics",
+      note: "Each angle is measured in its own orbit's plane from the line where the two planes cross. Ceres is placed by its eccentric orbit, Venus by its mean longitude.",
+    },
+    () => {
+      const at = placesOn(v, v("ice-launch-start"));
+      return ((((at.w - at.u) / RADIAN) % 360) + 360) % 360;
+    },
+  );
+  r.q(
+    "ice-window-lead",
+    {
+      label: "How far Venus must lead Ceres for a Hohmann transfer",
+      unit: "deg",
+      sig: 3,
+      formula: "180° − n_V t_H",
+      basis: "physics",
+      note: "Venus moves on while the ice falls half a turn round the Sun, so it must start that far ahead of the point opposite Ceres.",
+    },
+    () => {
+      const turned = (Math.sqrt(v("sun-mu") / v("venus-orbit") ** 3) * transfer().time) / RADIAN;
+      return (((180 - turned) % 360) + 360) % 360;
+    },
+  );
+  r.q(
+    "ice-window-wait",
+    {
+      label: "Days from the first launch to the next Hohmann window",
+      unit: "d",
+      sig: 2,
+      formula: "(lead needed − lead on the day) / (n_V − n_C)",
+      basis: "physics",
+    },
+    () => {
+      const gap = (((v("ice-window-lead") - v("ice-launch-lead")) % 360) + 360) % 360;
+      return ((gap / 360) * v("launch-window-period")) / DAY_S;
+    },
+  );
+  r.q(
     "ocean-depth",
     {
-      label: "Global-average ocean depth",
+      label: "Depth of the water spread evenly over Venus",
       unit: "m",
       sig: 3,
       formula: "M_ice / (ρ_water A)",
       basis: "physics",
     },
     () => v("ice-mass") / (v("water-density") * v("venus-area")),
+  );
+  r.q(
+    "sea-cover-share",
+    {
+      label: "Share of Venus the new seas cover",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "d_even / d_seas",
+      basis: "design",
+    },
+    () => v("ocean-depth") / v("sea-mean-depth"),
   );
   r.q(
     "ice-vs-earth-water",
@@ -671,25 +704,24 @@ export function iceTrain(r: Registry) {
     () => v("ice-mass") / v("earth-water-mass"),
   );
   r.q(
-    "first-catch",
+    "first-arrival",
     {
       label: "First Bricks reach Venus",
       unit: "date",
-      formula: "first launch + fastest transfer",
+      formula: "first launch + the earliest arrival slot",
       basis: "physics",
-      note: "The soonest any of the first launches can arrive: the model does not follow where Venus is on the first launch day.",
     },
-    () => v("ice-launch-start") + v("ice-flight-min"),
+    () => v("ice-launch-start") + (Math.min(...main().arrivals) * main().slot) / DAY_S,
   );
   r.q(
     "last-arrival",
     {
       label: "Last Bricks reach Venus",
       unit: "date",
-      formula: "last launch + slowest transfer from the drifted orbit",
+      formula: "first launch + the end of the latest arrival slot",
       basis: "physics",
     },
-    () => v("ice-launch-end") + v("ice-flight-max"),
+    () => v("ice-launch-start") + ((Math.max(...main().arrivals) + 1) * main().slot) / DAY_S,
   );
   r.q(
     "ice-transfer-years",
@@ -704,65 +736,124 @@ export function iceTrain(r: Registry) {
     () => v("ice-transfer-days") * DAY_S,
   );
 
-  // --- Catching before lowering -------------------------------------------------------------------
+  // --- Falling into the air ---------------------------------------------------------------------
+  // Nothing catches the Bricks: each one plunges into Venus's air and stops there, and its water
+  // falls the rest of the way. All its motion energy, and the energy of the fall, becomes heat in
+  // the air the pumps are cooling.
   r.q(
-    "ice-caught-at-lowering",
+    "ice-entry-speed",
     {
-      label: "Share of the ice the Ring has caught when lowering begins",
+      label: "Speed of a Brick reaching Venus's air, averaged over the campaign (rms)",
+      unit: "m/s",
+      show: "km/s",
+      sig: 3,
+      formula: "√(v∞,rms² + v_esc²)",
+      basis: "physics",
+    },
+    () => Math.sqrt(v("ice-vinf-rms") ** 2 + v("venus-escape") ** 2),
+  );
+  r.q(
+    "ice-entry-energy-per-kg",
+    {
+      label: "Heat each kilogram of ice brings into Venus, from far out to the ground",
+      unit: "J/kg",
+      show: "MJ/kg",
+      sig: 3,
+      formula: "½ (v∞,rms² + v_esc²)",
+      basis: "physics",
+      note: "A Brick stops high in the air and its water falls the rest of the way: its motion energy far out plus the whole fall into Venus's gravity.",
+    },
+    () => 0.5 * v("ice-entry-speed") ** 2,
+  );
+  r.q(
+    "brick-entry-energy",
+    {
+      label: "Heat one Brick releases as it bursts in the air and its water falls",
+      unit: "J",
+      sig: 2,
+      formula: "m_brick × ½ (v∞,rms² + v_esc²)",
+      basis: "physics",
+      note: "About the energy of a large hydrogen bomb, which is why the Bricks fall at the poles, clear of the canopies.",
+    },
+    () => v("brick-mass") * v("ice-entry-energy-per-kg"),
+  );
+  r.q(
+    "ice-entry-heat",
+    {
+      label: "Heat all the ice brings into Venus",
+      unit: "J",
+      formula: "M_ice × e_entry",
+      basis: "physics",
+    },
+    () => v("ice-mass") * v("ice-entry-energy-per-kg"),
+  );
+  r.q(
+    "ice-entry-vs-atmosphere",
+    {
+      label: "That heat as a share of the heat the pumps must take out of the air",
       unit: "1",
       show: "%",
       sig: 2,
-      formula: "share of launches whose transfer has arrived by the start of lowering",
+      formula: "E_entry / E_atm",
       basis: "physics",
-      note: "Each transfer in the schedule is taken to fire evenly through the campaign, slowing as Ceres drifts outward.",
     },
-    () => iceCatch(v).share(v("lowering-start")),
+    () => v("ice-entry-heat") / v("atmosphere-heat"),
   );
   r.q(
-    "ice-lowering-slack",
+    "ocean-entry-heat",
     {
-      label: "Days between the last Brick's arrival and the end of lowering",
-      unit: "d",
+      label: "Heat a global ocean as deep as Earth's average share would bring, the same way",
+      unit: "J",
+      formula: "M_water,⊕ × (A_V / A_⊕) × e_entry",
+      basis: "physics",
+      note: "Water for Venus in Earth's proportion: Earth's oceans scaled by the two planets' areas.",
+    },
+    () =>
+      v("earth-water-mass") *
+      (v("venus-area") / (4 * Math.PI * v("earth-radius") ** 2)) *
+      v("ice-entry-energy-per-kg"),
+  );
+  r.q(
+    "ocean-entry-vs-atmosphere",
+    {
+      label: "That heat as a multiple of the heat the pumps must take out of the air",
+      unit: "1",
       sig: 2,
-      formula: "lowering end − last arrival",
+      formula: "E_ocean / E_atm",
       basis: "physics",
     },
-    () => v("lowering-end") - v("last-arrival"),
+    () => v("ocean-entry-heat") / v("atmosphere-heat"),
+  );
+  r.q(
+    "melt-energy",
+    {
+      label: "Energy to melt a kilogram of Brick ice and warm it to 288 K",
+      unit: "J/kg",
+      show: "MJ/kg",
+      sig: 2,
+      formula: "c_ice (273 − T_brick) + L_melt + c_water (288 − 273)",
+      basis: "physics",
+    },
+    () =>
+      v("ice-cp") * (273.15 - v("brick-temp")) +
+      v("ice-melt-heat") +
+      v("water-cp") * (v("earth-surface-temp") - 273.15),
   );
   r.c(
     "ice-arrives",
-    { label: "The Ring catches the ice before it must lower it", kind: "schedule" },
-    () => {
-      // The Ring lowers the ice at a steady rate from lowering-start to lowering-end; at no moment
-      // may it have lowered more than it has caught. Both shares are piecewise linear in time, so
-      // the worst moment is one where either changes slope.
-      const [from, to] = [v("lowering-start"), v("lowering-end")];
-      const caught = iceCatch(v);
-      let short = 0;
-      for (const x of [from, to, ...caught.turns]) {
-        if (x >= from && x <= to)
-          short = Math.max(short, (x - from) / (to - from) - caught.share(x));
-      }
-      return {
-        pass: short <= 1e-9,
-        detail: `Lowering ${fmt(r, "ice-mass")} runs from ${fmt(r, "lowering-start", { date: "day" })} to ${fmt(r, "lowering-end", { date: "day" })}, and the Ring can only lower what it has caught. When lowering begins it holds ${fmt(r, "ice-caught-at-lowering")} of the ice. The last launch, on ${fmt(r, "ice-launch-end", { date: "day" })}, leaves room for the slowest transfer from Ceres's drifted orbit, ${fmt(r, "ice-flight-max")}; the last Brick arrives on ${fmt(r, "last-arrival", { date: "day" })}, ${fmt(r, "ice-lowering-slack")} before lowering ends.${short > 1e-9 ? ` At the worst moment lowering runs ${(100 * short).toPrecision(2)}% of the ice ahead of the catch.` : ""}`,
-      };
-    },
-  );
-  r.c(
-    "ring-ready-for-ice",
-    { label: "The Ring is complete before the first Brick arrives", kind: "schedule" },
+    { label: "The last Brick reaches Venus while the pumps still run", kind: "schedule" },
     () => ({
-      pass: v("ring-complete") <= v("first-catch"),
-      detail: `The fastest transfer the schedule uses takes ${fmt(r, "ice-flight-min")}, so Bricks from the first launch on ${fmt(r, "ice-launch-start", { date: "day" })} can reach Venus on ${fmt(r, "first-catch", { date: "day" })}; the Ring is complete on ${fmt(r, "ring-complete", { date: "day" })}.`,
+      pass: v("last-arrival") < v("sealing-end"),
+      detail: `Launches run from ${fmt(r, "ice-launch-start", { date: "day" })} to ${fmt(r, "ice-launch-end", { date: "day" })}. The slowest transfer takes ${fmt(r, "ice-flight-max")}, and the last Brick falls into the air on ${fmt(r, "last-arrival", { date: "day" })}, before the pumps stop with the last caps on ${fmt(r, "sealing-end", { date: "day" })}. Its heat is the pumps' to take out.`,
     }),
   );
 
-  // The schedules from Ceres's starting orbit and from its drifted one.
+  // The campaign from Ceres's starting orbit alone (for the recoil that widens it), and with the
+  // recoil widening it.
   function first() {
     return iceSchedule(v, v("ceres-orbit"), v("ice-mutual-inclination"));
   }
-  function last() {
+  function main() {
     return iceSchedule(v, v("ceres-drift-orbit"), v("ice-mutual-inclination"));
   }
 }
@@ -770,32 +861,57 @@ export function iceTrain(r: Registry) {
 type Value = (id: string) => number;
 
 /**
- * The steady launch schedule from Ceres on a circular orbit of radius r1, its plane tilted to
- * Venus's by `tilt` degrees.
+ * Where Ceres and Venus are on a day, measured as the schedule measures them: each one's angle in
+ * its own plane from the line where Ceres's orbit rises through Venus's.
  */
-function iceSchedule(v: Value, r1: number, tilt: number) {
-  return launchSchedule({
+export function placesOn(v: Value, day: number): { u: number; w: number } {
+  const meanAnomaly =
+    (v("ceres-mean-anomaly") +
+      v("ceres-mean-motion") * (day - dayOfJulian(v("ceres-elements-epoch")))) *
+    RADIAN;
+  const ceres =
+    v("ceres-perihelion-argument") * RADIAN + trueAnomaly(meanAnomaly, v("ceres-eccentricity"));
+  const venus =
+    (v("venus-mean-longitude") +
+      v("venus-mean-motion") * (day - dayOfJulian(v("venus-elements-epoch"))) -
+      v("venus-node")) *
+    RADIAN;
+  return crossingAngles(
+    { i: v("ceres-inclination") * RADIAN, node: v("ceres-node") * RADIAN, u: ceres },
+    { i: v("venus-inclination") * RADIAN, node: v("venus-node") * RADIAN, u: venus },
+  );
+}
+
+/**
+ * The launch campaign from Ceres, on its real dates, its orbit widening to radius r1End and its
+ * plane tilted to Venus's by `tilt` degrees.
+ */
+function iceSchedule(v: Value, r1End: number, tilt: number): CampaignSchedule {
+  const at = placesOn(v, v("ice-launch-start"));
+  return campaignSchedule({
     mu: v("sun-mu"),
-    r1,
+    r1: v("ceres-orbit"),
+    r1End,
     r2: v("venus-orbit"),
     vEscape: v("ceres-escape"),
     inclination: tilt * RADIAN,
+    u0: at.u,
+    w0: at.w,
+    duration: v("ice-campaign"),
     peak: v("ice-arrival-peak"),
+    arrivalWeight: v("ice-arrival-weight"),
   });
 }
 
 /**
- * The catch as it ramps up and down: `share(day)` is the share of the ice the Ring has caught by
- * that day, and `turns` are the days its rate changes. Anything that needs the catch day by day,
- * rather than at its mean rate, takes it from here.
+ * The arrivals as they ramp up and down: `share(day)` is the share of the ice that has reached
+ * Venus by that day, and `turns` are the days its rate changes. Anything that needs the arrivals
+ * day by day, rather than at their mean rate, takes them from here.
  */
-export function iceCatch(v: Value): { share: (day: number) => number; turns: number[] } {
-  const flights = (r1: number) =>
-    iceSchedule(v, r1, v("ice-mutual-inclination")).flights.map((t) => t / DAY_S);
-  const [start, end] = [v("ice-launch-start"), v("ice-launch-end")];
-  const [first, last] = [flights(v("ceres-orbit")), flights(v("ceres-drift-orbit"))];
-  return {
-    share: (day) => caughtShare(day, start, end, first, last),
-    turns: [...first.map((t) => start + t), ...last.map((t) => end + t)],
-  };
+export function iceArrivals(v: Value): { share: (day: number) => number; turns: number[] } {
+  const s = iceSchedule(v, v("ceres-drift-orbit"), v("ice-mutual-inclination"));
+  const start = v("ice-launch-start");
+  const slot = s.slot / DAY_S;
+  const turns = [...new Set(s.arrivals.flatMap((a) => [a, a + 1]))].map((a) => start + a * slot);
+  return { share: (day) => arrivedShare(day, start, slot, s.arrivals), turns };
 }

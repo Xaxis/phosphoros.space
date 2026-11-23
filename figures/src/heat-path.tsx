@@ -1,11 +1,11 @@
 /**
  * The heat path, as a vertical cross-section with a true altitude scale up to 80 km: hot air drawn
- * through a Thermal Chimney's exchangers, sealed liquid loops lifting the heat, the Exhaust canopy
- * throwing it to space as infrared light, and the Braking Ring 400 km up feeding power down its
- * tethers. A magnified inset shows the basin floor after 2036: sealed dry ice and basal heat pipes.
+ * through a Thermal Chimney's exchangers, sealed liquid loops lifting the heat, and the Exhaust
+ * canopy, its tiles pumped by the Lattice's light, shining it into space evenly over the sky. A
+ * magnified inset shows the basin floor after 2036: sealed dry ice and basal heat pipes.
  */
 import { Art, Frame, Link, show, textWidth, W } from "./kit.tsx";
-import { Arrow, AxisBreak, Lines, Tag } from "./space-kit.tsx";
+import { Arrow, Lines, Tag } from "./space-kit.tsx";
 import type { FigureDef } from "./types.ts";
 
 interface Props {
@@ -24,12 +24,11 @@ interface Props {
     cooling: string;
     chimney: string;
     width: string;
-    cone: string;
     wavelength: string;
     out: string;
-    ring: string;
-    beam: string;
-    fins: string;
+    pump: string;
+    bright: string;
+    lit: string;
     floor: string;
     armour: string;
     aerogel: string;
@@ -46,9 +45,9 @@ const AX = 58; // altitude axis
 const Y0 = 604; // ground, 0 km
 const KM = 5.3; // pixels per km below the break: the altitudes are to scale
 const TOP_KM = 80;
-const Y_RING = 78;
 const alt = (km: number) => Y0 - km * KM;
-const BREAK = alt(TOP_KM) - 26;
+/** The radius of the drawn glow: a tile's light, as bright in each direction as cos θ. */
+const GLOW = 58;
 
 // Horizontal layout (not to scale).
 const CH = 300; // chimney centre
@@ -74,8 +73,13 @@ function HeatPath(p: Props) {
   const iIce = iCap + 16;
   const iRock = IY + IH - 74;
   const RX = IX + IW - 50; // the riser and radiator
-  const beam = `${t.beam} at the receivers`;
-  const fins = `receiver loss heat shed at ${t.fins}`;
+  const beam = `${t.pump}, pumping the tiles directly`;
+  const lit = `only the lit ${t.lit} of the canopies work at once`;
+  // The beam lands on the canopy's left part; the glow rises from its right part.
+  const B0 = CAN0 + 26;
+  const B1 = CAN0 + 66;
+  const gx = CAN1 - 110;
+  const gy = yCan - 8;
   const canopy = `Photonic Exhaust canopy at ${t.canopy}, ${t.width} across`;
   const chimney = `Thermal Chimney, ${t.base} to ${t.canopy}: ${t.chimney} each`;
   const basinW = Math.max(textWidth("Lowland basin"), textWidth(BASIN, 11.5));
@@ -84,15 +88,13 @@ function HeatPath(p: Props) {
     <Frame
       id="heat-path"
       title="Venus's heat path, in cross-section"
-      desc={`Altitude to scale up to ${TOP_KM} km. Fans pull ${t.surface} air through a chimney's exchangers; sealed liquid loops lift the heat to the Exhaust canopy at ${t.canopy}, which throws it to space as infrared light. The Braking Ring, ${t.ring} up, takes the Lattice's beam and sends power down tethers. After 2036, heat pipes carry the floor heat up through the sealed dry ice.`}
+      desc={`Altitude to scale up to ${TOP_KM} km. Fans pull ${t.surface} air through a chimney's exchangers; sealed liquid loops lift the heat to the Exhaust canopy at ${t.canopy}. The Lattice's light, ${t.pump}, pumps the canopy's tiles directly, and they shine the heat and that light into space as ${t.wavelength} infrared, evenly over the sky. After 2036, heat pipes carry the floor heat up through the sealed dry ice.`}
       height={H}
       links
     >
       <Art>
-        {/* The altitude axis, broken between 80 km and the Ring. */}
+        {/* The altitude axis. */}
         <line className="f-axis" x1={AX} x2={AX} y1={Y0} y2={alt(TOP_KM)} />
-        <line className="f-axis" x1={AX} x2={AX} y1={Y_RING - 18} y2={BREAK - 10} />
-        <AxisBreak x={AX} y={BREAK + 4} />
         {[0, 10, 20, 30, 40, 50, 60, 70, 80].map((km) => (
           <g key={km}>
             <line className="f-axis" x1={AX - 4} x2={AX} y1={alt(km)} y2={alt(km)} />
@@ -101,10 +103,6 @@ function HeatPath(p: Props) {
             </text>
           </g>
         ))}
-        <line className="f-axis" x1={AX - 4} x2={AX} y1={Y_RING} y2={Y_RING} />
-        <text className="f-tick" x={AX - 8} y={Y_RING} dy="0.32em" textAnchor="end">
-          {t.ring}
-        </text>
         <Tag x={W - 16} y={22} anchor="end" text="Altitudes to scale up to 80 km; widths not" />
 
         {/* Clouds. */}
@@ -149,109 +147,57 @@ function HeatPath(p: Props) {
         </text>
       </Link>
       <Art>
-        {/* The Ring, the Lattice's beam and the power coming down. */}
+        {/* The Lattice's light, coming straight down onto the tiles. */}
         <path
           className="f-s4-wash"
-          d={`M${AX + 12},${18}L${AX + 52},${18}L${AX + 132},${Y_RING - 7}L${AX + 92},${Y_RING - 7}Z`}
+          d={`M${AX + 12},${18}L${AX + 52},${18}L${B1},${yCan - 8}L${B0},${yCan - 8}Z`}
         />
         <g className="f-s4-line" strokeWidth={1}>
-          <line x1={AX + 12} y1={18} x2={AX + 92} y2={Y_RING - 7} />
-          <line x1={AX + 52} y1={18} x2={AX + 132} y2={Y_RING - 7} />
+          <line x1={AX + 12} y1={18} x2={B0} y2={yCan - 8} />
+          <line x1={AX + 52} y1={18} x2={B1} y2={yCan - 8} />
         </g>
       </Art>
       <Link
         href="/technologies/helios"
-        label={`Helios Lattice beam in: ${beam}`}
+        label={`Helios Lattice light in: ${beam}; ${lit}`}
         box={{
           x: AX + 78,
           y: 20 - 15,
-          w: Math.max(textWidth("Helios Lattice beam in"), textWidth(beam, 11.5)) + 12,
-          h: 14.5 + 21,
+          w: Math.max(textWidth("Helios Lattice light in"), textWidth(lit, 11.5)) + 12,
+          h: 14.5 * 2 + 21,
         }}
       >
         {/* Clear of the beam's edge, which slants under where the label starts. */}
-        <Lines x={AX + 84} y={20} lines={["Helios Lattice beam in", beam]} />
-      </Link>
-      {/* The Ring and its name are one link: lit, an accent bar barely changes, so the name is boxed. */}
-      <Link
-        href="/technologies/ring"
-        label={`Braking Ring, ${t.ring} up: ${fins}`}
-        box={{
-          x: AX + 230,
-          y: Y_RING - 45,
-          w: Math.max(textWidth("Braking Ring"), textWidth(fins, 11.5)) + 12,
-          h: 14.5 + 21,
-        }}
-      >
-        <rect
-          className="f-accent f-node"
-          x={AX + 4}
-          y={Y_RING - 5}
-          width={CAN1 - AX - 30}
-          height={10}
-          rx={5}
-        >
-          <title>{`Braking Ring, ${t.ring} up`}</title>
-        </rect>
-        <Lines x={AX + 236} y={Y_RING - 30} lines={["Braking Ring", fins]} />
+        <Lines x={AX + 84} y={20} lines={["Helios Lattice light in", beam, lit]} />
       </Link>
       <Art>
-        <rect className="f-ink" x={AX + 88} y={Y_RING - 9} width={48} height={4} rx={1} />
-        {[0, 1, 2].map((i) => (
-          <path
-            key={i}
-            className="f-s2-line"
-            d={`M${AX + 176 + i * 16},${Y_RING - 10}q4,-5 0,-10q-4,-5 0,-10`}
-            strokeWidth={1.5}
-            fill="none"
-          />
-        ))}
-        {[CAN0 + 30, CAN0 + 70].map((x) => (
-          <line
-            key={x}
-            className="f-ink-line"
-            x1={x}
-            x2={x}
-            y1={Y_RING + 5}
-            y2={yCan - 6}
-            strokeWidth={1.5}
-          />
-        ))}
-        <Lines
-          x={CAN0 + 78}
-          y={Y_RING + 40}
-          lines={[
-            { text: "Power down the tethers", kind: "label" },
-            { text: "superconducting cables to the canopies", kind: "note" },
-          ]}
-        />
-
-        {/* Infrared beams to space, in cones. */}
-        {[CAN1 - 130, CAN1 - 80, CAN1 - 30].map((x) => (
-          <g key={x}>
-            <path
-              className="f-s2-wash"
-              d={`M${x},${yCan - 8}L${x - 18},${alt(TOP_KM) + 4}L${x + 18},${alt(TOP_KM) + 4}Z`}
-            />
+        {/* A tile's light: as bright in each direction as cos θ, so its outline is a circle. */}
+        <circle className="f-s2-wash" cx={gx} cy={gy - GLOW} r={GLOW} />
+        <circle className="f-s2-line" cx={gx} cy={gy - GLOW} r={GLOW} strokeWidth={1} fill="none" />
+        {[-60, -30, 0, 30, 60].map((deg) => {
+          const a = (deg * Math.PI) / 180;
+          const len = 2 * GLOW * Math.cos(a) - 2;
+          return (
             <Arrow
-              x1={x}
-              y1={yCan - 9}
-              x2={x}
-              y2={alt(TOP_KM) + 2}
+              key={deg}
+              x1={gx}
+              y1={gy - 1}
+              x2={gx + len * Math.sin(a)}
+              y2={gy - 1 - len * Math.cos(a)}
               tone="s2"
-              head={7}
+              head={6}
               width={1.5}
             />
-          </g>
-        ))}
+          );
+        })}
         <Lines
           x={CAN1 + 14}
-          y={alt(76)}
+          y={alt(TOP_KM) - 46}
           lines={[
             "Infrared to space",
-            `${t.wavelength}, in ${t.cone} cones`,
+            `${t.wavelength}, as bright as a ${t.bright} black body`,
+            "spread evenly over the sky above",
             `${t.out} per canopy`,
-            "aimed around the Veil",
           ]}
         />
       </Art>
@@ -273,15 +219,15 @@ function HeatPath(p: Props) {
           y2={yCan - 8}
           strokeWidth={2}
         />
-        {/* Above the canopy's left end, between the altitude axis and the first tether. */}
+        {/* Under the canopy's left half, clear of the beam above and the chimney beside. */}
         <Lines
-          x={CAN0 + 22}
-          y={yCan - 47}
+          x={CH - CW / 2 - 10}
+          y={yCan + 26}
           anchor="end"
           lines={[
             "Exhaust canopy",
             `${t.canopy} up, ${t.width} across`,
-            "tiles pump heat into light",
+            "its tiles pump heat into light",
           ]}
         />
       </Art>
@@ -482,12 +428,11 @@ export const heatPath: FigureDef<Props> = {
         cooling2: show(r, "chimney-gas-cooling"),
         chimney: show(r, "chimney-heat", { sig: 2 }),
         width: show(r, "canopy-width", { sig: 2 }),
-        cone: show(r, "exhaust-cone"),
         wavelength: show(r, "exhaust-wavelength", { sig: 2 }),
         out: show(r, "canopy-power-out", { sig: 2 }),
-        ring: show(r, "ring-altitude"),
-        beam: show(r, "helios-receiver-intensity"),
-        fins: show(r, "helios-fin-temp"),
+        pump: show(r, "helios-wavelength", { sig: 2 }),
+        bright: show(r, "exhaust-effective-temp"),
+        lit: show(r, "exhaust-lit-share"),
         floor: show(r, "cryo-floor-load"),
         armour: show(r, "cryo-armour-thickness"),
         aerogel: show(r, "cryo-aerogel-thickness"),
@@ -499,9 +444,9 @@ export const heatPath: FigureDef<Props> = {
     };
   },
   caption: (p) =>
-    `Heat leaves the deep air through a chimney's exchangers and climbs in sealed liquid loops, because rising gas would cool by expanding; the canopy at ${p.text.canopy} pumps it into infrared light and throws it to space, on power the Ring sends down from ${p.text.ring}. After 2036, heat pipes keep the floor heat out of the sealed dry ice.`,
+    `Heat leaves the deep air through a chimney's exchangers and climbs in sealed liquid loops, because rising gas would cool by expanding. At ${p.text.canopy} the canopy's tiles, pumped by the Lattice's light, turn it into infrared light that spreads evenly over the sky and escapes to space. After 2036, heat pipes keep the floor heat out of the sealed dry ice.`,
   describe: (p) => ({
-    summary: `A vertical cross-section, altitudes to scale up to 80 km. A Thermal Chimney rises from ${p.text.base} to ${p.text.canopy}. Fans at its base pull ${p.text.surface} air through heat exchangers at ${p.text.flow}, cooling it by ${p.text.cooling}; the cooled air drains into a lowland basin. Sealed liquid loops, stage by stage, lift ${p.text.chimney} per chimney to the Exhaust canopy, ${p.text.width} across, whose tiles fire ${p.text.wavelength} light into ${p.text.cone} cones, ${p.text.out} per canopy. The clouds lie between ${p.text.cloudBase} and ${p.text.cloudTop}. The Braking Ring at ${p.text.ring} takes the Lattice's beam at ${p.text.beam}, sheds its receiver loss heat at ${p.text.fins}, and sends power down tethers to the canopies. In the basin, after 2036, dry ice ${p.text.ice} thick at ${p.text.iceT} lies under a cap of ${p.text.armour} of basalt, ${p.text.aerogel} of aerogel and a ${p.text.membrane} membrane; heat pipes ${p.text.pipes} into the floor carry ${p.text.floor} at first up a riser to radiators on the cap.`,
+    summary: `A vertical cross-section, altitudes to scale up to 80 km. A Thermal Chimney rises from ${p.text.base} to ${p.text.canopy}. Fans at its base pull ${p.text.surface} air through heat exchangers at ${p.text.flow}, cooling it by ${p.text.cooling}; the cooled air drains into a lowland basin. Sealed liquid loops, stage by stage, lift ${p.text.chimney} per chimney to the Exhaust canopy, ${p.text.width} across. The Lattice's ${p.text.pump} light pumps its tiles directly, and only the lit ${p.text.lit} of the canopies work at once. The tiles shine ${p.text.wavelength} light as bright as a ${p.text.bright} black body, evenly over the sky above them, ${p.text.out} per canopy. The clouds lie between ${p.text.cloudBase} and ${p.text.cloudTop}. In the basin, after 2036, dry ice ${p.text.ice} thick at ${p.text.iceT} lies under a cap of ${p.text.armour} of basalt, ${p.text.aerogel} of aerogel and a ${p.text.membrane} membrane; heat pipes ${p.text.pipes} into the floor carry ${p.text.floor} at first up a riser to radiators on the cap.`,
     head: ["Element", "Where", "What it does"],
     rows: [
       [
@@ -514,9 +459,12 @@ export const heatPath: FigureDef<Props> = {
         `from ${p.text.base}`,
         `cool ${p.text.surface} air by ${p.text.cooling}`,
       ],
-      ["Exhaust canopy", p.text.canopy, `throws ${p.text.out} to space at ${p.text.wavelength}`],
+      [
+        "Exhaust canopy",
+        p.text.canopy,
+        `pumped by ${p.text.pump} light; shines ${p.text.out} to space at ${p.text.wavelength}`,
+      ],
       ["Clouds", `${p.text.cloudBase} to ${p.text.cloudTop}`, "sulfuric acid"],
-      ["Braking Ring", p.text.ring, `takes the Lattice beam at ${p.text.beam}; power down tethers`],
       [
         "Basal heat pipes",
         `${p.text.pipes} into the basin floor`,
@@ -534,12 +482,11 @@ export const heatPath: FigureDef<Props> = {
     "chimney-gas-cooling",
     "chimney-heat",
     "canopy-width",
-    "exhaust-cone",
     "exhaust-wavelength",
     "canopy-power-out",
-    "ring-altitude",
-    "helios-receiver-intensity",
-    "helios-fin-temp",
+    "helios-wavelength",
+    "exhaust-effective-temp",
+    "exhaust-lit-share",
     "cryo-floor-load",
     "cryo-armour-thickness",
     "cryo-aerogel-thickness",

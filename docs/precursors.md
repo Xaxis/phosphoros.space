@@ -119,6 +119,6 @@ balloons and sample return are as thorough as the [Research Agenda](research.md)
 
 There is a second gap. The data that would best inform the cooling, DAVINCI's deep air and VERITAS's maps,
 arrive from late 2032 to 2034. By then the Veil has closed in [December 2032](numbers.md?date=month#veil-close)
-and active cooling has begun in [April 2034](numbers.md?date=month#cooling-start). Phosphoros would start
+and active cooling has begun in [February 2034](numbers.md?date=month#cooling-start). Phosphoros would start
 on today's knowledge and correct course as these missions report. A slower plan would wait for them. That
 is a real cost of the ten-year schedule, and the clearest argument for flying the precursors on time.

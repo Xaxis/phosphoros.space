@@ -22,16 +22,16 @@ description: Verify Phosphoros (the model in calc/, the docs sync, the figures a
 |---|---|---|---|
 | lint | `pnpm lint` | Biome, every package's types, docs in sync with the model, figures/svg current, the ozone model's spectrum table current, no em dashes or hand-typed quantities | passes, about 40 s |
 | test | `pnpm test` | the model's invariants (calc/test/model.test.ts: every input used, content refs resolve, claims explained, energy closes, variants break the deadline) | passes, about 2 s |
-| build | `pnpm build` (run as `~/.claude/claude-core/bin/heavy pnpm build`) | every page prerenders from docs/ and the model | passes, 33 static pages, 1 to 3 min plus queue |
+| build | `pnpm build` (run as `~/.claude/claude-core/bin/heavy pnpm build`) | every page prerenders from docs/ and the model | passes, 35 static routes, 1 to 3 min plus queue |
 | typecheck:calc | `cd calc && pnpm typecheck` | model types | passes |
 | typecheck:figures | `cd figures && pnpm typecheck` | figure types | passes |
 | typecheck:web | `cd web && pnpm typecheck` | site types and route types | passes |
 
 Known pre-existing failures: none in the checks. Some physics checks fail on purpose and are
-reported, not hidden: `veil-v2-hovers` (version 2's statite cannot hover), and the open problems
-`ring-lowering-load`, `ring-net-force`, `ring-carries-equipment`, `loss-heat-fits` and
-`exhaust-entropy`. Each names its `issue`, and the test "every failing check names its problem"
-fails if one does not, or if an `open` corrections entry has no failing check. The schedule checks
+reported, not hidden: today only `veil-v2-hovers` (version 2's statite cannot hover). Version 4
+closed the five open problems version 3 ended with by retiring the Braking Ring and pumping the
+Exhaust's tiles with light. A failing check must name its `issue`, and the test "every failing check
+names its problem" fails if one does not, or if an `open` corrections entry has no failing check. The schedule checks
 (`frost-before-sealing`, `genesis-by-deadline`, `earth-like-by-deadline`) pass with the design point
 in `data/assumptions.yaml`; `data/margins.json` says how far any input can move before they fail.
 `checks-failing` in the ledger counts the failures, and the docs cite that count. `pnpm calc` lists

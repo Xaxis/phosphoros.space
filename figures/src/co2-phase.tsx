@@ -23,6 +23,8 @@ function texts(r: Registry, first: Pt, last: Pt) {
     critical: `${show(r, "co2-critical-temp", { sig: 3 })}, ${show(r, "co2-critical-pressure")}`,
     triple: `${show(r, "co2-triple-temp")}, ${show(r, "co2-triple-pressure")}`,
     clearRain: show(r, "traj-clear-rain", day),
+    rerain: show(r, "traj-rerain", day),
+    rewarm: show(r, "traj-rewarm"),
     freeze: show(r, "traj-freeze", day),
     frozen: show(r, "traj-frozen", day),
     coldDate: show(r, "traj-cold", day),
@@ -226,7 +228,12 @@ function Co2Phase(p: Props) {
       <Lines
         x={cx + 9}
         y={cy + 22}
-        lines={["Clear Rain begins", t.clearRain, "at the critical point,", t.critical]}
+        lines={[
+          "Clear Rain begins",
+          `${t.clearRain}; for good from`,
+          `${t.rerain}, after the Bricks' heat`,
+          `at the critical point, ${t.critical}`,
+        ]}
       />
 
       <Dot x={tpx} y={tpy} tone="ink" title={`Triple point, ${t.triple}`} />
@@ -316,13 +323,18 @@ export const co2Phase: FigureDef<Props> = {
     };
   },
   caption: (p) =>
-    `Venus's CO₂ is supercritical today. Cooled past the critical point it rains out, follows the vapour curve to the triple point and freezes; Frost Towers at ${p.text.frostT} leave ${p.text.frostP} in the air, and the sealed dry ice stays solid at ${p.text.iceT}.`,
+    `Venus's CO₂ is supercritical today. Cooled past the critical point it rains out; the arriving Bricks' heat warms the air back by ${p.text.rewarm} for a while, and it rains for good from ${p.text.rerain}. It follows the vapour curve to the triple point and freezes; Frost Towers at ${p.text.frostT} leave ${p.text.frostP} in the air, and the sealed dry ice stays solid at ${p.text.iceT}.`,
   describe: (p) => ({
     summary: `A CO₂ phase diagram, pressure on a log scale against temperature, with the sublimation, vapour and melting curves. The simulated path of the air's CO₂ runs from Venus today (${p.text.start}) to Earth-like on ${p.text.earthLike} (${p.text.end}). The sealed dry ice sits at ${p.text.iceT}, from ${p.text.iceTop} at its top to ${p.text.iceBase} at its base, where it would melt at ${p.text.iceMelt}.`,
     head: ["Point", "When", "State"],
     rows: [
       ["Venus today", "Before cooling", p.text.start],
       ["Critical point: the Clear Rain begins", p.text.clearRain, p.text.critical],
+      [
+        `Critical point again, after the Bricks' heat warms the air back by ${p.text.rewarm}: the Clear Rain falls for good`,
+        p.text.rerain,
+        p.text.critical,
+      ],
       ["Triple point: the seas start to freeze", p.text.freeze, p.text.triple],
       ["Triple point: the seas are frozen through", p.text.frozen, p.text.triple],
       ["All the CO₂ is down", p.text.coldDate, p.text.cold],
@@ -348,6 +360,8 @@ export const co2Phase: FigureDef<Props> = {
     "co2-melting-a1",
     "co2-melting-a2",
     "traj-clear-rain",
+    "traj-rerain",
+    "traj-rewarm",
     "traj-freeze",
     "traj-frozen",
     "traj-cold",

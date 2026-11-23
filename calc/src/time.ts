@@ -10,6 +10,14 @@ const DAY_MS = 86_400_000;
 export const YEAR_S = 365.25 * 86_400;
 export const DAY_S = 86_400;
 
+/** The Julian day at the Unix epoch, 1970-01-01 00:00 UTC: a definition, not a measurement. */
+const UNIX_JULIAN_DAY = 2440587.5;
+
+/** Days since the program epoch for a Julian day (the astronomers' count of days). */
+export function dayOfJulian(jd: number): number {
+  return jd - UNIX_JULIAN_DAY - EPOCH_MS / DAY_MS;
+}
+
 /** Days since the epoch for an ISO date (YYYY-MM-DD). */
 export function dayOf(iso: string): number {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) throw new Error(`time: "${iso}" is not YYYY-MM-DD`);

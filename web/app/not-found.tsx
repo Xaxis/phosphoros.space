@@ -15,7 +15,7 @@ export default function NotFound() {
           <div className="lead">
             <p>
               That page does not exist. Try <a href="/plan">the plan</a>,{" "}
-              <a href="/technologies">the thirteen inventions</a> or{" "}
+              <a href="/technologies">the twelve inventions</a> or{" "}
               <a href="/numbers">every number</a>.
             </p>
           </div>

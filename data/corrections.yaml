@@ -101,20 +101,21 @@
     7.7 × 10²⁷ J: 2% spare from the Lattice alone, 28% once the Ring powers the Railheads.
   before: { exhaust-peak: 3.6e19, exhaust-area-installed: 4e13, budget-demand: 7.0e27, budget-spare: 0.09 }
 - id: ring-lowering
-  kind: open
+  kind: finding
   version: "3"
   date: 2026-11-20
   title: The Ring cannot lower the ice on tethers
   issue: 2
   text: >-
-    Bringing {lowering-rate} of ice to rest 300 km lower takes at least the momentum it would gain
-    falling that far, every second: {lowering-support}. The Ring's rotor has {ring-lift} of lift to
-    spare, {lowering-overload} times too little. Options under study: drop the Bricks from rest at
-    the Ring and pump out the extra {ring-drop-extra-heat} of heat; lower over a longer time; or a
+    Bringing 2.2 × 10¹² kg/s of ice to rest 300 km lower takes at least the momentum it would gain
+    falling that far, every second: 4.7 × 10¹⁵ N. The Ring's rotor has 3.0 × 10¹³ N of lift to
+    spare, 150 times too little. Options under study: drop the Bricks from rest at
+    the Ring and pump out the extra 2.5 × 10²⁶ J of heat; lower over a longer time; or a
     far heavier, faster rotor. The energy budget never counted the lowering's recovered energy, so
-    it is unchanged.
+    it is unchanged. Version 4 retires the Ring: the Bricks fall straight into the air.
+
 - id: ring-net-force
-  kind: open
+  kind: finding
   version: "3"
   date: 2026-11-20
   title: Catching east and west cancels the Ring's twist, not its braking force
@@ -123,10 +124,11 @@
     Version 2 caught half the Bricks eastbound and half westbound so the braking forces would
     cancel. Every Brick arrives from the same direction, and the two streams graze the Ring at
     mirror-image points, each about 22° forward of the line across Venus. Their sideways pushes
-    cancel and their forward pushes add: {ring-net-braking-force} along Venus's orbital motion,
-    {ring-net-overload} times the rotor's spare lift. An orbital ring has no stiff way to hand that
+    cancel and their forward pushes add: 6.0 × 10¹⁶ N along Venus's orbital motion,
+    2,000 times the rotor's spare lift. An orbital ring has no stiff way to hand that
     force to the planet. The catch would recover the energy the budget counts; what holds the Ring
-    in place while it does is unsolved.
+    in place while it does is unsolved. Version 4 retires the Ring.
+
 - id: o2-match
   kind: correction
   version: "3"
@@ -149,9 +151,9 @@
   title: The ozone layer is modelled, and land life waits for it
   text: >-
     Version 2 left the gate's ozone condition as a measurement. A Chapman model of the new air, which
-    gives Earth's column when run on Earth's air, makes {ozone-first-day} of ozone in the first day of
-    sunlight, so the condition is met at once. A shield for land, {ozone-shield-column}, takes
-    {ozone-shield-days}: lichens and mosses go onto land on {genesis-land-start|date=day}, after the
+    gives Earth's column when run on Earth's air, makes 49.9 DU of ozone in the first day of
+    sunlight, so the condition is met at once. A shield for land, 185 DU, takes
+    91 d: lichens and mosses go onto land on 2 December 2036, after the
     ocean seeding and before the deadline.
 - id: missions
   kind: correction
@@ -171,11 +173,11 @@
   text: >-
     Version 2 priced every Ice Train shot at the Hohmann minimum, but the Railheads fire all the
     time. A shot between launch windows needs a faster orbit to meet Venus: up to
-    {launch-offwindow-max} more energy at the worst moment, {launch-offwindow-mean} more on average.
-    Charging the average raises the launch energy to {ice-launch-energy} and the Railheads' power to
-    {railhead-power}. Until the Ring takes over, cooling gets less of the Lattice, so the Clear Rain
-    moves to {traj-clear-rain|date=month} and all the CO₂ is down on {traj-cold|date=day}. The air
-    is Earth-like on {traj-earth-like|date=day}.
+    75% more energy at the worst moment, 37% more on average.
+    Charging the average raises the launch energy to 5.6 × 10²⁷ J and the Railheads' power to
+    1.1 × 10²⁰ W. Until the Ring takes over, cooling gets less of the Lattice, so the Clear Rain
+    moves to January 2035 and all the CO₂ is down on 30 March 2036. The air
+    is Earth-like on 30 September 2036.
   before:
     ice-launch-energy: 4.09e27
     ice-launch-motion: 2.05e27
@@ -211,7 +213,7 @@
   text: >-
     The end of active cooling and the last cap were both planned for 30 June 2036. With launches
     between windows charged, the simulated Frost Towers finish only on
-    {traj-scavenged|date=day}, so both move to {sealing-end|date=day}, and a new check keeps them
+    9 April 2036, so both move to 1 September 2036, and a new check keeps them
     after the Frost Towers. The Exhaust's campaign averages are taken over the longer campaign, so
     they fall a little.
   before:
@@ -236,12 +238,12 @@
   date: 2026-11-20
   title: Seeding waits for the ocean pH gate as well as the oxygen
   text: >-
-    Seeding began the day the oxygen was in, {forge-end|date=day}, which met the pH gate (oceans
-    above pH {genesis-ph-min} for {genesis-ph-days}) with almost nothing to spare. With the later melt the pH
-    gate opens on {genesis-ph-clear|date=day}, so seeding now begins at the later of the two gates,
-    {genesis-start|date=day}. Seeded at {genesis-seed-density} and doubling every
-    {genesis-doubling-days}, the cyanobacteria reach the density of rich Earth seawater on
-    {genesis-end|date=day}, and a new check holds that to the deadline. That date used to mark the
+    Seeding began the day the oxygen was in, 30 September 2036, which met the pH gate (oceans
+    above pH 7.5 for 90 d) with almost nothing to spare. With the later melt the pH
+    gate opens on 1 December 2036, so seeding now begins at the later of the two gates,
+    1 December 2036. Seeded at 100 per cm³ and doubling every
+    1 d, the cyanobacteria reach the density of rich Earth seawater on
+    12 December 2036, and a new check holds that to the deadline. That date used to mark the
     end of seeding; it now marks green water.
   before: { genesis-end: 2036-12-15 }
 - id: foundry-products
@@ -253,16 +255,16 @@
     Version 2 grew the Foundry as if the Veil and the Lattice cost it nothing, and let the
     Lattice's power climb with the Foundry from 2030. Mass is conserved: every kilogram of product
     is a kilogram the Foundry did not add to itself. Now it stops growing for
-    {veil-diversion-days} to build the Veil, whose parts take {mercury-venus-transfer-days} to coast
-    from Mercury to L1, so the Veil closes on {veil-close|date=day}, late enough that the Foundry is
+    9.8 d to build the Veil, whose parts take 76 d to coast
+    from Mercury to L1, so the Veil closes on 1 December 2032, late enough that the Foundry is
     large. It then grows to full scale and builds the Lattice and the Ring after. Growing to about
-    the mass of what it must build next finishes soonest, so it stops at {foundry-doublings}
-    doublings, {foundry-final-mass}, instead of 27. Active cooling starts with the Lattice's first
-    power, {cooling-start|date=day}, instead of January 2033, and the ice launches with full power
-    on {ice-launch-start|date=day}. The Timeline and the animation drew the Veil, the Lattice and the
+    the mass of what it must build next finishes soonest, so it stops at 27
+    doublings, 1.3 × 10¹⁴ kg, instead of 27. Active cooling starts with the Lattice's first
+    power, 5 April 2034, instead of January 2033, and the ice launches with full power
+    on 28 August 2033. The Timeline and the animation drew the Veil, the Lattice and the
     Ring as built from 2030 and 2032; they now follow the Foundry, with the Veil from
-    {veil-build-begin|date=day}, the Lattice from {foundry-full-scale|date=day} and the Ring from
-    {ring-build-begin|date=day}.
+    7 September 2032, the Lattice from 2 July 2033 and the Ring from
+    28 August 2033.
   before:
     ring-build-start: 2032-06-01
     foundry-target-mass: 1.0e14
@@ -297,13 +299,13 @@
   issue: 5
   text: >-
     The simulation now caps the heat it removes at what the chimneys carry; the cap binds on
-    {traj-chimney-days}. It also charges what the chimneys cost the pumps. The exchangers cooled the
+    160 d. It also charges what the chimneys cost the pumps. The exchangers cooled the
     air by 300 K, and the pumps see that heat over the whole range, as if the air were at the
     range's log-mean temperature: about 22% colder, which raised the work for each joule of the
     gas's heat by a third or more.
-    Version 3's chimneys are wider, {chimney-diameter}, and cool the air by {chimney-gas-cooling},
-    so the pumps see {chimney-cold-factor} of its temperature. The bigger flow costs fan power,
-    {chimney-fan-power}, which the budget now charges.
+    Version 3's chimneys are wider, 3.5 km, and cool the air by 100 K,
+    so the pumps see 0.931 of its temperature. The bigger flow costs fan power,
+    1.0 × 10¹⁷ W, which the budget now charges.
   before:
     chimney-diameter: 2000
     chimney-gas-cooling: 300
@@ -326,24 +328,25 @@
     A magnet's field pulls its own winding outward. Version 2's 10 km coil would have needed about
     10¹⁷ kg of the strongest carbon fibre to hold together, far more than the Foundry ever builds.
     The same dipole from a wider loop needs far less current, and the pull falls with the cube of
-    the radius. At {aegis-coil-radius} the coil carries {aegis-ampere-turns} in all,
-    {aegis-current} per turn, and its structure needs at least {aegis-structure-mass}.
+    the radius. At 1,000 km the coil carries 3 × 10⁸ A in all,
+    300 A per turn, and its structure needs at least 2.0 × 10¹¹ kg.
   before: { aegis-coil-radius: 1.0e4, aegis-ampere-turns: 3.03e12, aegis-current: 3.03e6 }
 - id: exhaust-entropy
-  kind: open
+  kind: finding
   version: "3"
   date: 2026-11-20
   title: The Exhaust's narrow beams cost far more pump work than the model charges
   issue: 4
   text: >-
-    The model charges the heat pumps {exhaust-carnot-share} of the Carnot efficiency for emitters at
-    {exhaust-effective-temp}, right for light spread over colours and directions the way a surface that
+    The model charges the heat pumps 50% of the Carnot efficiency for emitters at
+    1,600 K, right for light spread over colours and directions the way a surface that
     hot spreads it. The tiles
-    instead put {exhaust-flux} into a {exhaust-band} band and a {exhaust-cone} cone, light that counts
-    as at least {exhaust-light-temp} by its entropy. Lifting a joule from the starting air into it
-    takes {exhaust-work-multiple} times the work charged, for pumps equally far from the limit. Either the tiles spread their light over
+    instead put 0.37 MW/m² into a 0.4 µm band and a 25° cone, light that counts
+    as at least 9,000 K by its entropy. Lifting a joule from the starting air into it
+    takes 9.6 times the work charged, for pumps equally far from the limit. Either the tiles spread their light over
     far more colours and directions, or the pumps need many times the power. The budget's pump work
-    is a floor until this is solved.
+    is a floor until this is solved. Version 4 spreads the tiles' light over their whole sky and charges the pumps for its entropy.
+
 - id: budget-offwindow
   kind: correction
   version: "3"
@@ -351,13 +354,13 @@
   title: The Lattice grows to 8.5 × 10¹⁹ W so the budget closes without the Ring
   issue: 12
   text: >-
-    Charging the launches fired between windows added {ice-launch-offwindow-energy} to the demand,
+    Charging the launches fired between windows added 1.5 × 10²⁷ J to the demand,
     and the Lattice's power now arrives only once the Foundry stops growing. At 7 × 10¹⁹ W the
     Lattice alone fell 7% short, and the air was Earth-like only in February 2037. Version 2 raised
-    the Lattice from 4 to 7 × 10¹⁹ W for the same reason: the launches. Today, at {helios-power}, the
-    Lattice delivers {helios-supply} against {budget-demand}, {budget-spare} spare before the Ring's
-    recovered energy and {budget-spare-with-ring} after, and the plan finishes on time. It takes
-    {helios-mass} of petals, which the full Foundry builds in {lattice-build-days}.
+    the Lattice from 4 to 7 × 10¹⁹ W for the same reason: the launches. Today, at 1.2 × 10²⁰ W, the
+    Lattice delivers 1.3 × 10²⁸ J against 1.1 × 10²⁸ J, 11% spare before the Ring's
+    recovered energy and 32% after, and the plan finishes on time. It takes
+    8.8 × 10¹³ kg of petals, which the full Foundry builds in 57 d.
   before:
     helios-power: 7.0e19
     helios-area: 5.14e16
@@ -380,7 +383,7 @@
   title: Choir's machine count comes from the model
   text: >-
     Version 2 said Choir runs a trillion machines, a number nothing in the plan sized. Version 3
-    counts the machines the model does size, {choir-machines}: the Lattice's Petals, the Veil's
+    counts the machines the model does size, 3.9 × 10⁸: the Lattice's Petals, the Veil's
     slats, the Exhaust canopies, the Thermal Chimneys, the Forges, the Railheads and the Ring's
     tether lifts. The Foundry's own robots are not sized, so this is a floor.
 - id: veil-spare
@@ -391,7 +394,7 @@
   text: >-
     Version 2 listed 20% spare slats as a safeguard against the Veil failing after cooling. The
     model sizes the Veil, its mass and the date the Foundry can afford it with no spares, so
-    version 3 no longer claims them. The safeguards it does carry are {veil-slats} independent
+    version 3 no longer claims them. The safeguards it does carry are 3.8 × 10⁸ independent
     slats that fail opaque and the CO₂ sealed under the cryo-continents.
 - id: helios-orbits
   kind: correction
@@ -399,10 +402,10 @@
   date: 2026-11-20
   title: The longest beam starts from the Lattice's outermost orbit
   text: >-
-    Version 2 put the Petals on orbits from {helios-orbit-inner} to {helios-orbit-outer} but
+    Version 2 put the Petals on orbits from 0.3 AU to 0.45 AU but
     measured the longest beam from Mercury's orbit. Measured from the outermost Petals, the
-    longest beam to Venus is {helios-range}, and a {helios-aperture} aperture spreads it to
-    {helios-spot}.
+    longest beam to Venus is 1.2 AU, and a 10 km aperture spreads it to
+    46 m.
   before: { helios-range: 1.66e11, helios-spot: 43 }
 - id: exhaust-safety
   kind: correction
@@ -411,11 +414,11 @@
   title: The Exhaust's dark strip and far-field distance come from its cone
   text: >-
     Version 2 kept tiles dark in a strip 50 km wide under the Ring's path and said each cone falls
-    below {exhaust-far-limit} beyond about 50,000 km. Both follow from the {exhaust-cone} cone. A
-    cone from the chimney tops at {chimney-top} is {exhaust-dark-strip} wide by the time it reaches
-    the Ring at {ring-altitude}, so the strip must be that wide, {exhaust-dark-strip-share} of the
-    surface. At peak power one canopy's cone is still brighter than {exhaust-far-limit} out to
-    {exhaust-cone-safe-distance}; where cones overlap, their light adds.
+    below 10 W/m² beyond about 50,000 km. Both follow from the 25° cone. A
+    cone from the chimney tops at 65 km is 150 km wide by the time it reaches
+    the Ring at 400 km, so the strip must be that wide, 1.2% of the
+    surface. At peak power one canopy's cone is still brighter than 10 W/m² out to
+    90,000 km; where cones overlap, their light adds.
   before: { exhaust-dark-strip: 5.0e4, exhaust-cone-safe-distance: 5.0e7 }
 - id: veil-opaque
   kind: correction
@@ -424,12 +427,12 @@
   title: The Veil blocks every colour, and the Exhaust aims around it
   text: >-
     Version 2's slat was a metal mirror from 0.3 to 2.0 µm with a dielectric stack clear at the
-    Exhaust's {exhaust-wavelength}, so the outgoing beams could pass through the Veil. The
-    Exhaust's band holds {exhaust-band-sunlight} of sunlight, and a Veil clear there would let it
-    reach Venus: {exhaust-band-vs-veil-leak} times the {veil-leak-budget} the whole closed Veil may
+    Exhaust's 2.3 µm, so the outgoing beams could pass through the Veil. The
+    Exhaust's band holds 1.9% of sunlight, and a Veil clear there would let it
+    reach Venus: 19 times the 0.1% the whole closed Veil may
     let through. Version 3's slats block every colour, and the Exhaust aims around the Veil instead.
-    Seen from Venus it is only {veil-angular-radius} in radius, so tiles that face it tilt their
-    cones {exhaust-veil-tilt} off the Sun line. Gaps between slats are held to {veil-gap-max},
+    Seen from Venus it is only 0.68° in radius, so tiles that face it tilt their
+    cones 13° off the Sun line. Gaps between slats are held to 0.05%,
     under version 2's 0.1%, so that gaps and closed slats together fit inside the budget.
 - id: chimney-heat-lift
   kind: correction
@@ -443,7 +446,7 @@
     canopy about as cold as the cloud tops, its heat turned into height. Version 3's chimneys take
     the heat out of the air at depth, through fan-driven intake exchangers, and lift it in sealed
     liquid loops, whose temperature barely changes with pressure. They work until all the CO₂ is
-    down, {traj-cold|date=month}, not only until 2035, because the simulated cooling runs longer
+    down, March 2036, not only until 2035, because the simulated cooling runs longer
     than version 2 planned.
   issue: 5
 - id: campaign-dates
@@ -455,9 +458,9 @@
     Version 2 set the campaign's later dates by hand: rain-out from June 2034, the seas freezing
     and the caps sealed in 2035, catching from August 2034 and lowering from August 2034, before
     the Clear Rain had cleared the air. Version 3 takes them from the day-by-day simulation and the
-    Ice Train's flight times: the Clear Rain on {traj-clear-rain|date=day}, the seas freezing on
-    {traj-freeze|date=day}, the last caps sealed by {sealing-end|date=day} and the first Brick
-    caught on {first-catch|date=day}. Lowering is planned from {lowering-start|date=day}, and how to
+    Ice Train's flight times: the Clear Rain on 22 January 2035, the seas freezing on
+    4 September 2035, the last caps sealed by 1 September 2036 and the first Brick
+    caught on 3 July 2034. Lowering is planned from 30 June 2035, and how to
     do it is still an open problem.
   before: { lowering-start: 2034-08-01 }
 - id: ring-energy-swap
@@ -467,19 +470,19 @@
   title: The Ring's energy reaches Ceres by swapping customers, not by a second beam
   text: >-
     Version 2 beamed the Ring's electricity back to Ceres. A beam keeps only
-    {helios-laser-efficiency} of the power through its lasers and {helios-receiver-efficiency}
-    through its receivers, so version 3 sends none back. The Ring's {ring-power} runs down the tethers to Venus's own
+    50% of the power through its lasers and 75%
+    through its receivers, so version 3 sends none back. The Ring's 2.2 × 10²⁰ W runs down the tethers to Venus's own
     systems, and the Helios Lattice, which already beams to Ceres, keeps doing so. The simulation
-    counts it this way from {ring-pays-from|date=month}.
+    counts it this way from July 2034.
 - id: ring-tracks
   kind: correction
   version: "3"
   date: 2026-11-20
   title: The Ring needs more than eight catcher tracks
   text: >-
-    Version 2 gave the Ring eight catcher tracks. Each Brick brakes for {ring-catch-time}, so at
-    the full rate {ring-bricks-braking} of them are on the tracks at once. Laid end to end, each
-    {brick-side} long, they fill at least {ring-tracks-min} tracks of {ring-track-length}, before
+    Version 2 gave the Ring eight catcher tracks. Each Brick brakes for 23 s, so at
+    the full rate 130,000 of them are on the tracks at once. Laid end to end, each
+    103 m long, they fill at least 48 tracks of 290 km, before
     any gap between sleds. Version 3 carries as many tracks side by side as the rate needs.
 - id: lanterns-night
   kind: correction
@@ -490,9 +493,9 @@
     Version 2 hovered the Lanterns east and west of Venus, where sunlight pushes across Venus's
     pull instead of against it, the same flaw as its Veil. Version 3 puts them on the night side,
     where the sunlight they reflect toward Venus pushes them away from it: mirrors of
-    {lantern-areal-density} hover {lantern-distance} out. Straight behind Venus they would sit in
-    the shadow of Venus and the Veil, so they stand {lantern-offset-angle} off the Sun line and
-    spend {lantern-side-share} of their thrust holding station sideways.
+    1 g/m² hover 140,000 km out. Straight behind Venus they would sit in
+    the shadow of Venus and the Veil, so they stand 8.8° off the Sun line and
+    spend 7.7% of their thrust holding station sideways.
 - id: canopy-size
   kind: correction
   version: "3"
@@ -500,9 +503,9 @@
   title: Wider canopies carry the larger Exhaust
   text: >-
     Version 2's canopies were sized for its smaller Exhaust, with a hot-gas envelope a few hundred
-    metres deep. Version 3's Exhaust peaks at {exhaust-peak}, so each of its {exhaust-canopies}
-    canopies holds {canopy-area} of emitters and is {canopy-width} across, floating at the
-    chimney tops, {chimney-top} up.
+    metres deep. Version 3's Exhaust peaks at 1.2 × 10²⁰ W, so each of its 10,000
+    canopies holds 3.2 × 10¹⁰ m² of emitters and is 190 km across, floating at the
+    chimney tops, 65 km up.
   before: { canopy-width: 7.0e4 }
 - id: online-dates
   kind: correction
@@ -513,11 +516,11 @@
     Version 2's table of inventions gave online dates by hand, and some disagreed with its own
     schedule: Choir was online in 2028 but went live with the seed in 2029. Version 3 reads each
     from the model. The Chimneys and the Exhaust start with active cooling,
-    {cooling-start|date=year}; the Lattice counts at full power, {helios-full-power|date=year}; the
-    Veil when it closes, {veil-close|date=year}; the Ring at its first catch,
-    {first-catch|date=year}; the Forges when they start, {forge-start|date=year}; the
-    Cryo-continents with the Clear Rain, {traj-clear-rain|date=year}; and Choir with the landing,
-    {foundry-landing|date=year}.
+    2034; the Lattice counts at full power, 2033; the
+    Veil when it closes, 2032; the Ring at its first catch,
+    2034; the Forges when they start, 2035; the
+    Cryo-continents with the Clear Rain, 2035; and Choir with the landing,
+    2029.
 - id: aerogel-measured
   kind: correction
   version: "3"
@@ -525,9 +528,9 @@
   title: The cap's aerogel takes measured values
   text: >-
     Version 2 gave the cap's carbon aerogel a density of 100 kg/m³ and a conductivity of 0.014
-    W/(m·K), with no source. Lu and colleagues measured {cryo-aerogel-conductivity} in air at
-    {cryo-aerogel-density} (1993). With the measured aerogel the caps leak {cryo-leak-flux},
-    {cryo-leak-total} in all, still small beside the floor heat, and take {cryo-cap-mass} of
+    W/(m·K), with no source. Lu and colleagues measured 0.029 W/(m·K) in air at
+    82 kg/m³ (1993). With the measured aerogel the caps leak 0.16 W/m²,
+    24 TW in all, still small beside the floor heat, and take 2.5 × 10¹⁷ kg of
     graphite. The Cryo-seal experiment now passes at the leak the plan's own cap gives, instead of
     version 2's 0.1 W/m², which a cap of real aerogel this thick would fail.
   before:
@@ -545,7 +548,7 @@
   text: >-
     Version 2 described Mercury's surface as rich in iron, silicon, aluminium, magnesium and sulfur.
     MESSENGER found it rich in sulfur, carbon and magnesium but poor in aluminium, calcium and
-    iron: under {mercury-surface-fe-max} iron by mass, held mostly in sulfides and metal grains.
+    iron: under 4% iron by mass, held mostly in sulfides and metal grains.
     The Foundry's iron cores and rails need more rock dug per kilogram than version 2 implied; the
     model does not yet size the Foundry's diggers by element.
 - id: sublimation-curve
@@ -556,12 +559,12 @@
   issue: 10
   text: >-
     The model drew CO₂'s sublimation curve by Clausius-Clapeyron from one atmosphere at 194.7 K with
-    a constant enthalpy. That curve gave 74 Pa at the Frost Towers' {frost-tower-temp}, and 4.9 bar
-    at the triple point against the measured {co2-triple-pressure}, so the simulated pressure stepped
+    a constant enthalpy. That curve gave 74 Pa at the Frost Towers' 133 K, and 4.9 bar
+    at the triple point against the measured 5.2 bar, so the simulated pressure stepped
     down as the air crossed it. Span and Wagner's sublimation equation meets the vapour curve at their triple
-    point, {co2-triple-temp} and {co2-triple-pressure}, which the model now uses as well, and gives
-    {frost-co2-pressure} at {frost-tower-temp}. The Frost Towers leave {frost-residual-target}
-    airborne, and the finished air holds {final-co2-ppm} of CO₂.
+    point, 216.6 K and 5.2 bar, which the model now uses as well, and gives
+    54 Pa at 133 K. The Frost Towers leave 2.8 × 10¹⁵ kg
+    airborne, and the finished air holds 230 ppm of CO₂.
   before:
     frost-co2-pressure: 74.0
     frost-residual-target: 3.84e15
@@ -576,19 +579,19 @@
   text: >-
     The simulation released all of the CO₂'s latent heat evenly between its critical point and its
     triple point, although
-    {co2-triple-vapour-share} of the CO₂ is still vapour at the triple point and liquid CO₂ cannot
+    5.7% of the CO₂ is still vapour at the triple point and liquid CO₂ cannot
     freeze above it. Now the CO₂ gives up its heat of condensation as it rains out along the vapour
-    curve; at the triple point the seas give up their heat of fusion, {co2-fusion-heat}, while the
-    air holds at {co2-triple-temp}; and the CO₂ still in the air gives up the whole deposition heat
-    as it freezes out below. The air reaches the triple point on {traj-freeze|date=day}, the seas
-    are frozen through on {traj-frozen|date=day}, all the CO₂ is down on {traj-cold|date=day}, the
-    Frost Towers finish on {traj-scavenged|date=day} and the air is Earth-like on
-    {traj-earth-like|date=day}. The Frost Towers also counted the leftover CO₂'s latent heat a
+    curve; at the triple point the seas give up their heat of fusion, 210 kJ/kg, while the
+    air holds at 216.6 K; and the CO₂ still in the air gives up the whole deposition heat
+    as it freezes out below. The air reaches the triple point on 4 September 2035, the seas
+    are frozen through on 13 February 2036, all the CO₂ is down on 30 March 2036, the
+    Frost Towers finish on 9 April 2036 and the air is Earth-like on
+    30 September 2036. The Frost Towers also counted the leftover CO₂'s latent heat a
     second time, the pumps ran on past the end of the cooling path, and heat entering after the
     pumps stopped was counted as lifted. With those fixed, the heat lifted equals Venus's heat, less
-    the {traj-heat-left-airborne} the CO₂ left in the air still holds, plus the heat added while the
-    pumps run, and a new check keeps it so. The time to lay the caps, {sealing-window}, and the rate
-    of laying them, {cap-laying-rate}, are now model numbers.
+    the 1.6 × 10²¹ J the CO₂ left in the air still holds, plus the heat added while the
+    pumps run, and a new check keeps it so. The time to lay the caps, 200 d, and the rate
+    of laying them, 750,000 km²/d, are now model numbers.
   before:
     traj-freeze: 2036-06-23
     traj-cold: 2036-08-03
@@ -612,13 +615,13 @@
   issue: 10
   text: >-
     The model priced the floor heat, if it is not pumped away, with the deposition heat, as if it
-    turned the ice straight to gas. Under {cryo-thickness} of dry ice the base is at
-    {cryo-base-pressure}, far above the triple-point pressure, so the heat melts it, which takes
-    only the heat of fusion, {co2-fusion-heat}: {cryo-unrefrigerated-loss} of the CO₂ a year at
-    first, {cryo-base-melt-rate} off the base of the sheet. The liquid is lighter than the ice above
+    turned the ice straight to gas. Under 2 km of dry ice the base is at
+    280 bar, far above the triple-point pressure, so the heat melts it, which takes
+    only the heat of fusion, 210 kJ/kg: 0.4% of the CO₂ a year at
+    first, 7.6 m off the base of the sheet. The liquid is lighter than the ice above
     it and carries its weight, so it lubricates the sheet and presses toward the cell walls. The
     basal refrigeration the plan already carries keeps the base below its melting point,
-    {cryo-base-melt-temp}.
+    222 K.
   before: { cryo-unrefrigerated-loss: 0.00141 }
 - id: freeze-outlasts-sealing
   kind: correction
@@ -627,15 +630,15 @@
   title: The Exhaust grows a tenth so the seas freeze before the caps are sealed
   issue: 10
   text: >-
-    Releasing the heat of fusion at the triple point holds the air at {co2-triple-temp} while the seas
+    Releasing the heat of fusion at the triple point holds the air at 216.6 K while the seas
     freeze, with the Exhaust at its peak and the falling ice adding most of the heat that enters
     meanwhile. At the old peak the seas froze only in June 2036, the Frost Towers finished after the
-    last caps were due on {sealing-end|date=day}, and seeded life greened the oceans after the
+    last caps were due on 1 September 2036, and seeded life greened the oceans after the
     deadline. The peak grew to 5.5 × 10¹⁹ W, and the seas froze before the caps were due. It cost
     little energy, because a faster freeze lets less heat in. The peak has since grown again, to
-    {exhaust-peak}, for pumps charged as real machines: the seas are frozen through on
-    {traj-frozen|date=day}, the Frost Towers finish {frost-sealing-slack} before the last caps, and
-    the oceans are green on {genesis-end|date=day}.
+    1.2 × 10²⁰ W, for pumps charged as real machines: the seas are frozen through on
+    13 February 2036, the Frost Towers finish 150 d before the last caps, and
+    the oceans are green on 12 December 2036.
   before: { exhaust-peak: 5.0e19 }
 - id: so2-sealed
   kind: correction
@@ -646,11 +649,11 @@
   text: >-
     Version 2 sized the lime to neutralize every molecule of Venus's SO₂. But SO₂ is far less
     volatile than CO₂, and measured CO₂ + SO₂ equilibria put it in the liquid when the CO₂ condenses.
-    When the seas start to freeze at the triple point, they hold {so2-sealed-share} of it, and it
-    freezes with them under the caps. What reaches the oceans is the {venus-cloud-acid} of cloud acid
-    that rains out first and, counted in full, the {so2-airborne-at-freeze} of SO₂ still in the air:
-    {acid-swept-share} of the sulfur. The lime falls to {acid-cao} and the basalt to {acid-basalt},
-    spread {acid-basalt-layer} deep on the land outside the basins.
+    When the seas start to freeze at the triple point, they hold 99.4% of it, and it
+    freezes with them under the caps. What reaches the oceans is the 1.0 × 10¹⁴ kg of cloud acid
+    that rains out first and, counted in full, the 6.1 × 10¹⁴ kg of SO₂ still in the air:
+    0.63% of the sulfur. The lime falls to 5.9 × 10¹⁴ kg and the basalt to 6 × 10¹⁵ kg,
+    spread 6.3 mm deep on the land outside the basins.
   before: { acid-cao: 9.29e16, acid-basalt: 9.29e17, acid-basalt-layer: 2.06, acid-crust-share: 6.73e-4 }
 - id: lattice-to-ceres
   kind: correction
@@ -661,8 +664,8 @@
   text: >-
     Version 2 measured the longest beam to Ceres from Venus, because the Ring beamed the Railheads'
     power there. Version 3 sends nothing back from the Ring; the Lattice beams Ceres itself, from
-    orbits as far out as {helios-orbit-outer}. The longest range is {lattice-to-ceres-range}, and
-    a {helios-aperture} aperture focuses the beam to {ceres-beam-spot}.
+    orbits as far out as 0.45 AU. The longest range is 3.2 AU, and
+    a 10 km aperture focuses the beam to 120 m.
   before: { ring-to-ceres-range: 5.22e11, ceres-beam-spot: 136 }
 - id: ceres-heat
   kind: correction
@@ -672,15 +675,15 @@
   issue: 7
   text: >-
     Version 2 said the receivers at Ceres would need more area than its surface and left them
-    unsized. The real limit is heat: the receivers and the Railheads make {ceres-heat-vs-surface}
-    times more than Ceres's whole surface could radiate at {helios-fin-temp}, so almost none of it
+    unsized. The real limit is heat: the receivers and the Railheads make 110
+    times more than Ceres's whole surface could radiate at 1,500 K, so almost none of it
     can be made on the ground. Version 3 puts the receivers on the Crown, a ring at Ceres's
-    synchronous orbit {crown-altitude} up, with tethers carrying the power down. The receivers
-    take {ceres-receiver-intensity}, so each square metre hands its coolant {ceres-receiver-loss-flux},
+    synchronous orbit 720 km up, with tethers carrying the power down. The receivers
+    take 40 MW/m², so each square metre hands its coolant 10 MW/m²,
     what ITER's divertor is built for. The Railheads' barrels are superconducting and leave only
-    {railhead-barrel-heat} on Ceres; the rest of their loss arises where the power is shaped into
-    pulses, in the Crown, which radiates {crown-heat} from {crown-fin-area} of fins. The Railheads
-    weigh at least {railheads-mass} and the Crown {crown-mass}.
+    1.1 × 10¹⁷ W on Ceres; the rest of their loss arises where the power is shaped into
+    pulses, in the Crown, which radiates 9.0 × 10¹⁹ W from 1.6 × 10¹⁴ m² of fins. The Railheads
+    weigh at least 7.2 × 10¹³ kg and the Crown 5.3 × 10¹³ kg.
 - id: ceres-factories
   kind: correction
   version: "3"
@@ -689,11 +692,11 @@
   issue: 7
   text: >-
     Version 2 sent the first Ceres factories from Earth but never sized them. Version 3 launches a
-    {ceres-seed-mass} seed on {ceres-seed-launch|date=day}, behind the same Ouroboros-0 gate as the
+    1,000 t seed on 1 October 2028, behind the same Ouroboros-0 gate as the
     Foundry's, which now must close its loop on simulated Ceres rock too. To build the
-    {ceres-build-mass} of Railheads and Crown by the first launch, the factories must double every
-    {ceres-doubling-days}, faster than the Foundry; they finish on {ceres-ready|date=day}. At the
-    Foundry's pace they would finish only in {ceres-ready-foundry-pace|date=month}.
+    1.2 × 10¹⁴ kg of Railheads and Crown by the first launch, the factories must double every
+    45 d, faster than the Foundry; they finish on 14 July 2033. At the
+    Foundry's pace they would finish only in September 2034.
 - id: ceres-jupiter
   kind: finding
   version: "3"
@@ -701,9 +704,9 @@
   title: Ceres's new orbit stays clear of Jupiter; resonances are not modelled
   issue: 7
   text: >-
-    Ceres's new aphelion stays {ceres-jupiter-gap} inside Jupiter's perihelion,
-    {ceres-jupiter-gap-hill} of Jupiter's Hill radii, and its Tisserand parameter with respect to
-    Jupiter falls from {ceres-tisserand-now} to {ceres-tisserand}, still above 3. The model does not
+    Ceres's new aphelion stays 1.64 AU inside Jupiter's perihelion,
+    4.6 of Jupiter's Hill radii, and its Tisserand parameter with respect to
+    Jupiter falls from 3.31 to 3.21, still above 3. The model does not
     follow resonances: the new orbit sits on Jupiter's weak 9:4 resonance, and a long numerical
     integration must show it is stable before the first shot.
 - id: foundry-target
@@ -713,41 +716,43 @@
   title: The Foundry's target is what it builds next
   text: >-
     The Foundry's target mass was typed in as 6.0 × 10¹³ kg, about the Lattice and the Ring before
-    the Lattice grew. It is now computed from them, {foundry-target-mass}, and the doubling count is the exact soonest finish: one more doubling pays while the Foundry is
-    under the target divided by 2 ln 2. The plan still stops at {foundry-doublings} doublings, so no
+    the Lattice grew. It is now computed from them, 9.8 × 10¹³ kg, and the doubling count is the exact soonest finish: one more doubling pays while the Foundry is
+    under the target divided by 2 ln 2. The plan still stops at 27 doublings, so no
     date moves, but a larger Lattice in the Explorer now grows the Foundry as it should, where
     before it stopped one doubling short.
   before:
     foundry-target-mass: 6.0e13
 - id: loss-heat
-  kind: open
+  kind: finding
   version: "3"
   date: 2026-11-21
   title: The receivers' and the Ring's loss heat falls on Venus
   issue: 14
   text: >-
-    Version 3 said the receivers' loss heat, {helios-receiver-loss}, and the heat the catcher tracks
-    shed, {ring-catch-loss-power}, radiate to space and never reach Venus. A radiator near a planet
-    cannot help shining on it: fins standing upright at the Ring's height send {ring-fin-venus-share}
-    of their light onto Venus, and fins on the canopies {canopy-fin-venus-share}. That is
-    {loss-heat-into-venus} at full power, and with it counted the cooling does not finish in time.
+    Version 3 said the receivers' loss heat, 4.0 × 10¹⁹ W, and the heat the catcher tracks
+    shed, 5.4 × 10¹⁹ W, radiate to space and never reach Venus. A radiator near a planet
+    cannot help shining on it: fins standing upright at the Ring's height send 28%
+    of their light onto Venus, and fins on the canopies 41%. That is
+    2.7 × 10¹⁹ W at full power, and with it counted the cooling does not finish in time.
     The published schedule still leaves this heat out, and the check loss-heat-fits measures it.
     Options under study: one-sided radiators whose backs, facing Venus, are shielded by stacks of
-    polished foil as in vacuum furnaces, or radiators placed far from the planet.
+    polished foil as in vacuum furnaces, or radiators placed far from the planet. Version 4 pumps the tiles with the light itself, and counts the loss heat of the receivers that remain.
+
 - id: ring-equipment
-  kind: open
+  kind: finding
   version: "3"
   date: 2026-11-21
   title: The Ring cannot carry the receivers the plan hangs on it
   issue: 15
   text: >-
-    The stator's mass, {ring-stator-mass}, was said to include the Lattice's receivers. It does not:
+    The stator's mass, 3.0 × 10¹² kg, was said to include the Lattice's receivers. It does not:
     at the densities the plan uses for the same hardware on Ceres, the receivers, their fins and the
-    catch's radiators weigh {ring-equipment-mass}, and the rotor can hold up only {ring-hang-capacity}
-    besides the stator, {ring-equipment-overload} times too little. The stator's mass now counts the
+    catch's radiators weigh 4.8 × 10¹³ kg, and the rotor can hold up only 3.9 × 10¹² kg
+    besides the stator, 12 times too little. The stator's mass now counts the
     tracks, tether heads and cables, and the check ring-carries-equipment weighs the rest. Options:
     receivers at a higher beam intensity, a heavier or faster rotor (which the Foundry must then
-    build), or receivers on the canopies with their loss heat pumped out by the Exhaust.
+    build), or receivers on the canopies with their loss heat pumped out by the Exhaust. Version 4 retires the Ring and pumps the tiles with the light itself.
+
 - id: venus-hardware
   kind: correction
   version: "3"
@@ -756,11 +761,11 @@
   issue: 18
   text: >-
     The Foundry's books counted the Foundry, the Veil, the Lattice and the Ring, but not the Exhaust's
-    tiles and canopies ({exhaust-tile-mass}), the chimneys ({chimney-mass}), the receivers and their
+    tiles and canopies (1.6 × 10¹⁴ kg), the chimneys (1.4 × 10¹³ kg), the receivers and their
     fins, or the Lanterns, and cooling began the day the Foundry reached full scale, before any of
-    them existed. Together they weigh {venus-hardware-mass}, more than the Foundry itself. The Foundry
-    now builds them after the Lattice and the Ring, in {venus-hardware-build-days}, and active cooling
-    begins when they reach Venus, on {cooling-start|date=day}.
+    them existed. Together they weigh 2.1 × 10¹⁴ kg, more than the Foundry itself. The Foundry
+    now builds them after the Lattice and the Ring, in 140 d, and active cooling
+    begins when they reach Venus, on 5 April 2034.
   before:
     cooling-start: 2033-05-03
     foundry-built-mass: "1.4e14"
@@ -783,15 +788,15 @@
   issue: 16
   text: >-
     Version 3 charged each launch between windows its cheapest transfer, but timed every arrival as if
-    the Brick flew the standard Hohmann transfer, left out the {ice-mutual-inclination} tilt between
+    the Brick flew the standard Hohmann transfer, left out the 7.2° tilt between
     Ceres's orbit and Venus's, and launched every Brick from Ceres's original orbit, though the recoil
     moves it outward. Each synodic cycle's launches are now booked to arrival slots, transfer by
-    transfer with Lambert's method, for the least launch energy with at most {ice-arrival-peak} times
+    transfer with Lambert's method, for the least launch energy with at most 3 times
     the mean arriving at once. The plane change is paid at launch and at the catch, and the last
-    launches leave from the drifted orbit. Launches cost {launch-offwindow-mean} more than the Hohmann
-    minimum on average, the Railheads draw {railhead-power}, and Bricks reach the Ring at
-    {ring-arrival-speed}. The slowest transfer, {ice-flight-max}, moves the last launch to
-    {ice-launch-end|date=day}. The Ring now gives back {ring-recovered-energy}, and the simulation
+    launches leave from the drifted orbit. Launches cost 37% more than the Hohmann
+    minimum on average, the Railheads draw 1.1 × 10²⁰ W, and Bricks reach the Ring at
+    18.2 km/s. The slowest transfer, 611 d, moves the last launch to
+    14 April 2035. The Ring now gives back 1.1 × 10²⁸ J, and the simulation
     takes its power day by day as the Bricks arrive, not at its average from the first catch.
   before:
     ceres-inclination: 10.6
@@ -889,13 +894,13 @@
     Version 3 charged the heat pumps exactly the reversible work, the least the second law allows, so
     its second-law check could never fail; and the chimney fans' work, which ends as heat in the air
     they push, was never added to the heat the pumps must lift. The pumps are now charged at
-    {exhaust-carnot-share} of the Carnot limit, about what good industrial heat pumps reach, and the
+    50% of the Carnot limit, about what good industrial heat pumps reach, and the
     fans' heat is counted. A hotter emitter needs less area but more work for every joule, so the
-    design moves along that trade: the emitters shine at {exhaust-effective-temp} rather than
-    2,000 K, the Exhaust peaks at {exhaust-peak} over {exhaust-area-share} of Venus's area, and the
-    Lattice grows to {helios-power} to drive the pumps and the Railheads. The pumps spend
-    {exhaust-work-ratio} joules of electricity per joule moved. Venus is still Earth-like on
-    {traj-earth-like|date=day}, and the Frost Towers finish {frost-sealing-slack} before the last
+    design moves along that trade: the emitters shine at 1,600 K rather than
+    2,000 K, the Exhaust peaks at 1.2 × 10²⁰ W over 70% of Venus's area, and the
+    Lattice grows to 1.2 × 10²⁰ W to drive the pumps and the Railheads. The pumps spend
+    8.5 joules of electricity per joule moved. Venus is still Earth-like on
+    30 September 2036, and the Frost Towers finish 150 d before the last
     caps.
   before:
     helios-power: "8.5e19"
@@ -981,3 +986,450 @@
     checks-failing: 4
     checks-passing: 27
     exhaust-1-carnot: 0.5
+- id: v4
+  kind: version
+  version: "4"
+  date: 2026-11-23
+  title: Phosphoros without the Ring
+  text: >-
+    Version 3 ended with five open problems: three in the Braking Ring, one in the loss heat of its
+    receivers and one in the Exhaust's beams. Version 4 closes all five by changing the design,
+    never the physics. The Ring is gone, and the Bricks fall straight into the air. The Lattice's
+    light pumps the Exhaust's tiles directly, the tiles shine over their whole sky, and the pumps
+    are charged for that light's entropy. Only the side of Venus the Lattice sees can be pumped. The
+    plan ships a hundredth of the water, and the Lattice and the tiles grow.
+  before:
+    checks-total: 35
+    checks-failing: 6
+    checks-passing: 29
+- id: ring-retired
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The Braking Ring is retired
+  issue: 3
+  text: >-
+    Version 3 needed the Ring to catch every Brick, lower the ice on tethers and carry the Lattice's
+    receivers. It could do none of them: lowering needed 150 times the rotor's spare lift, the
+    catch's forward push was 2,000 times that lift with no way to hand it to Venus, and the
+    receivers weighed 12 times what the rotor could hold up. A rotor that could would be heavier and
+    faster by those same factors. Version 4 builds no Ring. The energy it would have recovered,
+    which version 3 counted as supply from the first catch, goes with it, so the budget counts only
+    the Lattice.
+  before:
+    ring-radius: "6.45e6"
+    ring-circumference: "4.05e7"
+    ring-orbital-speed: 7100
+    ring-gravity: 7.8
+    ring-arrival-speed: 18200
+    ring-mass: "1e13"
+    ring-catch-energy-per-kg: "1.4e8"
+    ring-recovered-per-kg: "1.12e8"
+    ring-recovered-energy: "1.12e28"
+    ring-catch-energy: "1.4e28"
+    ring-loss-energy: "2.8e27"
+    ring-power: "2.18e20"
+    ring-power-peak: "6.54e20"
+    ring-vs-launch: 2.73
+    ring-braking-force: "6.47e16"
+    ring-approach-eccentricity: 2.64
+    ring-net-braking-force: "5.99e16"
+    ring-track-length: "2.85e5"
+    ring-catch-time: 22.6
+    ring-bricks-braking: "1.32e5"
+    ring-tracks-min: 48
+    ring-lift: "3.05e13"
+    ring-net-overload: 1970
+    ring-affordable: 2032-11-09
+    ring-build-days: 6.45
+    ring-build-begin: 2033-08-28
+    ring-delivered: 2033-11-18
+    budget-supply-total: "2.38e28"
+    budget-spare-total: 0.528
+    ice-solar-gain: "1.12e28"
+    ring-pays-from: 2034-07-03
+    budget-lattice-launch: "2.9e27"
+    budget-demand-with-ring: "8.59e27"
+    budget-spare-with-ring: 0.321
+    budget-lattice-spare: "4.07e27"
+    budget-ring-launch: "2.66e27"
+    budget-ring-surplus: "8.52e27"
+    choir-machines: "3.94e8"
+    ring-complete: 2033-12-31
+    ring-altitude: 400000
+    ring-rotor-speed: 10000
+    ring-rotor-mass: "7e12"
+    ring-stator-mass: "3e12"
+    ring-catch-accel: 50
+    ring-recovery-efficiency: 0.8
+    ring-tether-lifts: 3000
+    lowering-release-altitude: 100000
+    lowering-start: 2035-06-30
+    lowering-end: 2036-12-15
+- id: direct-entry
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The Bricks fall straight into the air, so Venus gets seas, not oceans
+  issue: 2
+  text: >-
+    Nothing catches the Bricks now. Each one bursts in the air beyond {ice-drop-latitude} of
+    latitude, clear of the canopies, and its whole fall from far out, {ice-entry-energy-per-kg},
+    becomes heat the pumps must lift. Version 3's 10²⁰ kg of ice would have brought 18 times the
+    heat of Venus's whole atmosphere that way, and an ocean in Earth's proportion would bring
+    {ocean-entry-vs-atmosphere} times. The plan ships {ice-mass}, enough to cover Venus
+    {ocean-depth} deep, which gathers as seas in the lowlands. Its entry heat is
+    {ice-entry-vs-atmosphere} of the atmosphere's own. The launches take {ice-campaign-days}, from
+    {ice-launch-start|date=day} instead of running into 2035, so the Bricks fall into air that is
+    still hot.
+  before:
+    ice-lowering-margin: 16
+    ice-catch-peak: "5.85e12"
+    first-catch: 2034-07-03
+    ice-caught-at-lowering: 0.357
+    ice-lowering-slack: 0
+    ring-lowering-recovery: "2.01e27"
+    ring-free-fall-impact: "9.49e27"
+    ring-free-fall-speed: 13800
+    ring-free-fall-vs-atmosphere: 18
+    brick-catch-stress: "4.63e7"
+    lowering-seconds: "4.61e7"
+    lowering-rate: "2.17e12"
+    tether-interval: 1.38
+    lowering-support: "4.69e15"
+    lowering-overload: 154
+    fall-energy: "8.73e5"
+    ring-drop-energy: "3.33e6"
+    ring-drop-extra-heat: "2.46e26"
+    ice-mass: "1e20"
+    ice-throw-back: 6900
+    ceres-recoil: 778
+    ceres-drift-orbit: "4.52e11"
+    ice-launch-end: 2035-04-14
+    ice-campaign: "5.13e7"
+    ice-throughput: "1.95e12"
+    ice-bricks-per-second: 1950
+    railhead-interval: 5.13
+    railhead-length: 18200
+    railhead-shot-time: 4.31
+    ice-launch-energy: "5.56e27"
+    ice-launch-energy-window: "4.09e27"
+    ice-launch-offwindow-energy: "1.46e27"
+    ice-launch-motion: "2.78e27"
+    railhead-loss-energy: "2.78e27"
+    railhead-power: "1.08e20"
+    railhead-power-each: "1.08e16"
+    ice-ceres-water-share: 0.395
+    ice-ceres-mass-share: 0.107
+    ceres-new-aphelion: "4.95e11"
+    launch-windows: 2.29
+    ocean-depth: 217
+    ice-vs-earth-water: 0.0714
+    last-arrival: 2036-12-15
+    railhead-mass: "7.19e9"
+    railheads-mass: "7.19e13"
+    railheads-firing: 8400
+    railhead-barrel-heat: "1.08e17"
+    railhead-ground-share: 0.136
+    ceres-receiver-incident: "1.44e20"
+    ceres-receiver-surface-ratio: 5.21
+    ceres-receiver-area: "3.61e12"
+    ceres-receiver-loss: "3.61e19"
+    railhead-plant-heat: "5.4e19"
+    crown-heat: "9.01e19"
+    ceres-heat-vs-surface: 113
+    crown-fin-area: "1.57e14"
+    crown-fin-radius: "7.17e6"
+    crown-band-height: "1.51e6"
+    crown-receiver-installed: "1.13e13"
+    crown-receiver-mass: "2.27e13"
+    crown-fin-mass: "1.57e13"
+    crown-cable-mass: "1.39e13"
+    crown-push: "4.82e11"
+    crown-tether-mass: "3.02e11"
+    crown-mass: "5.26e13"
+    ceres-recoil-accel: "1.52e-5"
+    crown-edge-gravity: 0.00122
+    ceres-build-mass: "1.24e14"
+    ceres-build-days: 60.2
+    ceres-hardware-energy: "2.59e22"
+    ceres-new-semi-major-axis: "4.54e11"
+    ceres-new-eccentricity: 0.0888
+    ceres-jupiter-gap: "2.46e11"
+    ceres-jupiter-gap-hill: 4.63
+    ceres-tisserand: 3.21
+    ceres-jupiter-period-ratio: 2.24
+    ceres-doublings: 27
+    ceres-final-mass: "1.34e14"
+    ceres-full-scale: 2033-05-15
+    ceres-factory-power: "2.39e15"
+    ceres-mirror-area: "3.37e13"
+    ceres-mirror-mass: "3.37e10"
+- id: optical-pumping
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The Lattice's light pumps the tiles directly
+  issue: 15
+  text: >-
+    Version 3 turned the Lattice's beams into electricity and sent it to the pumps, but the
+    receivers had nowhere to go: the Ring could not carry them, and on the canopies their fins shone
+    on Venus. The Exhaust's tiles now take the light itself. Each tile is a semiconductor with a
+    bandgap of {exhaust-bandgap}, pumped at {helios-wavelength}, a little below it, so every photon
+    it absorbs leaves as one of its own, a little bluer, with the difference taken from heat. Lasers
+    already cool some crystals this way in the laboratory. The Lattice's efficiency loses its
+    receiver and rises from 15% to {helios-efficiency}. Only the Railheads, the Forges and the
+    chimney fans still run on receivers. The check exhaust-pump-photons confirms that each photon
+    has room for the heat the model has it carry.
+  before:
+    helios-receiver-incident: "1.6e20"
+    helios-receiver-area: "1.6e13"
+    helios-receiver-loss: "4e19"
+    helios-fin-area: "6.97e13"
+    ring-receiver-mass: "3.2e13"
+    ring-fin-mass: "6.97e12"
+    ring-radiator-area: "9.49e13"
+    ring-equipment-mass: "4.85e13"
+    ring-equipment-overload: 12.4
+    ring-hang-capacity: "3.9e12"
+    helios-wavelength: "1.06e-6"
+    helios-efficiency: 0.15
+    helios-spot: 45.6
+    ceres-beam-spot: 125
+- id: lambertian-tiles
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The tiles shine over their whole sky, and the pumps pay for their light's entropy
+  issue: 4
+  text: >-
+    Version 3's tiles fired their light into 25° cones, light that counts as 9,000 K by its entropy,
+    and charged the pumps as if it were 1,600 K: lifting heat into it needed 9.6 times the work
+    charged. The tiles now shine evenly over the whole sky above them, which carries the least
+    entropy light that bright can, and every pump in the model, the simulation's included, is
+    charged as if it rejected its heat at the temperature that light counts as,
+    {exhaust-light-temp}. The cones' dark strip and their beam-safety distance are gone. Straight
+    above a canopy its light falls below the far-field limit beyond {exhaust-safe-distance}, and the
+    lit tiles send the Veil {exhaust-veil-load-share} of the sunlight it already turns away.
+  before:
+    exhaust-cone: 25
+    exhaust-work-multiple: 9.58
+    exhaust-veil-tilt: 13.2
+    exhaust-dark-strip: "1.49e5"
+    exhaust-dark-strip-share: 0.0123
+    exhaust-cone-solid-angle: 0.149
+    exhaust-cone-safe-distance: "8.98e7"
+    exhaust-work-sensible: "1.67e27"
+    exhaust-work-latent: "2.79e27"
+    exhaust-work: "4.46e27"
+    exhaust-work-ratio: 8.45
+    exhaust-rejected: "4.99e27"
+    frost-work: "6.8e25"
+    exhaust-radiance: "2.53e6"
+    exhaust-photons-per-mode: 3.38
+    exhaust-light-temp: 9000
+    exhaust-light-vs-effective: 5.63
+    exhaust-area-share-1000: 1.47
+    exhaust-area-share-1500: 0.462
+    exhaust-area-share-2500: 0.104
+- id: loss-heat-counted
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: Every receiver's loss heat is lifted with the rest
+  issue: 14
+  text: >-
+    Version 3's published schedule left out the receivers' loss heat, 2.7 × 10¹⁹ W of it falling on
+    Venus. With the pumps taking the light itself, the receivers that remain power only the Forges
+    and the fans. They sit on the canopies and shed {venus-receiver-loss} into the air at full
+    output, and the simulation counts it day by day with the heat from the crust, the Forges, the
+    fans, the Bricks and their water. Nothing the plan makes is left out of the heat the pumps lift,
+    so the loss-heat check is retired.
+  before:
+    ring-catch-loss-power: "5.45e19"
+    ring-fin-venus-share: 0.284
+    canopy-fin-venus-share: 0.408
+    loss-heat-into-venus: "2.68e19"
+    traj-heat-added: "8.1e25"
+    traj-heat-lifted: "6.09e26"
+    venus-heat-out: "5.28e26"
+- id: lit-side
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: Only the side of Venus the Lattice sees can be pumped
+  text: >-
+    Pumped by light, a tile works only while the Lattice can reach it. The Lattice orbits inside
+    Venus's orbit, so it sees only the sunward side, {exhaust-lit-share} of the canopies at once,
+    and the lit tiles must shine for all of them. At 1,600 K they would need more than the whole lit
+    side. A mirror hovering behind Venus cannot relay the beams to the night side: to hold still its
+    push must point straight away from Venus, and then the beam it sends on misses Venus by as much
+    as the beam it takes in. The tiles now shine as brightly as a {exhaust-effective-temp} black
+    body and peak at {exhaust-peak}, over {exhaust-area-share} of Venus, {canopy-band-cover} of the
+    band between the drop zones. Their light counts as hotter, so the pumps need more of it, and the
+    Lattice grows to {helios-power}. Only the lit canopies' chimneys carry heat, so the chimneys
+    widen to {chimney-diameter}.
+  before:
+    helios-power: "1.2e20"
+    chimney-diameter: 3500
+    exhaust-effective-temp: 1600
+    exhaust-peak: "1.2e20"
+    helios-area: "8.81e16"
+    helios-mass: "8.81e13"
+    helios-petals: "1.8e7"
+    helios-sun-share: "3.13e-7"
+    helios-supply: "1.27e28"
+    helios-sunlight-energy: "8.44e28"
+    helios-loss-energy: "7.18e28"
+    chimney-flow-area: "9.62e6"
+    chimney-mass-flow: "1.26e10"
+    chimney-heat: "1.26e15"
+    chimney-fan-power: "1e17"
+    chimney-capacity: "1.26e19"
+    chimney-vs-peak: 2.09
+    exhaust-flux: "3.72e5"
+    exhaust-area-installed: "3.23e14"
+    exhaust-area-share: 0.702
+    canopy-area: "3.23e10"
+    canopy-width: "1.93e5"
+    cryo-refrigeration-share: 0.0014
+    exhaust-tile-mass: "1.61e14"
+    chimney-mass: "1.41e13"
+    venus-hardware-mass: "2.15e14"
+    exhaust-area-working: "1.77e14"
+    canopy-power-in: "5.87e15"
+    canopy-power-out: "6.56e15"
+- id: foundry-for-hardware
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The Foundry grows to build the hardware at Venus as well
+  text: >-
+    Version 3 sized the Foundry to finish the Lattice and the Ring soonest, then built the hardware
+    at Venus, heavier than both, at that size. The Foundry now grows to the size that finishes the
+    Lattice and the hardware together soonest: {foundry-doublings} doublings, to
+    {foundry-final-mass}. It reaches full scale later, on {foundry-full-scale|date=day}, but builds
+    the {venus-hardware-mass} of hardware in {venus-hardware-build-days}, so cooling begins sooner,
+    on {cooling-start|date=day}.
+  before:
+    foundry-target-mass: "9.81e13"
+    foundry-doublings: 27
+    foundry-final-mass: "1.34e14"
+    foundry-full-scale: 2033-07-02
+    foundry-years-to-scale: 1630
+    foundry-peak-power: "1.79e15"
+    foundry-mercury-share: "4.07e-10"
+    lattice-build-days: 56.8
+    helios-full-power: 2033-08-28
+    helios-supply-years: 1220
+    ice-launch-start: 2033-08-28
+    ceres-ready: 2033-07-14
+    ceres-slack: 44.3
+    ceres-seed-latest: 2028-11-14
+    ceres-ready-foundry-pace: 2034-09-12
+    helios-affordable: 2033-05-17
+    venus-hardware-build-days: 138
+    foundry-built-mass: "4.57e14"
+    hardware-energy: "4.57e22"
+    venus-hardware-ready: 2034-04-05
+    cooling-start: 2034-04-05
+    cooling-seconds: "7.6e7"
+    exhaust-heat-avg: "6.94e18"
+    exhaust-work-avg: "5.87e19"
+    exhaust-rejected-avg: "6.56e19"
+    exhaust-vs-passive-heat: 95.1
+    exhaust-vs-passive-light: 899
+- id: budget-light
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The energy budget is counted in light
+  text: >-
+    The Lattice's output is now the light it beams, {helios-power}, not the electricity receivers
+    would make from it. What runs on electricity, the Railheads, the Forges and the fans, is charged
+    the light its receivers need; the pumps and the warming take light directly. The plan needs
+    {budget-demand} against the {helios-supply} the Lattice beams from full power to the deadline:
+    {budget-spare} spare.
+  before:
+    traj-pump-energy: "5.62e27"
+    traj-exhaust-light: "6.23e27"
+    traj-fan-energy: "6.3e24"
+    traj-warm-energy: "4.38e25"
+    budget-demand: "1.13e28"
+    budget-spare: 0.112
+    budget-launch-share: 0.882
+- id: cooling-path-v4
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The air clears sooner, then the Bricks warm it back
+  text: >-
+    Cooling starts sooner and the air's sensible heat goes quickly, so the Clear Rain begins on
+    {traj-clear-rain|date=day}. The Bricks arrive after that, from {first-arrival|date=day} to
+    {last-arrival|date=day}, faster than the lit canopies' chimneys carry heat out, so the air warms
+    back {traj-rewarm} and the first seas boil back into the air until the Clear Rain begins for good
+    on {traj-rerain|date=day}. Their heat is lifted from air below 304 K, where it costs more to lift
+    than at the start: the seas are frozen through on
+    {traj-frozen|date=day}, and the Frost Towers finish on {traj-scavenged|date=day},
+    {frost-sealing-slack} before the last caps. The new water rains out on
+    {traj-water-rain|date=day}, freezes on {traj-water-frozen|date=day} and melts again once the
+    Veil opens. Venus is Earth-like on {traj-earth-like|date=day}, as before.
+  before:
+    traj-clear-rain: 2035-01-22
+    traj-freeze: 2035-09-04
+    traj-frozen: 2036-02-13
+    traj-cold: 2036-03-30
+    traj-scavenged: 2036-04-09
+    traj-warm: 2036-09-04
+    traj-chimney-days: 158
+    traj-heat-peak: "1.26e19"
+    sealing-window: 201
+    cap-laying-rate: "8.65e6"
+    frost-sealing-slack: 145
+- id: dated-launches
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The launches are booked on their real dates
+  text: >-
+    Version 3 averaged the launch schedule over every phase of the Ceres-Venus cycle and over the
+    whole of Ceres's orbit, since its campaign spanned more than two cycles. Version 4's campaign is
+    a third of one cycle, so where the planets are on those days sets the price. The model now places
+    Ceres and Venus by their measured orbits on each launch day and books every day's Bricks onto the
+    cheapest transfer that leaves an arrival slot free. On {ice-launch-start|date=day} Venus leads
+    Ceres by {ice-launch-lead}, {ice-window-wait} before a Hohmann window, so the first shots cost
+    about a Hohmann launch and the last ones more: {launch-offwindow-mean} more on average. Paying
+    launch energy for slower arrivals does not pay here: spread over months, they warm the air back
+    less as they land, but the later ones fall into colder air, and the frost margin is no better.
+  before:
+    launch-offwindow-mean: 0.369
+    launch-offwindow-max: 0.748
+    launch-coplanar-mean: 0.218
+    launch-energy-per-kg-end: "5.51e7"
+    launch-energy-per-kg-avg: "5.56e7"
+    ice-launch-speed-max: 8460
+    ice-vinf-rms: 15100
+    ice-kick-tilt: 1460
+    ice-vinf-tilt: 6530
+    ice-flight-min: 310
+    ice-flight-max: 611
+    ice-flight-mean: 467
+    ice-arrival-slot: 3.6
+- id: forges-wait-for-seas
+  kind: correction
+  version: "4"
+  date: 2026-11-23
+  title: The Forges wait for the seas they float on
+  text: >-
+    The Forges are rafts on the liquid CO₂ seas, but version 3 started them on 1 January 2035, three
+    weeks before its Clear Rain began. In version 4 the Bricks' heat boils the first seas back into
+    the air, and they return for good on {traj-rerain|date=day}. The Forges now start on
+    {forge-start|date=day}, and a check holds them to the seas. They have the same oxygen to make in
+    less time, so they run at {forge-power}.
+  before:
+    forge-start: 2035-01-01
+    forge-seconds: 55123200
+    forge-power: "4.82e17"
+    forge-plant-power: "9.65e14"
+    forge-throughput: "6.47e7"
+    ozone-o2-at-opening: 23900

@@ -4,6 +4,31 @@ What changed in each version of Phosphoros. Every change to a published number i
 corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the site at
 [phosphoros.space/about](https://phosphoros.space/about#corrections) with the reason for each.
 
+## Version 4: Phosphoros, closed without the Ring (2026-11-23)
+
+- The Braking Ring is retired: nothing could hold it against the catch
+  ([#3](https://github.com/Xaxis/phosphoros.space/issues/3)), lower the ice
+  ([#2](https://github.com/Xaxis/phosphoros.space/issues/2)) or carry its receivers. The Bricks fall
+  straight into Venus's polar air, beyond the canopies, and their whole fall is heat the pumps lift.
+  That heat sets how much water Venus can be given, so it gets seas in its lowlands, a hundredth of
+  version 3's water, not Earth's oceans.
+- The Lattice's light pumps the Exhaust's tiles directly, as laser cooling does
+  ([#15](https://github.com/Xaxis/phosphoros.space/issues/15)). Receivers remain only for the
+  Railheads, the Forges and the fans, and their loss heat is lifted with the rest
+  ([#14](https://github.com/Xaxis/phosphoros.space/issues/14)). The tiles shine over their whole sky,
+  and every pump is charged at the temperature that light counts as
+  ([#4](https://github.com/Xaxis/phosphoros.space/issues/4)). Only the sunward side is pumped, so the
+  tiles cover most of the band between the drop zones, and the Lattice grows to pay for it.
+- The Foundry grows to build the Lattice and then the hardware for Venus, and cooling starts when that
+  hardware arrives.
+- The launches are booked on their real dates, from the measured orbits of Ceres and Venus, onto the
+  cheapest transfer with an arrival slot free. The Bricks arrive within ten weeks, faster than the pumps
+  lift their heat, so the simulated air warms back and the first Clear Rain boils back until the pumps
+  catch up. The model solves the first launch date by secant steps, so it settles when the Ceres
+  factories finish late.
+- The Forges wait for the seas they float on, with a check.
+- One check still fails, on purpose: the version 2 statite Veil, which cannot hover.
+
 ## Version 3: Phosphoros, every number reproducible (2026-11-20)
 
 - Every number on the site and in the docs is computed by the model in [`calc/`](calc/) from
