@@ -17,8 +17,8 @@ experiments:
     where: Laboratory
     tech: exhaust
     fallback: true
-    proves: Electroluminescent cooling at useful power
-    pass: "{exhaust-1-cooling} of net cooling, at {exhaust-carnot-share} of the Carnot limit or better, with light in a band and cone the air above the canopies lets through"
+    proves: Laser cooling of a semiconductor at useful power
+    pass: "{exhaust-1-cooling} of net cooling from a tile pumped by {helios-wavelength|sig=3} light, at {exhaust-carnot-share} of the Carnot limit or better, with its light spread over the sky above it"
     then: "The production tile must reach {exhaust-flux} by {exhaust-production-tile|date=year}"
     kill: "No net cooling above {exhaust-1-kill-cooling}"
   - id: lightpipe

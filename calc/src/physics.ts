@@ -383,32 +383,94 @@ export function inclinedTransfer(
 }
 
 /**
- * Launch phases, and arrival slots, in one synodic cycle. A third more leaves the Ice Train's
- * average launch energy where it is.
+ * Where a body on an inclined orbit is, as a unit vector in the ecliptic frame: inclination i and
+ * ascending node `node` (radians), `u` past the node along the orbit.
  */
-export const SCHEDULE_SLOTS = 72;
+function onOrbit(i: number, node: number, u: number): [number, number, number] {
+  const [cn, sn, ci, si, cu, su] = [
+    Math.cos(node),
+    Math.sin(node),
+    Math.cos(i),
+    Math.sin(i),
+    Math.cos(u),
+    Math.sin(u),
+  ];
+  return [cn * cu - sn * su * ci, sn * cu + cn * su * ci, su * si];
+}
+
+/** An orbit's unit normal in the ecliptic frame. */
+function normalOf(i: number, node: number): [number, number, number] {
+  return [Math.sin(i) * Math.sin(node), -Math.sin(i) * Math.cos(node), Math.cos(i)];
+}
+
+const cross = (
+  a: readonly [number, number, number],
+  b: readonly [number, number, number],
+): [number, number, number] => [
+  a[1] * b[2] - a[2] * b[1],
+  a[2] * b[0] - a[0] * b[2],
+  a[0] * b[1] - a[1] * b[0],
+];
+const dot = (a: readonly number[], b: readonly number[]) =>
+  (a[0] as number) * (b[0] as number) +
+  (a[1] as number) * (b[1] as number) +
+  (a[2] as number) * (b[2] as number);
+
 /**
- * Places along the departure orbit the schedule is solved at, spread over half a turn from the line
- * where the planes cross. Point inversion through the Sun maps each half of the orbit onto the
- * other, prograde orbits onto prograde orbits, so half a turn stands for the whole. For the Ice
- * Train, four times as many places leave the average launch energy, the recoil, the fastest
- * transfer from Ceres's starting orbit and the slowest from its drifted one where they are, and
- * raise the single worst launch's energy by two points.
+ * Two bodies on inclined orbits, placed the way inclinedTransfer measures them: each one's angle in
+ * its own plane from the line where the departure orbit rises through the target's plane, and the
+ * angle between the planes. Each orbit is given by its inclination and ascending node on the
+ * ecliptic, and the body by its angle past that node (all radians).
  */
-export const SCHEDULE_SAMPLES = 6;
+export function crossingAngles(
+  from: { i: number; node: number; u: number },
+  to: { i: number; node: number; u: number },
+): { u: number; w: number; inclination: number } {
+  const hf = normalOf(from.i, from.node);
+  const ht = normalOf(to.i, to.node);
+  const line = cross(ht, hf);
+  const size = Math.hypot(...line);
+  if (size < 1e-12) throw new Error("crossingAngles: the two orbits lie in one plane");
+  const x: [number, number, number] = [line[0] / size, line[1] / size, line[2] / size];
+  const angle = (h: [number, number, number], p: [number, number, number]) => {
+    const y = cross(h, x);
+    return Math.atan2(dot(p, y), dot(p, x));
+  };
+  return {
+    u: angle(hf, onOrbit(from.i, from.node, from.u)),
+    w: angle(ht, onOrbit(to.i, to.node, to.u)),
+    inclination: Math.acos(Math.max(-1, Math.min(1, dot(hf, ht)))),
+  };
+}
+
+/** True anomaly for mean anomaly M on an orbit of eccentricity e (radians), by Newton's method. */
+export function trueAnomaly(M: number, e: number): number {
+  let E = M;
+  for (let k = 0; k < 30; k++) {
+    const step = (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E));
+    E -= step;
+    if (Math.abs(step) < 1e-14) break;
+  }
+  return 2 * Math.atan2(Math.sqrt(1 + e) * Math.sin(E / 2), Math.sqrt(1 - e) * Math.cos(E / 2));
+}
+
 /**
- * The flight times tried, as multiples of the Hohmann time. The Ice Train's schedule uses none
- * within a tenth of either end; a schedule pressed against one keeps to it, as a limit the
- * launchers would hold.
+ * Launch slots a campaign is cut into, at most: one a day for a campaign of up to this many days.
+ * Each carries an equal share of the mass, and arrival slots are as wide.
+ */
+export const CAMPAIGN_SLOTS = 120;
+/**
+ * The flight times tried, as multiples of the Hohmann time. A schedule pressed against one keeps to
+ * it, as a limit the launchers would hold.
  */
 export const SCHEDULE_WINDOW: readonly [number, number] = [0.6, 1.5];
 
-export interface LaunchSchedule {
+export interface CampaignSchedule {
   /** Launch energy per kilogram, as Δv² + v_esc², averaged over every launch (m²/s²). */
   energy: number;
   /** The same for the costliest launch. */
   energyMax: number;
-  /** The same for a Hohmann launch from this orbit. */
+  /** The same for a Hohmann launch from the starting orbit. */
   hohmann: number;
   /** Root mean square arrival speed relative to the target, far out (m/s). */
   vinfRms: number;
@@ -418,136 +480,133 @@ export interface LaunchSchedule {
   vinfTiltRms: number;
   /** Mean component of the launch kick against the departure body's motion (m/s). */
   back: number;
-  /** Every launch's flight time, shortest first (s). */
+  /** Each launch slot's flight time, in launch order (s). */
   flights: number[];
-  /** Most launch phases any one arrival slot receives in a cycle (the mean is one). */
+  /** Each launch slot's arrival slot, counted in slots from the campaign's start. */
+  arrivals: number[];
+  /** Most launch slots any one arrival slot receives (the launch rate is one a slot). */
   peak: number;
-  /** Synodic period (s). */
-  cycle: number;
-  /** Width of one launch phase or arrival slot (s). */
+  /** Width of one launch or arrival slot (s). */
   slot: number;
 }
 
-const scheduleCache = new Map<string, LaunchSchedule>();
+const scheduleCache = new Map<string, CampaignSchedule>();
 
 /**
- * A steady launch schedule between circular orbits r1 (departure) and r2 (target), inclined to each
- * other, that a catcher at the target can keep up with. Launchers fire at a steady rate through the
- * synodic cycle, so the cycle is cut into SCHEDULE_SLOTS launch phases, each carrying an equal share
- * of the mass, and as many arrival slots. Each pair is costed by the cheapest transfer that leaves
- * at that phase and arrives in that slot any whole number of cycles later, with the flight time
- * inside SCHEDULE_WINDOW. The minimum-cost assignment, with up to `peak` phases sharing one arrival
- * slot, is the schedule: peak 1 spreads the arrivals evenly, a larger peak lets them bunch. The cost
- * is the launch energy alone, so the plane change falls wherever the cheapest launch puts it.
+ * A launch campaign between circular orbits r1 (departure) and r2 (target), inclined to each other,
+ * on the dates it really runs. The launchers fire at a steady rate for `duration`, which is cut into
+ * up to CAMPAIGN_SLOTS launch slots, each carrying an equal share of the mass. The departure body
+ * starts at u0 and the target at w0, each measured in its own plane from the line where the planes
+ * cross (crossingAngles), and both move on at their own pace. Each launch slot may take any flight
+ * time inside SCHEDULE_WINDOW, a whole number of slots long, and lands in the arrival slot that many
+ * slots later. The minimum-cost assignment, with up to `peak` launch slots sharing one arrival slot,
+ * is the schedule: peak 1 spreads the arrivals as evenly as the launches, a larger peak lets them
+ * bunch. The cost is the launch energy plus `arrivalWeight` times the arrival speed squared.
  *
- * The schedule is solved at SCHEDULE_SAMPLES places along the departure orbit and averaged. Within
- * each sampled cycle the departure body moves on as it really does; each cycle's assignment is
- * solved on its own, as if repeated.
+ * The launches push the departure body outward: its orbit widens evenly from r1 to `r1End` over
+ * the campaign, and each launch leaves from where it is by then.
  *
  * Pure; cached on its inputs (the most recent 32), as it is the slowest sum in the model.
  */
-export function launchSchedule(p: {
+export function campaignSchedule(p: {
   mu: number;
   r1: number;
   r2: number;
   vEscape: number;
   inclination: number;
+  u0: number;
+  w0: number;
+  /** Length of the campaign (s). */
+  duration: number;
   peak: number;
-}): LaunchSchedule {
-  const { mu, r1, r2, vEscape, inclination, peak } = p;
+  /** Weight on the arrival speed squared, against the launch's: 0 books the cheapest launches. */
+  arrivalWeight?: number;
+  /** The departure orbit's radius at the campaign's end; r1 when left out. */
+  r1End?: number;
+}): CampaignSchedule {
+  const { mu, r1, r2, vEscape, inclination, u0, w0, duration, peak } = p;
+  const weight = p.arrivalWeight ?? 0;
+  const r1End = p.r1End ?? r1;
   if (!Number.isInteger(peak) || peak < 1)
-    throw new Error(`launchSchedule: the arrival peak must be a whole number, not ${peak}`);
-  const key = `${mu}|${r1}|${r2}|${vEscape}|${inclination}|${peak}`;
+    throw new Error(`campaignSchedule: the arrival peak must be a whole number, not ${peak}`);
+  if (!(duration > 0)) throw new Error("campaignSchedule: the campaign has no length");
+  const key = `${mu}|${r1}|${r1End}|${r2}|${vEscape}|${inclination}|${u0}|${w0}|${duration}|${peak}|${weight}`;
   const hit = scheduleCache.get(key);
   if (hit) return hit;
-  const n = SCHEDULE_SLOTS;
-  const n1 = Math.sqrt(mu / r1 ** 3);
-  const n2 = Math.sqrt(mu / r2 ** 3);
-  const cycle = (2 * Math.PI) / Math.abs(n2 - n1);
-  const slot = cycle / n;
+  const n = Math.max(1, Math.min(CAMPAIGN_SLOTS, Math.round(duration / 86_400)));
+  const slot = duration / n;
   const h = hohmann(mu, r1, r2);
-  const fastest = SCHEDULE_WINDOW[0] * h.time;
-  const slowest = SCHEDULE_WINDOW[1] * h.time;
-  // With no tilt every place along the orbit is alike.
-  const samples = inclination === 0 ? 1 : SCHEDULE_SAMPLES;
-  const cols = n * peak;
+  const lo = Math.ceil((SCHEDULE_WINDOW[0] * h.time) / slot);
+  const hi = Math.floor((SCHEDULE_WINDOW[1] * h.time) / slot);
+  // Arrival slots lo .. n − 1 + hi, each offered `peak` times.
+  const width = n + hi - lo;
+  const cols = width * peak;
   const none = 1e30;
-  const best = new Float64Array(n * n);
-  const flight = new Float64Array(n * n);
-  const vinf2 = new Float64Array(n * n);
-  const back = new Float64Array(n * n);
-  const kickTilt2 = new Float64Array(n * n);
-  const vinfTilt2 = new Float64Array(n * n);
-  const wide = new Float64Array(n * cols);
-  const flights: number[] = [];
-  let energy = 0;
-  let energyMax = 0;
-  let vinf = 0;
-  let recoil = 0;
-  let kickTilt = 0;
-  let vinfTilt = 0;
-  let most = 0;
-  for (let k = 0; k < samples; k++) {
-    // The cycle's sweep along the orbit is centred on the sample.
-    const start = ((k + 0.5) * Math.PI) / samples - (n1 * cycle) / 2;
-    best.fill(none);
-    for (let i = 0; i < n; i++) {
-      const u = start + n1 * i * slot;
-      // The target leads the departure body by the launch phase, 2π i / n.
-      const lead = u + (2 * Math.PI * i) / n;
-      // Arrival m slots after launch lands in slot (i + m) mod n. Stepping m one slot at a time
-      // moves the arrival point only a little, so each solution starts the next one's search.
-      let guess: number | undefined;
-      for (let m = Math.ceil(fastest / slot); m * slot <= slowest; m++) {
-        const t = m * slot;
-        const x = inclinedTransfer(mu, r1, r2, inclination, u, lead + n2 * t, t, guess);
-        guess = x?.z;
-        if (!x) continue;
-        const e = x.dv2 + vEscape ** 2;
-        const at = i * n + ((i + m) % n);
-        if (e < (best[at] as number)) {
-          best[at] = e;
-          flight[at] = t;
-          vinf2[at] = x.vinf2;
-          back[at] = x.back;
-          kickTilt2[at] = x.kickTilt ** 2;
-          vinfTilt2[at] = x.vinfTilt ** 2;
-        }
-      }
+  const n2 = Math.sqrt(mu / r2 ** 3);
+  const size = n * width;
+  const [best, launch, vinf2, back, kickTilt2, vinfTilt2] = Array.from(
+    { length: 6 },
+    () => new Float64Array(size),
+  ) as [Float64Array, Float64Array, Float64Array, Float64Array, Float64Array, Float64Array];
+  best.fill(none);
+  for (let i = 0; i < n; i++) {
+    const t0 = (i + 0.5) * slot;
+    const share = (i + 0.5) / n;
+    const ri = r1 + (r1End - r1) * share;
+    // The departure body's angle: its pace changes as its orbit widens, so take the mean.
+    const u = u0 + 0.5 * (Math.sqrt(mu / r1 ** 3) + Math.sqrt(mu / ri ** 3)) * t0;
+    let guess: number | undefined;
+    for (let m = lo; m <= hi; m++) {
+      const t = m * slot;
+      const x = inclinedTransfer(mu, ri, r2, inclination, u, w0 + n2 * (t0 + t), t, guess);
+      guess = x?.z;
+      if (!x) continue;
+      const e = x.dv2 + vEscape ** 2;
+      const at = i * width + (i + m - lo);
+      best[at] = e + weight * x.vinf2;
+      launch[at] = e;
+      vinf2[at] = x.vinf2;
+      back[at] = x.back;
+      kickTilt2[at] = x.kickTilt ** 2;
+      vinfTilt2[at] = x.vinfTilt ** 2;
     }
-    for (let i = 0; i < n; i++)
-      for (let q = 0; q < peak; q++) wide.set(best.subarray(i * n, (i + 1) * n), i * cols + q * n);
-    const col = assign(wide, n, cols);
-    const load = new Int32Array(n);
-    for (let i = 0; i < n; i++) {
-      const j = (col[i] as number) % n;
-      const at = i * n + j;
-      const e = best[at] as number;
-      if (e >= none)
-        throw new Error("launchSchedule: a launch phase has no transfer in the window");
-      load[j] = (load[j] as number) + 1;
-      energy += e;
-      energyMax = Math.max(energyMax, e);
-      vinf += vinf2[at] as number;
-      recoil += back[at] as number;
-      kickTilt += kickTilt2[at] as number;
-      vinfTilt += vinfTilt2[at] as number;
-      flights.push(flight[at] as number);
-    }
-    most = Math.max(most, ...load);
   }
-  const count = n * samples;
-  const out: LaunchSchedule = {
-    energy: energy / count,
+  const wide = new Float64Array(n * cols);
+  for (let i = 0; i < n; i++)
+    for (let q = 0; q < peak; q++)
+      wide.set(best.subarray(i * width, (i + 1) * width), i * cols + q * width);
+  const col = assign(wide, n, cols);
+  const load = new Int32Array(width);
+  let [energy, energyMax, vinf, recoil, kick, tiltIn] = [0, 0, 0, 0, 0, 0];
+  const flights: number[] = [];
+  const arrivals: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const j = (col[i] as number) % width;
+    const at = i * width + j;
+    if ((best[at] as number) >= none)
+      throw new Error("campaignSchedule: a launch slot has no transfer in the window");
+    const e = launch[at] as number;
+    load[j] = (load[j] as number) + 1;
+    energy += e;
+    energyMax = Math.max(energyMax, e);
+    vinf += vinf2[at] as number;
+    recoil += back[at] as number;
+    kick += kickTilt2[at] as number;
+    tiltIn += vinfTilt2[at] as number;
+    arrivals.push(j + lo);
+    flights.push((j + lo - i) * slot);
+  }
+  const out: CampaignSchedule = {
+    energy: energy / n,
     energyMax,
     hohmann: h.departDv ** 2 + vEscape ** 2,
-    vinfRms: Math.sqrt(vinf / count),
-    kickTiltRms: Math.sqrt(kickTilt / count),
-    vinfTiltRms: Math.sqrt(vinfTilt / count),
-    back: recoil / count,
-    flights: flights.sort((a, b) => a - b),
-    peak: most,
-    cycle,
+    vinfRms: Math.sqrt(vinf / n),
+    kickTiltRms: Math.sqrt(kick / n),
+    vinfTiltRms: Math.sqrt(tiltIn / n),
+    back: recoil / n,
+    flights,
+    arrivals,
+    peak: Math.max(...load),
     slot,
   };
   if (scheduleCache.size >= 32) {

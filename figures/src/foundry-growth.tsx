@@ -95,10 +95,26 @@ function FoundryGrowth({ points, marks, from, to, doubling }: Props) {
         // The builds bunch together near the top of the curve, so their labels stand in a column
         // to the right, below the plateau, each tied to its dot or span by a leader line. A build
         // at full scale is a span along the plateau, as long as the build takes and never less
-        // than 6 px, so the Ring's fortnight still shows; a pause is a dot on the curve.
+        // than 6 px, so a short build still shows; a pause is a dot on the curve.
         const builds = rest.slice(0, -1);
         const full = rest.at(-1);
-        const col = Math.max(...builds.map((m) => x(m.end ?? m.day))) + 64;
+        // Close to the builds, but never so far right that the widest label runs off the frame.
+        const widest = Math.max(
+          ...builds.map((m) =>
+            Math.max(
+              textWidth(m.label),
+              textWidth(
+                m.end !== undefined ? `${m.when}, ${m.built}` : `${m.when}, at ${m.at}`,
+                11.5,
+              ),
+              textWidth(m.note ?? "", 11.5),
+            ),
+          ),
+        );
+        const col = Math.min(
+          Math.max(...builds.map((m) => x(m.end ?? m.day))) + 64,
+          W - 8 - widest,
+        );
         const top = y(full?.mass ?? 1e14) + 44;
         return (
           <>
@@ -242,19 +258,19 @@ export const foundryGrowth: FigureDef<Props> = {
         },
         {
           ...mark(
-            "ring-build-begin",
-            `Then the Ring, in ${show(r, "ring-build-days")}`,
+            "helios-full-power",
+            `Then the hardware at Venus, in ${show(r, "venus-hardware-build-days")}`,
             "foundry-final-mass",
-            "ring-mass",
+            "venus-hardware-mass",
           ),
-          end: r.get("ring-build-begin").value + r.get("ring-build-days").value,
+          end: r.get("helios-full-power").value + r.get("venus-hardware-build-days").value,
         },
         mark("foundry-full-scale", "Full scale", "foundry-final-mass"),
       ],
     };
   },
   caption: (p) =>
-    `The seed doubles every ${p.doubling}. It pauses once, for ${p.hold}, to build the Veil, then grows to full scale and builds the Lattice and the Ring. Every kilogram it builds early is growth it gives up, so the big builds wait until it is large.`,
+    `The seed doubles every ${p.doubling}. It pauses once, for ${p.hold}, to build the Veil, then grows to full scale and builds the Lattice, then the tiles, chimneys and receivers for Venus. Every kilogram it builds early is growth it gives up, so the big builds wait until it is large.`,
   describe: (p) => ({
     summary: `The Foundry's machinery mass grows from the seed by doubling every ${p.doubling}, a straight line on this log scale, then levels off at full scale.`,
     head: ["Milestone", "Date", "Foundry's mass", "Mass it builds"],
@@ -270,9 +286,8 @@ export const foundryGrowth: FigureDef<Props> = {
     "helios-full-power",
     "lattice-build-days",
     "helios-mass",
-    "ring-build-begin",
-    "ring-build-days",
-    "ring-mass",
+    "venus-hardware-build-days",
+    "venus-hardware-mass",
     "foundry-full-scale",
     "foundry-final-mass",
   ],

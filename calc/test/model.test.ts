@@ -6,20 +6,23 @@ import { type Claim, checkClaims } from "../src/claims.ts";
 import { CONTENT_FILES, checkContent, loadContent } from "../src/content.ts";
 import { formatNumber, formatQuantity } from "../src/format.ts";
 import { loadInputs, ROOT, readYaml, run, sourceLines } from "../src/load.ts";
-import { caughtShare, iceCatch } from "../src/model/ice.ts";
+import { lightTemp } from "../src/model/exhaust.ts";
+import { arrivedShare, iceArrivals, placesOn } from "../src/model/ice.ts";
 import { compute } from "../src/model/index.ts";
 import { simulate } from "../src/model/trajectory.ts";
 import {
-  assign,
   blackBodyShare,
+  CAMPAIGN_SLOTS,
+  campaignSchedule,
   co2LiquidPressure,
   co2SublimationPressure,
+  crossingAngles,
   hohmann,
   inclinedTransfer,
   lambert,
-  launchSchedule,
-  SCHEDULE_SLOTS,
+  period,
   SCHEDULE_WINDOW,
+  trueAnomaly,
 } from "../src/physics.ts";
 import { NUMBER_LINK, refsIn, stringsIn } from "../src/template.ts";
 import { dayOf, isoOf } from "../src/time.ts";
@@ -66,7 +69,12 @@ test("every number in the brief is reproduced, corrected on purpose, or explaine
   const corrections = new Set(
     (readYaml("data/corrections.yaml").data as { id: string }[]).map((c) => c.id),
   );
-  for (const c of results) if (c.correction) assert.ok(corrections.has(c.correction), c.correction);
+  for (const c of results) {
+    if (c.correction) assert.ok(corrections.has(c.correction), c.correction);
+    if (c.retired) assert.ok(corrections.has(c.retired), c.retired);
+    // A retired claim names a number the model no longer has; one it still has is not retired.
+    if (c.retired) assert.ok(!r.derived.has(c.model) && !r.inputs.has(c.model), c.model);
+  }
 });
 
 test("input notes are plain text: only content prose fills {id} templates", () => {
@@ -94,22 +102,57 @@ test("every failing check names its problem, and every open problem has a failin
     assert.ok(named.has(e.id), `open problem ${e.id} has no failing check`);
 });
 
-test("the energy budget closes with the Ring, and the heat pump obeys the second law", () => {
-  assert.ok(v("helios-supply") >= v("budget-demand-with-ring"));
-  assert.ok(v("ring-recovered-energy") >= v("budget-ring-launch"));
-  // A Lattice-only shortfall is never hidden: its check fails and names the open problem.
-  const lattice = r.checks.get("energy-closes");
-  assert.equal(lattice?.pass, v("helios-supply") >= v("budget-demand"));
-  if (!lattice?.pass) assert.ok(lattice?.issue, "a failing energy check carries its open problem");
-  // Never better than Carnot from the hottest point on the path.
+test("the energy budget closes in light, and the pumps pay for the light's entropy", () => {
+  assert.equal(r.checks.get("energy-closes")?.pass, true, r.checks.get("energy-closes")?.detail);
+  assert.ok(v("budget-spare") > 0);
+  // What runs on electricity pays a receiver's loss; the pumps take the light itself.
   assert.ok(
-    v("exhaust-work") / v("atmosphere-heat") >
-      v("exhaust-effective-temp") / v("venus-surface-temp") - 1,
+    Math.abs(v("ice-launch-light") * v("helios-receiver-efficiency") - v("ice-launch-energy")) <
+      1e-9 * v("ice-launch-energy"),
   );
-  // The emitters shine as a black body at their effective temperature.
+  assert.equal(v("helios-efficiency"), v("helios-film-efficiency") * v("helios-laser-efficiency"));
+  // The tiles shine as a black body at their effective temperature, spread over their whole sky.
   assert.ok(
     Math.abs(v("exhaust-flux") / (5.670374419e-8 * v("exhaust-effective-temp") ** 4) - 1) < 1e-9,
   );
+  assert.ok(Math.abs(v("exhaust-radiance") * Math.PI - v("exhaust-flux")) < 1e-6);
+  // Light in one narrow band counts as hotter than a black body as bright, and brighter light as
+  // hotter still. The pumps are charged at the light's temperature, so never better than Carnot
+  // from the hottest point on the path to it.
+  assert.ok(v("exhaust-light-temp") > v("exhaust-effective-temp"));
+  assert.equal(v("exhaust-light-temp"), lightTemp(v, v("exhaust-flux")));
+  assert.ok(lightTemp(v, 2 * v("exhaust-flux")) > v("exhaust-light-temp"));
+  assert.ok(
+    v("exhaust-work") / v("atmosphere-heat") >
+      v("exhaust-light-temp") / v("venus-surface-temp") - 1,
+  );
+  // A dimmer tile's light counts as cooler, so it would cost less work but need far more area.
+  const dim = run({ "exhaust-effective-temp": 1600 });
+  assert.ok(dim.get("exhaust-work").value < v("exhaust-work"));
+  assert.equal(dim.checks.get("exhaust-fits-venus")?.pass, false);
+});
+
+test("each pump photon has room for the heat the model has it carry", () => {
+  assert.equal(r.checks.get("exhaust-pump-photons")?.pass, true);
+  assert.ok(v("exhaust-pump-room-start") > v("exhaust-cop-start"));
+  // Pumping above the tiles' bandgap leaves a photon no room to carry heat out at all.
+  const blue = run({ "helios-wavelength": 2.2e-6 });
+  assert.equal(blue.checks.get("exhaust-pump-photons")?.pass, false);
+});
+
+test("only the lit side is pumped, and the tiles fit between the drop zones", () => {
+  assert.equal(r.checks.get("exhaust-fits-venus")?.pass, true);
+  assert.ok(
+    Math.abs(
+      v("exhaust-area-installed") * v("exhaust-flux") * v("exhaust-lit-share") - v("exhaust-peak"),
+    ) <
+      1e-9 * v("exhaust-peak"),
+  );
+  assert.equal(v("chimney-capacity-lit"), v("chimney-capacity") * v("exhaust-lit-share"));
+  assert.ok(v("canopy-band-cover") < 1 && v("canopy-band-cover") > v("exhaust-area-share"));
+  // Pumped day and night, the same tiles would need half the area.
+  const both = run({ "exhaust-lit-share": 1 });
+  assert.ok(Math.abs(both.get("exhaust-area-share").value * 2 - v("exhaust-area-share")) < 1e-9);
 });
 
 test("a Lattice finished after the deadline is an error, not negative energy", () => {
@@ -121,10 +164,7 @@ test("a Lattice finished after the deadline is an error, not negative energy", (
 test("every Explorer slider runs end to end, or stops on a designed message", () => {
   // A reader can set any ranged input anywhere in its range. The model must then either run, or
   // stop with a sentence that says why the plan cannot work, never with an internal error.
-  const designed = [
-    /full power after the deadline/,
-    /first ice launch comes after the last launch that reaches Venus/,
-  ];
+  const designed = [/full power after the deadline/, /the ice campaign has no days/];
   const failures: string[] = [];
   for (const input of loadInputs().values()) {
     if (!input.range) continue;
@@ -146,7 +186,7 @@ test("every Explorer slider runs end to end, or stops on a designed message", ()
 test("the Foundry stops at the soonest finish, and grows with what it must build", () => {
   // The closed form must agree with trying every doubling count, for Lattices small and large.
   const counts: number[] = [];
-  for (const power of [4e19, 8.5e19, 1.2e20, 2e20]) {
+  for (const power of [4e19, 1.2e20, 2.2e20, 6e20]) {
     const x = run({ "helios-power": power });
     const T = x.get("foundry-doubling-days").value;
     const target = x.get("foundry-target-mass").value;
@@ -159,7 +199,7 @@ test("the Foundry stops at the soonest finish, and grows with what it must build
     counts.push(best);
   }
   assert.ok((counts.at(-1) ?? 0) > (counts[0] ?? 0), "a far bigger Lattice needs a bigger Foundry");
-  assert.equal(v("foundry-target-mass"), v("helios-mass") + v("ring-mass"));
+  assert.equal(v("foundry-target-mass"), v("helios-mass") + v("venus-hardware-mass"));
 });
 
 test("the version 2 statite cannot hover; the version 3 Veil can", () => {
@@ -217,11 +257,27 @@ test("Lambert's problem reproduces the Hohmann transfer, and off-window shots co
 
 test("the Hohmann transfer from Ceres matches the textbook numbers", () => {
   assert.ok(Math.abs(v("ice-transfer-days") / 365.25 - 1.15) < 0.01);
-  const hohmannAtRing = Math.sqrt(v("ice-vinf") ** 2 + (2 * v("venus-gm")) / v("ring-radius"));
-  assert.ok(Math.abs(hohmannAtRing - 13540) < 50);
+  // Ceres to Venus: about 9.1 km/s far out, 13.8 km/s at the top of Venus's air.
+  assert.ok(Math.abs(v("ice-vinf") - 9080) < 50);
+  const hohmannEntry = Math.sqrt(v("ice-vinf") ** 2 + v("venus-escape") ** 2);
+  assert.ok(Math.abs(hohmannEntry - 13780) < 50);
   // The schedule's Bricks arrive faster than the Hohmann transfer's: off-window and out of plane.
   assert.ok(v("ice-vinf-rms") > 1.3 * v("ice-vinf"));
-  assert.ok(v("ring-arrival-speed") > hohmannAtRing);
+  assert.ok(v("ice-entry-speed") > hohmannEntry);
+});
+
+test("every Brick brings the heat of its whole fall, so oceans cannot come this way", () => {
+  const e = v("ice-entry-energy-per-kg");
+  assert.ok(Math.abs(e - 0.5 * (v("ice-vinf-rms") ** 2 + v("venus-escape") ** 2)) < 1e-6 * e);
+  // Even a Brick at rest far out falls in at escape speed: over 50 MJ/kg, fifty times the heat to
+  // melt it and warm it to 288 K.
+  assert.ok(0.5 * v("venus-escape") ** 2 > 50 * v("melt-energy"));
+  assert.equal(v("ice-entry-heat"), v("ice-mass") * e);
+  // An ocean in Earth's proportion would bring hundreds of times the heat of Venus's whole air.
+  assert.ok(v("ocean-entry-vs-atmosphere") > 100);
+  // Twice the ice is more heat than the pumps can lift in time.
+  const wet = run({ "ice-mass": 2 * v("ice-mass") });
+  assert.equal(wet.checks.get("frost-before-sealing")?.pass, false);
 });
 
 test("tilted transfers: no tilt is Hohmann's, and a plane change costs what geometry says", () => {
@@ -260,8 +316,8 @@ test("tilted transfers: no tilt is Hohmann's, and a plane change costs what geom
   near(Math.sqrt(atArrival.vinf2), arrival, 0.01, "arrival with the plane change");
   assert.ok(Math.abs(atArrival.kickTilt) < 1e-6 * v("ice-departure-dv"), "no tilt in the kick");
   near(Math.abs(atArrival.vinfTilt), perihelion * Math.sin(tilt), 0.01, "arrival out of plane");
-  // In the schedule, most of the plane change is left to the catch.
-  assert.ok(v("ice-vinf-tilt") > 3 * v("ice-kick-tilt"));
+  // In the schedule, most of the plane change still arrives at Venus.
+  assert.ok(v("ice-vinf-tilt") > 2 * v("ice-kick-tilt"));
   // Point inversion through the Sun: half a turn on, the same transfer, mirrored.
   const a = inclinedTransfer(mu, r1, r2, tilt, 0.7, 3.4, 0.9 * t);
   const b = inclinedTransfer(mu, r1, r2, tilt, 0.7 + Math.PI, 3.4 + Math.PI, 0.9 * t);
@@ -303,148 +359,139 @@ function offWindowReference(mu: number, r1: number, r2: number, vEscape: number)
   return { max: Math.max(...costs), mean: costs.reduce((x, y) => x + y, 0) / costs.length };
 }
 
-test("the launch schedule: free timing is the old off-window table, and arrivals can be even", () => {
-  const base = {
-    mu: v("sun-mu"),
-    r1: v("ceres-orbit"),
-    r2: v("venus-orbit"),
-    vEscape: v("ceres-escape"),
-    inclination: 0,
-  };
-  // With room for every phase in any slot, each phase takes its cheapest transfer: the same
-  // average and worst case as sweeping transfer angles phase by phase.
-  const free = launchSchedule({ ...base, peak: SCHEDULE_SLOTS });
-  const reference = offWindowReference(base.mu, base.r1, base.r2, base.vEscape);
+test("the campaign schedule: free timing is the old off-window table, and arrivals can be even", () => {
+  const mu = v("sun-mu");
+  const [r1, r2] = [v("ceres-orbit"), v("venus-orbit")];
+  const cycle = 1 / (1 / period(mu, r2) - 1 / period(mu, r1));
+  const base = { mu, r1, r2, vEscape: v("ceres-escape"), inclination: 0, u0: 0.4, w0: 2.9 };
+  // Over two whole synodic cycles, with room for every launch in any slot, each launch takes its
+  // cheapest transfer: the same average and worst case as sweeping transfer angles phase by phase.
+  const free = campaignSchedule({ ...base, duration: 2 * cycle, peak: CAMPAIGN_SLOTS });
+  const reference = offWindowReference(mu, r1, r2, base.vEscape);
   const extra = (s: { energy: number; hohmann: number }, e = s.energy) => e / s.hohmann - 1;
-  assert.ok(Math.abs(extra(free) - reference.mean) < 0.003, `${extra(free)} vs ${reference.mean}`);
-  assert.ok(Math.abs(extra(free, free.energyMax) - reference.max) < 0.01);
-  // Left free, the cheapest transfers bunch: many phases land in one slot.
+  assert.ok(Math.abs(extra(free) - reference.mean) < 0.006, `${extra(free)} vs ${reference.mean}`);
+  assert.ok(Math.abs(extra(free, free.energyMax) - reference.max) < 0.02);
+  // Left free, the cheapest transfers bunch: many launches land in one slot.
   assert.ok(free.peak >= 8, `free peak ${free.peak}`);
-  // Peak 1: every slot gets exactly one phase, so arrivals are as even as launches, at a price.
-  const even = launchSchedule({ ...base, peak: 1 });
+  // Peak 1: every arrival slot gets at most one launch slot, at a price.
+  const even = campaignSchedule({ ...base, duration: 2 * cycle, peak: 1 });
   assert.equal(even.peak, 1);
-  assert.equal(even.flights.length, SCHEDULE_SLOTS);
-  assert.ok(extra(even) > 4 * extra(free), "even arrivals cost far more launch energy");
-  // The model's schedule: never more than the chosen peak in a slot, and the Ring is built for it.
-  const peak = v("ice-arrival-peak");
-  const model = launchSchedule({
+  assert.equal(even.flights.length, CAMPAIGN_SLOTS);
+  assert.ok(extra(even) > 2 * extra(free), "even arrivals cost far more launch energy");
+  for (const t of even.flights) {
+    assert.ok(t >= SCHEDULE_WINDOW[0] * hohmann(mu, r1, r2).time - 1);
+    assert.ok(t <= SCHEDULE_WINDOW[1] * hohmann(mu, r1, r2).time + 1);
+  }
+  // A short campaign costs what its dates give: from the Hohmann window, close to Hohmann's price;
+  // from half a cycle off it, far more.
+  const h = hohmann(mu, r1, r2);
+  const lead = Math.PI - Math.sqrt(mu / r2 ** 3) * h.time;
+  const short = { ...base, duration: 20 * 86_400, peak: 3, u0: 0 };
+  const onWindow = campaignSchedule({ ...short, w0: lead });
+  const offWindow = campaignSchedule({ ...short, w0: lead + Math.PI });
+  assert.ok(extra(onWindow) < 0.02, `on the window ${extra(onWindow)}`);
+  assert.ok(extra(offWindow) > 10 * extra(onWindow) + 0.1, `off the window ${extra(offWindow)}`);
+  // The model's campaign: never more than the chosen peak in a slot.
+  const at = placesOn(v, v("ice-launch-start"));
+  const tilted = {
     ...base,
     inclination: (v("ice-mutual-inclination") * Math.PI) / 180,
-    peak,
-  });
-  assert.ok(model.peak <= peak);
-  assert.ok(Math.abs(v("ice-catch-peak") / v("ice-throughput") - model.peak) < 1e-9);
-  assert.ok(v("ring-power-peak") > v("ring-power"));
-  // The tilt costs launch energy and arrival speed.
-  assert.ok(v("launch-offwindow-mean") > v("launch-coplanar-mean"));
-  assert.throws(() => launchSchedule({ ...base, peak: 2.5 }), /whole number/);
-});
-
-test("booking each cycle into the slots earlier ones left free holds the peak across cycles", () => {
-  // launchSchedule solves each sampled cycle on its own, as if repeated. Ceres moves on between
-  // cycles, so a real plan books each cycle's launches into the arrival slots still free. That
-  // keeps the peak exactly, and costs about what the model charges.
-  const [mu, r1, r2, esc] = [v("sun-mu"), v("ceres-orbit"), v("venus-orbit"), v("ceres-escape")];
-  const tilt = (v("ice-mutual-inclination") * Math.PI) / 180;
-  const peak = v("ice-arrival-peak");
-  const n = SCHEDULE_SLOTS;
-  const [n1, n2] = [Math.sqrt(mu / r1 ** 3), Math.sqrt(mu / r2 ** 3)];
-  const slot = (2 * Math.PI) / (n2 - n1) / n;
-  const h = hohmann(mu, r1, r2);
-  const [lo, hi] = SCHEDULE_WINDOW.map((x) => Math.round((x * h.time) / slot)) as [number, number];
-  const booked = new Map<number, number>();
-  const [cycles, warm] = [8, 2];
-  let [energy, count] = [0, 0];
-  for (let c = 0; c < cycles; c++) {
-    const columns: number[] = [];
-    for (let a = c * n + lo; a <= (c + 1) * n + hi; a++)
-      for (let k = booked.get(a) ?? 0; k < peak; k++) columns.push(a);
-    const cost = new Float64Array(n * columns.length).fill(1e30);
-    for (let i = 0; i < n; i++) {
-      const launch = c * n + i;
-      const u = n1 * launch * slot;
-      columns.forEach((a, k) => {
-        if (a - launch < lo || a - launch > hi) return;
-        const x = inclinedTransfer(mu, r1, r2, tilt, u, n2 * a * slot, (a - launch) * slot);
-        if (x) cost[i * columns.length + k] = x.dv2 + esc ** 2;
-      });
-    }
-    const pick = assign(cost, n, columns.length);
-    for (let i = 0; i < n; i++) {
-      const a = columns[pick[i] as number] as number;
-      booked.set(a, (booked.get(a) ?? 0) + 1);
-      const e = cost[i * columns.length + (pick[i] as number)] as number;
-      assert.ok(e < 1e30);
-      if (c >= warm) [energy, count] = [energy + e, count + 1];
-    }
-  }
-  assert.ok(Math.max(...booked.values()) <= peak);
-  const rolling = energy / count / (h.departDv ** 2 + esc ** 2) - 1;
-  assert.ok(
-    Math.abs(rolling - v("launch-offwindow-mean")) < 0.015,
-    `booked cycle by cycle ${rolling}, model ${v("launch-offwindow-mean")}`,
-  );
-});
-
-test("the slowest transfer from Ceres's drifted orbit sets the last launch", () => {
-  assert.equal(v("ice-launch-end"), v("deadline") - v("ice-flight-max") - v("ice-lowering-margin"));
-  assert.equal(v("last-arrival"), v("ice-launch-end") + v("ice-flight-max"));
-  assert.ok(v("last-arrival") <= v("deadline") - v("ice-lowering-margin") + 1e-9);
-  // The slowest transfer is the drifted schedule's, slower than Hohmann's and than any from the
-  // starting orbit's fastest.
-  const drifted = launchSchedule({
-    mu: v("sun-mu"),
-    r1: v("ceres-drift-orbit"),
-    r2: v("venus-orbit"),
-    vEscape: v("ceres-escape"),
-    inclination: (v("ice-mutual-inclination") * Math.PI) / 180,
+    u0: at.u,
+    w0: at.w,
+    duration: v("ice-campaign"),
     peak: v("ice-arrival-peak"),
-  });
-  assert.equal(v("ice-flight-max"), (drifted.flights.at(-1) as number) / 86_400);
-  assert.ok(v("ice-flight-max") > v("ice-transfer-days"));
-  assert.ok(v("ceres-drift-orbit") > v("ceres-orbit"));
-  // Twice the ice: twice the recoil, a wider orbit, slower transfers, an earlier last launch.
-  const heavy = run({ "ice-mass": 2 * v("ice-mass") });
-  const h = (id: string) => heavy.get(id).value;
-  assert.ok(h("ceres-drift-orbit") > v("ceres-drift-orbit"));
-  assert.ok(h("ice-flight-max") > v("ice-flight-max"));
-  assert.ok(h("ice-launch-end") < v("ice-launch-end"));
-  assert.equal(h("ice-launch-end"), h("deadline") - h("ice-flight-max") - h("ice-lowering-margin"));
+    r1End: v("ceres-drift-orbit"),
+  };
+  const model = campaignSchedule({ ...tilted, arrivalWeight: v("ice-arrival-weight") });
+  assert.ok(model.peak <= v("ice-arrival-peak"));
+  assert.ok(Math.abs(v("ice-arrival-peak-rate") / v("ice-throughput") - model.peak) < 1e-9);
+  assert.ok(Math.abs(v("ice-vinf-rms") / model.vinfRms - 1) < 1e-12);
+  // Weighing arrival speed books slower arrivals for dearer launches.
+  const cheapest = campaignSchedule({ ...tilted, arrivalWeight: 0 });
+  const weighed = campaignSchedule({ ...tilted, arrivalWeight: 1.5 });
+  assert.ok(weighed.vinfRms < cheapest.vinfRms);
+  assert.ok(weighed.energy > cheapest.energy);
+  // The tilt costs launch energy.
+  assert.ok(v("launch-offwindow-mean") > v("launch-coplanar-mean"));
+  assert.throws(() => campaignSchedule({ ...tilted, peak: 2.5 }), /whole number/);
 });
 
-test("the Ring must have caught the ice it lowers, and be built before the first Brick", () => {
+test("the campaign starts where Ceres and Venus really are", () => {
+  // The measured mean motions agree with the circular orbits the transfers use.
+  const day = (rate: number, r1: number) => (rate * period(v("sun-mu"), r1)) / 86_400 / 360 - 1;
+  assert.ok(Math.abs(day(v("venus-mean-motion"), v("venus-orbit"))) < 2e-4);
+  assert.ok(Math.abs(day(v("ceres-mean-motion"), v("ceres-orbit"))) < 2e-3);
+  // Kepler's equation: a circle keeps its mean anomaly; an ellipse runs ahead after perihelion.
+  assert.equal(trueAnomaly(1.2, 0), 1.2);
+  assert.ok(Math.abs(trueAnomaly(Math.PI, 0.3) - Math.PI) < 1e-12);
+  const e = v("ceres-eccentricity");
+  assert.ok(Math.abs(trueAnomaly(1, e) - (1 + 2 * e * Math.sin(1))) < 2 * e * e);
+  // The planes cross at the model's mutual tilt, and an angle measured from the crossing comes back.
+  const RAD = Math.PI / 180;
+  const ceres = { i: v("ceres-inclination") * RAD, node: v("ceres-node") * RAD };
+  const venus = { i: v("venus-inclination") * RAD, node: v("venus-node") * RAD };
+  const x = crossingAngles({ ...ceres, u: 0.3 }, { ...venus, u: 1.1 });
+  assert.ok(Math.abs(x.inclination / RAD - v("ice-mutual-inclination")) < 1e-9);
+  const y = crossingAngles({ ...ceres, u: 0.3 + 0.5 }, { ...venus, u: 1.1 + 0.2 });
+  assert.ok(Math.abs(y.u - x.u - 0.5) < 1e-9 && Math.abs(y.w - x.w - 0.2) < 1e-9);
+  // A day later Venus has gained on Ceres by the difference of their mean motions, near enough.
+  const [d0, d1] = [placesOn(v, v("ice-launch-start")), placesOn(v, v("ice-launch-start") + 1)];
+  const gained = (d1.w - d1.u - (d0.w - d0.u)) / RAD;
+  assert.ok(Math.abs(gained - (v("venus-mean-motion") - v("ceres-mean-motion"))) < 0.05);
+  // The next Hohmann window is within one synodic cycle of the first launch.
+  assert.ok(v("ice-window-wait") >= 0);
+  assert.ok(v("ice-window-wait") < v("launch-window-period") / 86_400);
+  // The first launch is within days of a window, so the campaign's first shots cost Hohmann's price.
+  assert.ok(v("ice-window-wait") < (0.1 * v("launch-window-period")) / 86_400);
+});
+
+test("the campaign sets the last launch, and the booked flights the arrivals", () => {
+  assert.equal(v("ice-launch-end"), v("ice-launch-start") + v("ice-campaign-days"));
+  // Every flight is inside the window tried, and the arrivals fall between the first and last.
+  const tH = v("ice-transfer-days");
+  assert.ok(v("ice-flight-min") >= SCHEDULE_WINDOW[0] * tH - 1);
+  assert.ok(v("ice-flight-max") <= SCHEDULE_WINDOW[1] * tH + 1);
+  assert.ok(v("first-arrival") >= v("ice-launch-start") + v("ice-flight-min") - 1);
+  assert.ok(v("last-arrival") <= v("ice-launch-end") + v("ice-flight-max") + 1);
+  assert.ok(v("ceres-drift-orbit") > v("ceres-orbit"));
+  // Twice the ice: twice the recoil, a wider orbit.
+  const heavy = run({ "ice-mass": 2 * v("ice-mass") });
+  assert.ok(heavy.get("ceres-drift-orbit").value > v("ceres-drift-orbit"));
+  assert.ok(Math.abs(heavy.get("ceres-recoil").value / v("ceres-recoil") - 2) < 0.01);
+});
+
+test("the Bricks reach Venus while the pumps run, ramping up and down", () => {
   assert.equal(r.checks.get("ice-arrives")?.pass, true);
-  assert.equal(r.checks.get("ring-ready-for-ice")?.pass, true);
-  // Ending the lowering before the last Brick arrives fails, and so does starting it so early
-  // that the lowering outruns the catch.
-  const late = run({ "lowering-end": v("last-arrival") - 30 });
-  assert.equal(late.checks.get("ice-arrives")?.pass, false);
-  const early = run({ "lowering-start": v("first-catch") + 30 });
-  assert.equal(early.checks.get("ice-arrives")?.pass, false);
-  // A Ring finished after the fastest Brick arrives fails its check.
-  const slow = run({ "ring-complete": v("first-catch") + 30 });
-  assert.equal(slow.checks.get("ring-ready-for-ice")?.pass, false);
-  // The catch as it ramps: nothing before the first Brick, all of it by the last, and the share
-  // the check reads when lowering begins.
-  const caught = iceCatch(v);
-  assert.equal(caught.share(v("first-catch") - 1e-6), 0);
-  assert.equal(caught.share(v("last-arrival")), 1);
-  assert.equal(caught.share(v("lowering-start")), v("ice-caught-at-lowering"));
-  assert.equal(Math.min(...caught.turns), v("first-catch"));
-  assert.equal(Math.max(...caught.turns), v("last-arrival"));
-  // The caught share rises from nothing to all of the ice.
-  const [a, b] = [v("ice-launch-start"), v("ice-launch-end")];
-  const first = [300, 400];
-  const last = [350, 500];
-  assert.equal(caughtShare(a + 299, a, b, first, last), 0);
-  assert.equal(caughtShare(b + 500, a, b, first, last), 1);
-  assert.ok(caughtShare((a + b) / 2 + 400, a, b, first, last) > 0.4);
+  // A campaign that runs too long brings its last Bricks after the pumps stop.
+  const long = run({ "ice-campaign-days": 900 });
+  assert.equal(long.checks.get("ice-arrives")?.pass, false);
+  // The arrivals as they ramp: nothing before the first Brick, all of it by the last.
+  const arrived = iceArrivals(v);
+  assert.equal(arrived.share(v("first-arrival") - 1e-6), 0);
+  assert.equal(arrived.share(v("last-arrival")), 1);
+  assert.equal(Math.min(...arrived.turns), v("first-arrival"));
+  assert.equal(Math.max(...arrived.turns), v("last-arrival"));
+  // Each launch slot's share arrives evenly through its arrival slot.
+  const a = v("ice-launch-start");
+  assert.equal(arrivedShare(a + 299, a, 1, [300, 400]), 0);
+  assert.equal(arrivedShare(a + 300.5, a, 1, [300, 400]), 0.25);
+  assert.equal(arrivedShare(a + 350, a, 1, [300, 400]), 0.5);
+  assert.equal(arrivedShare(a + 401, a, 1, [300, 400]), 1);
 });
 
 test("the simulated atmosphere cools, rains out, freezes and warms in order", () => {
   const sim = simulate(v);
   const e = sim.events as Record<string, number>;
-  const order = ["clear-rain", "freeze", "frozen", "cold", "scavenged", "warming", "earth-like"];
+  const order = [
+    "clear-rain",
+    "water-frozen",
+    "freeze",
+    "frozen",
+    "cold",
+    "scavenged",
+    "warming",
+    "earth-like",
+  ];
   for (let i = 1; i < order.length; i++)
     assert.ok((e[order[i - 1] as string] as number) <= (e[order[i] as string] as number), order[i]);
   const first = sim.days[0];
@@ -455,6 +502,11 @@ test("the simulated atmosphere cools, rains out, freezes and warms in order", ()
     (e["earth-like"] as number) <= v("deadline"),
     `Earth-like on ${isoOf(e["earth-like"] as number)}`,
   );
+  // The water rains out once the air holds no more, and freezes as the air cools through 273 K.
+  const rain = sim.days.find((d) => d.day === e["water-rain"]);
+  const frozen = sim.days.find((d) => d.day === e["water-frozen"]);
+  assert.ok(rain && rain.temp > 273.15);
+  assert.ok(frozen && frozen.temp < 273.15);
 });
 
 test("CO₂'s sublimation and vapour curves meet at the triple point and match measured points", () => {
@@ -487,12 +539,33 @@ test("the seas freeze at the triple point, and the simulation's heat books balan
   }
   // The CO₂ pressure never jumps from one day to the next while the pumps cool the air. On the
   // frost curve near 200 K, a day's half a kelvin of cooling lowers it about 4% (Clausius-Clapeyron);
-  // a step between stages would show as far more.
+  // a step between stages would show as far more. It rises only on a day more heat enters the air
+  // than the pumps lift, and then the CO₂ that had rained out boils back.
   for (let i = 1; i < sim.days.length; i++) {
     const [a, b] = [sim.days[i - 1], sim.days[i]];
-    if (a && b && b.phase === "cooling")
-      assert.ok(b.co2 <= a.co2 && (a.co2 - b.co2) / a.co2 < 0.1, `day ${b.day}`);
+    if (!a || !b || b.phase !== "cooling") continue;
+    assert.ok(Math.abs(a.co2 - b.co2) / a.co2 < 0.1, `day ${b.day}`);
+    if (b.co2 > a.co2) assert.ok(b.heatIn > b.heatOut, `day ${b.day}`);
   }
+  // The re-warming is measured from the simulation itself: the warmest day after the coldest so far,
+  // and the Clear Rain for good is the last day the air crosses back below the critical point.
+  const Tc = v("co2-critical-temp");
+  const cooling = sim.days.filter((d) => d.phase === "cooling");
+  let coldest = Number.POSITIVE_INFINITY;
+  let most = 0;
+  for (const d of cooling) {
+    if (d.temp - coldest > most) most = d.temp - coldest;
+    coldest = Math.min(coldest, d.temp);
+  }
+  assert.ok(Math.abs(most - v("traj-rewarm")) < 1, `${most} K against ${v("traj-rewarm")} K`);
+  assert.ok(v("traj-rerain") >= v("traj-clear-rain"));
+  const warm = cooling.filter((d) => d.day >= v("traj-clear-rain") && d.temp > Tc);
+  assert.ok(warm.every((d) => d.day < v("traj-rerain")));
+  if (v("traj-rerain") > v("traj-clear-rain")) assert.ok(warm.length > 0);
+  // The Forges float on the seas, so a start before they are back for good fails its check.
+  assert.equal(r.checks.get("forges-on-seas")?.pass, true);
+  const early = compute(loadInputs({ "forge-start": dayOf("2035-01-01") }));
+  assert.equal(early.checks.get("forges-on-seas")?.pass, false);
   assert.equal(
     r.checks.get("traj-heat-books")?.pass,
     true,
@@ -506,7 +579,7 @@ test("the seas freeze at the triple point, and the simulation's heat books balan
     loadInputs({
       "foundry-seed-launch": v("experiments-end"),
       "ceres-seed-launch": v("experiments-end"),
-      "exhaust-peak": 8e19,
+      "exhaust-peak": 1.6e20,
     }),
   );
   assert.ok(late.get("traj-scavenged").value > v("deadline"));
@@ -548,14 +621,19 @@ test("the first launch waits for the Ceres factories, solved with the Railheads 
   assert.ok(Math.abs(fast.get("ice-launch-start").value - fast.get("ceres-ready").value) < 1e-3);
   assert.equal(fast.checks.get("ceres-ready-in-time")?.pass, true);
   assert.equal(fast.checks.get("frost-before-sealing")?.pass, true);
-  // Slower factories push the launches back, and waiting shortens the campaign, so the Railheads
-  // grow: the solved start is later than the finish of the Railheads the plan would have built.
+  // Slower factories push the launches back to the day they finish. The campaign keeps its length,
+  // so the throughput is the same, but the planets are elsewhere: the launches start farther from a
+  // window and cost more, and the Railheads' power follows the launch cost exactly.
   const slow = compute(loadInputs({ "ceres-doubling-days": 55 }));
   const start = slow.get("ice-launch-start").value;
   assert.ok(start > v("helios-full-power") + 100);
   assert.ok(Math.abs(start - slow.get("ceres-ready").value) < 1e-3);
-  assert.ok(slow.get("railhead-power").value > v("railhead-power"));
-  assert.ok(slow.get("crown-mass").value > v("crown-mass"));
+  assert.equal(slow.get("ice-throughput").value, v("ice-throughput"));
+  assert.ok(slow.get("ice-window-wait").value > v("ice-window-wait"));
+  assert.ok(slow.get("launch-energy-per-kg-avg").value > v("launch-energy-per-kg-avg"));
+  const powerRatio = slow.get("railhead-power").value / v("railhead-power");
+  const costRatio = slow.get("launch-energy-per-kg-avg").value / v("launch-energy-per-kg-avg");
+  assert.ok(Math.abs(powerRatio / costRatio - 1) < 1e-9);
   assert.equal(slow.checks.get("ceres-ready-in-time")?.pass, true);
 });
 

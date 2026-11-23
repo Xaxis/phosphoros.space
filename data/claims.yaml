@@ -6,7 +6,9 @@
 #   brief:  the brief's value, in the quantity's SI unit (dates as YYYY-MM-DD)
 #   tol:    relative tolerance (default 0.10, since the brief writes "~"); for dates, days
 #   where:  the brief's section
-#   correction: id in corrections.yaml when version 3 changed the number on purpose
+#   correction: id in corrections.yaml when a later version changed the number on purpose
+#   retired: id in corrections.yaml that retired the machine the number describes; then label,
+#            unit and show say how the number was shown, since the model no longer has it
 #   note:   why it differs, when it does
 
 # --- 2.2 Venus today --------------------------------------------------------------------------------
@@ -69,7 +71,7 @@
 
 # --- 2.9.2 Helios Lattice ---------------------------------------------------------------------------
 - { model: mercury-sunlight, brief: 9126, tol: 0.01, where: "2.13" }
-- { model: helios-efficiency, brief: 0.15, tol: 0.001, where: "2.9.2" }
+- { model: helios-efficiency, brief: 0.15, tol: 0.001, where: "2.9.2", correction: optical-pumping }
 - { model: helios-area, brief: 5.1e16, where: "2.9.2", correction: budget-offwindow }
 - { model: helios-mass, brief: 5.1e13, where: "2.9.2", correction: budget-offwindow }
 - { model: helios-petals, brief: 1.0e7, where: "2.9.2", correction: budget-offwindow }
@@ -97,8 +99,8 @@
 # --- 2.9.4 Thermal Chimneys ------------------------------------------------------------------------------
 - { model: venus-surface-density, brief: 65, tol: 0.02, where: "2.9.4" }
 - { model: chimney-mass-flow, brief: 4.1e9, tol: 0.02, where: "2.9.4", correction: chimney-design }
-- { model: chimney-heat, brief: 1.2e15, where: "2.9.4" }
-- { model: chimney-capacity, brief: 1.2e19, where: "2.9.4" }
+- { model: chimney-heat, brief: 1.2e15, where: "2.9.4", correction: lit-side }
+- { model: chimney-capacity, brief: 1.2e19, where: "2.9.4", correction: lit-side }
 - { model: chimney-spacing, brief: 2.15e5, tol: 0.01, where: "2.9.4" }
 
 # --- 2.9.5 Photonic Exhaust ------------------------------------------------------------------------------
@@ -107,8 +109,8 @@
 - { model: exhaust-work, brief: 2.84e27, tol: 0.01, where: "2.13", correction: chimney-design }
 - { model: exhaust-work-ratio, brief: 5.4, tol: 0.02, where: "2.13", correction: chimney-design }
 - { model: exhaust-rejected, brief: 3.4e27, where: "2.9.5", correction: real-pumps }
-- { model: exhaust-dark-strip, brief: 5.0e4, where: "2.9.5", correction: exhaust-safety }
-- { model: exhaust-cone-safe-distance, brief: 5.0e7, where: "2.9.5", correction: exhaust-safety }
+- { model: exhaust-dark-strip, brief: 5.0e4, where: "2.9.5", retired: lambertian-tiles, label: "Width of the strip under the Ring's path where tiles stay dark", unit: "m", show: "km" }
+- { model: exhaust-safe-distance, brief: 5.0e7, where: "2.9.5", correction: lambertian-tiles }
 - { model: exhaust-heat-avg, brief: 4.8e18, where: "2.9.5", correction: real-pumps }
 - { model: exhaust-work-avg, brief: 2.6e19, where: "2.9.5", correction: real-pumps }
 - { model: exhaust-rejected-avg, brief: 3e19, where: "2.9.5", correction: real-pumps }
@@ -152,10 +154,10 @@
 - { model: forge-energy-per-mol, brief: 6.57e5, tol: 0.01, where: "2.9.7" }
 - { model: forge-energy-per-kg, brief: 1.5e7, where: "2.9.7" }
 - { model: forge-energy, brief: 2.7e25, where: "2.9.7" }
-- { model: forge-power, brief: 4.9e17, where: "2.9.7" }
+- { model: forge-power, brief: 4.9e17, where: "2.9.7", correction: forges-wait-for-seas }
 - { model: forge-plant-power, brief: 1e12, where: "2.9.7",
     note: "The brief lists 500 plants of about 1 TW, but {forge-power} shared by {forge-count} Forges is about {forge-plant-power} each, a thousand times more. The total is right; the per-plant figure was a unit slip." }
-- { model: forge-throughput, brief: 6.5e7, where: "2.9.7" }
+- { model: forge-throughput, brief: 6.5e7, where: "2.9.7", correction: forges-wait-for-seas }
 - { model: graphite-stockpile, brief: 1.9e17, where: "2.9.7", correction: aerogel-measured }
 - { model: o2-vs-earth, brief: 1, tol: 0.25, where: "2.6",
     note: "The brief says 0.25 bar matches Earth's sea-level oxygen. Earth's is 0.21 bar; 0.25 bar is 18% more, comparable to breathing at about 1.5 m of water depth." }
@@ -180,33 +182,33 @@
 - { model: ice-launch-energy, brief: 4.1e27, where: "2.8", correction: offwindow-launch }
 - { model: railhead-power, brief: 5.6e19, where: "2.9.8", correction: offwindow-launch }
 - { model: railhead-power-each, brief: 5.5e15, where: "2.9.8", correction: offwindow-launch }
-- { model: ice-ceres-water-share, brief: 0.40, where: "2.9.8" }
-- { model: ice-ceres-mass-share, brief: 0.11, where: "2.9.8" }
-- { model: ceres-recoil, brief: 760, where: "2.9.8" }
-- { model: ceres-new-aphelion, brief: 4.937e11, tol: 0.01, where: "2.9.8" }
+- { model: ice-ceres-water-share, brief: 0.40, where: "2.9.8", correction: direct-entry }
+- { model: ice-ceres-mass-share, brief: 0.11, where: "2.9.8", correction: direct-entry }
+- { model: ceres-recoil, brief: 760, where: "2.9.8", correction: direct-entry }
+- { model: ceres-new-aphelion, brief: 4.937e11, tol: 0.01, where: "2.9.8", correction: direct-entry }
 - { model: launch-window-period, brief: 2.24e7, tol: 0.03, where: "2.9.8" }
-- { model: ocean-depth, brief: 217, tol: 0.01, where: "2.5" }
-- { model: first-catch, brief: 2034-08-15, tol: 31, where: "2.9.8", correction: foundry-products }
+- { model: ocean-depth, brief: 217, tol: 0.01, where: "2.5", correction: direct-entry }
+- { model: first-arrival, brief: 2034-08-15, tol: 31, where: "2.9.8", correction: direct-entry }
 
-# --- 2.9.9 Braking Ring -----------------------------------------------------------------------------------
-- { model: ring-circumference, brief: 4.054e7, tol: 0.001, where: "2.9.9" }
-- { model: ring-orbital-speed, brief: 7100, tol: 0.01, where: "2.13" }
-- { model: ring-arrival-speed, brief: 13540, tol: 0.01, where: "2.13", correction: ice-schedule }
-- { model: ring-catch-energy-per-kg, brief: 6.65e7, tol: 0.01, where: "2.13", correction: ice-schedule }
-- { model: ring-recovered-per-kg, brief: 5.3e7, tol: 0.02, where: "2.9.9", correction: ice-schedule }
-- { model: ring-recovered-energy, brief: 5.3e27, where: "2.8", correction: ice-schedule }
-- { model: ring-power, brief: 7.2e19, where: "2.9.9", correction: ice-schedule }
-- { model: ring-lowering-recovery, brief: 2e27, where: "2.8" }
-- { model: ring-free-fall-speed, brief: 13800, tol: 0.01, where: "2.7" }
-- { model: ring-free-fall-impact, brief: 9.5e27, where: "2.7" }
-- { model: ring-free-fall-vs-atmosphere, brief: 18, where: "2.7" }
-- { model: ring-braking-force, brief: 1e16, tol: 0.15, where: "2.9.9", correction: ice-schedule }
-- { model: ring-track-length, brief: 1.4e5, tol: 0.05, where: "2.9.9", correction: ice-schedule }
-- { model: ring-tracks-min, brief: 8, where: "2.9.9", correction: ring-tracks }
-- { model: lowering-start, brief: 2034-08-01, tol: 31, where: "3.2", correction: campaign-dates }
+# --- 2.9.9 Braking Ring (the version 2 brief; retired in version 4) -----------------------------------------------------------------------------------
+- { model: ring-circumference, brief: 4.054e7, tol: 0.001, where: "2.9.9", retired: ring-retired, label: "Ring circumference", unit: "m", show: "km" }
+- { model: ring-orbital-speed, brief: 7100, tol: 0.01, where: "2.13", retired: ring-retired, label: "Orbital speed at the Ring", unit: "m/s", show: "km/s" }
+- { model: ring-arrival-speed, brief: 13540, tol: 0.01, where: "2.13", retired: ring-retired, label: "Brick speed at Ring height", unit: "m/s", show: "km/s" }
+- { model: ring-catch-energy-per-kg, brief: 6.65e7, tol: 0.01, where: "2.13", retired: ring-retired, label: "Motion energy per kilogram the catch removes", unit: "J/kg", show: "MJ/kg" }
+- { model: ring-recovered-per-kg, brief: 5.3e7, tol: 0.02, where: "2.9.9", retired: ring-retired, label: "Electricity per kilogram caught", unit: "J/kg", show: "MJ/kg" }
+- { model: ring-recovered-energy, brief: 5.3e27, where: "2.8", retired: ring-retired, label: "Electricity the Ring recovers catching all the ice", unit: "J" }
+- { model: ring-power, brief: 7.2e19, where: "2.9.9", retired: ring-retired, label: "Ring power averaged over the catch", unit: "W" }
+- { model: ring-lowering-recovery, brief: 2e27, where: "2.8", retired: direct-entry, label: "Electricity recovered slowing parked ice to rest", unit: "J" }
+- { model: ice-entry-speed, brief: 13800, tol: 0.01, where: "2.7", note: "The brief's free fall is now how every Brick arrives, since nothing catches them." }
+- { model: ice-entry-heat, brief: 9.5e27, where: "2.7", correction: direct-entry }
+- { model: ice-entry-vs-atmosphere, brief: 18, where: "2.7", correction: direct-entry }
+- { model: ring-braking-force, brief: 1e16, tol: 0.15, where: "2.9.9", retired: ring-retired, label: "Braking force on the Ring at the peak catch rate", unit: "N" }
+- { model: ring-track-length, brief: 1.4e5, tol: 0.05, where: "2.9.9", retired: ring-retired, label: "Catcher track length", unit: "m", show: "km" }
+- { model: ring-tracks-min, brief: 8, where: "2.9.9", retired: ring-retired, label: "Fewest catcher tracks that hold them, Bricks end to end", unit: "count" }
+- { model: lowering-start, brief: 2034-08-01, tol: 31, where: "3.2", retired: ring-retired, label: "Lowering the caught ice begins", unit: "date" }
 - { model: canopy-width, brief: 7.0e4, tol: 0.05, where: "2.9.5", correction: canopy-size }
-- { model: tether-interval, brief: 1.4, tol: 0.05, where: "2.9.9" }
-- { model: fall-energy, brief: 9e5, where: "2.9.9" }
+- { model: tether-interval, brief: 1.4, tol: 0.05, where: "2.9.9", retired: direct-entry, label: "Seconds between Bricks on each tether lift", unit: "s" }
+- { model: fall-energy, brief: 9e5, where: "2.9.9", retired: ring-retired, label: "Energy a Brick gains falling from 100 km to the surface", unit: "J/kg", show: "MJ/kg" }
 - { model: melt-energy, brief: 6.5e5, where: "2.9.9" }
 
 # --- 2.9.10 Acid Sweep, 2.9.11 Aegis -------------------------------------------------------------------------

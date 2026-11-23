@@ -1,6 +1,6 @@
 /**
- * Ceres Ice Train orbits, to scale: Venus's orbit, Ceres's before and after the campaign, the
- * Hohmann transfer, the cheapest path between them, and the transfers of the next cheap windows.
+ * Ceres Ice Train orbits, to scale: Venus's orbit, Ceres's before and after the campaign, and the
+ * Hohmann transfer, the cheapest path between them, which the campaign starts beside.
  */
 import { period } from "@phosphoros/calc/physics";
 import { Art, Frame, Key, Link, path, show, textWidth, W } from "./kit.tsx";
@@ -12,10 +12,8 @@ interface Props {
   venus: number;
   ceres: number;
   ceresAphelion: number;
-  /** Degrees Venus is behind the arrival point at launch, and Ceres moves between windows. */
+  /** Degrees Venus is behind the arrival point at launch. */
   venusLead: number;
-  windowStep: number;
-  windows: number;
   text: {
     venus: string;
     ceres: string;
@@ -26,9 +24,12 @@ interface Props {
     vinf: string;
     vinfMean: string;
     windowPeriod: string;
-    windows: string;
     start: string;
     end: string;
+    lead: string;
+    wait: string;
+    arrivals: string;
+    drop: string;
     recoil: string;
     realAphelion: string;
   };
@@ -55,10 +56,6 @@ function IceOrbits(p: Props) {
   const arc = (w: number) =>
     conic(CX, CY, transferA * AU, transferE, (180 + w) * deg, Math.PI, 2 * Math.PI, 120);
   const transfer = (w: number) => path(arc(w));
-  const later = Array.from(
-    { length: Math.max(0, Math.ceil(p.windows) - 2) },
-    (_, i) => (i + 1) * p.windowStep,
-  );
   const [lx, ly] = pt(p.ceres, 0);
   const [ax, ay] = pt(p.venus, 180);
   const [vx, vy] = pt(p.venus, 180 - p.venusLead);
@@ -86,7 +83,7 @@ function IceOrbits(p: Props) {
     <Frame
       id="ice-orbits"
       title="Ceres Ice Train orbits, to scale"
-      desc={`To scale. The cheapest fall from Ceres's orbit at ${t.ceres} to Venus's at ${t.venus} is half an ellipse, ${t.transfer}; Bricks launched between windows take ${t.flights}. Throwing the ice stretches Ceres's orbit to an aphelion of ${t.ceresNew}.`}
+      desc={`To scale. The cheapest fall from Ceres's orbit at ${t.ceres} to Venus's at ${t.venus} is half an ellipse, ${t.transfer}. The campaign starts ${t.wait} before a window, and its Bricks take ${t.flights}. Throwing the ice stretches Ceres's orbit to an aphelion of ${t.ceresNew}.`}
       height={H}
       links
     >
@@ -109,18 +106,6 @@ function IceOrbits(p: Props) {
         {head(pt(p.ceres, 128), pt(p.ceres, 135), "s1")}
         {head(pt(p.venus, 300), pt(p.venus, 310), "hot")}
 
-        {/* Later windows: the same transfer, turned by the angle Ceres moves in a synodic period. */}
-        {later.map((w) => (
-          <path
-            key={w}
-            className="f-accent-line"
-            d={transfer(w)}
-            strokeWidth={1}
-            strokeDasharray="2 4"
-          >
-            <title>{`A later window, ${t.windowPeriod} after the one before`}</title>
-          </path>
-        ))}
         {(() => {
           const a = arc(0);
           const i = Math.round(a.length * 0.42);
@@ -143,11 +128,9 @@ function IceOrbits(p: Props) {
 
         <Dot x={lx} y={ly} tone="s1" r={5} title={`Ceres at launch, ${t.ceres} from the Sun`} />
         <Lines x={lx - 10} y={ly + 20} anchor="end" lines={["Ceres", "at launch"]} />
-        <Dot x={vx} y={vy} tone="hot" title="Venus when the Brick leaves" />
-        {/* Low enough to clear the later windows' paths, which end just above it. */}
+        <Dot x={vx} y={vy} tone="hot" title="Venus when the Brick leaves, in the window" />
         <Lines x={vx} y={vy + 30} anchor="middle" halo lines={["Venus", "at launch"]} />
         <Dot x={ax} y={ay} tone="hot" title={`Venus when the Brick arrives, ${t.transfer} later`} />
-        {/* Hemmed in by the later windows' paths: the halo stops them under the words. */}
         <Lines x={ax - 10} y={ay - 22} anchor="end" halo lines={["Venus", "at arrival"]} />
         <Dot x={nx} y={ny} tone="s1" r={4} title={`Ceres's new aphelion, ${t.ceresNew}`} />
         {/* No room outside the new orbit: the label sits just inside Ceres's, tied to its dot. */}
@@ -180,45 +163,43 @@ function IceOrbits(p: Props) {
           </text>
         </g>
         <Key x={px} y={110} tone="accent" label="Hohmann transfer" line />
-        <g>
-          <line
-            className="f-accent-line"
-            x1={px}
-            x2={px + 16}
-            y1={132}
-            y2={132}
-            strokeWidth={1}
-            strokeDasharray="2 4"
-          />
-          <text x={px + 22} y={132} dy="0.32em">
-            Later windows
-          </text>
-        </g>
 
         <Lines
           x={px}
-          y={178}
+          y={156}
           lines={[
             "The cheapest fall",
             `${t.transfer}, half the ellipse`,
-            `launched at ${t.launch}`,
-            `arrives ${t.vinf} faster than Venus`,
-            `between windows: ${t.flights}`,
+            `launched at ${t.launch}, arriving`,
+            `${t.vinf} faster than Venus`,
           ]}
         />
         <Lines
           x={px}
-          y={270}
+          y={226}
           lines={[
-            "Launch windows",
-            `cheapest every ${t.windowPeriod}`,
-            `about ${t.windows} in the campaign,`,
+            "The campaign, on its real dates",
             `${t.start} to ${t.end}`,
+            `Venus leads Ceres by ${t.lead} at first,`,
+            `${t.wait} short of a window;`,
+            `windows come every ${t.windowPeriod}`,
+            `flights take ${t.flights}`,
           ]}
         />
         <Lines
           x={px}
-          y={348}
+          y={330}
+          lines={[
+            "Arrivals",
+            t.arrivals,
+            `${t.vinfMean} faster than Venus`,
+            "on average, falling into the air",
+            `beyond ${t.drop} latitude`,
+          ]}
+        />
+        <Lines
+          x={px}
+          y={418}
           lines={[
             "Ceres pays in orbit",
             `recoil adds ${t.recoil} to its speed`,
@@ -226,11 +207,11 @@ function IceOrbits(p: Props) {
             `(today's real aphelion: ${t.realAphelion})`,
           ]}
         />
-        <Tag x={px} y={H - 76} text="Orbits to scale; dots enlarged" />
-        <text className="f-note" x={px} y={H - 48}>
+        <Tag x={px} y={H - 64} text="Orbits to scale; dots enlarged" />
+        <text className="f-note" x={px} y={H - 38}>
           Seen from the north: everything
         </text>
-        <text className="f-note" x={px} y={H - 33}>
+        <text className="f-note" x={px} y={H - 23}>
           goes round anticlockwise.
         </text>
       </Art>
@@ -247,17 +228,15 @@ export const iceOrbits: FigureDef<Props> = {
     const au = v("au");
     const mu = v("sun-mu");
     const pv = period(mu, v("venus-orbit"));
-    const pc = period(mu, v("ceres-orbit"));
     const transfer = v("ice-transfer-years");
     const month = { date: "month" as const };
+    const day = { date: "day" as const };
     return {
       venus: v("venus-orbit") / au,
       ceres: v("ceres-orbit") / au,
       ceresAphelion: v("ceres-new-aphelion") / au,
       // Venus must be this far short of the arrival point when the Brick leaves.
       venusLead: ((360 * transfer) / pv) % 360,
-      windowStep: (360 * v("launch-window-period")) / pc,
-      windows: v("launch-windows"),
       text: {
         venus: show(r, "venus-orbit", { sig: 3 }),
         ceres: show(r, "ceres-orbit", { sig: 3 }),
@@ -268,18 +247,21 @@ export const iceOrbits: FigureDef<Props> = {
         vinf: show(r, "ice-vinf", { sig: 3 }),
         vinfMean: show(r, "ice-vinf-rms", { sig: 3 }),
         windowPeriod: show(r, "launch-window-period"),
-        windows: show(r, "launch-windows"),
-        start: show(r, "ice-launch-start", month),
-        end: show(r, "ice-launch-end", month),
+        start: show(r, "ice-launch-start", day),
+        end: show(r, "ice-launch-end", day),
+        lead: show(r, "ice-launch-lead"),
+        wait: show(r, "ice-window-wait"),
+        arrivals: `${show(r, "first-arrival", month)} to ${show(r, "last-arrival", month)}`,
+        drop: show(r, "ice-drop-latitude"),
         recoil: show(r, "ceres-recoil", { sig: 2 }),
         realAphelion: show(r, "ceres-aphelion"),
       },
     };
   },
   caption: (p) =>
-    `The cheapest fall from Ceres to Venus is half an ellipse, ${p.text.transfer}, and its windows come every ${p.text.windowPeriod}; launched all the time, Bricks take ${p.text.flights}. Throwing the ice backward pushes Ceres forward, stretching its orbit out to ${p.text.ceresNew}.`,
+    `The cheapest fall from Ceres to Venus is half an ellipse, ${p.text.transfer}, and its windows come every ${p.text.windowPeriod}. The campaign starts ${p.text.wait} before one and lasts a fraction of the cycle, so its Bricks take ${p.text.flights} and fall into Venus's air from ${p.text.arrivals}. Throwing the ice backward pushes Ceres forward, stretching its orbit out to ${p.text.ceresNew}.`,
   describe: (p) => ({
-    summary: `To scale, seen from the north. Venus orbits at ${p.text.venus}, Ceres at ${p.text.ceres}. A Brick thrown backward from Ceres in a launch window falls along a Hohmann transfer ellipse that touches both orbits, arriving ${p.text.transfer} later, ${p.text.vinf} faster than Venus. The Railheads fire between windows too, so Bricks fly other transfers, taking ${p.text.flights} and arriving ${p.text.vinfMean} faster on average. Each later window turns the whole picture by the angle Ceres moves in ${p.text.windowPeriod}. The recoil leaves Ceres on an ellipse from ${p.text.ceres} to ${p.text.ceresNew}.`,
+    summary: `To scale, seen from the north. Venus orbits at ${p.text.venus}, Ceres at ${p.text.ceres}. A Brick thrown backward from Ceres in a launch window falls along a Hohmann transfer ellipse that touches both orbits, arriving ${p.text.transfer} later, ${p.text.vinf} faster than Venus. The campaign runs from ${p.text.start} to ${p.text.end}, on the planets' real positions: on its first day Venus leads Ceres by ${p.text.lead}, ${p.text.wait} short of a window, so the Railheads fire through the window and past it. The Bricks fly transfers of ${p.text.flights} and fall into Venus's air beyond ${p.text.drop} of latitude from ${p.text.arrivals}, ${p.text.vinfMean} faster than Venus on average. The recoil leaves Ceres on an ellipse from ${p.text.ceres} to ${p.text.ceresNew}.`,
     head: ["Quantity", "Value"],
     rows: [
       ["Venus's orbit", p.text.venus],
@@ -290,8 +272,10 @@ export const iceOrbits: FigureDef<Props> = {
       ["Arrival speed relative to Venus, far out, Hohmann", p.text.vinf],
       ["Arrival speed relative to Venus, far out, on average", p.text.vinfMean],
       ["Time between cheap windows", p.text.windowPeriod],
-      ["Windows in the campaign", p.text.windows],
       ["Launch campaign", `${p.text.start} to ${p.text.end}`],
+      ["Venus's lead over Ceres on the first launch day", p.text.lead],
+      ["Wait for the next window from the first launch", p.text.wait],
+      ["Arrivals", p.text.arrivals],
       ["Speed Ceres gains", p.text.recoil],
       ["Ceres's new aphelion", p.text.ceresNew],
       ["Ceres's real aphelion today", p.text.realAphelion],
@@ -309,7 +293,11 @@ export const iceOrbits: FigureDef<Props> = {
     "ice-vinf",
     "ice-vinf-rms",
     "launch-window-period",
-    "launch-windows",
+    "ice-launch-lead",
+    "ice-window-wait",
+    "first-arrival",
+    "last-arrival",
+    "ice-drop-latitude",
     "ice-launch-start",
     "ice-launch-end",
     "ceres-recoil",

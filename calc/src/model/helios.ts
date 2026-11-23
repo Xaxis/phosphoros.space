@@ -19,15 +19,15 @@ export function helios(r: Registry) {
   r.q(
     "helios-efficiency",
     {
-      label: "Helios end-to-end efficiency, sunlight to delivered power",
+      label: "Helios efficiency, sunlight to beamed light",
       unit: "1",
       show: "%",
       sig: 2,
-      formula: "η_film × η_laser × η_receiver",
+      formula: "η_film × η_laser",
       basis: "invented",
+      note: "The Exhaust's tiles take the light itself, so most of it is never turned back into electricity. Only the Railheads, the Forges and the chimney fans pay a receiver's loss as well.",
     },
-    () =>
-      v("helios-film-efficiency") * v("helios-laser-efficiency") * v("helios-receiver-efficiency"),
+    () => v("helios-film-efficiency") * v("helios-laser-efficiency"),
   );
   r.q(
     "helios-area",
@@ -129,7 +129,7 @@ export function helios(r: Registry) {
       sig: 2,
       formula: "a_outer + a_Ceres",
       basis: "physics",
-      note: "The Lattice beams the Railheads' power to Ceres itself; the Ring sends none back.",
+      note: "The Lattice beams the Railheads' power to Ceres itself.",
     },
     () => v("helios-orbit-outer") + v("ceres-orbit"),
   );
@@ -195,7 +195,7 @@ export function heliosSchedule(r: Registry) {
   r.q(
     "helios-supply",
     {
-      label: "Energy the Lattice delivers from full power to the deadline",
+      label: "Light the Lattice beams from full power to the deadline",
       unit: "J",
       formula: "P × (deadline − full-power date)",
       basis: "invented",
@@ -215,51 +215,11 @@ export function heliosSchedule(r: Registry) {
   r.q(
     "helios-loss-energy",
     {
-      label: "Heat the film, lasers and receivers shed in that time",
+      label: "Heat the film and lasers shed in that time",
       unit: "J",
       formula: "E_sunlight − E_Lattice",
       basis: "physics",
     },
     () => v("helios-sunlight-energy") - v("helios-supply"),
-  );
-  r.q(
-    "helios-receiver-incident",
-    {
-      label: "Beam power arriving at the receivers",
-      unit: "W",
-      formula: "P / η_receiver",
-      basis: "invented",
-    },
-    () => v("helios-power") / v("helios-receiver-efficiency"),
-  );
-  r.q(
-    "helios-receiver-area",
-    {
-      label: "Receiver area at 10 MW/m²",
-      unit: "m2",
-      formula: "P_in / I",
-      basis: "invented",
-    },
-    () => v("helios-receiver-incident") / v("helios-receiver-intensity"),
-  );
-  r.q(
-    "helios-receiver-loss",
-    {
-      label: "Heat the receivers shed",
-      unit: "W",
-      formula: "P_in − P",
-      basis: "physics",
-    },
-    () => v("helios-receiver-incident") - v("helios-power"),
-  );
-  r.q(
-    "helios-fin-area",
-    {
-      label: "Radiator fin area to shed that heat at 1,500 K (both faces)",
-      unit: "m2",
-      formula: "P_loss / (2 σ T⁴)",
-      basis: "physics",
-    },
-    () => v("helios-receiver-loss") / (2 * v("stefan-boltzmann") * v("helios-fin-temp") ** 4),
   );
 }

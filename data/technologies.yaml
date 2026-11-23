@@ -1,4 +1,4 @@
-# The thirteen inventions. Each has a page on the site and a document in docs/technologies/.
+# The twelve inventions. Each has a page on the site and a document in docs/technologies/.
 # This file holds the structured parts: the one-line summary, the specs table and what is invented
 # or borrowed. Prose (principle, design, build sequence, failure modes) lives in the document.
 #
@@ -85,7 +85,7 @@
     - name: Mass drivers
       makes: Parts to orbit
       does: "Throw finished parts to orbit"
-      feeds: "The Lattice, the Veil, the Ring"
+      feeds: "The Lattice, the Veil, the Exhaust's tiles"
     - name: Haulers
       makes: Site transport
       does: "Move ore, parts and products across the site"
@@ -104,36 +104,35 @@
   place: mercury
   online: helios-full-power
   summary: >-
-    {helios-petals} film Petals orbiting near Mercury turn sunlight into laser beams and deliver
-    {helios-power}, {helios-sun-share} of the Sun's output.
+    {helios-petals} film Petals orbiting near Mercury turn sunlight into laser beams and beam
+    {helios-power}, {helios-sun-share} of the Sun's output, to Ceres and to Venus.
   job: Harvest sunlight near Mercury and beam it
-  scale: "{helios-area} of film; {helios-power} delivered"
-  breakthrough: "{helios-efficiency} sunlight-to-target efficiency through kilometre-scale coherent laser arrays"
+  scale: "{helios-area} of film; {helios-power} of light beamed"
+  breakthrough: "{helios-efficiency} sunlight-to-beam efficiency through kilometre-scale coherent laser arrays"
   specs:
     - { label: Orbits, value: "Circular, {helios-orbit-inner} to {helios-orbit-outer} from the Sun, at many inclinations so no Petal shades another" }
     - { label: Film temperature, value: "{helios-film-temp} near Mercury, {helios-film-temp-inner} on the innermost orbits" }
     - { label: Sunlight near Mercury, value: "{mercury-sunlight}" }
-    - { label: End-to-end efficiency, value: "{helios-film-efficiency} film × {helios-laser-efficiency} laser × {helios-receiver-efficiency} receiver = {helios-efficiency}" }
+    - { label: Sunlight to beam, value: "{helios-film-efficiency} film × {helios-laser-efficiency} laser = {helios-efficiency}" }
     - { label: Petals, value: "{helios-petals}, each {helios-petal-side} square and {helios-petal-mass}" }
     - { label: Film area, value: "{helios-area}" }
     - { label: Mass, value: "{helios-mass}" }
-    - { label: Delivered power, value: "{helios-power}, from {helios-full-power}" }
-    - { label: Energy delivered by the deadline, value: "{helios-supply}" }
+    - { label: Light beamed, value: "{helios-power}, from {helios-full-power}" }
+    - { label: Beam wavelength, value: "{helios-wavelength|sig=3}, just below the Exhaust tiles' bandgap, so the tiles take it directly" }
+    - { label: Light beamed by the deadline, value: "{helios-supply}" }
     - { label: Beam spot at Venus, value: "{helios-spot} wide from a {helios-aperture} aperture at {helios-range}" }
-    - { label: Receiver intensity, value: "{helios-receiver-intensity}, actively cooled" }
-    - { label: Receiver loss, value: "{helios-receiver-loss}, radiated from {helios-fin-temp} fins to space" }
+    - { label: Receivers, value: "Only where electricity is needed: the Railheads on Ceres, and the Forges and fans on Venus, {venus-receiver-mass} at {helios-receiver-intensity} and {helios-receiver-efficiency} efficient" }
+    - { label: Receiver loss at Venus, value: "{venus-receiver-loss} at full output, lifted by the pumps with the rest of the heat" }
   invented:
     - Hot-carrier tandem film that keeps {helios-film-efficiency} efficiency from {helios-film-temp} to {helios-film-temp-inner}
     - Phase-locked emitter grids acting as {helios-aperture} virtual apertures
   precedent:
-    - text: The beam's wavelength, {helios-wavelength|sig=3}, is the neodymium line of the Nd:YAG laser, first built at Bell Laboratories in 1964.
-      source: geusic-1964-ndyag
-    - text: Nd:YAG lasers have scribed, drilled, cut and welded in factories since 1970.
-      source: belforte-2010-industrial
+    - text: Chromium-doped zinc selenide and zinc sulphide lasers emit in the mid-infrared, near the beam's {helios-wavelength|sig=3}.
+      source: mirov-2015-midir
   experiments: [lightpipe]
   figures: [energy-sankey, lattice-budget]
   modules: [helios.ts]
-  corrections: [budget-offwindow, helios-orbits]
+  corrections: [budget-offwindow, helios-orbits, optical-pumping, lit-side, budget-light]
 
 - id: veil
   name: Hesperus Veil
@@ -155,7 +154,7 @@
     - { label: Light pressure over solar gravity, value: "{veil-beta}" }
     - { label: Station-keeping, value: "Each slat corrects its tilt at {veil-trim-rate} to stay within {veil-station-tolerance} of its station, with no propellant" }
     - { label: Light through when closed, value: "Gaps under {veil-gap-max} of the area plus {veil-slat-leak} through the slats, inside the {veil-leak-budget} the Veil may let through" }
-    - { label: Seen from Venus, value: "{veil-angular-radius} in radius, so Exhaust cones that face it tilt {exhaust-veil-tilt} off the Sun line and miss it" }
+    - { label: Seen from Venus, value: "{veil-angular-radius} in radius; the lit tiles send it {exhaust-veil-load}, {exhaust-veil-load-share} of the sunlight it turns away" }
     - { label: Sunlight blocked when closed, value: "{veil-block-fraction} ({veil-blocked-power})" }
     - { label: Transmission, value: "Set per slat, from {veil-block-fraction} blocked to {veil-open-transmission} open" }
     - { label: Day mode, value: "{veil-day-transmission} open for Earth-strength daylight" }
@@ -194,7 +193,7 @@
     - { label: Mass flow, value: "{chimney-mass-flow} each" }
     - { label: Heat delivered, value: "{chimney-heat} each, cooling the gas by {chimney-gas-cooling}" }
     - { label: Fans, value: "{chimney-fan-power} in all, {chimney-fan-share} of the heat carried" }
-    - { label: Total capacity, value: "{chimney-capacity}, {chimney-vs-peak} times the {deep-heat-peak} peak deep heat flow" }
+    - { label: Total capacity, value: "{chimney-capacity}, {chimney-vs-peak} times the {deep-heat-peak} peak deep heat flow; {chimney-capacity-lit} from the lit side, where the tiles work" }
   invented:
     - Silicon-carbide and graphene composite walls stable at {venus-surface-temp} in CO₂, SO₂ and acid for the {cooling-seconds} of active cooling
     - Ground anchors that grip basalt at {venus-surface-temp}
@@ -210,40 +209,44 @@
   place: venus
   online: cooling-start
   summary: >-
-    {exhaust-canopies} floating canopies with {exhaust-area-installed} of emitters
-    ({exhaust-area-share} of Venus) fire the planet's heat into space as {exhaust-wavelength}
-    infrared at {exhaust-flux}.
+    {exhaust-canopies} floating canopies with {exhaust-area-installed} of tiles
+    ({exhaust-area-share} of Venus), pumped by the Lattice's light, shine the planet's heat into
+    space as {exhaust-wavelength} infrared at {exhaust-flux}.
   job: Throw heat into space as light
-  scale: "{exhaust-area-installed} of emitters; {exhaust-peak} peak"
-  breakthrough: "Electroluminescent cooling at {exhaust-flux}"
+  scale: "{exhaust-area-installed} of tiles; {exhaust-peak} peak"
+  breakthrough: "Laser cooling of a semiconductor at {exhaust-flux}"
   specs:
     - { label: Canopies, value: "{exhaust-canopies}, each about {canopy-width} across" }
-    - { label: Emitter area, value: "{exhaust-area-working} working at the average, {exhaust-area-installed} installed for the peak" }
-    - { label: Emission, value: "{exhaust-wavelength} at {exhaust-flux}, in a {exhaust-cone} cone" }
-    - { label: Effective emitter temperature, value: "{exhaust-effective-temp}" }
+    - { label: Tile area, value: "{exhaust-area-working} working at the average, {exhaust-area-installed} installed for the peak, since only the lit {exhaust-lit-share} work at once" }
+    - { label: Where, value: "{canopy-band-cover} of the band within {ice-drop-latitude} of the equator, clear of the drop zones" }
+    - { label: Pumping, value: "{helios-wavelength|sig=3} light from the Lattice, {exhaust-pump-room-start} of each photon's energy spare for heat at the start" }
+    - { label: Emission, value: "{exhaust-wavelength} at {exhaust-flux}, spread evenly over the sky above each tile" }
+    - { label: Brightness, value: "As bright as a {exhaust-effective-temp} black body; by its entropy the light counts as {exhaust-light-temp}, and the pumps are charged for that" }
     - { label: Heat removed from Venus's air, value: "{atmosphere-heat} (average {exhaust-heat-avg})" }
     - { label: Pump work for that heat, value: "{exhaust-work}, {exhaust-work-ratio} J per joule moved" }
     - { label: Pump work in the simulation, value: "{traj-pump-energy}, counting heat from the crust, the Forges and the ice" }
     - { label: Peak power out, value: "{exhaust-peak}" }
     - { label: Fastest heat removal in the simulation, value: "{traj-heat-peak}, all the chimneys can carry, while the air is still hot" }
     - { label: Per canopy, value: "{canopy-power-in} in, {canopy-power-out} out" }
-    - { label: Average electrical input, value: "{exhaust-work-avg}, {traj-pump-energy} in all" }
-    - { label: Dark strip under the Ring, value: "{exhaust-dark-strip} wide, {exhaust-dark-strip-share} of the surface, where a cone would reach the Ring at {ring-altitude}" }
-    - { label: Far field, value: "Each canopy's cone is dimmer than {exhaust-far-limit} beyond {exhaust-cone-safe-distance} at peak power; where cones overlap, their light adds" }
+    - { label: Average pump light, value: "{exhaust-work-avg}, {traj-pump-energy} in all" }
+    - { label: Far field, value: "Straight above the lit canopies, dimmer than {exhaust-far-limit} beyond {exhaust-safe-distance} at peak power" }
     - { label: Frost Towers, value: "Tiles at {frost-tower-temp} trap the last CO₂ to {frost-co2-pressure}" }
   invented:
-    - "{exhaust-bandgap} thermophotonic diodes with photon recycling, {exhaust-eqe} external quantum efficiency at {exhaust-flux}"
+    - "{exhaust-bandgap} semiconductor tiles cooled by the light they take, {exhaust-eqe} external quantum efficiency at {exhaust-flux}"
     - Hot-gas aerostat canopies {canopy-width} across, on the chimney tops {chimney-top} up
   precedent:
     - text: An LED at MIT emitted {led-2012-light-out} of light from {led-2012-power-in} of electricity, drawing the rest from heat.
       source: santhanam-2012
     - text: Thermophotonic energy transfer measured in intracavity structures at Aalto.
       source: casado-2019
+    - text: Laser light first cooled a solid in 1995, a glass doped with ytterbium.
+      source: epstein-1995-cooling
+    - text: Laser light cooled a semiconductor, cadmium sulphide, by {laser-cooling-2013-drop} in 2013.
+      source: zhang-2013-semiconductor
   experiments: [exhaust-1]
   figures: [heat-path, co2-phase, trajectory]
   modules: [exhaust.ts, trajectory.ts]
-  open: [exhaust-entropy]
-  corrections: [exhaust-capacity, exhaust-safety, sublimation-curve, triple-point-freeze]
+  corrections: [exhaust-capacity, exhaust-safety, sublimation-curve, triple-point-freeze, real-pumps, lambertian-tiles, optical-pumping, lit-side]
 
 - id: cryo
   name: Cryo-continents
@@ -314,8 +317,9 @@
   place: ceres
   online: ice-launch-start
   summary: >-
-    {railhead-count} coilguns on Ceres fire {ice-bricks-per-second} one-megatonne ice Bricks a second,
-    delivering {ice-mass} of water from {ice-launch-start} to {ice-launch-end}.
+    {railhead-count} coilguns on Ceres fire {ice-bricks-per-second} one-megatonne ice Bricks a second
+    from {ice-launch-start} to {ice-launch-end}; {ice-mass} of water falls into Venus's polar air
+    and fills seas {ocean-depth} deep on average.
   job: Ship the water
   scale: "{ice-mass} of ice at {ice-launch-speed}, {ice-flight-min} to {ice-flight-max} in transit"
   breakthrough: Mass drivers throwing {ice-throughput} in all
@@ -329,6 +333,8 @@
     - { label: Energy per shot, value: "{shot-energy} ({shot-energy-drawn} drawn at {railhead-efficiency})" }
     - { label: Power, value: "{railhead-power} in all, {railhead-power-each} each" }
     - { label: Transfer, value: "{ice-flight-min} to {ice-flight-max} ({ice-transfer-years} on the Hohmann transfer); arrives at {ice-vinf-rms} relative to Venus on average" }
+    - { label: Arrival, value: "{first-arrival|date=day} to {last-arrival|date=day}, falling at {ice-entry-speed} into the air beyond {ice-drop-latitude} of latitude" }
+    - { label: Entry heat, value: "{ice-entry-energy-per-kg}, {ice-entry-heat} in all, {ice-entry-vs-atmosphere} of the atmosphere's heat; the pumps lift it with the rest" }
     - { label: Launch windows, value: "Every {launch-window-period}, about {launch-windows} in the campaign" }
     - { label: Launches between windows, value: "Up to {launch-offwindow-max} more energy than in a window, {launch-offwindow-mean} more on average" }
     - { label: Railhead mass, value: "At least {railhead-mass} each, {railheads-mass} in all: carbon fibre holding {railhead-field} coils" }
@@ -345,37 +351,7 @@
   experiments: [railhead, ouroboros-0]
   figures: [ice-orbits]
   modules: [ice.ts, ceres.ts]
-  corrections: [offwindow-launch, lattice-to-ceres, ceres-heat, ceres-factories]
-
-- id: ring
-  name: Braking Ring
-  place: space
-  online: first-catch
-  summary: >-
-    A {ring-circumference} orbital ring at {ring-altitude} catches every Brick, turns its speed into
-    electricity, and parks the ice.
-  job: Catch the ice without heating Venus
-  scale: Orbital ring of {ring-mass}
-  breakthrough: Regenerative magnetic braking recovering {ring-recovered-energy}
-  specs:
-    - { label: Altitude and circumference, value: "{ring-altitude}, {ring-circumference}" }
-    - { label: Rotor speed, value: "{ring-rotor-speed} (orbital speed {ring-orbital-speed})" }
-    - { label: Mass, value: "{ring-mass} (rotor {ring-rotor-mass}, stator {ring-stator-mass})" }
-    - { label: Catcher tracks, value: "About {ring-track-length} long, braking at {ring-catch-accel}" }
-    - { label: Brick arrival, value: "{ring-arrival-speed}" }
-    - { label: Energy recovered, value: "{ring-catch-energy-per-kg} of motion, {ring-recovered-per-kg} as electricity" }
-    - { label: Recovered power, value: "{ring-power} at full rate" }
-    - { label: Braking force, value: "{ring-braking-force}; east and west catches cancel the twist, not the force" }
-    - { label: Without the Ring, value: "Ice would hit at {ring-free-fall-speed} and dump {ring-free-fall-impact} of heat, {ring-free-fall-vs-atmosphere} times the air's" }
-    - { label: Tether lifts, value: "{ring-tether-lifts}, each lowering a Brick every {tether-interval}" }
-  invented:
-    - A rotor carrying {ring-rotor-mass} at {ring-rotor-speed}
-    - Sleds that brake megatonne blocks at {ring-catch-accel}
-  precedent: []
-  experiments: []
-  figures: [braking-ring, energy-sankey]
-  modules: [ring.ts]
-  open: [ring-lowering, ring-net-force]
+  corrections: [offwindow-launch, lattice-to-ceres, ceres-heat, ceres-factories, ring-retired, direct-entry]
 
 - id: acid
   name: Acid Sweep
@@ -384,7 +360,7 @@
   summary: >-
     Cooling makes the sulfur rain out. The SO₂ dissolves in the CO₂ seas and freezes into the
     cryo-continents; the {venus-cloud-acid} of cloud acid and the SO₂ left in the air are neutralized
-    with crushed basalt before the oceans arrive.
+    with crushed basalt before the seas arrive.
   job: Remove the sulfuric-acid clouds
   scale: Rain-out plus basalt neutralization
   breakthrough: None but scale
@@ -438,16 +414,16 @@
   online: genesis-start
   summary: >-
     Engineered Earth microbes, algae, lichens and mosses are seeded once the oxygen is in and the
-    oceans hold their pH, so the sunlit water is green by {genesis-end|date=month}.
+    seas hold their pH, so the sunlit water is green by {genesis-end|date=month}.
   job: Start an ecosystem
   scale: Engineered cyanobacteria, lichens and plankton
   breakthrough: Organisms tuned to cold, sulfate-rich water under nitrogen-rich air
   specs:
     - { label: Air, value: "{final-pressure}: {n2-pressure} nitrogen, {o2-target-pressure} oxygen, {final-co2-ppm} CO₂" }
-    - { label: Oceans, value: "{ocean-depth} deep on average, fresh to brackish and sulfate-rich" }
+    - { label: Seas, value: "{ocean-depth} deep on average, fresh to brackish and sulfate-rich" }
     - { label: Light, value: "{day-length} days at Earth strength" }
     - { label: Seeding, value: "From {genesis-start|date=day}, the later of the oxygen ({forge-end|date=day}) and the pH gate ({genesis-ph-clear|date=day})" }
-    - { label: Living oceans, value: "{genesis-seed-density} seeded, {genesis-bloom-density} by {genesis-end|date=day}, doubling every {genesis-doubling-days}" }
+    - { label: Living seas, value: "{genesis-seed-density} seeded, {genesis-bloom-density} by {genesis-end|date=day}, doubling every {genesis-doubling-days}" }
     - { label: Temperature, value: "{genesis-air-temp} mean air temperature when seeding begins; Earth-like is at least {earth-like-temp}" }
     - { label: Ozone, value: "{ozone-first-day} after the first day of sunlight; {ozone-shield-column}, a shield for land life, on {ozone-shield-date|date=day}; settles near {ozone-steady}" }
   groups:

@@ -16,15 +16,14 @@ import {
   ATMO_VERT,
   BAKE_FRAG,
   BEAM_FRAG,
+  BRICK_FRAG,
   BRICK_VERT,
   CANOPY_VERT,
   CLOUD_FRAG,
-  FLASH_VERT,
+  FLAT_VERT,
   PLANET_FRAG,
   POINT_FRAG,
   QUAD_VERT,
-  RING_FRAG,
-  RING_VERT,
   SPHERE_VERT,
   STAR_FRAG,
   STAR_VERT,
@@ -57,14 +56,15 @@ export interface SceneController {
 
 /** Sunlight comes from the upper left and in front, so most of the near side is lit. */
 const SUN_DIR = new THREE.Vector3(-0.7, 0.45, 0.55).normalize();
-/** Drawn larger than the real 400 km, so the Ring reads at this size. Not to scale. */
-const RING_R = 1.12;
 /**
  * The Helios Lattice orbits near Mercury, so its beams reach Venus from wherever the Lattice is,
- * not from the Sun's direction. Drawn arriving steeply from the upper left, behind Venus, so on a
- * wide screen they pass right of the headline rather than through it.
+ * not from the Sun's direction, and only the side of Venus facing it can be pumped. Drawn arriving
+ * steeply from the upper left, behind Venus, so on a wide screen they pass right of the headline
+ * rather than through it.
  */
 const BEAM_DIR = new THREE.Vector3(-0.5, 0.8, -0.3).normalize();
+/** Radius of the cloud tops, where the canopies float, the beams land and the Bricks burst. */
+const CLOUD_TOPS = 1.018;
 /**
  * Where the Veil and Aegis sit: sunward and in front of Venus, raised 17 degrees above the Sun line
  * and drawn at 3/4 size so that on a wide screen they fit between the headline and the planet,
@@ -77,6 +77,72 @@ const FOV = 24;
 const BACKGROUND = "#090a12";
 
 const linear = (hex: string, gain = 1) => new THREE.Color(hex).multiplyScalar(gain);
+const smooth = (a: number, b: number, x: number) => {
+  const t = Math.min(1, Math.max(0, (x - a) / (b - a)));
+  return t * t * (3 - 2 * t);
+};
+
+/**
+ * The height a sea must reach to cover a given share of Venus, for the CO₂ basins and for the
+ * water's, read once from the baked terrain with the planet shader's own basin masks. So the drawn
+ * seas cover what the model says: the cryo-continents a third of the planet, the new water under
+ * a hundredth of it. Undefined if the terrain cannot be read back.
+ */
+type Shoreline = (share: number) => number;
+function shorelines(
+  renderer: THREE.WebGLRenderer,
+  target: THREE.WebGLRenderTarget,
+): { co2: Shoreline; water: Shoreline } | undefined {
+  const { width, height } = target;
+  const buf = new Uint16Array(width * height * 4);
+  renderer.readRenderTargetPixels(target, 0, 0, width, height, buf);
+  const half = THREE.DataUtils.fromHalfFloat;
+  const co2: [number, number][] = [];
+  const water: [number, number][] = [];
+  let total = 0;
+  let lo = Number.POSITIVE_INFINITY;
+  let hi = Number.NEGATIVE_INFINITY;
+  for (let y = 0; y < height; y += 2) {
+    const lat = ((y + 0.5) / height - 0.5) * Math.PI;
+    const area = Math.cos(lat);
+    const polar = smooth(0.28, 0.52, Math.abs(Math.sin(lat)));
+    for (let x = 0; x < width; x += 2) {
+      const i = (y * width + x) * 4;
+      const h = half(buf[i] as number);
+      const m = smooth(0.46, 0.56, half(buf[i + 1] as number)) * polar;
+      co2.push([h, area * m]);
+      water.push([h, area * (1 - m)]);
+      total += area;
+      lo = Math.min(lo, h);
+      hi = Math.max(hi, h);
+    }
+  }
+  if (!(hi > lo)) return undefined;
+  const curve = (pts: [number, number][]): Shoreline => {
+    pts.sort((a, b) => a[0] - b[0]);
+    const hs = new Float64Array(pts.length);
+    const cum = new Float64Array(pts.length);
+    let c = 0;
+    pts.forEach(([h, w], k) => {
+      c += w / total;
+      hs[k] = h;
+      cum[k] = c;
+    });
+    return (share) => {
+      if (share <= 0) return lo - 1;
+      if (share >= c) return hi + 1;
+      let a = 0;
+      let b = pts.length - 1;
+      while (b - a > 1) {
+        const mid = (a + b) >> 1;
+        if ((cum[mid] as number) < share) a = mid;
+        else b = mid;
+      }
+      return hs[b] as number;
+    };
+  };
+  return { co2: curve(co2), water: curve(water) };
+}
 const u = <T>(value: T) => ({ value });
 
 export function createScene(
@@ -102,7 +168,7 @@ export function createScene(
   };
 
   // --- The planet's fields, baked once ---------------------------------------------------------
-  const bake = (layer: number) => {
+  const bake = (layer: number, read?: (t: THREE.WebGLRenderTarget) => void) => {
     const target = keep(
       new THREE.WebGLRenderTarget(1024, 512, {
         type: THREE.HalfFloatType,
@@ -126,11 +192,20 @@ export function createScene(
     renderer.setRenderTarget(target);
     renderer.render(bakeScene, new THREE.Camera());
     renderer.setRenderTarget(null);
+    read?.(target);
     material.dispose();
     quad.geometry.dispose();
     return target.texture;
   };
-  const terrain = bake(0);
+  let shores: ReturnType<typeof shorelines>;
+  const terrain = bake(0, (t) => {
+    shores = shorelines(renderer, t);
+  });
+  // If the terrain cannot be read back, the seas fill the lowest basins on a fixed scale instead.
+  const co2Line = (level: number) =>
+    shores ? shores.co2(level * data.capCover) : 0.28 + 0.24 * level;
+  const waterLine = (level: number) =>
+    shores ? shores.water(level * data.seaCover) : -0.2 + 0.2 * level;
   const cloudMap = bake(1);
 
   // --- Scene graph -----------------------------------------------------------------------------
@@ -166,6 +241,8 @@ export function createScene(
           uSun: shared.uSun,
           uHeat: u(1),
           uCO2Level: u(0),
+          uCO2Line: u(-2),
+          uWaterLine: u(-2),
           uDryIce: u(0),
           uSealed: u(0),
           uWaterIce: u(0),
@@ -249,46 +326,15 @@ export function createScene(
   );
   system.add(atmosphere);
 
-  // --- The Braking Ring --------------------------------------------------------------------------
-  const ringUniforms = { uBuilt: u(0), uGlow: u(0), cRing: u(linear("#ffd27a", 2.4)) };
-  const ring = new THREE.Mesh(
-    keep(new THREE.TorusGeometry(RING_R, 0.0032, 8, 720)),
-    keep(
-      new THREE.ShaderMaterial({
-        vertexShader: RING_VERT,
-        fragmentShader: RING_FRAG,
-        uniforms: ringUniforms,
-      }),
-    ),
-  );
-  const haloUniforms = {
-    uBuilt: ringUniforms.uBuilt,
-    uGlow: u(1),
-    cRing: u(linear("#ffc35c", 1.4)),
-  };
-  const halo = new THREE.Mesh(
-    keep(new THREE.TorusGeometry(RING_R, 0.016, 8, 360)),
-    keep(
-      new THREE.ShaderMaterial({
-        vertexShader: RING_VERT,
-        fragmentShader: RING_FRAG,
-        uniforms: haloUniforms,
-        transparent: true,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
-      }),
-    ),
-  );
-  for (const m of [ring, halo]) {
-    m.rotation.x = Math.PI / 2;
-    system.add(m);
-  }
-
   // --- Photonic Exhaust: a lattice of canopies glowing in the infrared ------------------------------
+  // The canopies fill the band between the polar drop zones, and glow where the Lattice's light
+  // reaches them.
+  const band = Math.sin((data.dropLatitude * Math.PI) / 180);
   const exhaustUniforms = {
     uTime: shared.uTime,
     uPixel: shared.uPixel,
     uOn: u(0),
+    uLitDir: u(BEAM_DIR),
     cPoint: u(linear("#ff4a4a", 1.6)),
   };
   {
@@ -298,9 +344,9 @@ export function createScene(
     const seeds: number[] = [];
     for (let i = 0; i < n; i++) {
       const y = 1 - ((i + 0.5) / n) * 2;
-      if (Math.abs(y) > 0.86) continue;
-      const r = Math.sqrt(1 - y * y) * 1.018;
-      pos.push(Math.cos(golden * i) * r, y * 1.018, Math.sin(golden * i) * r);
+      if (Math.abs(y) > band) continue;
+      const r = Math.sqrt(1 - y * y) * CLOUD_TOPS;
+      pos.push(Math.cos(golden * i) * r, y * CLOUD_TOPS, Math.sin(golden * i) * r);
       seeds.push((i * 0.6180339) % 1);
     }
     const g = keep(new THREE.BufferGeometry());
@@ -323,18 +369,24 @@ export function createScene(
     );
   }
 
-  // --- Helios power beams, from the Lattice near the Sun to receivers on the Ring -------------------
+  // --- Helios beams, from the Lattice near the Sun to the Exhaust's tiles on the lit side ------------
   const beamUniforms = { uTime: shared.uTime, uOn: u(0), cBeam: u(linear("#ffcf73", 2.2)) };
   {
-    const localSun = BEAM_DIR.clone().applyQuaternion(system.quaternion.clone().invert());
-    const az = Math.atan2(localSun.z, localSun.x);
     const side = new THREE.Vector3().crossVectors(BEAM_DIR, new THREE.Vector3(0, 1, 0)).normalize();
     const lift = new THREE.Vector3().crossVectors(side, BEAM_DIR).normalize();
+    // Each beam lands on canopies that face the Lattice and the camera, well inside the band
+    // between the drop zones: tilted from the Lattice's direction toward the camera and the equator.
+    const toCamera = new THREE.Vector3(0, Math.sin(CAMERA_ELEVATION), Math.cos(CAMERA_ELEVATION));
+    const axis = new THREE.Vector3(0, 1, 0).applyQuaternion(system.quaternion);
     const beams: THREE.BufferGeometry[] = [];
-    const offsets = [-1.05, -0.45, 0.2, 0.75, 1.25];
+    const offsets = [-0.7, -0.4, -0.1, 0.2, 0.45];
     offsets.forEach((o, i) => {
-      const local = new THREE.Vector3(Math.cos(az + o) * RING_R, 0, Math.sin(az + o) * RING_R);
-      const end = system.localToWorld(local.clone());
+      const end = BEAM_DIR.clone()
+        .addScaledVector(toCamera, 0.9)
+        .addScaledVector(side, o)
+        .addScaledVector(axis, -0.3)
+        .normalize()
+        .multiplyScalar(CLOUD_TOPS);
       const start = BEAM_DIR.clone()
         .multiplyScalar(18)
         .addScaledVector(side, (i - 2) * 0.9)
@@ -375,19 +427,9 @@ export function createScene(
     );
   }
 
-  // --- The Ice Train: Bricks falling in from Ceres, caught east and west -----------------------------
-  const catchAngles = [0.38, Math.PI - 0.38];
-  const dirs = [1, -1];
-  const catchPoint = (k: number) =>
-    new THREE.Vector3(
-      Math.cos(catchAngles[k] as number) * RING_R,
-      0,
-      Math.sin(catchAngles[k] as number) * RING_R,
-    );
-  const tangent = (k: number) => {
-    const a = catchAngles[k] as number;
-    return new THREE.Vector3(-Math.sin(a), 0, Math.cos(a)).multiplyScalar(dirs[k] as number);
-  };
+  // --- The Ice Train: Bricks falling in from Ceres into the polar drop zones -------------------------
+  // Two streams, one steered to each pole. Each Brick ends on its own spot beyond the drop latitude,
+  // on the side facing the camera, and bursts there.
   const source = new THREE.Vector3(6.5, 2.6, -10);
   const brickUniforms = {
     uTime: shared.uTime,
@@ -395,14 +437,10 @@ export function createScene(
     uFront: u(0),
     uTail: u(0),
     uOn: u(1),
-    uRingR: u(RING_R),
-    uP0: u([source, source.clone().add(new THREE.Vector3(-0.6, 0.3, 0))]),
-    uP1: u([new THREE.Vector3(3.6, 1.1, -4.8), new THREE.Vector3(-1.2, 0.9, -6.2)]),
-    uP2: u([0, 1].map((k) => catchPoint(k).addScaledVector(tangent(k), -1.7))),
-    uP3: u([catchPoint(0), catchPoint(1)]),
-    uCatchAngle: u(catchAngles),
-    uDir: u(dirs),
+    uP0: u([source, source.clone().add(new THREE.Vector3(-0.6, -0.4, 0))]),
+    uP1: u([new THREE.Vector3(3.4, 2.8, -4.6), new THREE.Vector3(3.2, -1.8, -5.4)]),
     cPoint: u(linear("#c4ecff", 2.6)),
+    cFlash: u(linear("#ffd9a0", 3.4)),
   };
   {
     const n = 1100;
@@ -410,28 +448,53 @@ export function createScene(
     const offset = new Float32Array(n);
     const sideAttr = new Float32Array(n);
     const jitter = new Float32Array(n * 3);
+    const ends = new Float32Array(n * 3);
     let seed = 7;
     const rand = () => {
       seed = (seed * 16807) % 2147483647;
       return seed / 2147483647;
     };
+    // The camera's direction in the planet's frame, so the drop spots face it.
+    const view = new THREE.Vector3(
+      0,
+      Math.sin(CAMERA_ELEVATION),
+      Math.cos(CAMERA_ELEVATION),
+    ).applyQuaternion(system.quaternion.clone().invert());
+    const facing = Math.atan2(view.x, view.z);
+    const edge = data.dropLatitude;
     for (let i = 0; i < n; i++) {
       offset[i] = rand();
       sideAttr[i] = i % 2;
       jitter[i * 3] = (rand() - 0.5) * 0.5;
       jitter[i * 3 + 1] = (rand() - 0.5) * 0.3;
       jitter[i * 3 + 2] = (rand() - 0.5) * 0.5;
+      // North: anywhere in the cap beyond the edge. South: near its edge, where it can be seen.
+      const north = i % 2 === 0;
+      const deg = north
+        ? edge + 3 + rand() * (90 - edge - 5)
+        : -(edge + 2 + rand() * Math.min(12, 90 - edge - 4));
+      const lat = (deg * Math.PI) / 180;
+      const lon = facing + (rand() - 0.5) * (north ? 3.2 : 2.0);
+      ends.set(
+        [
+          Math.cos(lat) * Math.sin(lon) * CLOUD_TOPS,
+          Math.sin(lat) * CLOUD_TOPS,
+          Math.cos(lat) * Math.cos(lon) * CLOUD_TOPS,
+        ],
+        i * 3,
+      );
     }
     g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(n * 3), 3));
     g.setAttribute("aOffset", new THREE.BufferAttribute(offset, 1));
     g.setAttribute("aSide", new THREE.BufferAttribute(sideAttr, 1));
     g.setAttribute("aJitter", new THREE.BufferAttribute(jitter, 3));
+    g.setAttribute("aEnd", new THREE.BufferAttribute(ends, 3));
     const points = new THREE.Points(
       g,
       keep(
         new THREE.ShaderMaterial({
           vertexShader: BRICK_VERT,
-          fragmentShader: POINT_FRAG,
+          fragmentShader: BRICK_FRAG,
           uniforms: brickUniforms,
           transparent: true,
           depthWrite: false,
@@ -441,37 +504,6 @@ export function createScene(
     );
     points.frustumCulled = false;
     system.add(points);
-  }
-  const flashUniforms = {
-    uTime: shared.uTime,
-    uPixel: shared.uPixel,
-    uOn: u(0),
-    cPoint: u(linear("#fff0c4", 3.2)),
-  };
-  {
-    const g = keep(new THREE.BufferGeometry());
-    const a = catchPoint(0);
-    const b = catchPoint(1);
-    g.setAttribute(
-      "position",
-      new THREE.BufferAttribute(new Float32Array([a.x, a.y, a.z, b.x, b.y, b.z]), 3),
-    );
-    g.setAttribute("aSeed", new THREE.BufferAttribute(new Float32Array([0, 1.7]), 1));
-    const flashes = new THREE.Points(
-      g,
-      keep(
-        new THREE.ShaderMaterial({
-          vertexShader: FLASH_VERT,
-          fragmentShader: POINT_FRAG,
-          uniforms: flashUniforms,
-          transparent: true,
-          depthWrite: false,
-          blending: THREE.AdditiveBlending,
-        }),
-      ),
-    );
-    flashes.frustumCulled = false;
-    system.add(flashes);
   }
 
   // --- The Hesperus Veil and the Aegis Shield, toward the Sun ----------------------------------------
@@ -487,7 +519,7 @@ export function createScene(
     keep(new THREE.CircleGeometry(0.4, 128)),
     keep(
       new THREE.ShaderMaterial({
-        vertexShader: RING_VERT,
+        vertexShader: FLAT_VERT,
         fragmentShader: VEIL_FRAG,
         uniforms: veilUniforms,
         transparent: true,
@@ -566,7 +598,7 @@ export function createScene(
     );
   }
 
-  // --- Post-processing: bloom makes the beams, Ring and flashes glow ---------------------------------
+  // --- Post-processing: bloom makes the beams, the tiles and the bursting Bricks glow ----------------
   const target = keep(new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples: 4 }));
   const composer = new EffectComposer(renderer, target);
   composer.addPass(new RenderPass(scene, camera));
@@ -594,7 +626,7 @@ export function createScene(
     canvas.dataset.dpr = String(dpr);
     const cx = box.left + box.width / 2 - rect.left;
     const cy = box.top + box.height / 2 - rect.top;
-    // Leave room round the planet for the Ring and the glow of the air.
+    // Leave room round the planet for the glow of the air and the Bricks' last leg.
     const radius = Math.max(40, Math.min(box.width, box.height) / 2 / 1.22);
     const tanHalf = Math.tan(((FOV / 2) * Math.PI) / 180);
     const distance = Math.sqrt(1 + (height / 2 / (radius * tanHalf)) ** 2);
@@ -629,6 +661,8 @@ export function createScene(
     set(planet.material, {
       uHeat: s.heat,
       uCO2Level: s.co2Level,
+      uCO2Line: co2Line(s.co2Level),
+      uWaterLine: waterLine(Math.min(1, s.ocean + s.waterIce)),
       uDryIce: s.dryIce,
       uSealed: s.sealed,
       uWaterIce: s.waterIce,
@@ -643,13 +677,10 @@ export function createScene(
       uSky: s.sky,
     });
     set(atmosphere.material, { uAir: s.air, uSky: s.sky, uExhaust: s.exhaust });
-    ringUniforms.uBuilt.value = s.ring;
-    ring.visible = halo.visible = s.ring > 0;
     exhaustUniforms.uOn.value = s.exhaust;
     beamUniforms.uOn.value = s.beams;
     brickUniforms.uFront.value = s.iceFront;
     brickUniforms.uTail.value = s.iceTail;
-    flashUniforms.uOn.value = s.catching;
     veilUniforms.uBuilt.value = s.veil;
     veilUniforms.uOpen.value = s.veilOpen;
     veil.visible = s.veil > 0;

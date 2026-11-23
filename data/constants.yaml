@@ -178,6 +178,30 @@ venus-node:
   basis: physics
   source: [nasa-venus-factsheet]
   sig: 4
+venus-mean-longitude:
+  value: 181.9790995
+  unit: deg
+  label: Venus's mean longitude at J2000
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 10
+  note: Venus's orbit is so nearly circular (eccentricity 0.0068) that its mean longitude places it within 0.8° of where it is.
+venus-mean-motion:
+  value: 1.60213047
+  unit: deg/d
+  label: Venus's mean motion
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 9
+  note: 58,517.815° a Julian century of 36,525 days.
+venus-elements-epoch:
+  value: 2451545.0
+  unit: d
+  show: d
+  label: Epoch of Venus's elements, as a Julian day (J2000.0, noon on 1 January 2000)
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 8
 venus-surface-temp:
   value: 737
   unit: K
@@ -501,7 +525,7 @@ ceres-water-fraction:
   basis: physics
   source: [ceres-water]
   sig: 2
-  note: McCord and Sotin's density argument gives 17% to 27%; the model takes the top of that range. At the low end the Ice Train would need most of Ceres's water. The Explorer's range runs wider, to test the plan.
+  note: McCord and Sotin's density argument gives 17% to 27%; the model takes the top of that range. Even at the low end the Ice Train takes well under a hundredth of it. The Explorer's range runs wider, to test the plan.
   range: [0.17, 0.35]
 ceres-rotation-period:
   value: 32667.012
@@ -526,6 +550,43 @@ ceres-node:
   source: [jpl-sbdb-ceres]
   sig: 4
   note: Osculating elements at the epoch of JD 2461200.5 (8 June 2026). The node drifts by a fraction of a degree a century.
+ceres-eccentricity:
+  value: 0.0796923
+  unit: "1"
+  label: Ceres orbital eccentricity
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 4
+  note: Used only to place Ceres along its orbit on the campaign's dates; the transfers treat its orbit as a circle.
+ceres-perihelion-argument:
+  value: 73.29421
+  unit: deg
+  label: Argument of Ceres's perihelion (J2000)
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 7
+ceres-mean-anomaly:
+  value: 274.41935
+  unit: deg
+  label: Ceres's mean anomaly at the epoch of its elements
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 8
+ceres-mean-motion:
+  value: 0.21430445
+  unit: deg/d
+  label: Ceres's mean motion
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 8
+ceres-elements-epoch:
+  value: 2461200.5
+  unit: d
+  show: d
+  label: Epoch of Ceres's elements, as a Julian day (8 June 2026)
+  basis: physics
+  source: [jpl-sbdb-ceres]
+  sig: 8
 
 # --- Jupiter ---------------------------------------------------------------------------------------
 jupiter-mass:
@@ -854,6 +915,20 @@ water-cp:
   label: Heat capacity of water
   basis: physics
   sig: 3
+water-vaporization-heat:
+  value: 2.257e6
+  unit: J/kg
+  show: MJ/kg
+  label: Heat to boil water, at its normal boiling point
+  basis: physics
+  sig: 4
+  note: More at lower temperatures, 2.5 MJ/kg near freezing; the simulation uses this one value.
+water-boiling-temp:
+  value: 373.15
+  unit: K
+  label: Water's boiling point at one standard atmosphere
+  basis: physics
+  sig: 5
 graphite-density:
   value: 2200
   unit: kg/m3
@@ -905,6 +980,13 @@ led-2012-light-out:
   label: Light the MIT LED emitted from that electricity, the rest drawn from heat (2012)
   basis: precedent
   source: [santhanam-2012]
+  sig: 2
+laser-cooling-2013-drop:
+  value: 40
+  unit: K
+  label: How far laser light cooled a semiconductor, cadmium sulphide nanobelts, below room temperature (2013)
+  basis: precedent
+  source: [zhang-2013-semiconductor]
   sig: 2
 carbon-fibre-strength:
   value: 7.0e9

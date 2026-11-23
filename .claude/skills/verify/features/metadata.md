@@ -31,7 +31,7 @@ curl -sI localhost:$PORT/icon.svg | grep -i content-type
 ~/.claude/claude-core/bin/heavy node tools/assets.ts
 ```
 
-Proves it when: the sitemap has one `<loc>` per page (33 with 13 technologies and 9 sections, minus not-found and metadata routes: count the pages in the build output); robots names the sitemap; the icon is `image/svg+xml`; assets prints `{"ok":true,...}` and the PNG, read as an image, shows the headline and four numbers without overlap.
+Proves it when: the sitemap has one `<loc>` per page (26: the home page, 9 sections, the Explorer, numbers, sources, the technologies index and 12 technologies; not-found and metadata routes are left out); robots names the sitemap; the icon is `image/svg+xml`; assets prints `{"ok":true,...}` and the PNG, read as an image, shows the headline and four numbers without overlap.
 
 ## Gotchas
 

@@ -24,7 +24,7 @@ const GROUPS: ExplorerGroup[] = [
   },
   { title: "Hesperus Veil", ids: ["veil-momentum-fraction"] },
   { title: "Photonic Exhaust", ids: ["exhaust-peak", "exhaust-effective-temp"] },
-  { title: "Water", ids: ["ice-mass", "ceres-water-fraction"] },
+  { title: "Water", ids: ["ice-mass", "ice-arrival-weight", "ceres-water-fraction"] },
   { title: "Ceres factories", ids: ["ceres-doubling-days", "ceres-seed-mass"] },
 ];
 
@@ -33,11 +33,12 @@ const OUTCOMES: Outcome[] = [
   { id: "budget-demand", better: "lower" },
   { id: "helios-supply", better: "higher" },
   { id: "budget-spare", better: "higher" },
-  { id: "budget-spare-with-ring", better: "higher" },
+  { id: "frost-sealing-slack", better: "higher" },
   { id: "foundry-full-scale", better: "earlier" },
   { id: "veil-affordable", better: "earlier" },
   { id: "traj-clear-rain", better: "earlier" },
   { id: "traj-scavenged", better: "earlier" },
+  { id: "traj-rewarm", better: "lower" },
   { id: "helios-area", better: "none" },
   { id: "exhaust-area-installed", better: "none" },
   { id: "traj-pump-energy", better: "lower" },

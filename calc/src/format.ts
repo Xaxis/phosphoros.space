@@ -56,6 +56,7 @@ const UNIT_TEXT: Record<string, string> = {
   "m3/s": "m³/s",
   "cm3/s": "cm³/s",
   "m6/s": "m⁶/s",
+  "deg/d": "°/d",
   "cm6/s": "cm⁶/s",
   km2: "km²",
   "km2/d": "km²/d",

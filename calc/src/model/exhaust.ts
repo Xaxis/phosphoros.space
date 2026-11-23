@@ -56,6 +56,17 @@ export function chimneys(r: Registry) {
       v("chimney-flow-area"),
   );
   r.q(
+    "chimney-capacity-lit",
+    {
+      label: "Heat the lit canopies' chimneys can deliver at once",
+      unit: "W",
+      formula: "N × Q × lit share",
+      basis: "invented",
+      note: "A chimney carries heat only while the Lattice lights its canopy.",
+    },
+    () => v("chimney-count") * v("chimney-heat") * v("exhaust-lit-share"),
+  );
+  r.q(
     "chimney-cold-factor",
     {
       label: "The pumps' effective cold side as a share of the air's temperature",
@@ -146,6 +157,22 @@ export function coolingPathWork(
   return { sensible: sensible / eta, latent: latent / eta, total: (sensible + latent) / eta };
 }
 
+/**
+ * The second law prices light by its entropy. Spread evenly over the tiles' band and the whole sky
+ * above them, light of flux F has radiance F / π and fills each mode with n = L λ⁵ / (2 h c² Δλ)
+ * photons; each mode carries energy n h ν and entropy k[(1 + n) ln(1 + n) − n ln n]. Their ratio is
+ * the lowest temperature the light can count as, and so the hot side every pump is charged for.
+ */
+export function lightTemp(v: (id: string) => number, flux: number): number {
+  const h = v("planck-constant");
+  const c = v("speed-of-light");
+  const lambda = (h * c) / (v("exhaust-bandgap") * v("electron-volt"));
+  const n = ((flux / Math.PI) * lambda ** 5) / (2 * h * c ** 2 * v("exhaust-band"));
+  const energy = (n * h * c) / lambda;
+  const entropy = v("boltzmann-constant") * ((1 + n) * Math.log(1 + n) - n * Math.log(n));
+  return energy / entropy;
+}
+
 export function exhaust(r: Registry) {
   const { v } = r.in("model/exhaust.ts");
 
@@ -169,10 +196,58 @@ export function exhaust(r: Registry) {
       unit: "W/m2",
       show: "MW/m2",
       sig: 2,
-      formula: "σ T_h⁴",
+      formula: "σ T_e⁴",
       basis: "invented",
     },
     () => v("stefan-boltzmann") * v("exhaust-effective-temp") ** 4,
+  );
+  r.q(
+    "exhaust-radiance",
+    {
+      label: "Emitter radiance, spread over the whole sky above a tile",
+      unit: "W m-2 sr-1",
+      sig: 2,
+      formula: "F / π",
+      basis: "physics",
+    },
+    () => v("exhaust-flux") / Math.PI,
+  );
+  r.q(
+    "exhaust-photons-per-mode",
+    {
+      label: "Photons in each mode of the Exhaust's light",
+      unit: "1",
+      sig: 2,
+      formula: "L λ⁵ / (2 h c² Δλ)",
+      basis: "physics",
+    },
+    () =>
+      (v("exhaust-radiance") * v("exhaust-wavelength") ** 5) /
+      (2 * v("planck-constant") * v("speed-of-light") ** 2 * v("exhaust-band")),
+  );
+  r.q(
+    "exhaust-light-temp",
+    {
+      label: "Temperature the tiles' light counts as by its entropy: the pumps' hot side",
+      unit: "K",
+      sig: 2,
+      formula: "n h c / λ ÷ k[(1 + n) ln(1 + n) − n ln n]",
+      basis: "physics",
+      note: "The pumps must put out at least as much entropy as they take from the air, so every pump work in the model, the simulation's included, is charged as if the hot side were at this temperature. Light squeezed into one narrow band counts as hotter than a black body of the same brightness.",
+    },
+    () => lightTemp(v, v("exhaust-flux")),
+  );
+  r.q(
+    "exhaust-light-vs-effective",
+    {
+      label:
+        "The light's entropy temperature over the black body's that is as bright: the cost of one narrow band",
+      unit: "1",
+      sig: 2,
+      formula: "T_light / T_e",
+      basis: "physics",
+    },
+    () => v("exhaust-light-temp") / v("exhaust-effective-temp"),
   );
   r.q(
     "exhaust-work-sensible",
@@ -183,7 +258,7 @@ export function exhaust(r: Registry) {
         "∫ M c_p (T_h / (k T) − 1) dT / η_C, from 737 K to 195 K, k the exchangers' cold factor",
       basis: "physics",
     },
-    () => coolingPathWork(v, v("exhaust-effective-temp")).sensible,
+    () => coolingPathWork(v, v("exhaust-light-temp")).sensible,
   );
   r.q(
     "exhaust-work-latent",
@@ -194,7 +269,7 @@ export function exhaust(r: Registry) {
       basis: "physics",
       note: "The simple estimate: latent heat released evenly in temperature between CO₂'s critical point (304 K) and triple point (216.6 K). The day-by-day simulation releases it where the physics puts it, the heat of fusion at the triple point itself.",
     },
-    () => coolingPathWork(v, v("exhaust-effective-temp")).latent,
+    () => coolingPathWork(v, v("exhaust-light-temp")).latent,
   );
   r.q(
     "exhaust-work",
@@ -231,12 +306,13 @@ export function exhaust(r: Registry) {
   r.q(
     "exhaust-area-installed",
     {
-      label: "Emitter area installed (sized for the peak)",
+      label: "Emitter area installed (sized for the peak, with half of it lit at once)",
       unit: "m2",
-      formula: "P_peak / (σ T_h⁴)",
+      formula: "P_peak / (σ T_e⁴ × lit share)",
       basis: "invented",
+      note: "The Lattice orbits inside Venus's orbit, so it can beam only the tiles on the side of Venus facing it. The peak is what the lit tiles throw out together.",
     },
-    () => v("exhaust-peak") / v("exhaust-flux"),
+    () => v("exhaust-peak") / (v("exhaust-flux") * v("exhaust-lit-share")),
   );
   r.q(
     "exhaust-area-share",
@@ -249,6 +325,42 @@ export function exhaust(r: Registry) {
       basis: "invented",
     },
     () => v("exhaust-area-installed") / v("venus-area"),
+  );
+  r.q(
+    "canopy-band-share",
+    {
+      label: "Share of Venus between the Bricks' drop zones, where the canopies stand",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "sin(drop latitude)",
+      basis: "physics",
+    },
+    () => Math.sin((v("ice-drop-latitude") * Math.PI) / 180),
+  );
+  r.q(
+    "canopy-band-cover",
+    {
+      label: "Share of that band the tiles cover",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "A_installed / (A_V sin(drop latitude))",
+      basis: "invented",
+    },
+    () => v("exhaust-area-share") / v("canopy-band-share"),
+  );
+  r.c(
+    "exhaust-fits-venus",
+    {
+      label:
+        "The tiles fit in the band between the drop zones, the lit ones on the side the Lattice sees",
+      kind: "capacity",
+    },
+    () => ({
+      pass: v("canopy-band-cover") <= 1,
+      detail: `The lit tiles throw out ${fmt(r, "exhaust-peak")} at ${fmt(r, "exhaust-flux")}, and only ${fmt(r, "exhaust-lit-share")} of them are lit at once, so the tiles cover ${fmt(r, "exhaust-area-share")} of Venus: ${fmt(r, "canopy-band-cover")} of the band within ${fmt(r, "ice-drop-latitude")} of the equator, which leaves the poles to the falling ice.`,
+    }),
   );
   r.q(
     "canopy-area",
@@ -329,7 +441,7 @@ export function exhaust(r: Registry) {
     () =>
       (v("frost-residual-co2") *
         v("co2-deposition-heat") *
-        (v("exhaust-effective-temp") / v("frost-tower-temp") - 1)) /
+        (v("exhaust-light-temp") / v("frost-tower-temp") - 1)) /
       v("exhaust-carnot-share"),
   );
 
@@ -338,7 +450,7 @@ export function exhaust(r: Registry) {
     { label: "The heat pumps are charged more than the reversible work", kind: "second-law" },
     () => {
       const Q = v("atmosphere-heat");
-      const Th = v("exhaust-effective-temp");
+      const Th = v("exhaust-light-temp");
       const best = Q * (Th / v("venus-surface-temp") - 1);
       // A pump at the reversible limit moves heat infinitely slowly: any real rate costs more.
       const real = v("exhaust-carnot-share") < 1;
@@ -349,91 +461,6 @@ export function exhaust(r: Registry) {
           : `The pumps are charged exactly the reversible work. A heat pump at the Carnot limit moves heat infinitely slowly, so any pump that cools Venus in years needs more.`,
       };
     },
-  );
-
-  // The second law prices light by its entropy. Spread evenly over a band Δλ and a cone, light of
-  // radiance L fills each mode with n = L λ⁵ / (2 h c² Δλ) photons; each mode carries energy n h ν
-  // and entropy k[(1 + n) ln(1 + n) − n ln n]. Even spreading gives the most entropy for the energy,
-  // so the ratio is the lowest temperature the beamed light can count as.
-  r.q(
-    "exhaust-radiance",
-    {
-      label: "Emitter radiance into its cone",
-      unit: "W m-2 sr-1",
-      sig: 2,
-      formula: "F / (π sin²(θ/2))",
-      basis: "physics",
-    },
-    () => v("exhaust-flux") / (Math.PI * Math.sin(((v("exhaust-cone") / 2) * Math.PI) / 180) ** 2),
-  );
-  r.q(
-    "exhaust-photons-per-mode",
-    {
-      label: "Photons in each mode of the Exhaust's light",
-      unit: "1",
-      sig: 2,
-      formula: "L λ⁵ / (2 h c² Δλ)",
-      basis: "physics",
-    },
-    () =>
-      (v("exhaust-radiance") * v("exhaust-wavelength") ** 5) /
-      (2 * v("planck-constant") * v("speed-of-light") ** 2 * v("exhaust-band")),
-  );
-  r.q(
-    "exhaust-light-temp",
-    {
-      label: "Temperature the beamed light counts as, by its entropy",
-      unit: "K",
-      sig: 2,
-      formula: "n h c / λ ÷ k[(1 + n) ln(1 + n) − n ln n]",
-      basis: "physics",
-      note: "The pumps must put out at least as much entropy as they take from the air, so they work as if their hot side were at this temperature.",
-    },
-    () => {
-      const n = v("exhaust-photons-per-mode");
-      const energy = (n * v("planck-constant") * v("speed-of-light")) / v("exhaust-wavelength");
-      const entropy = v("boltzmann-constant") * ((1 + n) * Math.log(1 + n) - n * Math.log(n));
-      return energy / entropy;
-    },
-  );
-  r.q(
-    "exhaust-light-vs-effective",
-    {
-      label: "The light's entropy temperature over the emitters' effective temperature",
-      unit: "1",
-      sig: 2,
-      formula: "T_light / T_h",
-      basis: "physics",
-    },
-    () => v("exhaust-light-temp") / v("exhaust-effective-temp"),
-  );
-  r.q(
-    "exhaust-work-multiple",
-    {
-      label:
-        "Pump work to lift a joule from 737 K air into the beamed light, over the work the model charges, for pumps equally far from Carnot",
-      unit: "1",
-      sig: 2,
-      formula: "(T_light / T_s − 1) / (T_h / T_s − 1)",
-      basis: "physics",
-      note: "Larger still for colder air: the gap grows as the campaign goes on.",
-    },
-    () => {
-      const Ts = v("venus-surface-temp");
-      return (v("exhaust-light-temp") / Ts - 1) / (v("exhaust-effective-temp") / Ts - 1);
-    },
-  );
-  r.c(
-    "exhaust-entropy",
-    {
-      label: "The Exhaust's beamed light can carry away the entropy its pumps lift",
-      kind: "second-law",
-      issue: "exhaust-entropy",
-    },
-    () => ({
-      pass: v("exhaust-light-temp") <= v("exhaust-effective-temp"),
-      detail: `The model charges pump work as if the hot side were at ${fmt(r, "exhaust-effective-temp")}. Light at ${fmt(r, "exhaust-flux")} squeezed into a ${fmt(r, "exhaust-band")} band around ${fmt(r, "exhaust-wavelength")} and a ${fmt(r, "exhaust-cone")} cone counts as at least ${fmt(r, "exhaust-light-temp")}, ${fmt(r, "exhaust-light-vs-effective")} times hotter. Lifting a joule from the ${fmt(r, "venus-surface-temp")} air into that light takes ${fmt(r, "exhaust-work-multiple")} times the work the budget charges.`,
-    }),
   );
 
   // A Veil clear in the Exhaust's band would let that band of sunlight through to Venus.
@@ -470,86 +497,138 @@ export function exhaust(r: Registry) {
     },
     () => v("exhaust-band-sunlight") / v("veil-leak-budget"),
   );
+  // Light the tiles send toward the Veil. Light spread evenly over a tile's sky falls on a disc of
+  // angular radius θ at zenith angle z in the share cos z sin² θ; spread over the lit side, the
+  // tiles see the Veil at an average cos z of a half.
   r.q(
-    "exhaust-veil-tilt",
+    "exhaust-veil-share",
     {
-      label:
-        "How far tiles near the subsolar point tilt their cones off the Sun line to miss the Veil",
-      unit: "deg",
-      sig: 2,
-      formula: "θ / 2 + Veil angular radius",
-      basis: "physics",
-    },
-    () => v("exhaust-cone") / 2 + v("veil-angular-radius"),
-  );
-  r.c(
-    "exhaust-clears-veil",
-    { label: "An opaque Veil leaves the Exhaust's cones a clear sky", kind: "geometry" },
-    () => {
-      const horizon = 90 - v("exhaust-cone") / 2 - v("exhaust-veil-tilt");
-      return {
-        pass: horizon > 0,
-        detail: `Seen from Venus the Veil is ${fmt(r, "veil-angular-radius")} in radius. Tiles that face it tilt their ${fmt(r, "exhaust-cone")} cones ${fmt(r, "exhaust-veil-tilt")} off the Sun line, which keeps every cone ${horizon.toFixed(0)}° clear of the horizon.`,
-      };
-    },
-  );
-
-  // Beam safety: where the tiles must stay dark, and how far out each cone is still bright.
-  // A function, not a constant, so each quantity that uses the cone records it as an input.
-  const halfCone = () => (v("exhaust-cone") * Math.PI) / 360;
-  r.q(
-    "exhaust-dark-strip",
-    {
-      label: "Width of the strip under the Ring's path where tiles stay dark",
-      unit: "m",
-      show: "km",
-      sig: 2,
-      formula: "2 (h_Ring − h_canopy) tan(θ / 2)",
-      basis: "physics",
-      note: "A tile whose cone would reach the Ring must stay dark: any tile closer to the Ring's ground track than the cone's half-width at the Ring's height.",
-    },
-    () => 2 * (v("ring-altitude") - v("chimney-top")) * Math.tan(halfCone()),
-  );
-  r.q(
-    "exhaust-dark-strip-share",
-    {
-      label: "Share of Venus's surface under the dark strip",
+      label: "Share of the lit tiles' light that strikes the Veil",
       unit: "1",
       show: "%",
       sig: 2,
-      formula: "w 2π R_V / A_V",
+      formula: "½ sin² θ_Veil",
       basis: "physics",
+      note: "A tile right under the Veil sends it twice this share; one at the edge of the lit side, none.",
     },
-    () => (v("exhaust-dark-strip") * 2 * Math.PI * v("venus-radius")) / v("venus-area"),
+    () => 0.5 * Math.sin((v("veil-angular-radius") * Math.PI) / 180) ** 2,
   );
   r.q(
-    "exhaust-cone-solid-angle",
+    "exhaust-veil-load",
     {
-      label: "Solid angle of one canopy's beam cone",
-      unit: "sr",
-      sig: 2,
-      formula: "2π (1 − cos(θ / 2))",
+      label: "The Exhaust's light on the Veil at peak",
+      unit: "W",
+      formula: "P_peak × ½ sin² θ_Veil",
       basis: "physics",
     },
-    () => 2 * Math.PI * (1 - Math.cos(halfCone())),
+    () => v("exhaust-peak") * v("exhaust-veil-share"),
   );
   r.q(
-    "exhaust-cone-safe-distance",
+    "exhaust-veil-load-share",
+    {
+      label: "That light as a share of the sunlight the closed Veil turns away",
+      unit: "1",
+      show: "%",
+      sig: 2,
+      formula: "P_on Veil / P_blocked",
+      basis: "physics",
+    },
+    () => v("exhaust-veil-load") / v("veil-blocked-power"),
+  );
+  r.c(
+    "exhaust-spares-veil",
+    {
+      label: "The Exhaust's light adds little to the sunlight the Veil turns away",
+      kind: "capacity",
+    },
+    () => ({
+      // A tenth more light than it already handles is well inside what a film that turns sunlight
+      // aside can take; the Veil bends the Exhaust's light outward like the Sun's.
+      pass: v("exhaust-veil-load-share") <= 0.1,
+      detail: `Seen from Venus the Veil is ${fmt(r, "veil-angular-radius")} in radius, so the lit tiles send it ${fmt(r, "exhaust-veil-share")} of their light: ${fmt(r, "exhaust-veil-load")} at the Exhaust's peak, ${fmt(r, "exhaust-veil-load-share")} of the ${fmt(r, "veil-blocked-power")} of sunlight it turns away. It pushes the Veil toward the Sun, against the sunlight, and the slats that trim its station take it up.`,
+    }),
+  );
+
+  // How far out one canopy's light is still bright.
+  r.q(
+    "exhaust-safe-distance",
     {
       label:
-        "Distance beyond which one canopy's cone, at peak power, is dimmer than the far-field limit",
+        "Distance beyond which one canopy's light, at peak power, is dimmer than the far-field limit",
       unit: "m",
       show: "km",
       sig: 2,
-      formula: "√(P_peak / (N Ω F_limit))",
+      formula: "√(P_peak / (N × lit share × π F_limit))",
       basis: "physics",
-      note: "Per cone. Where the cones of neighbouring canopies overlap, their light adds.",
+      note: "Straight above the canopy, where it is brightest. Where the light of neighbouring canopies overlaps, it adds.",
     },
     () =>
       Math.sqrt(
         v("exhaust-peak") /
-          (v("exhaust-canopies") * v("exhaust-cone-solid-angle") * v("exhaust-far-limit")),
+          (v("exhaust-canopies") * v("exhaust-lit-share") * Math.PI * v("exhaust-far-limit")),
       ),
+  );
+
+  // The Lattice's light pumps the tiles directly. Each pump photon the tile absorbs leaves as one of
+  // its own, which for a direct-gap semiconductor at temperature T carries on average the bandgap
+  // plus 3/2 kT. The difference is heat taken from the air, so a joule of pumping light can carry at
+  // most η_ext E_out / E_pump − 1 joules of heat. The model's pumps must ask for no more than that.
+  const pumpPhoton = () => (v("planck-constant") * v("speed-of-light")) / v("helios-wavelength");
+  const outPhoton = (T: number) =>
+    v("exhaust-bandgap") * v("electron-volt") + 1.5 * v("boltzmann-constant") * T;
+  const room = (T: number) => (v("exhaust-eqe") * outPhoton(T)) / pumpPhoton() - 1;
+  const charged = (T: number) => (v("exhaust-carnot-share") * T) / (v("exhaust-light-temp") - T);
+  const hottest = () => v("venus-surface-temp") * v("chimney-cold-factor");
+  r.q(
+    "exhaust-pump-photon",
+    {
+      label: "Energy of one photon of the pumping light",
+      unit: "J",
+      sig: 3,
+      formula: "h c / λ_pump",
+      basis: "physics",
+    },
+    pumpPhoton,
+  );
+  r.q(
+    "exhaust-pump-room-start",
+    {
+      label: "Heat one joule of pumping light can carry from the hottest starting air",
+      unit: "1",
+      sig: 2,
+      formula: "η_ext (E_gap + 3/2 k T) / E_pump − 1",
+      basis: "physics",
+    },
+    () => room(hottest()),
+  );
+  r.q(
+    "exhaust-cop-start",
+    {
+      label: "Heat the model has each joule of pumping light lift from the hottest starting air",
+      unit: "1",
+      sig: 2,
+      formula: "η_C T / (T_light − T)",
+      basis: "physics",
+    },
+    () => charged(hottest()),
+  );
+  r.c(
+    "exhaust-pump-photons",
+    {
+      label: "Each pump photon leaves the tile with room for the heat the model has it carry",
+      kind: "second-law",
+    },
+    () => {
+      // The charged heat per joule falls faster with the air's temperature than the photons' room,
+      // so the hottest air is the tightest; check the whole path to be sure.
+      let worst = Number.POSITIVE_INFINITY;
+      for (let T = v("frost-tower-temp"); T <= hottest(); T += 1)
+        worst = Math.min(worst, room(T) - charged(T));
+      return {
+        pass: worst >= 0,
+        detail: `Pumped at ${fmt(r, "helios-wavelength")}, below the tiles' ${fmt(r, "exhaust-bandgap")} bandgap, each photon leaves at least ${fmt(r, "exhaust-bandgap")} plus the heat of the tile it crossed. From the hottest starting air a joule of pumping light can carry ${fmt(r, "exhaust-pump-room-start")} J of heat; the model has it carry ${fmt(r, "exhaust-cop-start")} J, and less as the air cools.`,
+      };
+    },
   );
 }
 
@@ -636,54 +715,50 @@ export function exhaustAverages(r: Registry) {
     () => v("exhaust-rejected-avg") / v("passive-power"),
   );
 
-  // How the choice of effective emitter temperature trades area against work.
+  // How the tiles' brightness trades area against work. A tile as bright as a black body at T_e
+  // has light that counts as hotter, and the pumps are charged for that; only the lit share works.
+  const tradeoff = (Te: number) => {
+    const flux = v("stefan-boltzmann") * Te ** 4;
+    const w = coolingPathWork(v, lightTemp(v, flux)).total;
+    const area =
+      (w + v("atmosphere-heat")) / v("cooling-seconds") / (flux * v("exhaust-lit-share"));
+    return { work: w, share: area / v("venus-area") };
+  };
   r.s(
     "exhaust-tradeoff",
     {
-      label: "Emitter temperature against emitter area (share of Venus) and pump work",
+      label: "Tile brightness (effective temperature) against tile area (share of Venus)",
       x: "K",
       y: "1",
-      note: "y is the working emitter area as a share of Venus's surface.",
+      note: "y is the tile area as a share of Venus's surface, for the campaign's average power with only the lit tiles working.",
     },
     () => {
       const pts = [];
-      for (let Th = 800; Th <= 3000; Th += 50) {
-        const w = coolingPathWork(v, Th).total;
-        const avg = (w + v("atmosphere-heat")) / v("cooling-seconds");
-        pts.push({ x: Th, y: avg / (v("stefan-boltzmann") * Th ** 4) / v("venus-area") });
-      }
+      for (let Te = 800; Te <= 3000; Te += 50) pts.push({ x: Te, y: tradeoff(Te).share });
       return pts;
     },
   );
   r.s(
     "exhaust-tradeoff-work",
-    { label: "Emitter temperature against total pump work", x: "K", y: "J" },
+    { label: "Tile brightness (effective temperature) against total pump work", x: "K", y: "J" },
     () => {
       const pts = [];
-      for (let Th = 800; Th <= 3000; Th += 50) pts.push({ x: Th, y: coolingPathWork(v, Th).total });
+      for (let Te = 800; Te <= 3000; Te += 50) pts.push({ x: Te, y: tradeoff(Te).work });
       return pts;
     },
   );
-  for (const Th of [1000, 1500, 2500]) {
+  for (const Te of [1000, 1500, 2500]) {
     r.q(
-      `exhaust-area-share-${Th}`,
+      `exhaust-area-share-${Te}`,
       {
-        label: `Working emitter area as a share of Venus at an effective ${Th.toLocaleString("en-US")} K`,
+        label: `Tile area as a share of Venus, for tiles as bright as a ${Te.toLocaleString("en-US")} K black body`,
         unit: "1",
         show: "%",
         sig: 2,
-        formula: "(Q + W(T_h)) / campaign / (σ T_h⁴ A_V)",
+        formula: "(Q + W(T_light)) / campaign / (σ T_e⁴ × lit share × A_V)",
         basis: "physics",
       },
-      () => {
-        const w = coolingPathWork(v, Th).total;
-        return (
-          (w + v("atmosphere-heat")) /
-          v("cooling-seconds") /
-          (v("stefan-boltzmann") * Th ** 4) /
-          v("venus-area")
-        );
-      },
+      () => tradeoff(Te).share,
     );
   }
 }

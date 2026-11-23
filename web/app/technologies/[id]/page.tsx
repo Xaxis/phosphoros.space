@@ -136,7 +136,7 @@ function Glance({ t }: { t: Technology }) {
         )}
         {corrections.length > 0 && (
           <div>
-            <dt>Changed in version 3</dt>
+            <dt>Corrections</dt>
             {corrections.map((c) => (
               <dd key={c.id}>
                 <a href="/about#corrections">{c.title}</a>

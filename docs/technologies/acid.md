@@ -6,10 +6,10 @@ Venus's clouds are sulfuric acid, and its lower air holds
 the SO₂ dissolves in the CO₂ seas and freezes with them into the cryo-continents. The Acid Sweep meets the
 rest, the cloud acid and the little SO₂ left in the air, with
 [6 × 10¹⁵ kg](../numbers.md#acid-basalt) of crushed basalt carrying [5.9 × 10¹⁴ kg](../numbers.md#acid-cao)
-of lime, so the oceans fill with fresh water rather than acid. It needs no breakthrough.
+of lime, so the new seas fill with fresh water rather than acid. It needs no breakthrough.
 
 <!-- figure:acid-sweep -->
-![Acid Sweep: the sulfur's path out of the air and the oceans](../../figures/svg/acid-sweep.svg)
+![Acid Sweep: the sulfur's path out of the air and the seas](../../figures/svg/acid-sweep.svg)
 <!-- /figure -->
 
 ## Principle
@@ -28,7 +28,7 @@ Once the [Photonic Exhaust](exhaust.md) cools the lower air, falling droplets st
 clouds rain out onto the surface: [1.0 × 10¹⁴ kg](../numbers.md#venus-cloud-acid) of sulfuric acid, from the
 [0.22 kg/m²](../numbers.md#venus-cloud-column) of droplets Pioneer Venus found over every square metre
 ([Baines et al. 2021](../sources.md#baines-2021)). That begins before the CO₂ itself condenses in the
-Clear Rain of [January 2035](../numbers.md?date=month#traj-clear-rain).
+Clear Rain of [August 2034](../numbers.md?date=month#traj-clear-rain).
 
 ### Where the SO₂ goes
 
@@ -87,7 +87,7 @@ sealed under the caps with the SO₂.
 
 ### The shore buffer
 
-When the ice melts and the oceans form, after the caps are sealed and the Veil opens on
+When the ice melts and the water seas form, after the caps are sealed and the Veil opens on
 [2 September 2036](../numbers.md?date=day#traj-warming), crushed basalt on the shores and the sea floor keeps
 the water slightly alkaline, between pH [7.5](../numbers.md#genesis-ph-min) and
 [8](../numbers.md#acid-ocean-ph-max). [Genesis](genesis.md) needs it above pH
@@ -97,7 +97,7 @@ the water slightly alkaline, between pH [7.5](../numbers.md#genesis-ph-min) and
 
 How fast lime takes up sulfur in the cold and dry has not been measured, and no experiment on the
 [Research Agenda](../research.md) tests it. The plan does not rest on it: the sealed SO₂ needs no lime, and
-the cloud acid and the SO₂ left in the air meet basalt in warm water when the oceans melt, where the same
+the cloud acid and the SO₂ left in the air meet basalt in warm water when the seas melt, where the same
 reaction is fast.
 
 The split itself rests on one measured temperature. CO₂ + SO₂ equilibria have been measured at
@@ -131,29 +131,29 @@ even lime for every molecule of SO₂, as version 2 planned, would take basalt f
 
 ## Build sequence
 
-- **[April 2034](../numbers.md?date=month#cooling-start):** Active cooling begins. Rock mills start
+- **[February 2034](../numbers.md?date=month#cooling-start):** Active cooling begins. Rock mills start
   grinding, and canopy drones start dusting the highlands and the future shores.
-- **[January 2035](../numbers.md?date=month#traj-clear-rain):** The Clear Rain. By now the acid clouds
+- **[August 2034](../numbers.md?date=month#traj-clear-rain):** The Clear Rain. By now the acid clouds
   have rained out onto dusted ground, and the SO₂ runs into the basins with the liquid CO₂.
-- **[January 2035](../numbers.md?date=month#forge-start):** The Forges start, and their oxygen turns
+- **[April 2035](../numbers.md?date=month#forge-start):** The Forges start, and their oxygen turns
   sulfite to sulfate.
 - **[September 2036](../numbers.md?date=month#traj-warming):** The caps are sealed, the Veil opens and the
-  ice melts. Shore basalt buffers the new oceans and the pH clock starts.
-- **[December 2036](../numbers.md?date=month#genesis-start):** The oxygen is in and the oceans have held
+  ice melts. Shore basalt buffers the new seas and the pH clock starts.
+- **[December 2036](../numbers.md?date=month#genesis-start):** The oxygen is in and the seas have held
   their pH. [Genesis](genesis.md) seeding begins.
 
 ## Failure modes and safeguards
 
-- **The oceans turn acid.** The pH gate holds back every organism until the water has stayed above pH
+- **The seas turn acid.** The pH gate holds back every organism until the water has stayed above pH
   [7.5](../numbers.md#genesis-ph-min) for [90 d](../numbers.md#genesis-ph-days). The fix is more basalt;
   the crust has plenty.
 - **A cryo-continent cell breaks open.** It releases at most
   [3.1 × 10¹⁴ kg](../numbers.md#cryo-cell-co2) of CO₂ and the sulfur frozen with it. Shore basalt and the
-  oceans take up the sulfur while the cell is resealed.
+  seas take up the sulfur while the cell is resealed.
 - **The cold reaction is slow.** Covered above: the sealed sulfur needs no reaction, and the rest reacts in
   warm water later.
 - **More SO₂ stays in the air than the model says.** The Frost Towers freeze it out with the last CO₂, and
-  the shore basalt takes up what reaches the oceans. More basalt is cheap: the Sweep uses
+  the shore basalt takes up what reaches the seas. More basalt is cheap: the Sweep uses
   [4 ppm](../numbers.md#acid-crust-share) of the crust's top kilometre.
 
 ## Reproduce these numbers

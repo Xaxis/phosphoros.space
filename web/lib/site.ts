@@ -53,7 +53,7 @@ export const SECTIONS: Section[] = [
     title: "The Plan",
     nav: "Plan",
     description:
-      "Five moves, thirteen inventions and a simulated atmosphere that is Earth-like before the end of 2036.",
+      "Five moves, twelve inventions and a simulated atmosphere that is Earth-like before the end of 2036.",
   },
   {
     slug: "budget",
@@ -129,7 +129,7 @@ export const TECH_INDEX = {
   doc: "docs/technologies/README.md",
   title: "Technologies",
   description:
-    "Thirteen inventions, each of which may assume engineering we do not have but none of which breaks a law of physics.",
+    "Twelve inventions, each of which may assume engineering we do not have but none of which breaks a law of physics.",
 };
 
 /** Pages that render no document, with what their metadata and share cards say. */

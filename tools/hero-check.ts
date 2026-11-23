@@ -11,7 +11,16 @@ import { CHROMIUM_ARGS } from "./lib/chromium.ts";
 const url = process.argv[2] ?? "http://localhost:3417";
 const shots = process.argv[3];
 const EPOCH = Date.UTC(2027, 0, 1);
-const SHOT_DATES = ["2027-01-01", "2033-09-01", "2034-10-01", "2036-04-01", "2036-12-31"];
+const SHOT_DATES = [
+  "2027-01-01",
+  "2033-09-01",
+  "2034-10-01",
+  "2034-12-05",
+  "2035-08-01",
+  "2036-04-01",
+  "2036-09-20",
+  "2036-12-31",
+];
 
 const browser = await chromium.launch({ headless: true, args: CHROMIUM_ARGS });
 let failed = 0;

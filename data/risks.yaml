@@ -35,40 +35,25 @@ risks:
     risk: Weaponization
     what: Mass drivers and power beams are also weapons
     safeguard: Open telemetry, inspection, and treaty oversight beyond the Outer Space Treaty
-    tech: [ice-train, helios, ring]
-  - id: ring-lowering
-    risk: The Ring cannot lower the ice as designed
-    what: Tether lowering needs {lowering-overload} times the lift the rotor has to spare (an open problem in version 3)
-    safeguard: Drop the ice from rest at the Ring and pump out the extra heat; the energy budget never counted lowering's recovered energy
-    tech: [ring]
-    open: true
-  - id: ring-net-force
-    risk: Nothing holds the Ring against the catch
-    what: The catch leaves {ring-net-braking-force} along Venus's orbit, {ring-net-overload} times the rotor's spare lift, and an orbital ring has no stiff way to hand it to the planet (an open problem in version 3)
-    safeguard: None yet. Braking the ice in the air instead would turn its motion into heat, so the problem must be solved before the first catch
-    tech: [ring]
-    open: true
-  - id: exhaust-entropy
-    risk: The Exhaust's light costs more than the model charges
-    what: Light in the tiles' narrow band and cone needs {exhaust-work-multiple} times the pump work the budget charges (an open problem in version 3)
-    safeguard: Tiles that spread their light over more colours and directions while it still escapes the air; Exhaust-1 measures the real cost before any canopy is built
-    tech: [exhaust]
-    open: true
-  - id: loss-heat
-    risk: The receivers' and the Ring's loss heat falls on Venus
-    what: Fins that radiate from both faces near Venus shine {ring-fin-venus-share} of their heat onto it, {loss-heat-into-venus} at full power, more than the cooling can absorb (an open problem in version 3)
-    safeguard: One-sided radiators with shielded backs facing Venus, or radiators far from the planet; the published schedule leaves this heat out until one is shown to work
-    tech: [helios, ring]
-    open: true
-  - id: ring-equipment
-    risk: The Ring cannot carry its receivers
-    what: The receivers, fins and catch radiators weigh {ring-equipment-mass}, {ring-equipment-overload} times what the rotor can hold up besides the stator (an open problem in version 3)
-    safeguard: Lighter receivers at higher beam intensity, a heavier or faster rotor, or receivers on the canopies with their heat pumped out
-    tech: [ring, helios]
-    open: true
+    tech: [ice-train, helios]
+  - id: ice-heat
+    risk: The Bricks bring their heat faster than the pumps can lift it
+    what: Every kilogram of ice brings {ice-entry-energy-per-kg} as it falls, {ice-entry-heat} in all, {ice-entry-vs-atmosphere} of the atmosphere's own heat, and it arrives in ten weeks, several times faster than the lit canopies' chimneys carry heat out; the air warms back {traj-rewarm} and the first Clear Rain boils back until the pumps catch up. Twice the ice would leave the caps unfinished at the deadline
+    safeguard: The model sizes the ice to what the pumps can lift, and the frost-before-sealing check fails before a heavier shipment could cost the deadline; Venus gets seas {ocean-depth} deep, not Earth's oceans
+    tech: [ice-train, exhaust]
+  - id: brick-strays
+    risk: A Brick falls outside the drop zones
+    what: Each Brick bursts with {brick-entry-energy}, about the energy of a large hydrogen bomb; one that strayed onto the canopies would wreck them
+    safeguard: The Lattice's lasers steer every Brick in flight, and the drop zones beyond {ice-drop-latitude} of latitude hold no canopies; a Brick off its track is pushed wide of Venus while it is still far out
+    tech: [ice-train, helios]
+  - id: optical-cooling
+    risk: Light cannot cool the tiles at the flux they need
+    what: Laser light has cooled solids by tens of kelvin in the laboratory, at milliwatts; each tile must give off {exhaust-flux} with {exhaust-eqe} of its absorbed photons coming back out, at {exhaust-pump-room-start} of each photon's energy spare for heat
+    safeguard: Exhaust-1 measures a tile's real cooling against the pump light before any canopy is built; the plan stops there if it fails
+    tech: [exhaust, helios]
   - id: venus-hardware
     risk: The hardware at Venus delays cooling
-    what: The tiles, chimneys, receivers and Lanterns weigh {venus-hardware-mass}; the Foundry builds them after the Ring, in {venus-hardware-build-days}, and cooling waits for them, so a slower build eats the {frost-sealing-slack} before the last caps
+    what: The tiles, chimneys, receivers and Lanterns weigh {venus-hardware-mass}; the Foundry builds them after the Lattice, in {venus-hardware-build-days}, and cooling waits for them, so a slower build eats the {frost-sealing-slack} before the last caps
     safeguard: Lighter tiles and chimneys, or an industry at Venus that builds them from the air's own carbon
     tech: [exhaust, chimneys, ouroboros]
 

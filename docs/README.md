@@ -17,8 +17,8 @@ one.
 
 Today the surface sits at [737 K](numbers.md#venus-surface-temp) under [92 bar](numbers.md#venus-surface-pressure)
 of carbon dioxide, beneath clouds of sulfuric acid, with almost no water. At the end of 2036 the plan's
-Venus has [2.4 bar](numbers.md#final-pressure) of nitrogen-oxygen air, a [217 m](numbers.md#ocean-depth)
-global ocean, water clouds and a [24 h](numbers.md#day-length) day. The full comparison is on
+Venus has [2.4 bar](numbers.md#final-pressure) of nitrogen-oxygen air, seas in its lowlands, as much water as
+a [2.17 m](numbers.md#ocean-depth) layer over the globe, water clouds and a [24 h](numbers.md#day-length) day. The full comparison is on
 [The Problem](problem.md) and [The Plan](plan.md).
 
 ## The five moves
@@ -26,9 +26,9 @@ global ocean, water clouds and a [24 h](numbers.md#day-length) day. The full co
 **1. Grow an industry ([2028](numbers.md?date=year#foundry-seed-launch) to [2033](numbers.md?date=year#foundry-full-scale)).** A [1,000 t](numbers.md#foundry-seed-mass) seed foundry launches on
 [1 October 2028](numbers.md?date=day#foundry-seed-launch), lands on Mercury on
 [14 January 2029](numbers.md?date=day#foundry-landing) and rebuilds itself from rock every
-[60 d](numbers.md#foundry-doubling-days). [27](numbers.md#foundry-doublings) doublings later, in
-[July 2033](numbers.md?date=month#foundry-full-scale), it is [1.3 × 10¹⁴ kg](numbers.md#foundry-final-mass)
-of machinery, [4 × 10⁻¹⁰](numbers.md#foundry-mercury-share) of Mercury's mass.
+[60 d](numbers.md#foundry-doubling-days). [28](numbers.md#foundry-doublings) doublings later, in
+[August 2033](numbers.md?date=month#foundry-full-scale), it is [2.7 × 10¹⁴ kg](numbers.md#foundry-final-mass)
+of machinery, [8 × 10⁻¹⁰](numbers.md#foundry-mercury-share) of Mercury's mass.
 ([Ouroboros Foundry](technologies/ouroboros.md), [Choir](technologies/choir.md))
 
 **2. Switch off the Sun ([2032](numbers.md?date=year#veil-close)).** The Hesperus Veil, [5.4 × 10¹⁴ m²](numbers.md#veil-area) of light-bending
@@ -38,25 +38,25 @@ film held just sunward of the Sun-Venus L1 point, [1.11 × 10⁶ km](numbers.
 ([Hesperus Veil](technologies/veil.md), [Aegis Shield](technologies/aegis.md))
 
 **3. Pump the heat out ([2034](numbers.md?date=year#cooling-start) to [2036](numbers.md?date=year#cooling-end)).** The Helios Lattice near Mercury beams
-[1.2 × 10²⁰ W](numbers.md#helios-power), shared between Venus and the Ice Train's coilguns on Ceres. Thermal Chimneys lift the deep heat to floating canopies
-above the clouds, where the Photonic Exhaust fires it into space as [2.3 µm](numbers.md#exhaust-wavelength)
-infrared, up to [1.2 × 10²⁰ W](numbers.md#exhaust-peak). The CO₂ rains out as liquid from
-[January 2035](numbers.md?date=month#traj-clear-rain), freezes, and is sealed under insulated caps as new
+[2.2 × 10²⁰ W](numbers.md#helios-power) of light, shared between Venus and the Ice Train's coilguns on Ceres. Thermal Chimneys lift the deep heat to floating canopies
+above the clouds, where the Photonic Exhaust's tiles, pumped by the Lattice's light on the sunward side,
+shine it into space as [2.3 µm](numbers.md#exhaust-wavelength) infrared, up to
+[2.2 × 10²⁰ W](numbers.md#exhaust-peak). The CO₂ rains out as liquid from
+[August 2034](numbers.md?date=month#traj-clear-rain), freezes, and is sealed under insulated caps as new
 land. ([Helios Lattice](technologies/helios.md), [Thermal Chimneys](technologies/chimneys.md),
 [Photonic Exhaust](technologies/exhaust.md), [Cryo-continents](technologies/cryo.md))
 
-**4. Bring the water ([2033](numbers.md?date=year#ice-launch-start) to [2036](numbers.md?date=year#lowering-end)).** Coilguns on Ceres launch [1.0 × 10²⁰ kg](numbers.md#ice-mass) of ice,
-enough for a [217 m](numbers.md#ocean-depth) ocean. A Braking Ring around Venus catches it and turns its
-speed into [1.1 × 10²⁸ J](numbers.md#ring-recovered-energy) of electricity instead of heat, enough to power
-the coilguns from [July 2034](numbers.md?date=month#ring-pays-from). What holds the Ring against the
-catch's push, how to lower the caught ice to the surface, and how the Ring carries its receivers are
-[open problems](risks.md#the-ring-cannot-yet-lower-the-ice), as is the loss heat its fins shine onto Venus.
-([Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md))
+**4. Bring the water ([2033](numbers.md?date=year#ice-launch-start) to [2035](numbers.md?date=year#last-arrival)).** Coilguns on Ceres launch [1.0 × 10¹⁸ kg](numbers.md#ice-mass) of ice
+in [90 d](numbers.md#ice-campaign-days). Nothing catches it: each Brick falls straight into Venus's polar
+air, and all of its speed and its fall, [147 MJ/kg](numbers.md#ice-entry-energy-per-kg), ends as heat the
+pumps must lift. That heat is why Venus gets seas, [2.17 m](numbers.md#ocean-depth) deep if spread over the
+globe, and not Earth's oceans, which would bring [350](numbers.md#ocean-entry-vs-atmosphere) times the heat
+of its whole atmosphere. ([Ceres Ice Train](technologies/ice-train.md))
 
 **5. Make it breathe ([2035](numbers.md?date=year#forge-start) to [2036](numbers.md?date=year#genesis-end)).** Graphite Forges split CO₂ into
 [0.25 bar](numbers.md#o2-target-pressure) of oxygen and the graphite the caps are made of. The Acid Sweep
 clears the sulfur, a magnetic shield guards the new water, the Veil sets a
-[24 h](numbers.md#day-length) day, and engineered life is seeded once the oxygen is in and the new oceans hold
+[24 h](numbers.md#day-length) day, and engineered life is seeded once the oxygen is in and the new seas hold
 their pH, from [1 December 2036](numbers.md?date=day#genesis-start). ([Graphite Forges](technologies/forges.md),
 [Acid Sweep](technologies/acid.md), [Genesis Biota](technologies/genesis.md))
 
@@ -77,7 +77,7 @@ and [Risks and Governance](risks.md#the-native-life-gate).
 | Nitrogen | [3.5%](numbers.md#venus-n2-fraction) of the air | [2.1 bar](numbers.md#n2-pressure) (kept) | Already there. |
 | Oxygen | Trace | [0.25 bar](numbers.md#o2-target-pressure) | [Graphite Forges](technologies/forges.md) |
 | CO₂ | [96.5%](numbers.md#venus-co2-fraction) | [230 ppm](numbers.md#final-co2-ppm) | [Cryo-continents](technologies/cryo.md), [Graphite Forges](technologies/forges.md), [Photonic Exhaust](technologies/exhaust.md) |
-| Water | Nearly none | [1.0 × 10²⁰ kg](numbers.md#ice-mass), a [217 m](numbers.md#ocean-depth) global ocean | [Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md) |
+| Water | Nearly none | [1.0 × 10¹⁸ kg](numbers.md#ice-mass), seas [2.17 m](numbers.md#ocean-depth) deep if spread over the globe | [Ceres Ice Train](technologies/ice-train.md) |
 | Light cycle | A [117 d](numbers.md#venus-solar-day) solar day | A [24 h](numbers.md#day-length) day | [Hesperus Veil](technologies/veil.md) |
 | Clouds | Sulfuric acid | Water | [Acid Sweep](technologies/acid.md) |
 <!-- /table -->
@@ -89,16 +89,15 @@ deadline.
 ## The energy budget
 
 <!-- figure:lattice-budget -->
-![Energy the Helios Lattice must deliver, against its supply](../figures/svg/lattice-budget.svg)
+![Light the Helios Lattice must beam, against what it beams](../figures/svg/lattice-budget.svg)
 <!-- /figure -->
 
-The plan must bring [1.1 × 10²⁸ J](numbers.md#budget-demand) to Venus and Ceres from outside. The Lattice supplies
-[1.3 × 10²⁸ J](numbers.md#helios-supply) between full power and the deadline, which leaves
-[11%](numbers.md#budget-spare) spare on its own, even though the coilguns fire between launch windows too and
-pay [37%](numbers.md#launch-offwindow-mean) more for it. Once the Ring's recovered energy powers the coilguns
-the spare is [32%](numbers.md#budget-spare-with-ring). Launching the water and pumping out the heat take
-[88%](numbers.md#budget-launch-share) of the Lattice's output. The walkthrough, and the
-[6](numbers.md#checks-failing) physics checks that still fail, are in [Energy and Mass Budget](budget.md).
+The plan must bring [1.6 × 10²⁸ J](numbers.md#budget-demand) of light to Venus and Ceres from outside. The
+Lattice beams [2.2 × 10²⁸ J](numbers.md#helios-supply) between full power and the deadline, which leaves
+[30%](numbers.md#budget-spare) spare. Almost all of it pumps heat: lifting heat into light as bright as the
+tiles' costs [21](numbers.md#exhaust-work-ratio) joules of light per joule moved, and the pumps take
+[69%](numbers.md#budget-launch-share) of the Lattice's output with the launches. The walkthrough, and the
+[1](numbers.md#checks-failing) physics check that fails on purpose, are in [Energy and Mass Budget](budget.md).
 
 ## Read on
 
@@ -108,7 +107,7 @@ the spare is [32%](numbers.md#budget-spare-with-ring). Launching the water and p
   [Helios Lattice](technologies/helios.md), [Hesperus Veil](technologies/veil.md),
   [Thermal Chimneys](technologies/chimneys.md), [Photonic Exhaust](technologies/exhaust.md),
   [Cryo-continents](technologies/cryo.md), [Graphite Forges](technologies/forges.md),
-  [Ceres Ice Train](technologies/ice-train.md), [Braking Ring](technologies/ring.md),
+  [Ceres Ice Train](technologies/ice-train.md),
   [Acid Sweep](technologies/acid.md), [Aegis Shield](technologies/aegis.md),
   [Genesis Biota](technologies/genesis.md), [Choir](technologies/choir.md).
 - [Energy and Mass Budget](budget.md): where every joule and kilogram comes from, and the physics checks.

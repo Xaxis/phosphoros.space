@@ -10,8 +10,8 @@ const { repoUrl, routeFor } = await import("../lib/site.ts");
 
 test("line links pin to the build's commit", () => {
   assert.equal(
-    repoUrl("calc/src/model/ring.ts", 42),
-    "https://github.com/Xaxis/phosphoros.space/blob/abc1234/calc/src/model/ring.ts#L42",
+    repoUrl("calc/src/model/ice.ts", 42),
+    "https://github.com/Xaxis/phosphoros.space/blob/abc1234/calc/src/model/ice.ts#L42",
   );
   assert.equal(
     routeFor("../data/assumptions.yaml#L222", "docs/budget.md"),

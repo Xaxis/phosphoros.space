@@ -1,25 +1,28 @@
 /**
- * The atmosphere's path from 2033 to 2036, simulated day by day from the power the plan has.
+ * The atmosphere's path from 2033 to 2036, simulated day by day from the light the plan has.
  *
- * Each day the Lattice and the Ring supply electricity; the Railheads and Forges take their share;
- * the rest drives the Photonic Exhaust, which lifts heat out of the air at the air's own temperature
- * and rejects it at an effective 2,000 K, never more than the installed emitters can shine. The heat
- * removed moves the air down the cooling path (coolingPath: sensible cooling to 304 K, the CO₂
+ * Each day the Lattice beams its light; the Railheads and Forges take their share through
+ * receivers; the rest pumps the Photonic Exhaust's lit tiles, which lift heat out of the air at the
+ * air's own temperature and are charged as if they rejected it at the temperature their light
+ * counts as, never more than the lit tiles can shine or the lit canopies' chimneys can carry. The
+ * heat removed moves the air down the cooling path (coolingPath: sensible cooling to 304 K, the CO₂
  * condensing along its vapour curve to the triple point, the seas freezing at 216.6 K, the last
- * vapour freezing out as frost down to 195 K). Frost Towers then trap the last CO₂, the Forges add
- * oxygen, and once the caps are sealed the beamed power and the opened Veil warm the air and melt the
- * ice to Earth-like. Heat lifted while the pumps run balances the cooling path, the Frost Towers'
- * share and the heat that enters meanwhile, to rounding.
+ * vapour freezing out as frost down to 195 K). The Bricks fall into the air as it cools, and their
+ * entry heat and their water's heat join everything else the pumps must lift. Frost Towers then trap
+ * the last CO₂, the Forges add oxygen, and once the caps are sealed the beamed light and the opened
+ * Veil warm the air and melt the ice to Earth-like. Heat lifted while the pumps run balances the
+ * cooling path, the Frost Towers' share and the heat that enters meanwhile, to rounding.
  *
  * Simplifications, all named: the whole atmosphere shares one temperature; its heat capacity and
- * the CO₂'s deposition heat are averages over the path; the Lattice's power grows with the Foundry's
- * mass; receiver loss heat is radiated straight to space by hot receivers above the air.
+ * the CO₂'s deposition heat are averages over the path; the water's vapour curve is the
+ * Clausius–Clapeyron relation with one heat of vaporisation; the Lattice's power grows with the
+ * Foundry's mass.
  */
 import { formatQuantity } from "../format.ts";
 import { co2LiquidPressure, co2SublimationPressure, conductedFlux } from "../physics.ts";
 import type { Point, Registry } from "../registry.ts";
 import { DAY_S } from "../time.ts";
-import { iceCatch } from "./ice.ts";
+import { iceArrivals } from "./ice.ts";
 import { fmt } from "./text.ts";
 
 export interface TrajectoryDay {
@@ -28,15 +31,15 @@ export interface TrajectoryDay {
   pressure: number;
   co2: number;
   o2: number;
-  /** Electrical power driving the Exhaust (W). */
+  /** Light pumping the Exhaust's tiles (W). */
   pumpPower: number;
   /** Heat leaving the air (W). */
   heatOut: number;
   /** Heat entering the air from other sources (W). */
   heatIn: number;
-  /** Electrical power spent warming the air and melting ice once the caps are sealed (W). */
+  /** Light spent warming the air and melting ice once the caps are sealed (W). */
   warmPower: number;
-  /** Electrical power the chimney fans draw (W). */
+  /** Light the chimney fans' receivers take (W). */
   fanPower: number;
   phase: "cooling" | "scavenging" | "holding" | "warming" | "earth-like";
 }
@@ -131,21 +134,24 @@ export function coolingPath(v: (id: string) => number) {
 }
 
 /**
- * Run the plan day by day. With `leak`, the loss heat the receivers' fins and the Ring's radiators
- * send into Venus is added to the heat entering the air: the published simulation leaves it out,
- * and the check loss-heat-fits measures what it would cost.
+ * Run the plan day by day. Each day the Lattice beams its light: Ceres's receivers take the
+ * Railheads' share, receivers at Venus take the Forges' and the fans', and the rest pumps the
+ * Exhaust's tiles. Every Brick that arrives brings its entry heat into the air, and its water then
+ * gives up heat as it cools, condenses and freezes; all of it is the pumps' to lift.
  */
-export function simulate(
-  v: (id: string) => number,
-  { leak = false }: { leak?: boolean } = {},
-): {
+export function simulate(v: (id: string) => number): {
   days: TrajectoryDay[];
   events: Record<string, number>;
   /** Days the chimneys' capacity, not the power, set how fast the air cooled. */
   chimneyDays: number;
+  /** The most the air warmed back while the pumps cooled it, and the day it was warmest again. */
+  rewarm: { kelvin: number; day: number };
+  /** The last day the air fell below the critical point, after any heat that lifted it back above. */
+  rerain: number;
 } {
   const Tf = v("freeze-target-temp");
-  const Th = v("exhaust-effective-temp");
+  // The pumps are charged as if they rejected at the temperature the tiles' light counts as.
+  const Th = v("exhaust-light-temp");
   // Real pumps need more than the reversible work: every work below is divided by this share.
   const eta = v("exhaust-carnot-share");
   const Tfrost = v("frost-tower-temp");
@@ -155,6 +161,9 @@ export function simulate(
   const g = v("venus-gravity");
   const pN2 = v("n2-pressure");
   const pCO2start = v("venus-column-pressure") - pN2;
+  const receiver = v("helios-receiver-efficiency");
+  // Only the canopies on the side the Lattice sees are lit, so only their chimneys carry heat.
+  const chimneys = v("chimney-capacity-lit");
 
   // The full Foundry builds the Lattice after it stops growing, so its power climbs from nothing
   // at full scale to full power as the petals come off the line. The first demonstration petals
@@ -164,22 +173,36 @@ export function simulate(
   const lattice = (d: number) =>
     v("helios-power") * Math.min(1, Math.max(0, (d - ramp0) / Math.max(1, ramp1 - ramp0)));
 
-  const leakage = (d: number, beam: number, catchLoss: number) => {
-    const receivers =
-      beam *
-      (1 / v("helios-receiver-efficiency") - 1) *
-      (d < v("ring-complete") ? v("canopy-fin-venus-share") : v("ring-fin-venus-share"));
-    const catchHeat = catchLoss * v("ring-fin-venus-share");
-    const lowered =
-      d >= v("lowering-start") && d < v("lowering-end")
-        ? v("lowering-rate") *
-          0.5 *
-          v("ring-orbital-speed") ** 2 *
-          (1 - v("ring-recovery-efficiency")) *
-          v("ring-fin-venus-share")
-        : 0;
-    return receivers + catchHeat + lowered;
+  // Water. A Brick warms to the air's temperature as it falls; above freezing its water joins the
+  // air's, and the air holds as vapour what its temperature allows. The rest is liquid until the
+  // air cools through freezing, and then ice, which melts again once the caps are sealed.
+  const Tmelt = 273.15;
+  const Lv = v("water-vaporization-heat");
+  const Lm = v("ice-melt-heat");
+  const cw = v("water-cp");
+  const ci = v("ice-cp");
+  const Tb = v("brick-temp");
+  const entry = v("ice-entry-energy-per-kg");
+  // Saturation pressure from the Clausius–Clapeyron relation, anchored at the boiling point.
+  const lift = (Lv * v("h2o-molar-mass")) / v("gas-constant");
+  const saturation = (T: number) =>
+    v("earth-sea-level-pressure") * Math.exp(lift * (1 / v("water-boiling-temp") - 1 / T));
+  // Vapour mass the air holds at T: its mole fraction times the total pressure reaches saturation.
+  const holds = (T: number, pCO2: number, pO2: number) => {
+    const dry = pCO2 + pN2 + pO2;
+    const moles =
+      (area / g) *
+      (pCO2 / v("co2-molar-mass") + pN2 / v("n2-molar-mass") + pO2 / v("o2-molar-mass"));
+    const p = saturation(T);
+    const a = (v("h2o-molar-mass") * g) / area;
+    const n = (-(dry - p) + Math.sqrt((dry - p) ** 2 + 4 * a * p * moles)) / (2 * a);
+    return n * v("h2o-molar-mass");
   };
+  let vapour = 0;
+  let liquid = 0;
+  let iceCold = 0; // water frozen while the air was below freezing, still to melt (kg)
+  let pending = 0; // heat the water gave up yesterday, entering the air today (J)
+
   const start = v("cooling-start");
   const deadline = v("deadline");
   const stop = deadline + 3 * 365;
@@ -193,25 +216,27 @@ export function simulate(
   let H = 0;
   let residual = 0; // CO₂ still airborne after the air reaches 195 K (kg)
   let temp = v("venus-surface-temp");
-  let iceCold = 0; // ice lowered while the air was below freezing, still to melt (kg)
+  let pCO2 = pCO2start;
   let phase: TrajectoryDay["phase"] = "cooling";
   let chimneyDays = 0; // days the chimneys, not the power, limit the cooling
-  // The catch ramps up and down as Bricks on fast and slow transfers arrive; each day's share of
-  // the ice gives the Ring's power that day. When the Lattice cannot feed the Railheads in full,
-  // fewer Bricks fly, and the catch shrinks by the share of launches made so far (a simplification:
-  // a Brick arriving today left months ago).
-  const caughtBy = iceCatch(v).share;
-  const recovered = v("ice-mass") * v("ring-recovered-per-kg");
-  const catchLoss = v("ice-mass") * (v("ring-catch-energy-per-kg") - v("ring-recovered-per-kg"));
+  // The most the air warms back while the pumps cool it, when heat arrives faster than they lift it.
+  let coldest = Number.POSITIVE_INFINITY;
+  const rewarm = { kelvin: 0, day: start };
+  let rerain = Number.NaN; // the day the air is back below the critical point, if heat lifted it above
+  // Arrivals ramp up and down as Bricks on fast and slow transfers reach Venus. When the Lattice
+  // cannot feed the Railheads in full, fewer Bricks fly, and arrivals shrink by the share of
+  // launches made so far (a simplification: a Brick arriving today left months ago).
+  const arrivedBy = iceArrivals(v).share;
+  const ceres = v("ceres-receiver-incident");
   let thrownSum = 0;
   let launchDays = 0;
   const forgeDays = v("forge-end") - v("forge-start");
   let o2Done = 0; // share of the oxygen the Forges have made
   let forgeShare = 0; // share of their full power the Forges drew yesterday
   const days: TrajectoryDay[] = [];
-  const pressureOf = (pCO2: number, o2: number, T: number) => {
-    const water = T >= 273.15 ? v("final-water-vapour") : 0;
-    return pN2 + o2 + pCO2 + water;
+  const pressureOf = (pCO2: number, o2: number, T: number, cooling: boolean) => {
+    const wet = cooling ? (vapour * g) / area : T >= Tmelt ? v("final-water-vapour") : 0;
+    return pN2 + o2 + pCO2 + wet;
   };
 
   for (let d = start; d <= stop; d += 1) {
@@ -220,20 +245,19 @@ export function simulate(
       phase = "warming";
       mark("warming", d);
     }
-    // Power for Venus. The Lattice beams the Railheads their share first; when it has less, the
-    // launches slow to what it gives, and the Ring later catches only what was thrown. The Ring's
-    // electricity stays at Venus. The Forges take theirs next, and slow down when it runs short.
+    // Light for Venus. The Lattice beams Ceres the Railheads' share first; when it has less, the
+    // launches slow to what it gives, and fewer Bricks arrive. The Forges take theirs next, and
+    // slow down when it runs short, then the fans.
     const beam = lattice(d);
     const launching = d >= v("ice-launch-start") && d < v("ice-launch-end");
-    const thrown = launching ? Math.min(1, beam / v("railhead-power")) : 0;
+    const thrown = launching ? Math.min(1, beam / ceres) : 0;
     if (launching) {
       thrownSum += thrown;
       launchDays++;
     }
     const flown = launchDays > 0 ? thrownSum / launchDays : 1;
-    const caughtToday = (caughtBy(d + 1) - caughtBy(d)) * flown;
-    const toVenus = beam - thrown * v("railhead-power");
-    let power = toVenus + (caughtToday * recovered) / DAY_S;
+    const arriving = (arrivedBy(d + 1) - arrivedBy(d)) * flown * v("ice-mass");
+    let light = beam - thrown * ceres;
     // Oxygen made by the start of today: yesterday's forging, for the part of it after the Forges
     // start. Today's draw, if the day reaches past their start, makes tomorrow's.
     o2Done = Math.min(
@@ -242,13 +266,14 @@ export function simulate(
     );
     const o2 = v("o2-target-pressure") * o2Done;
     const forging = d + 1 > v("forge-start") && o2Done < 1;
-    const forgeDraw = forging ? Math.min(Math.max(0, power), v("forge-power")) : 0;
+    const forgeDraw = forging ? Math.min(Math.max(0, light) * receiver, v("forge-power")) : 0;
     forgeShare = forgeDraw / v("forge-power");
-    power -= forgeDraw;
+    light -= forgeDraw / receiver;
     // The chimney fans run while the pumps do.
-    const fanPower = phase === "cooling" ? Math.min(power, v("chimney-fan-power")) : 0;
-    power -= fanPower;
-    power = Math.max(0, power);
+    const fanDraw =
+      phase === "cooling" ? Math.min(Math.max(0, light) * receiver, v("chimney-fan-power")) : 0;
+    light -= fanDraw / receiver;
+    light = Math.max(0, light);
 
     // Heat entering the air.
     const elapsed = (d - start + 1) * DAY_S;
@@ -263,26 +288,30 @@ export function simulate(
         (1 - v("cryo-footprint-share")) +
       forgeDraw * (1 - v("forge-efficiency")) +
       // The fans' work ends as heat in the gas they push, which the pumps must then lift.
-      fanPower +
-      (leak ? leakage(d, toVenus, (caughtToday * catchLoss) / DAY_S) : 0) +
+      fanDraw +
+      // The receivers at Venus shed their loss into the air.
+      (forgeDraw + fanDraw) * (1 / receiver - 1) +
+      pending / DAY_S +
       (phase === "warming" || phase === "earth-like"
         ? 0
         : (1 - v("veil-block-fraction")) * v("venus-absorbed"));
-    const lowering = d >= v("lowering-start") && d < v("lowering-end");
-    if (lowering) {
-      // Only what the Ring caught can be lowered.
-      const rate = v("lowering-rate") * flown;
-      if (temp >= 273.15) heatIn += rate * (v("fall-energy") - v("melt-energy"));
-      else {
-        heatIn += rate * (v("fall-energy") - v("ice-cp") * Math.max(0, temp - v("brick-temp")));
-        iceCold += rate * DAY_S;
+    pending = 0;
+    // Each arriving Brick stops in the air: its entry heat, less what its ice takes to reach the
+    // air's temperature.
+    if (arriving > 0) {
+      if (temp >= Tmelt) {
+        heatIn += (arriving * (entry - ci * (Tmelt - Tb) - Lm - cw * (temp - Tmelt))) / DAY_S;
+        liquid += arriving;
+      } else {
+        heatIn += (arriving * (entry - ci * Math.max(0, temp - Tb))) / DAY_S;
+        iceCold += arriving;
       }
     }
 
-    let pCO2: number;
     let heatOut = 0;
     let pumpPower = 0;
     let warmPower = 0;
+    const before = temp;
 
     if (phase === "cooling" || phase === "scavenging" || phase === "holding") {
       // The cold side is the air (or the Frost Towers once only the last CO₂ is left).
@@ -292,16 +321,17 @@ export function simulate(
       const stage = path.at(H).stage;
       const latent = stage === "condensing" || stage === "freezing";
       const cold = phase === "cooling" ? (latent ? temp : temp * v("chimney-cold-factor")) : Tf;
-      // The emitters shine the heat lifted plus the work that lifts it, never more than their peak.
+      // The lit tiles shine the heat lifted plus the light that lifts it, never more than their peak.
       const maxWork = (v("exhaust-peak") * (Th - cold)) / (Th - cold + eta * cold);
-      // Every watt the pumps lift has to come up the chimneys first.
-      const chimneyWork = (v("chimney-capacity") * (Th - cold)) / (eta * cold);
-      const work = Math.min(power, maxWork, chimneyWork);
-      if (chimneyWork < Math.min(power, maxWork)) chimneyDays++;
+      // Every watt the pumps lift has to come up the lit canopies' chimneys first.
+      const chimneyWork = (chimneys * (Th - cold)) / (eta * cold);
+      const work = Math.min(light, maxWork, chimneyWork);
+      if (chimneyWork < Math.min(light, maxWork)) chimneyDays++;
       const capacity = (eta * work * cold) / (Th - cold);
       if (phase === "cooling") {
         // Never past the end of the path: on the last day the pumps lift only what is left.
-        heatOut = Math.min(capacity, heatIn + (path.total - H) / DAY_S);
+        // Pumps only take heat out; on a day the water takes more heat than enters, they idle.
+        heatOut = Math.max(0, Math.min(capacity, heatIn + (path.total - H) / DAY_S));
         pumpPower = capacity > 0 ? (work * heatOut) / capacity : 0;
         H += (heatOut - heatIn) * DAY_S;
       } else {
@@ -322,8 +352,14 @@ export function simulate(
       }
       const here = path.at(H);
       temp = here.T;
+      if (phase === "cooling") {
+        coldest = Math.min(coldest, before);
+        if (temp - coldest > rewarm.kelvin) [rewarm.kelvin, rewarm.day] = [temp - coldest, d];
+      }
 
       if (temp <= v("co2-critical-temp")) mark("clear-rain", d);
+      if (events["clear-rain"] !== undefined && temp > v("co2-critical-temp")) rerain = Number.NaN;
+      else if (events["clear-rain"] !== undefined && Number.isNaN(rerain)) rerain = d;
       if (H >= path.tripleReached) mark("freeze", d);
       if (H >= path.frozen) mark("frozen", d);
       if (H >= path.total && phase === "cooling") {
@@ -338,15 +374,37 @@ export function simulate(
       if (phase !== "cooling") pCO2 = (residual * g) / area;
       else if (H < path.sensibleEnd) pCO2 = pCO2start;
       else pCO2 = (here.m * g) / area;
+
+      // The water follows the air. Its heat enters the air tomorrow, for the pumps to lift.
+      if (temp >= Tmelt) {
+        pending += (vapour + liquid) * cw * (before - temp);
+        const wet = vapour + liquid;
+        const held = Math.min(wet, holds(temp, pCO2, o2));
+        pending += (vapour - held) * Lv;
+        if (held < vapour) mark("water-rain", d);
+        vapour = held;
+        liquid = wet - held;
+      } else {
+        if (vapour + liquid > 0) {
+          // The air has cooled through freezing: what water is left freezes, giving up its heat.
+          pending += (vapour + liquid) * cw * Math.max(0, before - Tmelt);
+          pending += vapour * (Lv + Lm) + liquid * Lm;
+          iceCold += vapour + liquid;
+          vapour = 0;
+          liquid = 0;
+          mark("water-frozen", d);
+        }
+        pending += iceCold * ci * (Math.min(before, Tmelt) - temp);
+      }
     } else {
-      // Warming: the beamed power becomes heat, the Veil lets in Earth-strength light, and the
-      // ice lowered while the air was cold melts first.
+      // Warming: the beamed light becomes heat, the Veil lets in Earth-strength light, and the
+      // ice frozen while the air was cold melts first.
       const sun = v("veil-day-transmission") * v("venus-intercepted") * (1 - v("final-albedo"));
-      const melt = v("melt-energy") - v("ice-cp") * (Tf - v("brick-temp"));
+      const melt = ci * (Tmelt - Tf) + Lm + cw * (v("earth-surface-temp") - Tmelt);
       const airC = (v("venus-n2-mass") + v("o2-mass")) * v("air-cp");
       const need = iceCold * melt + Math.max(0, v("earth-surface-temp") - temp) * airC;
       const free = (sun + heatIn) * DAY_S;
-      const bought = Math.min(power * DAY_S, Math.max(0, need - free));
+      const bought = Math.min(light * DAY_S, Math.max(0, need - free));
       warmPower = bought / DAY_S;
       const heat = free + bought;
       const melted = Math.min(iceCold, heat / melt);
@@ -358,7 +416,8 @@ export function simulate(
       if (temp >= v("earth-like-temp")) mark("warm", d);
     }
 
-    const pressure = pressureOf(pCO2, o2, temp);
+    const cooling = phase === "cooling" || phase === "scavenging" || phase === "holding";
+    const pressure = pressureOf(pCO2, o2, temp, cooling);
     if (
       phase === "warming" &&
       temp >= v("earth-like-temp") &&
@@ -378,7 +437,7 @@ export function simulate(
       heatOut,
       heatIn,
       warmPower,
-      fanPower,
+      fanPower: fanDraw / receiver,
       phase,
     });
     if (phase === "earth-like" && d > deadline) break;
@@ -392,9 +451,11 @@ export function simulate(
     "warming",
     "warm",
     "earth-like",
+    "water-rain",
+    "water-frozen",
   ])
     mark(k, stop);
-  return { days, events, chimneyDays };
+  return { days, events, chimneyDays, rewarm, rerain };
 }
 
 export function trajectory(r: Registry) {
@@ -424,6 +485,8 @@ export function trajectory(r: Registry) {
     warming: "Caps sealed; the Veil opens and the air warms",
     warm: "Air reaches 285 K",
     "earth-like": "Earth-like: warm, 0.25 bar of oxygen, CO₂ under 600 ppm",
+    "water-rain": "The air cools to its dew point and the water rains out",
+    "water-frozen": "The air cools through freezing and the new water freezes",
   };
   for (const [k, label] of Object.entries(labels)) {
     r.q(
@@ -449,7 +512,7 @@ export function trajectory(r: Registry) {
       unit: "J",
       formula: "Σ pump power × 1 day",
       basis: "physics",
-      note: "More than the work for the air alone, because the pumps also carry away heat from the crust, the Forges, the falling ice and the sunlight the closed Veil lets through.",
+      note: "More than the work for the air alone, because the pumps also carry away heat from the crust, the Forges, the receivers, the falling ice and its water, and the sunlight the closed Veil lets through.",
     },
     () => total((t) => t.pumpPower),
   );
@@ -459,11 +522,44 @@ export function trajectory(r: Registry) {
       label: "Heat that enters the air from other sources while the pumps run",
       unit: "J",
       formula:
-        "Σ (crust + Forges + chimney fans + falling ice + residual sunlight) × 1 day, until the caps are sealed",
+        "Σ (crust + Forges + receivers + chimney fans + Bricks and their water + residual sunlight) × 1 day, until the caps are sealed",
       basis: "physics",
       note: "Heat that enters after the pumps stop warms the air instead of being lifted out.",
     },
     () => total((t) => (pumping(t) ? t.heatIn : 0)),
+  );
+  r.q(
+    "traj-rewarm",
+    {
+      label: "Most the air warms back while the pumps cool it",
+      unit: "K",
+      sig: 2,
+      formula: "max over the cooling of (T − the coldest T so far)",
+      basis: "physics",
+      note: "When the Bricks bring heat faster than the lit canopies' chimneys can carry it out, the air warms and some of the CO₂ that had rained out boils back, until the pumps catch up.",
+    },
+    () => run().rewarm.kelvin,
+  );
+  r.q(
+    "traj-rewarm-peak",
+    {
+      label: "The air is warmest again after the Bricks' heat arrives",
+      unit: "date",
+      formula: "day-by-day simulation (model/trajectory.ts)",
+      basis: "physics",
+    },
+    () => run().rewarm.day,
+  );
+  r.q(
+    "traj-rerain",
+    {
+      label: "The Clear Rain begins for good, after any heat that lifts the air back above 304 K",
+      unit: "date",
+      formula: "day-by-day simulation (model/trajectory.ts)",
+      basis: "physics",
+      note: "The same day as the first Clear Rain when nothing warms the air back above the critical point.",
+    },
+    () => run().rerain,
   );
   r.q(
     "traj-heat-lifted",
@@ -487,6 +583,14 @@ export function trajectory(r: Registry) {
     () => v("frost-residual-target") * v("co2-deposition-heat"),
   );
   r.c(
+    "forges-on-seas",
+    { label: "The Forges start once the liquid CO₂ seas are there for good", kind: "schedule" },
+    () => ({
+      pass: v("forge-start") >= v("traj-rerain"),
+      detail: `The Forges float on the seas from ${fmt(r, "forge-start")}; the Clear Rain begins for good on ${fmt(r, "traj-rerain")}.`,
+    }),
+  );
+  r.c(
     "traj-heat-books",
     {
       label: "The simulation's heat books balance: it lifts every joule it counts in",
@@ -498,7 +602,7 @@ export function trajectory(r: Registry) {
       const pass = Math.abs(lifted - owed) < 1e-9 * lifted;
       return {
         pass,
-        detail: `The Exhaust lifts ${fmt(r, "traj-heat-lifted")}: Venus's ${fmt(r, "atmosphere-heat")}, less the ${fmt(r, "traj-heat-left-airborne")} still held by the CO₂ the Frost Towers leave in the air, plus ${fmt(r, "traj-heat-added")} that enters while the pumps run. ${pass ? "The two sides agree to rounding." : `The two sides differ by ${formatQuantity({ value: lifted - owed, unit: "J" })}.`} This confirms the simulation's own bookkeeping; a heat source the simulation leaves out cannot show here (see the loss-heat check).`,
+        detail: `The Exhaust lifts ${fmt(r, "traj-heat-lifted")}: Venus's ${fmt(r, "atmosphere-heat")}, less the ${fmt(r, "traj-heat-left-airborne")} still held by the CO₂ the Frost Towers leave in the air, plus ${fmt(r, "traj-heat-added")} that enters while the pumps run. ${pass ? "The two sides agree to rounding." : `The two sides differ by ${formatQuantity({ value: lifted - owed, unit: "J" })}.`} This confirms the simulation's own bookkeeping; a heat source the simulation leaves out cannot show here.`,
       };
     },
   );
@@ -515,7 +619,7 @@ export function trajectory(r: Registry) {
   r.q(
     "traj-fan-energy",
     {
-      label: "Energy the chimney fans use while the pumps run",
+      label: "Light the chimney fans' receivers take while the pumps run",
       unit: "J",
       formula: "Σ fan power × 1 day",
       basis: "invented",
@@ -525,7 +629,7 @@ export function trajectory(r: Registry) {
   r.q(
     "traj-warm-energy",
     {
-      label: "Beamed power spent warming the air and melting the cold ice after sealing",
+      label: "Beamed light spent warming the air and melting the ice after sealing",
       unit: "J",
       formula: "Σ warming power × 1 day",
       basis: "physics",
@@ -618,7 +722,7 @@ export function trajectory(r: Registry) {
   r.s("traj-o2", { label: "Oxygen partial pressure", x: "date", y: "Pa" }, () =>
     weekly((t) => t.o2),
   );
-  r.s("traj-pump-power", { label: "Electrical power driving the Exhaust", x: "date", y: "W" }, () =>
+  r.s("traj-pump-power", { label: "Light pumping the Exhaust", x: "date", y: "W" }, () =>
     weekly((t) => t.pumpPower),
   );
   r.s("traj-heat-out", { label: "Heat leaving the air", x: "date", y: "W" }, () =>
@@ -629,7 +733,7 @@ export function trajectory(r: Registry) {
   r.q(
     "genesis-ph-clear",
     {
-      label: "The new oceans have held their pH for the release gate",
+      label: "The new seas have held their pH for the release gate",
       unit: "date",
       formula: "ice melts (caps sealed, Veil open) + days the pH must hold",
       basis: "design",
@@ -646,27 +750,6 @@ export function trajectory(r: Registry) {
       pass: v("traj-scavenged") <= v("sealing-end"),
       detail: `The simulated Frost Towers finish on ${day("traj-scavenged")}; the last caps are sealed on ${day("sealing-end")}.`,
     }),
-  );
-  r.c(
-    "loss-heat-fits",
-    {
-      label:
-        "The plan still cools in time with the loss heat its receivers and Ring send into Venus",
-      kind: "conservation",
-      issue: "loss-heat",
-    },
-    () => {
-      const leaky = simulate(v, { leak: true });
-      const finished = leaky.days.some((t) => t.phase === "holding" || t.phase === "warming");
-      const done = finished ? (leaky.events.scavenged as number) : Number.POSITIVE_INFINITY;
-      const when = finished
-        ? `the Frost Towers finish on ${formatQuantity({ value: done, unit: "date" }, { date: "day" })}`
-        : "the Frost Towers never finish in the simulated years";
-      return {
-        pass: done <= v("sealing-end"),
-        detail: `The receivers shed ${fmt(r, "helios-receiver-loss")} at full power and the catcher tracks ${fmt(r, "ring-catch-loss-power")}, from fins that radiate from both faces: ${fmt(r, "ring-fin-venus-share")} of their light falls on Venus from the Ring, ${fmt(r, "canopy-fin-venus-share")} from the canopies. That is ${fmt(r, "loss-heat-into-venus")} with the Lattice at full power and the Ring catching, which the published simulation leaves out. Counting it, ${when}, against the last caps sealed on ${day("sealing-end")}.`,
-      };
-    },
   );
   r.q(
     "genesis-start",
@@ -694,7 +777,7 @@ export function trajectory(r: Registry) {
   r.q(
     "genesis-end",
     {
-      label: "The sunlit oceans are green with seeded cyanobacteria",
+      label: "The sunlit seas are green with seeded cyanobacteria",
       unit: "date",
       formula: "seeding begins + growth to bloom density",
       basis: "invented",
@@ -722,12 +805,12 @@ export function trajectory(r: Registry) {
   r.c(
     "genesis-by-deadline",
     {
-      label: "Seeded life greens the oceans by the deadline",
+      label: "Seeded life greens the seas by the deadline",
       kind: "schedule",
     },
     () => ({
       pass: v("genesis-end") <= v("deadline"),
-      detail: `Seeding waits for the oxygen (${day("forge-end")}) and for the oceans to hold their pH (${day("genesis-ph-clear")}), so it begins on ${day("genesis-start")}; doubling every ${formatQuantity({ ...r.get("genesis-doubling-days"), value: v("genesis-doubling-days") })}, the cells reach bloom density on ${day("genesis-end")}, against a deadline of ${day("deadline")}.`,
+      detail: `Seeding waits for the oxygen (${day("forge-end")}) and for the seas to hold their pH (${day("genesis-ph-clear")}), so it begins on ${day("genesis-start")}; doubling every ${formatQuantity({ ...r.get("genesis-doubling-days"), value: v("genesis-doubling-days") })}, the cells reach bloom density on ${day("genesis-end")}, against a deadline of ${day("deadline")}.`,
     }),
   );
   r.c(
