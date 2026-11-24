@@ -266,6 +266,27 @@ that do not: some version 3 changed on purpose, and the rest differ for reasons 
 | Share of the Lattice's output that water and cooling take | 90% | [69%](numbers.md#budget-launch-share) | Corrected in version 3: [The Exhaust is sized for the peak the simulation needs](about.md#corrections) |
 <!-- /table -->
 
+## The journey on the home page
+
+The animation on the home page follows the model: every date it captions, where each world is on each day
+(from Standish's elements for the planets and JPL's for Ceres), and the air's temperature, pressure and
+oxygen from the day-by-day simulation. The seas fill to the shares of Venus the model gives, in Venus's own
+lowlands. Sizes and distances are not to scale, and the infrared light of the Lattice and of the Exhaust's tiles is drawn in false colour.
+
+Its maps are public data, with thanks:
+
+- Earth by day, clouds and night lights: NASA Earth Observatory and Goddard Space Flight Center, Blue Marble:
+  Next Generation (Reto Stöckli), The Blue Marble (Reto Stöckli, Robert Simmon) and Black Marble 2016.
+- The Moon: NASA's Scientific Visualization Studio, from Lunar Reconnaissance Orbiter data.
+- Mercury: NASA, Johns Hopkins University Applied Physics Laboratory and Carnegie Institution of Washington
+  (MESSENGER), mosaic by the USGS Astrogeology Science Center.
+- Ceres: NASA, JPL-Caltech, UCLA, MPS, DLR and IDA (Dawn); Roatsch et al., Dawn FC2 derived Ceres mosaics,
+  NASA Planetary Data System, 2016.
+- Venus's heights: NASA and JPL (Magellan), global topography by P. Ford, G. Pettengill, F. Liu and
+  J. Quigley (MIT), mosaic by the USGS Astrogeology Science Center.
+- The Milky Way: NASA Goddard Space Flight Center Scientific Visualization Studio, with Gaia DR2
+  (ESA, Gaia, DPAC).
+
 ## License
 
 The code is released under the MIT license. The text, data and figures are released under

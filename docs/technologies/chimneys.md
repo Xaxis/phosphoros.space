@@ -87,8 +87,9 @@ its fastest weeks, while the air is hot and each joule cheap to pump, it hits th
 [51 d](../numbers.md#traj-chimney-days). Version 4 widened the towers for this; version 3's assumed every canopy
 worked at once ([correction](../about.md#corrections)).
 
-**Life cycle.** The chimneys are built from the canopies down from late 2032, as the Veil closes, and run hardest from
-[February 2034](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
+**Life cycle.** The Foundry builds the canopies and chimneys once the Lattice is at full power, and they reach Venus
+on [23 February 2034](../numbers.md?date=day#venus-hardware-ready), when the chimneys are lowered from the canopies to
+their ground anchors. They run hardest from [February 2034](../numbers.md?date=month#cooling-start) through the [Clear Rain](cryo.md) of
 [August 2034](../numbers.md?date=month#traj-clear-rain). After that their exchangers double as condensers: liquid
 CO₂ forms on them and drains to the basins. As the CO₂ rains out the air thins, the canopies float lower and the
 towers are shortened. They retire once the CO₂ is down, in [June 2036](../numbers.md?date=month#traj-cold), and
@@ -133,9 +134,10 @@ describe the air drawn through the intake and the heat taken from it.
 
 ## Build sequence
 
-- **[1 December 2032](../numbers.md?date=day#veil-close):** The Veil closes. Canopies float at the cloud tops and the
-  chimneys are lowered from them to their ground anchors.
-- **[23 February 2034](../numbers.md?date=day#cooling-start):** Active cooling begins, after the Ice Train's
+- **[9 October 2033](../numbers.md?date=day#helios-full-power):** The Lattice reaches full power, and the Foundry turns
+  to the tiles, canopies, chimneys and receivers for Venus.
+- **[23 February 2034](../numbers.md?date=day#cooling-start):** The hardware is at Venus. The canopies float at the
+  cloud tops, the chimneys are lowered from them to their ground anchors, and active cooling begins, after the Ice Train's
   launches have ended, so the Lattice's whole light is free for Venus. The lit canopies' chimneys run at their
   limit, lifting heat well above the design peak.
 - **[8 August 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain. The deep air falls below CO₂'s

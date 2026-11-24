@@ -21,8 +21,8 @@ Earth's mean [288 K](../numbers.md#earth-surface-temp). Oxygen is only
 [11%](../numbers.md#final-o2-share) of that air, but its pressure is [1.2](../numbers.md#o2-vs-earth)
 times Earth's sea-level oxygen, and pressure is what cells feel.
 
-The new water would stand [2.17 m](../numbers.md#ocean-depth) deep spread evenly over Venus. Gathered in the low ground
-between the caps, it makes shallow seas and lakes, not oceans. They are melted ice, fresh to brackish, with
+The new water would stand [2.17 m](../numbers.md#ocean-depth) deep spread evenly over Venus. Gathered in the deepest lowland
+basins, away from the caps, it makes shallow seas and lakes, not oceans. They are melted ice, fresh to brackish, with
 sulfate from the [Acid Sweep](acid.md) and little dissolved carbon. The Veil and its Lanterns give a
 [24 h](../numbers.md#day-length) day, opening to [52%](../numbers.md#veil-day-transmission) for
 Earth-strength light. Sunlight is turning the new oxygen into ozone, but the layer is young and thin. The

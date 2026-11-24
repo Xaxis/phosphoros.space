@@ -1,6 +1,8 @@
-// Drives the home page's animated Venus in Chromium and fails on the first thing that does not
-// work: autoplay, pause, keyboard stepping, reduced motion, the fallback without WebGL 2, and any
-// console error. With a folder, also saves the hero at a few dates for a person to look at.
+// Drives the home page's journey in Chromium and fails on the first thing that does not work:
+// autoplay, pause, keyboard stepping, every captioned day drawn (and drawn the same with a real
+// GPU's NaN maths), the full-screen dialog (steps, speed, camera, readings, keyboard, drag, Escape),
+// the dialog on a phone, reduced motion, the fallback without WebGL 2, and any console error. With
+// a folder, also saves the hero at a few dates for a person to look at.
 //
 //   node tools/hero-check.ts [URL] [SHOTS_DIR]
 //   heavy node tools/hero-check.ts http://localhost:3417 /tmp/hero
@@ -51,6 +53,7 @@ async function open(opts: {
   noWebgl?: boolean;
   hostile?: boolean;
   width?: number;
+  path?: string;
 }) {
   const ctx: BrowserContext = await browser.newContext({
     viewport: { width: opts.width ?? 1440, height: 900 },
@@ -93,7 +96,7 @@ async function open(opts: {
     if (m.type() === "error") errors.push(m.text().slice(0, 200));
   });
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto(`${url}/`, { waitUntil: "load", timeout: 120_000 });
+  await page.goto(`${url}${opts.path ?? "/"}`, { waitUntil: "load", timeout: 120_000 });
   return { ctx, page, errors };
 }
 
@@ -213,8 +216,15 @@ const live = (page: Page) =>
   await ctx.close();
 }
 
-/** Mean brightness, 0 to 255, of what the screen shows in an element's box. */
+/**
+ * Mean brightness, 0 to 255, of what the screen shows in an element's box, and its spread: a blank
+ * canvas, or one a NaN blacked out, is one flat colour, while any drawn sky has stars in it.
+ */
 async function brightness(page: Page, selector: string) {
+  return (await picture(page, selector)).mean;
+}
+
+async function picture(page: Page, selector: string) {
   const png = await page.locator(selector).screenshot({ timeout: 180_000 });
   return page.evaluate(async (b64) => {
     const img = new Image();
@@ -227,8 +237,15 @@ async function brightness(page: Page, selector: string) {
     g.drawImage(img, 0, 0);
     const d = g.getImageData(0, 0, c.width, c.height).data;
     let sum = 0;
-    for (let i = 0; i < d.length; i += 4) sum += (d[i] ?? 0) + (d[i + 1] ?? 0) + (d[i + 2] ?? 0);
-    return sum / (d.length / 4) / 3;
+    let sq = 0;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = ((d[i] ?? 0) + (d[i + 1] ?? 0) + (d[i + 2] ?? 0)) / 3;
+      sum += v;
+      sq += v * v;
+    }
+    const n = d.length / 4;
+    const mean = sum / n;
+    return { mean, spread: Math.sqrt(Math.max(0, sq / n - mean * mean)) };
   }, png.toString("base64"));
 }
 
@@ -261,13 +278,20 @@ async function showDay(page: Page, day: number) {
     days.push((await read(kind.page)).day);
   }
   const dark: string[] = [];
+  const blank: string[] = [];
   for (const day of days) {
     await showDay(kind.page, day);
     await showDay(hostile.page, day);
-    const a = await brightness(kind.page, ".vision-planet");
+    const a = await picture(kind.page, ".vision-planet");
     const b = await brightness(hostile.page, ".vision-planet");
-    if (b < a * 0.7) dark.push(`day ${day}: ${b.toFixed(1)} against ${a.toFixed(1)}`);
+    if (a.spread < 4) blank.push(`day ${day}: spread ${a.spread.toFixed(1)}`);
+    if (b < a.mean * 0.7) dark.push(`day ${day}: ${b.toFixed(1)} against ${a.mean.toFixed(1)}`);
   }
+  check(
+    blank.length === 0,
+    "every captioned day draws a picture, never a blank or black frame",
+    blank.join("; "),
+  );
   check(
     rewritten > 4 && days.length > 10 && dark.length === 0,
     "every captioned day survives a real GPU's NaN maths",
@@ -280,6 +304,271 @@ async function showDay(page: Page, day: number) {
   );
   await kind.ctx.close();
   await hostile.ctx.close();
+}
+
+/** Waits until the journey has drawn what it was asked to and gone quiet. */
+async function settled(page: Page) {
+  await page.waitForFunction(
+    () => {
+      const c = document.querySelector<HTMLCanvasElement>("canvas.journey-canvas");
+      return c?.dataset.idle === "1";
+    },
+    undefined,
+    { timeout: 180_000 },
+  );
+  // And the dialog's fade-in has finished, or a screenshot catches the page through it.
+  await page.waitForFunction(() =>
+    document.getAnimations().every((a) => a.playState !== "running"),
+  );
+  await read(page);
+}
+
+{
+  // The planet opens the journey full screen, as a modal dialog over the page.
+  const { ctx, page, errors } = await open({});
+  await live(page);
+  await page.click(".vision-play");
+  await page.click(".vision-planet");
+  await page.waitForSelector("dialog.journey-dialog[open]", { timeout: 30_000 });
+  const opened = await page.evaluate(() => {
+    const d = document.querySelector("dialog.journey-dialog");
+    return {
+      modal: Boolean(d?.matches(":modal")),
+      canvas: Boolean(d?.querySelector("canvas.journey-canvas")),
+      focus: Boolean(d?.contains(document.activeElement)),
+      steps: d?.querySelectorAll(".journey-steps button").length ?? 0,
+      readings: [...(d?.querySelectorAll(".journey-reading dd") ?? [])].map((e) => e.textContent),
+      scroll: getComputedStyle(document.documentElement).overflow,
+    };
+  });
+  check(
+    opened.modal && opened.canvas && opened.focus && opened.scroll === "hidden",
+    "the planet opens the journey as a modal dialog, with the canvas and focus inside it",
+    JSON.stringify(opened),
+  );
+  check(
+    opened.steps > 20 &&
+      opened.readings.length === 4 &&
+      opened.readings.every((t) => t && t.length > 1),
+    "the dialog lists every step and the four readings",
+    `${opened.steps} steps; ${opened.readings.join(" | ")}`,
+  );
+  await settled(page);
+  const before = await picture(page, ".journey-stage");
+  check(before.spread > 4, "the dialog draws the scene", `spread ${before.spread.toFixed(1)}`);
+
+  // A step jumps the story there: the caption, the slider and the readings follow.
+  const steps = page.locator(".journey-steps button");
+  const last = (await steps.count()) - 1;
+  await steps.nth(last).click();
+  await settled(page);
+  const end = await page.evaluate(() => ({
+    caption: document.querySelector(".journey-text")?.textContent ?? "",
+    current: document.querySelector(".journey-steps [aria-current='step'] .journey-step-text")
+      ?.textContent,
+    surface: document.querySelector(".journey-reading dd")?.textContent ?? "",
+  }));
+  check(
+    end.caption === end.current && /K \(1\d|K \(2\d/.test(end.surface.replace(/ /g, " ")),
+    "a step shows its caption and the air on that day",
+    JSON.stringify(end),
+  );
+  await steps.nth(3).click();
+  await settled(page);
+
+  // The camera follows a world the reader picks.
+  await page.getByRole("button", { name: "Venus", exact: true }).click();
+  await settled(page);
+  const venus = await picture(page, ".journey-stage");
+  const pressed = await page
+    .getByRole("button", { name: "Venus", exact: true })
+    .getAttribute("aria-pressed");
+  check(
+    pressed === "true" && venus.spread > 4,
+    "the camera follows the world the reader picks",
+    `pressed ${pressed}, spread ${venus.spread.toFixed(1)}`,
+  );
+  await page.getByRole("button", { name: "The story", exact: true }).click();
+  await settled(page);
+
+  // Dragging turns the view; Reset view puts it back.
+  const stage = await page.locator(".journey-frame").boundingBox();
+  const a = await page.locator(".journey-stage").screenshot({ timeout: 180_000 });
+  if (stage) {
+    const x = stage.x + stage.width / 2;
+    const y = stage.y + stage.height / 2;
+    await page.mouse.move(x, y);
+    await page.mouse.down();
+    await page.mouse.move(x + 160, y + 40, { steps: 6 });
+    await page.mouse.up();
+  }
+  await settled(page);
+  const b = await page.locator(".journey-stage").screenshot({ timeout: 180_000 });
+  check(!a.equals(b), "dragging turns the view");
+  await page.getByRole("button", { name: "Reset view" }).click();
+  await settled(page);
+
+  // Speed and play.
+  await page.getByRole("button", { name: "4×" }).click();
+  const speed = await page.getByRole("button", { name: "4×" }).getAttribute("aria-pressed");
+  // A click on the scene leaves the keys with the dialog, not with the button last pressed.
+  if (stage) await page.mouse.click(stage.x + stage.width / 2, stage.y + stage.height / 2);
+  const s0 = await read(page);
+  await page.keyboard.press("Space");
+  await page.waitForTimeout(2500);
+  await page.keyboard.press("Space");
+  const s1 = await read(page);
+  check(
+    speed === "true" && s1.day > s0.day,
+    "Space plays and pauses the story in the dialog, at the chosen speed",
+    `speed ${speed}, day ${s0.day} to ${s1.day}`,
+  );
+
+  // Escape closes it, focus returns to the planet, and the hero has its canvas back.
+  await page.keyboard.press("Escape");
+  await page.waitForFunction(() => !document.querySelector("dialog[open]"), undefined, {
+    timeout: 30_000,
+  });
+  await settled(page);
+  const closed = await page.evaluate(() => ({
+    canvas: Boolean(document.querySelector(".hero-space > canvas.journey-canvas")),
+    focus: document.activeElement?.classList.contains("vision-planet") ?? false,
+    scroll: getComputedStyle(document.documentElement).overflow,
+  }));
+  const hero = await picture(page, ".vision-planet");
+  check(
+    closed.canvas && closed.focus && closed.scroll !== "hidden" && hero.spread > 4,
+    "Escape closes the dialog and gives the hero back its canvas and the focus",
+    JSON.stringify({ ...closed, spread: hero.spread.toFixed(1) }),
+  );
+  check(errors.length === 0, "no console errors in the dialog", errors.join(" | "));
+  await ctx.close();
+}
+
+{
+  // On a phone the dialog fits the screen: nothing scrolls sideways, and the controls are in reach.
+  const ctx = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    deviceScaleFactor: 2,
+    hasTouch: true,
+    isMobile: true,
+  });
+  const page = await ctx.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await page.goto(`${url}/`, { waitUntil: "load", timeout: 120_000 });
+  await live(page);
+  await page.click(".vision-play");
+  await page.click(".vision-planet");
+  await page.waitForSelector("dialog.journey-dialog[open]", { timeout: 30_000 });
+  await settled(page);
+  const fit = await page.evaluate(() => {
+    const d = document.querySelector("dialog.journey-dialog") as HTMLElement;
+    const r = (sel: string) => d.querySelector(sel)?.getBoundingClientRect();
+    const play = r(".journey-controls .vision-play");
+    const close = r(".journey-close");
+    const frame = r(".journey-frame");
+    return {
+      sideways: d.scrollWidth > d.clientWidth + 1,
+      play: Boolean(play && play.bottom <= innerHeight && play.top >= 0),
+      close: Boolean(close && close.right <= innerWidth && close.top >= 0),
+      frame: frame ? Math.round(frame.height) : 0,
+    };
+  });
+  check(
+    !fit.sideways && fit.play && fit.close && fit.frame > 200,
+    "on a phone the dialog fits, with play and close in reach and room for the scene",
+    JSON.stringify(fit),
+  );
+  if (shots) await page.screenshot({ path: `${shots}/dialog-phone.png`, timeout: 180_000 });
+  check(errors.length === 0, "no page errors in the phone dialog", errors.join(" | "));
+  await ctx.close();
+}
+
+{
+  // The Explorer flies the reader's variant on the same engine. Doubling every 90 days, the Foundry
+  // finishes late: the story runs past the deadline to Venus finished, and says where the deadline was.
+  const { ctx, page, errors } = await open({ path: "/explore?set=foundry-doubling-days:90" });
+  const idle = () =>
+    page.waitForFunction(
+      () =>
+        document.querySelector<HTMLCanvasElement>(".journey-panel canvas")?.dataset.idle === "1",
+      undefined,
+      { timeout: 180_000 },
+    );
+  await page.waitForSelector('.journey-panel[data-scene="live"]', { timeout: 180_000 });
+  await page.locator(".journey-panel").scrollIntoViewIfNeeded();
+  await idle();
+  const panel = () =>
+    page.evaluate(() => {
+      const q = (sel: string) => document.querySelectorAll(`.journey-panel ${sel}`).length;
+      return {
+        title: document.querySelector("#journey-panel-title")?.textContent ?? "",
+        max: Number(document.querySelector<HTMLInputElement>(".journey-panel input")?.max),
+        deadline: q(".vision-mark.is-deadline"),
+        plan: q(".vision-mark.is-plan"),
+        caption: document.querySelector(".journey-panel .vision-text")?.textContent ?? "",
+      };
+    });
+  const late = await panel();
+  // The canvas is marked, to prove a slider move keeps it rather than making another.
+  await page.evaluate(() => {
+    const c = document.querySelector<HTMLCanvasElement>(".journey-panel canvas");
+    if (c) c.dataset.first = "1";
+  });
+  await page.evaluate(() => {
+    const s = document.querySelector<HTMLInputElement>(".journey-panel input");
+    if (!s) return;
+    s.value = s.max;
+    s.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  await idle();
+  const finish = await panel();
+  const drawn = await picture(page, ".journey-panel-stage");
+  check(
+    late.title === "This variant, flown" &&
+      late.max > 3652 &&
+      late.deadline === 1 &&
+      late.plan > 10 &&
+      /green|Earth-like/.test(finish.caption) &&
+      drawn.spread > 4,
+    "the Explorer flies a late variant past the deadline to its finish",
+    JSON.stringify({ ...late, end: finish.caption, spread: drawn.spread.toFixed(1) }),
+  );
+
+  // Back to a fast Foundry: the story is on time again, on the same canvas.
+  const doubling = page.locator("#x-foundry-doubling-days");
+  await doubling.focus();
+  await doubling.press("Home");
+  await page.waitForTimeout(1500);
+  await idle();
+  const fast = await panel();
+  const same = await page.evaluate(() => ({
+    kept: document.querySelector<HTMLCanvasElement>(".journey-panel canvas")?.dataset.first === "1",
+    canvases: document.querySelectorAll("canvas.journey-canvas").length,
+  }));
+  await page.click(".journey-panel-box");
+  await page.waitForSelector("dialog.journey-dialog[open]", { timeout: 30_000 });
+  const dialogTitle = (await page.locator("#journey-title").textContent()) ?? "";
+  await page.keyboard.press("Escape");
+  await page.waitForFunction(() => !document.querySelector("dialog[open]"), undefined, {
+    timeout: 30_000,
+  });
+  const back = await page.evaluate(() =>
+    Boolean(document.querySelector(".journey-panel-stage > canvas.journey-canvas")),
+  );
+  check(
+    fast.max <= 3652 &&
+      fast.deadline === 0 &&
+      same.kept &&
+      same.canvases === 1 &&
+      dialogTitle.startsWith("This variant") &&
+      back,
+    "a slider move retells the story on the same canvas, and the card opens full screen",
+    JSON.stringify({ max: fast.max, deadline: fast.deadline, ...same, dialogTitle, back }),
+  );
+  check(errors.length === 0, "no console errors in the Explorer's journey", errors.join(" | "));
+  await ctx.close();
 }
 
 {

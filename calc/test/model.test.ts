@@ -9,6 +9,7 @@ import { loadInputs, ROOT, readYaml, run, sourceLines } from "../src/load.ts";
 import { lightTemp } from "../src/model/exhaust.ts";
 import { arrivedShare, iceArrivals, placesOn } from "../src/model/ice.ts";
 import { compute } from "../src/model/index.ts";
+import { placeOf, type World } from "../src/model/places.ts";
 import { simulate } from "../src/model/trajectory.ts";
 import {
   blackBodyShare,
@@ -674,4 +675,21 @@ test("numbers are written the way people read them", () => {
   );
   assert.equal(formatQuantity({ value: 0.999, unit: "1", show: "%", sig: 3 }), "99.9%");
   assert.equal(formatQuantity({ value: dayOf("2033-06-22"), unit: "date" }), "June 2033");
+});
+
+test("the worlds sit where the sky has them", () => {
+  const v = (id: string) => r.get(id).value;
+  const lon = (w: World, iso: string) => placeOf(v, w, dayOf(iso)).longitude;
+  const apart = (a: number, b: number) => Math.abs(((a - b + 540) % 360) - 180);
+  // At the March equinox the Sun stands at 0°, so Earth is at 180°.
+  assert.ok(apart(lon("earth", "2027-03-20"), 180) < 2.5, `${lon("earth", "2027-03-20")}`);
+  // Venus passed between the Sun and Earth on 24 October 2026 (inferior conjunction).
+  assert.ok(apart(lon("venus", "2026-10-24"), lon("earth", "2026-10-24")) < 3);
+  // Mercury swings between 0.31 and 0.47 AU.
+  const d = [0, 22, 44, 66].map((k) => placeOf(v, "mercury", k).distance);
+  assert.ok(Math.min(...d) > 0.3 && Math.max(...d) < 0.47 && Math.max(...d) - Math.min(...d) > 0.1);
+  // The model's series are the same arithmetic, sampled.
+  const series = r.series.get("orbit-ceres-longitude")?.points ?? [];
+  const p = series[100];
+  assert.ok(p && apart(p.y, placeOf(v, "ceres", p.x).longitude) < 1e-9);
 });
