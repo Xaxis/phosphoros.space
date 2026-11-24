@@ -2,11 +2,11 @@ import { Legend } from "../components/Basis";
 import { DocBody, docNumbers } from "../components/DocPage";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
-import { VenusHero } from "../components/hero/VenusHero";
+import { JourneyHero } from "../components/journey/JourneyHero";
 import { Markdown } from "../components/Markdown";
 import { Num, NumberCards } from "../components/Num";
 import { hasDoc, loadDoc } from "../lib/docs";
-import { heroData } from "../lib/hero";
+import { journeyData } from "../lib/journey";
 import { model } from "../lib/model";
 import { HOME, REPO, TAGLINE } from "../lib/site";
 
@@ -27,8 +27,8 @@ export default function Home() {
     <>
       <Header current="/" />
       <main id="content">
-        <VenusHero
-          data={heroData()}
+        <JourneyHero
+          data={journeyData(model().r)}
           footer={
             <dl className="hero-stats">
               <div>
@@ -101,7 +101,7 @@ export default function Home() {
               Every number on GitHub
             </a>
           </div>
-        </VenusHero>
+        </JourneyHero>
         <div className="page">
           <div className="home-legend">
             <Legend />

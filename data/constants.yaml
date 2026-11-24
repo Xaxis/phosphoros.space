@@ -198,7 +198,7 @@ venus-elements-epoch:
   value: 2451545.0
   unit: d
   show: d
-  label: Epoch of Venus's elements, as a Julian day (J2000.0, noon on 1 January 2000)
+  label: Epoch of the planets' elements in Standish's table, as a Julian day (J2000.0, noon on 1 January 2000)
   basis: physics
   source: [standish-1992-approx]
   sig: 8
@@ -446,6 +446,36 @@ earth-dipole:
   basis: physics
   source: [nasa-earth-factsheet]
   sig: 1
+earth-mean-longitude:
+  value: 100.46457166
+  unit: deg
+  label: Earth's mean longitude at J2000
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 11
+  note: The Earth and Moon's barycentre.
+earth-mean-motion:
+  value: 0.98560910
+  unit: deg/d
+  label: Earth's mean motion
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 8
+  note: 35,999.372° a Julian century of 36,525 days.
+earth-eccentricity:
+  value: 0.01671123
+  unit: "1"
+  label: Earth's orbital eccentricity
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 7
+earth-perihelion-longitude:
+  value: 102.93768193
+  unit: deg
+  label: Longitude of Earth's perihelion at J2000
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 11
 seawater-density:
   value: 1025
   unit: kg/m3
@@ -486,6 +516,35 @@ mercury-escape:
   basis: physics
   source: [nasa-mercury-factsheet]
   sig: 3
+mercury-mean-longitude:
+  value: 252.25032350
+  unit: deg
+  label: Mercury's mean longitude at J2000
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 11
+mercury-mean-motion:
+  value: 4.09233878
+  unit: deg/d
+  label: Mercury's mean motion
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 9
+  note: 149,472.674° a Julian century of 36,525 days.
+mercury-eccentricity:
+  value: 0.20563593
+  unit: "1"
+  label: Mercury's orbital eccentricity
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 8
+mercury-perihelion-longitude:
+  value: 77.45779628
+  unit: deg
+  label: Longitude of Mercury's perihelion at J2000
+  basis: physics
+  source: [standish-1992-approx]
+  sig: 10
 ceres-mass:
   value: 9.384e20
   unit: kg

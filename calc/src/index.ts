@@ -3,6 +3,7 @@
 export * from "./format.ts";
 export { DEMANDS } from "./model/budget.ts";
 export { compute, MODULES } from "./model/index.ts";
+export { PLACE_INPUTS, type Place, placeOf, WORLDS, type World } from "./model/places.ts";
 export { simulate } from "./model/trajectory.ts";
 export * from "./registry.ts";
 export * from "./time.ts";

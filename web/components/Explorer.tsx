@@ -12,8 +12,12 @@ import type { FigureDef } from "@phosphoros/figures";
 import { gantt } from "@phosphoros/figures/gantt";
 import { latticeBudget } from "@phosphoros/figures/lattice-budget";
 import { trajectory } from "@phosphoros/figures/trajectory";
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { journeyData } from "../lib/journey";
+import { fromSlider, STEPS, toSlider } from "../lib/slider";
 import { BasisTag, Legend } from "./Basis";
+import { JourneyPanel } from "./journey/JourneyPanel";
+import type { JourneyData } from "./journey/types";
 import { Mono } from "./Mono";
 
 export interface ExplorerGroup {
@@ -28,8 +32,6 @@ export interface Outcome {
   better: "earlier" | "later" | "higher" | "lower" | "none";
 }
 
-const STEPS = 400;
-
 /**
  * Where the plan holds as one input moves alone (tools/margins.ts): the last passing value on each
  * side, or null where it holds to the end of the range.
@@ -40,19 +42,13 @@ export interface SliderMargin {
   high: number | null;
 }
 
-function toSlider(q: Input, value: number): number {
-  const [lo, hi] = q.range as [number, number];
-  const log = hi / lo > 4;
-  const t = log ? Math.log(value / lo) / Math.log(hi / lo) : (value - lo) / (hi - lo);
-  return Math.round(Math.min(1, Math.max(0, t)) * STEPS);
-}
-
-function fromSlider(q: Input, step: number): number {
-  const [lo, hi] = q.range as [number, number];
-  const t = step / STEPS;
-  const log = hi / lo > 4;
-  const v = log ? lo * (hi / lo) ** t : lo + t * (hi - lo);
-  return Number(v.toPrecision(3));
+/** The journey's data for a run, or undefined if the run lacks something the journey needs. */
+function storyOf(r: Registry): JourneyData | undefined {
+  try {
+    return journeyData(r);
+  } catch {
+    return undefined;
+  }
 }
 
 function run(inputs: Input[], overrides: Record<string, number>): { r?: Registry; error?: string } {
@@ -132,6 +128,14 @@ export function Explorer({
   }, [overrides]);
 
   const changed = Object.keys(overrides).length > 0;
+
+  // The 3D journey of this variant. When the model cannot run the sliders, it keeps the last
+  // variant it could, on the same canvas, rather than going blank.
+  const plan = useMemo(() => (base.r ? storyOf(base.r) : undefined), [base]);
+  const lastStory = useRef<JourneyData | undefined>(undefined);
+  const story = useMemo(() => (now.r ? storyOf(now.r) : undefined), [now]);
+  if (story) lastStory.current = story;
+  const shown = story ?? lastStory.current;
 
   return (
     <div className="explorer">
@@ -227,11 +231,17 @@ export function Explorer({
         {now.error || !now.r || !base.r ? (
           <p className="explorer-error">The model cannot run with these assumptions: {now.error}</p>
         ) : (
+          <Verdict now={now.r} />
+        )}
+        {shown && plan ? (
+          <JourneyPanel data={shown} plan={plan} changed={changed} stale={!story} />
+        ) : null}
+        {now.r && base.r && !now.error ? (
           <>
             <Results base={base.r} now={now.r} outcomes={outcomes} changed={changed} />
             <VariantFigures r={now.r} timeline={timeline} changed={changed} />
           </>
-        )}
+        ) : null}
       </section>
     </div>
   );
@@ -249,6 +259,27 @@ function verdict(now: Registry) {
   return { onTime, earthLike, deadline, passing, total: checks.length, sentence };
 }
 
+/** Whether the variant still makes the deadline, as a heading and one sentence. */
+function Verdict({ now }: { now: Registry }) {
+  const { onTime, earthLike, deadline, passing, total } = verdict(now);
+  return (
+    <div className={`explorer-verdict ${onTime ? "ok" : "late"}`}>
+      <p className="explorer-verdict-title">
+        {onTime ? "Venus is Earth-like in time" : "Venus misses the deadline"}
+      </p>
+      <p>
+        The day-by-day simulation reaches Earth-like air on{" "}
+        <strong>{formatQuantity(now.get("traj-earth-like"), { date: "day" })}</strong>
+        {onTime ? ", " : ", against a deadline of "}
+        {onTime
+          ? `${Math.round(deadline - earthLike)} days before the deadline.`
+          : `${formatQuantity(now.get("deadline"), { date: "day" })}.`}{" "}
+        {passing} of {total} physics checks pass.
+      </p>
+    </div>
+  );
+}
+
 function Results({
   base,
   now,
@@ -260,24 +291,9 @@ function Results({
   outcomes: Outcome[];
   changed: boolean;
 }) {
-  const { onTime, earthLike, deadline, passing, total } = verdict(now);
   const checks = [...now.checks.values()];
   return (
     <>
-      <div className={`explorer-verdict ${onTime ? "ok" : "late"}`}>
-        <p className="explorer-verdict-title">
-          {onTime ? "Venus is Earth-like in time" : "Venus misses the deadline"}
-        </p>
-        <p>
-          The day-by-day simulation reaches Earth-like air on{" "}
-          <strong>{formatQuantity(now.get("traj-earth-like"), { date: "day" })}</strong>
-          {onTime ? ", " : ", against a deadline of "}
-          {onTime
-            ? `${Math.round(deadline - earthLike)} days before the deadline.`
-            : `${formatQuantity(now.get("deadline"), { date: "day" })}.`}{" "}
-          {passing} of {total} physics checks pass.
-        </p>
-      </div>
       <section
         className="explorer-table"
         // biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling region must take focus to scroll by keys

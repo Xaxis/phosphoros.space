@@ -205,7 +205,7 @@
       "value": 2451550,
       "unit": "d",
       "shown": "2.4515450 × 10⁶ d",
-      "label": "Epoch of Venus's elements, as a Julian day (J2000.0, noon on 1 January 2000)",
+      "label": "Epoch of the planets' elements in Standish's table, as a Julian day (J2000.0, noon on 1 January 2000)",
       "basis": "physics",
       "source": "data/constants.yaml#L197"
     },
@@ -465,13 +465,45 @@
       "basis": "physics",
       "source": "data/constants.yaml#L442"
     },
+    "earth-mean-longitude": {
+      "value": 100.465,
+      "unit": "deg",
+      "shown": "100.46457166°",
+      "label": "Earth's mean longitude at J2000",
+      "basis": "physics",
+      "source": "data/constants.yaml#L449"
+    },
+    "earth-mean-motion": {
+      "value": 0.985609,
+      "unit": "deg/d",
+      "shown": "0.9856091 °/d",
+      "label": "Earth's mean motion",
+      "basis": "physics",
+      "source": "data/constants.yaml#L457"
+    },
+    "earth-eccentricity": {
+      "value": 0.0167112,
+      "unit": "1",
+      "shown": "0.01671123",
+      "label": "Earth's orbital eccentricity",
+      "basis": "physics",
+      "source": "data/constants.yaml#L465"
+    },
+    "earth-perihelion-longitude": {
+      "value": 102.938,
+      "unit": "deg",
+      "shown": "102.93768193°",
+      "label": "Longitude of Earth's perihelion at J2000",
+      "basis": "physics",
+      "source": "data/constants.yaml#L472"
+    },
     "seawater-density": {
       "value": 1025,
       "unit": "kg/m3",
       "shown": "1,030 kg/m³",
       "label": "Seawater density",
       "basis": "physics",
-      "source": "data/constants.yaml#L449"
+      "source": "data/constants.yaml#L479"
     },
     "humanity-power": {
       "value": 19000000000000,
@@ -479,7 +511,7 @@
       "shown": "19 TW",
       "label": "Humanity's primary power use",
       "basis": "physics",
-      "source": "data/constants.yaml#L455"
+      "source": "data/constants.yaml#L485"
     },
     "mercury-mass": {
       "value": 3.3011e+23,
@@ -487,7 +519,7 @@
       "shown": "3.3 × 10²³ kg",
       "label": "Mercury mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L466"
+      "source": "data/constants.yaml#L496"
     },
     "mercury-orbit": {
       "value": 57909000000,
@@ -495,7 +527,7 @@
       "shown": "0.387 AU",
       "label": "Mercury orbital radius (semi-major axis)",
       "basis": "physics",
-      "source": "data/constants.yaml#L473"
+      "source": "data/constants.yaml#L503"
     },
     "mercury-escape": {
       "value": 4250,
@@ -503,7 +535,39 @@
       "shown": "4.25 km/s",
       "label": "Mercury escape speed",
       "basis": "physics",
-      "source": "data/constants.yaml#L481"
+      "source": "data/constants.yaml#L511"
+    },
+    "mercury-mean-longitude": {
+      "value": 252.25,
+      "unit": "deg",
+      "shown": "252.2503235°",
+      "label": "Mercury's mean longitude at J2000",
+      "basis": "physics",
+      "source": "data/constants.yaml#L519"
+    },
+    "mercury-mean-motion": {
+      "value": 4.09234,
+      "unit": "deg/d",
+      "shown": "4.09233878 °/d",
+      "label": "Mercury's mean motion",
+      "basis": "physics",
+      "source": "data/constants.yaml#L526"
+    },
+    "mercury-eccentricity": {
+      "value": 0.205636,
+      "unit": "1",
+      "shown": "0.20563593",
+      "label": "Mercury's orbital eccentricity",
+      "basis": "physics",
+      "source": "data/constants.yaml#L534"
+    },
+    "mercury-perihelion-longitude": {
+      "value": 77.4578,
+      "unit": "deg",
+      "shown": "77.45779628°",
+      "label": "Longitude of Mercury's perihelion at J2000",
+      "basis": "physics",
+      "source": "data/constants.yaml#L541"
     },
     "ceres-mass": {
       "value": 938400000000000000000,
@@ -511,7 +575,7 @@
       "shown": "9.38 × 10²⁰ kg",
       "label": "Ceres mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L489"
+      "source": "data/constants.yaml#L548"
     },
     "ceres-radius": {
       "value": 469700,
@@ -519,7 +583,7 @@
       "shown": "470 km",
       "label": "Ceres mean radius",
       "basis": "physics",
-      "source": "data/constants.yaml#L496"
+      "source": "data/constants.yaml#L555"
     },
     "ceres-orbit": {
       "value": 413940000000,
@@ -527,7 +591,7 @@
       "shown": "2.77 AU",
       "label": "Ceres orbital radius (semi-major axis, 2.77 AU)",
       "basis": "physics",
-      "source": "data/constants.yaml#L504"
+      "source": "data/constants.yaml#L563"
     },
     "ceres-aphelion": {
       "value": 445830000000,
@@ -535,7 +599,7 @@
       "shown": "2.98 AU",
       "label": "Ceres aphelion",
       "basis": "physics",
-      "source": "data/constants.yaml#L512"
+      "source": "data/constants.yaml#L571"
     },
     "ceres-water-fraction": {
       "value": 0.27,
@@ -543,7 +607,7 @@
       "shown": "27%",
       "label": "Water share of Ceres's mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L520"
+      "source": "data/constants.yaml#L579"
     },
     "ceres-rotation-period": {
       "value": 32667,
@@ -551,7 +615,7 @@
       "shown": "9.074 h",
       "label": "Ceres rotation period (9.07417 h)",
       "basis": "physics",
-      "source": "data/constants.yaml#L530"
+      "source": "data/constants.yaml#L589"
     },
     "ceres-inclination": {
       "value": 10.588,
@@ -559,7 +623,7 @@
       "shown": "10.59°",
       "label": "Ceres orbital inclination to the ecliptic (J2000)",
       "basis": "physics",
-      "source": "data/constants.yaml#L538"
+      "source": "data/constants.yaml#L597"
     },
     "ceres-node": {
       "value": 80.249,
@@ -567,7 +631,7 @@
       "shown": "80.25°",
       "label": "Longitude of Ceres's ascending node on the ecliptic (J2000)",
       "basis": "physics",
-      "source": "data/constants.yaml#L545"
+      "source": "data/constants.yaml#L604"
     },
     "ceres-eccentricity": {
       "value": 0.0796923,
@@ -575,7 +639,7 @@
       "shown": "0.07969",
       "label": "Ceres orbital eccentricity",
       "basis": "physics",
-      "source": "data/constants.yaml#L553"
+      "source": "data/constants.yaml#L612"
     },
     "ceres-perihelion-argument": {
       "value": 73.2942,
@@ -583,7 +647,7 @@
       "shown": "73.29421°",
       "label": "Argument of Ceres's perihelion (J2000)",
       "basis": "physics",
-      "source": "data/constants.yaml#L561"
+      "source": "data/constants.yaml#L620"
     },
     "ceres-mean-anomaly": {
       "value": 274.419,
@@ -591,7 +655,7 @@
       "shown": "274.41935°",
       "label": "Ceres's mean anomaly at the epoch of its elements",
       "basis": "physics",
-      "source": "data/constants.yaml#L568"
+      "source": "data/constants.yaml#L627"
     },
     "ceres-mean-motion": {
       "value": 0.214304,
@@ -599,7 +663,7 @@
       "shown": "0.21430445 °/d",
       "label": "Ceres's mean motion",
       "basis": "physics",
-      "source": "data/constants.yaml#L575"
+      "source": "data/constants.yaml#L634"
     },
     "ceres-elements-epoch": {
       "value": 2461200,
@@ -607,7 +671,7 @@
       "shown": "2.4612005 × 10⁶ d",
       "label": "Epoch of Ceres's elements, as a Julian day (8 June 2026)",
       "basis": "physics",
-      "source": "data/constants.yaml#L582"
+      "source": "data/constants.yaml#L641"
     },
     "jupiter-mass": {
       "value": 1.89813e+27,
@@ -615,7 +679,7 @@
       "shown": "1.898 × 10²⁷ kg",
       "label": "Jupiter mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L592"
+      "source": "data/constants.yaml#L651"
     },
     "jupiter-orbit": {
       "value": 778479000000,
@@ -623,7 +687,7 @@
       "shown": "5.2 AU",
       "label": "Jupiter orbital radius (semi-major axis)",
       "basis": "physics",
-      "source": "data/constants.yaml#L599"
+      "source": "data/constants.yaml#L658"
     },
     "jupiter-perihelion": {
       "value": 740595000000,
@@ -631,7 +695,7 @@
       "shown": "4.95 AU",
       "label": "Jupiter perihelion, its closest to the Sun",
       "basis": "physics",
-      "source": "data/constants.yaml#L607"
+      "source": "data/constants.yaml#L666"
     },
     "co2-molar-mass": {
       "value": 0.04401,
@@ -639,7 +703,7 @@
       "shown": "0.04401 kg/mol",
       "label": "Molar mass of CO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L617"
+      "source": "data/constants.yaml#L676"
     },
     "n2-molar-mass": {
       "value": 0.028013,
@@ -647,7 +711,7 @@
       "shown": "0.02801 kg/mol",
       "label": "Molar mass of N₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L623"
+      "source": "data/constants.yaml#L682"
     },
     "o2-molar-mass": {
       "value": 0.031998,
@@ -655,7 +719,7 @@
       "shown": "0.032 kg/mol",
       "label": "Molar mass of O₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L629"
+      "source": "data/constants.yaml#L688"
     },
     "so2-molar-mass": {
       "value": 0.064066,
@@ -663,7 +727,7 @@
       "shown": "0.06407 kg/mol",
       "label": "Molar mass of SO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L635"
+      "source": "data/constants.yaml#L694"
     },
     "cao-molar-mass": {
       "value": 0.056077,
@@ -671,7 +735,7 @@
       "shown": "0.05608 kg/mol",
       "label": "Molar mass of CaO",
       "basis": "physics",
-      "source": "data/constants.yaml#L641"
+      "source": "data/constants.yaml#L700"
     },
     "h2so4-molar-mass": {
       "value": 0.098079,
@@ -679,7 +743,7 @@
       "shown": "0.09808 kg/mol",
       "label": "Molar mass of H₂SO₄",
       "basis": "physics",
-      "source": "data/constants.yaml#L647"
+      "source": "data/constants.yaml#L706"
     },
     "so2-antoine-a": {
       "value": 3.48586,
@@ -687,7 +751,7 @@
       "shown": "3.48586",
       "label": "SO₂ vapour pressure, Antoine A (log₁₀ of bar), 177.7 K to 263 K",
       "basis": "physics",
-      "source": "data/constants.yaml#L653"
+      "source": "data/constants.yaml#L712"
     },
     "so2-antoine-b": {
       "value": 668.225,
@@ -695,7 +759,7 @@
       "shown": "668.225 K",
       "label": "SO₂ vapour pressure, Antoine B",
       "basis": "physics",
-      "source": "data/constants.yaml#L660"
+      "source": "data/constants.yaml#L719"
     },
     "so2-antoine-c": {
       "value": -72.252,
@@ -703,7 +767,7 @@
       "shown": "−72.252 K",
       "label": "SO₂ vapour pressure, Antoine C",
       "basis": "physics",
-      "source": "data/constants.yaml#L667"
+      "source": "data/constants.yaml#L726"
     },
     "co2-so2-vle-temp": {
       "value": 263.15,
@@ -711,7 +775,7 @@
       "shown": "263.15 K",
       "label": "Temperature of the coldest measured CO₂ + SO₂ phase equilibrium",
       "basis": "physics",
-      "source": "data/constants.yaml#L674"
+      "source": "data/constants.yaml#L733"
     },
     "co2-so2-vle-pressure": {
       "value": 2349500,
@@ -719,7 +783,7 @@
       "shown": "23.5 bar",
       "label": "Pressure of the measured CO₂ + SO₂ equilibrium nearest pure CO₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L681"
+      "source": "data/constants.yaml#L740"
     },
     "co2-so2-vle-liquid": {
       "value": 0.103,
@@ -727,7 +791,7 @@
       "shown": "0.103",
       "label": "SO₂ share of the liquid, by mole, in that equilibrium",
       "basis": "physics",
-      "source": "data/constants.yaml#L689"
+      "source": "data/constants.yaml#L748"
     },
     "co2-so2-vle-vapour": {
       "value": 0.0147,
@@ -735,7 +799,7 @@
       "shown": "0.0147",
       "label": "SO₂ share of the vapour, by mole, in that equilibrium",
       "basis": "physics",
-      "source": "data/constants.yaml#L696"
+      "source": "data/constants.yaml#L755"
     },
     "co2-so2-vle-pure-so2": {
       "value": 104100,
@@ -743,7 +807,7 @@
       "shown": "1.041 bar",
       "label": "Pure SO₂'s vapour pressure at that temperature, measured with it",
       "basis": "physics",
-      "source": "data/constants.yaml#L703"
+      "source": "data/constants.yaml#L762"
     },
     "venus-cloud-column": {
       "value": 0.22,
@@ -751,7 +815,7 @@
       "shown": "0.22 kg/m²",
       "label": "Mass of Venus's cloud droplets above each square metre, 46 to 70 km",
       "basis": "physics",
-      "source": "data/constants.yaml#L711"
+      "source": "data/constants.yaml#L770"
     },
     "h2-molar-mass": {
       "value": 0.002016,
@@ -759,7 +823,7 @@
       "shown": "0.002016 kg/mol",
       "label": "Molar mass of H₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L719"
+      "source": "data/constants.yaml#L778"
     },
     "h2o-molar-mass": {
       "value": 0.018015,
@@ -767,7 +831,7 @@
       "shown": "0.01802 kg/mol",
       "label": "Molar mass of H₂O",
       "basis": "physics",
-      "source": "data/constants.yaml#L725"
+      "source": "data/constants.yaml#L784"
     },
     "c-molar-mass": {
       "value": 0.012011,
@@ -775,7 +839,7 @@
       "shown": "0.01201 kg/mol",
       "label": "Molar mass of carbon",
       "basis": "physics",
-      "source": "data/constants.yaml#L731"
+      "source": "data/constants.yaml#L790"
     },
     "o-o2-rate-o2": {
       "value": 6e-46,
@@ -783,7 +847,7 @@
       "shown": "6.0 × 10⁻³⁴ cm⁶/s",
       "label": "Rate of O + O₂ + M → O₃ + M at 300 K, with O₂ as M",
       "basis": "physics",
-      "source": "data/constants.yaml#L738"
+      "source": "data/constants.yaml#L797"
     },
     "o-o2-rate-n2": {
       "value": 5.6e-46,
@@ -791,7 +855,7 @@
       "shown": "5.6 × 10⁻³⁴ cm⁶/s",
       "label": "Rate of O + O₂ + M → O₃ + M at 300 K, with N₂ as M",
       "basis": "physics",
-      "source": "data/constants.yaml#L746"
+      "source": "data/constants.yaml#L805"
     },
     "o-o2-rate-exponent": {
       "value": 2.6,
@@ -799,7 +863,7 @@
       "shown": "2.6",
       "label": "How that rate rises as the air cools, as a power of 300 K over the temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L754"
+      "source": "data/constants.yaml#L813"
     },
     "o-o3-rate": {
       "value": 8e-18,
@@ -807,7 +871,7 @@
       "shown": "8.0 × 10⁻¹² cm³/s",
       "label": "Rate of O + O₃ → 2 O₂, before its temperature factor",
       "basis": "physics",
-      "source": "data/constants.yaml#L761"
+      "source": "data/constants.yaml#L820"
     },
     "o-o3-activation-temp": {
       "value": 2060,
@@ -815,7 +879,7 @@
       "shown": "2,060 K",
       "label": "Activation temperature of O + O₃ → 2 O₂",
       "basis": "physics",
-      "source": "data/constants.yaml#L769"
+      "source": "data/constants.yaml#L828"
     },
     "co2-cp": {
       "value": 1000,
@@ -823,7 +887,7 @@
       "shown": "1,000 J/(kg·K)",
       "label": "Heat capacity of Venus's air (CO₂), averaged over the cooling",
       "basis": "physics",
-      "source": "data/constants.yaml#L776"
+      "source": "data/constants.yaml#L835"
     },
     "air-cp": {
       "value": 1040,
@@ -831,7 +895,7 @@
       "shown": "1,040 J/(kg·K)",
       "label": "Heat capacity of nitrogen-oxygen air",
       "basis": "physics",
-      "source": "data/constants.yaml#L784"
+      "source": "data/constants.yaml#L843"
     },
     "co2-deposition-heat": {
       "value": 571000,
@@ -839,7 +903,7 @@
       "shown": "571 kJ/kg",
       "label": "Heat CO₂ releases freezing straight from gas (deposition)",
       "basis": "physics",
-      "source": "data/constants.yaml#L790"
+      "source": "data/constants.yaml#L849"
     },
     "co2-sublimation-a1": {
       "value": -14.7408,
@@ -847,7 +911,7 @@
       "shown": "−14.740846",
       "label": "CO₂ sublimation curve, first coefficient (ln(p/p_t) = (T_t/T) [a₁ θ + a₂ θ^1.9 + a₃ θ^2.9], θ = 1 − T/T_t)",
       "basis": "physics",
-      "source": "data/constants.yaml#L798"
+      "source": "data/constants.yaml#L857"
     },
     "co2-sublimation-a2": {
       "value": 2.4327,
@@ -855,7 +919,7 @@
       "shown": "2.4327015",
       "label": "CO₂ sublimation curve, second coefficient",
       "basis": "physics",
-      "source": "data/constants.yaml#L806"
+      "source": "data/constants.yaml#L865"
     },
     "co2-sublimation-a3": {
       "value": -5.30618,
@@ -863,7 +927,7 @@
       "shown": "−5.3061778",
       "label": "CO₂ sublimation curve, third coefficient",
       "basis": "physics",
-      "source": "data/constants.yaml#L813"
+      "source": "data/constants.yaml#L872"
     },
     "co2-critical-temp": {
       "value": 304.13,
@@ -871,7 +935,7 @@
       "shown": "304.1 K",
       "label": "CO₂ critical temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L820"
+      "source": "data/constants.yaml#L879"
     },
     "co2-critical-pressure": {
       "value": 7377300,
@@ -879,7 +943,7 @@
       "shown": "73.8 bar",
       "label": "CO₂ critical pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L827"
+      "source": "data/constants.yaml#L886"
     },
     "co2-triple-temp": {
       "value": 216.592,
@@ -887,7 +951,7 @@
       "shown": "216.6 K",
       "label": "CO₂ triple-point temperature",
       "basis": "physics",
-      "source": "data/constants.yaml#L835"
+      "source": "data/constants.yaml#L894"
     },
     "co2-triple-pressure": {
       "value": 517950,
@@ -895,7 +959,7 @@
       "shown": "5.2 bar",
       "label": "CO₂ triple-point pressure",
       "basis": "physics",
-      "source": "data/constants.yaml#L842"
+      "source": "data/constants.yaml#L901"
     },
     "co2-melting-a1": {
       "value": 1955.54,
@@ -903,7 +967,7 @@
       "shown": "1,955.539",
       "label": "CO₂ melting curve, linear coefficient (p/p_t = 1 + a₁ (T/T_t − 1) + a₂ (T/T_t − 1)²)",
       "basis": "physics",
-      "source": "data/constants.yaml#L850"
+      "source": "data/constants.yaml#L909"
     },
     "co2-melting-a2": {
       "value": 2055.46,
@@ -911,7 +975,7 @@
       "shown": "2,055.4593",
       "label": "CO₂ melting curve, quadratic coefficient",
       "basis": "physics",
-      "source": "data/constants.yaml#L858"
+      "source": "data/constants.yaml#L917"
     },
     "dry-ice-density": {
       "value": 1562,
@@ -919,7 +983,7 @@
       "shown": "1,562 kg/m³",
       "label": "Density of dry ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L865"
+      "source": "data/constants.yaml#L924"
     },
     "co2-split-enthalpy": {
       "value": 393500,
@@ -927,7 +991,7 @@
       "shown": "394 kJ/mol",
       "label": "Least energy to split CO₂ into carbon and oxygen",
       "basis": "physics",
-      "source": "data/constants.yaml#L871"
+      "source": "data/constants.yaml#L930"
     },
     "bosch-reaction-heat": {
       "value": 90100,
@@ -935,7 +999,7 @@
       "shown": "90.1 kJ/mol",
       "label": "Heat the Bosch reaction releases per mole of CO₂ (water as vapour)",
       "basis": "physics",
-      "source": "data/constants.yaml#L879"
+      "source": "data/constants.yaml#L938"
     },
     "ice-density": {
       "value": 917,
@@ -943,7 +1007,7 @@
       "shown": "917 kg/m³",
       "label": "Density of water ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L887"
+      "source": "data/constants.yaml#L946"
     },
     "water-density": {
       "value": 1000,
@@ -951,7 +1015,7 @@
       "shown": "1,000 kg/m³",
       "label": "Density of water",
       "basis": "physics",
-      "source": "data/constants.yaml#L893"
+      "source": "data/constants.yaml#L952"
     },
     "ice-melt-heat": {
       "value": 334000,
@@ -959,7 +1023,7 @@
       "shown": "334 kJ/kg",
       "label": "Heat to melt ice",
       "basis": "physics",
-      "source": "data/constants.yaml#L899"
+      "source": "data/constants.yaml#L958"
     },
     "ice-cp": {
       "value": 1750,
@@ -967,7 +1031,7 @@
       "shown": "1,800 J/(kg·K)",
       "label": "Heat capacity of cold ice (average from 150 K to 273 K)",
       "basis": "physics",
-      "source": "data/constants.yaml#L906"
+      "source": "data/constants.yaml#L965"
     },
     "water-cp": {
       "value": 4184,
@@ -975,7 +1039,7 @@
       "shown": "4,180 J/(kg·K)",
       "label": "Heat capacity of water",
       "basis": "physics",
-      "source": "data/constants.yaml#L912"
+      "source": "data/constants.yaml#L971"
     },
     "water-vaporization-heat": {
       "value": 2257000,
@@ -983,7 +1047,7 @@
       "shown": "2.257 MJ/kg",
       "label": "Heat to boil water, at its normal boiling point",
       "basis": "physics",
-      "source": "data/constants.yaml#L918"
+      "source": "data/constants.yaml#L977"
     },
     "water-boiling-temp": {
       "value": 373.15,
@@ -991,7 +1055,7 @@
       "shown": "373.15 K",
       "label": "Water's boiling point at one standard atmosphere",
       "basis": "physics",
-      "source": "data/constants.yaml#L926"
+      "source": "data/constants.yaml#L985"
     },
     "graphite-density": {
       "value": 2200,
@@ -999,7 +1063,7 @@
       "shown": "2,200 kg/m³",
       "label": "Density of graphite",
       "basis": "physics",
-      "source": "data/constants.yaml#L932"
+      "source": "data/constants.yaml#L991"
     },
     "rock-conductivity": {
       "value": 2.5,
@@ -1007,7 +1071,7 @@
       "shown": "2.5 W/(m·K)",
       "label": "Thermal conductivity of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L940"
+      "source": "data/constants.yaml#L999"
     },
     "rock-diffusivity": {
       "value": 0.000001,
@@ -1015,7 +1079,7 @@
       "shown": "1.0 × 10⁻⁶ m²/s",
       "label": "Thermal diffusivity of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L947"
+      "source": "data/constants.yaml#L1006"
     },
     "rock-density": {
       "value": 3000,
@@ -1023,7 +1087,7 @@
       "shown": "3,000 kg/m³",
       "label": "Density of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L954"
+      "source": "data/constants.yaml#L1013"
     },
     "basalt-cao-fraction": {
       "value": 0.1,
@@ -1031,7 +1095,7 @@
       "shown": "10%",
       "label": "Lime (CaO) share of basalt",
       "basis": "physics",
-      "source": "data/constants.yaml#L961"
+      "source": "data/constants.yaml#L1020"
     },
     "led-2012-power-in": {
       "value": 3e-11,
@@ -1039,7 +1103,7 @@
       "shown": "3.0 × 10⁻¹¹ W",
       "label": "Electricity the MIT LED drew while emitting more light than that (2012)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L970"
+      "source": "data/constants.yaml#L1029"
     },
     "led-2012-light-out": {
       "value": 6.9e-11,
@@ -1047,7 +1111,7 @@
       "shown": "6.9 × 10⁻¹¹ W",
       "label": "Light the MIT LED emitted from that electricity, the rest drawn from heat (2012)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L977"
+      "source": "data/constants.yaml#L1036"
     },
     "laser-cooling-2013-drop": {
       "value": 40,
@@ -1055,7 +1119,7 @@
       "shown": "40 K",
       "label": "How far laser light cooled a semiconductor, cadmium sulphide nanobelts, below room temperature (2013)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L984"
+      "source": "data/constants.yaml#L1043"
     },
     "carbon-fibre-strength": {
       "value": 7000000000,
@@ -1063,7 +1127,7 @@
       "shown": "7 GPa",
       "label": "Tensile strength of Toray T1100G, the strongest carbon fibre on general sale",
       "basis": "precedent",
-      "source": "data/constants.yaml#L991"
+      "source": "data/constants.yaml#L1050"
     },
     "carbon-fibre-density": {
       "value": 1790,
@@ -1071,7 +1135,7 @@
       "shown": "1,790 kg/m³",
       "label": "Density of Toray T1100G carbon fibre",
       "basis": "precedent",
-      "source": "data/constants.yaml#L999"
+      "source": "data/constants.yaml#L1058"
     },
     "lunar-factory-seed-mass": {
       "value": 100000,
@@ -1079,7 +1143,7 @@
       "shown": "100 t",
       "label": "Seed mass of the 1980 NASA self-replicating lunar factory (a design study)",
       "basis": "precedent",
-      "source": "data/constants.yaml#L1006"
+      "source": "data/constants.yaml#L1065"
     },
     "lunar-factory-replication-time": {
       "value": 365.25,
@@ -1087,7 +1151,7 @@
       "shown": "1 yr",
       "label": "Time the 1980 NASA lunar factory was designed to take to copy itself",
       "basis": "precedent",
-      "source": "data/constants.yaml#L1014"
+      "source": "data/constants.yaml#L1073"
     },
     "howe-tiles": {
       "value": 72000000000,
@@ -1095,7 +1159,7 @@
       "shown": "7.2 × 10¹⁰",
       "label": "Floating tiles, 100 m across, that Cloud Continents needs to cover Venus at 50 km",
       "basis": "precedent",
-      "source": "data/constants.yaml#L1022"
+      "source": "data/constants.yaml#L1081"
     },
     "howe-water-mass": {
       "value": 230000000000000000,
@@ -1103,7 +1167,7 @@
       "shown": "2.3 × 10¹⁷ kg",
       "label": "Water Cloud Continents imports, enough for arable soil over the whole planet",
       "basis": "precedent",
-      "source": "data/constants.yaml#L1028"
+      "source": "data/constants.yaml#L1087"
     },
     "divertor-steady-flux": {
       "value": 10000000,
@@ -1111,7 +1175,7 @@
       "shown": "10 MW/m²",
       "label": "Steady heat flux ITER's divertor targets are built to carry",
       "basis": "precedent",
-      "source": "data/constants.yaml#L1035"
+      "source": "data/constants.yaml#L1094"
     },
     "mercury-surface-fe-max": {
       "value": 0.04,
@@ -1119,7 +1183,7 @@
       "shown": "4%",
       "label": "Most iron in Mercury's surface rock, by mass",
       "basis": "physics",
-      "source": "data/constants.yaml#L1044"
+      "source": "data/constants.yaml#L1103"
     },
     "program-start": {
       "value": "2027-01-01",

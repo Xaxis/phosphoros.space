@@ -126,10 +126,17 @@ export function Link({
 
 export type Scale = ((v: number) => number) & { domain: [number, number]; range: [number, number] };
 
+/**
+ * To a thousandth of a unit. The Explorer draws its figures on the server and again in the browser,
+ * and the two engines' Math.log and Math.exp can differ in the last bits of a model number; rounded
+ * here, the coordinates agree and the page hydrates without a mismatch. Far finer than a pixel.
+ */
+const fine = (v: number) => Math.round(v * 1000) / 1000;
+
 export function linear(domain: [number, number], range: [number, number]): Scale {
   const [d0, d1] = domain;
   const [r0, r1] = range;
-  const f = ((v: number) => r0 + ((v - d0) / (d1 - d0)) * (r1 - r0)) as Scale;
+  const f = ((v: number) => fine(r0 + ((v - d0) / (d1 - d0)) * (r1 - r0))) as Scale;
   f.domain = domain;
   f.range = range;
   return f;
@@ -138,7 +145,7 @@ export function linear(domain: [number, number], range: [number, number]): Scale
 export function log(domain: [number, number], range: [number, number]): Scale {
   const [d0, d1] = domain.map(Math.log10) as [number, number];
   const [r0, r1] = range;
-  const f = ((v: number) => r0 + ((Math.log10(v) - d0) / (d1 - d0)) * (r1 - r0)) as Scale;
+  const f = ((v: number) => fine(r0 + ((Math.log10(v) - d0) / (d1 - d0)) * (r1 - r0))) as Scale;
   f.domain = domain;
   f.range = range;
   return f;

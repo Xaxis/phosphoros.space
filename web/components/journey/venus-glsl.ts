@@ -1,13 +1,14 @@
 /**
- * GLSL for the animated Venus. Colours arrive as uniforms in linear space; every fragment shader
- * ends with three's tone mapping and colour space chunks so the bloom pass and the screen agree.
+ * GLSL for Venus and the hardware round it. Colours arrive as uniforms in linear space; every
+ * fragment shader ends with three's tone mapping and colour space chunks so the bloom pass and the
+ * screen agree. Venus is drawn in its own frame: uRot turns its surface, uSunDir points at the Sun.
  */
 
 /**
  * 3D simplex noise. From webgl-noise by Ian McEwan and Stefan Gustavson (Ashima Arts),
  * MIT licence: https://github.com/ashima/webgl-noise
  */
-const SIMPLEX = /* glsl */ `
+export const SIMPLEX = /* glsl */ `
 vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 vec4 permute(vec4 x) { return mod289(((x * 34.0) + 10.0) * x); }
@@ -71,7 +72,7 @@ float fbm(vec3 p, int octaves) {
 `;
 
 /** Latitude and longitude texture coordinates for a point on the unit sphere. */
-const UV = /* glsl */ `
+export const UV = /* glsl */ `
 const float PI = 3.14159265359;
 vec2 uvOf(vec3 n) {
   return vec2(atan(n.x, n.z) / (2.0 * PI) + 0.5, asin(clamp(n.y, -1.0, 1.0)) / PI + 0.5);
@@ -86,7 +87,7 @@ vec2 uvOf(vec3 n) {
  * negative base, so only the hero check's hostile mode, which makes them NaN, can catch it in CI.
  * web/test/hero.test.ts holds every call to the rule.
  */
-const OUT = /* glsl */ `
+export const OUT = /* glsl */ `
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
 `;
@@ -106,6 +107,10 @@ void main() {
  */
 export const BAKE_FRAG = /* glsl */ `
 uniform int uLayer;
+// Magellan's altimetry, equalised so each grey level covers the same share of the planet; uReal
+// is 0 until it loads, and the procedural terrain stands in.
+uniform sampler2D uHeight;
+uniform float uReal;
 varying vec2 vUv;
 ${SIMPLEX}
 void main() {
@@ -117,6 +122,9 @@ void main() {
     float cont = fbm(w * 1.0 + 3.0, 7);
     float ridge = 1.0 - abs(snoise(w * 3.4 + 2.0));
     float h = 0.5 + 0.62 * cont + 0.09 * (ridge * ridge - 0.45) + 0.04 * fbm(p * 11.0, 3);
+    // Real heights, with fine procedural detail below the map's 37 km pixels so shorelines wander.
+    float real = 0.16 + 0.68 * texture2D(uHeight, vUv).r + 0.018 * fbm(p * 24.0, 3) + 0.01 * snoise(p * 60.0);
+    h = mix(h, real, uReal);
     float basin = 0.5 + 0.7 * fbm(p * 0.85 + 21.0, 3);
     float moist = 0.5 + 0.75 * fbm(w * 2.4 + 31.0, 4);
     gl_FragColor = vec4(h, basin, moist, 1.0);
@@ -158,6 +166,10 @@ uniform float uSealed;
 uniform float uWaterIce;
 uniform float uOcean;
 uniform float uLife;
+uniform float uForges;
+uniform float uLanterns;
+uniform float uTime;
+uniform vec3 cForge;
 uniform vec3 cRockLow;
 uniform vec3 cRockHigh;
 uniform vec3 cCO2;
@@ -212,14 +224,18 @@ void main() {
   float waterBasin = 1.0 - co2Basin;
 
   vec3 col = mix(cRockLow, cRockHigh, smoothstep(0.4, 0.78, h)) * (0.8 + 0.4 * t.b);
+  // One screen pixel, in units of the planet's radius. Taken here, outside the branches below:
+  // derivatives inside a branch that differs from pixel to pixel are undefined.
+  float px = max(length(fwidth(n)), 1e-6);
 
   // The shorelines are heights read from this terrain, so the seas cover the share the model gives.
   float co2Sea = co2Basin * smoothstep(0.012, -0.012, h - uCO2Line) * step(0.001, uCO2Level);
   // Liquid CO2, then dry ice, then the sealed lids: pale plates with dark joints between cells.
   vec3 co2Col = mix(cCO2, cDryIce, uDryIce);
   if (uSealed > 0.0 && co2Sea > 0.0) {
-    float joint = 1.0 - smoothstep(0.02, 0.13, seam(n * 22.0));
-    co2Col = mix(co2Col, cSealed * (1.0 - 0.78 * joint), uSealed);
+    // Joints only where a lid spans enough pixels to show them; finer, they alias into grain.
+    float joint = (1.0 - smoothstep(0.01, 0.06, seam(n * 22.0))) * smoothstep(6.0, 14.0, 1.0 / (22.0 * px));
+    co2Col = mix(co2Col, cSealed * (1.0 - 0.3 * joint), uSealed);
   }
 
   // Ice and liquid water are the same water: the seas only ever rise as the ice melts.
@@ -252,6 +268,22 @@ void main() {
   vec3 H = normalize(L + V);
   lit += pow(max(dot(G, H), 0.0), 120.0) * liquid * uSun * vec3(0.5, 0.47, 0.4);
 
+  // The Lanterns' mirrors behind Venus light its night side in matching pulses.
+  float night = 1.0 - smoothstep(-0.15, 0.1, dot(G, L));
+  lit += col * night * uLanterns * 0.05 * (0.75 + 0.25 * sin(uTime * 0.9));
+  // The Graphite Forges: rafts of molten-salt glow on the CO2 seas or the dry ice (drawn, not
+  // counted). Each spot is at least a pixel and a half across, its light spread to match, so from far
+  // away they are a warm haze of points rather than flickering specks; they show most at night.
+  if (uForges > 0.0 && co2Sea > 0.0) {
+    vec3 cell = floor(n * 34.0);
+    vec3 jit = cellHash(cell);
+    float raft = step(0.86, jit.x);
+    vec3 c = (cell + 0.2 + 0.6 * jit) / 34.0;
+    float r = max(0.0045, 1.5 * px);
+    float spot = 1.0 - smoothstep(0.0, r, length(normalize(c) - n));
+    float spread = (0.0045 * 0.0045) / (r * r);
+    lit += cForge * spot * spot * spread * raft * uForges * co2Sea * (0.3 + 0.7 * night);
+  }
   float glow = pow(max(uHeat, 0.0), 1.7) * (0.45 + 0.55 * smoothstep(0.62, 0.3, h));
   lit += mix(cGlowLow, cGlowHigh, uHeat) * glow * 0.55;
   gl_FragColor = vec4(lit, 1.0);
@@ -294,8 +326,16 @@ void main() {
   vec3 deck = mix(cDeckA, cDeckB, smoothstep(0.25, 0.75, deckN));
   deck = mix(deck, cDeckBand, bands * 0.35 * smoothstep(0.05, 0.6, abs(n.y)));
   float deckA = uDeck * (0.9 + 0.1 * deckN);
-  float wn = a.g * 0.6 + b.g * 0.4;
-  float waterA = uWater * smoothstep(0.5, 0.76, wn) * 0.9;
+  // Water clouds the way Earth's lie: a belt along the equator where the trade winds meet, storm
+  // tracks in the middle latitudes, and clear subtropics between. A finer layer, stretched east to
+  // west by the winds, frays their edges into streaks.
+  float fine = texture2D(uClouds, vec2(uv.x * 3.0 + flow * 2.2 + 0.61, uv.y)).g;
+  float wn = a.g * 0.5 + b.g * 0.3 + fine * 0.2;
+  float alat = abs(lat);
+  float belts = 0.62 + 0.3 * exp(-lat * lat / 0.02) + 0.22 * exp(-(alat - 0.95) * (alat - 0.95) / 0.06)
+    - 0.3 * exp(-(alat - 0.47) * (alat - 0.47) / 0.025);
+  float cover = wn * belts;
+  float waterA = uWater * smoothstep(0.36, 0.62, cover) * (0.55 + 0.4 * smoothstep(0.5, 0.75, cover));
   // Water clouds lie over the deck: while the new water rains out they swirl white through it.
   float alpha = clamp(deckA + waterA * (1.0 - deckA), 0.0, 1.0);
   vec3 c = (cCloud * waterA + deck * deckA * (1.0 - waterA)) / max(alpha, 1e-3);
@@ -321,10 +361,8 @@ void main() {
 
 /** The air's glow beyond the limb: a back-faced shell, added to what is behind it. */
 export const ATMO_VERT = /* glsl */ `
-varying vec3 vNormalW;
 varying vec3 vPosW;
 void main() {
-  vNormalW = normalize(mat3(modelMatrix) * normal);
   vec4 w = modelMatrix * vec4(position, 1.0);
   vPosW = w.xyz;
   gl_Position = projectionMatrix * viewMatrix * w;
@@ -333,11 +371,15 @@ void main() {
 
 /**
  * Brightest just above the limb, fading to nothing at the shell's edge: the glow depends on how
- * close the line of sight passes to the planet's centre.
+ * close the line of sight passes to the planet's centre. Works for any planet: uCenter and
+ * uRadius place it, uShell is the shell's radius.
  */
 export const ATMO_FRAG = /* glsl */ `
 uniform vec3 uSunDir;
 uniform vec3 uCamPos;
+uniform vec3 uCenter;
+uniform float uRadius;
+uniform float uShell;
 uniform float uSun;
 uniform float uAir;
 uniform float uSky;
@@ -345,16 +387,13 @@ uniform float uExhaust;
 uniform vec3 cRimVenus;
 uniform vec3 cRimEarth;
 uniform vec3 cExhaust;
-varying vec3 vNormalW;
 varying vec3 vPosW;
-const float R_PLANET = 1.0;
-const float R_SHELL = 1.075;
 void main() {
   vec3 dir = normalize(vPosW - uCamPos);
-  float b = length(cross(dir, -uCamPos));
-  float x = clamp((R_SHELL - b) / (R_SHELL - R_PLANET), 0.0, 1.0);
+  float b = length(cross(dir, uCenter - uCamPos));
+  float x = clamp((uShell - b) / max(uShell - uRadius, 1e-4), 0.0, 1.0);
   float i = x * x * x;
-  float day = smoothstep(-0.45, 0.5, dot(normalize(vPosW), uSunDir));
+  float day = smoothstep(-0.45, 0.5, dot(normalize(vPosW - uCenter), uSunDir));
   vec3 col = mix(cRimVenus, cRimEarth, uSky) * i * (0.04 + day * 1.3 * max(uSun, 0.2)) * (0.35 + 0.85 * uAir);
   col += cExhaust * uExhaust * x * x;
   gl_FragColor = vec4(col, 1.0);
@@ -453,11 +492,14 @@ void main() {
   float size;
   float along = u / 0.9;
   if (u < 0.9) {
-    // The last leg comes down from above the drop point, along the local vertical.
-    pos = bezier(uP0[k], uP1[k], aEnd * 2.1, aEnd, along) + aJitter * (1.0 - along) * 0.5;
-    vAlpha = smoothstep(0.0, 0.15, along) * step(along, uFront) * step(uTail, along);
+    // The last leg comes down from above the drop point, along the local vertical. Each Brick
+    // has its own approach, spread across a cone that narrows onto the poles, so they read as a
+    // rain of separate bodies, not one beam.
+    vec3 spread = aJitter * vec3(7.0, 9.0, 4.0);
+    pos = bezier(uP0[k] + spread, uP1[k] + spread * 0.35, aEnd * 2.1, aEnd, along);
+    vAlpha = 0.55 * smoothstep(0.0, 0.3, along) * step(along, uFront) * step(uTail, along);
     vFlash = 0.0;
-    size = 2.2 + 8.0 * aJitter.x * aJitter.x;
+    size = 1.1 + 2.2 * aJitter.x * aJitter.x;
   } else {
     float s = (u - 0.9) / 0.1;
     float burst = (1.0 - s) * (1.0 - s);
@@ -467,7 +509,7 @@ void main() {
     size = 4.0 + 24.0 * sqrt(max(s, 0.0)) * (1.0 - s);
   }
   vec4 mv = modelViewMatrix * vec4(pos, 1.0);
-  gl_PointSize = uPixel * size * (5.0 / -mv.z);
+  gl_PointSize = uPixel * size * clamp(16.0 / -mv.z, 0.3, 3.0);
   gl_Position = projectionMatrix * mv;
 }
 `;

@@ -84,12 +84,48 @@ for (const width of [320, 390]) {
     "late Lattice shows the reason, not negative energy",
     err,
   );
+  // The status line speaks once the sliders settle, half a second after the model, and a busy
+  // page (the journey compiling its shaders) can hold that back: wait for it to speak.
   const status = await p
-    .locator('[role="status"]')
-    .textContent()
+    .waitForFunction(
+      () =>
+        /full power after the deadline/.test(
+          document.querySelector('[role="status"]')?.textContent ?? "",
+        ),
+      undefined,
+      { timeout: 30_000 },
+    )
+    .catch(() => {})
+    .then(() => p.locator('[role="status"]').textContent())
     .then((t) => t ?? "")
     .catch(() => "");
   check(/full power after the deadline/.test(status), "status line announces it", status);
+  // A late variant's journey runs to 2039: thirteen years on the panel's slider, on a phone.
+  await p.goto(`${base}/explore?set=foundry-doubling-days:90`, { waitUntil: "load" });
+  await p
+    .waitForFunction(
+      () => Number(document.querySelector<HTMLInputElement>(".journey-panel input")?.max) > 3652,
+      undefined,
+      { timeout: 60_000 },
+    )
+    .catch(() => {});
+  const panel = await p.evaluate(() => {
+    const card = document.querySelector(".journey-panel-card")?.getBoundingClientRect();
+    const years = [...document.querySelectorAll(".journey-panel .vision-years span")].map((s) =>
+      s.getBoundingClientRect(),
+    );
+    return {
+      page: document.documentElement.scrollWidth,
+      card: Math.round(card?.right ?? Infinity),
+      years: years.length,
+      last: Math.round(Math.max(...years.map((y) => y.right))),
+    };
+  });
+  check(
+    panel.page <= 390 && panel.card <= 390 && panel.years > 10 && panel.last <= panel.card,
+    "a late variant's journey panel fits a 390px phone, years and all",
+    JSON.stringify(panel),
+  );
   const live = await p.evaluate(() => document.querySelectorAll("[aria-live]").length);
   check(live === 0, "no aria-live region repeats the table", String(live));
   await ctx.close();

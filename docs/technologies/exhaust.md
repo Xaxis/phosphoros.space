@@ -226,12 +226,11 @@ pumping light and is done by [26 June 2036](../numbers.md?date=day#traj-scavenge
 - **[2027](../numbers.md?date=year#program-start):** [Exhaust-1](../research.md#exhaust-1) begins in the laboratory. Its
   kill signal, no net cooling at useful power, would send the plan back to the multi-century route.
 - **[31 December 2028](../numbers.md?date=day#experiments-end):** Exhaust-1 must have passed.
-- **[1 December 2032](../numbers.md?date=day#veil-close):** Under the closed Veil, the canopies float up and their chimneys
-  are lowered.
 - **[9 October 2033](../numbers.md?date=day#helios-full-power):** The Lattice reaches full power. Its light goes to the
   Ice Train's Railheads until [7 January 2034](../numbers.md?date=day#ice-launch-end), while the Foundry builds the
-  tiles, chimneys and receivers.
-- **[23 February 2034](../numbers.md?date=day#cooling-start):** The hardware is at Venus, and active cooling begins.
+  canopies, tiles, chimneys and receivers.
+- **[23 February 2034](../numbers.md?date=day#cooling-start):** The hardware is at Venus. Under the closed Veil the
+  canopies float up to the cloud tops, their chimneys are lowered, and active cooling begins.
 - **[8 August 2034](../numbers.md?date=day#traj-clear-rain):** The Clear Rain: liquid CO₂ starts to fall.
 - **[13 November 2034](../numbers.md?date=day#first-arrival):** The first Bricks fall into the polar air; their heat
   joins the rest.

@@ -21,7 +21,8 @@ interface Props {
   o2: [number, number][];
   events: Event[];
   /** A label's lines stand centred in its phase. */
-  phases: { from: number; to: number; label?: string[]; tone?: string }[];
+  /** Ids, not dates, key the phases: in a late variant two can start on the same day. */
+  phases: { id: string; from: number; to: number; label?: string[]; tone?: string }[];
   earthLike: Event;
   deadline: Event;
   from: number;
@@ -133,7 +134,7 @@ function Trajectory(p: Props) {
       {/* Phases, shaded alternately across both panels. */}
       {p.phases.map((ph) =>
         ph.tone ? (
-          <g key={ph.from}>
+          <g key={ph.id}>
             <rect
               className={`f-${ph.tone}`}
               x={x(ph.from)}
@@ -156,7 +157,7 @@ function Trajectory(p: Props) {
         .map((ph) => {
           const { at, y, anchor } = place(ph.from, ph.to, ph.label ?? []);
           return (
-            <text key={ph.from} className="f-note" y={y} textAnchor={anchor}>
+            <text key={ph.id} className="f-note" y={y} textAnchor={anchor}>
               {ph.label?.map((line, i) => (
                 <tspan key={line} x={at} dy={i ? "1.25em" : 0}>
                   {line}
@@ -373,16 +374,22 @@ function build(r: Registry): Props {
     o2,
     events,
     phases: [
-      { from, to: day("traj-clear-rain"), label: ["The air", "cools"] },
+      { id: "cool", from, to: day("traj-clear-rain"), label: ["The air", "cools"] },
       {
+        id: "rain",
         from: day("traj-clear-rain"),
         to: day("traj-freeze"),
         label: ["The CO₂ rains", "out into seas"],
         tone: "muted-wash",
       },
-      { from: day("traj-freeze"), to: day("traj-frozen"), label: ["The seas", "freeze"] },
-      { from: day("traj-warming"), to: day("traj-earth-like"), tone: "muted-wash" },
-      { from: day("traj-earth-like"), to, tone: "cool-wash" },
+      {
+        id: "freeze",
+        from: day("traj-freeze"),
+        to: day("traj-frozen"),
+        label: ["The seas", "freeze"],
+      },
+      { id: "warm", from: day("traj-warming"), to: day("traj-earth-like"), tone: "muted-wash" },
+      { id: "earth-like", from: day("traj-earth-like"), to, tone: "cool-wash" },
     ],
     earthLike,
     deadline,

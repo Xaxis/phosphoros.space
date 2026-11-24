@@ -113,7 +113,7 @@
   authors: Standish, E. M., and Williams, J. G. (NASA Jet Propulsion Laboratory, Solar System Dynamics)
   url: https://ssd.jpl.nasa.gov/planets/approx_pos.html
   checked: 2026-11-23
-  note: Keplerian elements of the planets and their rates, for 1800 to 2050 (Table 1); Venus's mean longitude at J2000 and its rate, 58,517.815° a century.
+  note: Keplerian elements of the planets and their rates, for 1800 to 2050 (Table 1); the mean longitudes of Mercury, Venus and Earth at J2000 and their rates, and Mercury's eccentricity and perihelion.
 - id: park-2016-ceres
   kind: paper
   title: "A partially differentiated interior for (1) Ceres deduced from its gravity field and shape"

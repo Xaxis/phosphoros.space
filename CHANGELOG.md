@@ -4,6 +4,27 @@ What changed in each version of Phosphoros. Every change to a published number i
 corrections log, [`data/corrections.yaml`](data/corrections.yaml), shown on the site at
 [phosphoros.space/about](https://phosphoros.space/about#corrections) with the reason for each.
 
+## The journey (2026-11-24)
+
+No published number changed.
+
+- The home page tells the plan as a journey across the inner solar system: Earth's experiments and
+  the seeds' launch, the Mercury Foundry, Ceres's factories, Railheads and Crown, the Helios Lattice,
+  the Bricks' crossing, and every stage at Venus. Every date, each world's place on each day and the
+  air come from the model; the model now logs where Mercury, Venus, Earth and Ceres are as series
+  (`orbit-*`), from Standish's and JPL's elements. The planet opens the journey full screen, where the
+  camera follows any world and the readings follow the simulation. The maps are NASA, USGS and PDS
+  data, credited on the About page.
+- The Explorer flies each variant in 3D: a slider move retells the story with the variant's dates,
+  sizes and seas, and a late variant runs past the deadline to its own finish. An event a variant never
+  reaches is left out: with a fast Foundry the air freezes before the first Bricks arrive, so their
+  water lands as ice and never rains.
+- Fixed: the Explorer's slider for launch energy against arrival speed was stuck, because its range
+  starts at zero and was drawn on a log scale.
+- Fixed: the Exhaust and Chimney pages said the canopies rise as the Veil closes in 2032; they arrive
+  with the hardware, on the day cooling begins in 2034. The Genesis page now puts the seas in the
+  deepest lowland basins, as the plan does.
+
 ## Version 4: Phosphoros, closed without the Ring (2026-11-23)
 
 - The Braking Ring is retired: nothing could hold it against the catch

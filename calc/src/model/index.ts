@@ -15,6 +15,7 @@ import { helios, heliosSchedule } from "./helios.ts";
 import { iceTrain } from "./ice.ts";
 import { outcome } from "./outcome.ts";
 import { ozone } from "./ozone.ts";
+import { places } from "./places.ts";
 import { acid, aegis } from "./shield.ts";
 import { summary } from "./summary.ts";
 import { trajectory } from "./trajectory.ts";
@@ -47,6 +48,8 @@ export const MODULES = [
   ozone,
   budget,
   summary,
+  // Where the worlds are on each day, for the home page's journey; nothing else reads it.
+  places,
 ];
 
 function pass(inputs: Map<string, Input>, solved: Record<string, number>): Registry {
