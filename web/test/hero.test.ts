@@ -160,3 +160,21 @@ test("the CO₂ seas follow the simulated air: they fill, drain while the Bricks
   assert.ok(data.capCover > 0.2 && data.capCover < 0.5);
   assert.ok(data.seaCover > 0 && data.seaCover < 0.05);
 });
+
+test("no shader takes pow() or sqrt() of a base that can go below zero", async () => {
+  const shaders = await import("../components/hero/shaders.ts");
+  const calls: string[] = [];
+  for (const [name, src] of Object.entries(shaders)) {
+    if (typeof src !== "string") continue;
+    for (const m of src.matchAll(/\b(pow|sqrt)\(/g)) {
+      const rest = src.slice((m.index ?? 0) + m[0].length);
+      calls.push(`${name}: ${m[1]}(${rest.slice(0, 40).split("\n")[0]}`);
+      // A real GPU gives NaN for a negative base, and one NaN pixel blacks out the frame via bloom.
+      assert.match(rest, /^(max|clamp)\(/, `${name} calls ${m[1]}( ${rest.slice(0, 50)}`);
+    }
+  }
+  assert.ok(
+    calls.length >= 10,
+    `found only ${calls.length} calls; is the scan reading the shaders?`,
+  );
+});

@@ -29,11 +29,51 @@ function check(ok: boolean, what: string, detail = "") {
   if (!ok) failed++;
 }
 
-async function open(opts: { reduced?: boolean; noWebgl?: boolean; width?: number }) {
+/**
+ * A real GPU's maths, which SwiftShader's is kinder than: pow() of a negative base is NaN there, and
+ * normalize() comes out a hair long, so 1.0 - dot(N, V) can dip below zero. One NaN pixel spreads
+ * through the bloom pass and blacks out the whole scene, which is how the Aegis bubble blanked the
+ * hero on real screens while every SwiftShader check passed. Every shader is rewritten to behave so.
+ */
+const HOSTILE_GLSL = `
+float hPow(float x, float y) { return x < 0.0 ? sqrt(x) : pow(x, y); }
+vec2 hPow(vec2 x, vec2 y) { return vec2(hPow(x.x, y.x), hPow(x.y, y.y)); }
+vec3 hPow(vec3 x, vec3 y) { return vec3(hPow(x.x, y.x), hPow(x.y, y.y), hPow(x.z, y.z)); }
+vec4 hPow(vec4 x, vec4 y) { return vec4(hPow(x.xyz, y.xyz), hPow(x.w, y.w)); }
+float hNorm(float v) { return normalize(v); }
+vec2 hNorm(vec2 v) { return normalize(v) * 1.0005; }
+vec3 hNorm(vec3 v) { return normalize(v) * 1.0005; }
+vec4 hNorm(vec4 v) { return normalize(v) * 1.0005; }
+`;
+
+async function open(opts: {
+  reduced?: boolean;
+  noWebgl?: boolean;
+  hostile?: boolean;
+  width?: number;
+}) {
   const ctx: BrowserContext = await browser.newContext({
     viewport: { width: opts.width ?? 1440, height: 900 },
     reducedMotion: opts.reduced ? "reduce" : "no-preference",
   });
+  if (opts.hostile) {
+    await ctx.addInitScript((helpers: string) => {
+      const source = WebGL2RenderingContext.prototype.shaderSource;
+      WebGL2RenderingContext.prototype.shaderSource = function (shader, code) {
+        const lines = code.split("\n");
+        const at = lines.findLastIndex((l) => /^\s*precision\s/.test(l));
+        if (at < 0) return source.call(this, shader, code);
+        const body = lines
+          .slice(at + 1)
+          .join("\n")
+          .replace(/\bpow\(/g, "hPow(")
+          .replace(/\bnormalize\(/g, "hNorm(");
+        (window as unknown as { hostile: number }).hostile =
+          ((window as unknown as { hostile?: number }).hostile ?? 0) + 1;
+        return source.call(this, shader, [...lines.slice(0, at + 1), helpers, body].join("\n"));
+      };
+    }, HOSTILE_GLSL);
+  }
   if (opts.noWebgl) {
     await ctx.addInitScript(() => {
       const get = HTMLCanvasElement.prototype.getContext;
@@ -171,6 +211,75 @@ const live = (page: Page) =>
   console.log(`     pixel ratio after playing: ${dpr} (lower on a slow renderer)`);
   check(errors.length === 0, "no console errors", errors.join(" | "));
   await ctx.close();
+}
+
+/** Mean brightness, 0 to 255, of what the screen shows in an element's box. */
+async function brightness(page: Page, selector: string) {
+  const png = await page.locator(selector).screenshot({ timeout: 180_000 });
+  return page.evaluate(async (b64) => {
+    const img = new Image();
+    img.src = `data:image/png;base64,${b64}`;
+    await img.decode();
+    const c = document.createElement("canvas");
+    c.width = img.width;
+    c.height = img.height;
+    const g = c.getContext("2d") as CanvasRenderingContext2D;
+    g.drawImage(img, 0, 0);
+    const d = g.getImageData(0, 0, c.width, c.height).data;
+    let sum = 0;
+    for (let i = 0; i < d.length; i += 4) sum += (d[i] ?? 0) + (d[i + 1] ?? 0) + (d[i + 2] ?? 0);
+    return sum / (d.length / 4) / 3;
+  }, png.toString("base64"));
+}
+
+/** Shows a day and lets the scene draw it. */
+async function showDay(page: Page, day: number) {
+  await page.evaluate((v) => {
+    const s = document.querySelector<HTMLInputElement>(".vision-track input");
+    if (!s) return;
+    s.value = String(v);
+    s.dispatchEvent(new Event("input", { bubbles: true }));
+  }, day);
+  await read(page);
+}
+
+{
+  // Every captioned day, drawn with a real GPU's maths, must look like the same day drawn kindly:
+  // a NaN anywhere would black out the frame.
+  const kind = await open({ reduced: true });
+  const hostile = await open({ reduced: true, hostile: true });
+  await Promise.all([live(kind.page), live(hostile.page)]);
+  const rewritten = await hostile.page.evaluate(
+    () => (window as unknown as { hostile?: number }).hostile ?? 0,
+  );
+  const marks = await kind.page.locator(".vision-mark").count();
+  const days: number[] = [];
+  await showDay(kind.page, 0);
+  await kind.page.focus(".vision-track input");
+  for (let i = 0; i < marks; i++) {
+    await kind.page.keyboard.press("ArrowRight");
+    days.push((await read(kind.page)).day);
+  }
+  const dark: string[] = [];
+  for (const day of days) {
+    await showDay(kind.page, day);
+    await showDay(hostile.page, day);
+    const a = await brightness(kind.page, ".vision-planet");
+    const b = await brightness(hostile.page, ".vision-planet");
+    if (b < a * 0.7) dark.push(`day ${day}: ${b.toFixed(1)} against ${a.toFixed(1)}`);
+  }
+  check(
+    rewritten > 4 && days.length > 10 && dark.length === 0,
+    "every captioned day survives a real GPU's NaN maths",
+    dark.length ? dark.join("; ") : `${days.length} days, ${rewritten} shaders rewritten`,
+  );
+  check(
+    hostile.errors.length === 0,
+    "the rewritten shaders compile",
+    hostile.errors.join(" | ").slice(0, 300),
+  );
+  await kind.ctx.close();
+  await hostile.ctx.close();
 }
 
 {

@@ -78,6 +78,14 @@ vec2 uvOf(vec3 n) {
 }
 `;
 
+/*
+ * Every pow() and sqrt() here takes a base clamped to zero or above. On a real GPU a negative base
+ * gives NaN, and normalize() is approximate, so 1.0 - dot(N, V) can dip below zero at the centre of
+ * a sphere. One NaN pixel in the half-float frame spreads through the bloom pass and blacks out the
+ * whole scene: the Aegis bubble did exactly that from June 2034. SwiftShader returns a number for a
+ * negative base, so only the hero check's hostile mode, which makes them NaN, can catch it in CI.
+ * web/test/hero.test.ts holds every call to the rule.
+ */
 const OUT = /* glsl */ `
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
@@ -184,7 +192,7 @@ float seam(vec3 p) {
         float d = dot(r, r);
         if (d < f1) { f2 = f1; f1 = d; } else if (d < f2) { f2 = d; }
       }
-  return sqrt(f2) - sqrt(f1);
+  return sqrt(max(f2, 0.0)) - sqrt(max(f1, 0.0));
 }
 void main() {
   vec3 n = normalize(vObj);
@@ -244,7 +252,7 @@ void main() {
   vec3 H = normalize(L + V);
   lit += pow(max(dot(G, H), 0.0), 120.0) * liquid * uSun * vec3(0.5, 0.47, 0.4);
 
-  float glow = pow(uHeat, 1.7) * (0.45 + 0.55 * smoothstep(0.62, 0.3, h));
+  float glow = pow(max(uHeat, 0.0), 1.7) * (0.45 + 0.55 * smoothstep(0.62, 0.3, h));
   lit += mix(cGlowLow, cGlowHigh, uHeat) * glow * 0.55;
   gl_FragColor = vec4(lit, 1.0);
   ${OUT}
@@ -299,9 +307,9 @@ void main() {
   vec3 col = c * (0.006 + light * 1.0);
   // The hot surface glows dull red through the deck where sunlight does not drown it.
   float dark = 1.0 - smoothstep(-0.25, 0.3, d) * clamp(uSun * 2.5, 0.0, 1.0);
-  col += cNight * pow(uHeat, 1.4) * uDeck * dark * (0.55 + 0.45 * deckN);
+  col += cNight * pow(max(uHeat, 0.0), 1.4) * uDeck * dark * (0.55 + 0.45 * deckN);
 
-  float fres = pow(1.0 - max(dot(N, V), 0.0), 2.6);
+  float fres = pow(clamp(1.0 - dot(N, V), 0.0, 1.0), 2.6);
   vec3 rim = mix(cRimVenus, cRimEarth, uSky);
   float haze = fres * (0.2 + 0.6 * uAir);
   col += rim * (0.02 + light * 1.1) * haze;
@@ -406,7 +414,7 @@ uniform vec3 cBeam;
 varying float vV;
 varying float vSeed;
 void main() {
-  float pulse = pow(0.5 + 0.5 * sin((vV * 9.0 - uTime * 1.6 + vSeed * 6.0) * 6.28318), 6.0);
+  float pulse = pow(max(0.5 + 0.5 * sin((vV * 9.0 - uTime * 1.6 + vSeed * 6.0) * 6.28318), 0.0), 6.0);
   // Fades in far from Venus and lands at full strength on the cloud tops.
   float fade = smoothstep(0.0, 0.35, vV);
   vec3 col = cBeam * (0.25 + 1.6 * pulse) * fade * uOn;
@@ -456,7 +464,7 @@ void main() {
     pos = aEnd;
     vAlpha = burst * step(1.0, uFront) * step(uTail, 0.999);
     vFlash = 1.0;
-    size = 4.0 + 24.0 * sqrt(s) * (1.0 - s);
+    size = 4.0 + 24.0 * sqrt(max(s, 0.0)) * (1.0 - s);
   }
   vec4 mv = modelViewMatrix * vec4(pos, 1.0);
   gl_PointSize = uPixel * size * (5.0 / -mv.z);
@@ -475,7 +483,7 @@ void main() {
   vec2 q = gl_PointCoord - 0.5;
   float r = length(q) * 2.0;
   if (r > 1.0) discard;
-  float core = pow(1.0 - r, 2.2);
+  float core = pow(max(1.0 - r, 0.0), 2.2);
   gl_FragColor = vec4(mix(cPoint, cFlash, vFlash) * core * vAlpha * uOn, 1.0);
   ${OUT}
 }
@@ -489,7 +497,7 @@ void main() {
   vec2 q = gl_PointCoord - 0.5;
   float r = length(q) * 2.0;
   if (r > 1.0) discard;
-  float core = pow(1.0 - r, 2.2);
+  float core = pow(max(1.0 - r, 0.0), 2.2);
   gl_FragColor = vec4(cPoint * core * vAlpha * uOn, 1.0);
   ${OUT}
 }
@@ -517,7 +525,7 @@ void main() {
   vec2 q = gl_PointCoord - 0.5;
   float r = length(q) * 2.0;
   if (r > 1.0) discard;
-  gl_FragColor = vec4(cPoint * pow(1.0 - r, 1.6) * vAlpha * uOn, 1.0);
+  gl_FragColor = vec4(cPoint * pow(max(1.0 - r, 0.0), 1.6) * vAlpha * uOn, 1.0);
   ${OUT}
 }
 `;
@@ -571,7 +579,7 @@ uniform vec3 cField;
 varying vec3 vNormalV;
 varying vec3 vLocal;
 void main() {
-  float fres = pow(1.0 - abs(vNormalV.z), 2.4);
+  float fres = pow(clamp(1.0 - abs(normalize(vNormalV).z), 0.0, 1.0), 2.4);
   float ripple = 0.55 + 0.45 * sin(vLocal.z * 14.0 - uTime * 2.2);
   vec3 col = cField * fres * ripple * uOn * 0.55;
   gl_FragColor = vec4(col, 1.0);
